@@ -158,5 +158,5 @@ if __name__ == "__main__":
             (case_totalcnt, case_succeededcnt) = validate_results(validatorpath, test_outputdir, stop_ifvalidfail)
             totalcnt = totalcnt + case_totalcnt
             totalsuccesscnt = totalsuccesscnt + case_succeededcnt
-            print bitcode_path + ": succeeded " + str(case_succeededcnt) + " over " + str(case_totalcnt) + " (now total : " + str(totalcnt) + " over " + str(totalsuccesscnt) + ")"
+            print bitcode_path + ": succeeded " + str(case_succeededcnt) + " over " + str(case_totalcnt) + " (now total : " + str(totalsuccesscnt) + " over " + str(totalcnt) + ")"
     print "TOTAL : " + str(totalsuccesscnt) + "/" + str(totalcnt)
