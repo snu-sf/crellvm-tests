@@ -142,20 +142,23 @@ if __name__ == "__main__":
 
         for bitcode_file in os.listdir(testdir) : 
             if not bitcode_file.endswith(".bc"):
-                print "Passing " + bitcode_file + " as it is not .bc file..."
+                print "-- Passing " + bitcode_file + " as it is not .bc file..."
                 continue
 
             bitcode_path = os.path.join(testdir + "/" + bitcode_file)
-            print "running " + bitcode_path
+            bitcode_outputdir = os.path.join(test_outputdir, bitcode_file)
+            os.mkdir(bitcode_outputdir)
+
+            print "-- running " + bitcode_path
             stdout_path = os.path.join(test_outputdir, bitcode_file + ".opt.stdout")
             stderr_path = os.path.join(test_outputdir, bitcode_file + ".opt.stderr")
             stdout_f = open(stdout_path, "w")
             stderr_f = open(stderr_path, "w")
-            subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", test_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
+            subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", bitcode_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
             stdout_f.close()
             stderr_f.close()
             
-            (case_totalcnt, case_succeededcnt) = validate_results(validatorpath, test_outputdir, stop_ifvalidfail)
+            (case_totalcnt, case_succeededcnt) = validate_results(validatorpath, bitcode_outputdir, stop_ifvalidfail)
             totalcnt = totalcnt + case_totalcnt
             totalsuccesscnt = totalsuccesscnt + case_succeededcnt
             print bitcode_path + ": succeeded " + str(case_succeededcnt) + " over " + str(case_totalcnt) + " (now total : " + str(totalsuccesscnt) + " over " + str(totalcnt) + ")"
