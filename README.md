@@ -1,8 +1,9 @@
 ## Usage ##
 
-python test.py [options]
+- python test.py [options]
 
-Options:
+- Options:
+```
   -h, --help            show this help message and exit
   -e EXEPATH, --executable=EXEPATH
                         Hint generation executable(opt, clang, ..)
@@ -13,6 +14,7 @@ Options:
   -f, --stopfails       Halts execution if at least one validation fails
   -o, --opt             If the given executable is opt, this option should be
                         enabled
+```
 
 ## Example ##
 
