@@ -42,7 +42,7 @@ def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfa
             sys.exit(1)
         return 0 
 
-    logger.error(eachfilepath + " : validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
+    logger.error("validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
     sys.exit(1)
 
 # Returns (returncode, stdout_path, stderr_path)
@@ -186,8 +186,8 @@ if __name__ == "__main__":
         os.mkdir(test_outputdir)
 
         for bitcode_file in os.listdir(testdir) : 
-            if not bitcode_file.endswith(".bc"):
-                print "-- Passing " + bitcode_file + " as it is not .bc file..."
+            if not bitcode_file.endswith(".ll"):
+                print "-- Passing " + bitcode_file + " as it is not .ll file..."
                 continue
 
             bitcode_path = os.path.join(testdir + "/" + bitcode_file)
