@@ -11,31 +11,13 @@ import optparse
 logging.basicConfig()
 logger = logging.getLogger()
 
-VALIDATION_ACCEPTED = "YES"
-VALIDATION_WRONGANS = "NO"
-VALIDATION_UNKNOWN = "UNKNOWN"
-
-
 
 def get_result_path():
     return "results-opt"
 
-# Returns : 1 if succeeded, 0 if failed, sys.exit(1) if unknown result
-def check_validation_result(res, stop_ifvalidfail, vunit):
-    if res == VALIDATION_ACCEPTED:
-        return 1
-    elif res == VALIDATION_WRONGANS : 
-        print "Validation FAILED! at " + str(vunit)
-        if stop_ifvalidfail:
-            sys.exit(1)
-        return 0
-    elif res == VALIDATION_UNKNOWN : 
-        logger.error(eachfilepath + " : validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
-        sys.exit(1)
-    return 0 # Unreachable code
 
-# Returns : VALIDATION_ACCEPTED or VALIDATION_WRONGANS or VALIDATION_UNKNOWN
-def get_validation_result(returncode, stdout_path, stderr_path):
+# Returns : 1 if succeeded, 0 if failed, sys.exit(1) if unknown result
+def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit):
     stdout_f = open(stdout_path, "r")
     stderr_f = open(stderr_path, "r")
     olines = stdout_f.readlines()
@@ -52,14 +34,35 @@ def get_validation_result(returncode, stdout_path, stderr_path):
 
     if returncode == 0:
         assert olastline == "Validation succeeded."
-        return VALIDATION_ACCEPTED
+        return 1
     elif returncode == 1:
         assert elastline == "Validation failed."
-        return VALIDATION_WRONGANS
-    return VALIDATION_UNKNOWN
+        print "Validation FAILED! at " + str(vunit)
+        if stop_ifvalidfail:
+            sys.exit(1)
+        return 0 
+
+    logger.error(eachfilepath + " : validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
+    sys.exit(1)
+
+# Returns (returncode, stdout_path, stderr_path)
+def run_validator(validatorpath, vunit) : 
+    
+    (srcfilepath, hintfilepath, tgtfilepath) = vunit
+    basefilepath = hintfilepath[0:-(len(".hint.json"))]
+    stdout_path = basefilepath + ".validator.stdout"
+    stderr_path = basefilepath + ".validator.stderr"
+
+    stdout_f = open(stdout_path, "w")
+    stderr_f = open(stderr_path, "w")
+    returncode = subprocess.call([validatorpath, srcfilepath, tgtfilepath, hintfilepath], stdout=stdout_f, stderr=stderr_f)
+    stdout_f.close()
+    stderr_f.close()
+    
+    return (returncode, stdout_path, stderr_path)
 
 # Returns : (srcfile_path, hint_path, tgtfile_path) list
-def identify_path_triples(test_outputdir) : 
+def identify_triples(test_outputdir) : 
     output_dir_files = os.listdir(test_outputdir)
 
     # To check whether (src, hint, tgt) are well-paired...
@@ -111,24 +114,14 @@ def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) :
     
     total_validation_cnt = 0
     succeeded_validation_cnt = 0
-    triples = identify_path_triples(test_outputdir)
+    triples = identify_triples(test_outputdir)
    
     for vunit in triples : 
         
-        (srcfilepath, hintfilepath, tgtfilepath) = vunit
-        basefilepath = hintfilepath[0:-(len(".hint.json"))]
-
-        stdout_path = basefilepath + ".validator.stdout"
-        stderr_path = basefilepath + ".validator.stderr"
-        stdout_f = open(stdout_path, "w")
-        stderr_f = open(stderr_path, "w")
-        returncode = subprocess.call([validatorpath, srcfilepath, tgtfilepath, hintfilepath], stdout=stdout_f, stderr=stderr_f)
-        stdout_f.close()
-        stderr_f.close()
+        (returncode, stdout_path, stderr_path) = run_validator(validatorpath, vunit)
+       
+        succeeded_validation_cnt += check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit)
         
-        validation_result = get_validation_result(returncode, stdout_path, stderr_path)
-        
-        succeeded_validation_cnt += check_validation_result(validation_result, stop_ifvalidfail, vunit)
         total_validation_cnt = total_validation_cnt + 1
    
     return (total_validation_cnt, succeeded_validation_cnt)
