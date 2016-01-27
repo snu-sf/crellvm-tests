@@ -127,6 +127,18 @@ def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) :
     return (total_validation_cnt, succeeded_validation_cnt)
 
 
+# Returns : (retcode, stdout_path, stderr_path)
+def run_opt(optpath, optarg, test_outputdir, bitcode_file):
+    stdout_path = os.path.join(test_outputdir, bitcode_file + ".opt.stdout")
+    stderr_path = os.path.join(test_outputdir, bitcode_file + ".opt.stderr")
+    stdout_f = open(stdout_path, "w")
+    stderr_f = open(stderr_path, "w")
+    retcode = subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", bitcode_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
+    stdout_f.close()
+    stderr_f.close()
+
+    return (retcode, stdout_path, stderr_path)
+
 
 parser = optparse.OptionParser(description="Runs LLVMBerry on pre-defined test set")
 parser.add_option("-e", "--executable", action="store", 
@@ -193,17 +205,16 @@ if __name__ == "__main__":
             bitcode_path = os.path.join(testdir + "/" + bitcode_file)
             bitcode_outputdir = os.path.join(test_outputdir, bitcode_file)
             os.mkdir(bitcode_outputdir)
-
-            print "-- running " + bitcode_path
-            stdout_path = os.path.join(test_outputdir, bitcode_file + ".opt.stdout")
-            stderr_path = os.path.join(test_outputdir, bitcode_file + ".opt.stderr")
-            stdout_f = open(stdout_path, "w")
-            stderr_f = open(stderr_path, "w")
-            subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", bitcode_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
-            stdout_f.close()
-            stderr_f.close()
             
-            # validate_results function returns (# of validation units, # of successful validation units)
+            # Run opt.
+            print "-- running " + bitcode_path
+            (opt_retcode, stdout_path, stderr_path) = run_opt(optpath, optarg, test_outputdir, bitcode_file)
+            if opt_retcode <> 0:
+              logger.error(optpath + " halted with non-zero return value! You may see " + stderr_path)
+              sys.exit(1)
+
+            # validate_results function returns 
+            # (# of validation units, # of successful validation units)
             (case_totalcnt, case_succeededcnt) = validate_results(validatorpath, bitcode_outputdir, stop_ifvalidfail)
             # Now accumulating # of cases..
             totalcnt = totalcnt + case_totalcnt
