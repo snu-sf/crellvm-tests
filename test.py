@@ -154,7 +154,7 @@ def run_opt(optpath, optarg, test_outputdir, bitcode_file):
 
 parser = optparse.OptionParser(description="Runs LLVMBerry on pre-defined test set")
 parser.add_option('-i', '--input', action="store",
-                dest="inputpath", default=False,
+                dest="inputpath", default="inputs",
                 help='Input folder path')
 parser.add_option("-e", "--executable", action="store", 
                 dest="exepath", 
