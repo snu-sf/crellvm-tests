@@ -15,8 +15,14 @@ logger = logging.getLogger()
 def get_result_path():
     return "results-opt"
 
+def get_basefilepath(vunit):
+    (srcfilepath, hintfilepath, tgtfilepath) = vunit
+    basefilepath = hintfilepath[0:-(len(".hint.json"))]
+    assert srcfilepath[0:-(len(".src.bc"))] == basefilepath
+    assert tgtfilepath[0:-(len(".tgt.bc"))] == basefilepath
+    return basefilepath
 
-# Returns : 1 if succeeded, 0 if failed, sys.exit(1) if unknown result
+# Returns : 1 if succeeded, 0 if failed, -1 if unknown result
 def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit):
     stdout_f = open(stdout_path, "r")
     stderr_f = open(stderr_path, "r")
@@ -41,15 +47,16 @@ def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfa
         if stop_ifvalidfail:
             sys.exit(1)
         return 0 
-
-    logger.error("validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
-    sys.exit(1)
+    
+    return -1
+    #logger.error("validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
+    #sys.exit(1)
 
 # Returns (returncode, stdout_path, stderr_path)
 def run_validator(validatorpath, vunit) : 
     
     (srcfilepath, hintfilepath, tgtfilepath) = vunit
-    basefilepath = hintfilepath[0:-(len(".hint.json"))]
+    basefilepath = get_basefilepath(vunit)
     stdout_path = basefilepath + ".validator.stdout"
     stderr_path = basefilepath + ".validator.stderr"
 
@@ -109,22 +116,27 @@ def identify_triples(test_outputdir) :
     return triple_list
 
 
+# returns (total, succeeded, unknown)
 def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) : 
     output_dir_files = os.listdir(test_outputdir)
     
     total_validation_cnt = 0
     succeeded_validation_cnt = 0
+    unknown_validation_cnt = 0
     triples = identify_triples(test_outputdir)
    
     for vunit in triples : 
         
         (returncode, stdout_path, stderr_path) = run_validator(validatorpath, vunit)
        
-        succeeded_validation_cnt += check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit)
-        
+        res = check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit)
+        if res == 1:
+            succeeded_validation_cnt += 1
+        elif res == -1:
+            unknown_validation_cnt += 1
         total_validation_cnt = total_validation_cnt + 1
    
-    return (total_validation_cnt, succeeded_validation_cnt)
+    return (total_validation_cnt, succeeded_validation_cnt, unknown_validation_cnt)
 
 
 # Returns : (retcode, stdout_path, stderr_path)
@@ -141,6 +153,9 @@ def run_opt(optpath, optarg, test_outputdir, bitcode_file):
 
 
 parser = optparse.OptionParser(description="Runs LLVMBerry on pre-defined test set")
+parser.add_option('-i', '--input', action="store",
+                dest="inputpath", default=False,
+                help='Input folder path')
 parser.add_option("-e", "--executable", action="store", 
                 dest="exepath", 
                 help='Hint generation executable(opt, clang, ..)')
@@ -157,8 +172,6 @@ parser.add_option('-o', '--opt', action="store_true",
                 dest="isopt", default=False, 
                 help='If the given executable is opt, this option should be enabled')
 
-
-
 if __name__ == "__main__":
     (arg_results, args) = parser.parse_args()
     
@@ -171,6 +184,7 @@ if __name__ == "__main__":
     
     optpath = arg_results.exepath
     optarg = arg_results.exearg
+    inputpath = arg_results.inputpath
     validatorpath = arg_results.validatorpath
     stop_ifvalidfail = arg_results.stop_ifvalidfail
     isopt = arg_results.isopt
@@ -185,13 +199,17 @@ if __name__ == "__main__":
     if not os.path.exists(validatorpath) : 
         logger.error(validatorpath + " file does not exist")
         sys.exit(1)
+    if not os.path.exists(inputpath):
+        logger.error(inputpath + " folder does not exist")
+        sys.exit(1)
 
     totalcnt = 0
     totalsuccesscnt = 0
+    totalunknowncnt = 0
 
     # for each subfolder in "inputs"..
-    for testname in os.listdir("inputs") : 
-        testdir = os.path.join("inputs", testname)
+    for testname in os.listdir(inputpath) : 
+        testdir = os.path.join(inputpath, testname)
         print "testdir : " + testdir
         # create new sub directory in results-opt folder.. 
         test_outputdir = os.path.join(result_path, testname)
@@ -215,12 +233,19 @@ if __name__ == "__main__":
 
             # validate_results function returns 
             # (# of validation units, # of successful validation units)
-            (case_totalcnt, case_succeededcnt) = validate_results(validatorpath, bitcode_outputdir, stop_ifvalidfail)
+            (case_totalcnt, case_succeededcnt, case_unknowncnt) = validate_results(validatorpath, bitcode_outputdir, stop_ifvalidfail)
             # Now accumulating # of cases..
-            totalcnt = totalcnt + case_totalcnt
-            totalsuccesscnt = totalsuccesscnt + case_succeededcnt
+            totalcnt += case_totalcnt
+            totalsuccesscnt += case_succeededcnt
+            totalunknowncnt += case_unknowncnt
 
-            print bitcode_path + ": succeeded " + str(case_succeededcnt) \
-                + " over " + str(case_totalcnt) \
-                + " (now total : " + str(totalsuccesscnt) + " over " + str(totalcnt) + ")"
-    print "TOTAL : " + str(totalsuccesscnt) + "/" + str(totalcnt)
+            print bitcode_path + ": succeeded:" + str(case_succeededcnt) \
+                + ", unknown:" + str(case_unknowncnt) \
+                + ", total:" + str(case_totalcnt) \
+                + " (now:succeeded:" + str(totalsuccesscnt) \
+                + ", unknown:" + str(totalunknowncnt) \
+                + ", total:" + str(totalcnt) + ")"
+    print "TOTAL : " + str(totalcnt) \
+        + ", SUCCESS : " + str(totalsuccesscnt) \
+        + ", FAIL : " + str(totalcnt - totalsuccesscnt - totalunknowncnt) \
+        + ", UNKNOWN : " + str(totalunknowncnt)
