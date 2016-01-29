@@ -43,7 +43,7 @@ def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfa
         return 1
     elif returncode == 1:
         assert elastline == "Validation failed."
-        print "Validation FAILED! at " + str(vunit)
+        print "Validation FAILED! at {0}".format(str(vunit))
         if stop_ifvalidfail:
             sys.exit(1)
         return 0 
@@ -57,8 +57,8 @@ def run_validator(validatorpath, vunit) :
     
     (srcfilepath, hintfilepath, tgtfilepath) = vunit
     basefilepath = get_basefilepath(vunit)
-    stdout_path = basefilepath + ".validator.stdout"
-    stderr_path = basefilepath + ".validator.stderr"
+    stdout_path = "{0}.validator.stdout".format(basefilepath)
+    stderr_path = "{0}.validator.stderr".format(basefilepath)
 
     stdout_f = open(stdout_path, "w")
     stderr_f = open(stderr_path, "w")
@@ -90,14 +90,14 @@ def identify_triples(test_outputdir) :
         
         basefilename = eachfile[0:-(len(".hint.json"))]
         hintfilepath = os.path.join(test_outputdir, eachfile)
-        srcfilepath = os.path.join(test_outputdir, basefilename + ".src.bc")
-        tgtfilepath = os.path.join(test_outputdir, basefilename + ".tgt.bc")
+        srcfilepath = os.path.join(test_outputdir, "{0}.src.bc".format(basefilename))
+        tgtfilepath = os.path.join(test_outputdir, "{0}.tgt.bc".format(basefilename))
 
         if not os.path.exists(srcfilepath) : 
-            logger.error(srcfilename + " does not exist!")
+            logger.error("{0} does not exist!".format(srcfilename))
             sys.exit(1)
         if not os.path.exists(tgtfilepath) : 
-            logger.error(tgtfilename + " does not exist!")
+            logger.error("{0} does not exist!".format(tgtfilename))
             sys.exit(1)
         
         srcpath_to_hintpath[srcfilepath] = hintfilepath
@@ -106,11 +106,11 @@ def identify_triples(test_outputdir) :
      
     for eachsrcpath in srcpath_to_hintpath :
         if srcpath_to_hintpath[eachsrcpath] == "unpaired" : 
-            logger.error(eachsrcpath + " is unpaired!! (It has no corresponding hint.json file)")
+            logger.error("{0} is unpaired!! (It has no corresponding hint.json file)".format(eachsrcpath))
             sys.exit(1)
     for eachtgtpath in tgtpath_to_hintpath : 
         if tgtpath_to_hintpath[eachtgtpath] == "unpaired" : 
-            logger.error(eachtgtpath + " is unpaired!! (It has no corresponding hint.json file)")
+            logger.error("{0} is unpaired!! (It has no corresponding hint.json file)".format(eachtgtpath))
             sys.exit(1)
   
     return triple_list
@@ -141,8 +141,8 @@ def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) :
 
 # Returns : (retcode, stdout_path, stderr_path)
 def run_opt(optpath, optarg, test_outputdir, bitcode_file):
-    stdout_path = os.path.join(test_outputdir, bitcode_file + ".opt.stdout")
-    stderr_path = os.path.join(test_outputdir, bitcode_file + ".opt.stderr")
+    stdout_path = os.path.join(test_outputdir, "{0}.opt.stdout".format(bitcode_file))
+    stderr_path = os.path.join(test_outputdir, "{0}.opt.stderr".format(bitcode_file))
     stdout_f = open(stdout_path, "w")
     stderr_f = open(stderr_path, "w")
     retcode = subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", bitcode_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
@@ -178,7 +178,8 @@ if __name__ == "__main__":
     result_path = get_result_path()
 
     if os.path.exists(result_path):
-        shutil.rmtree(result_path);
+        logger.error("{0} path already exists! please erase the directory".format(result_path))
+        sys.exit(1) #shutil.rmtree(result_path);
 
     os.mkdir(result_path)
     
@@ -194,13 +195,13 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if not os.path.exists(optpath) :
-        logger.error(optpath + " file does not exist")
+        logger.error("{0} file does not exist".format(optpath))
         sys.exit(1)
     if not os.path.exists(validatorpath) : 
-        logger.error(validatorpath + " file does not exist")
+        logger.error("{0} file does not exist".format(validatorpath))
         sys.exit(1)
     if not os.path.exists(inputpath):
-        logger.error(inputpath + " folder does not exist")
+        logger.error("{0} folder does not exist".format(inputpath))
         sys.exit(1)
 
     totalcnt = 0
@@ -210,25 +211,25 @@ if __name__ == "__main__":
     # for each subfolder in "inputs"..
     for testname in os.listdir(inputpath) : 
         testdir = os.path.join(inputpath, testname)
-        print "testdir : " + testdir
+        print "testdir : {0}".format(testdir)
         # create new sub directory in results-opt folder.. 
         test_outputdir = os.path.join(result_path, testname)
         os.mkdir(test_outputdir)
 
         for bitcode_file in os.listdir(testdir) : 
             if not bitcode_file.endswith(".ll"):
-                print "-- Passing " + bitcode_file + " as it is not .ll file..."
+                print "-- Passing {0} as it is not .ll file...".format(bitcode_file)
                 continue
 
-            bitcode_path = os.path.join(testdir + "/" + bitcode_file)
+            bitcode_path = os.path.join(testdir, bitcode_file)
             bitcode_outputdir = os.path.join(test_outputdir, bitcode_file)
             os.mkdir(bitcode_outputdir)
             
             # Run opt.
-            print "-- running " + bitcode_path
+            print "-- running {0}".format(bitcode_path)
             (opt_retcode, stdout_path, stderr_path) = run_opt(optpath, optarg, test_outputdir, bitcode_file)
             if opt_retcode <> 0:
-              logger.error(optpath + " halted with non-zero return value! You may see " + stderr_path)
+              logger.error("{0} halted with non-zero return value! You may see {1}".format(optpath, stderr_path))
               sys.exit(1)
 
             # validate_results function returns 
@@ -239,13 +240,9 @@ if __name__ == "__main__":
             totalsuccesscnt += case_succeededcnt
             totalunknowncnt += case_unknowncnt
 
-            print bitcode_path + ": succeeded:" + str(case_succeededcnt) \
-                + ", unknown:" + str(case_unknowncnt) \
-                + ", total:" + str(case_totalcnt) \
-                + " (now:succeeded:" + str(totalsuccesscnt) \
-                + ", unknown:" + str(totalunknowncnt) \
-                + ", total:" + str(totalcnt) + ")"
-    print "TOTAL : " + str(totalcnt) \
-        + ", SUCCESS : " + str(totalsuccesscnt) \
-        + ", FAIL : " + str(totalcnt - totalsuccesscnt - totalunknowncnt) \
-        + ", UNKNOWN : " + str(totalunknowncnt)
+            print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {1}, unknown : {2}, total : {3})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
+    
+    print "TOTAL : {0}, SUCCESS : {1}, FIAL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
+        str(totalsuccesscnt), \
+        str(totalcnt - totalsuccesscnt - totalunknowncnt), \
+        str(totalunknowncnt))
