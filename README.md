@@ -5,6 +5,8 @@
 - Options:
 ```
   -h, --help            show this help message and exit
+  -i INPUTPATH, --input=INPUTPATH
+                        Input folder path
   -e EXEPATH, --executable=EXEPATH
                         Hint generation executable(opt, clang, ..)
   -v VALIDATORPATH, --validator=VALIDATORPATH
@@ -18,4 +20,4 @@
 
 ## Example ##
 
-`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f` 
+`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs"`
