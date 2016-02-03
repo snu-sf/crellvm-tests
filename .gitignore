@@ -1,0 +1,5 @@
+# Result directory
+results-opt/
+
+# Run script
+run.sh
