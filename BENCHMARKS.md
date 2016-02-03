@@ -1,6 +1,6 @@
 ## How to run benchmarks ##
 
-`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs"`
+`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "programs"`
 
 
 ## How to generate Python 3.4.1 .ll files ##
