@@ -11,7 +11,8 @@
 
 3. run : `CC=clang CXX=clang++ ./configure`
 
-4. Download llvm-3.7.0, clang from http://llvm.org/pre-releases/3.7.0, and compile
+4. Download llvm-3.7.0, clang from http://llvm.org/pre-releases/3.7.0, and compile.
+
 Lets assume that you have installed llvm and clang into `/home/juneyoung.lee/llvm-install-3.7.0/`
 
 5. vim Makefile

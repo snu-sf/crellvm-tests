@@ -20,4 +20,6 @@
 
 ## Example ##
 
-`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs"`
+`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs_full"`
+
+
