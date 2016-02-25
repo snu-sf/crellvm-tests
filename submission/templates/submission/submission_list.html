@@ -1,0 +1,8 @@
+{% block content %}
+    <h2>Submissions</h2>
+    <ul>
+        {% for submission in submissions %}
+            <li>{{ submission.id }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
