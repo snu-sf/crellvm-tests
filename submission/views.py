@@ -94,8 +94,12 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         object = super(SubmissionDetail, self).get_object(queryset)
+
         if object.user.id != self.request.user.id:
             raise Http404()
+
+        object.assignment.point = object.assignment.get_point()
+
         return object
 
 class SubmissionDownload(SubmissionDetail):
