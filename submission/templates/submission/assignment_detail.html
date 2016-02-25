@@ -27,7 +27,7 @@
       <li>
         <a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a>
         at {{ submission.submission_date }}
-        (<a href="{% url 'submission' submission.id %}">TODO: status</a>)
+        (<a href="{% url 'submission' submission.id %}">{{ submission.status }}</a>, {{ submission.score }} pts)
       </li>
       {% endfor %}
     </ul>

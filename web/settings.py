@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'submission',
 
+    'djcelery',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +125,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+CELERY_BACKEND_URL = 'rpc://'
+CELERY_BROKER_URL = 'amqp://guest@localhost//'
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+CELERY_TASK_SERIALIZER='json'
+CELERY_ACCEPT_CONTENT=['json']
+CELERY_RESULT_SERIALIZER='json'
+CELERY_TIMEZONE='Asia/Seoul'
+CELERY_ENABLE_UTC=True

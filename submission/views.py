@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 from django.core.urlresolvers import reverse
 from datetime import datetime
 
-from . import models, forms
+from . import models, forms, tasks
 
 # Create your views here.
 
@@ -56,8 +56,15 @@ class AssignmentSubmit(LoginRequiredMixin, DetailView):
         if submission_form.is_valid():
             assignment = self.get_object()
             submitted_file = submission_form.cleaned_data['submitted_file']
-            submission = models.Submission(assignment=assignment, user=request.user, submission_date=datetime.now(), submission_file=submitted_file)
+            submission = models.Submission(assignment=assignment,
+                                           user=request.user,
+                                           submission_date=datetime.now(),
+                                           submission_file=submitted_file,
+                                           status = 'PENDING',
+                                           score = 0,
+                                           message = '')
             submission.save()
+            tasks.evaluate.delay(submission.id)
             return HttpResponseRedirect(reverse('assignment', args=[assignment.name]))
         else:
             return HttpResponse('Bad Submission')

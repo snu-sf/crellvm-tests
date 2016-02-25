@@ -37,6 +37,10 @@ class Submission(models.Model):
     submission_date = models.DateTimeField('date submitted')
     submission_file = models.FileField(upload_to=submission_filename)
 
+    status = models.TextField()
+    score = models.IntegerField(default=0)
+    message = models.TextField()
+
     def __str__(self):
         return "%s.%s.%s" % (self.assignment.name, self.user.username, self.id)
 
