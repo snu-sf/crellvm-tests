@@ -5,5 +5,4 @@ virtualenv-3.4 env
 pip install --upgrade pip
 pip install -r requirements.txt
 
-cd web
 ./manage.py migrate
