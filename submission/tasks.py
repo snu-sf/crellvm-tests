@@ -14,7 +14,7 @@ def evaluate(submission_id):
         submission.status = 'RUNNING'
         submission.save()
 
-        time.sleep(20)
+        time.sleep(60)
 
         submission.status = 'SUCCESS'
         submission.score = 100

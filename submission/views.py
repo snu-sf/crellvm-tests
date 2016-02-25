@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.core.urlresolvers import reverse
 from datetime import datetime
+from celery.task.control import inspect
 
 from . import models, forms, tasks
 
@@ -104,3 +105,15 @@ class SubmissionDownload(SubmissionDetail):
         response = HttpResponse(submission.submission_file, content_type='text/plain')
         response['Content-Disposition'] = 'attachment; filename=%s' % filename
         return response
+
+CELERY_DESTINATION = inspect().ping().keys()
+CELERY_INSPECT = inspect(destination=CELERY_DESTINATION)
+
+def server_status(request):
+    tasks = {
+        'active': CELERY_INSPECT.active(),
+        'scheduled': CELERY_INSPECT.scheduled(),
+        'reserved': CELERY_INSPECT.reserved(),
+    }
+
+    return render(request, 'submission/server_status.html', {'tasks': tasks})

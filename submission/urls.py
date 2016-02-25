@@ -12,4 +12,6 @@ urlpatterns = [
 
     url(r'^submission/(?P<pk>\d+)$', views.SubmissionDetail.as_view(), name='submission'),
     url(r'^submission/(?P<pk>\d+)/download$', views.SubmissionDownload.as_view(), name='submission/download'),
+
+    url(r'^server_status$', views.server_status, name='server_status'),
 ]
