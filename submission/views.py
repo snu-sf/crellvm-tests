@@ -11,6 +11,10 @@ from . import models, forms
 
 # Create your views here.
 
+class AnnouncementList(ListView):
+    model = models.Announcement
+    context_object_name = 'announcements'
+
 class AssignmentList(ListView):
     model = models.Assignment
     context_object_name = 'assignments'

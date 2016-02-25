@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Announcement(models.Model):
+    content = models.TextField()
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return self.content
+
 class Assignment(models.Model):
     name = models.SlugField(max_length=200)
     due_date = models.DateTimeField('due date')

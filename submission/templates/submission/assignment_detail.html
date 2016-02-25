@@ -24,7 +24,11 @@
     <h3>My Submissions</h3>
     <ul>
       {% for submission in submissions %}
-        <li><a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a> at {{ submission.submission_date }} ({{ submission.status }})</li>
+      <li>
+        <a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a>
+        at {{ submission.submission_date }}
+        (<a href="{% url 'submission' submission.id %}">TODO: status</a>)
+      </li>
       {% endfor %}
     </ul>
   </div>

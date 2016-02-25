@@ -19,8 +19,7 @@ from django.contrib import auth
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='submission'), name='index'),
-    url(r'^submission/', include('submission.urls')),
+    url(r'^', include('submission.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
 ]
