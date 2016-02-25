@@ -7,14 +7,24 @@
 
   <div>
     <p>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ assignment.skeleton | filename }}</a></p>
-    <p>New submission: TODO.zip</p>
+  </div>
+
+  <div>
+    <h3>New submission</h3>
+    <form enctype="multipart/form-data" action="{% url 'assignment/submit' assignment.name %}" method="post">
+      {% csrf_token %}
+      <div>
+        {{ submission_form }}
+      </div>
+      <div><input type="submit" value="Submit" /></div>
+    </form>
   </div>
 
   <div>
     <h3>My Submissions</h3>
     <ul>
       {% for submission in submissions %}
-        <li>{{ submission.status }} submission submitted at {{ submission.submission_date }}</li>
+        <li><a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a> at {{ submission.submission_date }} ({{ submission.status }})</li>
       {% endfor %}
     </ul>
   </div>

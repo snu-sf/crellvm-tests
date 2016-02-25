@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -19,10 +21,14 @@ class Problem(models.Model):
     def __str__(self):
         return "%s.%s" % (self.assignment.name, self.index)
 
+def submission_filename(instance, filename):
+    return os.path.join('uploads/submission/', instance.user.username, filename)
+
 class Submission(models.Model):
     assignment = models.ForeignKey(Assignment)
     user = models.ForeignKey(User)
     submission_date = models.DateTimeField('date submitted')
+    submission_file = models.FileField(upload_to=submission_filename)
 
     def __str__(self):
         return "%s.%s.%s" % (self.assignment.name, self.user.username, self.id)

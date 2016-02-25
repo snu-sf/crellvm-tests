@@ -1,11 +1,13 @@
 import os
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.core.urlresolvers import reverse
+from datetime import datetime
 
-from . import models
+from . import models, forms
 
 # Create your views here.
 
@@ -23,6 +25,7 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
         assignment = context['assignment']
 
         context['submissions'] = models.Submission.objects.filter(assignment=assignment.name, user=1).order_by('-submission_date')
+        context['submission_form'] = forms.SubmissionForm()
 
         return context
 
@@ -38,13 +41,37 @@ class AssignmentSkeleton(LoginRequiredMixin, DetailView):
         response['Content-Disposition'] = 'attachment; filename=%s' % filename
         return response
 
-class SubmissionList(ListView):
-    model = models.Submission
-    context_object_name = 'submissions'
+class AssignmentSubmit(LoginRequiredMixin, DetailView):
+    model = models.Assignment
+    slug_field = 'name'
+    context_object_name = 'assignment'
 
-class SubmissionDetail(DetailView):
+    def post(self, request, *args, **kwargs):
+        submission_form = forms.SubmissionForm(request.POST, request.FILES)
+
+        if submission_form.is_valid():
+            assignment = self.get_object()
+            submitted_file = submission_form.cleaned_data['submitted_file']
+            submission = models.Submission(assignment=assignment, user=request.user, submission_date=datetime.now(), submission_file=submitted_file)
+            submission.save()
+            return HttpResponseRedirect(reverse('assignment', args=[assignment.name]))
+        else:
+            return HttpResponse('Bad Submission')
+
+class SubmissionDetail(LoginRequiredMixin, DetailView):
     model = models.Submission
     context_object_name = 'submission'
+
+class SubmissionDownload(LoginRequiredMixin, DetailView):
+    model = models.Submission
+    context_object_name = 'submission'
+
+    def get(self, request, *args, **kwargs):
+        submission = self.get_object()
+        filename = os.path.basename(submission.submission_file.file.name)
+        response = HttpResponse(submission.submission_file, content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename=%s' % filename
+        return response
 
 class FileDetail(DetailView):
     model = models.File
