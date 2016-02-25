@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load filename %}
 
 {% block content %}
   <h2>Assignment {{ assignment.name }}</h2>
 
   <div>
-    <p>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ skeleton_filename }}</a></p>
+    <p>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ assignment.skeleton | filename }}</a></p>
     <p>New submission: TODO.zip</p>
   </div>
 

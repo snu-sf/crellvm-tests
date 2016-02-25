@@ -22,7 +22,6 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
         context = super(AssignmentDetail, self).get_context_data(**kwargs)
         assignment = context['assignment']
 
-        context['skeleton_filename'] = os.path.basename(assignment.skeleton.file.name)
         context['submissions'] = models.Submission.objects.filter(assignment=assignment.name, user=1).order_by('-submission_date')
 
         return context
