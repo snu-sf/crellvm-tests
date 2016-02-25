@@ -1,7 +1,7 @@
 import os
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.core.urlresolvers import reverse
@@ -28,7 +28,7 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
         context = super(AssignmentDetail, self).get_context_data(**kwargs)
         assignment = context['assignment']
 
-        context['submissions'] = models.Submission.objects.filter(assignment=assignment.name, user=1).order_by('-submission_date')
+        context['submissions'] = models.Submission.objects.filter(assignment=assignment.name, user=self.request.user.id).order_by('-submission_date')
         context['submission_form'] = forms.SubmissionForm()
 
         return context
@@ -73,17 +73,16 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
     model = models.Submission
     context_object_name = 'submission'
 
-class SubmissionDownload(LoginRequiredMixin, DetailView):
-    model = models.Submission
-    context_object_name = 'submission'
+    def get_object(self, queryset=None):
+        object = super(SubmissionDetail, self).get_object(queryset)
+        if object.user.id != self.request.user.id:
+            raise Http404()
+        return object
 
+class SubmissionDownload(SubmissionDetail):
     def get(self, request, *args, **kwargs):
         submission = self.get_object()
         filename = os.path.basename(submission.submission_file.file.name)
         response = HttpResponse(submission.submission_file, content_type='text/plain')
         response['Content-Disposition'] = 'attachment; filename=%s' % filename
         return response
-
-class FileDetail(DetailView):
-    model = models.File
-    context_object_name = 'file'
