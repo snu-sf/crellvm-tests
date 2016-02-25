@@ -19,6 +19,21 @@ class AssignmentList(ListView):
     model = models.Assignment
     context_object_name = 'assignments'
 
+    def get_context_data(self, **kwargs):
+        context = super(AssignmentList, self).get_context_data(**kwargs)
+        assignments = context['assignments']
+        user_id = self.request.user.id
+
+        for a in assignments:
+            a.score = a.get_score(user_id)
+            a.point = a.get_point()
+
+        context['assignments'] = assignments
+        context['score'] = sum(map(lambda a: a.score, assignments))
+        context['point'] = sum(map(lambda a: a.point, assignments))
+
+        return context
+
 class AssignmentDetail(LoginRequiredMixin, DetailView):
     model = models.Assignment
     slug_field = 'name'
@@ -27,9 +42,12 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(AssignmentDetail, self).get_context_data(**kwargs)
         assignment = context['assignment']
+        submissions = models.Submission.objects.filter(assignment=assignment.name, user=self.request.user.id).order_by('-submission_date')
 
-        context['submissions'] = models.Submission.objects.filter(assignment=assignment.name, user=self.request.user.id).order_by('-submission_date')
         context['submission_form'] = forms.SubmissionForm()
+        context['submissions'] = submissions
+        context['score'] = assignment.get_score(self.request.user.id)
+        context['point'] = assignment.get_point()
 
         return context
 

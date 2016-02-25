@@ -6,22 +6,24 @@
   <h2>Assignment {{ assignment.name }}</h2>
 
   <div>
-    <p>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ assignment.skeleton | filename }}</a></p>
-  </div>
-
-  <div>
     <h3>New submission</h3>
-    <form enctype="multipart/form-data" action="{% url 'assignment/submit' assignment.name %}" method="post">
-      {% csrf_token %}
-      <div>
-        {{ submission_form }}
-      </div>
-      <div><input type="submit" value="Submit" /></div>
-    </form>
+    <ul>
+      <li>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ assignment.skeleton | filename }}</a></li>
+      <li>
+        <form enctype="multipart/form-data" action="{% url 'assignment/submit' assignment.name %}" method="post">
+          {% csrf_token %}
+          <div>
+            {{ submission_form }}
+          </div>
+          <div><input type="submit" value="Submit" /></div>
+        </form>
+      </li>
+    </ul>
   </div>
 
   <div>
     <h3>My Submissions</h3>
+    <h4>Score: {{ score }}/{{ point }} pts</h4>
     <ul>
       {% for submission in submissions %}
       <li>

@@ -20,6 +20,14 @@ class Assignment(models.Model):
     def __str__(self):
         return self.name
 
+    def get_point(self):
+        problems = Problem.objects.filter(assignment=self.name)
+        return sum(map(lambda p:p.point, problems))
+
+    def get_score(self, user_id):
+        submissions = Submission.objects.filter(assignment=self.name, user=user_id)
+        return max(map(lambda s: s.score, submissions) or [0])
+
 class Problem(models.Model):
     assignment = models.ForeignKey(Assignment)
     index = models.IntegerField(default=0)

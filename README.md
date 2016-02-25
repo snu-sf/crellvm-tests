@@ -12,5 +12,5 @@
 
         rabbitmq-server
         . env/bin/activate
-        ./manage.py celery woker -E
+        ./manage.py celery worker -E
         ./manage.py runserver
