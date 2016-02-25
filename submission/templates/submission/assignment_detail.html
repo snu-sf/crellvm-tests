@@ -5,6 +5,11 @@
   <h2>Assignment {{ assignment.name }}</h2>
 
   <div>
+    <p>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ skeleton_filename }}</a></p>
+    <p>New submission: TODO.zip</p>
+  </div>
+
+  <div>
     <h3>My Submissions</h3>
     <ul>
       {% for submission in submissions %}
