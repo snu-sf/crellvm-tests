@@ -24,7 +24,7 @@ class Submission(models.Model):
     submission_date = models.DateTimeField('date submitted')
 
     def __str__(self):
-        return "%s.%s.%s" % (self.problem.name, self.user.username, self.id)
+        return "%s.%s.%s" % (self.assignment.name, self.user.username, self.id)
 
 class File(models.Model):
     submission = models.ForeignKey(Submission)
