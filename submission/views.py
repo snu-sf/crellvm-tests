@@ -110,10 +110,10 @@ class SubmissionDownload(SubmissionDetail):
         response['Content-Disposition'] = 'attachment; filename=%s' % filename
         return response
 
-CELERY_DESTINATION = inspect().ping().keys()
-CELERY_INSPECT = inspect(destination=CELERY_DESTINATION)
-
 def server_status(request):
+    CELERY_DESTINATION = list(inspect().ping())
+    CELERY_INSPECT = inspect(destination=CELERY_DESTINATION)
+
     tasks = {
         'active': CELERY_INSPECT.active(),
         'scheduled': CELERY_INSPECT.scheduled(),

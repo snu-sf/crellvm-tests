@@ -26,7 +26,9 @@ class Assignment(models.Model):
 
     def get_score(self, user_id):
         submissions = Submission.objects.filter(assignment=self.name, user=user_id)
-        return max(map(lambda s: s.score, submissions) or [0])
+        scores = list(map(lambda s: s.score, submissions))
+        scores.append(0)
+        return max(scores)
 
 class Problem(models.Model):
     assignment = models.ForeignKey(Assignment)
