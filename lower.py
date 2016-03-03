@@ -13,11 +13,9 @@ logger = logging.getLogger()
 
 parser = optparse.OptionParser(description="Runs LLVMBerry on pre-defined test set")
 parser.add_option('-i', '--input', action="store",
-                dest="inputpath", default="inputs",
-                help='Input folder path')
+  dest="inputpath", default="inputs", help='Input folder path')
 parser.add_option("-e", "--executable", action="store", 
-                dest="exepath", 
-                help='Hint generation executable(opt, clang, ..)')
+  dest="exepath", help='Hint generation executable(opt, clang, ..)')
 
 if __name__ == "__main__":
     (arg_results, args) = parser.parse_args()
