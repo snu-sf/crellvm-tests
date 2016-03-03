@@ -22,14 +22,3 @@
 
 `python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs_full"`
 
-## Note ##
-
-Currently, vellvm doesn't support `switch` statements.
-So if your test input contains `switch` statements, do as follows.
-
-Example)
-```
-python test.py -e ./opt -v ./main.native -r "-lowerswitch" -o -f -i "inputs_full"
-mv results-opt some_other_name
-python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "some_other_name"
-```
