@@ -12,10 +12,6 @@ from . import models, forms, tasks
 
 # Create your views here.
 
-class AnnouncementList(ListView):
-    model = models.Announcement
-    context_object_name = 'announcements'
-
 class AssignmentList(ListView):
     model = models.Assignment
     context_object_name = 'assignments'
@@ -43,7 +39,7 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(AssignmentDetail, self).get_context_data(**kwargs)
         assignment = context['assignment']
-        submissions = models.Submission.objects.filter(assignment=assignment.name, user=self.request.user.id).order_by('-submission_date')
+        submissions = models.Submission.objects.filter(assignment=assignment, user=self.request.user.id).order_by('-submission_date')
 
         context['submission_form'] = forms.SubmissionForm()
         context['submissions'] = submissions
