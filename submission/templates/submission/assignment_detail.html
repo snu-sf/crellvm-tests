@@ -23,12 +23,12 @@
 
   <div>
     <h3>My Submissions</h3>
-    <h4>Score: {{ score }}/{{ point }} pts</h4>
+    <h4>Score: {{ score }}/{{ assignment.point }} pts</h4>
     <ul>
       {% for submission in submissions %}
       <li>
         <a href="{% url 'submission' submission.id %}">{{ submission.status }}</a> |
-        {{ submission.score }}/{{ point }} pts |
+        {{ submission.score }} pts |
         at {{ submission.submission_date }} |
         <a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a>
       </li>

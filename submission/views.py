@@ -19,11 +19,9 @@ class AssignmentList(ListView):
     def get_context_data(self, **kwargs):
         context = super(AssignmentList, self).get_context_data(**kwargs)
         assignments = context['assignments']
-        user_id = self.request.user.id
 
         for a in assignments:
-            a.score = a.get_score(user_id)
-            a.point = a.get_point()
+            a.score = a.get_score(self.request.user)
 
         context['assignments'] = assignments
         context['score'] = sum(map(lambda a: a.score, assignments))
@@ -39,12 +37,11 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(AssignmentDetail, self).get_context_data(**kwargs)
         assignment = context['assignment']
-        submissions = models.Submission.objects.filter(assignment=assignment, user=self.request.user.id).order_by('-submission_date')
+        submissions = models.Submission.objects.filter(assignment=assignment, user=self.request.user).order_by('-submission_date')
 
         context['submission_form'] = forms.SubmissionForm()
         context['submissions'] = submissions
-        context['score'] = assignment.get_score(self.request.user.id)
-        context['point'] = assignment.get_point()
+        context['score'] = assignment.get_score(self.request.user)
 
         return context
 
@@ -93,8 +90,6 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
         if object.user.id != self.request.user.id:
             raise Http404()
-
-        object.assignment.point = object.assignment.get_point()
 
         return object
 

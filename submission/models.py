@@ -9,16 +9,13 @@ class Assignment(models.Model):
     name = models.SlugField(max_length=200)
     due_date = models.DateTimeField('due date')
     skeleton = models.FileField(upload_to='uploads/skeleton')
+    point = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
 
-    def get_point(self):
-        problems = Problem.objects.filter(assignment=self.name)
-        return sum(map(lambda p:p.point, problems))
-
-    def get_score(self, user_id):
-        submissions = Submission.objects.filter(assignment=self.name, user=user_id)
+    def get_score(self, user):
+        submissions = Submission.objects.filter(assignment=self, user=user)
         scores = list(map(lambda s: s.score, submissions))
         scores.append(0)
         return max(scores)
@@ -46,13 +43,3 @@ class Submission(models.Model):
 
     def __str__(self):
         return "%s.%s.%s" % (self.assignment.name, self.user.username, self.id)
-
-class File(models.Model):
-    submission = models.ForeignKey(Submission)
-    index = models.IntegerField(default=0)
-    content = models.TextField()
-    message = models.TextField()
-    point = models.IntegerField(default=0)
-
-    def __str__(self):
-        return "%s.%s.%s" % (self.submission.id, self.index)

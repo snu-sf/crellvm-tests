@@ -55,6 +55,7 @@ def evaluate(submission_id):
         shutil.copytree(assignment_dir, run_dir)
         results = {}
         admit = False
+        score = 0
 
         for problem in problems:
             pfile = "P%02d.v" % problem.index
@@ -73,12 +74,21 @@ def evaluate(submission_id):
             result = get_result(giveup, resultp, resulte)
             results[problem.index] = result
 
+            if not result:
+                score += problem.point
+
+        if admit:
+            submission.status = 'ADMIT'
+            submission.score = 0
+            submission.save()
+            return
+
         submission.status = 'SUCCESS'
-        submission.score = 100
+        submission.score = score
         submission.message = str(results)
         submission.save()
 
-    except:
+    except Exception as e:
         submission.status = 'SYSTEM ERROR'
+        submission.message = str(e)
         submission.save()
-
