@@ -1,23 +1,21 @@
 # Software Foundations Submissions
 
-## Action Items
-
-- `scripts/install.sh`
-
-- `scripts/reset-db.sh`
-
-- `./manage.py addassignment 01 10 2016-03-02:14 ~/skeleton.zip`
-
-- Run server
-
-        rabbitmq-server
-        . env/bin/activate
-        ./manage.py celery worker -E
-        ./manage.py runserver
-
-## Grading
+## Installation
 
 ```
+# Django
+virtualenv-3.4 env
+. env/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+./manage.py migrate
+
+
+# RabbitMQ
+yum install rabbitmq-server
+
+
+# Coq
 yum groupinstall "Development Tools"
 
 cd /etc/yum.repos.d/
@@ -32,3 +30,27 @@ ssh-keygen -t rsa
 opam init --comp 4.02.3
 opam install coq.8.4.5
 ```
+
+## Initialization
+
+```
+. env/bin/activate
+rm db.sqlite3
+python manage.py migrate
+python manage.py createsuperuser --username sf --email ta@sf.snu.ac.kr
+```
+
+## Operation
+
+- Run web server
+
+        rabbitmq-server
+        . env/bin/activate
+        ./manage.py celery worker -E
+        ./manage.py runserver
+
+- Add assignment
+
+        ./manage.py addassignment 01 10 2016-03-02:14 ~/skeleton.zip
+
+- `lib/pl` contains evaluation logic. TODO: documentation required.
