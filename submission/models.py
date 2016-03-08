@@ -15,7 +15,11 @@ class Assignment(models.Model):
         return self.name
 
     def get_score(self, user):
-        submissions = Submission.objects.filter(assignment=self, user=user)
+        try:
+            submissions = Submission.objects.filter(assignment=self, user=user)
+        except:
+            submissions = []
+
         scores = list(map(lambda s: s.score, submissions))
         scores.append(0)
         return max(scores)
