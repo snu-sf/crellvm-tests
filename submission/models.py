@@ -43,3 +43,14 @@ class Submission(models.Model):
 
     def __str__(self):
         return "%s.%s.%s" % (self.assignment.name, self.user.username, self.id)
+
+class Result(models.Model):
+    submission = models.ForeignKey(Submission)
+    problem = models.ForeignKey(Problem)
+
+    status = models.TextField()
+    score = models.IntegerField(default=0)
+    message = models.TextField()
+
+    def __str__(self):
+        return "%s.%s.%s" % (self.submission.id, self.index, self.id)

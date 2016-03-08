@@ -12,5 +12,15 @@
     <li>Submitted file: <a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a></li>
     <li>Message: {{ submission.message }}</li>
   </ul>
+  <ul>
+    {% for result in results %}
+    <li>
+      Problem {{ result.problem.index }}: {{ result.score }} pts ({{ result.status }})<br />
+      <pre>
+{{ result.message }}
+      </pre>
+    </li>
+    {% endfor %}
+  </ul>
   </div>
 {% endblock %}

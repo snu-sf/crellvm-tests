@@ -7,3 +7,4 @@ from .models import *
 admin.site.register(Assignment)
 admin.site.register(Problem)
 admin.site.register(Submission)
+admin.site.register(Result)

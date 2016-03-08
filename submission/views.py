@@ -93,6 +93,15 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
         return object
 
+    def get_context_data(self, **kwargs):
+        context = super(SubmissionDetail, self).get_context_data(**kwargs)
+        submission = context['submission']
+        results = models.Result.objects.filter(submission=submission).order_by('problem')
+
+        context['results'] = results
+
+        return context
+
 class SubmissionDownload(SubmissionDetail):
     def get(self, request, *args, **kwargs):
         submission = self.get_object()
