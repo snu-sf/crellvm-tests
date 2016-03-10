@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -16,11 +16,11 @@ logger = logging.getLogger()
 
 parser = optparse.OptionParser(description="Shows various statistics from validation units")
 parser.add_option('-f', '--vunitfolder', action="store",
-                dest="resultfolder", default=False,
-                help='Folder name storing validation units')
+        dest="resultfolder", default=False,
+        help='Folder name storing validation units')
 parser.add_option('-o', '--optimizations', action="store_true", 
-                dest="showoptimizations", default=False,
-                help='Shows statistics on optimizations')
+        dest="showoptimizations", default=False,
+        help='Shows statistics on optimizations')
 
 if __name__ == "__main__":
     (arg_results, args) = parser.parse_args()
