@@ -1,4 +1,3 @@
 ## Usage ##
 
-python statistics.py -f results-opt -o
-
+`python3 statistics.py -f results-opt -o`
