@@ -48,6 +48,7 @@ def get_result(giveup, resultp, resulte):
         return ("EVALUATION ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (resulte['retcode'], resulte['stdout'], resulte['stderr']))
     return None
 
+
 @shared_task
 def evaluate(submission_id):
     try:
@@ -68,10 +69,14 @@ def evaluate(submission_id):
         run_dir = os.path.join(evaluation_dir, "run")
         shutil.copytree(assignment_dir, run_dir)
         results = {}
-        admit = False
+        forbidden = False
         score_total = 0
 
-        run(["make", "eval"], run_dir)
+        forbidden_file = os.path.join(run_dir, "forbidden.txt")
+        with open(forbidden_file, 'r') as f:
+            forbiddens = f.read().split('\n')
+            forbiddens = filter(lambda f: f, forbiddens)
+            forbiddens = '|'.join(forbiddens)
 
         for problem in problems:
             pfile = "P%02d.v" % problem.index
@@ -79,7 +84,7 @@ def evaluate(submission_id):
             pofile = "P%02d.vo" % problem.index
             eofile = "E%02d.vo" % problem.index
 
-            admit = admit or (not run(["grep", "-i", "admit", os.path.join(submission_dir, pfile)])['retcode'])
+            forbidden = forbidden or (not run(["grep", "-E", forbiddens, os.path.join(submission_dir, pfile)])['retcode'])
             giveup = not run(["grep", "GIVEUP", os.path.join(submission_dir, pfile)])['retcode']
 
             shutil.copy(os.path.join(submission_dir, pfile), run_dir)
@@ -106,8 +111,8 @@ def evaluate(submission_id):
                                    message=message)
             result.save()
 
-        if admit:
-            submission.status = 'ADMIT'
+        if forbidden:
+            submission.status = 'FORBIDDEN'
             submission.score = 0
             submission.save()
             return

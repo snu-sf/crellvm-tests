@@ -11,7 +11,7 @@ from . import _private
 def valid_date(date):
     tz = get_current_timezone()
     try:
-        return tz.localize(datetime.strptime(date, "%Y-%m-%d:%H"))
+        return tz.localize(datetime.strptime(date, "%Y-%m-%d:%H:%M:%S"))
     except ValueError:
         msg = "Not a valid date: '{0}'.".format(date)
         raise argparse.ArgumentTypeError(msg)
@@ -29,7 +29,7 @@ class Command(BaseCommand):
         assignment_name = options['assignment_name']
         index = options['index']
         due_date = options['due_date']
-        skeleton = File(open(options['skeleton'], "rb"))
+        skeleton = options['skeleton']
 
         if Assignment.objects.filter(name=assignment_name).exists():
             self.stderr.write(self.style.ERROR('Assignment %s already exists' % assignment_name))
