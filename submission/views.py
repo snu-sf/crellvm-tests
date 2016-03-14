@@ -45,18 +45,6 @@ class AssignmentDetail(LoginRequiredMixin, DetailView):
 
         return context
 
-class AssignmentSkeleton(LoginRequiredMixin, DetailView):
-    model = models.Assignment
-    slug_field = 'name'
-    context_object_name = 'assignment'
-
-    def get(self, request, *args, **kwargs):
-        assignment = self.get_object()
-        filename = os.path.basename(assignment.skeleton.file.name)
-        response = HttpResponse(assignment.skeleton.file, content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename=%s' % filename
-        return response
-
 class AssignmentSubmit(LoginRequiredMixin, DetailView):
     model = models.Assignment
     slug_field = 'name'

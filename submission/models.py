@@ -8,14 +8,18 @@ from django.contrib.auth.models import User
 class Assignment(models.Model):
     name = models.SlugField(max_length=200)
     due_date = models.DateTimeField('due date')
-    skeleton = models.FileField(upload_to='uploads/skeleton')
+    skeleton = models.TextField()
     point = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
 
     def get_score(self, user):
-        submissions = Submission.objects.filter(assignment=self, user=user)
+        try:
+            submissions = Submission.objects.filter(assignment=self, user=user)
+        except:
+            submissions = []
+
         scores = list(map(lambda s: s.score, submissions))
         scores.append(0)
         return max(scores)

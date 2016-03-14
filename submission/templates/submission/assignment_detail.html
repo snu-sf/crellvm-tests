@@ -8,7 +8,7 @@
   <div>
     <h3>New submission</h3>
     <ul>
-      <li>Skeleton: <a href="{% url 'assignment/skeleton' assignment.name %}">{{ assignment.skeleton | filename }}</a></li>
+      <li>Skeleton: <a href="{{ assignment.skeleton }}">Download</a></li>
       <li>
         <form enctype="multipart/form-data" action="{% url 'assignment/submit' assignment.name %}" method="post">
           {% csrf_token %}
