@@ -4,7 +4,7 @@
 
 ```
 # Django
-virtualenv-3.4 env
+virtualenv -p python3 env
 . env/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -12,6 +12,7 @@ pip install -r requirements.txt
 
 
 # RabbitMQ
+yum install epel-release
 yum install rabbitmq-server
 
 

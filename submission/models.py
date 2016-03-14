@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Assignment(models.Model):
     name = models.SlugField(max_length=200)
     due_date = models.DateTimeField('due date')
-    skeleton = models.FileField(upload_to='uploads/skeleton')
+    skeleton = models.TextField()
     point = models.IntegerField(default=0)
 
     def __str__(self):
