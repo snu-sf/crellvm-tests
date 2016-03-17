@@ -110,10 +110,12 @@ parser.add_option('-i', '--input', action="store",
                 dest="inputpath", default="inputs",
                 help='Input folder path')
 parser.add_option("-e", "--executable", action="store", 
-                dest="exepath", 
+                dest="exepath",
+                default="../build/bin/opt",
                 help='Hint generation executable(opt, clang, ..)')
 parser.add_option('-v', '--validator', action="store", 
                 dest="validatorpath", 
+                default="../ocaml_refact/_build/main.native",
                 help='Validator')
 parser.add_option('-r', '--execargs', action="store", 
                 dest="exearg", 
