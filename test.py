@@ -40,7 +40,7 @@ def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfa
         elastline = elines[-1].strip() # remove endlines
 
     if returncode == 0:
-        assert olastline == "Validation succeeded."
+        assert elastline == "Validation succeeded."
         return 1
     elif returncode == 1:
         assert elastline == "Validation failed."
