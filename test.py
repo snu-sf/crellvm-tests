@@ -197,7 +197,7 @@ if __name__ == "__main__":
 
             print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {1}, unknown : {2}, total : {3})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
     
-    print "TOTAL : {0}, SUCCESS : {1}, FIAL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
+    print "TOTAL : {0}, SUCCESS : {1}, FINAL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
         str(totalsuccesscnt), \
         str(totalcnt - totalsuccesscnt - totalunknowncnt), \
         str(totalunknowncnt))
