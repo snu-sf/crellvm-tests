@@ -40,7 +40,7 @@ def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfa
         elastline = elines[-1].strip() # remove endlines
 
     if returncode == 0:
-        assert olastline == "Validation succeeded."
+        assert elastline == "Validation succeeded."
         return 1
     elif returncode == 1:
         assert elastline == "Validation failed."
@@ -110,10 +110,12 @@ parser.add_option('-i', '--input', action="store",
                 dest="inputpath", default="inputs",
                 help='Input folder path')
 parser.add_option("-e", "--executable", action="store", 
-                dest="exepath", 
+                dest="exepath",
+                default="../build/bin/opt",
                 help='Hint generation executable(opt, clang, ..)')
 parser.add_option('-v', '--validator', action="store", 
                 dest="validatorpath", 
+                default="../ocaml_refact/_build/main.native",
                 help='Validator')
 parser.add_option('-r', '--execargs', action="store", 
                 dest="exearg", 
@@ -195,7 +197,7 @@ if __name__ == "__main__":
 
             print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {1}, unknown : {2}, total : {3})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
     
-    print "TOTAL : {0}, SUCCESS : {1}, FIAL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
+    print "TOTAL : {0}, SUCCESS : {1}, FAIL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
         str(totalsuccesscnt), \
         str(totalcnt - totalsuccesscnt - totalunknowncnt), \
         str(totalunknowncnt))

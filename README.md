@@ -21,6 +21,7 @@
 ## Example ##
 
 `python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs_full"`
+`python test.py -r "-instcombine" -o -f -i "inputs_full"`
 
 ## About lowerswitch-ing ##
 Currently, vellvm doesn't support `switch` statements  
