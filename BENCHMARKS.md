@@ -33,3 +33,9 @@ Line 38 : Modify into `LINKCC = echo #$(PURIFY) $(MAINCC)`
 11. run : `mkdir ../Python-3.4.1-llfiles`
 
 12. run : `mv *.ll ../Python-3.4.1-llfiles`
+
+## LLVM regression tests ##
+
+Copied from "llvm/test/Transforms"
+
+For more information -> [here](http://llvm.org/docs/TestingGuide.html#regression-tests)
