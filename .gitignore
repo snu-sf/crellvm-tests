@@ -1,3 +1,10 @@
 # Result directory
 results-opt/
 *.pyc
+*.bc
+*.src.bc
+*.src.ll
+*.tgt.bc
+*.tgt.ll
+*.hint.json
+*.output.ll
