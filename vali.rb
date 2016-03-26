@@ -1,7 +1,7 @@
 raise "Argument # should be >= 1, but it is #{ARGV.length}" unless ARGV.length >= 1
 
 $name = ARGV[0]
-OPT_OPTION = ARGV[1].nil?? "-basicaa -gvn" : ARGV[2]
+OPT_OPTION = ARGV[1].nil?? "-basicaa -gvn" : ARGV[1]
 OUT_NAME = "output"
 
 def run(cmd, log = "Something Went Wrong!")
