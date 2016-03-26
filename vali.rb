@@ -3,6 +3,7 @@ raise "Argument # should be >= 1, but it is #{ARGV.length}" unless ARGV.length >
 $name = ARGV[0]
 OPT_OPTION = ARGV[1].nil?? "-basicaa -gvn" : ARGV[1]
 OUT_NAME = "output"
+CLEAN_TRIPLE_BEFORE = true
 
 def run(cmd, log = "Something Went Wrong!")
   result = %x(#{cmd} 2>&1) 
@@ -11,12 +12,12 @@ end
 
 
 def make 
-  a = run("pwd").chop
-  Dir.chdir("#{a}/../.build/llvm-obj")
+  cur = run("pwd").chop
+  Dir.chdir("#{cur}/../.build/llvm-obj")
   run("make -j24")
-  Dir.chdir("#{a}/../")
+  Dir.chdir("#{cur}/../")
   run("make refact -j24")
-  Dir.chdir("#{a}")
+  Dir.chdir("#{cur}")
 end
 
 make
@@ -70,7 +71,7 @@ $success = 0
 $not_supported = 0
 $aborted = 0
 
-def validate(src, tgt, hint)
+def validate(hint, src, tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
   result = %x(../ocaml_refact/main.native #{src} #{tgt} #{hint} 2>&1)
@@ -79,15 +80,23 @@ def validate(src, tgt, hint)
   $aborted += 1 if result["Aborted"]
 end
 
+def clean_triple
+  cur = run("pwd").chop
+  Dir.chdir("#{$name}")
+  run("rm -f *.src.bc *.src.ll *.tgt.bc *.tgt.ll *.hint.json")
+  run("rm -f *.#{OUT_NAME}.ll")
+  Dir.chdir("#{cur}")
+end
+
 if File.directory?($name)
   #why not "each"? it is parallized and outputs are mixed.
+  clean_triple if CLEAN_TRIPLE_BEFORE
   Dir["#{$name}/*"].select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0]}.map{|n| generate n}
   h = Dir["#{$name}/*"].select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0..2].join(".")}
   h.each{|k,v|
     puts "#{k} #{v}";
     raise "not triple : #{v}" if v.size != 3;
-    run("llvm-dis #{v[0]}")
-    run("llvm-dis #{v[1]}")
+    v.sort!
     validate(v[0], v[1], v[2])
   }
 else
@@ -99,4 +108,3 @@ puts "failed: #{$failed}"
 puts "success: #{$success}"
 puts "not_supported: #{$not_supported}"
 puts "aborted: #{$aborted}"
-
