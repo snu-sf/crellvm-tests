@@ -22,6 +22,7 @@
 
 `python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs_full"`
 `python test.py -r "-instcombine" -o -f -i "inputs_full"`
+`python listfails.py -f ./results-opt/`
 
 ## About lowerswitch-ing ##
 Currently, vellvm doesn't support `switch` statements  
@@ -31,3 +32,4 @@ Suppose "programs" is the original input folder you want to test
 run : `python lower.py -e OPT_PATH -i "programs"`  
 Now folder `programs_lower` is created  
 Run test with `programs_lower` the usual way  
+
