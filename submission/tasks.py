@@ -49,6 +49,35 @@ def get_result(giveup, resultp, resulte):
     return None
 
 
+def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
+    pfile = "P%02d.v" % problem.index
+    pofile = "P%02d.vo" % problem.index
+
+    if not run(["grep", "-E", forbiddens, os.path.join(submission_dir, pfile)])['retcode']:
+        return ('FORBIDDEN', 0, "")
+
+    if not run(["grep", "GIVEUP", os.path.join(submission_dir, pfile)])['retcode']:
+        return ('GIVEUP', 0, "")
+
+    shutil.copy(os.path.join(submission_dir, pfile), run_dir)
+    result = run(["make", pofile], run_dir)
+    if result['retcode']:
+        return ("COMPILE ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (resultp['retcode'], resultp['stdout'], resultp['stderr']))
+
+    score = 0
+    messages = []
+
+    efiles = filter(lambda f: f.startswith("E%02d" % problem.index) and f.endswith(".v"), os.listdir(run_dir))
+    for efile in efiles:
+        eofile = "%so" % efile
+        result = run(["make", eofile], run_dir)
+
+        messages.append("%s\n\nRETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (efile, result['retcode'], result['stdout'], result['stderr']))
+        if not result['retcode']:
+            score += 10
+
+    return ('SUCCESS', score, "\n\n".join(messages))
+
 @shared_task
 def evaluate(submission_id):
     try:
@@ -79,29 +108,10 @@ def evaluate(submission_id):
             forbiddens = '|'.join(forbiddens)
 
         for problem in problems:
-            pfile = "P%02d.v" % problem.index
-            efile = "E%02d.v" % problem.index
-            pofile = "P%02d.vo" % problem.index
-            eofile = "E%02d.vo" % problem.index
+            (status, score, message) = evaluate_problem(forbiddens, submission_dir, run_dir, problem)
 
-            forbidden = forbidden or (not run(["grep", "-E", forbiddens, os.path.join(submission_dir, pfile)])['retcode'])
-            giveup = not run(["grep", "GIVEUP", os.path.join(submission_dir, pfile)])['retcode']
-
-            shutil.copy(os.path.join(submission_dir, pfile), run_dir)
-            resultp = run(["make", pofile], run_dir)
-            resulte = run(["make", eofile], run_dir)
-            shutil.copy(os.path.join(assignment_dir, pfile), run_dir)
-
-            result = get_result(giveup, resultp, resulte)
-
-            if result:
-                score = 0
-                status = result[0]
-                message = result[1]
-            else:
-                score = problem.point
-                status = 'SUCCESS'
-                message = ''
+            if status == 'FORBIDDEN':
+                forbidden = True
 
             score_total = score_total + score
             result = models.Result(submission=submission,
