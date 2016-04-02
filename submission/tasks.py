@@ -52,7 +52,7 @@ def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
     shutil.copy(os.path.join(submission_dir, pfile), run_dir)
     result = run(["make", pofile], run_dir)
     if result['retcode']:
-        return ("COMPILE ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (result['retcode'], result['stdout'], result['stderr']))
+        return ("COMPILE ERROR", 0, "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (result['retcode'], result['stdout'], result['stderr']))
 
     score = 0
     messages = []
