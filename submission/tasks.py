@@ -39,16 +39,6 @@ def run(cmds, cwd=None):
         (stdout, stderr) = communicate(process)
         return {'retcode': 'TIMEOUT', 'stdout': stdout, 'stderr': stderr}
 
-def get_result(giveup, resultp, resulte):
-    if giveup:
-        return ("GIVEUP", "")
-    if resultp['retcode']:
-        return ("COMPILE ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (resultp['retcode'], resultp['stdout'], resultp['stderr']))
-    if resulte['retcode']:
-        return ("EVALUATION ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (resulte['retcode'], resulte['stdout'], resulte['stderr']))
-    return None
-
-
 def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
     pfile = "P%02d.v" % problem.index
     pofile = "P%02d.vo" % problem.index
@@ -62,7 +52,7 @@ def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
     shutil.copy(os.path.join(submission_dir, pfile), run_dir)
     result = run(["make", pofile], run_dir)
     if result['retcode']:
-        return ("COMPILE ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (resultp['retcode'], resultp['stdout'], resultp['stderr']))
+        return ("COMPILE ERROR", "RETCODE: %s\n\nSTDOUT:\n%s\n\nSTDERR:\n%s" % (result['retcode'], result['stdout'], result['stderr']))
 
     score = 0
     messages = []
