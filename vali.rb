@@ -94,23 +94,26 @@ $not_supported = 0
 $validation_failed = 0
 $other_fail = []
 
-def write_stat(result)
-  ($success += 1; return) if $?.success?
-  $failed += 1
-  puts result
-  puts "#{result["Not_Supported"]}"
-  if (result["Not_Supported"] or result["not supported"]) then $not_supported += 1
-  else
-    if result["Validation failed."] then $validation_failed += 1
-    else $other_fail += [result] end
+def classify_stat(result)
+  if $?.success?
+  then
+    raise "process exec success, validation not success" unless result["Validation succeeded."]
+    :success
+  else if (result["Not_Supported"] or result["not supported"])
+       then :not_supported
+       else if result["Validation failed."]
+            then # puts result; 
+              :validation_failed
+            else :other_fail end
+       end
   end
 end
 
 def validate(hint, src, tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
-  result = %x(zsh -c "../ocaml_refact/main.native #{src} #{tgt} #{hint} 2>&1")
-  write_stat(result)
+  result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
+  classify_stat(result)
 end
 
 def clean_triple
@@ -133,27 +136,17 @@ if File.directory?($name)
 
   Parallel.map(get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}){|n| generate n}
   h = get_files.select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0...-2].join(".")}
-  Parallel.each(h) {|k,v|
+  h2 = Parallel.map(h) {|k, v|
     # puts "#{k} #{v}";
     raise "not triple : #{k} #{v}" if v.size != 3;
     v.sort!
     validate(v[0], v[1], v[2])
-  }
-
-  # h.each{|k,v|
-  #   puts "#{k} #{v}";
-  #   raise "not triple : #{v}" if v.size != 3;
-  #   v.sort!
-  #   validate(v[0], v[1], v[2])
-  # }
+  }.reduce(Hash.new(0)){|s, i| s[i] += 1; s}
+  
+  total = h2.inject(0){|s, (_, v)| s += v; s}
+  puts "total: #{total}"
+  raise "should not occur, h.size != total" if h.size != total
+  h2.each{|k, v| puts "#{k}: #{v}"}
 else
-  generate $name
+  puts "Does not support file execution for now. Please specify directory name."
 end
-
-puts "total: #{h.size}"
-puts "success: #{$success}"
-puts "failed: #{$failed}"
-puts "not supported: #{$not_supported}"
-puts "validation failed: #{$validation_failed}"
-puts "other fail: #{$other_fail.size}"
-puts "#{$other_fail.join}"
