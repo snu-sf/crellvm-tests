@@ -4,7 +4,7 @@ $name = ARGV[0]
 # OPT_OPTION = ARGV[1].nil?? "-basicaa -gvn" : ARGV[1]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
-CLEAN_TRIPLE_BEFORE = true
+CLEAN_ALL_BY_PRODUCTS_BEFORE = true
 
 def run(cmd, log = "Something Went Wrong!")
   result = %x(#{cmd} 2>&1) 
@@ -94,18 +94,14 @@ def validate(hint, src, tgt)
   classify_stat(result)
 end
 
-def clean_triple
-  cur = run("pwd").chop
-  Dir.chdir("#{$name}")
-  run("rm -f *.src.bc *.src.ll *.tgt.bc *.tgt.ll *.hint.json")
-  run("rm -f *.#{OUT_NAME}.ll")
-  Dir.chdir("#{cur}")
+def clean_all_by_products
+  run("git clean -xf")
 end
 
 make
 
 if File.directory?($name)
-  clean_triple if CLEAN_TRIPLE_BEFORE
+  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
   require "parallel"
 
