@@ -72,12 +72,6 @@ def generate(name)
   # puts "-----------generate end---------------"
 end
 
-$failed = 0
-$success = 0
-$not_supported = 0
-$validation_failed = 0
-$other_fail = []
-
 def classify_stat(result)
   if $?.success?
   then
