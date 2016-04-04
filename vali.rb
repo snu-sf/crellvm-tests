@@ -52,11 +52,18 @@ def classify(name)
   ns = name.split(".")
   # t = "hint.json src.bc tgt.bc".split.include?(ns[-2..-1].join("."))
   # puts "name : #{name}, ns : #{ns[-2..-1].join(""".""")} : #{t}"
+
   #for validate -> hint triple (*.src.bc, *.tgt.bc, *.hint.json)
+  #this should come before "for generate", as src.bc and tgt.bc will be matched to bc
   return 1 if "hint.json src.bc tgt.bc".split.include?(ns[-2..-1].join("."))
+
+  
+  #this should come before "for generate", as src.bc and tgt.bc will be matched to bc
+  return -1 if "src.ll tgt.ll #{OUT_NAME}.ll".split.include?(ns[-2..-1].join("."))
+  
   #for generate -> *.ll or *.bc or *.cpp or *.c
   return 0 if "c cpp bc ll".split.include?(ns.last)
-  return -1 if "src.ll tgt.ll #{OUT_NAME}.ll".split.include?(ns[-2..-1].join("."))
+
   raise "not cared name : #{name}"
 end
 
@@ -75,7 +82,7 @@ end
 def generate(name)
   # puts "-----------generate start-------------"
   base = change_to_bc name
-  puts "#{name} #{base}"
+  # puts "#{name} #{base}"
   result = run("opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S")
   # puts result
   # puts "-----------generate end---------------"
@@ -92,7 +99,7 @@ def write_stat(result)
   $failed += 1
   puts result
   puts "#{result["Not_Supported"]}"
-  if result["Not_Supported"] then $not_supported += 1
+  if (result["Not_Supported"] or result["not supported"]) then $not_supported += 1
   else
     if result["Validation failed."] then $validation_failed += 1
     else $other_fail += [result] end
@@ -121,16 +128,24 @@ if File.directory?($name)
   clean_triple if CLEAN_TRIPLE_BEFORE
   # Dir["#{$name}/*"].select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0]}.map{|n| generate n}
   # h = Dir["#{$name}/*"].select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0..2].join(".")}
-  files = Dir["#{$name}/**/*"].reject{|f| File.directory? f}
-  files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0]}.map{|n| generate n}
-  h = files.select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0..2].join(".")}
-  puts h
-  h.each{|k,v|
-    puts "#{k} #{v}";
-    raise "not triple : #{v}" if v.size != 3;
+  def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
+  require "parallel"
+
+  Parallel.map(get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}){|n| generate n}
+  h = get_files.select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0...-2].join(".")}
+  Parallel.each(h) {|k,v|
+    # puts "#{k} #{v}";
+    raise "not triple : #{k} #{v}" if v.size != 3;
     v.sort!
     validate(v[0], v[1], v[2])
   }
+
+  # h.each{|k,v|
+  #   puts "#{k} #{v}";
+  #   raise "not triple : #{v}" if v.size != 3;
+  #   v.sort!
+  #   validate(v[0], v[1], v[2])
+  # }
 else
   generate $name
 end
