@@ -13,8 +13,6 @@ logging.basicConfig()
 logger = logging.getLogger()
 
 
-def get_result_path():
-    return "results-opt"
 
 def get_basefilepath(vunit):
     (srcfilepath, hintfilepath, tgtfilepath) = vunit
@@ -129,11 +127,15 @@ parser.add_option ('-c', '--continue', action="store_true",
 parser.add_option('-o', '--opt', action="store_true", 
                 dest="isopt", default=False, 
                 help='If the given executable is opt, this option should be enabled')
+parser.add_option('-s', '--result', action="store",
+                dest="result_path", default="results-opt",
+                help='Directory path of results')
+
 
 if __name__ == "__main__":
     (arg_results, args) = parser.parse_args()
     
-    result_path = get_result_path()
+    result_path = arg_results.result_path
 
     if os.path.exists(result_path):
         logger.error("{0} path already exists! please erase the directory".format(result_path))
