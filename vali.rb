@@ -58,7 +58,7 @@ def classify(name)
   #for generate -> *.ll or *.bc or *.cpp or *.c
   return 0 if "c cpp bc ll".split.include?(ns.last)
 
-  raise "not cared name : #{name}"
+  return -2
 end
 
 def generate(name)
@@ -85,7 +85,11 @@ def classify_result(result)
 end
 
 #opt, vali_result, base, debug_print
-def validate(base, hint, src, tgt)
+def validate(base)
+  hint = base + ".hint.json"
+  src = base + ".src.bc"
+  tgt = base + ".tgt.bc"
+  raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
   result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
@@ -117,8 +121,7 @@ if File.directory?($name)
   h2 = Parallel.map(h) {|k, v|
     # puts "#{k} #{v}";
     raise "not triple : #{k} #{v}" if v.size != 3;
-    v.sort!
-    validate(k, v[0], v[1], v[2])
+    validate(k)
   }.reduce(Hash.new{|h, k| h[k] = Hash.new{|h2, k2| h2[k2] = Set.new}}){|s, i|
     raise "should not occur, i.size is not 4" if i.size != 4
     # puts i[0] + " " + i[1].to_s + " " + i[2]
@@ -133,5 +136,15 @@ if File.directory?($name)
       }
   }
 else
-  puts "Does not support file execution for now. Please specify directory name."
+  base = 
+    if (classify $name) == 0
+    then
+      clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
+      generate $name ; $name.split(".")[0...-1]
+    else
+      #In order to make this use case, CLEAN_ALL_BY_PRODUCTS_BEFORE should not occur here.
+      (raise "If you didn't specified dir name, and it is not ll/bc/c/cpp file, it should be triple's base name" if (classify $name) != -2)
+      $name
+    end
+  puts validate(base)
 end
