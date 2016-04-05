@@ -9,6 +9,7 @@ $name = ARGV[0]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
 CLEAN_ALL_BY_PRODUCTS_BEFORE = true
+$verbose = false
 
 def run(cmd, log = "Something Went Wrong!")
   result = %x(#{cmd} 2>&1) 
@@ -124,7 +125,7 @@ def validate_list(tri_bases)
   h2.map{|opt, _tmp|
     _tmp.map{|vali_result, v|
       puts "## #{opt} #{vali_result} ==> #{v.size} cases"
-      puts "#{v.map{|x| x[0]}.to_a.take(3)}"
+      $verbose ? (puts v.to_a) : (puts "#{v.map{|x| x[0]}.to_a.take(3)}")
       puts
       }
   }
@@ -150,7 +151,7 @@ def generate_list(names)
   barp "generation summary"
   g.each{|k, v|
     puts "## #{k} ==> #{v.size} cases"
-    puts "#{v.map{|x| x[0]}.to_a.take(3)}"
+    $verbose ? (puts v.to_a) : (puts "#{v.map{|x| x[0]}.to_a.take(3)}")
     puts
   }
   puts
