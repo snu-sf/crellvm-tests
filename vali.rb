@@ -132,9 +132,14 @@ if File.directory?($name)
 
   h2.map{|opt, _tmp|
     _tmp.map{|vali_result, v|
-      (puts "#{opt} #{vali_result}" ; puts "#{v.size} : #{v.map{|x| x[0]}.to_a.take(3)}") if (vali_result == :validation_failed or vali_result == :other_fail)
+      puts "#{opt} #{vali_result} ==> #{v.size} cases"
+      puts "#{v.map{|x| x[0]}.to_a.take(3)}"
       }
   }
+
+  puts "------------------------------- summary ----------------------------------"
+  h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
+  puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
 else
   base = 
     if (classify $name) == 0
