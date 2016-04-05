@@ -39,7 +39,7 @@ Run test with `programs_lower` the usual way
 - ruby vali.rb <triple's base name>
 
 ## What It Do ##
-Build llvm and make refact.
+Build llvm and make refact. (builds in .build/llvm-obj/, expects environment variables to be set to use opt in that directory)
 Remove all by-products.
 Recursively finds all "*.ll|*.bc|*.cpp|*.c" files from given directory.
 (Can also specify single file name)
