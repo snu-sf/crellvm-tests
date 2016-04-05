@@ -33,3 +33,28 @@ run : `python lower.py -e OPT_PATH -i "programs"`
 Now folder `programs_lower` is created  
 Run test with `programs_lower` the usual way  
 
+## Vali.rb Usage ##
+- Place your shell in "simplberry-tests"
+- ruby vali.rb <dir or file name> <option for "opt">
+- ruby vali.rb <triple's base name>
+
+## What It Do ##
+Build llvm and make refact.
+Remove all by-products.
+Recursively finds all "*.ll|*.bc|*.cpp|*.c" files from given directory.
+(Can also specify single file name)
+Compile those to bc code. (by clang, clang++, llvm-as)
+Generates hint triples by given argument *concurrently*.
+Validates given triples *concurrently*.
+Show summary of result.
+Write detailed result in "vali_rb_report"
+
+Also, you can give triple's base name, and just validate it.
+(same as ./main.native __.src.bc __.tgt.bc __.hint.json, but shorter)
+
+## Example ##
+- ruby vali.rb inputs_full "-instcombine"
+- ruby vali.rb llvm_regression_tests "-gvn"
+- ruby vali.rb inputs_full/associativity_add/example.foo.0 (assuming example.foo.0.src.bc, tgt.bc, hint.json exists)
+- ruby vali.rb inputs_full/associativity_add/example.ll
+- vi vali_rb_report
