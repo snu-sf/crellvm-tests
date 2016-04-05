@@ -156,12 +156,7 @@ def tri_bases_from_name(name)
   tt.keys
 end
 
-make
-
-if File.directory?($name)
-  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
-  def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
-  names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
+def generate_list(names)
   g = Parallel.map(names){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
   barp "generation summary"
   g.each{|k, v|
@@ -171,14 +166,22 @@ if File.directory?($name)
   }
   puts
   puts
-  # puts "Opt has failed for #{$generate_failed.size} cases, #{$generate_failed.take(3)}"
+end
+
+make
+
+if File.directory?($name)
+  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
+  def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
+  names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
+  generate_list(names)
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
   validate_list(tri_bases)
 else
   if (classify $name) == 0
   then
     clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
-    generate $name
+    generate_list([$name])
     validate_list(tri_bases_from_name($name))
   else
     #In order to make this use case, CLEAN_ALL_BY_PRODUCTS_BEFORE should not occur here.
