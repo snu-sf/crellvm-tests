@@ -71,19 +71,19 @@ def generate(name)
   # puts "#{name} #{base}"
   cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
-  [$?.success?? :generate_success : :generate_failed, cmd, result]
+  [$?.success?? :generate_success : :generate_fail, cmd, result]
 end
 
 def classify_result(result)
   if $?.success?
   then
     raise "process exec success, validation not success" unless result["Validation succeeded."]
-    :success
+    :validation_success
   else if (result["Not_Supported"] or result["not supported"])
-       then :not_supported
+       then :validation_not_supported
        else if result["Validation failed."]
-            then :validation_failed
-            else :other_fail end
+            then :validation_fail
+            else :validation_unknown end
        end
   end
 end
