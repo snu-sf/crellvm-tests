@@ -60,27 +60,18 @@ def classify(name)
   #for validate -> hint triple (*.src.bc, *.tgt.bc, *.hint.json)
   #this should come before "for generate", as src.bc and tgt.bc will be matched to bc
   return 1 if "hint.json src.bc tgt.bc".split.include?(ns[-2..-1].join("."))
-
-  #this should come before "for generate", as src.bc and tgt.bc will be matched to bc
   return -1 if "src.ll tgt.ll #{OUT_NAME}.ll".split.include?(ns[-2..-1].join("."))
-  
   #for generate -> *.ll or *.bc or *.cpp or *.c
   return 0 if "c cpp bc ll".split.include?(ns.last)
-
   return -2
 end
 
 def generate(name)
-  # puts "-----------generate start-------------"
   base = change_to_bc name
   # puts "#{name} #{base}"
   cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
-  
   [$?.success?? :generate_success : :generate_failed, cmd, result]
-
-  # puts result
-  # puts "-----------generate end---------------"
 end
 
 def classify_result(result)
@@ -150,7 +141,6 @@ end
 
 def tri_bases_from_name(name)
   base = (name.split(".")[0...-1].join(".")).split("/").last
-  # Dir[File.expand_path("../#{base}*", name)].select{|i| (classify i) == 1}.map{|x| x.split(".")[0...-2].join(".")}.uniq
   tt = Dir[File.expand_path("../#{base}*", name)].select{|i| (classify i) == 1}.group_by{|x| x.split(".")[0...-2].join(".")}
   tt.each{|k, v| raise "Should not occur, not triple! #{v.size}, #{v}" if v.size != 3}
   tt.keys
