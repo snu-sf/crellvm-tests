@@ -123,6 +123,9 @@ parser.add_option('-r', '--execargs', action="store",
 parser.add_option('-f', '--stopfails', action="store_true", 
                 dest="stop_ifvalidfail", default=False, 
                 help='Halts execution if at least one validation fails')
+parser.add_option ('-c', '--continue', action="store_true",
+                dest="continue_ifclangfail", default=False,
+                help='Continues execution even if clang(or opt) fails')
 parser.add_option('-o', '--opt', action="store_true", 
                 dest="isopt", default=False, 
                 help='If the given executable is opt, this option should be enabled')
@@ -144,6 +147,7 @@ if __name__ == "__main__":
     validatorpath = arg_results.validatorpath
     stop_ifvalidfail = arg_results.stop_ifvalidfail
     isopt = arg_results.isopt
+    continue_ifclangfail = arg_results.continue_ifclangfail
 
     if isopt == False:
         logger.error("NOTICE : This test.py currently does not support clang. If you're trying to run opt, you should give '-opt' command argument.")
@@ -184,8 +188,9 @@ if __name__ == "__main__":
             print "-- running {0}".format(bitcode_path)
             (opt_retcode, stdout_path, stderr_path) = run_opt(optpath, optarg, test_outputdir, bitcode_file)
             if opt_retcode <> 0:
-              logger.error("{0} halted with non-zero return value! You may see {1}".format(optpath, stderr_path))
-              sys.exit(1)
+              if not continue_ifclangfail:
+                logger.error("{0} halted with non-zero return value! You may see {1}".format(optpath, stderr_path))
+                sys.exit(1)
 
             # validate_results function returns 
             # (# of validation units, # of successful validation units)
