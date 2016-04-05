@@ -54,5 +54,7 @@ if __name__ == "__main__":
                     opt_stats[data["opt_name"]] = 1
 
     if arg_results.showoptimizations:
-        for key in opt_stats:
+        keys = opt_stats.keys()
+        keys.sort()
+        for key in keys:
             print "{0} \t: {1} time(s) appeared".format(key, opt_stats[key])
