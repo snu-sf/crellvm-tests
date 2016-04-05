@@ -1,3 +1,7 @@
+require 'json'
+require 'parallel'
+require 'set'
+
 raise "Argument # should be >= 1, but it is #{ARGV.length}" unless ARGV.length >= 1
 
 $name = ARGV[0]
@@ -85,15 +89,15 @@ def classify_result(result)
 end
 
 #opt, vali_result, base, debug_print
-def validate(base)
-  hint = base + ".hint.json"
-  src = base + ".src.bc"
-  tgt = base + ".tgt.bc"
+def validate(tri_base)
+  hint = tri_base + ".hint.json"
+  src = tri_base + ".src.bc"
+  tgt = tri_base + ".tgt.bc"
   raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
   result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
-  x = [which_opt(base), classify_result(result), base]
+  x = [which_opt(tri_base), classify_result(result), tri_base]
   x << ((x[1] == :success) ? "" : result)
 end
 
@@ -101,34 +105,21 @@ def clean_all_by_products
   run("git clean -xf")
 end
 
-def which_opt(base)
-  require 'json'
-  result = JSON.parse(File.read(base + ".hint.json"))["opt_name"]
+def which_opt(tri_base)
+  result = JSON.parse(File.read(tri_base + ".hint.json"))["opt_name"]
   raise "should not occur, opt_name is nil. parse result = #{result}" if result.nil?
   result
 end
 
-make
-
-if File.directory?($name)
-  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
-  def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
-  require "parallel"
-
-  Parallel.map(get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}){|n| generate n}
-  h = get_files.select{|i| (classify i) == 1}.group_by{|n| n.split(".")[0...-2].join(".")}
-  require 'set'
-  h2 = Parallel.map(h) {|k, v|
-    # puts "#{k} #{v}";
-    raise "not triple : #{k} #{v}" if v.size != 3;
-    validate(k)
-  }.reduce(Hash.new{|h, k| h[k] = Hash.new{|h2, k2| h2[k2] = Set.new}}){|s, i|
+def validate_list(tri_bases)
+  h2 = Parallel.map(tri_bases) {|tri_base| validate(tri_base)}.
+    reduce(Hash.new{|h, k| h[k] = Hash.new{|h2, k2| h2[k2] = Set.new}}){|s, i|
     raise "should not occur, i.size is not 4" if i.size != 4
     # puts i[0] + " " + i[1].to_s + " " + i[2]
     s[i[0]][i[1]] <<= [i[2], i[3]]
     s
   }
-  #opt X vali_result => set of (base, debug print)
+  #opt X vali_result => set of (tri_base, debug print)
 
   h2.map{|opt, _tmp|
     _tmp.map{|vali_result, v|
@@ -140,16 +131,34 @@ if File.directory?($name)
   puts "------------------------------- summary ----------------------------------"
   h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
   puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
+end
+
+def tri_bases_from_name(name)
+  base = (name.split(".")[0...-1].join(".")).split("/").last
+  # Dir[File.expand_path("../#{base}*", name)].select{|i| (classify i) == 1}.map{|x| x.split(".")[0...-2].join(".")}.uniq
+  tt = Dir[File.expand_path("../#{base}*", name)].select{|i| (classify i) == 1}.group_by{|x| x.split(".")[0...-2].join(".")}
+  tt.each{|k, v| raise "Should not occur, not triple! #{v.size}, #{v}" if v.size != 3}
+  tt.keys
+end
+
+make
+
+if File.directory?($name)
+  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
+  def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
+  names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
+  Parallel.map(names){|n| generate n}
+  tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
+  validate_list(tri_bases)
 else
-  base = 
-    if (classify $name) == 0
-    then
-      clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
-      generate $name ; $name.split(".")[0...-1]
-    else
-      #In order to make this use case, CLEAN_ALL_BY_PRODUCTS_BEFORE should not occur here.
-      (raise "If you didn't specified dir name, and it is not ll/bc/c/cpp file, it should be triple's base name" if (classify $name) != -2)
-      $name
-    end
-  puts validate(base)
+  if (classify $name) == 0
+  then
+    clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
+    generate $name
+    validate_list(tri_bases_from_name($name))
+  else
+    #In order to make this use case, CLEAN_ALL_BY_PRODUCTS_BEFORE should not occur here.
+    (raise "If you didn't specified dir name, and it is not ll/bc/c/cpp file, it should be triple's base name" if (classify $name) != -2)
+    validate_list([$name])
+  end
 end
