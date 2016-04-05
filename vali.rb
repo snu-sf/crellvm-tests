@@ -15,6 +15,11 @@ def run(cmd, log = "Something Went Wrong!")
   !$?.success?? (raise "#{log} --> #{cmd}") : result
 end
 
+def barp(x)
+  bar = ""
+  60.times{bar += "-"}
+  puts "#{bar} #{x} #{bar}"
+end
 
 def make 
   cur = run("pwd").chop
@@ -125,17 +130,22 @@ def validate_list(tri_bases)
   }
   #opt X vali_result => set of (tri_base, debug print)
 
+  barp "validation details"
   h2.map{|opt, _tmp|
     _tmp.map{|vali_result, v|
-      puts "#{opt} #{vali_result} ==> #{v.size} cases"
+      puts "## #{opt} #{vali_result} ==> #{v.size} cases"
       puts "#{v.map{|x| x[0]}.to_a.take(3)}"
+      puts
       }
   }
+  puts
+  puts
 
-  puts "------------------------------- validation summary ----------------------------------"
+  barp "validation summary"
   h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
   puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
-  puts "------------------------------- validation end ----------------------------------"
+  puts
+  puts
 end
 
 def tri_bases_from_name(name)
@@ -153,12 +163,14 @@ if File.directory?($name)
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
   names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
   g = Parallel.map(names){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
-  puts "------------------------------- generation summary ----------------------------------"
+  barp "generation summary"
   g.each{|k, v|
-    puts "#{k} ==> #{v.size} cases"
+    puts "## #{k} ==> #{v.size} cases"
     puts "#{v.map{|x| x[0]}.to_a.take(3)}"
+    puts
   }
-  puts "------------------------------- generation end ----------------------------------"
+  puts
+  puts
   # puts "Opt has failed for #{$generate_failed.size} cases, #{$generate_failed.take(3)}"
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
   validate_list(tri_bases)
