@@ -69,7 +69,11 @@ def generate(name)
   # puts "-----------generate start-------------"
   base = change_to_bc name
   # puts "#{name} #{base}"
-  result = run("opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S")
+  cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
+  result = %x(zsh -c "#{cmd}")
+  
+  [$?.success?? :generate_success : :generate_failed, cmd, result]
+
   # puts result
   # puts "-----------generate end---------------"
 end
@@ -128,9 +132,10 @@ def validate_list(tri_bases)
       }
   }
 
-  puts "------------------------------- summary ----------------------------------"
+  puts "------------------------------- validation summary ----------------------------------"
   h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
   puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
+  puts "------------------------------- validation end ----------------------------------"
 end
 
 def tri_bases_from_name(name)
@@ -147,7 +152,14 @@ if File.directory?($name)
   clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
   names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
-  Parallel.map(names){|n| generate n}
+  g = Parallel.map(names){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
+  puts "------------------------------- generation summary ----------------------------------"
+  g.each{|k, v|
+    puts "#{k} ==> #{v.size} cases"
+    puts "#{v.map{|x| x[0]}.to_a.take(3)}"
+  }
+  puts "------------------------------- generation end ----------------------------------"
+  # puts "Opt has failed for #{$generate_failed.size} cases, #{$generate_failed.take(3)}"
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
   validate_list(tri_bases)
 else
