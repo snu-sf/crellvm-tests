@@ -23,9 +23,8 @@ end
 
 def make 
   cur = run("pwd").chop
-  Dir.chdir("#{cur}/../.build/llvm-obj")
-  run("make -j24")
   Dir.chdir("#{cur}/../")
+  run("make llvm")
   run("make refact -j24")
   Dir.chdir("#{cur}")
 end
