@@ -174,25 +174,15 @@ end
 
 puts timer
 make
-p "A"
+p "Make done"
 puts timer
 if File.directory?($name)
-  p "B"
-  puts timer
   clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
   names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
-  p "C"
-  puts timer
   generate_list(names)
-  p "D"
-  puts timer
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
-  p "E"
-  puts timer
   validate_list(tri_bases)
-  p "F"
-  puts timer
 else
   if (classify $name) == 0
   then
