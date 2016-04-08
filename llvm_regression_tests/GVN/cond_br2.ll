@@ -109,7 +109,7 @@ if.then.i.i.i:                                    ; preds = %lpad
   br label %eh.resume
 
 eh.resume:                                        ; preds = %if.then.i.i.i, %lpad
-  resume { i8*, i32 } %12
+  ret void
 }
 
 ; Function Attrs: nounwind
