@@ -9,7 +9,7 @@ $name = ARGV[0]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
 CLEAN_ALL_BY_PRODUCTS_BEFORE = true
-$verbose = ARGV[2].nil?? false : true
+$verbose = false
 
 $last_time = nil
 def timer
@@ -83,7 +83,6 @@ end
 def generate(name)
   base = change_to_bc name
   # puts "#{name} #{base}"
-  puts "#{base}.ll"
   cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
   [$?.success?? :generate_success : :generate_fail, cmd, result]
@@ -115,7 +114,6 @@ def validate(tri_base)
   run("llvm-dis #{tgt}")
   result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
   x = [which_opt(tri_base), classify_result(result), tri_base]
-  p x
   x << ((x[1] == :success) ? "" : result)
 end
 
