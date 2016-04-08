@@ -120,6 +120,10 @@ def validate(tri_base)
 end
 
 def clean_all_by_products
+  run("rm -f *.hint.json")
+  run("rm -f *.src.bc")
+  run("rm -f *.tgt.bc")
+  run("rm -f *.output.ll")
   run("git clean -xf")
 end
 
