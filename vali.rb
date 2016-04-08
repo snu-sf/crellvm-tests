@@ -108,6 +108,8 @@ def validate(tri_base)
   hint = tri_base + ".hint.json"
   src = tri_base + ".src.bc"
   tgt = tri_base + ".tgt.bc"
+  run("opt -lowerswitch #{src} -o #{src}")
+  run("opt -lowerswitch #{tgt} -o #{tgt}")
   raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
@@ -141,7 +143,7 @@ def validate_list(tri_bases)
   h2.map{|opt, _tmp|
     _tmp.map{|vali_result, v|
       puts "## #{opt} #{vali_result} ==> #{v.size} cases"
-      $verbose ? (puts "#{v.map{|x| x[0]}}.to_a"; puts v.to_a) : (puts "#{v.map{|x| x[0]}.to_a.take(20)}")
+      $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
       puts
       }
   }
@@ -167,7 +169,7 @@ def generate_list(names)
   barp "generation summary"
   g.each{|k, v|
     puts "## #{k} ==> #{v.size} cases"
-    $verbose ? (puts "#{v.map{|x| x[0]}.to_a}"; puts v.to_a) : (puts "#{v.map{|x| x[0]}.to_a.take(20)}")
+    $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
     puts
   }
   puts
