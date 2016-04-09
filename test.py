@@ -168,6 +168,7 @@ if __name__ == "__main__":
     totalcnt = 0
     totalsuccesscnt = 0
     totalunknowncnt = 0
+    totaloptfails = []
 
     # for each subfolder in "inputs"..
     for testname in os.listdir(inputpath) : 
@@ -193,6 +194,7 @@ if __name__ == "__main__":
               if not continue_ifclangfail:
                 logger.error("{0} halted with non-zero return value! You may see {1}".format(optpath, stderr_path))
                 sys.exit(1)
+              totaloptfails.append(stderr_path)
 
             # validate_results function returns 
             # (# of validation units, # of successful validation units)
@@ -208,3 +210,7 @@ if __name__ == "__main__":
         str(totalsuccesscnt), \
         str(totalcnt - totalsuccesscnt - totalunknowncnt), \
         str(totalunknowncnt))
+
+    print "clang(opt) FAILURE : {0}".format(str(len(totaloptfails)))
+    for eachstderrpath in totaloptfails:
+        print "opt fail : {0}".format(eachstderrpath)
