@@ -38,7 +38,7 @@ end
 def make 
   cur = run("pwd").chop
   Dir.chdir("#{cur}/../.build/llvm-obj")
-  run("make -j24")
+  run("cmake --build . -- opt -j24")
   Dir.chdir("#{cur}/../")
   run("make refact -j24")
   Dir.chdir("#{cur}")
@@ -118,10 +118,10 @@ def validate(tri_base)
 end
 
 def clean_all_by_products
-  run("rm -f *.hint.json")
-  run("rm -f *.src.bc")
-  run("rm -f *.tgt.bc")
-  run("rm -f *.output.ll")
+  run("rm -f **/*.hint.json")
+  run("rm -f **/*.src.bc")
+  run("rm -f **/*.tgt.bc")
+  run("rm -f **/*.output.ll")
   run("git clean -xf")
 end
 
