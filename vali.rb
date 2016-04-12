@@ -113,7 +113,10 @@ def validate(tri_base)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
   result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
-  x = [which_opt(tri_base), classify_result(result), tri_base]
+  raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
+  opt_name = which_opt(tri_base)
+  x = [opt_name, classify_result(result), tri_base]
+  run("rm #{src} #{tgt} #{hint}") if (x[1] == :success)
   x << ((x[1] == :success) ? "" : result)
 end
 
@@ -132,7 +135,7 @@ def which_opt(tri_base)
 end
 
 def validate_list(tri_bases)
-  h2 = Parallel.map(tri_bases) {|tri_base| validate(tri_base)}.
+  h2 = Parallel.map(tri_bases, progress: "Validating triples") {|tri_base| validate(tri_base)}.
     reduce(Hash.new{|h, k| h[k] = Hash.new{|h2, k2| h2[k2] = Set.new}}){|s, i|
     raise "should not occur, i.size is not 4" if i.size != 4
     # puts i[0] + " " + i[1].to_s + " " + i[2]
@@ -141,19 +144,21 @@ def validate_list(tri_bases)
   }
   #opt X vali_result => set of (tri_base, debug print)
 
-  barp "validation details"
+  # barp "validation details"
   h2.map{|opt, _tmp|
-    _tmp.map{|vali_result, v|
-      puts "## #{opt} #{vali_result} ==> #{v.size} cases"
-      $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
-      puts
-      }
+    print "## #{opt} : #{_tmp.inject(0){|s, (k, v)| s + v.size}} cases".ljust(40) + "==>  "
+    print _tmp.map{|vali_result, v|
+      "#{vali_result} : #{v.size} cases".ljust(40)
+      # puts "## #{opt} #{vali_result} ==> #{v.size} cases"
+      # $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
+      # puts
+      }.join
+    puts
   }
-  puts
   puts
 
   barp "validation summary"
-  h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
+  # h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
   puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
   puts
   puts
@@ -167,14 +172,13 @@ def tri_bases_from_name(name)
 end
 
 def generate_list(names)
-  g = Parallel.map(names){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
-  barp "generation summary"
+  g = Parallel.map(names, progress: "Generating triples"){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
+  # barp "generation summary"
   g.each{|k, v|
     puts "## #{k} ==> #{v.size} cases"
-    $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
+    # $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
     puts
   }
-  puts
   puts
 end
 
