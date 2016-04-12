@@ -83,7 +83,9 @@ end
 def generate(name)
   base = change_to_bc name
   # puts "#{name} #{base}"
-  cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
+  # http://llvm.org/docs/CommandGuide/opt.html
+  # The order in which the options occur on the command line are the order in which they are executed (within pass constraints).
+  cmd = "opt #{OPT_OPTION} -lowerswitch #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
   [$?.success?? :generate_success : :generate_fail, cmd, result]
 end
@@ -107,8 +109,6 @@ def validate(tri_base)
   hint = tri_base + ".hint.json"
   src = tri_base + ".src.bc"
   tgt = tri_base + ".tgt.bc"
-  run("opt -lowerswitch #{src} -o #{src}")
-  run("opt -lowerswitch #{tgt} -o #{tgt}")
   raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
   run("llvm-dis #{src}")
   run("llvm-dis #{tgt}")
