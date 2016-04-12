@@ -26,7 +26,7 @@ end
 
 def run(cmd, log = "Something Went Wrong!")
   result = %x(#{cmd} 2>&1) 
-  !$?.success?? (raise "#{log} --> #{cmd}") : result
+  !$?.success?? (raise "#{log} --> #{cmd}\n#{result}") : result
 end
 
 def barp(x)
