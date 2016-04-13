@@ -8,3 +8,4 @@ results-opt/
 *.tgt.ll
 *.hint.json
 *.output.ll
+*.result
