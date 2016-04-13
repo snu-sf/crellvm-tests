@@ -87,7 +87,9 @@ def generate(name)
   # The order in which the options occur on the command line are the order in which they are executed (within pass constraints).
   cmd = "opt #{OPT_OPTION} -lowerswitch #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
-  [$?.success?? :generate_success : :generate_fail, cmd, result]
+  x = [$?.success?? :generate_success : :generate_fail, cmd]
+  File.open("#{name}.result", 'w').write(result) if(x[0] == :generate_fail)
+  x
 end
 
 def classify_result(result)
@@ -110,14 +112,15 @@ def validate(tri_base)
   src = tri_base + ".src.bc"
   tgt = tri_base + ".tgt.bc"
   raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
-  run("llvm-dis #{src}")
-  run("llvm-dis #{tgt}")
   result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
-  raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
   opt_name = which_opt(tri_base)
   x = [opt_name, classify_result(result), tri_base]
-  run("rm #{src} #{tgt} #{hint}") if (x[1] == :success)
-  x << ((x[1] == :success) ? "" : result)
+  # run("rm #{src} #{tgt} #{hint}") if (x[1] == :validation_success or x[1] == :validation_not_supported)
+  if(x[1] == :validation_fail or x[1] == :validation_unknown) then
+    File.open("#{tri_base}.result", 'w').write(result)
+    run("llvm-dis #{src}; llvm-dis #{tgt}")
+  end
+  x
 end
 
 def clean_all_by_products
@@ -137,9 +140,8 @@ end
 def validate_list(tri_bases)
   h2 = Parallel.map(tri_bases, progress: "Validating triples") {|tri_base| validate(tri_base)}.
     reduce(Hash.new{|h, k| h[k] = Hash.new{|h2, k2| h2[k2] = Set.new}}){|s, i|
-    raise "should not occur, i.size is not 4" if i.size != 4
-    # puts i[0] + " " + i[1].to_s + " " + i[2]
-    s[i[0]][i[1]] <<= [i[2], i[3]]
+    raise "should not occur, i.size is not 3" if i.size != 3
+    s[i[0]][i[1]] <<= [i[2]]
     s
   }
   #opt X vali_result => set of (tri_base, debug print)
@@ -172,7 +174,10 @@ def tri_bases_from_name(name)
 end
 
 def generate_list(names)
-  g = Parallel.map(names, progress: "Generating triples"){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1], i[2]]; s}
+  # names.sort!{|x, y| File.stat(x).size <=> File.stat(y).size}
+  names.sort_by!{|x| -File.stat(x).size}
+  # puts names.map{|x| x + " " + File.stat(x).size.to_s}
+  g = Parallel.map(names, progress: "Generating triples"){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1]]; s}
   # barp "generation summary"
   g.each{|k, v|
     puts "## #{k} ==> #{v.size} cases"
