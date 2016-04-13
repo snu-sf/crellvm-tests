@@ -125,10 +125,14 @@ end
 
 def clean_all_by_products
   # TODO this does not remove by-products... && get name and recursively delete?
-  run("rm -f **/*.hint.json")
-  run("rm -f **/*.src.bc")
-  run("rm -f **/*.tgt.bc")
-  run("rm -f **/*.output.ll")
+  timer
+  run("find . -name \"*.src.bc\" -delete -o -name \"*\.src\.ll\" -delete -o -name \"*\.tgt\.bc\" -delete -o -name \"*\.tgt\.ll\" -delete -o -name \"*\.hint\.json\" -delete -o -name \"*\.output\.ll\" -delete")
+  puts "clean_all_by_products done"
+  puts timer
+  # run("rm -f **/*.hint.json")
+  # run("rm -f **/*.src.bc")
+  # run("rm -f **/*.tgt.bc")
+  # run("rm -f **/*.output.ll")
   run("git clean -xf")
 end
 
@@ -196,7 +200,7 @@ end
 
 
 run("rm -f #{REPORT_NAME}")
-puts timer
+timer
 make
 p "Make done"
 puts timer
