@@ -125,8 +125,7 @@ def clean_all_by_products
   # TODO this does not remove by-products... && get name and recursively delete?
   timer
   run("find . -name \"*.src.bc\" -delete -o -name \"*\.src\.ll\" -delete -o -name \"*\.tgt\.bc\" -delete -o -name \"*\.tgt\.ll\" -delete -o -name \"*\.hint\.json\" -delete -o -name \"*\.output\.ll\" -delete")
-  puts "clean_all_by_products done"
-  puts timer
+  puts "cleaning by-products done in #{timer} seconds"
   run("git clean -xf")
 end
 
@@ -188,8 +187,7 @@ end
 run("rm -f #{REPORT_NAME}")
 timer
 make
-p "Make done"
-puts timer
+puts "Make done after #{timer} seconds"
 if File.directory?($name)
   clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
