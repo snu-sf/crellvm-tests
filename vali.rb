@@ -7,8 +7,9 @@ raise "Argument # should be >= 1, but it is #{ARGV.length}" unless ARGV.length >
 $name = ARGV[0]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
-CLEAN_ALL_BY_PRODUCTS_BEFORE = true
 REPORT_NAME = "vali_rb_report"
+FAST = true
+NO_GENERATE = false
 
 $last_time = nil
 def timer
@@ -110,7 +111,7 @@ def validate(tri_base)
   src = tri_base + ".src.bc"
   tgt = tri_base + ".tgt.bc"
   raise "should not occur, triple does not exist" unless (File.exists? hint and File.exists? src and File.exists? tgt)
-  result = %x(zsh -c "../ocaml_refact/main.native -d #{src} #{tgt} #{hint} 2>&1")
+  result = %x(zsh -c "../ocaml_refact/main.native #{FAST ? "" : "-d"} #{src} #{tgt} #{hint} 2>&1")
   opt_name = which_opt(tri_base)
   x = [opt_name, classify_result(result), tri_base]
   # run("rm #{src} #{tgt} #{hint}") if (x[1] == :validation_success or x[1] == :validation_not_supported)
@@ -190,17 +191,22 @@ timer
 make
 puts "Make done after #{timer} seconds"
 if File.directory?($name)
-  clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
   def get_files() Dir["#{$name}/**/*"].reject{|f| File.directory? f} end
   names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
-  generate_list(names)
+
+  unless NO_GENERATE then
+    clean_all_by_products
+    generate_list(names)
+  end
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
   validate_list(tri_bases)
 else
   if (classify $name) == 0
   then
-    clean_all_by_products if CLEAN_ALL_BY_PRODUCTS_BEFORE
-    generate_list([$name])
+    unless NO_GENERATE then
+      clean_all_by_products
+      generate_list([$name])
+    end
     validate_list(tri_bases_from_name($name))
   else
     #In order to make this use case, CLEAN_ALL_BY_PRODUCTS_BEFORE should not occur here.
