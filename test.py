@@ -67,8 +67,25 @@ def run_validator(validatorpath, vunit) :
     
     return (returncode, stdout_path, stderr_path)
 
+def run_opt_lower_switch(optpath, filepath) :
+    # TODO: run filepath
+    # filepath_suffix = filepath[-7:]
+    # filepath_lower = filepath[0:-(len(".xxx.bc"))] + ".lower" + filepath_suffix
+    filepath_tmp = filepath + ".tmp"
+
+    retcode = subprocess.call([optpath, "-lowerswitch", filepath, "-o", filepath_tmp])
+    print " **** optpath: " + optpath + " -lowerswitch "+filepath+" -o "+filepath_tmp
+    if (retcode <> 0):
+        print "Running lowerswitch returns nonzero value."
+        return filepath
+
+    print " **** lowered: " + filepath_tmp
+    retcode = subprocess.call(["mv", filepath_tmp, filepath])
+
+    return filepath
+    
 # returns (total, succeeded, unknown)
-def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) : 
+def validate_results(optpath, validatorpath, test_outputdir, stop_ifvalidfail) : 
     output_dir_files = os.listdir(test_outputdir)
     
     total_validation_cnt = 0
@@ -76,7 +93,13 @@ def validate_results(validatorpath, test_outputdir, stop_ifvalidfail) :
     unknown_validation_cnt = 0
     triples = identify_triples(test_outputdir)
    
-    for vunit in triples : 
+    for vunit in triples :
+
+        # TODO: run opt -lower-switch in src and tgt
+        (srcfilepath, hintfilepath, tgtfilepath) = vunit
+        vunit = (run_opt_lower_switch(optpath, srcfilepath),
+                 hintfilepath,
+                 run_opt_lower_switch(optpath, tgtfilepath))
         
         (returncode, stdout_path, stderr_path) = run_validator(validatorpath, vunit)
        
@@ -198,13 +221,13 @@ if __name__ == "__main__":
 
             # validate_results function returns 
             # (# of validation units, # of successful validation units)
-            (case_totalcnt, case_succeededcnt, case_unknowncnt) = validate_results(validatorpath, bitcode_outputdir, stop_ifvalidfail)
+            (case_totalcnt, case_succeededcnt, case_unknowncnt) = validate_results(optpath, validatorpath, bitcode_outputdir, stop_ifvalidfail)
             # Now accumulating # of cases..
             totalcnt += case_totalcnt
             totalsuccesscnt += case_succeededcnt
             totalunknowncnt += case_unknowncnt
 
-            print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {1}, unknown : {2}, total : {3})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
+            print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {4}, unknown : {5}, total : {6})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
     
     print "TOTAL : {0}, SUCCESS : {1}, FAIL : {2}, UNKNOWN : {3}".format(str(totalcnt), \
         str(totalsuccesscnt), \
