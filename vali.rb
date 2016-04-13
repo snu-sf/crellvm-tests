@@ -10,7 +10,6 @@ OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
 CLEAN_ALL_BY_PRODUCTS_BEFORE = true
 REPORT_NAME = "vali_rb_report"
-File.delete(REPORT_NAME)
 
 $last_time = nil
 def timer
@@ -195,6 +194,8 @@ def generate_list(names)
     g.each{|k, v| f.puts "## #{k} ##" ; v.each{|x| f.puts x} ; f.puts "\n"} ; f.puts "\n\n\n\n"}
 end
 
+
+run("rm -f #{REPORT_NAME}")
 puts timer
 make
 p "Make done"
