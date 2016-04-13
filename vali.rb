@@ -5,7 +5,6 @@ require 'set'
 raise "Argument # should be >= 1, but it is #{ARGV.length}" unless ARGV.length >= 1
 
 $name = ARGV[0]
-# OPT_OPTION = ARGV[1].nil?? "-basicaa -gvn" : ARGV[1]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
 CLEAN_ALL_BY_PRODUCTS_BEFORE = true
@@ -82,7 +81,6 @@ end
 
 def generate(name)
   base = change_to_bc name
-  # puts "#{name} #{base}"
   # http://llvm.org/docs/CommandGuide/opt.html
   # The order in which the options occur on the command line are the order in which they are executed (within pass constraints).
   cmd = "opt #{OPT_OPTION} -lowerswitch #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
@@ -129,10 +127,6 @@ def clean_all_by_products
   run("find . -name \"*.src.bc\" -delete -o -name \"*\.src\.ll\" -delete -o -name \"*\.tgt\.bc\" -delete -o -name \"*\.tgt\.ll\" -delete -o -name \"*\.hint\.json\" -delete -o -name \"*\.output\.ll\" -delete")
   puts "clean_all_by_products done"
   puts timer
-  # run("rm -f **/*.hint.json")
-  # run("rm -f **/*.src.bc")
-  # run("rm -f **/*.tgt.bc")
-  # run("rm -f **/*.output.ll")
   run("git clean -xf")
 end
 
@@ -151,14 +145,10 @@ def validate_list(tri_bases)
   }
   #opt X vali_result => set of (tri_base, debug print)
 
-  # barp "validation details"
   h2.map{|opt, _tmp|
     print "## #{opt} : #{_tmp.inject(0){|s, (k, v)| s + v.size}} cases".ljust(40) + "==>  "
     print _tmp.map{|vali_result, v|
       "#{vali_result} : #{v.size} cases".ljust(40)
-      # puts "## #{opt} #{vali_result} ==> #{v.size} cases"
-      # $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
-      # puts
       }.join
     puts
   }
@@ -168,7 +158,6 @@ def validate_list(tri_bases)
       _tmp.each{|result, xs| f.puts "# #{result} #" ; xs.each{|x| f.puts x}} ; f.puts "\n"}}
 
   barp "validation summary"
-  # h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
   puts h2.inject(Hash.new(0)){|s, (op, _tmp)| _tmp.map{|vali_result, v| s[vali_result] += v.size}; s}
   puts
   puts
@@ -182,11 +171,8 @@ def tri_bases_from_name(name)
 end
 
 def generate_list(names)
-  # names.sort!{|x, y| File.stat(x).size <=> File.stat(y).size}
   names.sort_by!{|x| -File.stat(x).size}
-  # puts names.map{|x| x + " " + File.stat(x).size.to_s}
   g = Parallel.map(names, progress: "Generating triples"){|n| generate n}.reduce(Hash.new{|h, k| h[k] = Set.new}){|s, i| s[i[0]] <<= [i[1]]; s}
-  # barp "generation summary"
   g.each{|k, v|
     puts "## #{k} ==> #{v.size} cases"
     # $verbose ? (puts v.map{|x| x[0]}.to_a; puts v.to_a) : (puts v.map{|x| x[0]}.to_a.take(20))
