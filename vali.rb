@@ -165,7 +165,8 @@ end
 def tri_bases_from_name(name)
   base = (name.split(".")[0...-1].join(".")).split("/").last
   tt = Dir[File.expand_path("../#{base}*", name)].select{|i| (classify i) == 1}.group_by{|x| x.split(".")[0...-2].join(".")}
-  tt.each{|k, v| raise "Should not occur, not triple! #{v.size}, #{v}" if v.size != 3}
+  # tt.each{|k, v| raise "Should not occur, not triple! #{v.size}, #{v}" if v.size != 3}
+  tt.select!{|k, v| puts "!!!!!!!!!!!!!!!!!!!! Should not occur, not triple! #{v.size} #{v}" if v.size != 3; v.size == 3}
   tt.keys
 end
 
