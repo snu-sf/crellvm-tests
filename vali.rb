@@ -9,7 +9,8 @@ $name = ARGV[0]
 OPT_OPTION = ARGV[1].nil?? "-instcombine" : ARGV[1]
 OUT_NAME = "output"
 CLEAN_ALL_BY_PRODUCTS_BEFORE = true
-$verbose = false
+REPORT_NAME = "vali_rb_report"
+File.delete(REPORT_NAME)
 
 $last_time = nil
 def timer
@@ -124,6 +125,7 @@ def validate(tri_base)
 end
 
 def clean_all_by_products
+  # TODO this does not remove by-products... && get name and recursively delete?
   run("rm -f **/*.hint.json")
   run("rm -f **/*.src.bc")
   run("rm -f **/*.tgt.bc")
@@ -158,6 +160,9 @@ def validate_list(tri_bases)
     puts
   }
   puts
+  File.open(REPORT_NAME, 'a'){|f| f.puts "### Validation Details ###\n\n" ;
+    h2.each{|opt, _tmp| f.puts "## #{opt} ##" ;
+      _tmp.each{|result, xs| f.puts "# #{result} #" ; xs.each{|x| f.puts x}} ; f.puts "\n"}}
 
   barp "validation summary"
   # h2.map{|op, _tmp| puts "#{op} has appeared #{_tmp.inject(0){|s, (vali_result, v)| s + v.size}} times"}
@@ -185,6 +190,9 @@ def generate_list(names)
     puts
   }
   puts
+
+  File.open(REPORT_NAME, 'a'){|f| f.puts "### Generate Details ###\n\n" ;
+    g.each{|k, v| f.puts "## #{k} ##" ; v.each{|x| f.puts x} ; f.puts "\n"} ; f.puts "\n\n\n\n"}
 end
 
 puts timer
