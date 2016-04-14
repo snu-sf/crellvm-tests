@@ -87,7 +87,7 @@ def generate(name)
   cmd = "opt #{OPT_OPTION} -lowerswitch #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
   x = [$?.success?? :generate_success : :generate_fail, cmd]
-  File.open("#{name}.result", 'w').write(result) if(x[0] == :generate_fail)
+  File.open("#{name}.result", 'w').write(result) unless(x[0] == :generate_success)
   x
 end
 
@@ -115,7 +115,7 @@ def validate(tri_base)
   opt_name = which_opt(tri_base)
   x = [opt_name, classify_result(result), tri_base]
   # run("rm #{src} #{tgt} #{hint}") if (x[1] == :validation_success or x[1] == :validation_not_supported)
-  if(x[1] == :validation_fail or x[1] == :validation_unknown) then
+  unless(x[1] == :validation_success) then
     File.open("#{tri_base}.result", 'w').write(result)
     run("llvm-dis #{src}; llvm-dis #{tgt}")
   end
