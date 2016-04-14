@@ -196,6 +196,7 @@ if File.directory?($name)
 
   unless NO_GENERATE then
     clean_all_by_products
+    names = get_files.select{|i| (classify i) == 0}.uniq{|n| n.split(".")[0...-1].join(".")}
     generate_list(names)
   end
   tri_bases = Parallel.map(names){|n| tri_bases_from_name n}.flatten
