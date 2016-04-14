@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/selectmodule.bc'
+; ModuleID = 'programs_new/Python-new/selectmodule.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -446,11 +446,13 @@ cleanup:                                          ; preds = %if.end.13, %if.then
   %30 = bitcast i64* %sec to i8*, !dbg !1191
   call void @llvm.lifetime.end(i64 8, i8* %30) #1, !dbg !1191
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.111 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.15
 
 if.end.15:                                        ; preds = %cleanup.cont
@@ -775,7 +777,10 @@ finally:                                          ; preds = %if.end.107, %if.the
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.111, !dbg !1417
 
-cleanup.111:                                      ; preds = %finally, %cleanup, %if.then.4, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.111
+
+cleanup.111:                                      ; preds = %NewDefault, %finally, %if.then.4, %if.then
   %91 = bitcast i32* %n to i8*, !dbg !1418
   call void @llvm.lifetime.end(i64 4, i8* %91) #1, !dbg !1418
   %92 = bitcast i32* %max to i8*, !dbg !1418
@@ -1105,16 +1110,25 @@ if.end.34:                                        ; preds = %if.end.29
   store i32 0, i32* %cleanup.dest.slot, !dbg !1583
   br label %cleanup, !dbg !1583
 
-cleanup:                                          ; preds = %if.then.33, %if.then.25, %if.then.21, %if.then.17, %if.end.34
+cleanup:                                          ; preds = %if.end.34, %if.then.33, %if.then.25, %if.then.21, %if.then.17
   %66 = bitcast i32* %v to i8*, !dbg !1584
   call void @llvm.lifetime.end(i64 4, i8* %66) #1, !dbg !1584
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.85 [
-    i32 0, label %cleanup.cont
-    i32 7, label %finally
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 7
+  br i1 %Pivot, label %LeafBlock, label %LeafBlock.1
+
+LeafBlock.1:                                      ; preds = %NodeBlock
+  %SwitchLeaf2 = icmp eq i32 %cleanup.dest, 7
+  br i1 %SwitchLeaf2, label %finally, label %NewDefault
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !1585
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -1168,7 +1182,7 @@ do.end.54:                                        ; preds = %do.cond.53
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.85, !dbg !1614
 
-finally:                                          ; preds = %cleanup
+finally:                                          ; preds = %LeafBlock.1
   br label %do.body.55, !dbg !1615
 
 do.body.55:                                       ; preds = %finally
@@ -1273,7 +1287,10 @@ do.end.84:                                        ; preds = %do.cond.83
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.85, !dbg !1679
 
-cleanup.85:                                       ; preds = %do.end.84, %do.end.54, %cleanup, %if.then
+NewDefault:                                       ; preds = %LeafBlock.1, %LeafBlock
+  br label %cleanup.85
+
+cleanup.85:                                       ; preds = %NewDefault, %do.end.84, %do.end.54, %if.then
   %100 = bitcast %struct._object** %o to i8*, !dbg !1680
   call void @llvm.lifetime.end(i64 8, i8* %100) #1, !dbg !1680
   %101 = bitcast %struct._object** %fast_seq to i8*, !dbg !1680
@@ -4431,100 +4448,115 @@ if.then.3:                                        ; preds = %if.end
 
 if.end.4:                                         ; preds = %if.end
   %6 = load i32, i32* %op.addr, align 4, !dbg !3309, !tbaa !1210
-  switch i32 %6, label %sw.default [
-    i32 1, label %sw.bb
-    i32 3, label %sw.bb
-    i32 2, label %sw.bb.9
-  ], !dbg !3310
+  br label %NodeBlock.3
 
-sw.bb:                                            ; preds = %if.end.4, %if.end.4
-  %7 = load i32, i32* %events.addr, align 4, !dbg !3311, !tbaa !1210
-  %events5 = getelementptr inbounds %struct.epoll_event, %struct.epoll_event* %ev, i32 0, i32 0, !dbg !3312
-  store i32 %7, i32* %events5, align 1, !dbg !3313, !tbaa !3110
-  %8 = load i32, i32* %fd, align 4, !dbg !3314, !tbaa !1210
-  %data = getelementptr inbounds %struct.epoll_event, %struct.epoll_event* %ev, i32 0, i32 1, !dbg !3315
-  %fd6 = bitcast %union.epoll_data* %data to i32*, !dbg !3316
-  store i32 %8, i32* %fd6, align 1, !dbg !3317, !tbaa !1210
-  %9 = bitcast %struct._ts** %_save to i8*, !dbg !3318
-  call void @llvm.lifetime.start(i64 8, i8* %9) #1, !dbg !3318
-  call void @llvm.dbg.declare(metadata %struct._ts** %_save, metadata !833, metadata !1023), !dbg !3319
-  %call7 = call %struct._ts* @PyEval_SaveThread(), !dbg !3320
-  store %struct._ts* %call7, %struct._ts** %_save, align 8, !dbg !3321, !tbaa !1027
-  %10 = load i32, i32* %epfd.addr, align 4, !dbg !3322, !tbaa !1210
-  %11 = load i32, i32* %op.addr, align 4, !dbg !3323, !tbaa !1210
-  %12 = load i32, i32* %fd, align 4, !dbg !3324, !tbaa !1210
-  %call8 = call i32 @epoll_ctl(i32 %10, i32 %11, i32 %12, %struct.epoll_event* %ev) #1, !dbg !3325
-  store i32 %call8, i32* %result, align 4, !dbg !3326, !tbaa !1210
-  %13 = load %struct._ts*, %struct._ts** %_save, align 8, !dbg !3327, !tbaa !1027
-  call void @PyEval_RestoreThread(%struct._ts* %13), !dbg !3328
-  %14 = bitcast %struct._ts** %_save to i8*, !dbg !3329
-  call void @llvm.lifetime.end(i64 8, i8* %14) #1, !dbg !3329
-  br label %sw.epilog, !dbg !3330
+NodeBlock.3:                                      ; preds = %if.end.4
+  %Pivot.4 = icmp slt i32 %6, 2
+  br i1 %Pivot.4, label %LeafBlock, label %NodeBlock
 
-sw.bb.9:                                          ; preds = %if.end.4
-  %15 = bitcast %struct._ts** %_save10 to i8*, !dbg !3331
-  call void @llvm.lifetime.start(i64 8, i8* %15) #1, !dbg !3331
-  call void @llvm.dbg.declare(metadata %struct._ts** %_save10, metadata !836, metadata !1023), !dbg !3332
-  %call11 = call %struct._ts* @PyEval_SaveThread(), !dbg !3333
-  store %struct._ts* %call11, %struct._ts** %_save10, align 8, !dbg !3334, !tbaa !1027
-  %16 = load i32, i32* %epfd.addr, align 4, !dbg !3335, !tbaa !1210
-  %17 = load i32, i32* %op.addr, align 4, !dbg !3336, !tbaa !1210
-  %18 = load i32, i32* %fd, align 4, !dbg !3337, !tbaa !1210
-  %call12 = call i32 @epoll_ctl(i32 %16, i32 %17, i32 %18, %struct.epoll_event* %ev) #1, !dbg !3338
-  store i32 %call12, i32* %result, align 4, !dbg !3339, !tbaa !1210
-  %call13 = call i32* @__errno_location() #2, !dbg !3340
-  %19 = load i32, i32* %call13, align 4, !dbg !3342, !tbaa !1210
-  %cmp14 = icmp eq i32 %19, 9, !dbg !3343
-  br i1 %cmp14, label %if.then.15, label %if.end.17, !dbg !3344
+NodeBlock:                                        ; preds = %NodeBlock.3
+  %Pivot = icmp slt i32 %6, 3
+  br i1 %Pivot, label %sw.bb.9, label %LeafBlock.1
+
+LeafBlock.1:                                      ; preds = %NodeBlock
+  %SwitchLeaf2 = icmp eq i32 %6, 3
+  br i1 %SwitchLeaf2, label %sw.bb, label %NewDefault
+
+LeafBlock:                                        ; preds = %NodeBlock.3
+  %SwitchLeaf = icmp eq i32 %6, 1
+  br i1 %SwitchLeaf, label %sw.bb, label %NewDefault
+
+sw.bb:                                            ; preds = %LeafBlock.1, %LeafBlock
+  %7 = load i32, i32* %events.addr, align 4, !dbg !3310, !tbaa !1210
+  %events5 = getelementptr inbounds %struct.epoll_event, %struct.epoll_event* %ev, i32 0, i32 0, !dbg !3311
+  store i32 %7, i32* %events5, align 1, !dbg !3312, !tbaa !3110
+  %8 = load i32, i32* %fd, align 4, !dbg !3313, !tbaa !1210
+  %data = getelementptr inbounds %struct.epoll_event, %struct.epoll_event* %ev, i32 0, i32 1, !dbg !3314
+  %fd6 = bitcast %union.epoll_data* %data to i32*, !dbg !3315
+  store i32 %8, i32* %fd6, align 1, !dbg !3316, !tbaa !1210
+  %9 = bitcast %struct._ts** %_save to i8*, !dbg !3317
+  call void @llvm.lifetime.start(i64 8, i8* %9) #1, !dbg !3317
+  call void @llvm.dbg.declare(metadata %struct._ts** %_save, metadata !833, metadata !1023), !dbg !3318
+  %call7 = call %struct._ts* @PyEval_SaveThread(), !dbg !3319
+  store %struct._ts* %call7, %struct._ts** %_save, align 8, !dbg !3320, !tbaa !1027
+  %10 = load i32, i32* %epfd.addr, align 4, !dbg !3321, !tbaa !1210
+  %11 = load i32, i32* %op.addr, align 4, !dbg !3322, !tbaa !1210
+  %12 = load i32, i32* %fd, align 4, !dbg !3323, !tbaa !1210
+  %call8 = call i32 @epoll_ctl(i32 %10, i32 %11, i32 %12, %struct.epoll_event* %ev) #1, !dbg !3324
+  store i32 %call8, i32* %result, align 4, !dbg !3325, !tbaa !1210
+  %13 = load %struct._ts*, %struct._ts** %_save, align 8, !dbg !3326, !tbaa !1027
+  call void @PyEval_RestoreThread(%struct._ts* %13), !dbg !3327
+  %14 = bitcast %struct._ts** %_save to i8*, !dbg !3328
+  call void @llvm.lifetime.end(i64 8, i8* %14) #1, !dbg !3328
+  br label %sw.epilog, !dbg !3329
+
+sw.bb.9:                                          ; preds = %NodeBlock
+  %15 = bitcast %struct._ts** %_save10 to i8*, !dbg !3330
+  call void @llvm.lifetime.start(i64 8, i8* %15) #1, !dbg !3330
+  call void @llvm.dbg.declare(metadata %struct._ts** %_save10, metadata !836, metadata !1023), !dbg !3331
+  %call11 = call %struct._ts* @PyEval_SaveThread(), !dbg !3332
+  store %struct._ts* %call11, %struct._ts** %_save10, align 8, !dbg !3333, !tbaa !1027
+  %16 = load i32, i32* %epfd.addr, align 4, !dbg !3334, !tbaa !1210
+  %17 = load i32, i32* %op.addr, align 4, !dbg !3335, !tbaa !1210
+  %18 = load i32, i32* %fd, align 4, !dbg !3336, !tbaa !1210
+  %call12 = call i32 @epoll_ctl(i32 %16, i32 %17, i32 %18, %struct.epoll_event* %ev) #1, !dbg !3337
+  store i32 %call12, i32* %result, align 4, !dbg !3338, !tbaa !1210
+  %call13 = call i32* @__errno_location() #2, !dbg !3339
+  %19 = load i32, i32* %call13, align 4, !dbg !3341, !tbaa !1210
+  %cmp14 = icmp eq i32 %19, 9, !dbg !3342
+  br i1 %cmp14, label %if.then.15, label %if.end.17, !dbg !3343
 
 if.then.15:                                       ; preds = %sw.bb.9
-  store i32 0, i32* %result, align 4, !dbg !3345, !tbaa !1210
-  %call16 = call i32* @__errno_location() #2, !dbg !3347
-  store i32 0, i32* %call16, align 4, !dbg !3348, !tbaa !1210
-  br label %if.end.17, !dbg !3349
+  store i32 0, i32* %result, align 4, !dbg !3344, !tbaa !1210
+  %call16 = call i32* @__errno_location() #2, !dbg !3346
+  store i32 0, i32* %call16, align 4, !dbg !3347, !tbaa !1210
+  br label %if.end.17, !dbg !3348
 
 if.end.17:                                        ; preds = %if.then.15, %sw.bb.9
-  %20 = load %struct._ts*, %struct._ts** %_save10, align 8, !dbg !3350, !tbaa !1027
-  call void @PyEval_RestoreThread(%struct._ts* %20), !dbg !3351
-  %21 = bitcast %struct._ts** %_save10 to i8*, !dbg !3352
-  call void @llvm.lifetime.end(i64 8, i8* %21) #1, !dbg !3352
-  br label %sw.epilog, !dbg !3353
+  %20 = load %struct._ts*, %struct._ts** %_save10, align 8, !dbg !3349, !tbaa !1027
+  call void @PyEval_RestoreThread(%struct._ts* %20), !dbg !3350
+  %21 = bitcast %struct._ts** %_save10 to i8*, !dbg !3351
+  call void @llvm.lifetime.end(i64 8, i8* %21) #1, !dbg !3351
+  br label %sw.epilog, !dbg !3352
 
-sw.default:                                       ; preds = %if.end.4
-  store i32 -1, i32* %result, align 4, !dbg !3354, !tbaa !1210
-  %call18 = call i32* @__errno_location() #2, !dbg !3355
-  store i32 22, i32* %call18, align 4, !dbg !3356, !tbaa !1210
-  br label %sw.epilog, !dbg !3357
+NewDefault:                                       ; preds = %LeafBlock.1, %LeafBlock
+  br label %sw.default
+
+sw.default:                                       ; preds = %NewDefault
+  store i32 -1, i32* %result, align 4, !dbg !3353, !tbaa !1210
+  %call18 = call i32* @__errno_location() #2, !dbg !3354
+  store i32 22, i32* %call18, align 4, !dbg !3355, !tbaa !1210
+  br label %sw.epilog, !dbg !3356
 
 sw.epilog:                                        ; preds = %sw.default, %if.end.17, %sw.bb
-  %22 = load i32, i32* %result, align 4, !dbg !3358, !tbaa !1210
-  %cmp19 = icmp slt i32 %22, 0, !dbg !3360
-  br i1 %cmp19, label %if.then.20, label %if.end.22, !dbg !3361
+  %22 = load i32, i32* %result, align 4, !dbg !3357, !tbaa !1210
+  %cmp19 = icmp slt i32 %22, 0, !dbg !3359
+  br i1 %cmp19, label %if.then.20, label %if.end.22, !dbg !3360
 
 if.then.20:                                       ; preds = %sw.epilog
-  %23 = load %struct._object*, %struct._object** @PyExc_OSError, align 8, !dbg !3362, !tbaa !1027
-  %call21 = call %struct._object* @PyErr_SetFromErrno(%struct._object* %23), !dbg !3364
-  store %struct._object* null, %struct._object** %retval, !dbg !3365
+  %23 = load %struct._object*, %struct._object** @PyExc_OSError, align 8, !dbg !3361, !tbaa !1027
+  %call21 = call %struct._object* @PyErr_SetFromErrno(%struct._object* %23), !dbg !3363
+  store %struct._object* null, %struct._object** %retval, !dbg !3364
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !3365
+  br label %cleanup, !dbg !3364
 
 if.end.22:                                        ; preds = %sw.epilog
-  %24 = load i64, i64* getelementptr inbounds (%struct._object, %struct._object* @_Py_NoneStruct, i32 0, i32 0), align 8, !dbg !3366, !tbaa !1039
-  %inc = add i64 %24, 1, !dbg !3366
-  store i64 %inc, i64* getelementptr inbounds (%struct._object, %struct._object* @_Py_NoneStruct, i32 0, i32 0), align 8, !dbg !3366, !tbaa !1039
-  store %struct._object* @_Py_NoneStruct, %struct._object** %retval, !dbg !3367
+  %24 = load i64, i64* getelementptr inbounds (%struct._object, %struct._object* @_Py_NoneStruct, i32 0, i32 0), align 8, !dbg !3365, !tbaa !1039
+  %inc = add i64 %24, 1, !dbg !3365
+  store i64 %inc, i64* getelementptr inbounds (%struct._object, %struct._object* @_Py_NoneStruct, i32 0, i32 0), align 8, !dbg !3365, !tbaa !1039
+  store %struct._object* @_Py_NoneStruct, %struct._object** %retval, !dbg !3366
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !3367
+  br label %cleanup, !dbg !3366
 
 cleanup:                                          ; preds = %if.end.22, %if.then.20, %if.then.3, %if.then
-  %25 = bitcast i32* %fd to i8*, !dbg !3368
-  call void @llvm.lifetime.end(i64 4, i8* %25) #1, !dbg !3368
-  %26 = bitcast i32* %result to i8*, !dbg !3368
-  call void @llvm.lifetime.end(i64 4, i8* %26) #1, !dbg !3368
-  %27 = bitcast %struct.epoll_event* %ev to i8*, !dbg !3368
-  call void @llvm.lifetime.end(i64 12, i8* %27) #1, !dbg !3368
-  %28 = load %struct._object*, %struct._object** %retval, !dbg !3368
-  ret %struct._object* %28, !dbg !3368
+  %25 = bitcast i32* %fd to i8*, !dbg !3367
+  call void @llvm.lifetime.end(i64 4, i8* %25) #1, !dbg !3367
+  %26 = bitcast i32* %result to i8*, !dbg !3367
+  call void @llvm.lifetime.end(i64 4, i8* %26) #1, !dbg !3367
+  %27 = bitcast %struct.epoll_event* %ev to i8*, !dbg !3367
+  call void @llvm.lifetime.end(i64 12, i8* %27) #1, !dbg !3367
+  %28 = load %struct._object*, %struct._object** %retval, !dbg !3367
+  ret %struct._object* %28, !dbg !3367
 }
 
 ; Function Attrs: nounwind
@@ -4549,30 +4581,30 @@ entry:
   %retval = alloca %struct._object*, align 8
   %self.addr = alloca %struct.pyEpoll_Object*, align 8
   store %struct.pyEpoll_Object* %self, %struct.pyEpoll_Object** %self.addr, align 8, !tbaa !1027
-  call void @llvm.dbg.declare(metadata %struct.pyEpoll_Object** %self.addr, metadata !890, metadata !1023), !dbg !3369
-  %0 = load %struct.pyEpoll_Object*, %struct.pyEpoll_Object** %self.addr, align 8, !dbg !3370, !tbaa !1027
-  %epfd = getelementptr inbounds %struct.pyEpoll_Object, %struct.pyEpoll_Object* %0, i32 0, i32 1, !dbg !3372
-  %1 = load i32, i32* %epfd, align 4, !dbg !3372, !tbaa !2834
-  %cmp = icmp slt i32 %1, 0, !dbg !3373
-  br i1 %cmp, label %if.then, label %if.else, !dbg !3374
+  call void @llvm.dbg.declare(metadata %struct.pyEpoll_Object** %self.addr, metadata !890, metadata !1023), !dbg !3368
+  %0 = load %struct.pyEpoll_Object*, %struct.pyEpoll_Object** %self.addr, align 8, !dbg !3369, !tbaa !1027
+  %epfd = getelementptr inbounds %struct.pyEpoll_Object, %struct.pyEpoll_Object* %0, i32 0, i32 1, !dbg !3371
+  %1 = load i32, i32* %epfd, align 4, !dbg !3371, !tbaa !2834
+  %cmp = icmp slt i32 %1, 0, !dbg !3372
+  br i1 %cmp, label %if.then, label %if.else, !dbg !3373
 
 if.then:                                          ; preds = %entry
-  %2 = load i64, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3375, !tbaa !1039
-  %inc = add i64 %2, 1, !dbg !3375
-  store i64 %inc, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3375, !tbaa !1039
-  store %struct._object* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0), %struct._object** %retval, !dbg !3376
-  br label %return, !dbg !3376
+  %2 = load i64, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3374, !tbaa !1039
+  %inc = add i64 %2, 1, !dbg !3374
+  store i64 %inc, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3374, !tbaa !1039
+  store %struct._object* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_TrueStruct, i32 0, i32 0, i32 0), %struct._object** %retval, !dbg !3375
+  br label %return, !dbg !3375
 
 if.else:                                          ; preds = %entry
-  %3 = load i64, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3377, !tbaa !1039
-  %inc1 = add i64 %3, 1, !dbg !3377
-  store i64 %inc1, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3377, !tbaa !1039
-  store %struct._object* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0), %struct._object** %retval, !dbg !3378
-  br label %return, !dbg !3378
+  %3 = load i64, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3376, !tbaa !1039
+  %inc1 = add i64 %3, 1, !dbg !3376
+  store i64 %inc1, i64* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0, i32 0), align 8, !dbg !3376, !tbaa !1039
+  store %struct._object* getelementptr inbounds (%struct._longobject, %struct._longobject* @_Py_FalseStruct, i32 0, i32 0, i32 0), %struct._object** %retval, !dbg !3377
+  br label %return, !dbg !3377
 
 return:                                           ; preds = %if.else, %if.then
-  %4 = load %struct._object*, %struct._object** %retval, !dbg !3379
-  ret %struct._object* %4, !dbg !3379
+  %4 = load %struct._object*, %struct._object** %retval, !dbg !3378
+  ret %struct._object* %4, !dbg !3378
 }
 
 attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
@@ -7896,73 +7928,72 @@ attributes #5 = { nounwind "disable-tail-calls"="false" "less-precise-fpmad"="fa
 !3307 = !DILocation(line: 1335, column: 9, scope: !3308)
 !3308 = distinct !DILexicalBlock(scope: !3304, file: !407, line: 1334, column: 19)
 !3309 = !DILocation(line: 1338, column: 13, scope: !822)
-!3310 = !DILocation(line: 1338, column: 5, scope: !822)
-!3311 = !DILocation(line: 1341, column: 21, scope: !835)
-!3312 = !DILocation(line: 1341, column: 12, scope: !835)
-!3313 = !DILocation(line: 1341, column: 19, scope: !835)
-!3314 = !DILocation(line: 1342, column: 22, scope: !835)
-!3315 = !DILocation(line: 1342, column: 12, scope: !835)
-!3316 = !DILocation(line: 1342, column: 17, scope: !835)
-!3317 = !DILocation(line: 1342, column: 20, scope: !835)
-!3318 = !DILocation(line: 1343, column: 11, scope: !834)
-!3319 = !DILocation(line: 1343, column: 26, scope: !834)
-!3320 = !DILocation(line: 1343, column: 41, scope: !834)
-!3321 = !DILocation(line: 1343, column: 39, scope: !834)
-!3322 = !DILocation(line: 1344, column: 28, scope: !834)
-!3323 = !DILocation(line: 1344, column: 34, scope: !834)
-!3324 = !DILocation(line: 1344, column: 38, scope: !834)
-!3325 = !DILocation(line: 1344, column: 18, scope: !834)
-!3326 = !DILocation(line: 1344, column: 16, scope: !834)
-!3327 = !DILocation(line: 1345, column: 30, scope: !834)
-!3328 = !DILocation(line: 1345, column: 9, scope: !834)
-!3329 = !DILocation(line: 1345, column: 38, scope: !835)
-!3330 = !DILocation(line: 1346, column: 9, scope: !835)
-!3331 = !DILocation(line: 1351, column: 11, scope: !837)
-!3332 = !DILocation(line: 1351, column: 26, scope: !837)
-!3333 = !DILocation(line: 1351, column: 41, scope: !837)
-!3334 = !DILocation(line: 1351, column: 39, scope: !837)
-!3335 = !DILocation(line: 1352, column: 28, scope: !837)
-!3336 = !DILocation(line: 1352, column: 34, scope: !837)
-!3337 = !DILocation(line: 1352, column: 38, scope: !837)
-!3338 = !DILocation(line: 1352, column: 18, scope: !837)
-!3339 = !DILocation(line: 1352, column: 16, scope: !837)
-!3340 = !DILocation(line: 1353, column: 15, scope: !3341)
-!3341 = distinct !DILexicalBlock(scope: !837, file: !407, line: 1353, column: 13)
-!3342 = !DILocation(line: 1353, column: 14, scope: !3341)
-!3343 = !DILocation(line: 1353, column: 36, scope: !3341)
-!3344 = !DILocation(line: 1353, column: 13, scope: !837)
-!3345 = !DILocation(line: 1355, column: 20, scope: !3346)
-!3346 = distinct !DILexicalBlock(scope: !3341, file: !407, line: 1353, column: 42)
-!3347 = !DILocation(line: 1356, column: 15, scope: !3346)
-!3348 = !DILocation(line: 1356, column: 36, scope: !3346)
-!3349 = !DILocation(line: 1357, column: 9, scope: !3346)
-!3350 = !DILocation(line: 1358, column: 30, scope: !837)
-!3351 = !DILocation(line: 1358, column: 9, scope: !837)
-!3352 = !DILocation(line: 1358, column: 38, scope: !835)
-!3353 = !DILocation(line: 1359, column: 9, scope: !835)
-!3354 = !DILocation(line: 1361, column: 16, scope: !835)
-!3355 = !DILocation(line: 1362, column: 11, scope: !835)
-!3356 = !DILocation(line: 1362, column: 32, scope: !835)
-!3357 = !DILocation(line: 1363, column: 5, scope: !835)
-!3358 = !DILocation(line: 1365, column: 9, scope: !3359)
-!3359 = distinct !DILexicalBlock(scope: !822, file: !407, line: 1365, column: 9)
-!3360 = !DILocation(line: 1365, column: 16, scope: !3359)
-!3361 = !DILocation(line: 1365, column: 9, scope: !822)
-!3362 = !DILocation(line: 1366, column: 28, scope: !3363)
-!3363 = distinct !DILexicalBlock(scope: !3359, file: !407, line: 1365, column: 21)
-!3364 = !DILocation(line: 1366, column: 9, scope: !3363)
-!3365 = !DILocation(line: 1367, column: 9, scope: !3363)
-!3366 = !DILocation(line: 1369, column: 58, scope: !822)
-!3367 = !DILocation(line: 1369, column: 5, scope: !822)
-!3368 = !DILocation(line: 1370, column: 1, scope: !822)
-!3369 = !DILocation(line: 1286, column: 36, scope: !888)
-!3370 = !DILocation(line: 1288, column: 9, scope: !3371)
-!3371 = distinct !DILexicalBlock(scope: !888, file: !407, line: 1288, column: 9)
-!3372 = !DILocation(line: 1288, column: 15, scope: !3371)
-!3373 = !DILocation(line: 1288, column: 20, scope: !3371)
-!3374 = !DILocation(line: 1288, column: 9, scope: !888)
-!3375 = !DILocation(line: 1289, column: 75, scope: !3371)
-!3376 = !DILocation(line: 1289, column: 9, scope: !3371)
-!3377 = !DILocation(line: 1291, column: 76, scope: !3371)
-!3378 = !DILocation(line: 1291, column: 9, scope: !3371)
-!3379 = !DILocation(line: 1292, column: 1, scope: !888)
+!3310 = !DILocation(line: 1341, column: 21, scope: !835)
+!3311 = !DILocation(line: 1341, column: 12, scope: !835)
+!3312 = !DILocation(line: 1341, column: 19, scope: !835)
+!3313 = !DILocation(line: 1342, column: 22, scope: !835)
+!3314 = !DILocation(line: 1342, column: 12, scope: !835)
+!3315 = !DILocation(line: 1342, column: 17, scope: !835)
+!3316 = !DILocation(line: 1342, column: 20, scope: !835)
+!3317 = !DILocation(line: 1343, column: 11, scope: !834)
+!3318 = !DILocation(line: 1343, column: 26, scope: !834)
+!3319 = !DILocation(line: 1343, column: 41, scope: !834)
+!3320 = !DILocation(line: 1343, column: 39, scope: !834)
+!3321 = !DILocation(line: 1344, column: 28, scope: !834)
+!3322 = !DILocation(line: 1344, column: 34, scope: !834)
+!3323 = !DILocation(line: 1344, column: 38, scope: !834)
+!3324 = !DILocation(line: 1344, column: 18, scope: !834)
+!3325 = !DILocation(line: 1344, column: 16, scope: !834)
+!3326 = !DILocation(line: 1345, column: 30, scope: !834)
+!3327 = !DILocation(line: 1345, column: 9, scope: !834)
+!3328 = !DILocation(line: 1345, column: 38, scope: !835)
+!3329 = !DILocation(line: 1346, column: 9, scope: !835)
+!3330 = !DILocation(line: 1351, column: 11, scope: !837)
+!3331 = !DILocation(line: 1351, column: 26, scope: !837)
+!3332 = !DILocation(line: 1351, column: 41, scope: !837)
+!3333 = !DILocation(line: 1351, column: 39, scope: !837)
+!3334 = !DILocation(line: 1352, column: 28, scope: !837)
+!3335 = !DILocation(line: 1352, column: 34, scope: !837)
+!3336 = !DILocation(line: 1352, column: 38, scope: !837)
+!3337 = !DILocation(line: 1352, column: 18, scope: !837)
+!3338 = !DILocation(line: 1352, column: 16, scope: !837)
+!3339 = !DILocation(line: 1353, column: 15, scope: !3340)
+!3340 = distinct !DILexicalBlock(scope: !837, file: !407, line: 1353, column: 13)
+!3341 = !DILocation(line: 1353, column: 14, scope: !3340)
+!3342 = !DILocation(line: 1353, column: 36, scope: !3340)
+!3343 = !DILocation(line: 1353, column: 13, scope: !837)
+!3344 = !DILocation(line: 1355, column: 20, scope: !3345)
+!3345 = distinct !DILexicalBlock(scope: !3340, file: !407, line: 1353, column: 42)
+!3346 = !DILocation(line: 1356, column: 15, scope: !3345)
+!3347 = !DILocation(line: 1356, column: 36, scope: !3345)
+!3348 = !DILocation(line: 1357, column: 9, scope: !3345)
+!3349 = !DILocation(line: 1358, column: 30, scope: !837)
+!3350 = !DILocation(line: 1358, column: 9, scope: !837)
+!3351 = !DILocation(line: 1358, column: 38, scope: !835)
+!3352 = !DILocation(line: 1359, column: 9, scope: !835)
+!3353 = !DILocation(line: 1361, column: 16, scope: !835)
+!3354 = !DILocation(line: 1362, column: 11, scope: !835)
+!3355 = !DILocation(line: 1362, column: 32, scope: !835)
+!3356 = !DILocation(line: 1363, column: 5, scope: !835)
+!3357 = !DILocation(line: 1365, column: 9, scope: !3358)
+!3358 = distinct !DILexicalBlock(scope: !822, file: !407, line: 1365, column: 9)
+!3359 = !DILocation(line: 1365, column: 16, scope: !3358)
+!3360 = !DILocation(line: 1365, column: 9, scope: !822)
+!3361 = !DILocation(line: 1366, column: 28, scope: !3362)
+!3362 = distinct !DILexicalBlock(scope: !3358, file: !407, line: 1365, column: 21)
+!3363 = !DILocation(line: 1366, column: 9, scope: !3362)
+!3364 = !DILocation(line: 1367, column: 9, scope: !3362)
+!3365 = !DILocation(line: 1369, column: 58, scope: !822)
+!3366 = !DILocation(line: 1369, column: 5, scope: !822)
+!3367 = !DILocation(line: 1370, column: 1, scope: !822)
+!3368 = !DILocation(line: 1286, column: 36, scope: !888)
+!3369 = !DILocation(line: 1288, column: 9, scope: !3370)
+!3370 = distinct !DILexicalBlock(scope: !888, file: !407, line: 1288, column: 9)
+!3371 = !DILocation(line: 1288, column: 15, scope: !3370)
+!3372 = !DILocation(line: 1288, column: 20, scope: !3370)
+!3373 = !DILocation(line: 1288, column: 9, scope: !888)
+!3374 = !DILocation(line: 1289, column: 75, scope: !3370)
+!3375 = !DILocation(line: 1289, column: 9, scope: !3370)
+!3376 = !DILocation(line: 1291, column: 76, scope: !3370)
+!3377 = !DILocation(line: 1291, column: 9, scope: !3370)
+!3378 = !DILocation(line: 1292, column: 1, scope: !888)

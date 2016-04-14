@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/hashtable.bc'
+; ModuleID = 'programs_new/Python-new/hashtable.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -868,15 +868,12 @@ cleanup:                                          ; preds = %for.end.26, %if.the
   %65 = bitcast i64* %buckets_size to i8*, !dbg !767
   call void @llvm.lifetime.end(i64 8, i8* %65) #3, !dbg !767
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !766
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 
@@ -1247,11 +1244,13 @@ cleanup:                                          ; preds = %if.end, %if.then
   %17 = bitcast i32* %res to i8*, !dbg !968
   call void @llvm.lifetime.end(i64 4, i8* %17) #3, !dbg !968
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.7 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !969
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -1277,7 +1276,10 @@ for.end.6:                                        ; preds = %for.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.7, !dbg !979
 
-cleanup.7:                                        ; preds = %for.end.6, %cleanup
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.7
+
+cleanup.7:                                        ; preds = %NewDefault, %for.end.6
   %23 = bitcast i64* %hv to i8*, !dbg !980
   call void @llvm.lifetime.end(i64 8, i8* %23) #3, !dbg !980
   %24 = bitcast %struct._Py_hashtable_entry_t** %entry1 to i8*, !dbg !980

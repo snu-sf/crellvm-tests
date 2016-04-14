@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/importdl.bc'
+; ModuleID = 'programs_new/Python-new/importdl.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -298,9 +298,11 @@ cleanup:                                          ; preds = %do.end.45, %if.then
   %60 = bitcast %struct._object** %msg to i8*, !dbg !592
   call void @llvm.lifetime.end(i64 8, i8* %60) #2, !dbg !592
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.114 [
-    i32 2, label %error
-  ]
+  br label %LeafBlock
+
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 2
+  br i1 %SwitchLeaf, label %error, label %NewDefault
 
 if.end.46:                                        ; preds = %if.end.26
   %61 = load i8*, i8** @_Py_PackageContext, align 8, !dbg !593, !tbaa !420
@@ -423,7 +425,7 @@ do.end.83:                                        ; preds = %do.cond.82
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.114, !dbg !677
 
-error:                                            ; preds = %cleanup, %if.then.70, %if.then.58, %if.then.53, %if.then.49, %if.then.25, %if.then.14, %if.then.6
+error:                                            ; preds = %LeafBlock, %if.then.70, %if.then.58, %if.then.53, %if.then.49, %if.then.25, %if.then.14, %if.then.6
   br label %do.body.84, !dbg !678
 
 do.body.84:                                       ; preds = %error
@@ -528,7 +530,10 @@ do.end.113:                                       ; preds = %do.cond.112
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.114, !dbg !742
 
-cleanup.114:                                      ; preds = %do.end.113, %cleanup, %do.end.83, %if.then.3, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.114
+
+cleanup.114:                                      ; preds = %NewDefault, %do.end.113, %do.end.83, %if.then.3, %if.then
   %113 = bitcast %struct.PyModuleDef** %def to i8*, !dbg !743
   call void @llvm.lifetime.end(i64 8, i8* %113) #2, !dbg !743
   %114 = bitcast %struct._object* ()** %p to i8*, !dbg !743

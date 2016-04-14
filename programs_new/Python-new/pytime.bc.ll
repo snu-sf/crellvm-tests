@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/pytime.bc'
+; ModuleID = 'programs_new/Python-new/pytime.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -133,15 +133,12 @@ cleanup:                                          ; preds = %if.end.11, %if.end
   %19 = bitcast i32* %err to i8*, !dbg !554
   call void @llvm.lifetime.end(i64 4, i8* %19) #2, !dbg !554
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !553
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

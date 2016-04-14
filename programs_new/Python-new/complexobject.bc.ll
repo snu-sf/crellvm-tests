@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/complexobject.bc'
+; ModuleID = 'programs_new/Python-new/complexobject.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -1940,11 +1940,13 @@ cleanup.73:                                       ; preds = %land.end.71, %if.th
   %64 = bitcast %struct.Py_complex* %j49 to i8*, !dbg !1740
   call void @llvm.lifetime.end(i64 16, i8* %64) #2, !dbg !1740
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.86 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup.73
+LeafBlock:                                        ; preds = %cleanup.73
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.75, !dbg !1741
 
 if.else.74:                                       ; preds = %lor.lhs.false.44
@@ -1991,7 +1993,10 @@ Unimplemented:                                    ; preds = %if.else.74, %if.the
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.86, !dbg !1759
 
-cleanup.86:                                       ; preds = %Unimplemented, %if.end.83, %cleanup.73, %cleanup, %if.then.7
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.86
+
+cleanup.86:                                       ; preds = %NewDefault, %Unimplemented, %if.end.83, %cleanup, %if.then.7
   %71 = bitcast i32* %equal to i8*, !dbg !1760
   call void @llvm.lifetime.end(i64 4, i8* %71) #2, !dbg !1760
   %72 = bitcast %struct.Py_complex* %i to i8*, !dbg !1760

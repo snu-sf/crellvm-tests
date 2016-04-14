@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/grammar.bc'
+; ModuleID = 'programs_new/Python-new/grammar.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -986,11 +986,13 @@ cleanup:                                          ; preds = %if.end.91, %if.then
   %97 = bitcast i8** %p to i8*, !dbg !749
   call void @llvm.lifetime.end(i64 8, i8* %97) #2, !dbg !749
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.210 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.205, !dbg !751
 
 if.else.99:                                       ; preds = %lor.lhs.false
@@ -1244,19 +1246,19 @@ if.end.209:                                       ; preds = %if.else.206, %if.en
   store i32 0, i32* %cleanup.dest.slot, !dbg !876
   br label %cleanup.210, !dbg !876
 
-cleanup.210:                                      ; preds = %if.end.209, %cleanup, %for.end.48, %if.end.41, %if.end.14
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.210
+
+cleanup.210:                                      ; preds = %NewDefault, %if.end.209, %for.end.48, %if.end.41, %if.end.14
   %176 = bitcast i32* %i to i8*, !dbg !877
   call void @llvm.lifetime.end(i64 4, i8* %176) #2, !dbg !877
   %cleanup.dest.211 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.211, label %unreachable [
-    i32 0, label %cleanup.cont.212
-    i32 1, label %cleanup.cont.212
-  ]
+  br label %cleanup.cont.212
 
-cleanup.cont.212:                                 ; preds = %cleanup.210, %cleanup.210
+cleanup.cont.212:                                 ; preds = %cleanup.210
   ret void, !dbg !876
 
-unreachable:                                      ; preds = %cleanup.210
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

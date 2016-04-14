@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/pyarena.bc'
+; ModuleID = 'programs_new/Python-new/pyarena.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -418,11 +418,13 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %14 = bitcast %struct._block** %newbl to i8*, !dbg !643
   call void @llvm.lifetime.end(i64 8, i8* %14) #1, !dbg !643
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.8 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.4, !dbg !645
 
 if.end.4:                                         ; preds = %cleanup.cont, %entry
@@ -445,7 +447,10 @@ if.end.4:                                         ; preds = %cleanup.cont, %entr
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.8, !dbg !657
 
-cleanup.8:                                        ; preds = %if.end.4, %cleanup
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.8
+
+cleanup.8:                                        ; preds = %NewDefault, %if.end.4
   %23 = bitcast i8** %p to i8*, !dbg !658
   call void @llvm.lifetime.end(i64 8, i8* %23) #1, !dbg !658
   %24 = load i8*, i8** %retval, !dbg !658

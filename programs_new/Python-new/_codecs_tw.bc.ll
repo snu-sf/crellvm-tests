@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/_codecs_tw.bc'
+; ModuleID = 'programs_new/Python-new/_codecs_tw.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -169,11 +169,13 @@ cleanup:                                          ; preds = %if.end, %if.then
   %22 = bitcast [256 x i8]* %mhname to i8*, !dbg !682
   call void @llvm.lifetime.end(i64 256, i8* %22) #1, !dbg !682
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.10 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !683
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -187,7 +189,10 @@ for.end:                                          ; preds = %for.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.10, !dbg !686
 
-cleanup.10:                                       ; preds = %for.end, %cleanup
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.10
+
+cleanup.10:                                       ; preds = %NewDefault, %for.end
   %24 = bitcast %struct.dbcs_map** %h to i8*, !dbg !687
   call void @llvm.lifetime.end(i64 8, i8* %24) #1, !dbg !687
   %25 = load i32, i32* %retval, !dbg !687
@@ -493,12 +498,16 @@ cleanup:                                          ; preds = %do.end, %if.then.2
   %13 = bitcast %struct._object** %mod to i8*, !dbg !847
   call void @llvm.lifetime.end(i64 8, i8* %13) #1, !dbg !847
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.7, !dbg !849
 
 if.end.7:                                         ; preds = %cleanup.cont, %entry
@@ -506,12 +515,9 @@ if.end.7:                                         ; preds = %cleanup.cont, %entr
   store %struct._object* %14, %struct._object** %retval, !dbg !851
   br label %return, !dbg !851
 
-return:                                           ; preds = %if.end.7, %cleanup
+return:                                           ; preds = %LeafBlock, %if.end.7
   %15 = load %struct._object*, %struct._object** %retval, !dbg !852
   ret %struct._object* %15, !dbg !852
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind
@@ -561,7 +567,7 @@ entry:
   call void @llvm.dbg.declare(metadata i32* %flags.addr, metadata !482, metadata !621), !dbg !862
   br label %while.cond, !dbg !863
 
-while.cond:                                       ; preds = %cleanup.cont, %cleanup, %entry
+while.cond:                                       ; preds = %NodeBlock, %cleanup.cont, %entry
   %0 = load i64*, i64** %inpos.addr, align 8, !dbg !864, !tbaa !624
   %1 = load i64, i64* %0, align 8, !dbg !867, !tbaa !858
   %2 = load i64, i64* %inlen.addr, align 8, !dbg !868, !tbaa !858
@@ -869,25 +875,29 @@ cleanup:                                          ; preds = %do.end.99, %if.else
   %59 = bitcast i32* %c to i8*, !dbg !1078
   call void @llvm.lifetime.end(i64 4, i8* %59) #1, !dbg !1078
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-    i32 2, label %while.cond
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 2
+  br i1 %Pivot, label %LeafBlock, label %while.cond
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %while.cond, !dbg !863
 
 while.end:                                        ; preds = %while.cond
   store i64 0, i64* %retval, !dbg !1079
   br label %return, !dbg !1079
 
-return:                                           ; preds = %while.end, %cleanup
+return:                                           ; preds = %LeafBlock, %while.end
   %60 = load i64, i64* %retval, !dbg !1080
   ret i64 %60, !dbg !1080
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -914,7 +924,7 @@ entry:
   call void @llvm.dbg.declare(metadata %struct._PyUnicodeWriter** %writer.addr, metadata !493, metadata !621), !dbg !1085
   br label %while.cond, !dbg !1086
 
-while.cond:                                       ; preds = %cleanup.cont, %cleanup, %entry
+while.cond:                                       ; preds = %NodeBlock, %cleanup.cont, %entry
   %0 = load i64, i64* %inleft.addr, align 8, !dbg !1087, !tbaa !858
   %cmp = icmp sgt i64 %0, 0, !dbg !1090
   br i1 %cmp, label %while.body, label %while.end, !dbg !1086
@@ -1115,25 +1125,29 @@ cleanup:                                          ; preds = %if.end.66, %if.else
   call void @llvm.lifetime.end(i64 4, i8* %37) #1, !dbg !1222
   call void @llvm.lifetime.end(i64 1, i8* %c) #1, !dbg !1222
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-    i32 2, label %while.cond
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 2
+  br i1 %Pivot, label %LeafBlock, label %while.cond
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %while.cond, !dbg !1086
 
 while.end:                                        ; preds = %while.cond
   store i64 0, i64* %retval, !dbg !1223
   br label %return, !dbg !1223
 
-return:                                           ; preds = %while.end, %cleanup
+return:                                           ; preds = %LeafBlock, %while.end
   %38 = load i64, i64* %retval, !dbg !1224
   ret i64 %38, !dbg !1224
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -1172,7 +1186,7 @@ entry:
   call void @llvm.dbg.declare(metadata i32* %flags.addr, metadata !507, metadata !621), !dbg !1233
   br label %while.cond, !dbg !1234
 
-while.cond:                                       ; preds = %cleanup.cont, %cleanup, %entry
+while.cond:                                       ; preds = %NodeBlock, %cleanup.cont, %entry
   %0 = load i64*, i64** %inpos.addr, align 8, !dbg !1235, !tbaa !624
   %1 = load i64, i64* %0, align 8, !dbg !1238, !tbaa !858
   %2 = load i64, i64* %inlen.addr, align 8, !dbg !1239, !tbaa !858
@@ -1557,25 +1571,29 @@ cleanup:                                          ; preds = %do.end.147, %if.els
   %73 = bitcast i32* %c to i8*, !dbg !1498
   call void @llvm.lifetime.end(i64 4, i8* %73) #1, !dbg !1498
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-    i32 2, label %while.cond
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 2
+  br i1 %Pivot, label %LeafBlock, label %while.cond
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %while.cond, !dbg !1234
 
 while.end:                                        ; preds = %while.cond
   store i64 0, i64* %retval, !dbg !1499
   br label %return, !dbg !1499
 
-return:                                           ; preds = %while.end, %cleanup
+return:                                           ; preds = %LeafBlock, %while.end
   %74 = load i64, i64* %retval, !dbg !1500
   ret i64 %74, !dbg !1500
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -1602,7 +1620,7 @@ entry:
   call void @llvm.dbg.declare(metadata %struct._PyUnicodeWriter** %writer.addr, metadata !517, metadata !621), !dbg !1505
   br label %while.cond, !dbg !1506
 
-while.cond:                                       ; preds = %cleanup.cont, %cleanup, %entry
+while.cond:                                       ; preds = %NodeBlock, %cleanup.cont, %entry
   %0 = load i64, i64* %inleft.addr, align 8, !dbg !1507, !tbaa !858
   %cmp = icmp sgt i64 %0, 0, !dbg !1510
   br i1 %cmp, label %while.body, label %while.end, !dbg !1506
@@ -1895,25 +1913,29 @@ cleanup:                                          ; preds = %do.end.116, %if.els
   call void @llvm.lifetime.end(i64 4, i8* %59) #1, !dbg !1701
   call void @llvm.lifetime.end(i64 1, i8* %c) #1, !dbg !1701
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-    i32 2, label %while.cond
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 2
+  br i1 %Pivot, label %LeafBlock, label %while.cond
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %while.cond, !dbg !1506
 
 while.end:                                        ; preds = %while.cond
   store i64 0, i64* %retval, !dbg !1702
   br label %return, !dbg !1702
 
-return:                                           ; preds = %while.end, %cleanup
+return:                                           ; preds = %LeafBlock, %while.end
   %60 = load i64, i64* %retval, !dbg !1703
   ret i64 %60, !dbg !1703
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 declare i32 @_PyUnicodeWriter_WriteChar(%struct._PyUnicodeWriter*, i32) #3

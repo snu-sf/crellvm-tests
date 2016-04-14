@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/funcobject.bc'
+; ModuleID = 'programs_new/Python-new/funcobject.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -2119,11 +2119,13 @@ cleanup:                                          ; preds = %while.end, %if.then
   %46 = bitcast i64* %pos to i8*, !dbg !2153
   call void @llvm.lifetime.end(i64 8, i8* %46) #2, !dbg !2153
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.47 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.26, !dbg !2154
 
 if.else.25:                                       ; preds = %land.lhs.true.3, %if.end
@@ -2232,7 +2234,10 @@ do.end.46:                                        ; preds = %do.cond.45
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.47, !dbg !2226
 
-cleanup.47:                                       ; preds = %do.end.46, %cleanup
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.47
+
+cleanup.47:                                       ; preds = %NewDefault, %do.end.46
   %82 = bitcast i64* %nd to i8*, !dbg !2227
   call void @llvm.lifetime.end(i64 8, i8* %82) #2, !dbg !2227
   %83 = bitcast i64* %nk to i8*, !dbg !2227
@@ -2314,12 +2319,16 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %9 = bitcast i32* %vret to i8*, !dbg !2253
   call void @llvm.lifetime.end(i64 4, i8* %9) #2, !dbg !2253
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.4, !dbg !2256
 
 if.end.4:                                         ; preds = %cleanup.cont, %do.body
@@ -2364,12 +2373,16 @@ cleanup.14:                                       ; preds = %if.end.13, %if.then
   %19 = bitcast i32* %vret8 to i8*, !dbg !2281
   call void @llvm.lifetime.end(i64 4, i8* %19) #2, !dbg !2281
   %cleanup.dest.15 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.15, label %unreachable [
-    i32 0, label %cleanup.cont.16
-    i32 1, label %return
-  ]
+  br label %LeafBlock.2
 
-cleanup.cont.16:                                  ; preds = %cleanup.14
+LeafBlock.2:                                      ; preds = %cleanup.14
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.15, 1
+  br i1 %SwitchLeaf3, label %return, label %NewDefault.1
+
+NewDefault.1:                                     ; preds = %LeafBlock.2
+  br label %cleanup.cont.16
+
+cleanup.cont.16:                                  ; preds = %NewDefault.1
   br label %if.end.17, !dbg !2284
 
 if.end.17:                                        ; preds = %cleanup.cont.16, %do.body.5
@@ -2414,12 +2427,16 @@ cleanup.28:                                       ; preds = %if.end.27, %if.then
   %29 = bitcast i32* %vret22 to i8*, !dbg !2309
   call void @llvm.lifetime.end(i64 4, i8* %29) #2, !dbg !2309
   %cleanup.dest.29 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.29, label %unreachable [
-    i32 0, label %cleanup.cont.30
-    i32 1, label %return
-  ]
+  br label %LeafBlock.5
 
-cleanup.cont.30:                                  ; preds = %cleanup.28
+LeafBlock.5:                                      ; preds = %cleanup.28
+  %SwitchLeaf6 = icmp eq i32 %cleanup.dest.29, 1
+  br i1 %SwitchLeaf6, label %return, label %NewDefault.4
+
+NewDefault.4:                                     ; preds = %LeafBlock.5
+  br label %cleanup.cont.30
+
+cleanup.cont.30:                                  ; preds = %NewDefault.4
   br label %if.end.31, !dbg !2312
 
 if.end.31:                                        ; preds = %cleanup.cont.30, %do.body.19
@@ -2464,12 +2481,16 @@ cleanup.42:                                       ; preds = %if.end.41, %if.then
   %39 = bitcast i32* %vret36 to i8*, !dbg !2337
   call void @llvm.lifetime.end(i64 4, i8* %39) #2, !dbg !2337
   %cleanup.dest.43 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.43, label %unreachable [
-    i32 0, label %cleanup.cont.44
-    i32 1, label %return
-  ]
+  br label %LeafBlock.8
 
-cleanup.cont.44:                                  ; preds = %cleanup.42
+LeafBlock.8:                                      ; preds = %cleanup.42
+  %SwitchLeaf9 = icmp eq i32 %cleanup.dest.43, 1
+  br i1 %SwitchLeaf9, label %return, label %NewDefault.7
+
+NewDefault.7:                                     ; preds = %LeafBlock.8
+  br label %cleanup.cont.44
+
+cleanup.cont.44:                                  ; preds = %NewDefault.7
   br label %if.end.45, !dbg !2340
 
 if.end.45:                                        ; preds = %cleanup.cont.44, %do.body.33
@@ -2514,12 +2535,16 @@ cleanup.56:                                       ; preds = %if.end.55, %if.then
   %49 = bitcast i32* %vret50 to i8*, !dbg !2365
   call void @llvm.lifetime.end(i64 4, i8* %49) #2, !dbg !2365
   %cleanup.dest.57 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.57, label %unreachable [
-    i32 0, label %cleanup.cont.58
-    i32 1, label %return
-  ]
+  br label %LeafBlock.11
 
-cleanup.cont.58:                                  ; preds = %cleanup.56
+LeafBlock.11:                                     ; preds = %cleanup.56
+  %SwitchLeaf12 = icmp eq i32 %cleanup.dest.57, 1
+  br i1 %SwitchLeaf12, label %return, label %NewDefault.10
+
+NewDefault.10:                                    ; preds = %LeafBlock.11
+  br label %cleanup.cont.58
+
+cleanup.cont.58:                                  ; preds = %NewDefault.10
   br label %if.end.59, !dbg !2368
 
 if.end.59:                                        ; preds = %cleanup.cont.58, %do.body.47
@@ -2564,12 +2589,16 @@ cleanup.70:                                       ; preds = %if.end.69, %if.then
   %59 = bitcast i32* %vret64 to i8*, !dbg !2393
   call void @llvm.lifetime.end(i64 4, i8* %59) #2, !dbg !2393
   %cleanup.dest.71 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.71, label %unreachable [
-    i32 0, label %cleanup.cont.72
-    i32 1, label %return
-  ]
+  br label %LeafBlock.14
 
-cleanup.cont.72:                                  ; preds = %cleanup.70
+LeafBlock.14:                                     ; preds = %cleanup.70
+  %SwitchLeaf15 = icmp eq i32 %cleanup.dest.71, 1
+  br i1 %SwitchLeaf15, label %return, label %NewDefault.13
+
+NewDefault.13:                                    ; preds = %LeafBlock.14
+  br label %cleanup.cont.72
+
+cleanup.cont.72:                                  ; preds = %NewDefault.13
   br label %if.end.73, !dbg !2396
 
 if.end.73:                                        ; preds = %cleanup.cont.72, %do.body.61
@@ -2614,12 +2643,16 @@ cleanup.84:                                       ; preds = %if.end.83, %if.then
   %69 = bitcast i32* %vret78 to i8*, !dbg !2421
   call void @llvm.lifetime.end(i64 4, i8* %69) #2, !dbg !2421
   %cleanup.dest.85 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.85, label %unreachable [
-    i32 0, label %cleanup.cont.86
-    i32 1, label %return
-  ]
+  br label %LeafBlock.17
 
-cleanup.cont.86:                                  ; preds = %cleanup.84
+LeafBlock.17:                                     ; preds = %cleanup.84
+  %SwitchLeaf18 = icmp eq i32 %cleanup.dest.85, 1
+  br i1 %SwitchLeaf18, label %return, label %NewDefault.16
+
+NewDefault.16:                                    ; preds = %LeafBlock.17
+  br label %cleanup.cont.86
+
+cleanup.cont.86:                                  ; preds = %NewDefault.16
   br label %if.end.87, !dbg !2424
 
 if.end.87:                                        ; preds = %cleanup.cont.86, %do.body.75
@@ -2664,12 +2697,16 @@ cleanup.98:                                       ; preds = %if.end.97, %if.then
   %79 = bitcast i32* %vret92 to i8*, !dbg !2449
   call void @llvm.lifetime.end(i64 4, i8* %79) #2, !dbg !2449
   %cleanup.dest.99 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.99, label %unreachable [
-    i32 0, label %cleanup.cont.100
-    i32 1, label %return
-  ]
+  br label %LeafBlock.20
 
-cleanup.cont.100:                                 ; preds = %cleanup.98
+LeafBlock.20:                                     ; preds = %cleanup.98
+  %SwitchLeaf21 = icmp eq i32 %cleanup.dest.99, 1
+  br i1 %SwitchLeaf21, label %return, label %NewDefault.19
+
+NewDefault.19:                                    ; preds = %LeafBlock.20
+  br label %cleanup.cont.100
+
+cleanup.cont.100:                                 ; preds = %NewDefault.19
   br label %if.end.101, !dbg !2452
 
 if.end.101:                                       ; preds = %cleanup.cont.100, %do.body.89
@@ -2714,12 +2751,16 @@ cleanup.112:                                      ; preds = %if.end.111, %if.the
   %89 = bitcast i32* %vret106 to i8*, !dbg !2477
   call void @llvm.lifetime.end(i64 4, i8* %89) #2, !dbg !2477
   %cleanup.dest.113 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.113, label %unreachable [
-    i32 0, label %cleanup.cont.114
-    i32 1, label %return
-  ]
+  br label %LeafBlock.23
 
-cleanup.cont.114:                                 ; preds = %cleanup.112
+LeafBlock.23:                                     ; preds = %cleanup.112
+  %SwitchLeaf24 = icmp eq i32 %cleanup.dest.113, 1
+  br i1 %SwitchLeaf24, label %return, label %NewDefault.22
+
+NewDefault.22:                                    ; preds = %LeafBlock.23
+  br label %cleanup.cont.114
+
+cleanup.cont.114:                                 ; preds = %NewDefault.22
   br label %if.end.115, !dbg !2480
 
 if.end.115:                                       ; preds = %cleanup.cont.114, %do.body.103
@@ -2764,12 +2805,16 @@ cleanup.126:                                      ; preds = %if.end.125, %if.the
   %99 = bitcast i32* %vret120 to i8*, !dbg !2505
   call void @llvm.lifetime.end(i64 4, i8* %99) #2, !dbg !2505
   %cleanup.dest.127 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.127, label %unreachable [
-    i32 0, label %cleanup.cont.128
-    i32 1, label %return
-  ]
+  br label %LeafBlock.26
 
-cleanup.cont.128:                                 ; preds = %cleanup.126
+LeafBlock.26:                                     ; preds = %cleanup.126
+  %SwitchLeaf27 = icmp eq i32 %cleanup.dest.127, 1
+  br i1 %SwitchLeaf27, label %return, label %NewDefault.25
+
+NewDefault.25:                                    ; preds = %LeafBlock.26
+  br label %cleanup.cont.128
+
+cleanup.cont.128:                                 ; preds = %NewDefault.25
   br label %if.end.129, !dbg !2508
 
 if.end.129:                                       ; preds = %cleanup.cont.128, %do.body.117
@@ -2814,12 +2859,16 @@ cleanup.140:                                      ; preds = %if.end.139, %if.the
   %109 = bitcast i32* %vret134 to i8*, !dbg !2533
   call void @llvm.lifetime.end(i64 4, i8* %109) #2, !dbg !2533
   %cleanup.dest.141 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.141, label %unreachable [
-    i32 0, label %cleanup.cont.142
-    i32 1, label %return
-  ]
+  br label %LeafBlock.29
 
-cleanup.cont.142:                                 ; preds = %cleanup.140
+LeafBlock.29:                                     ; preds = %cleanup.140
+  %SwitchLeaf30 = icmp eq i32 %cleanup.dest.141, 1
+  br i1 %SwitchLeaf30, label %return, label %NewDefault.28
+
+NewDefault.28:                                    ; preds = %LeafBlock.29
+  br label %cleanup.cont.142
+
+cleanup.cont.142:                                 ; preds = %NewDefault.28
   br label %if.end.143, !dbg !2536
 
 if.end.143:                                       ; preds = %cleanup.cont.142, %do.body.131
@@ -2829,12 +2878,9 @@ do.end.144:                                       ; preds = %if.end.143
   store i32 0, i32* %retval, !dbg !2540
   br label %return, !dbg !2540
 
-return:                                           ; preds = %do.end.144, %cleanup.140, %cleanup.126, %cleanup.112, %cleanup.98, %cleanup.84, %cleanup.70, %cleanup.56, %cleanup.42, %cleanup.28, %cleanup.14, %cleanup
+return:                                           ; preds = %LeafBlock.29, %LeafBlock.26, %LeafBlock.23, %LeafBlock.20, %LeafBlock.17, %LeafBlock.14, %LeafBlock.11, %LeafBlock.8, %LeafBlock.5, %LeafBlock.2, %LeafBlock, %do.end.144
   %110 = load i32, i32* %retval, !dbg !2541
   ret i32 %110, !dbg !2541
-
-unreachable:                                      ; preds = %cleanup.140, %cleanup.126, %cleanup.112, %cleanup.98, %cleanup.84, %cleanup.70, %cleanup.56, %cleanup.42, %cleanup.28, %cleanup.14, %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -3130,11 +3176,13 @@ cleanup:                                          ; preds = %if.end.40, %if.then
   %58 = bitcast %struct._object** %o to i8*, !dbg !2707
   call void @llvm.lifetime.end(i64 8, i8* %58) #2, !dbg !2707
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.41 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !2708
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -3147,15 +3195,20 @@ for.end:                                          ; preds = %for.cond
   store i32 0, i32* %cleanup.dest.slot, !dbg !2711
   br label %cleanup.41, !dbg !2711
 
-cleanup.41:                                       ; preds = %for.end, %cleanup
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.41
+
+cleanup.41:                                       ; preds = %NewDefault, %for.end
   %60 = bitcast i64* %i to i8*, !dbg !2712
   call void @llvm.lifetime.end(i64 8, i8* %60) #2, !dbg !2712
   %cleanup.dest.42 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.42, label %cleanup.70 [
-    i32 0, label %cleanup.cont.43
-  ]
+  br label %LeafBlock.2
 
-cleanup.cont.43:                                  ; preds = %cleanup.41
+LeafBlock.2:                                      ; preds = %cleanup.41
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.42, 0
+  br i1 %SwitchLeaf3, label %cleanup.cont.43, label %NewDefault.1
+
+cleanup.cont.43:                                  ; preds = %LeafBlock.2
   br label %if.end.44, !dbg !2714
 
 if.end.44:                                        ; preds = %cleanup.cont.43, %if.end.31
@@ -3272,7 +3325,10 @@ if.end.69:                                        ; preds = %if.then.66, %if.end
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.70, !dbg !2790
 
-cleanup.70:                                       ; preds = %if.end.69, %if.then.47, %cleanup.41, %if.then.29, %if.then.22, %if.then.20, %if.then.10, %if.then.2, %if.then
+NewDefault.1:                                     ; preds = %LeafBlock.2
+  br label %cleanup.70
+
+cleanup.70:                                       ; preds = %NewDefault.1, %if.end.69, %if.then.47, %if.then.29, %if.then.22, %if.then.20, %if.then.10, %if.then.2, %if.then
   %93 = bitcast i64* %nclosure to i8*, !dbg !2791
   call void @llvm.lifetime.end(i64 8, i8* %93) #2, !dbg !2791
   %94 = bitcast i64* %nfree to i8*, !dbg !2791
@@ -3554,12 +3610,16 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %9 = bitcast i32* %vret to i8*, !dbg !2955
   call void @llvm.lifetime.end(i64 4, i8* %9) #2, !dbg !2955
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.4, !dbg !2958
 
 if.end.4:                                         ; preds = %cleanup.cont, %do.body
@@ -3604,12 +3664,16 @@ cleanup.14:                                       ; preds = %if.end.13, %if.then
   %19 = bitcast i32* %vret8 to i8*, !dbg !2983
   call void @llvm.lifetime.end(i64 4, i8* %19) #2, !dbg !2983
   %cleanup.dest.15 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.15, label %unreachable [
-    i32 0, label %cleanup.cont.16
-    i32 1, label %return
-  ]
+  br label %LeafBlock.2
 
-cleanup.cont.16:                                  ; preds = %cleanup.14
+LeafBlock.2:                                      ; preds = %cleanup.14
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.15, 1
+  br i1 %SwitchLeaf3, label %return, label %NewDefault.1
+
+NewDefault.1:                                     ; preds = %LeafBlock.2
+  br label %cleanup.cont.16
+
+cleanup.cont.16:                                  ; preds = %NewDefault.1
   br label %if.end.17, !dbg !2986
 
 if.end.17:                                        ; preds = %cleanup.cont.16, %do.body.5
@@ -3619,12 +3683,9 @@ do.end.18:                                        ; preds = %if.end.17
   store i32 0, i32* %retval, !dbg !2990
   br label %return, !dbg !2990
 
-return:                                           ; preds = %do.end.18, %cleanup.14, %cleanup
+return:                                           ; preds = %LeafBlock.2, %LeafBlock, %do.end.18
   %20 = load i32, i32* %retval, !dbg !2991
   ret i32 %20, !dbg !2991
-
-unreachable:                                      ; preds = %cleanup.14, %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -4205,12 +4266,16 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %9 = bitcast i32* %vret to i8*, !dbg !3318
   call void @llvm.lifetime.end(i64 4, i8* %9) #2, !dbg !3318
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.4, !dbg !3321
 
 if.end.4:                                         ; preds = %cleanup.cont, %do.body
@@ -4255,12 +4320,16 @@ cleanup.14:                                       ; preds = %if.end.13, %if.then
   %19 = bitcast i32* %vret8 to i8*, !dbg !3346
   call void @llvm.lifetime.end(i64 4, i8* %19) #2, !dbg !3346
   %cleanup.dest.15 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.15, label %unreachable [
-    i32 0, label %cleanup.cont.16
-    i32 1, label %return
-  ]
+  br label %LeafBlock.2
 
-cleanup.cont.16:                                  ; preds = %cleanup.14
+LeafBlock.2:                                      ; preds = %cleanup.14
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.15, 1
+  br i1 %SwitchLeaf3, label %return, label %NewDefault.1
+
+NewDefault.1:                                     ; preds = %LeafBlock.2
+  br label %cleanup.cont.16
+
+cleanup.cont.16:                                  ; preds = %NewDefault.1
   br label %if.end.17, !dbg !3349
 
 if.end.17:                                        ; preds = %cleanup.cont.16, %do.body.5
@@ -4270,12 +4339,9 @@ do.end.18:                                        ; preds = %if.end.17
   store i32 0, i32* %retval, !dbg !3353
   br label %return, !dbg !3353
 
-return:                                           ; preds = %do.end.18, %cleanup.14, %cleanup
+return:                                           ; preds = %LeafBlock.2, %LeafBlock, %do.end.18
   %20 = load i32, i32* %retval, !dbg !3354
   ret i32 %20, !dbg !3354
-
-unreachable:                                      ; preds = %cleanup.14, %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable

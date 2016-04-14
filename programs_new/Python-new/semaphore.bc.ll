@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/semaphore.bc'
+; ModuleID = 'programs_new/Python-new/semaphore.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -824,12 +824,16 @@ cleanup:                                          ; preds = %if.end.17, %if.then
   %20 = bitcast i32* %sval to i8*, !dbg !976
   call void @llvm.lifetime.end(i64 4, i8* %20) #2, !dbg !976
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.18
 
 if.end.18:                                        ; preds = %cleanup.cont, %if.end.8
@@ -858,12 +862,9 @@ if.end.24:                                        ; preds = %if.end.18
   store %struct._object* @_Py_NoneStruct, %struct._object** %retval, !dbg !991
   br label %return, !dbg !991
 
-return:                                           ; preds = %if.end.24, %if.then.22, %cleanup, %if.then.6, %if.then.3
+return:                                           ; preds = %LeafBlock, %if.end.24, %if.then.22, %if.then.6, %if.then.3
   %27 = load %struct._object*, %struct._object** %retval, !dbg !992
   ret %struct._object* %27, !dbg !992
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable

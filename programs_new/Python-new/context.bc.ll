@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/context.bc'
+; ModuleID = 'programs_new/Python-new/context.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -162,15 +162,12 @@ cleanup:                                          ; preds = %if.end.5, %if.then
   %9 = bitcast i64* %ideal_minalloc to i8*, !dbg !246
   call void @llvm.lifetime.end(i64 8, i8* %9) #5, !dbg !246
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !245
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

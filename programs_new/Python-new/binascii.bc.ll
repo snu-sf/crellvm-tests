@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/binascii.bc'
+; ModuleID = 'programs_new/Python-new/binascii.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -3588,18 +3588,27 @@ if.end.19:                                        ; preds = %lor.lhs.false
   store i32 0, i32* %cleanup.dest.slot, !dbg !2880
   br label %cleanup, !dbg !2880
 
-cleanup:                                          ; preds = %if.then.18, %if.end.19
+cleanup:                                          ; preds = %if.end.19, %if.then.18
   %33 = bitcast i32* %bot to i8*, !dbg !2881
   call void @llvm.lifetime.end(i64 4, i8* %33) #1, !dbg !2881
   %34 = bitcast i32* %top to i8*, !dbg !2881
   call void @llvm.lifetime.end(i64 4, i8* %34) #1, !dbg !2881
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.29 [
-    i32 0, label %cleanup.cont
-    i32 5, label %finally
-  ]
+  br label %NodeBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+NodeBlock:                                        ; preds = %cleanup
+  %Pivot = icmp slt i32 %cleanup.dest, 5
+  br i1 %Pivot, label %LeafBlock, label %LeafBlock.1
+
+LeafBlock.1:                                      ; preds = %NodeBlock
+  %SwitchLeaf2 = icmp eq i32 %cleanup.dest, 5
+  br i1 %SwitchLeaf2, label %finally, label %NewDefault
+
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !2882
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -3614,7 +3623,7 @@ for.end:                                          ; preds = %for.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.29, !dbg !2886
 
-finally:                                          ; preds = %cleanup
+finally:                                          ; preds = %LeafBlock.1
   br label %do.body, !dbg !2887
 
 do.body:                                          ; preds = %finally
@@ -3657,7 +3666,10 @@ do.end:                                           ; preds = %do.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.29, !dbg !2911
 
-cleanup.29:                                       ; preds = %do.end, %for.end, %cleanup, %if.then.3, %if.then
+NewDefault:                                       ; preds = %LeafBlock.1, %LeafBlock
+  br label %cleanup.29
+
+cleanup.29:                                       ; preds = %NewDefault, %do.end, %for.end, %if.then.3, %if.then
   %46 = bitcast i64* %j to i8*, !dbg !2912
   call void @llvm.lifetime.end(i64 8, i8* %46) #1, !dbg !2912
   %47 = bitcast i64* %i to i8*, !dbg !2912

@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/stringio.bc'
+; ModuleID = 'programs_new/Python-new/stringio.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -530,12 +530,16 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %9 = bitcast i32* %vret to i8*, !dbg !1086
   call void @llvm.lifetime.end(i64 4, i8* %9) #2, !dbg !1086
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.4, !dbg !1089
 
 if.end.4:                                         ; preds = %cleanup.cont, %do.body
@@ -545,12 +549,9 @@ do.end:                                           ; preds = %if.end.4
   store i32 0, i32* %retval, !dbg !1093
   br label %return, !dbg !1093
 
-return:                                           ; preds = %do.end, %cleanup
+return:                                           ; preds = %LeafBlock, %do.end
   %10 = load i32, i32* %retval, !dbg !1094
   ret i32 %10, !dbg !1094
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable
@@ -3892,11 +3893,13 @@ cleanup:                                          ; preds = %if.end.38, %if.then
   %70 = bitcast %struct._object** %item to i8*, !dbg !2992
   call void @llvm.lifetime.end(i64 8, i8* %70) #2, !dbg !2992
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.90 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   %71 = load %struct._object*, %struct._object** %state.addr, align 8, !dbg !2994, !tbaa !787
   %72 = bitcast %struct._object* %71 to %struct.PyTupleObject*, !dbg !2995
   %ob_item42 = getelementptr inbounds %struct.PyTupleObject, %struct.PyTupleObject* %72, i32 0, i32 1, !dbg !2996
@@ -4038,7 +4041,10 @@ if.end.88:                                        ; preds = %if.end.87, %if.end.
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.90, !dbg !3084
 
-cleanup.90:                                       ; preds = %if.end.88, %if.then.82, %if.then.71, %if.then.60, %if.then.57, %if.then.48, %cleanup, %do.end, %if.then.9, %if.then.2, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.90
+
+cleanup.90:                                       ; preds = %NewDefault, %if.end.88, %if.then.82, %if.then.71, %if.then.60, %if.then.57, %if.then.48, %do.end, %if.then.9, %if.then.2, %if.then
   %108 = bitcast i64* %pos to i8*, !dbg !3085
   call void @llvm.lifetime.end(i64 8, i8* %108) #2, !dbg !3085
   %109 = bitcast %struct._object** %dict to i8*, !dbg !3085

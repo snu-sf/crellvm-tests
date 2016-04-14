@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/signalmodule.bc'
+; ModuleID = 'programs_new/Python-new/signalmodule.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -3448,11 +3448,13 @@ cleanup:                                          ; preds = %do.end.37, %if.then
   %37 = bitcast %struct._object** %result to i8*, !dbg !3248
   call void @llvm.lifetime.end(i64 8, i8* %37) #2, !dbg !3248
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.40 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.39, !dbg !3250
 
 if.end.39:                                        ; preds = %cleanup.cont, %for.body
@@ -3469,7 +3471,10 @@ for.end:                                          ; preds = %for.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.40, !dbg !3254
 
-cleanup.40:                                       ; preds = %for.end, %cleanup, %if.then.1, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.40
+
+cleanup.40:                                       ; preds = %NewDefault, %for.end, %if.then.1, %if.then
   %39 = bitcast %struct._object** %f to i8*, !dbg !3255
   call void @llvm.lifetime.end(i64 8, i8* %39) #2, !dbg !3255
   %40 = bitcast i32* %i to i8*, !dbg !3255
@@ -3578,15 +3583,12 @@ cleanup:                                          ; preds = %if.end.15, %if.then
   call void @llvm.lifetime.end(i64 4, i8* %11) #2, !dbg !3309
   call void @llvm.lifetime.end(i64 1, i8* %byte) #2, !dbg !3309
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !3308
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 
@@ -4101,15 +4103,12 @@ cleanup:                                          ; preds = %for.end, %if.then
   %5 = bitcast i32* %i to i8*, !dbg !3609
   call void @llvm.lifetime.end(i64 4, i8* %5) #2, !dbg !3609
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !3608
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

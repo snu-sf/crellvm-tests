@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/fcntlmodule.bc'
+; ModuleID = 'programs_new/Python-new/fcntlmodule.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -1336,11 +1336,13 @@ cleanup:                                          ; preds = %if.end.31, %if.then
   %22 = bitcast %struct.flock* %l to i8*, !dbg !1263
   call void @llvm.lifetime.end(i64 32, i8* %22) #1, !dbg !1263
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.41 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   %23 = load i32, i32* %ret, align 4, !dbg !1265, !tbaa !862
   %cmp36 = icmp slt i32 %23, 0, !dbg !1267
   br i1 %cmp36, label %if.then.38, label %if.end.40, !dbg !1268
@@ -1360,7 +1362,10 @@ if.end.40:                                        ; preds = %cleanup.cont
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.41, !dbg !1274
 
-cleanup.41:                                       ; preds = %if.end.40, %if.then.38, %cleanup, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.41
+
+cleanup.41:                                       ; preds = %NewDefault, %if.end.40, %if.then.38, %if.then
   %26 = bitcast %struct._object** %startobj to i8*, !dbg !1275
   call void @llvm.lifetime.end(i64 8, i8* %26) #1, !dbg !1275
   %27 = bitcast %struct._object** %lenobj to i8*, !dbg !1275

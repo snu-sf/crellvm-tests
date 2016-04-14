@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/nismodule.bc'
+; ModuleID = 'programs_new/Python-new/nismodule.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -858,12 +858,16 @@ cleanup:                                          ; preds = %do.end.35, %do.end
   %34 = bitcast %struct._object** %str to i8*, !dbg !1361
   call void @llvm.lifetime.end(i64 8, i8* %34) #1, !dbg !1361
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 2, label %for.end
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 2
+  br i1 %SwitchLeaf, label %for.end, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %for.inc, !dbg !1362
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -873,7 +877,7 @@ for.inc:                                          ; preds = %cleanup.cont
   store %struct.nismaplist* %36, %struct.nismaplist** %maps, align 8, !dbg !1366, !tbaa !951
   br label %for.cond, !dbg !1367
 
-for.end:                                          ; preds = %cleanup, %for.cond
+for.end:                                          ; preds = %LeafBlock, %for.cond
   %37 = load %struct._object*, %struct._object** %list, align 8, !dbg !1368, !tbaa !951
   store %struct._object* %37, %struct._object** %retval, !dbg !1369
   store i32 1, i32* %cleanup.dest.slot
@@ -890,9 +894,6 @@ cleanup.36:                                       ; preds = %for.end, %if.then.1
   call void @llvm.lifetime.end(i64 8, i8* %41) #1, !dbg !1370
   %42 = load %struct._object*, %struct._object** %retval, !dbg !1370
   ret %struct._object* %42, !dbg !1370
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable

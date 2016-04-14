@@ -57,4 +57,5 @@ Also, you can give triple's base name, and just validate it.
 - ruby vali.rb llvm_regression_tests "-gvn"
 - ruby vali.rb inputs_full/associativity_add/example.foo.0 (assuming example.foo.0.src.bc, tgt.bc, hint.json exists)
 - ruby vali.rb inputs_full/associativity_add/example.ll
+- ruby vali.rb programs_new/Python-new "-lowerswitch" && zmv 'programs_new/Python-new/(*).output.ll' 'programs_new/Python-new/$1.ll'
 - vi vali_rb_report

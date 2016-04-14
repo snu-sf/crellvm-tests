@@ -84,7 +84,7 @@ def generate(name)
   base = change_to_bc name
   # http://llvm.org/docs/CommandGuide/opt.html
   # The order in which the options occur on the command line are the order in which they are executed (within pass constraints).
-  cmd = "opt #{OPT_OPTION} -lowerswitch #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
+  cmd = "opt #{OPT_OPTION} #{base}.ll -o #{base}.#{OUT_NAME}.ll -S 2>&1"
   result = %x(zsh -c "#{cmd}")
   x = [$?.success?? :generate_success : :generate_fail, cmd]
   File.open("#{name}.result", 'w').write(result) unless(x[0] == :generate_success)

@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/_curses_panel.bc'
+; ModuleID = 'programs_new/Python-new/_curses_panel.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -376,12 +376,16 @@ cleanup:                                          ; preds = %if.end, %if.then.5
   %11 = bitcast i32* %vret to i8*, !dbg !836
   call void @llvm.lifetime.end(i64 4, i8* %11) #1, !dbg !836
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.6, !dbg !839
 
 if.end.6:                                         ; preds = %cleanup.cont, %do.body
@@ -391,12 +395,9 @@ do.end:                                           ; preds = %if.end.6
   store i32 0, i32* %retval, !dbg !843
   br label %return, !dbg !843
 
-return:                                           ; preds = %do.end, %cleanup
+return:                                           ; preds = %LeafBlock, %do.end
   %12 = load i32, i32* %retval, !dbg !844
   ret i32 %12, !dbg !844
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable

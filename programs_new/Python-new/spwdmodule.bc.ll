@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/spwdmodule.bc'
+; ModuleID = 'programs_new/Python-new/spwdmodule.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -491,11 +491,13 @@ cleanup:                                          ; preds = %do.end.41, %do.end.
   %38 = bitcast %struct._object** %v to i8*, !dbg !725
   call void @llvm.lifetime.end(i64 8, i8* %38) #1, !dbg !725
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.42 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %while.cond, !dbg !614
 
 while.end:                                        ; preds = %while.cond
@@ -505,7 +507,10 @@ while.end:                                        ; preds = %while.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.42, !dbg !728
 
-cleanup.42:                                       ; preds = %while.end, %cleanup, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.42
+
+cleanup.42:                                       ; preds = %NewDefault, %while.end, %if.then
   %40 = bitcast %struct.spwd** %p to i8*, !dbg !729
   call void @llvm.lifetime.end(i64 8, i8* %40) #1, !dbg !729
   %41 = bitcast %struct._object** %d to i8*, !dbg !729

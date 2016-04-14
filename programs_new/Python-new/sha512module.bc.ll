@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/sha512module.bc'
+; ModuleID = 'programs_new/Python-new/sha512module.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -9353,15 +9353,12 @@ cleanup:                                          ; preds = %while.end, %if.else
   %51 = bitcast i64* %i to i8*, !dbg !7199
   call void @llvm.lifetime.end(i64 8, i8* %51) #1, !dbg !7199
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !7198
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

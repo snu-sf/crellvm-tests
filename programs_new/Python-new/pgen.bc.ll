@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/pgen.bc'
+; ModuleID = 'programs_new/Python-new/pgen.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -613,15 +613,12 @@ cleanup:                                          ; preds = %for.end, %if.then
   %47 = bitcast i32* %i to i8*, !dbg !679
   call void @llvm.lifetime.end(i64 4, i8* %47) #2, !dbg !679
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !678
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 
@@ -1058,15 +1055,12 @@ cleanup:                                          ; preds = %if.end.15, %if.then
   %50 = bitcast i32* %i to i8*, !dbg !941
   call void @llvm.lifetime.end(i64 4, i8* %50) #2, !dbg !941
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !940
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

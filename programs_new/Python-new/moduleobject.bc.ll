@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/moduleobject.bc'
+; ModuleID = 'programs_new/Python-new/moduleobject.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -619,11 +619,13 @@ cleanup:                                          ; preds = %if.end.16, %if.then
   %29 = bitcast i32* %err to i8*, !dbg !1130
   call void @llvm.lifetime.end(i64 4, i8* %29) #2, !dbg !1130
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.263 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %if.end.17, !dbg !1131
 
 if.end.17:                                        ; preds = %cleanup.cont, %land.lhs.true, %if.end.10
@@ -1434,7 +1436,10 @@ if.end.262:                                       ; preds = %do.end.261, %if.end
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.263, !dbg !1636
 
-cleanup.263:                                      ; preds = %if.end.262, %do.end.247, %do.end.177, %do.end.133, %do.end.103, %do.end.69, %do.end, %if.then.31, %cleanup, %if.then.4
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.263
+
+cleanup.263:                                      ; preds = %NewDefault, %if.end.262, %do.end.247, %do.end.177, %do.end.133, %do.end.103, %do.end.69, %do.end, %if.then.31, %if.then.4
   %229 = bitcast %struct._is** %interp to i8*, !dbg !1637
   call void @llvm.lifetime.end(i64 8, i8* %229) #2, !dbg !1637
   %230 = bitcast %struct.PyModuleObject** %m to i8*, !dbg !1637
@@ -3050,68 +3055,84 @@ entry:
   %8 = load i32, i32* %order, align 4, !dbg !2472, !tbaa !1960
   call void @_Py_ANNOTATE_MEMORY_ORDER(i8* %7, i32 %8), !dbg !2473
   %9 = load i32, i32* %order, align 4, !dbg !2474, !tbaa !1960
-  switch i32 %9, label %sw.default [
-    i32 2, label %sw.bb
-    i32 3, label %sw.bb
-    i32 4, label %sw.bb
-  ], !dbg !2475
+  br label %LeafBlock
 
-sw.bb:                                            ; preds = %entry, %entry, %entry
-  call void @_Py_atomic_thread_fence(i32 2), !dbg !2476
+LeafBlock:                                        ; preds = %entry
+  %.off = add i32 %9, -2
+  %SwitchLeaf = icmp ule i32 %.off, 2
+  br i1 %SwitchLeaf, label %sw.bb, label %NewDefault
+
+sw.bb:                                            ; preds = %LeafBlock
+  call void @_Py_atomic_thread_fence(i32 2), !dbg !2475
+  br label %sw.epilog, !dbg !2480
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %sw.default
+
+sw.default:                                       ; preds = %NewDefault
   br label %sw.epilog, !dbg !2481
 
-sw.default:                                       ; preds = %entry
-  br label %sw.epilog, !dbg !2482
-
 sw.epilog:                                        ; preds = %sw.default, %sw.bb
-  %10 = load i8**, i8*** %volatile_data, align 8, !dbg !2484, !tbaa !818
-  %11 = load volatile i8*, i8** %10, align 8, !dbg !2487, !tbaa !818
-  store i8* %11, i8** %result, align 8, !dbg !2488, !tbaa !818
-  %12 = load i32, i32* %order, align 4, !dbg !2489, !tbaa !1960
-  switch i32 %12, label %sw.default.2 [
-    i32 1, label %sw.bb.1
-    i32 3, label %sw.bb.1
-    i32 4, label %sw.bb.1
-  ], !dbg !2490
+  %10 = load i8**, i8*** %volatile_data, align 8, !dbg !2483, !tbaa !818
+  %11 = load volatile i8*, i8** %10, align 8, !dbg !2486, !tbaa !818
+  store i8* %11, i8** %result, align 8, !dbg !2487, !tbaa !818
+  %12 = load i32, i32* %order, align 4, !dbg !2488, !tbaa !1960
+  br label %NodeBlock
 
-sw.bb.1:                                          ; preds = %sw.epilog, %sw.epilog, %sw.epilog
-  call void @_Py_atomic_signal_fence(i32 1), !dbg !2491
-  br label %sw.epilog.3, !dbg !2496
+NodeBlock:                                        ; preds = %sw.epilog
+  %Pivot = icmp slt i32 %12, 3
+  br i1 %Pivot, label %LeafBlock.2, label %LeafBlock.4
 
-sw.default.2:                                     ; preds = %sw.epilog
-  br label %sw.epilog.3, !dbg !2497
+LeafBlock.4:                                      ; preds = %NodeBlock
+  %.off.5 = add i32 %12, -3
+  %SwitchLeaf6 = icmp ule i32 %.off.5, 1
+  br i1 %SwitchLeaf6, label %sw.bb.1, label %NewDefault.1
+
+LeafBlock.2:                                      ; preds = %NodeBlock
+  %SwitchLeaf3 = icmp eq i32 %12, 1
+  br i1 %SwitchLeaf3, label %sw.bb.1, label %NewDefault.1
+
+sw.bb.1:                                          ; preds = %LeafBlock.4, %LeafBlock.2
+  call void @_Py_atomic_signal_fence(i32 1), !dbg !2489
+  br label %sw.epilog.3, !dbg !2494
+
+NewDefault.1:                                     ; preds = %LeafBlock.4, %LeafBlock.2
+  br label %sw.default.2
+
+sw.default.2:                                     ; preds = %NewDefault.1
+  br label %sw.epilog.3, !dbg !2495
 
 sw.epilog.3:                                      ; preds = %sw.default.2, %sw.bb.1
-  %13 = load i8*, i8** %result, align 8, !dbg !2499, !tbaa !818
-  store i8* %13, i8** %tmp, !dbg !2502, !tbaa !818
-  %14 = bitcast i32* %order to i8*, !dbg !2503
-  call void @llvm.lifetime.end(i64 4, i8* %14) #2, !dbg !2503
-  %15 = bitcast i8*** %volatile_data to i8*, !dbg !2503
-  call void @llvm.lifetime.end(i64 8, i8* %15) #2, !dbg !2503
-  %16 = bitcast i8** %result to i8*, !dbg !2503
-  call void @llvm.lifetime.end(i64 8, i8* %16) #2, !dbg !2503
-  %17 = bitcast %struct._Py_atomic_address** %atomic_val to i8*, !dbg !2503
-  call void @llvm.lifetime.end(i64 8, i8* %17) #2, !dbg !2503
-  %18 = load i8*, i8** %tmp, !dbg !2504, !tbaa !818
-  %19 = bitcast i8* %18 to %struct._ts*, !dbg !2505
+  %13 = load i8*, i8** %result, align 8, !dbg !2497, !tbaa !818
+  store i8* %13, i8** %tmp, !dbg !2500, !tbaa !818
+  %14 = bitcast i32* %order to i8*, !dbg !2501
+  call void @llvm.lifetime.end(i64 4, i8* %14) #2, !dbg !2501
+  %15 = bitcast i8*** %volatile_data to i8*, !dbg !2501
+  call void @llvm.lifetime.end(i64 8, i8* %15) #2, !dbg !2501
+  %16 = bitcast i8** %result to i8*, !dbg !2501
+  call void @llvm.lifetime.end(i64 8, i8* %16) #2, !dbg !2501
+  %17 = bitcast %struct._Py_atomic_address** %atomic_val to i8*, !dbg !2501
+  call void @llvm.lifetime.end(i64 8, i8* %17) #2, !dbg !2501
+  %18 = load i8*, i8** %tmp, !dbg !2502, !tbaa !818
+  %19 = bitcast i8* %18 to %struct._ts*, !dbg !2503
   store %struct._ts* %19, %struct._ts** %tstate, align 8, !dbg !2460, !tbaa !818
-  %20 = bitcast %struct._is** %interp to i8*, !dbg !2506
-  call void @llvm.lifetime.start(i64 8, i8* %20) #2, !dbg !2506
-  call void @llvm.dbg.declare(metadata %struct._is** %interp, metadata !715, metadata !822), !dbg !2507
-  %21 = load %struct._ts*, %struct._ts** %tstate, align 8, !dbg !2508, !tbaa !818
-  %interp5 = getelementptr inbounds %struct._ts, %struct._ts* %21, i32 0, i32 2, !dbg !2509
-  %22 = load %struct._is*, %struct._is** %interp5, align 8, !dbg !2509, !tbaa !1065
-  store %struct._is* %22, %struct._is** %interp, align 8, !dbg !2507, !tbaa !818
-  %23 = load %struct._is*, %struct._is** %interp, align 8, !dbg !2510, !tbaa !818
-  %importlib = getelementptr inbounds %struct._is, %struct._is* %23, i32 0, i32 6, !dbg !2511
-  %24 = load %struct._object*, %struct._object** %importlib, align 8, !dbg !2511, !tbaa !2512
-  %25 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2513, !tbaa !818
-  %call = call %struct._object* (%struct._object*, i8*, i8*, ...) @PyObject_CallMethod(%struct._object* %24, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.18, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.19, i32 0, i32 0), %struct.PyModuleObject* %25), !dbg !2514
-  %26 = bitcast %struct._is** %interp to i8*, !dbg !2515
-  call void @llvm.lifetime.end(i64 8, i8* %26) #2, !dbg !2515
-  %27 = bitcast %struct._ts** %tstate to i8*, !dbg !2515
-  call void @llvm.lifetime.end(i64 8, i8* %27) #2, !dbg !2515
-  ret %struct._object* %call, !dbg !2516
+  %20 = bitcast %struct._is** %interp to i8*, !dbg !2504
+  call void @llvm.lifetime.start(i64 8, i8* %20) #2, !dbg !2504
+  call void @llvm.dbg.declare(metadata %struct._is** %interp, metadata !715, metadata !822), !dbg !2505
+  %21 = load %struct._ts*, %struct._ts** %tstate, align 8, !dbg !2506, !tbaa !818
+  %interp5 = getelementptr inbounds %struct._ts, %struct._ts* %21, i32 0, i32 2, !dbg !2507
+  %22 = load %struct._is*, %struct._is** %interp5, align 8, !dbg !2507, !tbaa !1065
+  store %struct._is* %22, %struct._is** %interp, align 8, !dbg !2505, !tbaa !818
+  %23 = load %struct._is*, %struct._is** %interp, align 8, !dbg !2508, !tbaa !818
+  %importlib = getelementptr inbounds %struct._is, %struct._is* %23, i32 0, i32 6, !dbg !2509
+  %24 = load %struct._object*, %struct._object** %importlib, align 8, !dbg !2509, !tbaa !2510
+  %25 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2511, !tbaa !818
+  %call = call %struct._object* (%struct._object*, i8*, i8*, ...) @PyObject_CallMethod(%struct._object* %24, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.18, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.19, i32 0, i32 0), %struct.PyModuleObject* %25), !dbg !2512
+  %26 = bitcast %struct._is** %interp to i8*, !dbg !2513
+  call void @llvm.lifetime.end(i64 8, i8* %26) #2, !dbg !2513
+  %27 = bitcast %struct._ts** %tstate to i8*, !dbg !2513
+  call void @llvm.lifetime.end(i64 8, i8* %27) #2, !dbg !2513
+  ret %struct._object* %call, !dbg !2514
 }
 
 declare %struct._object* @PyObject_GenericGetAttr(%struct._object*, %struct._object*) #3
@@ -3129,127 +3150,132 @@ entry:
   %cleanup.dest.slot = alloca i32
   %vret = alloca i32, align 4
   store %struct.PyModuleObject* %m, %struct.PyModuleObject** %m.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !737, metadata !822), !dbg !2517
+  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !737, metadata !822), !dbg !2515
   store i32 (%struct._object*, i8*)* %visit, i32 (%struct._object*, i8*)** %visit.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata i32 (%struct._object*, i8*)** %visit.addr, metadata !738, metadata !822), !dbg !2518
+  call void @llvm.dbg.declare(metadata i32 (%struct._object*, i8*)** %visit.addr, metadata !738, metadata !822), !dbg !2516
   store i8* %arg, i8** %arg.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata i8** %arg.addr, metadata !739, metadata !822), !dbg !2519
-  %0 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2520, !tbaa !818
-  %md_def = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %0, i32 0, i32 2, !dbg !2521
-  %1 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def, align 8, !dbg !2521, !tbaa !837
-  %tobool = icmp ne %struct.PyModuleDef* %1, null, !dbg !2520
-  br i1 %tobool, label %land.lhs.true, label %if.end.7, !dbg !2522
+  call void @llvm.dbg.declare(metadata i8** %arg.addr, metadata !739, metadata !822), !dbg !2517
+  %0 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2518, !tbaa !818
+  %md_def = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %0, i32 0, i32 2, !dbg !2519
+  %1 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def, align 8, !dbg !2519, !tbaa !837
+  %tobool = icmp ne %struct.PyModuleDef* %1, null, !dbg !2518
+  br i1 %tobool, label %land.lhs.true, label %if.end.7, !dbg !2520
 
 land.lhs.true:                                    ; preds = %entry
-  %2 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2523, !tbaa !818
-  %md_def1 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %2, i32 0, i32 2, !dbg !2525
-  %3 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def1, align 8, !dbg !2525, !tbaa !837
-  %m_traverse = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %3, i32 0, i32 6, !dbg !2526
-  %4 = load i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)*, i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)** %m_traverse, align 8, !dbg !2526, !tbaa !2527
-  %tobool2 = icmp ne i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)* %4, null, !dbg !2528
-  br i1 %tobool2, label %if.then, label %if.end.7, !dbg !2529
+  %2 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2521, !tbaa !818
+  %md_def1 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %2, i32 0, i32 2, !dbg !2523
+  %3 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def1, align 8, !dbg !2523, !tbaa !837
+  %m_traverse = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %3, i32 0, i32 6, !dbg !2524
+  %4 = load i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)*, i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)** %m_traverse, align 8, !dbg !2524, !tbaa !2525
+  %tobool2 = icmp ne i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)* %4, null, !dbg !2526
+  br i1 %tobool2, label %if.then, label %if.end.7, !dbg !2527
 
 if.then:                                          ; preds = %land.lhs.true
-  %5 = bitcast i32* %res to i8*, !dbg !2530
-  call void @llvm.lifetime.start(i64 4, i8* %5) #2, !dbg !2530
-  call void @llvm.dbg.declare(metadata i32* %res, metadata !740, metadata !822), !dbg !2531
-  %6 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2532, !tbaa !818
-  %md_def3 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %6, i32 0, i32 2, !dbg !2533
-  %7 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def3, align 8, !dbg !2533, !tbaa !837
-  %m_traverse4 = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %7, i32 0, i32 6, !dbg !2534
-  %8 = load i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)*, i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)** %m_traverse4, align 8, !dbg !2534, !tbaa !2527
-  %9 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2535, !tbaa !818
-  %10 = bitcast %struct.PyModuleObject* %9 to %struct._object*, !dbg !2536
-  %11 = load i32 (%struct._object*, i8*)*, i32 (%struct._object*, i8*)** %visit.addr, align 8, !dbg !2537, !tbaa !818
-  %12 = load i8*, i8** %arg.addr, align 8, !dbg !2538, !tbaa !818
-  %call = call i32 %8(%struct._object* %10, i32 (%struct._object*, i8*)* %11, i8* %12), !dbg !2532
-  store i32 %call, i32* %res, align 4, !dbg !2531, !tbaa !1049
-  %13 = load i32, i32* %res, align 4, !dbg !2539, !tbaa !1049
-  %tobool5 = icmp ne i32 %13, 0, !dbg !2539
-  br i1 %tobool5, label %if.then.6, label %if.end, !dbg !2541
+  %5 = bitcast i32* %res to i8*, !dbg !2528
+  call void @llvm.lifetime.start(i64 4, i8* %5) #2, !dbg !2528
+  call void @llvm.dbg.declare(metadata i32* %res, metadata !740, metadata !822), !dbg !2529
+  %6 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2530, !tbaa !818
+  %md_def3 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %6, i32 0, i32 2, !dbg !2531
+  %7 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def3, align 8, !dbg !2531, !tbaa !837
+  %m_traverse4 = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %7, i32 0, i32 6, !dbg !2532
+  %8 = load i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)*, i32 (%struct._object*, i32 (%struct._object*, i8*)*, i8*)** %m_traverse4, align 8, !dbg !2532, !tbaa !2525
+  %9 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2533, !tbaa !818
+  %10 = bitcast %struct.PyModuleObject* %9 to %struct._object*, !dbg !2534
+  %11 = load i32 (%struct._object*, i8*)*, i32 (%struct._object*, i8*)** %visit.addr, align 8, !dbg !2535, !tbaa !818
+  %12 = load i8*, i8** %arg.addr, align 8, !dbg !2536, !tbaa !818
+  %call = call i32 %8(%struct._object* %10, i32 (%struct._object*, i8*)* %11, i8* %12), !dbg !2530
+  store i32 %call, i32* %res, align 4, !dbg !2529, !tbaa !1049
+  %13 = load i32, i32* %res, align 4, !dbg !2537, !tbaa !1049
+  %tobool5 = icmp ne i32 %13, 0, !dbg !2537
+  br i1 %tobool5, label %if.then.6, label %if.end, !dbg !2539
 
 if.then.6:                                        ; preds = %if.then
-  %14 = load i32, i32* %res, align 4, !dbg !2542, !tbaa !1049
-  store i32 %14, i32* %retval, !dbg !2543
+  %14 = load i32, i32* %res, align 4, !dbg !2540, !tbaa !1049
+  store i32 %14, i32* %retval, !dbg !2541
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2543
+  br label %cleanup, !dbg !2541
 
 if.end:                                           ; preds = %if.then
-  store i32 0, i32* %cleanup.dest.slot, !dbg !2544
-  br label %cleanup, !dbg !2544
+  store i32 0, i32* %cleanup.dest.slot, !dbg !2542
+  br label %cleanup, !dbg !2542
 
 cleanup:                                          ; preds = %if.end, %if.then.6
-  %15 = bitcast i32* %res to i8*, !dbg !2545
-  call void @llvm.lifetime.end(i64 4, i8* %15) #2, !dbg !2545
+  %15 = bitcast i32* %res to i8*, !dbg !2543
+  call void @llvm.lifetime.end(i64 4, i8* %15) #2, !dbg !2543
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
-  br label %if.end.7, !dbg !2546
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
+  br label %if.end.7, !dbg !2544
 
 if.end.7:                                         ; preds = %cleanup.cont, %land.lhs.true, %entry
-  br label %do.body, !dbg !2547
+  br label %do.body, !dbg !2545
 
 do.body:                                          ; preds = %if.end.7
-  %16 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2548, !tbaa !818
-  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %16, i32 0, i32 1, !dbg !2550
-  %17 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2550, !tbaa !857
-  %tobool8 = icmp ne %struct._object* %17, null, !dbg !2551
-  br i1 %tobool8, label %if.then.9, label %if.end.18, !dbg !2552
+  %16 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2546, !tbaa !818
+  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %16, i32 0, i32 1, !dbg !2548
+  %17 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2548, !tbaa !857
+  %tobool8 = icmp ne %struct._object* %17, null, !dbg !2549
+  br i1 %tobool8, label %if.then.9, label %if.end.18, !dbg !2550
 
 if.then.9:                                        ; preds = %do.body
-  %18 = bitcast i32* %vret to i8*, !dbg !2553
-  call void @llvm.lifetime.start(i64 4, i8* %18) #2, !dbg !2553
-  call void @llvm.dbg.declare(metadata i32* %vret, metadata !743, metadata !822), !dbg !2555
-  %19 = load i32 (%struct._object*, i8*)*, i32 (%struct._object*, i8*)** %visit.addr, align 8, !dbg !2556, !tbaa !818
-  %20 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2557, !tbaa !818
-  %md_dict10 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %20, i32 0, i32 1, !dbg !2558
-  %21 = load %struct._object*, %struct._object** %md_dict10, align 8, !dbg !2558, !tbaa !857
-  %22 = load i8*, i8** %arg.addr, align 8, !dbg !2559, !tbaa !818
-  %call11 = call i32 %19(%struct._object* %21, i8* %22), !dbg !2556
-  store i32 %call11, i32* %vret, align 4, !dbg !2555, !tbaa !1049
-  %23 = load i32, i32* %vret, align 4, !dbg !2560, !tbaa !1049
-  %tobool12 = icmp ne i32 %23, 0, !dbg !2560
-  br i1 %tobool12, label %if.then.13, label %if.end.14, !dbg !2562
+  %18 = bitcast i32* %vret to i8*, !dbg !2551
+  call void @llvm.lifetime.start(i64 4, i8* %18) #2, !dbg !2551
+  call void @llvm.dbg.declare(metadata i32* %vret, metadata !743, metadata !822), !dbg !2553
+  %19 = load i32 (%struct._object*, i8*)*, i32 (%struct._object*, i8*)** %visit.addr, align 8, !dbg !2554, !tbaa !818
+  %20 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2555, !tbaa !818
+  %md_dict10 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %20, i32 0, i32 1, !dbg !2556
+  %21 = load %struct._object*, %struct._object** %md_dict10, align 8, !dbg !2556, !tbaa !857
+  %22 = load i8*, i8** %arg.addr, align 8, !dbg !2557, !tbaa !818
+  %call11 = call i32 %19(%struct._object* %21, i8* %22), !dbg !2554
+  store i32 %call11, i32* %vret, align 4, !dbg !2553, !tbaa !1049
+  %23 = load i32, i32* %vret, align 4, !dbg !2558, !tbaa !1049
+  %tobool12 = icmp ne i32 %23, 0, !dbg !2558
+  br i1 %tobool12, label %if.then.13, label %if.end.14, !dbg !2560
 
 if.then.13:                                       ; preds = %if.then.9
-  %24 = load i32, i32* %vret, align 4, !dbg !2563, !tbaa !1049
-  store i32 %24, i32* %retval, !dbg !2565
+  %24 = load i32, i32* %vret, align 4, !dbg !2561, !tbaa !1049
+  store i32 %24, i32* %retval, !dbg !2563
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup.15, !dbg !2565
+  br label %cleanup.15, !dbg !2563
 
 if.end.14:                                        ; preds = %if.then.9
-  store i32 0, i32* %cleanup.dest.slot, !dbg !2566
-  br label %cleanup.15, !dbg !2566
+  store i32 0, i32* %cleanup.dest.slot, !dbg !2564
+  br label %cleanup.15, !dbg !2564
 
 cleanup.15:                                       ; preds = %if.end.14, %if.then.13
-  %25 = bitcast i32* %vret to i8*, !dbg !2568
-  call void @llvm.lifetime.end(i64 4, i8* %25) #2, !dbg !2568
+  %25 = bitcast i32* %vret to i8*, !dbg !2566
+  call void @llvm.lifetime.end(i64 4, i8* %25) #2, !dbg !2566
   %cleanup.dest.16 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.16, label %unreachable [
-    i32 0, label %cleanup.cont.17
-    i32 1, label %return
-  ]
+  br label %LeafBlock.2
 
-cleanup.cont.17:                                  ; preds = %cleanup.15
-  br label %if.end.18, !dbg !2571
+LeafBlock.2:                                      ; preds = %cleanup.15
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.16, 1
+  br i1 %SwitchLeaf3, label %return, label %NewDefault.1
+
+NewDefault.1:                                     ; preds = %LeafBlock.2
+  br label %cleanup.cont.17
+
+cleanup.cont.17:                                  ; preds = %NewDefault.1
+  br label %if.end.18, !dbg !2569
 
 if.end.18:                                        ; preds = %cleanup.cont.17, %do.body
-  br label %do.end, !dbg !2572
+  br label %do.end, !dbg !2570
 
 do.end:                                           ; preds = %if.end.18
-  store i32 0, i32* %retval, !dbg !2575
-  br label %return, !dbg !2575
+  store i32 0, i32* %retval, !dbg !2573
+  br label %return, !dbg !2573
 
-return:                                           ; preds = %do.end, %cleanup.15, %cleanup
-  %26 = load i32, i32* %retval, !dbg !2576
-  ret i32 %26, !dbg !2576
-
-unreachable:                                      ; preds = %cleanup.15, %cleanup
-  unreachable
+return:                                           ; preds = %LeafBlock.2, %LeafBlock, %do.end
+  %26 = load i32, i32* %retval, !dbg !2574
+  ret i32 %26, !dbg !2574
 }
 
 ; Function Attrs: nounwind uwtable
@@ -3262,135 +3288,136 @@ entry:
   %_py_tmp = alloca %struct._object*, align 8
   %_py_decref_tmp = alloca %struct._object*, align 8
   store %struct.PyModuleObject* %m, %struct.PyModuleObject** %m.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !751, metadata !822), !dbg !2577
-  %0 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2578, !tbaa !818
-  %md_def = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %0, i32 0, i32 2, !dbg !2579
-  %1 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def, align 8, !dbg !2579, !tbaa !837
-  %tobool = icmp ne %struct.PyModuleDef* %1, null, !dbg !2578
-  br i1 %tobool, label %land.lhs.true, label %if.end.7, !dbg !2580
+  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !751, metadata !822), !dbg !2575
+  %0 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2576, !tbaa !818
+  %md_def = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %0, i32 0, i32 2, !dbg !2577
+  %1 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def, align 8, !dbg !2577, !tbaa !837
+  %tobool = icmp ne %struct.PyModuleDef* %1, null, !dbg !2576
+  br i1 %tobool, label %land.lhs.true, label %if.end.7, !dbg !2578
 
 land.lhs.true:                                    ; preds = %entry
-  %2 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2581, !tbaa !818
-  %md_def1 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %2, i32 0, i32 2, !dbg !2583
-  %3 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def1, align 8, !dbg !2583, !tbaa !837
-  %m_clear = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %3, i32 0, i32 7, !dbg !2584
-  %4 = load i32 (%struct._object*)*, i32 (%struct._object*)** %m_clear, align 8, !dbg !2584, !tbaa !2585
-  %tobool2 = icmp ne i32 (%struct._object*)* %4, null, !dbg !2586
-  br i1 %tobool2, label %if.then, label %if.end.7, !dbg !2587
+  %2 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2579, !tbaa !818
+  %md_def1 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %2, i32 0, i32 2, !dbg !2581
+  %3 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def1, align 8, !dbg !2581, !tbaa !837
+  %m_clear = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %3, i32 0, i32 7, !dbg !2582
+  %4 = load i32 (%struct._object*)*, i32 (%struct._object*)** %m_clear, align 8, !dbg !2582, !tbaa !2583
+  %tobool2 = icmp ne i32 (%struct._object*)* %4, null, !dbg !2584
+  br i1 %tobool2, label %if.then, label %if.end.7, !dbg !2585
 
 if.then:                                          ; preds = %land.lhs.true
-  %5 = bitcast i32* %res to i8*, !dbg !2588
-  call void @llvm.lifetime.start(i64 4, i8* %5) #2, !dbg !2588
-  call void @llvm.dbg.declare(metadata i32* %res, metadata !752, metadata !822), !dbg !2589
-  %6 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2590, !tbaa !818
-  %md_def3 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %6, i32 0, i32 2, !dbg !2591
-  %7 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def3, align 8, !dbg !2591, !tbaa !837
-  %m_clear4 = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %7, i32 0, i32 7, !dbg !2592
-  %8 = load i32 (%struct._object*)*, i32 (%struct._object*)** %m_clear4, align 8, !dbg !2592, !tbaa !2585
-  %9 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2593, !tbaa !818
-  %10 = bitcast %struct.PyModuleObject* %9 to %struct._object*, !dbg !2594
-  %call = call i32 %8(%struct._object* %10), !dbg !2590
-  store i32 %call, i32* %res, align 4, !dbg !2589, !tbaa !1049
-  %11 = load i32, i32* %res, align 4, !dbg !2595, !tbaa !1049
-  %tobool5 = icmp ne i32 %11, 0, !dbg !2595
-  br i1 %tobool5, label %if.then.6, label %if.end, !dbg !2597
+  %5 = bitcast i32* %res to i8*, !dbg !2586
+  call void @llvm.lifetime.start(i64 4, i8* %5) #2, !dbg !2586
+  call void @llvm.dbg.declare(metadata i32* %res, metadata !752, metadata !822), !dbg !2587
+  %6 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2588, !tbaa !818
+  %md_def3 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %6, i32 0, i32 2, !dbg !2589
+  %7 = load %struct.PyModuleDef*, %struct.PyModuleDef** %md_def3, align 8, !dbg !2589, !tbaa !837
+  %m_clear4 = getelementptr inbounds %struct.PyModuleDef, %struct.PyModuleDef* %7, i32 0, i32 7, !dbg !2590
+  %8 = load i32 (%struct._object*)*, i32 (%struct._object*)** %m_clear4, align 8, !dbg !2590, !tbaa !2583
+  %9 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2591, !tbaa !818
+  %10 = bitcast %struct.PyModuleObject* %9 to %struct._object*, !dbg !2592
+  %call = call i32 %8(%struct._object* %10), !dbg !2588
+  store i32 %call, i32* %res, align 4, !dbg !2587, !tbaa !1049
+  %11 = load i32, i32* %res, align 4, !dbg !2593, !tbaa !1049
+  %tobool5 = icmp ne i32 %11, 0, !dbg !2593
+  br i1 %tobool5, label %if.then.6, label %if.end, !dbg !2595
 
 if.then.6:                                        ; preds = %if.then
-  %12 = load i32, i32* %res, align 4, !dbg !2598, !tbaa !1049
-  store i32 %12, i32* %retval, !dbg !2599
+  %12 = load i32, i32* %res, align 4, !dbg !2596, !tbaa !1049
+  store i32 %12, i32* %retval, !dbg !2597
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2599
+  br label %cleanup, !dbg !2597
 
 if.end:                                           ; preds = %if.then
-  store i32 0, i32* %cleanup.dest.slot, !dbg !2600
-  br label %cleanup, !dbg !2600
+  store i32 0, i32* %cleanup.dest.slot, !dbg !2598
+  br label %cleanup, !dbg !2598
 
 cleanup:                                          ; preds = %if.end, %if.then.6
-  %13 = bitcast i32* %res to i8*, !dbg !2601
-  call void @llvm.lifetime.end(i64 4, i8* %13) #2, !dbg !2601
+  %13 = bitcast i32* %res to i8*, !dbg !2599
+  call void @llvm.lifetime.end(i64 4, i8* %13) #2, !dbg !2599
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
-  br label %if.end.7, !dbg !2602
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
+  br label %if.end.7, !dbg !2600
 
 if.end.7:                                         ; preds = %cleanup.cont, %land.lhs.true, %entry
-  br label %do.body, !dbg !2603
+  br label %do.body, !dbg !2601
 
 do.body:                                          ; preds = %if.end.7
-  %14 = bitcast %struct._object** %_py_tmp to i8*, !dbg !2604
-  call void @llvm.lifetime.start(i64 8, i8* %14) #2, !dbg !2604
-  call void @llvm.dbg.declare(metadata %struct._object** %_py_tmp, metadata !755, metadata !822), !dbg !2606
-  %15 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2607, !tbaa !818
-  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %15, i32 0, i32 1, !dbg !2608
-  %16 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2608, !tbaa !857
-  store %struct._object* %16, %struct._object** %_py_tmp, align 8, !dbg !2606, !tbaa !818
-  %17 = load %struct._object*, %struct._object** %_py_tmp, align 8, !dbg !2609, !tbaa !818
-  %cmp = icmp ne %struct._object* %17, null, !dbg !2610
-  br i1 %cmp, label %if.then.8, label %if.end.14, !dbg !2611
+  %14 = bitcast %struct._object** %_py_tmp to i8*, !dbg !2602
+  call void @llvm.lifetime.start(i64 8, i8* %14) #2, !dbg !2602
+  call void @llvm.dbg.declare(metadata %struct._object** %_py_tmp, metadata !755, metadata !822), !dbg !2604
+  %15 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2605, !tbaa !818
+  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %15, i32 0, i32 1, !dbg !2606
+  %16 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2606, !tbaa !857
+  store %struct._object* %16, %struct._object** %_py_tmp, align 8, !dbg !2604, !tbaa !818
+  %17 = load %struct._object*, %struct._object** %_py_tmp, align 8, !dbg !2607, !tbaa !818
+  %cmp = icmp ne %struct._object* %17, null, !dbg !2608
+  br i1 %cmp, label %if.then.8, label %if.end.14, !dbg !2609
 
 if.then.8:                                        ; preds = %do.body
-  %18 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2612, !tbaa !818
-  %md_dict9 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %18, i32 0, i32 1, !dbg !2614
-  store %struct._object* null, %struct._object** %md_dict9, align 8, !dbg !2615, !tbaa !857
-  br label %do.body.10, !dbg !2616
+  %18 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2610, !tbaa !818
+  %md_dict9 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %18, i32 0, i32 1, !dbg !2612
+  store %struct._object* null, %struct._object** %md_dict9, align 8, !dbg !2613, !tbaa !857
+  br label %do.body.10, !dbg !2614
 
 do.body.10:                                       ; preds = %if.then.8
-  %19 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2617
-  call void @llvm.lifetime.start(i64 8, i8* %19) #2, !dbg !2617
-  call void @llvm.dbg.declare(metadata %struct._object** %_py_decref_tmp, metadata !757, metadata !822), !dbg !2619
-  %20 = load %struct._object*, %struct._object** %_py_tmp, align 8, !dbg !2620, !tbaa !818
-  store %struct._object* %20, %struct._object** %_py_decref_tmp, align 8, !dbg !2619, !tbaa !818
-  %21 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2621, !tbaa !818
-  %ob_refcnt = getelementptr inbounds %struct._object, %struct._object* %21, i32 0, i32 0, !dbg !2623
-  %22 = load i64, i64* %ob_refcnt, align 8, !dbg !2624, !tbaa !882
-  %dec = add i64 %22, -1, !dbg !2624
-  store i64 %dec, i64* %ob_refcnt, align 8, !dbg !2624, !tbaa !882
-  %cmp11 = icmp ne i64 %dec, 0, !dbg !2625
-  br i1 %cmp11, label %if.then.12, label %if.else, !dbg !2626
+  %19 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2615
+  call void @llvm.lifetime.start(i64 8, i8* %19) #2, !dbg !2615
+  call void @llvm.dbg.declare(metadata %struct._object** %_py_decref_tmp, metadata !757, metadata !822), !dbg !2617
+  %20 = load %struct._object*, %struct._object** %_py_tmp, align 8, !dbg !2618, !tbaa !818
+  store %struct._object* %20, %struct._object** %_py_decref_tmp, align 8, !dbg !2617, !tbaa !818
+  %21 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2619, !tbaa !818
+  %ob_refcnt = getelementptr inbounds %struct._object, %struct._object* %21, i32 0, i32 0, !dbg !2621
+  %22 = load i64, i64* %ob_refcnt, align 8, !dbg !2622, !tbaa !882
+  %dec = add i64 %22, -1, !dbg !2622
+  store i64 %dec, i64* %ob_refcnt, align 8, !dbg !2622, !tbaa !882
+  %cmp11 = icmp ne i64 %dec, 0, !dbg !2623
+  br i1 %cmp11, label %if.then.12, label %if.else, !dbg !2624
 
 if.then.12:                                       ; preds = %do.body.10
-  br label %if.end.13, !dbg !2627
+  br label %if.end.13, !dbg !2625
 
 if.else:                                          ; preds = %do.body.10
-  %23 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2629, !tbaa !818
-  %ob_type = getelementptr inbounds %struct._object, %struct._object* %23, i32 0, i32 1, !dbg !2631
-  %24 = load %struct._typeobject*, %struct._typeobject** %ob_type, align 8, !dbg !2631, !tbaa !890
-  %tp_dealloc = getelementptr inbounds %struct._typeobject, %struct._typeobject* %24, i32 0, i32 4, !dbg !2632
-  %25 = load void (%struct._object*)*, void (%struct._object*)** %tp_dealloc, align 8, !dbg !2632, !tbaa !892
-  %26 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2633, !tbaa !818
-  call void %25(%struct._object* %26), !dbg !2634
+  %23 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2627, !tbaa !818
+  %ob_type = getelementptr inbounds %struct._object, %struct._object* %23, i32 0, i32 1, !dbg !2629
+  %24 = load %struct._typeobject*, %struct._typeobject** %ob_type, align 8, !dbg !2629, !tbaa !890
+  %tp_dealloc = getelementptr inbounds %struct._typeobject, %struct._typeobject* %24, i32 0, i32 4, !dbg !2630
+  %25 = load void (%struct._object*)*, void (%struct._object*)** %tp_dealloc, align 8, !dbg !2630, !tbaa !892
+  %26 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2631, !tbaa !818
+  call void %25(%struct._object* %26), !dbg !2632
   br label %if.end.13
 
 if.end.13:                                        ; preds = %if.else, %if.then.12
-  %27 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2635
-  call void @llvm.lifetime.end(i64 8, i8* %27) #2, !dbg !2635
-  br label %do.cond, !dbg !2637
+  %27 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2633
+  call void @llvm.lifetime.end(i64 8, i8* %27) #2, !dbg !2633
+  br label %do.cond, !dbg !2635
 
 do.cond:                                          ; preds = %if.end.13
-  br label %do.end, !dbg !2638
+  br label %do.end, !dbg !2636
 
 do.end:                                           ; preds = %do.cond
-  br label %if.end.14, !dbg !2640
+  br label %if.end.14, !dbg !2638
 
 if.end.14:                                        ; preds = %do.end, %do.body
-  %28 = bitcast %struct._object** %_py_tmp to i8*, !dbg !2642
-  call void @llvm.lifetime.end(i64 8, i8* %28) #2, !dbg !2642
-  br label %do.end.16, !dbg !2645
+  %28 = bitcast %struct._object** %_py_tmp to i8*, !dbg !2640
+  call void @llvm.lifetime.end(i64 8, i8* %28) #2, !dbg !2640
+  br label %do.end.16, !dbg !2643
 
 do.end.16:                                        ; preds = %if.end.14
-  store i32 0, i32* %retval, !dbg !2646
-  br label %return, !dbg !2646
+  store i32 0, i32* %retval, !dbg !2644
+  br label %return, !dbg !2644
 
-return:                                           ; preds = %do.end.16, %cleanup
-  %29 = load i32, i32* %retval, !dbg !2647
-  ret i32 %29, !dbg !2647
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
+return:                                           ; preds = %LeafBlock, %do.end.16
+  %29 = load i32, i32* %retval, !dbg !2645
+  ret i32 %29, !dbg !2645
 }
 
 ; Function Attrs: nounwind uwtable
@@ -3405,89 +3432,89 @@ entry:
   %doc = alloca %struct._object*, align 8
   %cleanup.dest.slot = alloca i32
   store %struct.PyModuleObject* %m, %struct.PyModuleObject** %m.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !781, metadata !822), !dbg !2648
+  call void @llvm.dbg.declare(metadata %struct.PyModuleObject** %m.addr, metadata !781, metadata !822), !dbg !2646
   store %struct._object* %args, %struct._object** %args.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct._object** %args.addr, metadata !782, metadata !822), !dbg !2649
+  call void @llvm.dbg.declare(metadata %struct._object** %args.addr, metadata !782, metadata !822), !dbg !2647
   store %struct._object* %kwds, %struct._object** %kwds.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct._object** %kwds.addr, metadata !783, metadata !822), !dbg !2650
-  %0 = bitcast %struct._object** %dict to i8*, !dbg !2651
-  call void @llvm.lifetime.start(i64 8, i8* %0) #2, !dbg !2651
-  call void @llvm.dbg.declare(metadata %struct._object** %dict, metadata !784, metadata !822), !dbg !2652
-  %1 = bitcast %struct._object** %name to i8*, !dbg !2651
-  call void @llvm.lifetime.start(i64 8, i8* %1) #2, !dbg !2651
-  call void @llvm.dbg.declare(metadata %struct._object** %name, metadata !785, metadata !822), !dbg !2653
-  store %struct._object* @_Py_NoneStruct, %struct._object** %name, align 8, !dbg !2653, !tbaa !818
-  %2 = bitcast %struct._object** %doc to i8*, !dbg !2651
-  call void @llvm.lifetime.start(i64 8, i8* %2) #2, !dbg !2651
-  call void @llvm.dbg.declare(metadata %struct._object** %doc, metadata !786, metadata !822), !dbg !2654
-  store %struct._object* @_Py_NoneStruct, %struct._object** %doc, align 8, !dbg !2654, !tbaa !818
-  %3 = load %struct._object*, %struct._object** %args.addr, align 8, !dbg !2655, !tbaa !818
-  %4 = load %struct._object*, %struct._object** %kwds.addr, align 8, !dbg !2657, !tbaa !818
-  %call = call i32 (%struct._object*, %struct._object*, i8*, i8**, ...) @PyArg_ParseTupleAndKeywords(%struct._object* %3, %struct._object* %4, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.26, i32 0, i32 0), i8** getelementptr inbounds ([3 x i8*], [3 x i8*]* @module_init.kwlist, i32 0, i32 0), %struct._object** %name, %struct._object** %doc), !dbg !2658
-  %tobool = icmp ne i32 %call, 0, !dbg !2658
-  br i1 %tobool, label %if.end, label %if.then, !dbg !2659
+  call void @llvm.dbg.declare(metadata %struct._object** %kwds.addr, metadata !783, metadata !822), !dbg !2648
+  %0 = bitcast %struct._object** %dict to i8*, !dbg !2649
+  call void @llvm.lifetime.start(i64 8, i8* %0) #2, !dbg !2649
+  call void @llvm.dbg.declare(metadata %struct._object** %dict, metadata !784, metadata !822), !dbg !2650
+  %1 = bitcast %struct._object** %name to i8*, !dbg !2649
+  call void @llvm.lifetime.start(i64 8, i8* %1) #2, !dbg !2649
+  call void @llvm.dbg.declare(metadata %struct._object** %name, metadata !785, metadata !822), !dbg !2651
+  store %struct._object* @_Py_NoneStruct, %struct._object** %name, align 8, !dbg !2651, !tbaa !818
+  %2 = bitcast %struct._object** %doc to i8*, !dbg !2649
+  call void @llvm.lifetime.start(i64 8, i8* %2) #2, !dbg !2649
+  call void @llvm.dbg.declare(metadata %struct._object** %doc, metadata !786, metadata !822), !dbg !2652
+  store %struct._object* @_Py_NoneStruct, %struct._object** %doc, align 8, !dbg !2652, !tbaa !818
+  %3 = load %struct._object*, %struct._object** %args.addr, align 8, !dbg !2653, !tbaa !818
+  %4 = load %struct._object*, %struct._object** %kwds.addr, align 8, !dbg !2655, !tbaa !818
+  %call = call i32 (%struct._object*, %struct._object*, i8*, i8**, ...) @PyArg_ParseTupleAndKeywords(%struct._object* %3, %struct._object* %4, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.26, i32 0, i32 0), i8** getelementptr inbounds ([3 x i8*], [3 x i8*]* @module_init.kwlist, i32 0, i32 0), %struct._object** %name, %struct._object** %doc), !dbg !2656
+  %tobool = icmp ne i32 %call, 0, !dbg !2656
+  br i1 %tobool, label %if.end, label %if.then, !dbg !2657
 
 if.then:                                          ; preds = %entry
-  store i32 -1, i32* %retval, !dbg !2660
+  store i32 -1, i32* %retval, !dbg !2658
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2660
+  br label %cleanup, !dbg !2658
 
 if.end:                                           ; preds = %entry
-  %5 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2661, !tbaa !818
-  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %5, i32 0, i32 1, !dbg !2662
-  %6 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2662, !tbaa !857
-  store %struct._object* %6, %struct._object** %dict, align 8, !dbg !2663, !tbaa !818
-  %7 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2664, !tbaa !818
-  %cmp = icmp eq %struct._object* %7, null, !dbg !2666
-  br i1 %cmp, label %if.then.1, label %if.end.7, !dbg !2667
+  %5 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2659, !tbaa !818
+  %md_dict = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %5, i32 0, i32 1, !dbg !2660
+  %6 = load %struct._object*, %struct._object** %md_dict, align 8, !dbg !2660, !tbaa !857
+  store %struct._object* %6, %struct._object** %dict, align 8, !dbg !2661, !tbaa !818
+  %7 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2662, !tbaa !818
+  %cmp = icmp eq %struct._object* %7, null, !dbg !2664
+  br i1 %cmp, label %if.then.1, label %if.end.7, !dbg !2665
 
 if.then.1:                                        ; preds = %if.end
-  %call2 = call %struct._object* @PyDict_New(), !dbg !2668
-  store %struct._object* %call2, %struct._object** %dict, align 8, !dbg !2670, !tbaa !818
-  %8 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2671, !tbaa !818
-  %cmp3 = icmp eq %struct._object* %8, null, !dbg !2673
-  br i1 %cmp3, label %if.then.4, label %if.end.5, !dbg !2674
+  %call2 = call %struct._object* @PyDict_New(), !dbg !2666
+  store %struct._object* %call2, %struct._object** %dict, align 8, !dbg !2668, !tbaa !818
+  %8 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2669, !tbaa !818
+  %cmp3 = icmp eq %struct._object* %8, null, !dbg !2671
+  br i1 %cmp3, label %if.then.4, label %if.end.5, !dbg !2672
 
 if.then.4:                                        ; preds = %if.then.1
-  store i32 -1, i32* %retval, !dbg !2675
+  store i32 -1, i32* %retval, !dbg !2673
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2675
+  br label %cleanup, !dbg !2673
 
 if.end.5:                                         ; preds = %if.then.1
-  %9 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2676, !tbaa !818
-  %10 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2677, !tbaa !818
-  %md_dict6 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %10, i32 0, i32 1, !dbg !2678
-  store %struct._object* %9, %struct._object** %md_dict6, align 8, !dbg !2679, !tbaa !857
-  br label %if.end.7, !dbg !2680
+  %9 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2674, !tbaa !818
+  %10 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2675, !tbaa !818
+  %md_dict6 = getelementptr inbounds %struct.PyModuleObject, %struct.PyModuleObject* %10, i32 0, i32 1, !dbg !2676
+  store %struct._object* %9, %struct._object** %md_dict6, align 8, !dbg !2677, !tbaa !857
+  br label %if.end.7, !dbg !2678
 
 if.end.7:                                         ; preds = %if.end.5, %if.end
-  %11 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2681, !tbaa !818
-  %12 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2683, !tbaa !818
-  %13 = load %struct._object*, %struct._object** %name, align 8, !dbg !2684, !tbaa !818
-  %14 = load %struct._object*, %struct._object** %doc, align 8, !dbg !2685, !tbaa !818
-  %call8 = call i32 @module_init_dict(%struct.PyModuleObject* %11, %struct._object* %12, %struct._object* %13, %struct._object* %14), !dbg !2686
-  %cmp9 = icmp slt i32 %call8, 0, !dbg !2687
-  br i1 %cmp9, label %if.then.10, label %if.end.11, !dbg !2688
+  %11 = load %struct.PyModuleObject*, %struct.PyModuleObject** %m.addr, align 8, !dbg !2679, !tbaa !818
+  %12 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2681, !tbaa !818
+  %13 = load %struct._object*, %struct._object** %name, align 8, !dbg !2682, !tbaa !818
+  %14 = load %struct._object*, %struct._object** %doc, align 8, !dbg !2683, !tbaa !818
+  %call8 = call i32 @module_init_dict(%struct.PyModuleObject* %11, %struct._object* %12, %struct._object* %13, %struct._object* %14), !dbg !2684
+  %cmp9 = icmp slt i32 %call8, 0, !dbg !2685
+  br i1 %cmp9, label %if.then.10, label %if.end.11, !dbg !2686
 
 if.then.10:                                       ; preds = %if.end.7
-  store i32 -1, i32* %retval, !dbg !2689
+  store i32 -1, i32* %retval, !dbg !2687
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2689
+  br label %cleanup, !dbg !2687
 
 if.end.11:                                        ; preds = %if.end.7
-  store i32 0, i32* %retval, !dbg !2690
+  store i32 0, i32* %retval, !dbg !2688
   store i32 1, i32* %cleanup.dest.slot
-  br label %cleanup, !dbg !2690
+  br label %cleanup, !dbg !2688
 
 cleanup:                                          ; preds = %if.end.11, %if.then.10, %if.then.4, %if.then
-  %15 = bitcast %struct._object** %doc to i8*, !dbg !2691
-  call void @llvm.lifetime.end(i64 8, i8* %15) #2, !dbg !2691
-  %16 = bitcast %struct._object** %name to i8*, !dbg !2691
-  call void @llvm.lifetime.end(i64 8, i8* %16) #2, !dbg !2691
-  %17 = bitcast %struct._object** %dict to i8*, !dbg !2691
-  call void @llvm.lifetime.end(i64 8, i8* %17) #2, !dbg !2691
-  %18 = load i32, i32* %retval, !dbg !2691
-  ret i32 %18, !dbg !2691
+  %15 = bitcast %struct._object** %doc to i8*, !dbg !2689
+  call void @llvm.lifetime.end(i64 8, i8* %15) #2, !dbg !2689
+  %16 = bitcast %struct._object** %name to i8*, !dbg !2689
+  call void @llvm.lifetime.end(i64 8, i8* %16) #2, !dbg !2689
+  %17 = bitcast %struct._object** %dict to i8*, !dbg !2689
+  call void @llvm.lifetime.end(i64 8, i8* %17) #2, !dbg !2689
+  %18 = load i32, i32* %retval, !dbg !2689
+  ret i32 %18, !dbg !2689
 }
 
 declare %struct._object* @PyType_GenericAlloc(%struct._typeobject*, i64) #3
@@ -3510,43 +3537,71 @@ entry:
   %address.addr = alloca i8*, align 8
   %order.addr = alloca i32, align 4
   store i8* %address, i8** %address.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata i8** %address.addr, metadata !723, metadata !822), !dbg !2692
+  call void @llvm.dbg.declare(metadata i8** %address.addr, metadata !723, metadata !822), !dbg !2690
   store i32 %order, i32* %order.addr, align 4, !tbaa !1960
-  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !724, metadata !822), !dbg !2693
-  %0 = load i8*, i8** %address.addr, align 8, !dbg !2694, !tbaa !818
-  %1 = load i32, i32* %order.addr, align 4, !dbg !2695, !tbaa !1960
-  switch i32 %1, label %sw.epilog [
-    i32 2, label %sw.bb
-    i32 3, label %sw.bb
-    i32 4, label %sw.bb
-    i32 0, label %sw.bb.1
-    i32 1, label %sw.bb.1
-  ], !dbg !2696
+  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !724, metadata !822), !dbg !2691
+  %0 = load i8*, i8** %address.addr, align 8, !dbg !2692, !tbaa !818
+  %1 = load i32, i32* %order.addr, align 4, !dbg !2693, !tbaa !1960
+  br label %NodeBlock
 
-sw.bb:                                            ; preds = %entry, %entry, %entry
-  br label %sw.epilog, !dbg !2697
+NodeBlock:                                        ; preds = %entry
+  %Pivot = icmp slt i32 %1, 2
+  br i1 %Pivot, label %LeafBlock, label %LeafBlock.1
 
-sw.bb.1:                                          ; preds = %entry, %entry
-  br label %sw.epilog, !dbg !2699
+LeafBlock.1:                                      ; preds = %NodeBlock
+  %.off = add i32 %1, -2
+  %SwitchLeaf2 = icmp ule i32 %.off, 2
+  br i1 %SwitchLeaf2, label %sw.bb, label %NewDefault
 
-sw.epilog:                                        ; preds = %entry, %sw.bb.1, %sw.bb
-  %2 = load i32, i32* %order.addr, align 4, !dbg !2700, !tbaa !1960
-  switch i32 %2, label %sw.epilog.4 [
-    i32 1, label %sw.bb.2
-    i32 3, label %sw.bb.2
-    i32 4, label %sw.bb.2
-    i32 0, label %sw.bb.3
-    i32 2, label %sw.bb.3
-  ], !dbg !2701
+LeafBlock:                                        ; preds = %NodeBlock
+  %SwitchLeaf = icmp ule i32 %1, 1
+  br i1 %SwitchLeaf, label %sw.bb.1, label %NewDefault
 
-sw.bb.2:                                          ; preds = %sw.epilog, %sw.epilog, %sw.epilog
-  br label %sw.epilog.4, !dbg !2702
+sw.bb:                                            ; preds = %LeafBlock.1
+  br label %sw.epilog, !dbg !2694
 
-sw.bb.3:                                          ; preds = %sw.epilog, %sw.epilog
-  br label %sw.epilog.4, !dbg !2704
+sw.bb.1:                                          ; preds = %LeafBlock
+  br label %sw.epilog, !dbg !2696
 
-sw.epilog.4:                                      ; preds = %sw.epilog, %sw.bb.3, %sw.bb.2
-  ret void, !dbg !2705
+NewDefault:                                       ; preds = %LeafBlock.1, %LeafBlock
+  br label %sw.epilog
+
+sw.epilog:                                        ; preds = %NewDefault, %sw.bb.1, %sw.bb
+  %2 = load i32, i32* %order.addr, align 4, !dbg !2697, !tbaa !1960
+  br label %NodeBlock.13
+
+NodeBlock.13:                                     ; preds = %sw.epilog
+  %Pivot.14 = icmp slt i32 %2, 2
+  br i1 %Pivot.14, label %NodeBlock.6, label %NodeBlock.11
+
+NodeBlock.11:                                     ; preds = %NodeBlock.13
+  %Pivot.12 = icmp slt i32 %2, 3
+  br i1 %Pivot.12, label %sw.bb.3, label %LeafBlock.8
+
+LeafBlock.8:                                      ; preds = %NodeBlock.11
+  %.off.9 = add i32 %2, -3
+  %SwitchLeaf10 = icmp ule i32 %.off.9, 1
+  br i1 %SwitchLeaf10, label %sw.bb.2, label %NewDefault.3
+
+NodeBlock.6:                                      ; preds = %NodeBlock.13
+  %Pivot.7 = icmp slt i32 %2, 1
+  br i1 %Pivot.7, label %LeafBlock.4, label %sw.bb.2
+
+LeafBlock.4:                                      ; preds = %NodeBlock.6
+  %SwitchLeaf5 = icmp eq i32 %2, 0
+  br i1 %SwitchLeaf5, label %sw.bb.3, label %NewDefault.3
+
+sw.bb.2:                                          ; preds = %LeafBlock.8, %NodeBlock.6
+  br label %sw.epilog.4, !dbg !2698
+
+sw.bb.3:                                          ; preds = %NodeBlock.11, %LeafBlock.4
+  br label %sw.epilog.4, !dbg !2700
+
+NewDefault.3:                                     ; preds = %LeafBlock.8, %LeafBlock.4
+  br label %sw.epilog.4
+
+sw.epilog.4:                                      ; preds = %NewDefault.3, %sw.bb.3, %sw.bb.2
+  ret void, !dbg !2701
 }
 
 ; Function Attrs: inlinehint nounwind uwtable
@@ -3554,17 +3609,17 @@ define internal void @_Py_atomic_thread_fence(i32 %order) #7 {
 entry:
   %order.addr = alloca i32, align 4
   store i32 %order, i32* %order.addr, align 4, !tbaa !1960
-  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !729, metadata !822), !dbg !2706
-  %0 = load i32, i32* %order.addr, align 4, !dbg !2707, !tbaa !1960
-  %cmp = icmp ne i32 %0, 0, !dbg !2709
-  br i1 %cmp, label %if.then, label %if.end, !dbg !2710
+  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !729, metadata !822), !dbg !2702
+  %0 = load i32, i32* %order.addr, align 4, !dbg !2703, !tbaa !1960
+  %cmp = icmp ne i32 %0, 0, !dbg !2705
+  br i1 %cmp, label %if.then, label %if.end, !dbg !2706
 
 if.then:                                          ; preds = %entry
-  call void asm sideeffect "mfence", "~{memory},~{dirflag},~{fpsr},~{flags}"() #2, !dbg !2711, !srcloc !2712
-  br label %if.end, !dbg !2711
+  call void asm sideeffect "mfence", "~{memory},~{dirflag},~{fpsr},~{flags}"() #2, !dbg !2707, !srcloc !2708
+  br label %if.end, !dbg !2707
 
 if.end:                                           ; preds = %if.then, %entry
-  ret void, !dbg !2713
+  ret void, !dbg !2709
 }
 
 ; Function Attrs: inlinehint nounwind uwtable
@@ -3572,17 +3627,17 @@ define internal void @_Py_atomic_signal_fence(i32 %order) #7 {
 entry:
   %order.addr = alloca i32, align 4
   store i32 %order, i32* %order.addr, align 4, !tbaa !1960
-  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !732, metadata !822), !dbg !2714
-  %0 = load i32, i32* %order.addr, align 4, !dbg !2715, !tbaa !1960
-  %cmp = icmp ne i32 %0, 0, !dbg !2717
-  br i1 %cmp, label %if.then, label %if.end, !dbg !2718
+  call void @llvm.dbg.declare(metadata i32* %order.addr, metadata !732, metadata !822), !dbg !2710
+  %0 = load i32, i32* %order.addr, align 4, !dbg !2711, !tbaa !1960
+  %cmp = icmp ne i32 %0, 0, !dbg !2713
+  br i1 %cmp, label %if.then, label %if.end, !dbg !2714
 
 if.then:                                          ; preds = %entry
-  call void asm sideeffect "", "~{memory},~{dirflag},~{fpsr},~{flags}"() #2, !dbg !2719, !srcloc !2720
-  br label %if.end, !dbg !2719
+  call void asm sideeffect "", "~{memory},~{dirflag},~{fpsr},~{flags}"() #2, !dbg !2715, !srcloc !2716
+  br label %if.end, !dbg !2715
 
 if.end:                                           ; preds = %if.then, %entry
-  ret void, !dbg !2721
+  ret void, !dbg !2717
 }
 
 declare %struct._object* @PyObject_CallMethod(%struct._object*, i8*, i8*, ...) #3
@@ -3598,133 +3653,133 @@ entry:
   %_py_xdecref_tmp = alloca %struct._object*, align 8
   %_py_decref_tmp = alloca %struct._object*, align 8
   store %struct._object* %self, %struct._object** %self.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct._object** %self.addr, metadata !763, metadata !822), !dbg !2722
+  call void @llvm.dbg.declare(metadata %struct._object** %self.addr, metadata !763, metadata !822), !dbg !2718
   store %struct._object* %args, %struct._object** %args.addr, align 8, !tbaa !818
-  call void @llvm.dbg.declare(metadata %struct._object** %args.addr, metadata !764, metadata !822), !dbg !2723
-  %0 = bitcast %struct._object** %result to i8*, !dbg !2724
-  call void @llvm.lifetime.start(i64 8, i8* %0) #2, !dbg !2724
-  call void @llvm.dbg.declare(metadata %struct._object** %result, metadata !765, metadata !822), !dbg !2725
-  store %struct._object* null, %struct._object** %result, align 8, !dbg !2725, !tbaa !818
-  %1 = bitcast %struct._object** %dict to i8*, !dbg !2726
-  call void @llvm.lifetime.start(i64 8, i8* %1) #2, !dbg !2726
-  call void @llvm.dbg.declare(metadata %struct._object** %dict, metadata !766, metadata !822), !dbg !2727
-  %2 = load %struct._object*, %struct._object** %self.addr, align 8, !dbg !2728, !tbaa !818
-  %call = call %struct._object* @_PyObject_GetAttrId(%struct._object* %2, %struct._Py_Identifier* @module_dir.PyId___dict__), !dbg !2729
-  store %struct._object* %call, %struct._object** %dict, align 8, !dbg !2727, !tbaa !818
-  %3 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2730, !tbaa !818
-  %cmp = icmp ne %struct._object* %3, null, !dbg !2731
-  br i1 %cmp, label %if.then, label %if.end.8, !dbg !2732
+  call void @llvm.dbg.declare(metadata %struct._object** %args.addr, metadata !764, metadata !822), !dbg !2719
+  %0 = bitcast %struct._object** %result to i8*, !dbg !2720
+  call void @llvm.lifetime.start(i64 8, i8* %0) #2, !dbg !2720
+  call void @llvm.dbg.declare(metadata %struct._object** %result, metadata !765, metadata !822), !dbg !2721
+  store %struct._object* null, %struct._object** %result, align 8, !dbg !2721, !tbaa !818
+  %1 = bitcast %struct._object** %dict to i8*, !dbg !2722
+  call void @llvm.lifetime.start(i64 8, i8* %1) #2, !dbg !2722
+  call void @llvm.dbg.declare(metadata %struct._object** %dict, metadata !766, metadata !822), !dbg !2723
+  %2 = load %struct._object*, %struct._object** %self.addr, align 8, !dbg !2724, !tbaa !818
+  %call = call %struct._object* @_PyObject_GetAttrId(%struct._object* %2, %struct._Py_Identifier* @module_dir.PyId___dict__), !dbg !2725
+  store %struct._object* %call, %struct._object** %dict, align 8, !dbg !2723, !tbaa !818
+  %3 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2726, !tbaa !818
+  %cmp = icmp ne %struct._object* %3, null, !dbg !2727
+  br i1 %cmp, label %if.then, label %if.end.8, !dbg !2728
 
 if.then:                                          ; preds = %entry
-  %4 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2733, !tbaa !818
-  %ob_type = getelementptr inbounds %struct._object, %struct._object* %4, i32 0, i32 1, !dbg !2734
-  %5 = load %struct._typeobject*, %struct._typeobject** %ob_type, align 8, !dbg !2734, !tbaa !890
-  %tp_flags = getelementptr inbounds %struct._typeobject, %struct._typeobject* %5, i32 0, i32 19, !dbg !2735
-  %6 = load i64, i64* %tp_flags, align 8, !dbg !2735, !tbaa !1706
-  %and = and i64 %6, 536870912, !dbg !2736
-  %cmp1 = icmp ne i64 %and, 0, !dbg !2737
-  br i1 %cmp1, label %if.then.2, label %if.else, !dbg !2738
+  %4 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2729, !tbaa !818
+  %ob_type = getelementptr inbounds %struct._object, %struct._object* %4, i32 0, i32 1, !dbg !2730
+  %5 = load %struct._typeobject*, %struct._typeobject** %ob_type, align 8, !dbg !2730, !tbaa !890
+  %tp_flags = getelementptr inbounds %struct._typeobject, %struct._typeobject* %5, i32 0, i32 19, !dbg !2731
+  %6 = load i64, i64* %tp_flags, align 8, !dbg !2731, !tbaa !1706
+  %and = and i64 %6, 536870912, !dbg !2732
+  %cmp1 = icmp ne i64 %and, 0, !dbg !2733
+  br i1 %cmp1, label %if.then.2, label %if.else, !dbg !2734
 
 if.then.2:                                        ; preds = %if.then
-  %7 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2739, !tbaa !818
-  %call3 = call %struct._object* @PyDict_Keys(%struct._object* %7), !dbg !2740
-  store %struct._object* %call3, %struct._object** %result, align 8, !dbg !2741, !tbaa !818
-  br label %if.end.7, !dbg !2742
+  %7 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2735, !tbaa !818
+  %call3 = call %struct._object* @PyDict_Keys(%struct._object* %7), !dbg !2736
+  store %struct._object* %call3, %struct._object** %result, align 8, !dbg !2737, !tbaa !818
+  br label %if.end.7, !dbg !2738
 
 if.else:                                          ; preds = %if.then
-  %8 = bitcast i8** %name to i8*, !dbg !2743
-  call void @llvm.lifetime.start(i64 8, i8* %8) #2, !dbg !2743
-  call void @llvm.dbg.declare(metadata i8** %name, metadata !767, metadata !822), !dbg !2744
-  %9 = load %struct._object*, %struct._object** %self.addr, align 8, !dbg !2745, !tbaa !818
-  %call4 = call i8* @PyModule_GetName(%struct._object* %9), !dbg !2746
-  store i8* %call4, i8** %name, align 8, !dbg !2744, !tbaa !818
-  %10 = load i8*, i8** %name, align 8, !dbg !2747, !tbaa !818
-  %tobool = icmp ne i8* %10, null, !dbg !2747
-  br i1 %tobool, label %if.then.5, label %if.end, !dbg !2749
+  %8 = bitcast i8** %name to i8*, !dbg !2739
+  call void @llvm.lifetime.start(i64 8, i8* %8) #2, !dbg !2739
+  call void @llvm.dbg.declare(metadata i8** %name, metadata !767, metadata !822), !dbg !2740
+  %9 = load %struct._object*, %struct._object** %self.addr, align 8, !dbg !2741, !tbaa !818
+  %call4 = call i8* @PyModule_GetName(%struct._object* %9), !dbg !2742
+  store i8* %call4, i8** %name, align 8, !dbg !2740, !tbaa !818
+  %10 = load i8*, i8** %name, align 8, !dbg !2743, !tbaa !818
+  %tobool = icmp ne i8* %10, null, !dbg !2743
+  br i1 %tobool, label %if.then.5, label %if.end, !dbg !2745
 
 if.then.5:                                        ; preds = %if.else
-  %11 = load %struct._object*, %struct._object** @PyExc_TypeError, align 8, !dbg !2750, !tbaa !818
-  %12 = load i8*, i8** %name, align 8, !dbg !2751, !tbaa !818
-  %call6 = call %struct._object* (%struct._object*, i8*, ...) @PyErr_Format(%struct._object* %11, i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.23, i32 0, i32 0), i8* %12), !dbg !2752
-  br label %if.end, !dbg !2752
+  %11 = load %struct._object*, %struct._object** @PyExc_TypeError, align 8, !dbg !2746, !tbaa !818
+  %12 = load i8*, i8** %name, align 8, !dbg !2747, !tbaa !818
+  %call6 = call %struct._object* (%struct._object*, i8*, ...) @PyErr_Format(%struct._object* %11, i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.23, i32 0, i32 0), i8* %12), !dbg !2748
+  br label %if.end, !dbg !2748
 
 if.end:                                           ; preds = %if.then.5, %if.else
-  %13 = bitcast i8** %name to i8*, !dbg !2753
-  call void @llvm.lifetime.end(i64 8, i8* %13) #2, !dbg !2753
+  %13 = bitcast i8** %name to i8*, !dbg !2749
+  call void @llvm.lifetime.end(i64 8, i8* %13) #2, !dbg !2749
   br label %if.end.7
 
 if.end.7:                                         ; preds = %if.end, %if.then.2
-  br label %if.end.8, !dbg !2754
+  br label %if.end.8, !dbg !2750
 
 if.end.8:                                         ; preds = %if.end.7, %entry
-  br label %do.body, !dbg !2755
+  br label %do.body, !dbg !2751
 
 do.body:                                          ; preds = %if.end.8
-  %14 = bitcast %struct._object** %_py_xdecref_tmp to i8*, !dbg !2756
-  call void @llvm.lifetime.start(i64 8, i8* %14) #2, !dbg !2756
-  call void @llvm.dbg.declare(metadata %struct._object** %_py_xdecref_tmp, metadata !772, metadata !822), !dbg !2758
-  %15 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2759, !tbaa !818
-  store %struct._object* %15, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2758, !tbaa !818
-  %16 = load %struct._object*, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2760, !tbaa !818
-  %cmp9 = icmp ne %struct._object* %16, null, !dbg !2761
-  br i1 %cmp9, label %if.then.10, label %if.end.17, !dbg !2762
+  %14 = bitcast %struct._object** %_py_xdecref_tmp to i8*, !dbg !2752
+  call void @llvm.lifetime.start(i64 8, i8* %14) #2, !dbg !2752
+  call void @llvm.dbg.declare(metadata %struct._object** %_py_xdecref_tmp, metadata !772, metadata !822), !dbg !2754
+  %15 = load %struct._object*, %struct._object** %dict, align 8, !dbg !2755, !tbaa !818
+  store %struct._object* %15, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2754, !tbaa !818
+  %16 = load %struct._object*, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2756, !tbaa !818
+  %cmp9 = icmp ne %struct._object* %16, null, !dbg !2757
+  br i1 %cmp9, label %if.then.10, label %if.end.17, !dbg !2758
 
 if.then.10:                                       ; preds = %do.body
-  br label %do.body.11, !dbg !2763
+  br label %do.body.11, !dbg !2759
 
 do.body.11:                                       ; preds = %if.then.10
-  %17 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2765
-  call void @llvm.lifetime.start(i64 8, i8* %17) #2, !dbg !2765
-  call void @llvm.dbg.declare(metadata %struct._object** %_py_decref_tmp, metadata !774, metadata !822), !dbg !2767
-  %18 = load %struct._object*, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2768, !tbaa !818
-  store %struct._object* %18, %struct._object** %_py_decref_tmp, align 8, !dbg !2767, !tbaa !818
-  %19 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2769, !tbaa !818
-  %ob_refcnt = getelementptr inbounds %struct._object, %struct._object* %19, i32 0, i32 0, !dbg !2771
-  %20 = load i64, i64* %ob_refcnt, align 8, !dbg !2772, !tbaa !882
-  %dec = add i64 %20, -1, !dbg !2772
-  store i64 %dec, i64* %ob_refcnt, align 8, !dbg !2772, !tbaa !882
-  %cmp12 = icmp ne i64 %dec, 0, !dbg !2773
-  br i1 %cmp12, label %if.then.13, label %if.else.14, !dbg !2774
+  %17 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2761
+  call void @llvm.lifetime.start(i64 8, i8* %17) #2, !dbg !2761
+  call void @llvm.dbg.declare(metadata %struct._object** %_py_decref_tmp, metadata !774, metadata !822), !dbg !2763
+  %18 = load %struct._object*, %struct._object** %_py_xdecref_tmp, align 8, !dbg !2764, !tbaa !818
+  store %struct._object* %18, %struct._object** %_py_decref_tmp, align 8, !dbg !2763, !tbaa !818
+  %19 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2765, !tbaa !818
+  %ob_refcnt = getelementptr inbounds %struct._object, %struct._object* %19, i32 0, i32 0, !dbg !2767
+  %20 = load i64, i64* %ob_refcnt, align 8, !dbg !2768, !tbaa !882
+  %dec = add i64 %20, -1, !dbg !2768
+  store i64 %dec, i64* %ob_refcnt, align 8, !dbg !2768, !tbaa !882
+  %cmp12 = icmp ne i64 %dec, 0, !dbg !2769
+  br i1 %cmp12, label %if.then.13, label %if.else.14, !dbg !2770
 
 if.then.13:                                       ; preds = %do.body.11
-  br label %if.end.16, !dbg !2775
+  br label %if.end.16, !dbg !2771
 
 if.else.14:                                       ; preds = %do.body.11
-  %21 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2777, !tbaa !818
-  %ob_type15 = getelementptr inbounds %struct._object, %struct._object* %21, i32 0, i32 1, !dbg !2779
-  %22 = load %struct._typeobject*, %struct._typeobject** %ob_type15, align 8, !dbg !2779, !tbaa !890
-  %tp_dealloc = getelementptr inbounds %struct._typeobject, %struct._typeobject* %22, i32 0, i32 4, !dbg !2780
-  %23 = load void (%struct._object*)*, void (%struct._object*)** %tp_dealloc, align 8, !dbg !2780, !tbaa !892
-  %24 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2781, !tbaa !818
-  call void %23(%struct._object* %24), !dbg !2782
+  %21 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2773, !tbaa !818
+  %ob_type15 = getelementptr inbounds %struct._object, %struct._object* %21, i32 0, i32 1, !dbg !2775
+  %22 = load %struct._typeobject*, %struct._typeobject** %ob_type15, align 8, !dbg !2775, !tbaa !890
+  %tp_dealloc = getelementptr inbounds %struct._typeobject, %struct._typeobject* %22, i32 0, i32 4, !dbg !2776
+  %23 = load void (%struct._object*)*, void (%struct._object*)** %tp_dealloc, align 8, !dbg !2776, !tbaa !892
+  %24 = load %struct._object*, %struct._object** %_py_decref_tmp, align 8, !dbg !2777, !tbaa !818
+  call void %23(%struct._object* %24), !dbg !2778
   br label %if.end.16
 
 if.end.16:                                        ; preds = %if.else.14, %if.then.13
-  %25 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2783
-  call void @llvm.lifetime.end(i64 8, i8* %25) #2, !dbg !2783
-  br label %do.cond, !dbg !2785
+  %25 = bitcast %struct._object** %_py_decref_tmp to i8*, !dbg !2779
+  call void @llvm.lifetime.end(i64 8, i8* %25) #2, !dbg !2779
+  br label %do.cond, !dbg !2781
 
 do.cond:                                          ; preds = %if.end.16
-  br label %do.end, !dbg !2786
+  br label %do.end, !dbg !2782
 
 do.end:                                           ; preds = %do.cond
-  br label %if.end.17, !dbg !2788
+  br label %if.end.17, !dbg !2784
 
 if.end.17:                                        ; preds = %do.end, %do.body
-  %26 = bitcast %struct._object** %_py_xdecref_tmp to i8*, !dbg !2790
-  call void @llvm.lifetime.end(i64 8, i8* %26) #2, !dbg !2790
-  br label %do.cond.18, !dbg !2793
+  %26 = bitcast %struct._object** %_py_xdecref_tmp to i8*, !dbg !2786
+  call void @llvm.lifetime.end(i64 8, i8* %26) #2, !dbg !2786
+  br label %do.cond.18, !dbg !2789
 
 do.cond.18:                                       ; preds = %if.end.17
-  br label %do.end.19, !dbg !2794
+  br label %do.end.19, !dbg !2790
 
 do.end.19:                                        ; preds = %do.cond.18
-  %27 = load %struct._object*, %struct._object** %result, align 8, !dbg !2796, !tbaa !818
-  %28 = bitcast %struct._object** %dict to i8*, !dbg !2797
-  call void @llvm.lifetime.end(i64 8, i8* %28) #2, !dbg !2797
-  %29 = bitcast %struct._object** %result to i8*, !dbg !2797
-  call void @llvm.lifetime.end(i64 8, i8* %29) #2, !dbg !2797
-  ret %struct._object* %27, !dbg !2798
+  %27 = load %struct._object*, %struct._object** %result, align 8, !dbg !2792, !tbaa !818
+  %28 = bitcast %struct._object** %dict to i8*, !dbg !2793
+  call void @llvm.lifetime.end(i64 8, i8* %28) #2, !dbg !2793
+  %29 = bitcast %struct._object** %result to i8*, !dbg !2793
+  call void @llvm.lifetime.end(i64 8, i8* %29) #2, !dbg !2793
+  ret %struct._object* %27, !dbg !2794
 }
 
 declare %struct._object* @_PyObject_GetAttrId(%struct._object*, %struct._Py_Identifier*) #3
@@ -6225,327 +6280,323 @@ attributes #9 = { nounwind readonly }
 !2472 = !DILocation(line: 408, column: 331, scope: !703)
 !2473 = !DILocation(line: 408, column: 293, scope: !703)
 !2474 = !DILocation(line: 408, column: 348, scope: !703)
-!2475 = !DILocation(line: 408, column: 341, scope: !703)
-!2476 = !DILocation(line: 408, column: 450, scope: !2477)
-!2477 = !DILexicalBlockFile(scope: !2478, file: !21, discriminator: 4)
-!2478 = !DILexicalBlockFile(scope: !2479, file: !21, discriminator: 3)
-!2479 = !DILexicalBlockFile(scope: !2480, file: !21, discriminator: 2)
-!2480 = distinct !DILexicalBlock(scope: !703, file: !21, line: 408, column: 355)
-!2481 = !DILocation(line: 408, column: 501, scope: !2480)
-!2482 = !DILocation(line: 408, column: 517, scope: !2483)
-!2483 = !DILexicalBlockFile(scope: !2480, file: !21, discriminator: 1)
-!2484 = !DILocation(line: 408, column: 536, scope: !2485)
-!2485 = !DILexicalBlockFile(scope: !2486, file: !21, discriminator: 6)
-!2486 = !DILexicalBlockFile(scope: !703, file: !21, discriminator: 5)
-!2487 = !DILocation(line: 408, column: 535, scope: !703)
-!2488 = !DILocation(line: 408, column: 533, scope: !703)
-!2489 = !DILocation(line: 408, column: 558, scope: !703)
-!2490 = !DILocation(line: 408, column: 551, scope: !703)
-!2491 = !DILocation(line: 408, column: 660, scope: !2492)
-!2492 = !DILexicalBlockFile(scope: !2493, file: !21, discriminator: 10)
-!2493 = !DILexicalBlockFile(scope: !2494, file: !21, discriminator: 9)
-!2494 = !DILexicalBlockFile(scope: !2495, file: !21, discriminator: 8)
-!2495 = distinct !DILexicalBlock(scope: !703, file: !21, line: 408, column: 565)
-!2496 = !DILocation(line: 408, column: 711, scope: !2495)
-!2497 = !DILocation(line: 408, column: 727, scope: !2498)
-!2498 = !DILexicalBlockFile(scope: !2495, file: !21, discriminator: 7)
-!2499 = !DILocation(line: 408, column: 738, scope: !2500)
-!2500 = !DILexicalBlockFile(scope: !2501, file: !21, discriminator: 12)
-!2501 = !DILexicalBlockFile(scope: !703, file: !21, discriminator: 11)
-!2502 = !DILocation(line: 408, column: 734, scope: !2495)
-!2503 = !DILocation(line: 408, column: 746, scope: !696)
-!2504 = !DILocation(line: 408, column: 746, scope: !703)
-!2505 = !DILocation(line: 408, column: 30, scope: !696)
-!2506 = !DILocation(line: 409, column: 5, scope: !696)
-!2507 = !DILocation(line: 409, column: 25, scope: !696)
-!2508 = !DILocation(line: 409, column: 34, scope: !696)
-!2509 = !DILocation(line: 409, column: 42, scope: !696)
-!2510 = !DILocation(line: 411, column: 32, scope: !696)
-!2511 = !DILocation(line: 411, column: 40, scope: !696)
-!2512 = !{!1071, !819, i64 48}
-!2513 = !DILocation(line: 411, column: 72, scope: !696)
-!2514 = !DILocation(line: 411, column: 12, scope: !696)
-!2515 = !DILocation(line: 412, column: 1, scope: !696)
-!2516 = !DILocation(line: 411, column: 5, scope: !696)
-!2517 = !DILocation(line: 415, column: 33, scope: !733)
-!2518 = !DILocation(line: 415, column: 46, scope: !733)
-!2519 = !DILocation(line: 415, column: 59, scope: !733)
-!2520 = !DILocation(line: 417, column: 9, scope: !742)
-!2521 = !DILocation(line: 417, column: 12, scope: !742)
-!2522 = !DILocation(line: 417, column: 19, scope: !742)
-!2523 = !DILocation(line: 417, column: 22, scope: !2524)
-!2524 = !DILexicalBlockFile(scope: !742, file: !21, discriminator: 1)
-!2525 = !DILocation(line: 417, column: 25, scope: !742)
-!2526 = !DILocation(line: 417, column: 33, scope: !742)
-!2527 = !{!1085, !819, i64 80}
-!2528 = !DILocation(line: 417, column: 22, scope: !742)
-!2529 = !DILocation(line: 417, column: 9, scope: !733)
-!2530 = !DILocation(line: 418, column: 9, scope: !741)
-!2531 = !DILocation(line: 418, column: 13, scope: !741)
-!2532 = !DILocation(line: 418, column: 19, scope: !741)
-!2533 = !DILocation(line: 418, column: 22, scope: !741)
-!2534 = !DILocation(line: 418, column: 30, scope: !741)
-!2535 = !DILocation(line: 418, column: 52, scope: !741)
-!2536 = !DILocation(line: 418, column: 41, scope: !741)
-!2537 = !DILocation(line: 418, column: 55, scope: !741)
-!2538 = !DILocation(line: 418, column: 62, scope: !741)
-!2539 = !DILocation(line: 419, column: 13, scope: !2540)
-!2540 = distinct !DILexicalBlock(scope: !741, file: !21, line: 419, column: 13)
-!2541 = !DILocation(line: 419, column: 13, scope: !741)
-!2542 = !DILocation(line: 420, column: 20, scope: !2540)
-!2543 = !DILocation(line: 420, column: 13, scope: !2540)
-!2544 = !DILocation(line: 421, column: 5, scope: !742)
-!2545 = !DILocation(line: 421, column: 5, scope: !2524)
-!2546 = !DILocation(line: 421, column: 5, scope: !741)
-!2547 = !DILocation(line: 422, column: 5, scope: !733)
-!2548 = !DILocation(line: 422, column: 14, scope: !2549)
-!2549 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 1)
-!2550 = !DILocation(line: 422, column: 17, scope: !745)
-!2551 = !DILocation(line: 422, column: 14, scope: !745)
-!2552 = !DILocation(line: 422, column: 14, scope: !746)
-!2553 = !DILocation(line: 422, column: 28, scope: !2554)
-!2554 = !DILexicalBlockFile(scope: !744, file: !21, discriminator: 2)
-!2555 = !DILocation(line: 422, column: 32, scope: !744)
-!2556 = !DILocation(line: 422, column: 39, scope: !744)
-!2557 = !DILocation(line: 422, column: 58, scope: !744)
-!2558 = !DILocation(line: 422, column: 61, scope: !744)
-!2559 = !DILocation(line: 422, column: 71, scope: !744)
-!2560 = !DILocation(line: 422, column: 81, scope: !2561)
-!2561 = distinct !DILexicalBlock(scope: !744, file: !21, line: 422, column: 81)
-!2562 = !DILocation(line: 422, column: 81, scope: !744)
-!2563 = !DILocation(line: 422, column: 94, scope: !2564)
-!2564 = !DILexicalBlockFile(scope: !2561, file: !21, discriminator: 4)
-!2565 = !DILocation(line: 422, column: 87, scope: !2561)
+!2475 = !DILocation(line: 408, column: 450, scope: !2476)
+!2476 = !DILexicalBlockFile(scope: !2477, file: !21, discriminator: 4)
+!2477 = !DILexicalBlockFile(scope: !2478, file: !21, discriminator: 3)
+!2478 = !DILexicalBlockFile(scope: !2479, file: !21, discriminator: 2)
+!2479 = distinct !DILexicalBlock(scope: !703, file: !21, line: 408, column: 355)
+!2480 = !DILocation(line: 408, column: 501, scope: !2479)
+!2481 = !DILocation(line: 408, column: 517, scope: !2482)
+!2482 = !DILexicalBlockFile(scope: !2479, file: !21, discriminator: 1)
+!2483 = !DILocation(line: 408, column: 536, scope: !2484)
+!2484 = !DILexicalBlockFile(scope: !2485, file: !21, discriminator: 6)
+!2485 = !DILexicalBlockFile(scope: !703, file: !21, discriminator: 5)
+!2486 = !DILocation(line: 408, column: 535, scope: !703)
+!2487 = !DILocation(line: 408, column: 533, scope: !703)
+!2488 = !DILocation(line: 408, column: 558, scope: !703)
+!2489 = !DILocation(line: 408, column: 660, scope: !2490)
+!2490 = !DILexicalBlockFile(scope: !2491, file: !21, discriminator: 10)
+!2491 = !DILexicalBlockFile(scope: !2492, file: !21, discriminator: 9)
+!2492 = !DILexicalBlockFile(scope: !2493, file: !21, discriminator: 8)
+!2493 = distinct !DILexicalBlock(scope: !703, file: !21, line: 408, column: 565)
+!2494 = !DILocation(line: 408, column: 711, scope: !2493)
+!2495 = !DILocation(line: 408, column: 727, scope: !2496)
+!2496 = !DILexicalBlockFile(scope: !2493, file: !21, discriminator: 7)
+!2497 = !DILocation(line: 408, column: 738, scope: !2498)
+!2498 = !DILexicalBlockFile(scope: !2499, file: !21, discriminator: 12)
+!2499 = !DILexicalBlockFile(scope: !703, file: !21, discriminator: 11)
+!2500 = !DILocation(line: 408, column: 734, scope: !2493)
+!2501 = !DILocation(line: 408, column: 746, scope: !696)
+!2502 = !DILocation(line: 408, column: 746, scope: !703)
+!2503 = !DILocation(line: 408, column: 30, scope: !696)
+!2504 = !DILocation(line: 409, column: 5, scope: !696)
+!2505 = !DILocation(line: 409, column: 25, scope: !696)
+!2506 = !DILocation(line: 409, column: 34, scope: !696)
+!2507 = !DILocation(line: 409, column: 42, scope: !696)
+!2508 = !DILocation(line: 411, column: 32, scope: !696)
+!2509 = !DILocation(line: 411, column: 40, scope: !696)
+!2510 = !{!1071, !819, i64 48}
+!2511 = !DILocation(line: 411, column: 72, scope: !696)
+!2512 = !DILocation(line: 411, column: 12, scope: !696)
+!2513 = !DILocation(line: 412, column: 1, scope: !696)
+!2514 = !DILocation(line: 411, column: 5, scope: !696)
+!2515 = !DILocation(line: 415, column: 33, scope: !733)
+!2516 = !DILocation(line: 415, column: 46, scope: !733)
+!2517 = !DILocation(line: 415, column: 59, scope: !733)
+!2518 = !DILocation(line: 417, column: 9, scope: !742)
+!2519 = !DILocation(line: 417, column: 12, scope: !742)
+!2520 = !DILocation(line: 417, column: 19, scope: !742)
+!2521 = !DILocation(line: 417, column: 22, scope: !2522)
+!2522 = !DILexicalBlockFile(scope: !742, file: !21, discriminator: 1)
+!2523 = !DILocation(line: 417, column: 25, scope: !742)
+!2524 = !DILocation(line: 417, column: 33, scope: !742)
+!2525 = !{!1085, !819, i64 80}
+!2526 = !DILocation(line: 417, column: 22, scope: !742)
+!2527 = !DILocation(line: 417, column: 9, scope: !733)
+!2528 = !DILocation(line: 418, column: 9, scope: !741)
+!2529 = !DILocation(line: 418, column: 13, scope: !741)
+!2530 = !DILocation(line: 418, column: 19, scope: !741)
+!2531 = !DILocation(line: 418, column: 22, scope: !741)
+!2532 = !DILocation(line: 418, column: 30, scope: !741)
+!2533 = !DILocation(line: 418, column: 52, scope: !741)
+!2534 = !DILocation(line: 418, column: 41, scope: !741)
+!2535 = !DILocation(line: 418, column: 55, scope: !741)
+!2536 = !DILocation(line: 418, column: 62, scope: !741)
+!2537 = !DILocation(line: 419, column: 13, scope: !2538)
+!2538 = distinct !DILexicalBlock(scope: !741, file: !21, line: 419, column: 13)
+!2539 = !DILocation(line: 419, column: 13, scope: !741)
+!2540 = !DILocation(line: 420, column: 20, scope: !2538)
+!2541 = !DILocation(line: 420, column: 13, scope: !2538)
+!2542 = !DILocation(line: 421, column: 5, scope: !742)
+!2543 = !DILocation(line: 421, column: 5, scope: !2522)
+!2544 = !DILocation(line: 421, column: 5, scope: !741)
+!2545 = !DILocation(line: 422, column: 5, scope: !733)
+!2546 = !DILocation(line: 422, column: 14, scope: !2547)
+!2547 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 1)
+!2548 = !DILocation(line: 422, column: 17, scope: !745)
+!2549 = !DILocation(line: 422, column: 14, scope: !745)
+!2550 = !DILocation(line: 422, column: 14, scope: !746)
+!2551 = !DILocation(line: 422, column: 28, scope: !2552)
+!2552 = !DILexicalBlockFile(scope: !744, file: !21, discriminator: 2)
+!2553 = !DILocation(line: 422, column: 32, scope: !744)
+!2554 = !DILocation(line: 422, column: 39, scope: !744)
+!2555 = !DILocation(line: 422, column: 58, scope: !744)
+!2556 = !DILocation(line: 422, column: 61, scope: !744)
+!2557 = !DILocation(line: 422, column: 71, scope: !744)
+!2558 = !DILocation(line: 422, column: 81, scope: !2559)
+!2559 = distinct !DILexicalBlock(scope: !744, file: !21, line: 422, column: 81)
+!2560 = !DILocation(line: 422, column: 81, scope: !744)
+!2561 = !DILocation(line: 422, column: 94, scope: !2562)
+!2562 = !DILexicalBlockFile(scope: !2559, file: !21, discriminator: 4)
+!2563 = !DILocation(line: 422, column: 87, scope: !2559)
+!2564 = !DILocation(line: 422, column: 100, scope: !2565)
+!2565 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 5)
 !2566 = !DILocation(line: 422, column: 100, scope: !2567)
-!2567 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 5)
-!2568 = !DILocation(line: 422, column: 100, scope: !2569)
-!2569 = !DILexicalBlockFile(scope: !2570, file: !21, discriminator: 7)
-!2570 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 6)
-!2571 = !DILocation(line: 422, column: 100, scope: !744)
-!2572 = !DILocation(line: 422, column: 102, scope: !2573)
-!2573 = !DILexicalBlockFile(scope: !2574, file: !21, discriminator: 8)
-!2574 = !DILexicalBlockFile(scope: !746, file: !21, discriminator: 3)
-!2575 = !DILocation(line: 423, column: 5, scope: !733)
-!2576 = !DILocation(line: 424, column: 1, scope: !733)
-!2577 = !DILocation(line: 427, column: 30, scope: !747)
-!2578 = !DILocation(line: 429, column: 9, scope: !754)
-!2579 = !DILocation(line: 429, column: 12, scope: !754)
-!2580 = !DILocation(line: 429, column: 19, scope: !754)
-!2581 = !DILocation(line: 429, column: 22, scope: !2582)
-!2582 = !DILexicalBlockFile(scope: !754, file: !21, discriminator: 1)
-!2583 = !DILocation(line: 429, column: 25, scope: !754)
-!2584 = !DILocation(line: 429, column: 33, scope: !754)
-!2585 = !{!1085, !819, i64 88}
-!2586 = !DILocation(line: 429, column: 22, scope: !754)
-!2587 = !DILocation(line: 429, column: 9, scope: !747)
-!2588 = !DILocation(line: 430, column: 9, scope: !753)
-!2589 = !DILocation(line: 430, column: 13, scope: !753)
-!2590 = !DILocation(line: 430, column: 19, scope: !753)
-!2591 = !DILocation(line: 430, column: 22, scope: !753)
-!2592 = !DILocation(line: 430, column: 30, scope: !753)
-!2593 = !DILocation(line: 430, column: 49, scope: !753)
-!2594 = !DILocation(line: 430, column: 38, scope: !753)
-!2595 = !DILocation(line: 431, column: 13, scope: !2596)
-!2596 = distinct !DILexicalBlock(scope: !753, file: !21, line: 431, column: 13)
-!2597 = !DILocation(line: 431, column: 13, scope: !753)
-!2598 = !DILocation(line: 432, column: 20, scope: !2596)
-!2599 = !DILocation(line: 432, column: 13, scope: !2596)
-!2600 = !DILocation(line: 433, column: 5, scope: !754)
-!2601 = !DILocation(line: 433, column: 5, scope: !2582)
-!2602 = !DILocation(line: 433, column: 5, scope: !753)
-!2603 = !DILocation(line: 434, column: 5, scope: !747)
-!2604 = !DILocation(line: 434, column: 10, scope: !2605)
-!2605 = !DILexicalBlockFile(scope: !756, file: !21, discriminator: 1)
-!2606 = !DILocation(line: 434, column: 20, scope: !756)
-!2607 = !DILocation(line: 434, column: 43, scope: !756)
-!2608 = !DILocation(line: 434, column: 46, scope: !756)
-!2609 = !DILocation(line: 434, column: 60, scope: !760)
-!2610 = !DILocation(line: 434, column: 68, scope: !760)
-!2611 = !DILocation(line: 434, column: 60, scope: !756)
-!2612 = !DILocation(line: 434, column: 86, scope: !2613)
-!2613 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 2)
-!2614 = !DILocation(line: 434, column: 89, scope: !759)
-!2615 = !DILocation(line: 434, column: 98, scope: !759)
-!2616 = !DILocation(line: 434, column: 112, scope: !759)
-!2617 = !DILocation(line: 434, column: 117, scope: !2618)
-!2618 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 4)
-!2619 = !DILocation(line: 434, column: 127, scope: !758)
-!2620 = !DILocation(line: 434, column: 157, scope: !758)
-!2621 = !DILocation(line: 434, column: 175, scope: !2622)
-!2622 = distinct !DILexicalBlock(scope: !758, file: !21, line: 434, column: 172)
-!2623 = !DILocation(line: 434, column: 192, scope: !2622)
-!2624 = !DILocation(line: 434, column: 172, scope: !2622)
-!2625 = !DILocation(line: 434, column: 202, scope: !2622)
-!2626 = !DILocation(line: 434, column: 172, scope: !758)
-!2627 = !DILocation(line: 434, column: 172, scope: !2628)
-!2628 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 5)
-!2629 = !DILocation(line: 434, column: 233, scope: !2630)
-!2630 = !DILexicalBlockFile(scope: !2622, file: !21, discriminator: 6)
-!2631 = !DILocation(line: 434, column: 251, scope: !2622)
-!2632 = !DILocation(line: 434, column: 261, scope: !2622)
-!2633 = !DILocation(line: 434, column: 286, scope: !2622)
-!2634 = !DILocation(line: 434, column: 217, scope: !2622)
-!2635 = !DILocation(line: 434, column: 305, scope: !2636)
-!2636 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 7)
-!2637 = !DILocation(line: 434, column: 305, scope: !758)
-!2638 = !DILocation(line: 434, column: 305, scope: !2639)
-!2639 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 8)
-!2640 = !DILocation(line: 434, column: 318, scope: !2641)
-!2641 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 9)
-!2642 = !DILocation(line: 434, column: 320, scope: !2643)
-!2643 = !DILexicalBlockFile(scope: !2644, file: !21, discriminator: 10)
-!2644 = !DILexicalBlockFile(scope: !747, file: !21, discriminator: 3)
-!2645 = !DILocation(line: 434, column: 320, scope: !756)
-!2646 = !DILocation(line: 435, column: 5, scope: !747)
-!2647 = !DILocation(line: 436, column: 1, scope: !747)
-!2648 = !DILocation(line: 368, column: 29, scope: !777)
-!2649 = !DILocation(line: 368, column: 42, scope: !777)
-!2650 = !DILocation(line: 368, column: 58, scope: !777)
-!2651 = !DILocation(line: 371, column: 5, scope: !777)
-!2652 = !DILocation(line: 371, column: 15, scope: !777)
-!2653 = !DILocation(line: 371, column: 22, scope: !777)
-!2654 = !DILocation(line: 371, column: 49, scope: !777)
-!2655 = !DILocation(line: 372, column: 38, scope: !2656)
-!2656 = distinct !DILexicalBlock(scope: !777, file: !21, line: 372, column: 9)
-!2657 = !DILocation(line: 372, column: 44, scope: !2656)
-!2658 = !DILocation(line: 372, column: 10, scope: !2656)
-!2659 = !DILocation(line: 372, column: 9, scope: !777)
-!2660 = !DILocation(line: 374, column: 9, scope: !2656)
-!2661 = !DILocation(line: 375, column: 12, scope: !777)
-!2662 = !DILocation(line: 375, column: 15, scope: !777)
-!2663 = !DILocation(line: 375, column: 10, scope: !777)
-!2664 = !DILocation(line: 376, column: 9, scope: !2665)
-!2665 = distinct !DILexicalBlock(scope: !777, file: !21, line: 376, column: 9)
-!2666 = !DILocation(line: 376, column: 14, scope: !2665)
-!2667 = !DILocation(line: 376, column: 9, scope: !777)
-!2668 = !DILocation(line: 377, column: 16, scope: !2669)
-!2669 = distinct !DILexicalBlock(scope: !2665, file: !21, line: 376, column: 29)
-!2670 = !DILocation(line: 377, column: 14, scope: !2669)
-!2671 = !DILocation(line: 378, column: 13, scope: !2672)
-!2672 = distinct !DILexicalBlock(scope: !2669, file: !21, line: 378, column: 13)
-!2673 = !DILocation(line: 378, column: 18, scope: !2672)
-!2674 = !DILocation(line: 378, column: 13, scope: !2669)
-!2675 = !DILocation(line: 379, column: 13, scope: !2672)
-!2676 = !DILocation(line: 380, column: 22, scope: !2669)
-!2677 = !DILocation(line: 380, column: 9, scope: !2669)
-!2678 = !DILocation(line: 380, column: 12, scope: !2669)
-!2679 = !DILocation(line: 380, column: 20, scope: !2669)
-!2680 = !DILocation(line: 381, column: 5, scope: !2669)
-!2681 = !DILocation(line: 382, column: 26, scope: !2682)
-!2682 = distinct !DILexicalBlock(scope: !777, file: !21, line: 382, column: 9)
-!2683 = !DILocation(line: 382, column: 29, scope: !2682)
-!2684 = !DILocation(line: 382, column: 35, scope: !2682)
-!2685 = !DILocation(line: 382, column: 41, scope: !2682)
-!2686 = !DILocation(line: 382, column: 9, scope: !2682)
-!2687 = !DILocation(line: 382, column: 46, scope: !2682)
-!2688 = !DILocation(line: 382, column: 9, scope: !777)
-!2689 = !DILocation(line: 383, column: 9, scope: !2682)
-!2690 = !DILocation(line: 384, column: 5, scope: !777)
-!2691 = !DILocation(line: 385, column: 1, scope: !777)
-!2692 = !DILocation(line: 59, column: 48, scope: !716)
-!2693 = !DILocation(line: 59, column: 74, scope: !716)
-!2694 = !DILocation(line: 61, column: 11, scope: !716)
-!2695 = !DILocation(line: 62, column: 12, scope: !716)
-!2696 = !DILocation(line: 62, column: 5, scope: !716)
-!2697 = !DILocation(line: 67, column: 9, scope: !2698)
-!2698 = distinct !DILexicalBlock(scope: !716, file: !11, line: 62, column: 19)
-!2699 = !DILocation(line: 70, column: 9, scope: !2698)
-!2700 = !DILocation(line: 72, column: 12, scope: !716)
-!2701 = !DILocation(line: 72, column: 5, scope: !716)
-!2702 = !DILocation(line: 77, column: 9, scope: !2703)
-!2703 = distinct !DILexicalBlock(scope: !716, file: !11, line: 72, column: 19)
-!2704 = !DILocation(line: 80, column: 9, scope: !2703)
-!2705 = !DILocation(line: 82, column: 1, scope: !716)
-!2706 = !DILocation(line: 51, column: 42, scope: !725)
-!2707 = !DILocation(line: 53, column: 9, scope: !2708)
-!2708 = distinct !DILexicalBlock(scope: !725, file: !11, line: 53, column: 9)
-!2709 = !DILocation(line: 53, column: 15, scope: !2708)
-!2710 = !DILocation(line: 53, column: 9, scope: !725)
-!2711 = !DILocation(line: 54, column: 9, scope: !2708)
-!2712 = !{i32 154978}
-!2713 = !DILocation(line: 55, column: 1, scope: !725)
-!2714 = !DILocation(line: 44, column: 42, scope: !730)
-!2715 = !DILocation(line: 46, column: 9, scope: !2716)
-!2716 = distinct !DILexicalBlock(scope: !730, file: !11, line: 46, column: 9)
-!2717 = !DILocation(line: 46, column: 15, scope: !2716)
-!2718 = !DILocation(line: 46, column: 9, scope: !730)
-!2719 = !DILocation(line: 47, column: 9, scope: !2716)
-!2720 = !{i32 154818}
-!2721 = !DILocation(line: 48, column: 1, scope: !730)
-!2722 = !DILocation(line: 439, column: 22, scope: !761)
-!2723 = !DILocation(line: 439, column: 38, scope: !761)
-!2724 = !DILocation(line: 442, column: 5, scope: !761)
-!2725 = !DILocation(line: 442, column: 15, scope: !761)
-!2726 = !DILocation(line: 443, column: 5, scope: !761)
-!2727 = !DILocation(line: 443, column: 15, scope: !761)
-!2728 = !DILocation(line: 443, column: 42, scope: !761)
-!2729 = !DILocation(line: 443, column: 22, scope: !761)
-!2730 = !DILocation(line: 445, column: 9, scope: !771)
-!2731 = !DILocation(line: 445, column: 14, scope: !771)
-!2732 = !DILocation(line: 445, column: 9, scope: !761)
-!2733 = !DILocation(line: 446, column: 30, scope: !769)
-!2734 = !DILocation(line: 446, column: 38, scope: !769)
-!2735 = !DILocation(line: 446, column: 49, scope: !769)
-!2736 = !DILocation(line: 446, column: 58, scope: !769)
-!2737 = !DILocation(line: 446, column: 75, scope: !769)
-!2738 = !DILocation(line: 446, column: 13, scope: !770)
-!2739 = !DILocation(line: 447, column: 34, scope: !769)
-!2740 = !DILocation(line: 447, column: 22, scope: !769)
-!2741 = !DILocation(line: 447, column: 20, scope: !769)
-!2742 = !DILocation(line: 447, column: 13, scope: !769)
-!2743 = !DILocation(line: 449, column: 13, scope: !768)
-!2744 = !DILocation(line: 449, column: 25, scope: !768)
-!2745 = !DILocation(line: 449, column: 49, scope: !768)
-!2746 = !DILocation(line: 449, column: 32, scope: !768)
-!2747 = !DILocation(line: 450, column: 17, scope: !2748)
-!2748 = distinct !DILexicalBlock(scope: !768, file: !21, line: 450, column: 17)
-!2749 = !DILocation(line: 450, column: 17, scope: !768)
-!2750 = !DILocation(line: 451, column: 30, scope: !2748)
-!2751 = !DILocation(line: 453, column: 30, scope: !2748)
-!2752 = !DILocation(line: 451, column: 17, scope: !2748)
-!2753 = !DILocation(line: 454, column: 9, scope: !769)
-!2754 = !DILocation(line: 455, column: 5, scope: !770)
-!2755 = !DILocation(line: 457, column: 5, scope: !761)
-!2756 = !DILocation(line: 457, column: 10, scope: !2757)
-!2757 = !DILexicalBlockFile(scope: !773, file: !21, discriminator: 1)
-!2758 = !DILocation(line: 457, column: 20, scope: !773)
-!2759 = !DILocation(line: 457, column: 51, scope: !773)
-!2760 = !DILocation(line: 457, column: 62, scope: !776)
-!2761 = !DILocation(line: 457, column: 78, scope: !776)
-!2762 = !DILocation(line: 457, column: 62, scope: !773)
-!2763 = !DILocation(line: 457, column: 93, scope: !2764)
-!2764 = !DILexicalBlockFile(scope: !776, file: !21, discriminator: 2)
-!2765 = !DILocation(line: 457, column: 98, scope: !2766)
-!2766 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 4)
-!2767 = !DILocation(line: 457, column: 108, scope: !775)
-!2768 = !DILocation(line: 457, column: 138, scope: !775)
-!2769 = !DILocation(line: 457, column: 164, scope: !2770)
-!2770 = distinct !DILexicalBlock(scope: !775, file: !21, line: 457, column: 161)
-!2771 = !DILocation(line: 457, column: 181, scope: !2770)
-!2772 = !DILocation(line: 457, column: 161, scope: !2770)
-!2773 = !DILocation(line: 457, column: 191, scope: !2770)
-!2774 = !DILocation(line: 457, column: 161, scope: !775)
-!2775 = !DILocation(line: 457, column: 161, scope: !2776)
-!2776 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 5)
-!2777 = !DILocation(line: 457, column: 222, scope: !2778)
-!2778 = !DILexicalBlockFile(scope: !2770, file: !21, discriminator: 6)
-!2779 = !DILocation(line: 457, column: 240, scope: !2770)
-!2780 = !DILocation(line: 457, column: 250, scope: !2770)
-!2781 = !DILocation(line: 457, column: 275, scope: !2770)
-!2782 = !DILocation(line: 457, column: 206, scope: !2770)
-!2783 = !DILocation(line: 457, column: 294, scope: !2784)
-!2784 = !DILexicalBlockFile(scope: !776, file: !21, discriminator: 7)
-!2785 = !DILocation(line: 457, column: 294, scope: !775)
-!2786 = !DILocation(line: 457, column: 294, scope: !2787)
-!2787 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 8)
-!2788 = !DILocation(line: 457, column: 294, scope: !2789)
-!2789 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 9)
+!2567 = !DILexicalBlockFile(scope: !2568, file: !21, discriminator: 7)
+!2568 = !DILexicalBlockFile(scope: !745, file: !21, discriminator: 6)
+!2569 = !DILocation(line: 422, column: 100, scope: !744)
+!2570 = !DILocation(line: 422, column: 102, scope: !2571)
+!2571 = !DILexicalBlockFile(scope: !2572, file: !21, discriminator: 8)
+!2572 = !DILexicalBlockFile(scope: !746, file: !21, discriminator: 3)
+!2573 = !DILocation(line: 423, column: 5, scope: !733)
+!2574 = !DILocation(line: 424, column: 1, scope: !733)
+!2575 = !DILocation(line: 427, column: 30, scope: !747)
+!2576 = !DILocation(line: 429, column: 9, scope: !754)
+!2577 = !DILocation(line: 429, column: 12, scope: !754)
+!2578 = !DILocation(line: 429, column: 19, scope: !754)
+!2579 = !DILocation(line: 429, column: 22, scope: !2580)
+!2580 = !DILexicalBlockFile(scope: !754, file: !21, discriminator: 1)
+!2581 = !DILocation(line: 429, column: 25, scope: !754)
+!2582 = !DILocation(line: 429, column: 33, scope: !754)
+!2583 = !{!1085, !819, i64 88}
+!2584 = !DILocation(line: 429, column: 22, scope: !754)
+!2585 = !DILocation(line: 429, column: 9, scope: !747)
+!2586 = !DILocation(line: 430, column: 9, scope: !753)
+!2587 = !DILocation(line: 430, column: 13, scope: !753)
+!2588 = !DILocation(line: 430, column: 19, scope: !753)
+!2589 = !DILocation(line: 430, column: 22, scope: !753)
+!2590 = !DILocation(line: 430, column: 30, scope: !753)
+!2591 = !DILocation(line: 430, column: 49, scope: !753)
+!2592 = !DILocation(line: 430, column: 38, scope: !753)
+!2593 = !DILocation(line: 431, column: 13, scope: !2594)
+!2594 = distinct !DILexicalBlock(scope: !753, file: !21, line: 431, column: 13)
+!2595 = !DILocation(line: 431, column: 13, scope: !753)
+!2596 = !DILocation(line: 432, column: 20, scope: !2594)
+!2597 = !DILocation(line: 432, column: 13, scope: !2594)
+!2598 = !DILocation(line: 433, column: 5, scope: !754)
+!2599 = !DILocation(line: 433, column: 5, scope: !2580)
+!2600 = !DILocation(line: 433, column: 5, scope: !753)
+!2601 = !DILocation(line: 434, column: 5, scope: !747)
+!2602 = !DILocation(line: 434, column: 10, scope: !2603)
+!2603 = !DILexicalBlockFile(scope: !756, file: !21, discriminator: 1)
+!2604 = !DILocation(line: 434, column: 20, scope: !756)
+!2605 = !DILocation(line: 434, column: 43, scope: !756)
+!2606 = !DILocation(line: 434, column: 46, scope: !756)
+!2607 = !DILocation(line: 434, column: 60, scope: !760)
+!2608 = !DILocation(line: 434, column: 68, scope: !760)
+!2609 = !DILocation(line: 434, column: 60, scope: !756)
+!2610 = !DILocation(line: 434, column: 86, scope: !2611)
+!2611 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 2)
+!2612 = !DILocation(line: 434, column: 89, scope: !759)
+!2613 = !DILocation(line: 434, column: 98, scope: !759)
+!2614 = !DILocation(line: 434, column: 112, scope: !759)
+!2615 = !DILocation(line: 434, column: 117, scope: !2616)
+!2616 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 4)
+!2617 = !DILocation(line: 434, column: 127, scope: !758)
+!2618 = !DILocation(line: 434, column: 157, scope: !758)
+!2619 = !DILocation(line: 434, column: 175, scope: !2620)
+!2620 = distinct !DILexicalBlock(scope: !758, file: !21, line: 434, column: 172)
+!2621 = !DILocation(line: 434, column: 192, scope: !2620)
+!2622 = !DILocation(line: 434, column: 172, scope: !2620)
+!2623 = !DILocation(line: 434, column: 202, scope: !2620)
+!2624 = !DILocation(line: 434, column: 172, scope: !758)
+!2625 = !DILocation(line: 434, column: 172, scope: !2626)
+!2626 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 5)
+!2627 = !DILocation(line: 434, column: 233, scope: !2628)
+!2628 = !DILexicalBlockFile(scope: !2620, file: !21, discriminator: 6)
+!2629 = !DILocation(line: 434, column: 251, scope: !2620)
+!2630 = !DILocation(line: 434, column: 261, scope: !2620)
+!2631 = !DILocation(line: 434, column: 286, scope: !2620)
+!2632 = !DILocation(line: 434, column: 217, scope: !2620)
+!2633 = !DILocation(line: 434, column: 305, scope: !2634)
+!2634 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 7)
+!2635 = !DILocation(line: 434, column: 305, scope: !758)
+!2636 = !DILocation(line: 434, column: 305, scope: !2637)
+!2637 = !DILexicalBlockFile(scope: !758, file: !21, discriminator: 8)
+!2638 = !DILocation(line: 434, column: 318, scope: !2639)
+!2639 = !DILexicalBlockFile(scope: !759, file: !21, discriminator: 9)
+!2640 = !DILocation(line: 434, column: 320, scope: !2641)
+!2641 = !DILexicalBlockFile(scope: !2642, file: !21, discriminator: 10)
+!2642 = !DILexicalBlockFile(scope: !747, file: !21, discriminator: 3)
+!2643 = !DILocation(line: 434, column: 320, scope: !756)
+!2644 = !DILocation(line: 435, column: 5, scope: !747)
+!2645 = !DILocation(line: 436, column: 1, scope: !747)
+!2646 = !DILocation(line: 368, column: 29, scope: !777)
+!2647 = !DILocation(line: 368, column: 42, scope: !777)
+!2648 = !DILocation(line: 368, column: 58, scope: !777)
+!2649 = !DILocation(line: 371, column: 5, scope: !777)
+!2650 = !DILocation(line: 371, column: 15, scope: !777)
+!2651 = !DILocation(line: 371, column: 22, scope: !777)
+!2652 = !DILocation(line: 371, column: 49, scope: !777)
+!2653 = !DILocation(line: 372, column: 38, scope: !2654)
+!2654 = distinct !DILexicalBlock(scope: !777, file: !21, line: 372, column: 9)
+!2655 = !DILocation(line: 372, column: 44, scope: !2654)
+!2656 = !DILocation(line: 372, column: 10, scope: !2654)
+!2657 = !DILocation(line: 372, column: 9, scope: !777)
+!2658 = !DILocation(line: 374, column: 9, scope: !2654)
+!2659 = !DILocation(line: 375, column: 12, scope: !777)
+!2660 = !DILocation(line: 375, column: 15, scope: !777)
+!2661 = !DILocation(line: 375, column: 10, scope: !777)
+!2662 = !DILocation(line: 376, column: 9, scope: !2663)
+!2663 = distinct !DILexicalBlock(scope: !777, file: !21, line: 376, column: 9)
+!2664 = !DILocation(line: 376, column: 14, scope: !2663)
+!2665 = !DILocation(line: 376, column: 9, scope: !777)
+!2666 = !DILocation(line: 377, column: 16, scope: !2667)
+!2667 = distinct !DILexicalBlock(scope: !2663, file: !21, line: 376, column: 29)
+!2668 = !DILocation(line: 377, column: 14, scope: !2667)
+!2669 = !DILocation(line: 378, column: 13, scope: !2670)
+!2670 = distinct !DILexicalBlock(scope: !2667, file: !21, line: 378, column: 13)
+!2671 = !DILocation(line: 378, column: 18, scope: !2670)
+!2672 = !DILocation(line: 378, column: 13, scope: !2667)
+!2673 = !DILocation(line: 379, column: 13, scope: !2670)
+!2674 = !DILocation(line: 380, column: 22, scope: !2667)
+!2675 = !DILocation(line: 380, column: 9, scope: !2667)
+!2676 = !DILocation(line: 380, column: 12, scope: !2667)
+!2677 = !DILocation(line: 380, column: 20, scope: !2667)
+!2678 = !DILocation(line: 381, column: 5, scope: !2667)
+!2679 = !DILocation(line: 382, column: 26, scope: !2680)
+!2680 = distinct !DILexicalBlock(scope: !777, file: !21, line: 382, column: 9)
+!2681 = !DILocation(line: 382, column: 29, scope: !2680)
+!2682 = !DILocation(line: 382, column: 35, scope: !2680)
+!2683 = !DILocation(line: 382, column: 41, scope: !2680)
+!2684 = !DILocation(line: 382, column: 9, scope: !2680)
+!2685 = !DILocation(line: 382, column: 46, scope: !2680)
+!2686 = !DILocation(line: 382, column: 9, scope: !777)
+!2687 = !DILocation(line: 383, column: 9, scope: !2680)
+!2688 = !DILocation(line: 384, column: 5, scope: !777)
+!2689 = !DILocation(line: 385, column: 1, scope: !777)
+!2690 = !DILocation(line: 59, column: 48, scope: !716)
+!2691 = !DILocation(line: 59, column: 74, scope: !716)
+!2692 = !DILocation(line: 61, column: 11, scope: !716)
+!2693 = !DILocation(line: 62, column: 12, scope: !716)
+!2694 = !DILocation(line: 67, column: 9, scope: !2695)
+!2695 = distinct !DILexicalBlock(scope: !716, file: !11, line: 62, column: 19)
+!2696 = !DILocation(line: 70, column: 9, scope: !2695)
+!2697 = !DILocation(line: 72, column: 12, scope: !716)
+!2698 = !DILocation(line: 77, column: 9, scope: !2699)
+!2699 = distinct !DILexicalBlock(scope: !716, file: !11, line: 72, column: 19)
+!2700 = !DILocation(line: 80, column: 9, scope: !2699)
+!2701 = !DILocation(line: 82, column: 1, scope: !716)
+!2702 = !DILocation(line: 51, column: 42, scope: !725)
+!2703 = !DILocation(line: 53, column: 9, scope: !2704)
+!2704 = distinct !DILexicalBlock(scope: !725, file: !11, line: 53, column: 9)
+!2705 = !DILocation(line: 53, column: 15, scope: !2704)
+!2706 = !DILocation(line: 53, column: 9, scope: !725)
+!2707 = !DILocation(line: 54, column: 9, scope: !2704)
+!2708 = !{i32 154978}
+!2709 = !DILocation(line: 55, column: 1, scope: !725)
+!2710 = !DILocation(line: 44, column: 42, scope: !730)
+!2711 = !DILocation(line: 46, column: 9, scope: !2712)
+!2712 = distinct !DILexicalBlock(scope: !730, file: !11, line: 46, column: 9)
+!2713 = !DILocation(line: 46, column: 15, scope: !2712)
+!2714 = !DILocation(line: 46, column: 9, scope: !730)
+!2715 = !DILocation(line: 47, column: 9, scope: !2712)
+!2716 = !{i32 154818}
+!2717 = !DILocation(line: 48, column: 1, scope: !730)
+!2718 = !DILocation(line: 439, column: 22, scope: !761)
+!2719 = !DILocation(line: 439, column: 38, scope: !761)
+!2720 = !DILocation(line: 442, column: 5, scope: !761)
+!2721 = !DILocation(line: 442, column: 15, scope: !761)
+!2722 = !DILocation(line: 443, column: 5, scope: !761)
+!2723 = !DILocation(line: 443, column: 15, scope: !761)
+!2724 = !DILocation(line: 443, column: 42, scope: !761)
+!2725 = !DILocation(line: 443, column: 22, scope: !761)
+!2726 = !DILocation(line: 445, column: 9, scope: !771)
+!2727 = !DILocation(line: 445, column: 14, scope: !771)
+!2728 = !DILocation(line: 445, column: 9, scope: !761)
+!2729 = !DILocation(line: 446, column: 30, scope: !769)
+!2730 = !DILocation(line: 446, column: 38, scope: !769)
+!2731 = !DILocation(line: 446, column: 49, scope: !769)
+!2732 = !DILocation(line: 446, column: 58, scope: !769)
+!2733 = !DILocation(line: 446, column: 75, scope: !769)
+!2734 = !DILocation(line: 446, column: 13, scope: !770)
+!2735 = !DILocation(line: 447, column: 34, scope: !769)
+!2736 = !DILocation(line: 447, column: 22, scope: !769)
+!2737 = !DILocation(line: 447, column: 20, scope: !769)
+!2738 = !DILocation(line: 447, column: 13, scope: !769)
+!2739 = !DILocation(line: 449, column: 13, scope: !768)
+!2740 = !DILocation(line: 449, column: 25, scope: !768)
+!2741 = !DILocation(line: 449, column: 49, scope: !768)
+!2742 = !DILocation(line: 449, column: 32, scope: !768)
+!2743 = !DILocation(line: 450, column: 17, scope: !2744)
+!2744 = distinct !DILexicalBlock(scope: !768, file: !21, line: 450, column: 17)
+!2745 = !DILocation(line: 450, column: 17, scope: !768)
+!2746 = !DILocation(line: 451, column: 30, scope: !2744)
+!2747 = !DILocation(line: 453, column: 30, scope: !2744)
+!2748 = !DILocation(line: 451, column: 17, scope: !2744)
+!2749 = !DILocation(line: 454, column: 9, scope: !769)
+!2750 = !DILocation(line: 455, column: 5, scope: !770)
+!2751 = !DILocation(line: 457, column: 5, scope: !761)
+!2752 = !DILocation(line: 457, column: 10, scope: !2753)
+!2753 = !DILexicalBlockFile(scope: !773, file: !21, discriminator: 1)
+!2754 = !DILocation(line: 457, column: 20, scope: !773)
+!2755 = !DILocation(line: 457, column: 51, scope: !773)
+!2756 = !DILocation(line: 457, column: 62, scope: !776)
+!2757 = !DILocation(line: 457, column: 78, scope: !776)
+!2758 = !DILocation(line: 457, column: 62, scope: !773)
+!2759 = !DILocation(line: 457, column: 93, scope: !2760)
+!2760 = !DILexicalBlockFile(scope: !776, file: !21, discriminator: 2)
+!2761 = !DILocation(line: 457, column: 98, scope: !2762)
+!2762 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 4)
+!2763 = !DILocation(line: 457, column: 108, scope: !775)
+!2764 = !DILocation(line: 457, column: 138, scope: !775)
+!2765 = !DILocation(line: 457, column: 164, scope: !2766)
+!2766 = distinct !DILexicalBlock(scope: !775, file: !21, line: 457, column: 161)
+!2767 = !DILocation(line: 457, column: 181, scope: !2766)
+!2768 = !DILocation(line: 457, column: 161, scope: !2766)
+!2769 = !DILocation(line: 457, column: 191, scope: !2766)
+!2770 = !DILocation(line: 457, column: 161, scope: !775)
+!2771 = !DILocation(line: 457, column: 161, scope: !2772)
+!2772 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 5)
+!2773 = !DILocation(line: 457, column: 222, scope: !2774)
+!2774 = !DILexicalBlockFile(scope: !2766, file: !21, discriminator: 6)
+!2775 = !DILocation(line: 457, column: 240, scope: !2766)
+!2776 = !DILocation(line: 457, column: 250, scope: !2766)
+!2777 = !DILocation(line: 457, column: 275, scope: !2766)
+!2778 = !DILocation(line: 457, column: 206, scope: !2766)
+!2779 = !DILocation(line: 457, column: 294, scope: !2780)
+!2780 = !DILexicalBlockFile(scope: !776, file: !21, discriminator: 7)
+!2781 = !DILocation(line: 457, column: 294, scope: !775)
+!2782 = !DILocation(line: 457, column: 294, scope: !2783)
+!2783 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 8)
+!2784 = !DILocation(line: 457, column: 294, scope: !2785)
+!2785 = !DILexicalBlockFile(scope: !775, file: !21, discriminator: 9)
+!2786 = !DILocation(line: 457, column: 307, scope: !2787)
+!2787 = !DILexicalBlockFile(scope: !2788, file: !21, discriminator: 10)
+!2788 = !DILexicalBlockFile(scope: !761, file: !21, discriminator: 3)
+!2789 = !DILocation(line: 457, column: 307, scope: !773)
 !2790 = !DILocation(line: 457, column: 307, scope: !2791)
-!2791 = !DILexicalBlockFile(scope: !2792, file: !21, discriminator: 10)
-!2792 = !DILexicalBlockFile(scope: !761, file: !21, discriminator: 3)
-!2793 = !DILocation(line: 457, column: 307, scope: !773)
-!2794 = !DILocation(line: 457, column: 307, scope: !2795)
-!2795 = !DILexicalBlockFile(scope: !773, file: !21, discriminator: 11)
-!2796 = !DILocation(line: 458, column: 12, scope: !761)
-!2797 = !DILocation(line: 459, column: 1, scope: !761)
-!2798 = !DILocation(line: 458, column: 5, scope: !761)
+!2791 = !DILexicalBlockFile(scope: !773, file: !21, discriminator: 11)
+!2792 = !DILocation(line: 458, column: 12, scope: !761)
+!2793 = !DILocation(line: 459, column: 1, scope: !761)
+!2794 = !DILocation(line: 458, column: 5, scope: !761)

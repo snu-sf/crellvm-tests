@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/xxlimited.bc'
+; ModuleID = 'programs_new/Python-new/xxlimited.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -384,12 +384,16 @@ cleanup:                                          ; preds = %if.end, %if.then.3
   %10 = bitcast %struct._object** %v to i8*, !dbg !402
   call void @llvm.lifetime.end(i64 8, i8* %10) #1, !dbg !402
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %return
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 1
+  br i1 %SwitchLeaf, label %return, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %if.end.4, !dbg !404
 
 if.end.4:                                         ; preds = %cleanup.cont, %entry
@@ -400,12 +404,9 @@ if.end.4:                                         ; preds = %cleanup.cont, %entr
   store %struct._object* %call5, %struct._object** %retval, !dbg !409
   br label %return, !dbg !409
 
-return:                                           ; preds = %if.end.4, %cleanup
+return:                                           ; preds = %LeafBlock, %if.end.4
   %14 = load %struct._object*, %struct._object** %retval, !dbg !410
   ret %struct._object* %14, !dbg !410
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 ; Function Attrs: nounwind uwtable

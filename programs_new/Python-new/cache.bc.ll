@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/cache.bc'
+; ModuleID = 'programs_new/Python-new/cache.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -501,15 +501,12 @@ cleanup:                                          ; preds = %do.end.31, %if.then
   %50 = bitcast %struct._pysqlite_Node** %node to i8*, !dbg !745
   call void @llvm.lifetime.end(i64 8, i8* %50) #2, !dbg !745
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 1, label %cleanup.cont
-  ]
+  br label %cleanup.cont
 
-cleanup.cont:                                     ; preds = %cleanup, %cleanup
+cleanup.cont:                                     ; preds = %cleanup
   ret void, !dbg !744
 
-unreachable:                                      ; preds = %cleanup
+unreachable:                                      ; No predecessors!
   unreachable
 }
 

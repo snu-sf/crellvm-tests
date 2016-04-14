@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/bytes_methods.bc'
+; ModuleID = 'programs_new/Python-new/bytes_methods.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -978,11 +978,13 @@ if.end.35:                                        ; preds = %if.end.34, %if.end.
 cleanup:                                          ; preds = %if.end.35, %if.then.30, %if.then.18
   call void @llvm.lifetime.end(i64 1, i8* %ch) #2, !dbg !1005
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %cleanup.38 [
-    i32 0, label %cleanup.cont
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 0
+  br i1 %SwitchLeaf, label %cleanup.cont, label %NewDefault
+
+cleanup.cont:                                     ; preds = %LeafBlock
   br label %for.inc, !dbg !1006
 
 for.inc:                                          ; preds = %cleanup.cont
@@ -999,7 +1001,10 @@ for.end:                                          ; preds = %for.cond
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.38, !dbg !1011
 
-cleanup.38:                                       ; preds = %for.end, %cleanup, %if.then.6, %if.then
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.38
+
+cleanup.38:                                       ; preds = %NewDefault, %for.end, %if.then.6, %if.then
   %27 = bitcast i32* %previous_is_cased to i8*, !dbg !1012
   call void @llvm.lifetime.end(i64 4, i8* %27) #2, !dbg !1012
   %28 = bitcast i32* %cased to i8*, !dbg !1012

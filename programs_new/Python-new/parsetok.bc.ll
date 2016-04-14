@@ -1,4 +1,4 @@
-; ModuleID = 'irs-onlybc/parsetok.bc'
+; ModuleID = 'programs_new/Python-new/parsetok.bc.ll'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -1045,15 +1045,19 @@ cleanup:                                          ; preds = %if.end.166, %if.end
   %141 = bitcast i8** %a to i8*, !dbg !1295
   call void @llvm.lifetime.end(i64 8, i8* %141) #2, !dbg !1295
   %cleanup.dest = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest, label %unreachable [
-    i32 0, label %cleanup.cont
-    i32 2, label %for.end
-  ]
+  br label %LeafBlock
 
-cleanup.cont:                                     ; preds = %cleanup
+LeafBlock:                                        ; preds = %cleanup
+  %SwitchLeaf = icmp eq i32 %cleanup.dest, 2
+  br i1 %SwitchLeaf, label %for.end, label %NewDefault
+
+NewDefault:                                       ; preds = %LeafBlock
+  br label %cleanup.cont
+
+cleanup.cont:                                     ; preds = %NewDefault
   br label %for.cond, !dbg !1297
 
-for.end:                                          ; preds = %cleanup
+for.end:                                          ; preds = %LeafBlock
   %142 = load %struct.perrdetail*, %struct.perrdetail** %err_ret.addr, align 8, !dbg !1298, !tbaa !669
   %error172 = getelementptr inbounds %struct.perrdetail, %struct.perrdetail* %142, i32 0, i32 0, !dbg !1299
   %143 = load i32, i32* %error172, align 4, !dbg !1299, !tbaa !741
@@ -1392,16 +1396,25 @@ if.end.288:                                       ; preds = %lor.lhs.false.280
   store i32 0, i32* %cleanup.dest.slot, !dbg !1520
   br label %cleanup.294, !dbg !1520
 
-cleanup.294:                                      ; preds = %if.end.287, %if.end.288
+cleanup.294:                                      ; preds = %if.end.288, %if.end.287
   %233 = bitcast %struct._node** %r to i8*, !dbg !1521
   call void @llvm.lifetime.end(i64 8, i8* %233) #2, !dbg !1521
   %cleanup.dest.295 = load i32, i32* %cleanup.dest.slot
-  switch i32 %cleanup.dest.295, label %cleanup.300 [
-    i32 0, label %cleanup.cont.296
-    i32 10, label %done.299
-  ]
+  br label %NodeBlock
 
-cleanup.cont.296:                                 ; preds = %cleanup.294
+NodeBlock:                                        ; preds = %cleanup.294
+  %Pivot = icmp slt i32 %cleanup.dest.295, 10
+  br i1 %Pivot, label %LeafBlock.2, label %LeafBlock.4
+
+LeafBlock.4:                                      ; preds = %NodeBlock
+  %SwitchLeaf5 = icmp eq i32 %cleanup.dest.295, 10
+  br i1 %SwitchLeaf5, label %done.299, label %NewDefault.1
+
+LeafBlock.2:                                      ; preds = %NodeBlock
+  %SwitchLeaf3 = icmp eq i32 %cleanup.dest.295, 0
+  br i1 %SwitchLeaf3, label %cleanup.cont.296, label %NewDefault.1
+
+cleanup.cont.296:                                 ; preds = %LeafBlock.2
   br label %if.end.297, !dbg !1523
 
 if.end.297:                                       ; preds = %cleanup.cont.296, %if.else.266
@@ -1410,7 +1423,7 @@ if.end.297:                                       ; preds = %cleanup.cont.296, %
 if.end.298:                                       ; preds = %if.end.297, %if.end.265
   br label %done.299, !dbg !1524
 
-done.299:                                         ; preds = %if.end.298, %cleanup.294
+done.299:                                         ; preds = %LeafBlock.4, %if.end.298
   %234 = load %struct.tok_state*, %struct.tok_state** %tok.addr, align 8, !dbg !1525, !tbaa !669
   call void @PyTokenizer_Free(%struct.tok_state* %234), !dbg !1526
   %235 = load %struct._node*, %struct._node** %n, align 8, !dbg !1527, !tbaa !669
@@ -1418,7 +1431,10 @@ done.299:                                         ; preds = %if.end.298, %cleanu
   store i32 1, i32* %cleanup.dest.slot
   br label %cleanup.300, !dbg !1528
 
-cleanup.300:                                      ; preds = %done.299, %cleanup.294, %if.then
+NewDefault.1:                                     ; preds = %LeafBlock.4, %LeafBlock.2
+  br label %cleanup.300
+
+cleanup.300:                                      ; preds = %NewDefault.1, %done.299, %if.then
   %236 = bitcast i32* %started to i8*, !dbg !1529
   call void @llvm.lifetime.end(i64 4, i8* %236) #2, !dbg !1529
   %237 = bitcast %struct._node** %n to i8*, !dbg !1529
@@ -1427,9 +1443,6 @@ cleanup.300:                                      ; preds = %done.299, %cleanup.
   call void @llvm.lifetime.end(i64 8, i8* %238) #2, !dbg !1529
   %239 = load %struct._node*, %struct._node** %retval, !dbg !1529
   ret %struct._node* %239, !dbg !1529
-
-unreachable:                                      ; preds = %cleanup
-  unreachable
 }
 
 declare %struct._object* @PyUnicode_DecodeFSDefault(i8*) #3
