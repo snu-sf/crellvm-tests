@@ -66,6 +66,15 @@ def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
         if not result['retcode']:
             score += 10
 
+    ffiles = filter(lambda f: f.startswith("F%02d" % problem.index) and f.endswith(".v"), os.listdir(run_dir))
+    for ffile in ffiles:
+        eofile = "%so" % ffile
+        result = run(["make", eofile], run_dir)
+
+        messages.append("%s\n\nRETCODE: %s\n" % (ffile, result['retcode']))
+        if not result['retcode']:
+            score += 10
+
     return ('SUCCESS', score, "\n\n".join(messages))
 
 @shared_task
