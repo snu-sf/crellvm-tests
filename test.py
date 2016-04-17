@@ -77,29 +77,36 @@ def run_opt_lower_switch(optpath, filepath) :
     print " **** optpath: " + optpath + " -lowerswitch "+filepath+" -o "+filepath_tmp
     if (retcode <> 0):
         print "Running lowerswitch returns nonzero value."
-        return filepath
+        return (1, filepath)
 
     print " **** lowered: " + filepath_tmp
     retcode = subprocess.call(["mv", filepath_tmp, filepath])
 
-    return filepath
+    return (0, filepath)
     
-# returns (total, succeeded, unknown)
+# returns (total, succeeded, unknown, lowerfailfiles)
 def validate_results(optpath, validatorpath, test_outputdir, stop_ifvalidfail) : 
     output_dir_files = os.listdir(test_outputdir)
     
     total_validation_cnt = 0
     succeeded_validation_cnt = 0
     unknown_validation_cnt = 0
+    lower_fail = []
     triples = identify_triples(test_outputdir)
    
     for vunit in triples :
 
         # TODO: run opt -lower-switch in src and tgt
         (srcfilepath, hintfilepath, tgtfilepath) = vunit
-        vunit = (run_opt_lower_switch(optpath, srcfilepath),
+        (srclowerfail, srcfilepath) = run_opt_lower_switch(optpath, srcfilepath)
+        (tgtlowerfail, tgtfilepath) = run_opt_lower_switch(optpath, tgtfilepath)
+        vunit = (srcfilepath,
                  hintfilepath,
-                 run_opt_lower_switch(optpath, tgtfilepath))
+                 tgtfilepath)
+        if 0 < srclowerfail:
+          lower_fail.append(srcfilepath)
+        if 0 < tgtlowerfail:
+          lower_fail.append(tgtfilepath)
         
         (returncode, stdout_path, stderr_path) = run_validator(validatorpath, vunit)
        
@@ -110,7 +117,7 @@ def validate_results(optpath, validatorpath, test_outputdir, stop_ifvalidfail) :
             unknown_validation_cnt += 1
         total_validation_cnt = total_validation_cnt + 1
    
-    return (total_validation_cnt, succeeded_validation_cnt, unknown_validation_cnt)
+    return (total_validation_cnt, succeeded_validation_cnt, unknown_validation_cnt, lower_fail)
 
 
 # Returns : (retcode, stdout_path, stderr_path)
@@ -192,6 +199,7 @@ if __name__ == "__main__":
     totalsuccesscnt = 0
     totalunknowncnt = 0
     totaloptfails = []
+    totallowerfails = []
 
     # for each subfolder in "inputs"..
     for testname in os.listdir(inputpath) : 
@@ -221,11 +229,12 @@ if __name__ == "__main__":
 
             # validate_results function returns 
             # (# of validation units, # of successful validation units)
-            (case_totalcnt, case_succeededcnt, case_unknowncnt) = validate_results(optpath, validatorpath, bitcode_outputdir, stop_ifvalidfail)
+            (case_totalcnt, case_succeededcnt, case_unknowncnt, case_lowerfaillist) = validate_results(optpath, validatorpath, bitcode_outputdir, stop_ifvalidfail)
             # Now accumulating # of cases..
             totalcnt += case_totalcnt
             totalsuccesscnt += case_succeededcnt
             totalunknowncnt += case_unknowncnt
+            totallowerfails = totallowerfails + case_lowerfaillist
 
             print "{0}: succeeded: {1}, unknown: {2}, total: {3} (total : {4}, unknown : {5}, total : {6})".format(bitcode_path, case_succeededcnt, case_unknowncnt, case_totalcnt, totalsuccesscnt, totalunknowncnt, totalcnt)
     
@@ -235,5 +244,8 @@ if __name__ == "__main__":
         str(totalunknowncnt))
 
     print "clang(opt) FAILURE : {0}".format(str(len(totaloptfails)))
+    print "lowering FAILURE : {0}".format(str(len(totallowerfails)))
     for eachstderrpath in totaloptfails:
         print "opt fail : {0}".format(eachstderrpath)
+    for eachbcpath in totallowerfails:
+        print "lower fail : {0}".format(eachbcpath)
