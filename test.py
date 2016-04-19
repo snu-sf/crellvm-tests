@@ -8,56 +8,21 @@ import shutil
 import ntpath
 import optparse
 from vunit_utils import identify_triples
+from vunit_utils import get_basefilepath
+from vunit_utils import get_validator_stdouterr
+from vunit_utils import check_validation_result
 
 logging.basicConfig()
 logger = logging.getLogger()
 
 
 
-def get_basefilepath(vunit):
-    (srcfilepath, hintfilepath, tgtfilepath) = vunit
-    basefilepath = hintfilepath[0:-(len(".hint.json"))]
-    assert srcfilepath[0:-(len(".src.bc"))] == basefilepath
-    assert tgtfilepath[0:-(len(".tgt.bc"))] == basefilepath
-    return basefilepath
-
-# Returns : 1 if succeeded, 0 if failed, -1 if unknown result
-def check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit):
-    stdout_f = open(stdout_path, "r")
-    stderr_f = open(stderr_path, "r")
-    olines = stdout_f.readlines()
-    elines = stderr_f.readlines()
-    stderr_f.close()
-    stdout_f.close()
-
-    olastline = ""
-    if len(olines) > 0 :
-        olastline = olines[-1].strip() # remove endlines
-    elastline = ""
-    if len(elines) > 0 : 
-        elastline = elines[-1].strip() # remove endlines
-
-    if returncode == 0:
-        assert elastline == "Validation succeeded."
-        return 1
-    elif returncode == 1:
-        assert elastline == "Validation failed."
-        print "Validation FAILED! at {0}".format(str(vunit))
-        if stop_ifvalidfail:
-            sys.exit(1)
-        return 0 
-    
-    return -1
-    #logger.error("validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
-    #sys.exit(1)
-
 # Returns (returncode, stdout_path, stderr_path)
 def run_validator(validatorpath, vunit) : 
     
     (srcfilepath, hintfilepath, tgtfilepath) = vunit
     basefilepath = get_basefilepath(vunit)
-    stdout_path = "{0}.validator.stdout".format(basefilepath)
-    stderr_path = "{0}.validator.stderr".format(basefilepath)
+    (stdout_path, stderr_path) = get_validator_stdouterr(basefilepath);
 
     stdout_f = open(stdout_path, "w")
     stderr_f = open(stderr_path, "w")
@@ -110,7 +75,7 @@ def validate_results(optpath, validatorpath, test_outputdir, stop_ifvalidfail) :
         
         (returncode, stdout_path, stderr_path) = run_validator(validatorpath, vunit)
        
-        res = check_validation_result(returncode, stdout_path, stderr_path, stop_ifvalidfail, vunit)
+        res = check_validation_result(stdout_path, stderr_path, stop_ifvalidfail, True, vunit)
         if res == 1:
             succeeded_validation_cnt += 1
         elif res == -1:
