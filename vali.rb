@@ -127,7 +127,7 @@ def clean_all_by_products
   timer
   run("find . -name \"*.src.bc\" -delete -o -name \"*\.src\.ll\" -delete -o -name \"*\.tgt\.bc\" -delete -o -name \"*\.tgt\.ll\" -delete -o -name \"*\.hint\.json\" -delete -o -name \"*\.output\.ll\" -delete")
   puts "cleaning by-products done in #{timer} seconds"
-  run("git clean -xf")
+  # run("git clean -xf")
 end
 
 def which_opt(tri_base)
