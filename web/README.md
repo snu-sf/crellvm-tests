@@ -1,9 +1,14 @@
-# Software Foundations Submissions
+# LLVMBerry Web Server
 
 ## Installation
 
 ```
 # Django
+yum groupinstall -y "Development Tools"
+yum install -y python34-devel
+curl https://bootstrap.pypa.io/get-pip.py | python3.4
+pip3 install --upgrade pip
+pip3 install --upgrade virtualenv
 virtualenv -p python3 env
 . env/bin/activate
 pip install --upgrade pip
@@ -16,21 +21,10 @@ yum install epel-release
 yum install rabbitmq-server
 
 
-# Coq
-yum groupinstall "Development Tools"
+# Centos 7
 
-cd /etc/yum.repos.d/
-wget http://download.opensuse.org/repositories/home:ocaml/CentOS_7/home:ocaml.repo
-yum install opam
+firewall-cmd --zone=public --add-port=8000/tcp
 
-adduser sf
-passwd sf
-su sf
-ssh-keygen -t rsa
-
-opam init --comp 4.02.3
-opam install coq.8.4.5
-```
 
 ## Initialization
 

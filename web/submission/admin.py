@@ -4,7 +4,5 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Assignment)
-admin.site.register(Problem)
 admin.site.register(Submission)
-admin.site.register(Result)
+admin.site.register(ValidationUnit)

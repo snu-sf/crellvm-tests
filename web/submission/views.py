@@ -5,67 +5,55 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.core.urlresolvers import reverse
+from django_tables2 import RequestConfig
 from datetime import datetime
 from celery.task.control import inspect
+import shutil
 
-from . import models, forms, tasks
+from . import models, forms, tasks, tables
 
 # Create your views here.
 
-class AssignmentList(ListView):
-    model = models.Assignment
-    context_object_name = 'assignments'
+class SubmissionList(LoginRequiredMixin, ListView):
+    model = models.Submission
+    context_object_name = 'submissions'
 
     def get_context_data(self, **kwargs):
-        context = super(AssignmentList, self).get_context_data(**kwargs)
-        assignments = context['assignments']
-
-        for a in assignments:
-            a.score = a.get_score(self.request.user)
-
-        context['assignments'] = assignments
-        context['score'] = sum(map(lambda a: a.score, assignments))
-        context['point'] = sum(map(lambda a: a.point, assignments))
-
-        return context
-
-class AssignmentDetail(LoginRequiredMixin, DetailView):
-    model = models.Assignment
-    slug_field = 'name'
-    context_object_name = 'assignment'
-
-    def get_context_data(self, **kwargs):
-        context = super(AssignmentDetail, self).get_context_data(**kwargs)
-        assignment = context['assignment']
-        submissions = models.Submission.objects.filter(assignment=assignment, user=self.request.user).order_by('-submission_date')
-
+        context = super(SubmissionList, self).get_context_data(**kwargs)
         context['submission_form'] = forms.SubmissionForm()
-        context['submissions'] = submissions
-        context['score'] = assignment.get_score(self.request.user)
+
+        submissions = context['submissions']
+        table = tables.SubmissionTable(submissions, order_by='-date')
+        RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
+        context['table'] = table
 
         return context
-
-class AssignmentSubmit(LoginRequiredMixin, DetailView):
-    model = models.Assignment
-    slug_field = 'name'
-    context_object_name = 'assignment'
 
     def post(self, request, *args, **kwargs):
         submission_form = forms.SubmissionForm(request.POST, request.FILES)
 
         if submission_form.is_valid():
-            assignment = self.get_object()
-            submitted_file = submission_form.cleaned_data['submitted_file']
-            submission = models.Submission(assignment=assignment,
+            opt_filename = submission_form.cleaned_data['opt_filename']
+            opt_options = submission_form.cleaned_data['opt_options']
+            main_filename = submission_form.cleaned_data['main_filename']
+            test_dir = submission_form.cleaned_data['test_dir']
+
+            submission = models.Submission(status = 'PENDING',
                                            user=request.user,
-                                           submission_date=datetime.now(),
-                                           submission_file=submitted_file,
-                                           status = 'PENDING',
-                                           score = 0,
-                                           message = '')
+                                           date=datetime.now(),
+                                           opt_filename=opt_filename,
+                                           opt_options=opt_options,
+                                           main_filename=main_filename,
+                                           test_dir=test_dir)
             submission.save()
-            tasks.evaluate.delay(submission.id)
-            return HttpResponseRedirect(reverse('assignment', args=[assignment.name]))
+
+            rundir = tasks.get_rundir(submission.id)
+            os.makedirs(rundir)
+            shutil.copy(opt_filename, os.path.join(rundir, 'opt'))
+            shutil.copy(main_filename, os.path.join(rundir, 'main.native'))
+
+            tasks.process_submission.delay(submission.id)
+            return HttpResponseRedirect(reverse('submission', args=[submission.id]))
         else:
             return HttpResponse('Bad Submission')
 
@@ -73,30 +61,16 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
     model = models.Submission
     context_object_name = 'submission'
 
-    def get_object(self, queryset=None):
-        object = super(SubmissionDetail, self).get_object(queryset)
-
-        if object.user.id != self.request.user.id:
-            raise Http404()
-
-        return object
-
     def get_context_data(self, **kwargs):
         context = super(SubmissionDetail, self).get_context_data(**kwargs)
         submission = context['submission']
-        results = models.Result.objects.filter(submission=submission).order_by('problem')
-
-        context['results'] = results
-
+        validation_units = models.ValidationUnit.objects.filter(submission=submission)
+        context['validation_units'] = validation_units
         return context
 
-class SubmissionDownload(SubmissionDetail):
-    def get(self, request, *args, **kwargs):
-        submission = self.get_object()
-        filename = os.path.basename(submission.submission_file.file.name)
-        response = HttpResponse(submission.submission_file, content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename=%s' % filename
-        return response
+class ValidationUnitDetail(LoginRequiredMixin, DetailView):
+    model = models.ValidationUnit
+    context_object_name = 'validation_unit'
 
 def server_status(request):
     CELERY_DESTINATION = list(inspect().ping())

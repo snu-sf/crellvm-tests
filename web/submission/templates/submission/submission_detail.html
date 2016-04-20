@@ -1,26 +1,23 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load filename %}
+{% load intformat %}
 
 {% block content %}
-  <h2>Submission {{ submission.id }} for <a href="{% url 'assignment' submission.assignment.name %}">Assignment {{ submission.assignment.name }}</a></h2>
+  <h2>Submission {{ submission.id }}: {{ submission.status }}</h2>
+  <ul>
+    <li>by {{ submission.user }} @ {{ submission.date }}</li>
+    <li>"{{ submission.opt_filename}} {{ submission.opt_options }}" w/ testdir "{{ submission.test_dir }}"</li>
+    <li>/opt/llvmberry-tests/{{ submission.id | intformat }}</li>
+  </ul>
 
-  <ul>
-    <li>Status: {{ submission.status }}</li>
-    <li>Score: {{ submission.score }}/{{ submission.assignment.point }} pts</li>
-    <li>Submitted date: {{ submission.submission_date }}</li>
-    <li>Submitted file: <a href="{% url 'submission/download' submission.id %}">{{ submission.submission_file | filename }}</a></li>
-    <li>Message: {{ submission.message }}</li>
-  </ul>
-  <ul>
-    {% for result in results %}
-    <li>
-      Problem {{ result.problem.index }}: {{ result.score }} pts ({{ result.status }})<br />
-      <pre>
-{{ result.message }}
-      </pre>
-    </li>
-    {% endfor %}
-  </ul>
+  <div>
+    <h3>Validation Units</h3>
+    <ul>
+      {% for validation_unit in validation_units %}
+      <li>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
+</div>
 {% endblock %}

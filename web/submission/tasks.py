@@ -8,17 +8,14 @@ import tempfile
 import zipfile
 import re
 import time
+from django.conf import settings
 from celery import shared_task
 
 from . import models
 
+LLVMBERRY_ROOT = getattr(settings, 'LLVMBERRY_ROOT', None)
 TIMEOUT = 100
 PFILE_PATTERN = re.compile("P.*\.v")
-
-def extract_submission(submission_filename, submission_dir):
-    z = zipfile.ZipFile(submission_filename)
-    for name in z.namelist():
-        z.extract(name, submission_dir)
 
 def communicate(process, **kwargs):
     (stdout, stderr) = process.communicate(timeout=TIMEOUT)
@@ -38,6 +35,19 @@ def run(cmds, cwd=None):
         process.kill()
         (stdout, stderr) = communicate(process)
         return {'retcode': 'TIMEOUT', 'stdout': stdout, 'stderr': stderr}
+
+def get_rundir(submission_id):
+    return os.path.join(LLVMBERRY_ROOT, '%04d' % submission_id)
+
+@shared_task
+def process_submission(submission_id):
+    pass
+
+def extract_submission(submission_filename, submission_dir):
+    z = zipfile.ZipFile(submission_filename)
+    for name in z.namelist():
+        z.extract(name, submission_dir)
+
 
 def evaluate_problem(forbiddens, submission_dir, run_dir, problem):
     pfile = "P%02d.v" % problem.index

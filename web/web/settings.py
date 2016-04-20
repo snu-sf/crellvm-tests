@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'submission',
 
     'djcelery',
+    'django_tables2',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
+                'django.core.context_processors.static',
             ],
         },
     },
@@ -134,3 +137,5 @@ CELERY_ACCEPT_CONTENT=['json']
 CELERY_RESULT_SERIALIZER='json'
 CELERY_TIMEZONE='Asia/Seoul'
 CELERY_ENABLE_UTC=True
+
+LLVMBERRY_ROOT='/opt/llvmberry-tests/'

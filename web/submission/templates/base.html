@@ -1,16 +1,19 @@
 {% load i18n %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
     <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
     <title>{% block title %}Software Foundations Submission{% endblock %}</title>
   </head>
 
   <body>
     <div id="header">
       {% block header %}
-      <a href="{% url 'assignments' %}">{% trans "Assignments" %}</a> | 
+      <a href="{% url 'submissions' %}">{% trans "Submissions" %}</a> | 
       <a href="{% url 'server_status' %}">{% trans "Server Status" %}</a> | 
 
       {% if user.is_authenticated %}
