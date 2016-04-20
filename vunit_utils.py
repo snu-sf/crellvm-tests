@@ -50,4 +50,48 @@ def identify_triples(test_outputdir) :
   
     return triple_list
 
+# Returns : common path string of src/target/hint files
+def get_basefilepath(vunit):
+    (srcfilepath, hintfilepath, tgtfilepath) = vunit
+    basefilepath = hintfilepath[0:-(len(".hint.json"))]
+    assert srcfilepath[0:-(len(".src.bc"))] == basefilepath
+    assert tgtfilepath[0:-(len(".tgt.bc"))] == basefilepath
+    return basefilepath
+
+# Returns : given a base file path (common path of src/target/hint files), returns validator stdout/stderr file path
+def get_validator_stdouterr(basefilepath):
+    stdout_path = "{0}.validator.stdout".format(basefilepath)
+    stderr_path = "{0}.validator.stderr".format(basefilepath)
+    return (stdout_path, stderr_path);
+
+
+# Returns : 1 if succeeded, 0 if failed, -1 if unknown result
+def check_validation_result(stdout_path, stderr_path, stop_ifvalidfail, do_print, vunit):
+    stdout_f = open(stdout_path, "r")
+    stderr_f = open(stderr_path, "r")
+    olines = stdout_f.readlines()
+    elines = stderr_f.readlines()
+    stderr_f.close()
+    stdout_f.close()
+
+    olastline = ""
+    if len(olines) > 0 :
+        olastline = olines[-1].strip() # remove endlines
+    elastline = ""
+    if len(elines) > 0 : 
+        elastline = elines[-1].strip() # remove endlines
+
+    if elastline == "Validation succeeded.":
+        return 1
+    elif elastline == "Validation failed.":
+        if do_print:
+            print "Validation FAILED! at {0}".format(str(vunit))
+        if stop_ifvalidfail:
+            sys.exit(1)
+        return 0 
+    
+    return -1
+    #logger.error("validator emitted unknown result (neither succeeded or fail)! Please check " + stderr_path)
+    #sys.exit(1)
+
 
