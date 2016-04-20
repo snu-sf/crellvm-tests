@@ -21,7 +21,9 @@
 ## Example ##
 
 `python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "inputs_full"`
-`python test.py -r "-instcombine" -o -f -i "inputs_full"`
+
+`python test.py -r "-instcombine" -o -f -i "inputs_full"` (with default opt and main.native path)
+
 `python listfails.py -f ./results-opt/`
 
 ## About lowerswitch-ing ##
