@@ -11,9 +11,10 @@ class Submission(models.Model):
     user = models.ForeignKey(User)
     date = models.DateTimeField()
     opt_filename = models.TextField()
-    opt_options = models.TextField()
+    opt_pass = models.TextField()
     main_filename = models.TextField()
     test_dir = models.TextField()
+    comment = models.TextField()
 
     def __str__(self):
         return self.id

@@ -34,17 +34,19 @@ class SubmissionList(LoginRequiredMixin, ListView):
 
         if submission_form.is_valid():
             opt_filename = submission_form.cleaned_data['opt_filename']
-            opt_options = submission_form.cleaned_data['opt_options']
+            opt_pass = submission_form.cleaned_data['opt_pass']
             main_filename = submission_form.cleaned_data['main_filename']
             test_dir = submission_form.cleaned_data['test_dir']
+            comment = submission_form.cleaned_data['comment']
 
             submission = models.Submission(status='PENDING',
                                            user=request.user,
                                            date=datetime.now(),
                                            opt_filename=opt_filename,
-                                           opt_options=opt_options,
+                                           opt_pass=opt_pass,
                                            main_filename=main_filename,
-                                           test_dir=test_dir)
+                                           test_dir=test_dir,
+                                           comment=comment)
             submission.save()
             tasks.run_submission(submission)
             return HttpResponseRedirect(reverse('submission', args=[submission.id]))
