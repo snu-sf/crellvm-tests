@@ -10,7 +10,7 @@ from datetime import datetime
 from celery.task.control import inspect
 import shutil
 
-from . import models, forms, tasks, tables
+from . import models, forms, tables, tasks
 
 # Create your views here.
 
@@ -38,7 +38,7 @@ class SubmissionList(LoginRequiredMixin, ListView):
             main_filename = submission_form.cleaned_data['main_filename']
             test_dir = submission_form.cleaned_data['test_dir']
 
-            submission = models.Submission(status = 'PENDING',
+            submission = models.Submission(status='PENDING',
                                            user=request.user,
                                            date=datetime.now(),
                                            opt_filename=opt_filename,
@@ -46,13 +46,7 @@ class SubmissionList(LoginRequiredMixin, ListView):
                                            main_filename=main_filename,
                                            test_dir=test_dir)
             submission.save()
-
-            rundir = tasks.get_rundir(submission.id)
-            os.makedirs(rundir)
-            shutil.copy(opt_filename, os.path.join(rundir, 'opt'))
-            shutil.copy(main_filename, os.path.join(rundir, 'main.native'))
-
-            tasks.process_submission.delay(submission.id)
+            tasks.run_submission(submission)
             return HttpResponseRedirect(reverse('submission', args=[submission.id]))
         else:
             return HttpResponse('Bad Submission')
@@ -63,14 +57,37 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(SubmissionDetail, self).get_context_data(**kwargs)
+
         submission = context['submission']
-        validation_units = models.ValidationUnit.objects.filter(submission=submission)
+        validation_units = models.ValidationUnit.objects.filter(translation_unit__submission=submission)
         context['validation_units'] = validation_units
+
+        table = tables.ValidationUnitTable(validation_units)
+        RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
+        context['table'] = table
+
         return context
 
 class ValidationUnitDetail(LoginRequiredMixin, DetailView):
     model = models.ValidationUnit
     context_object_name = 'validation_unit'
+
+    def get_context_data(self, **kwargs):
+        context = super(ValidationUnitDetail, self).get_context_data(**kwargs)
+        vunit = context['validation_unit']
+
+        if vunit.status != 'PENDING' and vunit.status != 'SUCCESS':
+            vunitdir = os.path.join(tasks.get_rundir(vunit.translation_unit.submission.id),
+                                    'vunits',
+                                    vunit.translation_unit.dirname)
+            with open(os.path.join(vunitdir, vunit.basename + '.hint.json'), 'r') as hint_file:
+                context['hint_file'] = hint_file.read()
+            result = tasks.run(['git', 'diff', '--no-index',
+                                os.path.join(vunitdir, vunit.basename + '.src.ll'),
+                                os.path.join(vunitdir, vunit.basename + '.tgt.ll')])
+            context['diff_string'] = result['stdout']
+
+        return context
 
 def server_status(request):
     CELERY_DESTINATION = list(inspect().ping())

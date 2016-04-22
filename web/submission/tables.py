@@ -6,13 +6,22 @@ from datetime import datetime
 
 from . import models
 
-TEMPLATE = '''
+class SubmissionTable(tables.Table):
+    TEMPLATE = '''
    <a href="{% url 'submission' record.pk %}">Detail</a>
 '''
-
-class SubmissionTable(tables.Table):
     control = tables.TemplateColumn(TEMPLATE)
 
     class Meta:
         model = models.Submission
+        attrs = {"class": "paleblue"}
+
+class ValidationUnitTable(tables.Table):
+    TEMPLATE = '''
+   <a href="{% url 'validation_unit' record.pk %}">Detail</a>
+'''
+    control = tables.TemplateColumn(TEMPLATE)
+
+    class Meta:
+        model = models.ValidationUnit
         attrs = {"class": "paleblue"}

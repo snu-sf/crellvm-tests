@@ -1,23 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load intformat %}
+{% load render_table from django_tables2 %}
 
 {% block content %}
   <h2>Submission {{ submission.id }}: {{ submission.status }}</h2>
   <ul>
     <li>by {{ submission.user }} @ {{ submission.date }}</li>
-    <li>"{{ submission.opt_filename}} {{ submission.opt_options }}" w/ testdir "{{ submission.test_dir }}"</li>
+    <li>{{ submission.opt_filename}} {{ submission.opt_options }}</li>
+    <li>{{ submission.test_dir }}</li>
     <li>/opt/llvmberry-tests/{{ submission.id | intformat }}</li>
   </ul>
 
   <div>
     <h3>Validation Units</h3>
-    <ul>
-      {% for validation_unit in validation_units %}
-      <li>
-      </li>
-      {% endfor %}
-    </ul>
+    {% render_table table %}
   </div>
 </div>
 {% endblock %}
