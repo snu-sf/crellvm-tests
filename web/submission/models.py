@@ -1,5 +1,6 @@
 import os
 import shutil
+import django_filters
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -44,3 +45,8 @@ class ValidationUnit(models.Model):
 
     def __str__(self):
         return self.basename
+
+class ValidationUnitFilter(django_filters.FilterSet):
+    class Meta:
+        model = ValidationUnit
+        fields = ['status', 'category']

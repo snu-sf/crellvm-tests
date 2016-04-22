@@ -5,10 +5,10 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.core.urlresolvers import reverse
-from django_tables2 import RequestConfig
 from datetime import datetime
 from celery.task.control import inspect
 import shutil
+import django_tables2
 
 from . import models, forms, tables, tasks
 
@@ -24,7 +24,7 @@ class SubmissionList(LoginRequiredMixin, ListView):
 
         submissions = context['submissions']
         table = tables.SubmissionTable(submissions, order_by='-date')
-        RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
+        django_tables2.RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
         context['table'] = table
 
         return context
@@ -61,11 +61,15 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
         context = super(SubmissionDetail, self).get_context_data(**kwargs)
 
         submission = context['submission']
-        validation_units = models.ValidationUnit.objects.filter(translation_unit__submission=submission)
-        context['validation_units'] = validation_units
+        validation_units_all = models.ValidationUnit.objects.filter(translation_unit__submission=submission)
 
+        context['category_list'] = validation_units_all.values_list('category', flat=True).distinct()
+        context['status_list'] = ['SUCCESS', 'FAILURE', 'NOT SUPPORTED', 'UNKNOWN']
+
+        validation_units = models.ValidationUnitFilter(self.request.GET,
+                                                       queryset=validation_units_all)
         table = tables.ValidationUnitTable(validation_units)
-        RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
+        django_tables2.RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
         context['table'] = table
 
         return context
@@ -101,4 +105,5 @@ def server_status(request):
         'reserved': CELERY_INSPECT.reserved(),
     }
 
-    return render(request, 'submission/server_status.html', {'tasks': tasks})
+    return render(request, 'submission/server_status.html', {'tasks': tasks}
+)

@@ -13,6 +13,27 @@
   </ul>
 
   <div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th><a href="{% url 'submission' submission.id %}">all</a></td></th>
+          {% for status in status_list %}
+            <th><a href="{% url 'submission' submission.id %}?status={{ status }}">{{ status }}</a></th>
+          {% endfor %}
+        </tr>
+      </thead>
+      {% for category in category_list %}
+        <tr>
+        <td><a href="{% url 'submission' submission.id %}?status={{ category }}">{{ category }}</a></td>
+        {% for status in status_list %}
+          <td><a href="{% url 'submission' submission.id %}?status={{ status }}&category={{ category }}">link</a></td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div>
     <h3>Validation Units</h3>
     {% render_table table %}
   </div>

@@ -128,6 +128,9 @@ def process_submission(submission_id):
     opt_filename = os.path.join(rundir, 'opt')
     main_filename = os.path.join(rundir, 'main.native')
 
+    submission.status = 'OPTING'
+    submission.save()
+
     # find ll files within test_dir, and create translation unit tasks
     for root, dirnames, filenames in os.walk(submission.test_dir):
         for filename in fnmatch.filter(filenames, '*.ll'):
@@ -143,7 +146,7 @@ def process_submission(submission_id):
                                            rundir,
                                            tunit.id)
 
-    submission.status = 'QUEUED'
+    submission.status = 'OPTED'
     submission.save()
 
 def run_submission(submission):

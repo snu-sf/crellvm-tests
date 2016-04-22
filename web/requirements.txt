@@ -1,3 +1,4 @@
 django
 django-celery
 django-tables2
+django-filter
