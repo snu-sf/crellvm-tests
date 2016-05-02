@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import os
+import time
 import fnmatch
 import sys
 import shutil
@@ -58,6 +59,7 @@ def process_validation_unit(main_filename, tunitdir, vunit_id):
     src_filename = os.path.join(tunitdir, vunit.basename + '.src.bc')
     tgt_filename = os.path.join(tunitdir, vunit.basename + '.tgt.bc')
     hint_filename = os.path.join(tunitdir, vunit.basename + '.hint.json')
+
     result = run([main_filename,
                   src_filename,
                   tgt_filename,
@@ -93,7 +95,7 @@ def process_translation_unit(opt_filename, opt_pass, main_filename, test_dir, ru
                   '-' + opt_pass,
                   '-S',
                   '-llvmberry-outputdir', tunitdir,
-                  os.path.join(test_dir, tunit.dirname, tunit.filename)],
+                  os.path.join(test_dir, tunit.dirname, tunit.filename + '.ll')],
                 tunitdir)
 
     # save logs
@@ -104,7 +106,7 @@ def process_translation_unit(opt_filename, opt_pass, main_filename, test_dir, ru
 
     # create validation unit tasks
     for root, dirnames, filenames in os.walk(tunitdir):
-        for filename in fnmatch.filter(filenames, '*.hint.json'):
+        for filename in fnmatch.filter(filenames, tunit.filename + '.*.hint.json'):
             with open(os.path.join(tunitdir, filename), 'r') as hint_file:
                 category = json.loads(hint_file.read())['opt_name']
 
@@ -136,8 +138,8 @@ def process_submission(submission_id):
         for filename in fnmatch.filter(filenames, '*.ll'):
             tunit = models.TranslationUnit(submission=submission,
                                            status='PENDING',
-                                           dirname=os.path.dirname(filename),
-                                           filename=os.path.basename(filename))
+                                           dirname=os.path.relpath(root, submission.test_dir),
+                                           filename=os.path.splitext(os.path.basename(filename))[0])
             tunit.save()
             process_translation_unit.delay(opt_filename,
                                            submission.opt_pass,

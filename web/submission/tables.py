@@ -25,3 +25,8 @@ class ValidationUnitTable(tables.Table):
     class Meta:
         model = models.ValidationUnit
         attrs = {"class": "paleblue"}
+
+class TranslationUnitTable(tables.Table):
+    class Meta:
+        model = models.TranslationUnit
+        attrs = {"class": "paleblue"}

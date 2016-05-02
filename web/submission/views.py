@@ -59,8 +59,13 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(SubmissionDetail, self).get_context_data(**kwargs)
-
         submission = context['submission']
+
+        translation_units = models.TranslationUnit.objects.filter(submission=submission)
+        translation_units_table = tables.TranslationUnitTable(translation_units)
+        django_tables2.RequestConfig(self.request, paginate={'per_page': 200}).configure(translation_units_table)
+        context['translation_units_table'] = translation_units_table
+
         validation_units_all = models.ValidationUnit.objects.filter(translation_unit__submission=submission)
 
         context['category_list'] = validation_units_all.values_list('category', flat=True).distinct()
@@ -68,9 +73,9 @@ class SubmissionDetail(LoginRequiredMixin, DetailView):
 
         validation_units = models.ValidationUnitFilter(self.request.GET,
                                                        queryset=validation_units_all)
-        table = tables.ValidationUnitTable(validation_units)
-        django_tables2.RequestConfig(self.request, paginate={'per_page': 200}).configure(table)
-        context['table'] = table
+        validation_units_table = tables.ValidationUnitTable(validation_units)
+        django_tables2.RequestConfig(self.request, paginate={'per_page': 200}).configure(validation_units_table)
+        context['validation_units_table'] = validation_units_table
 
         return context
 

@@ -32,7 +32,7 @@ firewall-cmd --zone=public --add-port=8000/tcp
 . env/bin/activate
 rm db.sqlite3
 python manage.py migrate
-python manage.py createsuperuser --username sf --email ta@sf.snu.ac.kr
+python manage.py createsuperuser --username sf --email admin@sf.snu.ac.kr
 ```
 
 ## Operation

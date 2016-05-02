@@ -18,7 +18,7 @@ class Submission(models.Model):
     comment = models.TextField()
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class TranslationUnit(models.Model):
     submission = models.ForeignKey(Submission)
