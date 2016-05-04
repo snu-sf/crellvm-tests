@@ -28,7 +28,8 @@ if __name__ == "__main__":
         logger.error("{0} path does not exist".format(vunitpath))
         sys.exit(1) #shutil.rmtree(result_path);
 
-    
+    faillist = []
+    unknownlist = []
     for filename in os.listdir(vunitpath) : 
         filepath = os.path.join(vunitpath, filename)
         if not os.path.isdir(filepath):
@@ -46,7 +47,18 @@ if __name__ == "__main__":
                 lastline = stderrfile.readlines()[-1].strip()
 
                 if lastline == "Validation failed." :
-                    print "Fail : look at {0}".format(hintpath)
+                    faillist.append("look at {0}".format(hintpath))
                 elif not (lastline == "Validation succeeded.") : 
-                    print "Unknown error : look at {0}".format(hintpath)
+                    unknownlist.append("look at {0}".format(hintpath))
+
+    faillist.sort()
+    unknownlist.sort()
+    idx = 1
+    for itm in faillist :
+        print "Fail {0} : {1}".format(idx, itm)
+        idx = idx + 1
+    idx = 1
+    for itm in unknownlist : 
+        print "Unknown {0} : {1}".format(idx, itm)
+        idx = idx + 1
 

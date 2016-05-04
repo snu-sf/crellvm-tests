@@ -86,12 +86,14 @@ if __name__ == "__main__":
     if arg_results.showoptimizations:
         keys = list(opt_names)
         keys.sort()
+        idx = 1
         for key in keys:
             succ = opt_succ_stats[key]
             fail = opt_fail_stats[key]
             unknown = opt_unknown_stats[key]
             if unknown == 0 and fail == 0 : 
-                print "{0} \t: {1} time(s) appeared (all success)".format(key, (succ + fail + unknown))
+                print "{0}. {1} \t: {2} time(s) appeared (all success)".format(idx, key, (succ + fail + unknown))
             else : 
-                print "{0} \t: {1} time(s) appeared ({2} fail(s), {3} unknown(s))".format(key, (succ + fail + unknown),
+                print "{0}. {1} \t: {2} time(s) appeared ({3} fail(s), {4} unknown(s))".format(idx, key, (succ + fail + unknown),
                     fail, unknown)
+            idx = idx + 1
