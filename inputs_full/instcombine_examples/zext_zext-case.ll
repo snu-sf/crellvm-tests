@@ -1,5 +1,3 @@
-; ModuleID = './zext_zext/example.bc'
-
 define i32 @foo(i8 %x) {
   %y = zext i8 %x to i16
   %z = zext i16 %y to i32
