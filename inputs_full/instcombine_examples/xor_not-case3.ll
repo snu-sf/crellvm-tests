@@ -1,6 +1,6 @@
 define i32 @foo(i32 %x) {
-  %y = xor i32 %x, -1
-  %z = xor i32 %y, %x
+  %y = xor i32 -1, %x
+  %z = xor i32 %x, %y
   ret i32 %z
 }
 

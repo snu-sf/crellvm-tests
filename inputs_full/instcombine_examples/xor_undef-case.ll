@@ -1,5 +1,5 @@
 define i32 @foo(i32 %y) {
-  %z = xor i32 %y, 0
+  %z = xor i32 %y, undef
   ret i32 %z
 }
 
