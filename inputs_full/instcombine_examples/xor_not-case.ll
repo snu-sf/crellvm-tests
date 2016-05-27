@@ -1,5 +1,3 @@
-; ModuleID = './xor_not/example.bc'
-
 define i32 @foo(i32 %x) {
   %y = xor i32 %x, -1
   %z = xor i32 %x, %y
