@@ -316,8 +316,8 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.70 = private unnamed_addr constant [21 x i8] c"\22  Built under %s\5Cn\22\00", align 1
 @.str.71 = private unnamed_addr constant [9 x i8] c"SPEC CPU\00", align 1
 @.str.72 = private unnamed_addr constant [25 x i8] c",\22  Compiled at %s %s\5Cn\22\00", align 1
-@.str.73 = private unnamed_addr constant [12 x i8] c"Jun  4 2016\00", align 1
-@.str.74 = private unnamed_addr constant [9 x i8] c"23:52:18\00", align 1
+@.str.73 = private unnamed_addr constant [12 x i8] c"Jun  7 2016\00", align 1
+@.str.74 = private unnamed_addr constant [9 x i8] c"17:57:42\00", align 1
 @.str.75 = private unnamed_addr constant [80 x i8] c"; $\22=\22\5Cn    \22; @env = map { \22$_=\5C\22$ENV{$_}\5C\22\22 } sort grep {/^PERL/} keys %ENV; \00", align 1
 @.str.76 = private unnamed_addr constant [68 x i8] c"print \22  \5C%ENV:\5Cn    @env\5Cn\22 if @env; print \22  \5C@INC:\5Cn    @INC\5Cn\22;\00", align 1
 @.str.77 = private unnamed_addr constant [16 x i8] c"config_vars(qw(\00", align 1
