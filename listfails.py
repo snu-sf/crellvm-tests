@@ -44,12 +44,19 @@ if __name__ == "__main__":
             for (srcpath, hintpath, tgtpath) in vunits:
                 stderrpath = srcpath[:-7] + ".validator.stderr"
                 stderrfile = open(stderrpath, "r")
-                lastline = stderrfile.readlines()[-1].strip()
-
-                if lastline == "Validation failed." :
-                    faillist.append("look at {0}".format(hintpath))
-                elif not (lastline == "Validation succeeded.") : 
-                    unknownlist.append("look at {0}".format(hintpath))
+                stderrfile_lines = stderrfile.readlines()
+                
+                hintfile = open(hintpath)
+                hintdata = json.load(hintfile)
+                if len(stderrfile_lines) == 0 :
+                    unknownlist.append("{0} : look at {1}".format(hintdata["opt_name"], hintpath))
+                else:
+                    lastline = stderrfile_lines[-1].strip()
+                    
+                    if lastline == "Validation failed." :
+                        faillist.append("{0} : look at {1}".format(hintdata["opt_name"], hintpath))
+                    elif not (lastline == "Validation succeeded.") : 
+                        unknownlist.append("{0} : look at {1}".format(hintdata["opt_name"], hintpath))
 
     faillist.sort()
     unknownlist.sort()
