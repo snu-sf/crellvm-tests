@@ -1,0 +1,412 @@
+; ModuleID = 'sub4vecs.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.su3_vector = type { [3 x %struct.complex] }
+%struct.complex = type { double, double }
+
+; Function Attrs: nounwind uwtable
+define void @sub_four_su3_vecs(%struct.su3_vector* %a, %struct.su3_vector* %b1, %struct.su3_vector* %b2, %struct.su3_vector* %b3, %struct.su3_vector* %b4) #0 {
+entry:
+  %a.addr = alloca %struct.su3_vector*, align 8
+  %b1.addr = alloca %struct.su3_vector*, align 8
+  %b2.addr = alloca %struct.su3_vector*, align 8
+  %b3.addr = alloca %struct.su3_vector*, align 8
+  %b4.addr = alloca %struct.su3_vector*, align 8
+  store %struct.su3_vector* %a, %struct.su3_vector** %a.addr, align 8
+  store %struct.su3_vector* %b1, %struct.su3_vector** %b1.addr, align 8
+  store %struct.su3_vector* %b2, %struct.su3_vector** %b2.addr, align 8
+  store %struct.su3_vector* %b3, %struct.su3_vector** %b3.addr, align 8
+  store %struct.su3_vector* %b4, %struct.su3_vector** %b4.addr, align 8
+  %0 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %0, i32 0, i32 0
+  %arrayidx = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c, i32 0, i64 0
+  %real = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx, i32 0, i32 0
+  %1 = load double, double* %real, align 8
+  %2 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c1 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %2, i32 0, i32 0
+  %arrayidx2 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c1, i32 0, i64 0
+  %real3 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx2, i32 0, i32 0
+  %3 = load double, double* %real3, align 8
+  %sub = fsub double %1, %3
+  %4 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c4 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %4, i32 0, i32 0
+  %arrayidx5 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c4, i32 0, i64 0
+  %real6 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx5, i32 0, i32 0
+  store double %sub, double* %real6, align 8
+  %5 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c7 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %5, i32 0, i32 0
+  %arrayidx8 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c7, i32 0, i64 0
+  %imag = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx8, i32 0, i32 1
+  %6 = load double, double* %imag, align 8
+  %7 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c9 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %7, i32 0, i32 0
+  %arrayidx10 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c9, i32 0, i64 0
+  %imag11 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx10, i32 0, i32 1
+  %8 = load double, double* %imag11, align 8
+  %sub12 = fsub double %6, %8
+  %9 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c13 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %9, i32 0, i32 0
+  %arrayidx14 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c13, i32 0, i64 0
+  %imag15 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx14, i32 0, i32 1
+  store double %sub12, double* %imag15, align 8
+  %10 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c16 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %10, i32 0, i32 0
+  %arrayidx17 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c16, i32 0, i64 1
+  %real18 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx17, i32 0, i32 0
+  %11 = load double, double* %real18, align 8
+  %12 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c19 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %12, i32 0, i32 0
+  %arrayidx20 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c19, i32 0, i64 1
+  %real21 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx20, i32 0, i32 0
+  %13 = load double, double* %real21, align 8
+  %sub22 = fsub double %11, %13
+  %14 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c23 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %14, i32 0, i32 0
+  %arrayidx24 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c23, i32 0, i64 1
+  %real25 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx24, i32 0, i32 0
+  store double %sub22, double* %real25, align 8
+  %15 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c26 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %15, i32 0, i32 0
+  %arrayidx27 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c26, i32 0, i64 1
+  %imag28 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx27, i32 0, i32 1
+  %16 = load double, double* %imag28, align 8
+  %17 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c29 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %17, i32 0, i32 0
+  %arrayidx30 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c29, i32 0, i64 1
+  %imag31 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx30, i32 0, i32 1
+  %18 = load double, double* %imag31, align 8
+  %sub32 = fsub double %16, %18
+  %19 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c33 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %19, i32 0, i32 0
+  %arrayidx34 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c33, i32 0, i64 1
+  %imag35 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx34, i32 0, i32 1
+  store double %sub32, double* %imag35, align 8
+  %20 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c36 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %20, i32 0, i32 0
+  %arrayidx37 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c36, i32 0, i64 2
+  %real38 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx37, i32 0, i32 0
+  %21 = load double, double* %real38, align 8
+  %22 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c39 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %22, i32 0, i32 0
+  %arrayidx40 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c39, i32 0, i64 2
+  %real41 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx40, i32 0, i32 0
+  %23 = load double, double* %real41, align 8
+  %sub42 = fsub double %21, %23
+  %24 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c43 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %24, i32 0, i32 0
+  %arrayidx44 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c43, i32 0, i64 2
+  %real45 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx44, i32 0, i32 0
+  store double %sub42, double* %real45, align 8
+  %25 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c46 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %25, i32 0, i32 0
+  %arrayidx47 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c46, i32 0, i64 2
+  %imag48 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx47, i32 0, i32 1
+  %26 = load double, double* %imag48, align 8
+  %27 = load %struct.su3_vector*, %struct.su3_vector** %b1.addr, align 8
+  %c49 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %27, i32 0, i32 0
+  %arrayidx50 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c49, i32 0, i64 2
+  %imag51 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx50, i32 0, i32 1
+  %28 = load double, double* %imag51, align 8
+  %sub52 = fsub double %26, %28
+  %29 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c53 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %29, i32 0, i32 0
+  %arrayidx54 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c53, i32 0, i64 2
+  %imag55 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx54, i32 0, i32 1
+  store double %sub52, double* %imag55, align 8
+  %30 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c56 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %30, i32 0, i32 0
+  %arrayidx57 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c56, i32 0, i64 0
+  %real58 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx57, i32 0, i32 0
+  %31 = load double, double* %real58, align 8
+  %32 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c59 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %32, i32 0, i32 0
+  %arrayidx60 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c59, i32 0, i64 0
+  %real61 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx60, i32 0, i32 0
+  %33 = load double, double* %real61, align 8
+  %sub62 = fsub double %31, %33
+  %34 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c63 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %34, i32 0, i32 0
+  %arrayidx64 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c63, i32 0, i64 0
+  %real65 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx64, i32 0, i32 0
+  store double %sub62, double* %real65, align 8
+  %35 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c66 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %35, i32 0, i32 0
+  %arrayidx67 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c66, i32 0, i64 0
+  %imag68 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx67, i32 0, i32 1
+  %36 = load double, double* %imag68, align 8
+  %37 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c69 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %37, i32 0, i32 0
+  %arrayidx70 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c69, i32 0, i64 0
+  %imag71 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx70, i32 0, i32 1
+  %38 = load double, double* %imag71, align 8
+  %sub72 = fsub double %36, %38
+  %39 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c73 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %39, i32 0, i32 0
+  %arrayidx74 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c73, i32 0, i64 0
+  %imag75 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx74, i32 0, i32 1
+  store double %sub72, double* %imag75, align 8
+  %40 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c76 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %40, i32 0, i32 0
+  %arrayidx77 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c76, i32 0, i64 1
+  %real78 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx77, i32 0, i32 0
+  %41 = load double, double* %real78, align 8
+  %42 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c79 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %42, i32 0, i32 0
+  %arrayidx80 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c79, i32 0, i64 1
+  %real81 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx80, i32 0, i32 0
+  %43 = load double, double* %real81, align 8
+  %sub82 = fsub double %41, %43
+  %44 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c83 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %44, i32 0, i32 0
+  %arrayidx84 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c83, i32 0, i64 1
+  %real85 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx84, i32 0, i32 0
+  store double %sub82, double* %real85, align 8
+  %45 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c86 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %45, i32 0, i32 0
+  %arrayidx87 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c86, i32 0, i64 1
+  %imag88 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx87, i32 0, i32 1
+  %46 = load double, double* %imag88, align 8
+  %47 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c89 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %47, i32 0, i32 0
+  %arrayidx90 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c89, i32 0, i64 1
+  %imag91 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx90, i32 0, i32 1
+  %48 = load double, double* %imag91, align 8
+  %sub92 = fsub double %46, %48
+  %49 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c93 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %49, i32 0, i32 0
+  %arrayidx94 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c93, i32 0, i64 1
+  %imag95 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx94, i32 0, i32 1
+  store double %sub92, double* %imag95, align 8
+  %50 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c96 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %50, i32 0, i32 0
+  %arrayidx97 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c96, i32 0, i64 2
+  %real98 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx97, i32 0, i32 0
+  %51 = load double, double* %real98, align 8
+  %52 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c99 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %52, i32 0, i32 0
+  %arrayidx100 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c99, i32 0, i64 2
+  %real101 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx100, i32 0, i32 0
+  %53 = load double, double* %real101, align 8
+  %sub102 = fsub double %51, %53
+  %54 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c103 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %54, i32 0, i32 0
+  %arrayidx104 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c103, i32 0, i64 2
+  %real105 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx104, i32 0, i32 0
+  store double %sub102, double* %real105, align 8
+  %55 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c106 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %55, i32 0, i32 0
+  %arrayidx107 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c106, i32 0, i64 2
+  %imag108 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx107, i32 0, i32 1
+  %56 = load double, double* %imag108, align 8
+  %57 = load %struct.su3_vector*, %struct.su3_vector** %b2.addr, align 8
+  %c109 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %57, i32 0, i32 0
+  %arrayidx110 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c109, i32 0, i64 2
+  %imag111 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx110, i32 0, i32 1
+  %58 = load double, double* %imag111, align 8
+  %sub112 = fsub double %56, %58
+  %59 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c113 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %59, i32 0, i32 0
+  %arrayidx114 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c113, i32 0, i64 2
+  %imag115 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx114, i32 0, i32 1
+  store double %sub112, double* %imag115, align 8
+  %60 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c116 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %60, i32 0, i32 0
+  %arrayidx117 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c116, i32 0, i64 0
+  %real118 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx117, i32 0, i32 0
+  %61 = load double, double* %real118, align 8
+  %62 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c119 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %62, i32 0, i32 0
+  %arrayidx120 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c119, i32 0, i64 0
+  %real121 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx120, i32 0, i32 0
+  %63 = load double, double* %real121, align 8
+  %sub122 = fsub double %61, %63
+  %64 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c123 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %64, i32 0, i32 0
+  %arrayidx124 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c123, i32 0, i64 0
+  %real125 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx124, i32 0, i32 0
+  store double %sub122, double* %real125, align 8
+  %65 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c126 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %65, i32 0, i32 0
+  %arrayidx127 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c126, i32 0, i64 0
+  %imag128 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx127, i32 0, i32 1
+  %66 = load double, double* %imag128, align 8
+  %67 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c129 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %67, i32 0, i32 0
+  %arrayidx130 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c129, i32 0, i64 0
+  %imag131 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx130, i32 0, i32 1
+  %68 = load double, double* %imag131, align 8
+  %sub132 = fsub double %66, %68
+  %69 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c133 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %69, i32 0, i32 0
+  %arrayidx134 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c133, i32 0, i64 0
+  %imag135 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx134, i32 0, i32 1
+  store double %sub132, double* %imag135, align 8
+  %70 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c136 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %70, i32 0, i32 0
+  %arrayidx137 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c136, i32 0, i64 1
+  %real138 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx137, i32 0, i32 0
+  %71 = load double, double* %real138, align 8
+  %72 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c139 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %72, i32 0, i32 0
+  %arrayidx140 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c139, i32 0, i64 1
+  %real141 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx140, i32 0, i32 0
+  %73 = load double, double* %real141, align 8
+  %sub142 = fsub double %71, %73
+  %74 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c143 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %74, i32 0, i32 0
+  %arrayidx144 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c143, i32 0, i64 1
+  %real145 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx144, i32 0, i32 0
+  store double %sub142, double* %real145, align 8
+  %75 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c146 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %75, i32 0, i32 0
+  %arrayidx147 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c146, i32 0, i64 1
+  %imag148 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx147, i32 0, i32 1
+  %76 = load double, double* %imag148, align 8
+  %77 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c149 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %77, i32 0, i32 0
+  %arrayidx150 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c149, i32 0, i64 1
+  %imag151 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx150, i32 0, i32 1
+  %78 = load double, double* %imag151, align 8
+  %sub152 = fsub double %76, %78
+  %79 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c153 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %79, i32 0, i32 0
+  %arrayidx154 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c153, i32 0, i64 1
+  %imag155 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx154, i32 0, i32 1
+  store double %sub152, double* %imag155, align 8
+  %80 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c156 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %80, i32 0, i32 0
+  %arrayidx157 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c156, i32 0, i64 2
+  %real158 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx157, i32 0, i32 0
+  %81 = load double, double* %real158, align 8
+  %82 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c159 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %82, i32 0, i32 0
+  %arrayidx160 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c159, i32 0, i64 2
+  %real161 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx160, i32 0, i32 0
+  %83 = load double, double* %real161, align 8
+  %sub162 = fsub double %81, %83
+  %84 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c163 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %84, i32 0, i32 0
+  %arrayidx164 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c163, i32 0, i64 2
+  %real165 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx164, i32 0, i32 0
+  store double %sub162, double* %real165, align 8
+  %85 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c166 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %85, i32 0, i32 0
+  %arrayidx167 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c166, i32 0, i64 2
+  %imag168 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx167, i32 0, i32 1
+  %86 = load double, double* %imag168, align 8
+  %87 = load %struct.su3_vector*, %struct.su3_vector** %b3.addr, align 8
+  %c169 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %87, i32 0, i32 0
+  %arrayidx170 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c169, i32 0, i64 2
+  %imag171 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx170, i32 0, i32 1
+  %88 = load double, double* %imag171, align 8
+  %sub172 = fsub double %86, %88
+  %89 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c173 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %89, i32 0, i32 0
+  %arrayidx174 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c173, i32 0, i64 2
+  %imag175 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx174, i32 0, i32 1
+  store double %sub172, double* %imag175, align 8
+  %90 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c176 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %90, i32 0, i32 0
+  %arrayidx177 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c176, i32 0, i64 0
+  %real178 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx177, i32 0, i32 0
+  %91 = load double, double* %real178, align 8
+  %92 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c179 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %92, i32 0, i32 0
+  %arrayidx180 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c179, i32 0, i64 0
+  %real181 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx180, i32 0, i32 0
+  %93 = load double, double* %real181, align 8
+  %sub182 = fsub double %91, %93
+  %94 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c183 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %94, i32 0, i32 0
+  %arrayidx184 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c183, i32 0, i64 0
+  %real185 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx184, i32 0, i32 0
+  store double %sub182, double* %real185, align 8
+  %95 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c186 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %95, i32 0, i32 0
+  %arrayidx187 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c186, i32 0, i64 0
+  %imag188 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx187, i32 0, i32 1
+  %96 = load double, double* %imag188, align 8
+  %97 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c189 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %97, i32 0, i32 0
+  %arrayidx190 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c189, i32 0, i64 0
+  %imag191 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx190, i32 0, i32 1
+  %98 = load double, double* %imag191, align 8
+  %sub192 = fsub double %96, %98
+  %99 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c193 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %99, i32 0, i32 0
+  %arrayidx194 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c193, i32 0, i64 0
+  %imag195 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx194, i32 0, i32 1
+  store double %sub192, double* %imag195, align 8
+  %100 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c196 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %100, i32 0, i32 0
+  %arrayidx197 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c196, i32 0, i64 1
+  %real198 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx197, i32 0, i32 0
+  %101 = load double, double* %real198, align 8
+  %102 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c199 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %102, i32 0, i32 0
+  %arrayidx200 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c199, i32 0, i64 1
+  %real201 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx200, i32 0, i32 0
+  %103 = load double, double* %real201, align 8
+  %sub202 = fsub double %101, %103
+  %104 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c203 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %104, i32 0, i32 0
+  %arrayidx204 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c203, i32 0, i64 1
+  %real205 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx204, i32 0, i32 0
+  store double %sub202, double* %real205, align 8
+  %105 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c206 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %105, i32 0, i32 0
+  %arrayidx207 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c206, i32 0, i64 1
+  %imag208 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx207, i32 0, i32 1
+  %106 = load double, double* %imag208, align 8
+  %107 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c209 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %107, i32 0, i32 0
+  %arrayidx210 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c209, i32 0, i64 1
+  %imag211 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx210, i32 0, i32 1
+  %108 = load double, double* %imag211, align 8
+  %sub212 = fsub double %106, %108
+  %109 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c213 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %109, i32 0, i32 0
+  %arrayidx214 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c213, i32 0, i64 1
+  %imag215 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx214, i32 0, i32 1
+  store double %sub212, double* %imag215, align 8
+  %110 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c216 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %110, i32 0, i32 0
+  %arrayidx217 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c216, i32 0, i64 2
+  %real218 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx217, i32 0, i32 0
+  %111 = load double, double* %real218, align 8
+  %112 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c219 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %112, i32 0, i32 0
+  %arrayidx220 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c219, i32 0, i64 2
+  %real221 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx220, i32 0, i32 0
+  %113 = load double, double* %real221, align 8
+  %sub222 = fsub double %111, %113
+  %114 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c223 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %114, i32 0, i32 0
+  %arrayidx224 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c223, i32 0, i64 2
+  %real225 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx224, i32 0, i32 0
+  store double %sub222, double* %real225, align 8
+  %115 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c226 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %115, i32 0, i32 0
+  %arrayidx227 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c226, i32 0, i64 2
+  %imag228 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx227, i32 0, i32 1
+  %116 = load double, double* %imag228, align 8
+  %117 = load %struct.su3_vector*, %struct.su3_vector** %b4.addr, align 8
+  %c229 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %117, i32 0, i32 0
+  %arrayidx230 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c229, i32 0, i64 2
+  %imag231 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx230, i32 0, i32 1
+  %118 = load double, double* %imag231, align 8
+  %sub232 = fsub double %116, %118
+  %119 = load %struct.su3_vector*, %struct.su3_vector** %a.addr, align 8
+  %c233 = getelementptr inbounds %struct.su3_vector, %struct.su3_vector* %119, i32 0, i32 0
+  %arrayidx234 = getelementptr inbounds [3 x %struct.complex], [3 x %struct.complex]* %c233, i32 0, i64 2
+  %imag235 = getelementptr inbounds %struct.complex, %struct.complex* %arrayidx234, i32 0, i32 1
+  store double %sub232, double* %imag235, align 8
+  ret void
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"clang version 3.7.0 (tags/RELEASE_370/final)"}
