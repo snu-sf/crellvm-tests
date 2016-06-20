@@ -26,6 +26,10 @@
 
 `python listfails.py -f ./results-opt/`
 
+Finding validation units that satisfy specific condition
+
+`python search.py -f ./results-opt/ -o "optimization_name"`
+
 ## About lowerswitch-ing ##
 Currently, vellvm doesn't support `switch` statements  
 If your test input contains `switch` statements, do as follows.  
