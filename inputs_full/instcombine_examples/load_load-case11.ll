@@ -13,10 +13,10 @@ b2:
   br label %b3
 b3:
   %p = phi i32* [ %ptr1, %b1 ], [ %ptr2, %b2 ]
+  %q = phi i32* [ %ptr1, %b1 ], [ %ptr2, %b2 ]
   %x = load i32, i32* %p
-  %y = load i32, i32* %p
+  %y = load i32, i32* %q
   %z1 = mul i32 %x, %y
   ret i32 %z1
 }
-
 
