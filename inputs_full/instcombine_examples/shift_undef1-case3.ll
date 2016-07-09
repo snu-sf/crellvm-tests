@@ -1,7 +1,7 @@
 ; ModuleID = './shift_undef/example.bc'
 
 define i32 @foo(i32 %a) {
-  %z = lshr i32 undef, %a
+  %z = lshr i32 %a, undef
   ret i32 %z
 }
 
