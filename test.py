@@ -91,7 +91,9 @@ def run_opt(optpath, optarg, test_outputdir, bitcode_file):
     stderr_path = os.path.join(test_outputdir, "{0}.opt.stderr".format(bitcode_file))
     stdout_f = open(stdout_path, "w")
     stderr_f = open(stderr_path, "w")
-    retcode = subprocess.call([optpath, optarg, "-S", "-llvmberry-outputdir", bitcode_outputdir, bitcode_path], stdout=stdout_f, stderr=stderr_f)
+    optarg = optarg.split()
+    arglist = [optpath] + optarg + ["-llvmberry-outputdir", bitcode_outputdir, bitcode_path]
+    retcode = subprocess.call(arglist, stdout=stdout_f, stderr=stderr_f)
     stdout_f.close()
     stderr_f.close()
 
