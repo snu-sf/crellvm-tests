@@ -81,9 +81,9 @@ def check_validation_result(stdout_path, stderr_path, stop_ifvalidfail, do_print
     if len(elines) > 0 : 
         elastline = elines[-1].strip() # remove endlines
 
-    if elastline == "Validation succeeded.":
+    if olastline == "Validation succeeded.":
         return 1
-    elif elastline == "Validation failed.":
+    elif olastline == "Validation failed.":
         if do_print:
             print "Validation FAILED! at {0}".format(str(vunit))
         if stop_ifvalidfail:

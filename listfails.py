@@ -42,16 +42,16 @@ if __name__ == "__main__":
             
             vunits = identify_triples(filepath2)
             for (srcpath, hintpath, tgtpath) in vunits:
-                stderrpath = srcpath[:-7] + ".validator.stderr"
-                stderrfile = open(stderrpath, "r")
-                stderrfile_lines = stderrfile.readlines()
+                stdoutpath = srcpath[:-7] + ".validator.stdout"
+                stdoutfile = open(stdoutpath, "r")
+                stdoutfile_lines = stdoutfile.readlines()
                 
                 hintfile = open(hintpath)
                 hintdata = json.load(hintfile)
-                if len(stderrfile_lines) == 0 :
+                if len(stdoutfile_lines) == 0 :
                     unknownlist.append("{0} : look at {1}".format(hintdata["opt_name"], hintpath))
                 else:
-                    lastline = stderrfile_lines[-1].strip()
+                    lastline = stdoutfile_lines[-1].strip()
                     
                     if lastline == "Validation failed." :
                         faillist.append("{0} : look at {1}".format(hintdata["opt_name"], hintpath))

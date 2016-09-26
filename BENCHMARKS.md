@@ -1,6 +1,9 @@
 ## How to run benchmarks ##
 
+Old tool :
 `python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "programs"`
+
+New tool : you can use simplberry-test-parallel (https://github.com/alxest/simplberry-tests-parallel)
 
 
 ## How to generate Python 3.4.1 .ll files ##
@@ -16,23 +19,21 @@
 Lets assume that you have installed llvm and clang into `/home/juneyoung.lee/llvm-install-3.7.0/`
 
 5. vim Makefile
-Line 35 : Modify into `CC= clang -pthread -O0 -emit-llvm`
-Line 36 : Modify into `CXX = clang++ -pthread -O0 -emit-llvm`
-Line 38 : Modify into `LINKCC = echo #$(PURIFY) $(MAINCC)`
+Modify line 71 to `OPT= -DNDEBUG -fwrapv --save-temps -O0 -Wall -Wstrict-prototypes`
 
-6. run : `PATH=/home/juneyoung.lee/llvm-install-3.7.0/bin:$PATH make`
+6. Run : `PATH=/home/juneyoung.lee/llvm-install-3.7.0/bin:$PATH make`
 
-7. run : `mkdir ../Python-3.4.1-bcfiles`
-
-8. run : `for i in `find . -name "*.o"`; do echo ${i} ; cp -i ${i} ../Python-3.4.1-bcfiles/`basename ${i}`.bc ; done`
-
-9. run : `cd ../Python-3.4.1-bcfiles`
-
-10. run : `for i in `ls *.bc` ; do echo ${i}; /home/juneyoung.lee/llvm-install-3.7.0/bin/llvm-dis ${i} ; done`
-
-11. run : `mkdir ../Python-3.4.1-llfiles`
-
-12. run : `mv *.ll ../Python-3.4.1-llfiles`
+7. Run : 
+```
+cd Python-3.4.1                                                                                       
+mkdir ../Python-3.4.1-llfiles                                                                         
+mkdir ../Python-3.4.1-bcfiles                                                                         
+for i in `find . -name "*.bc" | grep -v "tmp\.bc$"` ; do                                              
+  echo $i ;                                                                                           
+  cp -i ${i} ../Python-3.4.1-bcfiles/`basename ${i}`                                                  
+  ~/llvm-prototypes/llvm-install-3.7.0/bin/llvm-dis ${i} -o ../Python-3.4.1-llfiles/`basename ${i}`.ll
+done                                                                                                  
+```
 
 ## LLVM regression tests ##
 
