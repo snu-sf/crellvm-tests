@@ -1,0 +1,126 @@
+	.text
+	.file	"jaricom.bc"
+	.type	jpeg_aritab,@object     # @jpeg_aritab
+	.section	.rodata,"a",@progbits
+	.globl	jpeg_aritab
+	.align	16
+jpeg_aritab:
+	.quad	1511850369              # 0x5a1d0181
+	.quad	629539342               # 0x2586020e
+	.quad	286524176               # 0x11140310
+	.quad	134939666               # 0x80b0412
+	.quad	64488724                # 0x3d80514
+	.quad	31065623                # 0x1da0617
+	.quad	15009561                # 0xe50719
+	.quad	7276572                 # 0x6f081c
+	.quad	3541278                 # 0x36091e
+	.quad	1706529                 # 0x1a0a21
+	.quad	854819                  # 0xd0b23
+	.quad	396297                  # 0x60c09
+	.quad	199946                  # 0x30d0a
+	.quad	68876                   # 0x10d0c
+	.quad	1518276495              # 0x5a7f0f8f
+	.quad	1059393572              # 0x3f251024
+	.quad	754061606               # 0x2cf21126
+	.quad	545002023               # 0x207c1227
+	.quad	398005032               # 0x17b91328
+	.quad	293737514               # 0x1182142a
+	.quad	216995115               # 0xcef152b
+	.quad	161551917               # 0x9a1162d
+	.quad	120526638               # 0x72f172e
+	.quad	89921584                # 0x55c1830
+	.quad	67508529                # 0x4061931
+	.quad	50534963                # 0x3031a33
+	.quad	37755700                # 0x2401b34
+	.quad	28384310                # 0x1b11c36
+	.quad	21241144                # 0x1441d38
+	.quad	16064057                # 0xf51e39
+	.quad	12001083                # 0xb71f3b
+	.quad	9052220                 # 0x8a203c
+	.quad	6824254                 # 0x68213e
+	.quad	5120575                 # 0x4e223f
+	.quad	3875616                 # 0x3b2320
+	.quad	2885921                 # 0x2c0921
+	.quad	1524704677              # 0x5ae125a5
+	.quad	1212950080              # 0x484c2640
+	.quad	973940545               # 0x3a0d2741
+	.quad	787556419               # 0x2ef12843
+	.quad	639576388               # 0x261f2944
+	.quad	523446853               # 0x1f332a45
+	.quad	430451526               # 0x19a82b46
+	.quad	353905736               # 0x15182c48
+	.quad	293023049               # 0x11772d49
+	.quad	242495050               # 0xe742e4a
+	.quad	201011019               # 0xbfb2f4b
+	.quad	167260237               # 0x9f8304d
+	.quad	140587342               # 0x861314e
+	.quad	117846607               # 0x706324f
+	.quad	97334064                # 0x5cd3330
+	.quad	81671218                # 0x4de3432
+	.quad	68105522                # 0x40f3532
+	.quad	56833587                # 0x3633633
+	.quad	47462196                # 0x2d43734
+	.quad	39598133                # 0x25c3835
+	.quad	33044790                # 0x1f83936
+	.quad	27540023                # 0x1a43a37
+	.quad	23083832                # 0x1603b38
+	.quad	19217465                # 0x1253c39
+	.quad	16137530                # 0xf63d3a
+	.quad	13319739                # 0xcb3e3b
+	.quad	11222845                # 0xab3f3d
+	.quad	9379901                 # 0x8f203d
+	.quad	1527923137              # 0x5b1241c1
+	.quad	1292124752              # 0x4d044250
+	.quad	1093419857              # 0x412c4351
+	.quad	936920146               # 0x37d84452
+	.quad	803751251               # 0x2fe84553
+	.quad	691816020               # 0x293c4654
+	.quad	595150678               # 0x23794756
+	.quad	517949527               # 0x1edf4857
+	.quad	447301975               # 0x1aa94957
+	.quad	391006792               # 0x174e4a48
+	.quad	337922888               # 0x14244b48
+	.quad	295455818               # 0x119c4c4a
+	.quad	258690378               # 0xf6b4d4a
+	.quad	223432267               # 0xd514e4b
+	.quad	196497229               # 0xbb64f4d
+	.quad	171978829               # 0xa40304d
+	.quad	1479692752              # 0x583251d0
+	.quad	1293701720              # 0x4d1c5258
+	.quad	1133400921              # 0x438e5359
+	.quad	1004360794              # 0x3bdd545a
+	.quad	888034651               # 0x34ee555b
+	.quad	783177308               # 0x2eae565c
+	.quad	697980765               # 0x299a575d
+	.quad	622217046               # 0x25164756
+	.quad	1433426392              # 0x557059d8
+	.quad	1286167135              # 0x4ca95a5f
+	.quad	1155095392              # 0x44d95b60
+	.quad	1042439265              # 0x3e225c61
+	.quad	941907299               # 0x38245d63
+	.quad	850681443               # 0x32b45e63
+	.quad	773281373               # 0x2e17565d
+	.quad	1453875423              # 0x56a860df
+	.quad	1330012517              # 0x4f466165
+	.quad	1206215270              # 0x47e56266
+	.quad	1104110439              # 0x41cf6367
+	.quad	1010656360              # 0x3c3d6468
+	.quad	928931171               # 0x375e5d63
+	.quad	1378969193              # 0x52316669
+	.quad	1276077930              # 0x4c0f676a
+	.quad	1178167403              # 0x4639686b
+	.quad	1096704871              # 0x415e6367
+	.quad	1445423849              # 0x56276ae9
+	.quad	1357343596              # 0x50e76b6c
+	.quad	1267033965              # 0x4b85676d
+	.quad	1435987310              # 0x55976d6e
+	.quad	1347382127              # 0x504f6b6f
+	.quad	1511026670              # 0x5a106fee
+	.quad	1428319600              # 0x55226d70
+	.quad	1508601840              # 0x59eb6ff0
+	.quad	1511879025              # 0x5a1d7171
+	.size	jpeg_aritab, 912
+
+
+	.ident	"clang version 3.7.0 (tags/RELEASE_370/final)"
+	.section	".note.GNU-stack","",@progbits

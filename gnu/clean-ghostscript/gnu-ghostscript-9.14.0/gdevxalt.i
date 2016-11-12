@@ -1,0 +1,17933 @@
+# 1 "./devices/gdevxalt.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 318 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "./devices/gdevxalt.c" 2
+# 18 "./devices/gdevxalt.c"
+# 1 "./base/gx.h" 1
+# 22 "./base/gx.h"
+# 1 "./base/stdio_.h" 1
+# 26 "./base/stdio_.h"
+# 1 "./base/std.h" 1
+# 22 "./base/std.h"
+# 1 "./base/stdpre.h" 1
+# 253 "./base/stdpre.h"
+typedef unsigned char byte;
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+# 273 "./base/stdpre.h"
+# 1 "/usr/include/sys/types.h" 1 3 4
+# 25 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 345 "/usr/include/features.h" 3 4
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 346 "/usr/include/features.h" 2 3 4
+# 375 "/usr/include/features.h" 3 4
+# 1 "/usr/include/sys/cdefs.h" 1 3 4
+# 392 "/usr/include/sys/cdefs.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 393 "/usr/include/sys/cdefs.h" 2 3 4
+# 376 "/usr/include/features.h" 2 3 4
+# 399 "/usr/include/features.h" 3 4
+# 1 "/usr/include/gnu/stubs.h" 1 3 4
+# 10 "/usr/include/gnu/stubs.h" 3 4
+# 1 "/usr/include/gnu/stubs-64.h" 1 3 4
+# 11 "/usr/include/gnu/stubs.h" 2 3 4
+# 400 "/usr/include/features.h" 2 3 4
+# 26 "/usr/include/sys/types.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/types.h" 1 3 4
+# 27 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+
+
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+
+
+
+
+
+
+
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+# 130 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/typesizes.h" 1 3 4
+# 131 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+
+typedef int __daddr_t;
+typedef int __key_t;
+
+
+typedef int __clockid_t;
+
+
+typedef void * __timer_t;
+
+
+typedef long int __blksize_t;
+
+
+
+
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+
+
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+
+
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+
+
+typedef long int __fsword_t;
+
+typedef long int __ssize_t;
+
+
+typedef long int __syscall_slong_t;
+
+typedef unsigned long int __syscall_ulong_t;
+
+
+
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+
+
+typedef long int __intptr_t;
+
+
+typedef unsigned int __socklen_t;
+# 30 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef __u_char u_char;
+typedef __u_short u_short;
+typedef __u_int u_int;
+typedef __u_long u_long;
+typedef __quad_t quad_t;
+typedef __u_quad_t u_quad_t;
+typedef __fsid_t fsid_t;
+
+
+
+
+typedef __loff_t loff_t;
+
+
+
+
+
+typedef __ino64_t ino_t;
+
+
+
+
+typedef __ino64_t ino64_t;
+
+
+
+
+typedef __dev_t dev_t;
+
+
+
+
+typedef __gid_t gid_t;
+
+
+
+
+typedef __mode_t mode_t;
+
+
+
+
+typedef __nlink_t nlink_t;
+
+
+
+
+typedef __uid_t uid_t;
+
+
+
+
+
+
+
+typedef __off64_t off_t;
+
+
+
+
+typedef __off64_t off64_t;
+
+
+
+
+typedef __pid_t pid_t;
+
+
+
+
+
+typedef __id_t id_t;
+
+
+
+
+typedef __ssize_t ssize_t;
+
+
+
+
+
+typedef __daddr_t daddr_t;
+typedef __caddr_t caddr_t;
+
+
+
+
+
+typedef __key_t key_t;
+# 132 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/time.h" 1 3 4
+# 59 "/usr/include/time.h" 3 4
+typedef __clock_t clock_t;
+# 75 "/usr/include/time.h" 3 4
+typedef __time_t time_t;
+# 91 "/usr/include/time.h" 3 4
+typedef __clockid_t clockid_t;
+# 103 "/usr/include/time.h" 3 4
+typedef __timer_t timer_t;
+# 133 "/usr/include/sys/types.h" 2 3 4
+# 146 "/usr/include/sys/types.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 62 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+typedef long unsigned int size_t;
+# 147 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef unsigned long int ulong_;
+typedef unsigned short int ushort_;
+typedef unsigned int uint_;
+# 194 "/usr/include/sys/types.h" 3 4
+typedef int int8_t __attribute__ ((__mode__ (__QI__)));
+typedef int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef int int64_t __attribute__ ((__mode__ (__DI__)));
+
+
+typedef unsigned int u_int8_t __attribute__ ((__mode__ (__QI__)));
+typedef unsigned int u_int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int u_int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int u_int64_t __attribute__ ((__mode__ (__DI__)));
+
+typedef int register_t __attribute__ ((__mode__ (__word__)));
+# 216 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/endian.h" 1 3 4
+# 36 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/endian.h" 1 3 4
+# 37 "/usr/include/endian.h" 2 3 4
+# 60 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 28 "/usr/include/bits/byteswap.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/bits/byteswap.h" 2 3 4
+
+
+
+
+
+
+# 1 "/usr/include/bits/byteswap-16.h" 1 3 4
+# 36 "/usr/include/bits/byteswap.h" 2 3 4
+# 61 "/usr/include/endian.h" 2 3 4
+# 217 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/select.h" 1 3 4
+# 30 "/usr/include/sys/select.h" 3 4
+# 1 "/usr/include/bits/select.h" 1 3 4
+# 22 "/usr/include/bits/select.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/select.h" 2 3 4
+# 31 "/usr/include/sys/select.h" 2 3 4
+
+
+# 1 "/usr/include/bits/sigset.h" 1 3 4
+# 23 "/usr/include/bits/sigset.h" 3 4
+typedef int __sig_atomic_t;
+
+
+
+
+typedef struct
+  {
+    unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+  } __sigset_t;
+# 34 "/usr/include/sys/select.h" 2 3 4
+
+
+
+typedef __sigset_t sigset_t;
+
+
+
+
+
+
+# 1 "/usr/include/time.h" 1 3 4
+# 120 "/usr/include/time.h" 3 4
+struct timespec
+  {
+    __time_t tv_sec;
+    __syscall_slong_t tv_nsec;
+  };
+# 44 "/usr/include/sys/select.h" 2 3 4
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 30 "/usr/include/bits/time.h" 3 4
+struct timeval
+  {
+    __time_t tv_sec;
+    __suseconds_t tv_usec;
+  };
+# 46 "/usr/include/sys/select.h" 2 3 4
+
+
+typedef __suseconds_t suseconds_t;
+
+
+
+
+
+typedef long int __fd_mask;
+# 64 "/usr/include/sys/select.h" 3 4
+typedef struct
+  {
+
+
+
+
+
+
+    __fd_mask __fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
+
+
+  } fd_set;
+
+
+
+
+
+
+typedef __fd_mask fd_mask;
+# 106 "/usr/include/sys/select.h" 3 4
+extern int select (int __nfds, fd_set *__restrict __readfds,
+     fd_set *__restrict __writefds,
+     fd_set *__restrict __exceptfds,
+     struct timeval *__restrict __timeout);
+# 118 "/usr/include/sys/select.h" 3 4
+extern int pselect (int __nfds, fd_set *__restrict __readfds,
+      fd_set *__restrict __writefds,
+      fd_set *__restrict __exceptfds,
+      const struct timespec *__restrict __timeout,
+      const __sigset_t *__restrict __sigmask);
+# 220 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/sysmacros.h" 1 3 4
+# 31 "/usr/include/sys/sysmacros.h" 3 4
+__extension__
+extern unsigned int gnu_dev_major (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned int gnu_dev_minor (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned long long int gnu_dev_makedev (unsigned int __major,
+            unsigned int __minor)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_major (unsigned long long int __dev)
+{
+  return ((__dev >> 8) & 0xfff) | ((unsigned int) (__dev >> 32) & ~0xfff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_minor (unsigned long long int __dev)
+{
+  return (__dev & 0xff) | ((unsigned int) (__dev >> 12) & ~0xff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned long long int
+__attribute__ ((__nothrow__ )) gnu_dev_makedev (unsigned int __major, unsigned int __minor)
+{
+  return ((__minor & 0xff) | ((__major & 0xfff) << 8)
+   | (((unsigned long long int) (__minor & ~0xff)) << 12)
+   | (((unsigned long long int) (__major & ~0xfff)) << 32));
+}
+# 223 "/usr/include/sys/types.h" 2 3 4
+
+
+
+
+
+typedef __blksize_t blksize_t;
+# 248 "/usr/include/sys/types.h" 3 4
+typedef __blkcnt64_t blkcnt_t;
+
+
+
+typedef __fsblkcnt64_t fsblkcnt_t;
+
+
+
+typedef __fsfilcnt64_t fsfilcnt_t;
+
+
+
+
+
+typedef __blkcnt64_t blkcnt64_t;
+typedef __fsblkcnt64_t fsblkcnt64_t;
+typedef __fsfilcnt64_t fsfilcnt64_t;
+
+
+
+
+
+
+# 1 "/usr/include/bits/pthreadtypes.h" 1 3 4
+# 21 "/usr/include/bits/pthreadtypes.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 22 "/usr/include/bits/pthreadtypes.h" 2 3 4
+# 60 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef unsigned long int pthread_t;
+
+
+union pthread_attr_t
+{
+  char __size[56];
+  long int __align;
+};
+
+typedef union pthread_attr_t pthread_attr_t;
+
+
+
+
+
+typedef struct __pthread_internal_list
+{
+  struct __pthread_internal_list *__prev;
+  struct __pthread_internal_list *__next;
+} __pthread_list_t;
+# 90 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef union
+{
+  struct __pthread_mutex_s
+  {
+    int __lock;
+    unsigned int __count;
+    int __owner;
+
+    unsigned int __nusers;
+
+
+
+    int __kind;
+
+    int __spins;
+    __pthread_list_t __list;
+# 115 "/usr/include/bits/pthreadtypes.h" 3 4
+  } __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_mutexattr_t;
+
+
+
+
+typedef union
+{
+  struct
+  {
+    int __lock;
+    unsigned int __futex;
+    __extension__ unsigned long long int __total_seq;
+    __extension__ unsigned long long int __wakeup_seq;
+    __extension__ unsigned long long int __woken_seq;
+    void *__mutex;
+    unsigned int __nwaiters;
+    unsigned int __broadcast_seq;
+  } __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_condattr_t;
+
+
+
+typedef unsigned int pthread_key_t;
+
+
+
+typedef int pthread_once_t;
+
+
+
+
+
+typedef union
+{
+
+  struct
+  {
+    int __lock;
+    unsigned int __nr_readers;
+    unsigned int __readers_wakeup;
+    unsigned int __writer_wakeup;
+    unsigned int __nr_readers_queued;
+    unsigned int __nr_writers_queued;
+    int __writer;
+    int __shared;
+    unsigned long int __pad1;
+    unsigned long int __pad2;
+
+
+    unsigned int __flags;
+
+  } __data;
+# 202 "/usr/include/bits/pthreadtypes.h" 3 4
+  char __size[56];
+  long int __align;
+} pthread_rwlock_t;
+
+typedef union
+{
+  char __size[8];
+  long int __align;
+} pthread_rwlockattr_t;
+
+
+
+
+
+typedef volatile int pthread_spinlock_t;
+
+
+
+
+typedef union
+{
+  char __size[32];
+  long int __align;
+} pthread_barrier_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_barrierattr_t;
+# 271 "/usr/include/sys/types.h" 2 3 4
+# 274 "./base/stdpre.h" 2
+# 294 "./base/stdpre.h"
+typedef int bool;
+# 331 "./base/stdpre.h"
+typedef const char *ptr_ord_t;
+# 390 "./base/stdpre.h"
+typedef const char *client_name_t;
+# 401 "./base/stdpre.h"
+# 1 "./base/stdpn.h" 1
+# 402 "./base/stdpre.h" 2
+# 23 "./base/std.h" 2
+
+
+# 1 "./obj/arch.h" 1
+# 26 "./base/std.h" 2
+# 69 "./base/std.h"
+typedef ushort bits16;
+
+
+typedef uint bits32;
+# 158 "./base/std.h"
+# 1 "/usr/include/stdio.h" 1 3 4
+# 33 "/usr/include/stdio.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 34 "/usr/include/stdio.h" 2 3 4
+# 44 "/usr/include/stdio.h" 3 4
+struct _IO_FILE;
+
+
+
+typedef struct _IO_FILE FILE;
+# 64 "/usr/include/stdio.h" 3 4
+typedef struct _IO_FILE __FILE;
+# 74 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/libio.h" 1 3 4
+# 32 "/usr/include/libio.h" 3 4
+# 1 "/usr/include/_G_config.h" 1 3 4
+# 15 "/usr/include/_G_config.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 16 "/usr/include/_G_config.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/wchar.h" 1 3 4
+# 82 "/usr/include/wchar.h" 3 4
+typedef struct
+{
+  int __count;
+  union
+  {
+
+    unsigned int __wch;
+
+
+
+    char __wchb[4];
+  } __value;
+} __mbstate_t;
+# 21 "/usr/include/_G_config.h" 2 3 4
+typedef struct
+{
+  __off_t __pos;
+  __mbstate_t __state;
+} _G_fpos_t;
+typedef struct
+{
+  __off64_t __pos;
+  __mbstate_t __state;
+} _G_fpos64_t;
+# 33 "/usr/include/libio.h" 2 3 4
+# 50 "/usr/include/libio.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 1 3 4
+# 30 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list va_list;
+# 50 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 51 "/usr/include/libio.h" 2 3 4
+# 145 "/usr/include/libio.h" 3 4
+struct _IO_jump_t; struct _IO_FILE;
+# 155 "/usr/include/libio.h" 3 4
+typedef void _IO_lock_t;
+
+
+
+
+
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+
+
+
+  int _pos;
+# 178 "/usr/include/libio.h" 3 4
+};
+
+
+enum __codecvt_result
+{
+  __codecvt_ok,
+  __codecvt_partial,
+  __codecvt_error,
+  __codecvt_noconv
+};
+# 246 "/usr/include/libio.h" 3 4
+struct _IO_FILE {
+  int _flags;
+
+
+
+
+  char* _IO_read_ptr;
+  char* _IO_read_end;
+  char* _IO_read_base;
+  char* _IO_write_base;
+  char* _IO_write_ptr;
+  char* _IO_write_end;
+  char* _IO_buf_base;
+  char* _IO_buf_end;
+
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+
+  struct _IO_marker *_markers;
+
+  struct _IO_FILE *_chain;
+
+  int _fileno;
+
+
+
+  int _flags2;
+
+  __off_t _old_offset;
+
+
+
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+
+
+
+  _IO_lock_t *_lock;
+# 294 "/usr/include/libio.h" 3 4
+  __off64_t _offset;
+# 303 "/usr/include/libio.h" 3 4
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+  size_t __pad5;
+
+  int _mode;
+
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+
+};
+
+
+typedef struct _IO_FILE _IO_FILE;
+
+
+struct _IO_FILE_plus;
+
+extern struct _IO_FILE_plus _IO_2_1_stdin_;
+extern struct _IO_FILE_plus _IO_2_1_stdout_;
+extern struct _IO_FILE_plus _IO_2_1_stderr_;
+# 339 "/usr/include/libio.h" 3 4
+typedef __ssize_t __io_read_fn (void *__cookie, char *__buf, size_t __nbytes);
+
+
+
+
+
+
+
+typedef __ssize_t __io_write_fn (void *__cookie, const char *__buf,
+     size_t __n);
+
+
+
+
+
+
+
+typedef int __io_seek_fn (void *__cookie, __off64_t *__pos, int __w);
+
+
+typedef int __io_close_fn (void *__cookie);
+# 391 "/usr/include/libio.h" 3 4
+extern int __underflow (_IO_FILE *);
+extern int __uflow (_IO_FILE *);
+extern int __overflow (_IO_FILE *, int);
+# 435 "/usr/include/libio.h" 3 4
+extern int _IO_getc (_IO_FILE *__fp);
+extern int _IO_putc (int __c, _IO_FILE *__fp);
+extern int _IO_feof (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+extern int _IO_ferror (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+
+extern int _IO_peekc_locked (_IO_FILE *__fp);
+
+
+
+
+
+extern void _IO_flockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern void _IO_funlockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern int _IO_ftrylockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 465 "/usr/include/libio.h" 3 4
+extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+   __gnuc_va_list, int *__restrict);
+extern int _IO_vfprintf (_IO_FILE *__restrict, const char *__restrict,
+    __gnuc_va_list);
+extern __ssize_t _IO_padn (_IO_FILE *, int, __ssize_t);
+extern size_t _IO_sgetn (_IO_FILE *, void *, size_t);
+
+extern __off64_t _IO_seekoff (_IO_FILE *, __off64_t, int, int);
+extern __off64_t _IO_seekpos (_IO_FILE *, __off64_t, int);
+
+extern void _IO_free_backup_area (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 75 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+typedef __gnuc_va_list va_list;
+# 112 "/usr/include/stdio.h" 3 4
+typedef _G_fpos64_t fpos_t;
+
+
+
+typedef _G_fpos64_t fpos64_t;
+# 164 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio_lim.h" 1 3 4
+# 165 "/usr/include/stdio.h" 2 3 4
+
+
+
+extern struct _IO_FILE *stdin;
+extern struct _IO_FILE *stdout;
+extern struct _IO_FILE *stderr;
+
+
+
+
+
+
+
+extern int remove (const char *__filename) __attribute__ ((__nothrow__ ));
+
+extern int rename (const char *__old, const char *__new) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int renameat (int __oldfd, const char *__old, int __newfd,
+       const char *__new) __attribute__ ((__nothrow__ ));
+# 198 "/usr/include/stdio.h" 3 4
+extern FILE *tmpfile (void) __asm__ ("" "tmpfile64") ;
+
+
+
+
+
+
+extern FILE *tmpfile64 (void) ;
+
+
+
+extern char *tmpnam (char *__s) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+extern char *tmpnam_r (char *__s) __attribute__ ((__nothrow__ )) ;
+# 227 "/usr/include/stdio.h" 3 4
+extern char *tempnam (const char *__dir, const char *__pfx)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 237 "/usr/include/stdio.h" 3 4
+extern int fclose (FILE *__stream);
+
+
+
+
+extern int fflush (FILE *__stream);
+# 252 "/usr/include/stdio.h" 3 4
+extern int fflush_unlocked (FILE *__stream);
+# 283 "/usr/include/stdio.h" 3 4
+extern FILE *fopen (const char *__restrict __filename, const char *__restrict __modes) __asm__ ("" "fopen64")
+
+       ;
+extern FILE *freopen (const char *__restrict __filename, const char *__restrict __modes, FILE *__restrict __stream) __asm__ ("" "freopen64")
+
+
+       ;
+
+
+
+
+
+
+
+extern FILE *fopen64 (const char *__restrict __filename,
+        const char *__restrict __modes) ;
+extern FILE *freopen64 (const char *__restrict __filename,
+   const char *__restrict __modes,
+   FILE *__restrict __stream) ;
+
+
+
+
+extern FILE *fdopen (int __fd, const char *__modes) __attribute__ ((__nothrow__ )) ;
+# 319 "/usr/include/stdio.h" 3 4
+extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
+  __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+
+extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      int __modes, size_t __n) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+         size_t __size) __attribute__ ((__nothrow__ ));
+
+
+extern void setlinebuf (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 356 "/usr/include/stdio.h" 3 4
+extern int fprintf (FILE *__restrict __stream,
+      const char *__restrict __format, ...);
+
+
+
+
+extern int printf (const char *__restrict __format, ...);
+
+extern int sprintf (char *__restrict __s,
+      const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg);
+
+
+
+
+extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+
+extern int vsprintf (char *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int snprintf (char *__restrict __s, size_t __maxlen,
+       const char *__restrict __format, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 4)));
+
+extern int vsnprintf (char *__restrict __s, size_t __maxlen,
+        const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 0)));
+# 412 "/usr/include/stdio.h" 3 4
+extern int vdprintf (int __fd, const char *__restrict __fmt,
+       __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__printf__, 2, 0)));
+extern int dprintf (int __fd, const char *__restrict __fmt, ...)
+     __attribute__ ((__format__ (__printf__, 2, 3)));
+# 425 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream,
+     const char *__restrict __format, ...) ;
+
+
+
+
+extern int scanf (const char *__restrict __format, ...) ;
+
+extern int sscanf (const char *__restrict __s,
+     const char *__restrict __format, ...) __attribute__ ((__nothrow__ ));
+# 443 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream, const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf") ;
+
+
+extern int scanf (const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf") ;
+
+extern int sscanf (const char *__restrict __s, const char *__restrict __format, ...) __asm__ ("" "__isoc99_sscanf") __attribute__ ((__nothrow__ ));
+# 471 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
+      __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+
+
+
+
+
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+
+
+extern int vsscanf (const char *__restrict __s,
+      const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 494 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
+
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (const char *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vsscanf") __attribute__ ((__nothrow__ ))
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 531 "/usr/include/stdio.h" 3 4
+extern int fgetc (FILE *__stream);
+extern int getc (FILE *__stream);
+
+
+
+
+
+extern int getchar (void);
+# 550 "/usr/include/stdio.h" 3 4
+extern int getc_unlocked (FILE *__stream);
+extern int getchar_unlocked (void);
+# 561 "/usr/include/stdio.h" 3 4
+extern int fgetc_unlocked (FILE *__stream);
+# 573 "/usr/include/stdio.h" 3 4
+extern int fputc (int __c, FILE *__stream);
+extern int putc (int __c, FILE *__stream);
+
+
+
+
+
+extern int putchar (int __c);
+# 594 "/usr/include/stdio.h" 3 4
+extern int fputc_unlocked (int __c, FILE *__stream);
+
+
+
+
+
+
+
+extern int putc_unlocked (int __c, FILE *__stream);
+extern int putchar_unlocked (int __c);
+
+
+
+
+
+
+extern int getw (FILE *__stream);
+
+
+extern int putw (int __w, FILE *__stream);
+# 622 "/usr/include/stdio.h" 3 4
+extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+          ;
+# 665 "/usr/include/stdio.h" 3 4
+extern __ssize_t __getdelim (char **__restrict __lineptr,
+          size_t *__restrict __n, int __delimiter,
+          FILE *__restrict __stream) ;
+extern __ssize_t getdelim (char **__restrict __lineptr,
+        size_t *__restrict __n, int __delimiter,
+        FILE *__restrict __stream) ;
+
+
+
+
+
+
+
+extern __ssize_t getline (char **__restrict __lineptr,
+       size_t *__restrict __n,
+       FILE *__restrict __stream) ;
+# 689 "/usr/include/stdio.h" 3 4
+extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
+
+
+
+
+
+extern int puts (const char *__s);
+
+
+
+
+
+
+extern int ungetc (int __c, FILE *__stream);
+
+
+
+
+
+
+extern size_t fread (void *__restrict __ptr, size_t __size,
+       size_t __n, FILE *__restrict __stream) ;
+
+
+
+
+extern size_t fwrite (const void *__restrict __ptr, size_t __size,
+        size_t __n, FILE *__restrict __s);
+# 737 "/usr/include/stdio.h" 3 4
+extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
+         size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
+          size_t __n, FILE *__restrict __stream);
+# 749 "/usr/include/stdio.h" 3 4
+extern int fseek (FILE *__stream, long int __off, int __whence);
+
+
+
+
+extern long int ftell (FILE *__stream) ;
+
+
+
+
+extern void rewind (FILE *__stream);
+# 781 "/usr/include/stdio.h" 3 4
+extern int fseeko (FILE *__stream, __off64_t __off, int __whence) __asm__ ("" "fseeko64");
+
+
+extern __off64_t ftello (FILE *__stream) __asm__ ("" "ftello64");
+# 806 "/usr/include/stdio.h" 3 4
+extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos) __asm__ ("" "fgetpos64");
+
+extern int fsetpos (FILE *__stream, const fpos_t *__pos) __asm__ ("" "fsetpos64");
+# 818 "/usr/include/stdio.h" 3 4
+extern int fseeko64 (FILE *__stream, __off64_t __off, int __whence);
+extern __off64_t ftello64 (FILE *__stream) ;
+extern int fgetpos64 (FILE *__restrict __stream, fpos64_t *__restrict __pos);
+extern int fsetpos64 (FILE *__stream, const fpos64_t *__pos);
+
+
+
+
+extern void clearerr (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+extern int feof (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+extern int ferror (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern void clearerr_unlocked (FILE *__stream) __attribute__ ((__nothrow__ ));
+extern int feof_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+extern int ferror_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 846 "/usr/include/stdio.h" 3 4
+extern void perror (const char *__s);
+
+
+
+
+
+
+
+# 1 "/usr/include/bits/sys_errlist.h" 1 3 4
+# 26 "/usr/include/bits/sys_errlist.h" 3 4
+extern int sys_nerr;
+extern const char *const sys_errlist[];
+# 854 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+extern int fileno (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int fileno_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 873 "/usr/include/stdio.h" 3 4
+extern FILE *popen (const char *__command, const char *__modes) ;
+
+
+
+
+
+extern int pclose (FILE *__stream);
+
+
+
+
+
+extern char *ctermid (char *__s) __attribute__ ((__nothrow__ ));
+# 913 "/usr/include/stdio.h" 3 4
+extern void flockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 934 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio.h" 1 3 4
+# 35 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+vprintf (const char *__restrict __fmt, __gnuc_va_list __arg)
+{
+  return vfprintf (stdout, __fmt, __arg);
+}
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar (void)
+{
+  return _IO_getc (stdin);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fgetc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar_unlocked (void)
+{
+  return (__builtin_expect (((stdin)->_IO_read_ptr >= (stdin)->_IO_read_end), 0) ? __uflow (stdin) : *(unsigned char *) (stdin)->_IO_read_ptr++);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar (int __c)
+{
+  return _IO_putc (__c, stdout);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fputc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar_unlocked (int __c)
+{
+  return (__builtin_expect (((stdout)->_IO_write_ptr >= (stdout)->_IO_write_end), 0) ? __overflow (stdout, (unsigned char) (__c)) : (unsigned char) (*(stdout)->_IO_write_ptr++ = (__c)));
+}
+# 124 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) feof_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x10) != 0);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) ferror_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x20) != 0);
+}
+# 935 "/usr/include/stdio.h" 2 3 4
+# 159 "./base/std.h" 2
+
+
+
+
+
+
+typedef struct gs_memory_s gs_memory_t;
+# 184 "./base/std.h"
+int outwrite(const gs_memory_t *mem, const char *str, int len);
+int errwrite(const gs_memory_t *mem, const char *str, int len);
+void outflush(const gs_memory_t *mem);
+void errflush(const gs_memory_t *mem);
+
+
+
+
+
+int errwrite_nomem(const char *str, int len);
+void errflush_nomem(void);
+# 210 "./base/std.h"
+int outprintf(const gs_memory_t *mem, const char *fmt, ...) __attribute__((__format__ (__printf__, 2, 3)));
+int errprintf(const gs_memory_t *mem, const char *fmt, ...) __attribute__((__format__ (__printf__, 2, 3)));
+
+int errprintf_nomem(const char *fmt, ...) __attribute__((__format__ (__printf__, 1, 2)));
+# 284 "./base/std.h"
+void dprintf_file_and_line(const char *, int);
+
+
+
+
+
+
+void dflush(void);
+# 352 "./base/std.h"
+void dmprintf_file_and_line(const gs_memory_t *,const char *, int);
+# 417 "./base/std.h"
+void printf_program_ident(const gs_memory_t *mem, const char *program_name, long revision_number);
+
+
+
+void eprintf_program_ident(const char *program_name, long revision_number);
+
+void emprintf_program_ident(const gs_memory_t *mem,
+                            const char *program_name,
+                            long revision_number);
+const char *gs_program_name(void);
+long gs_revision_number(void);
+long gs_version_number(void);
+# 530 "./base/std.h"
+void lprintf_file_and_line(const char *, int);
+# 562 "./base/std.h"
+void mlprintf_file_and_line(const gs_memory_t *,const char *, int);
+# 27 "./base/stdio_.h" 2
+# 44 "./base/stdio_.h"
+int unlink(const char *);
+# 82 "./base/stdio_.h"
+# 1 "./base/gssprintf.h" 1
+# 21 "./base/gssprintf.h"
+int
+gs_vsnprintf(char *zBuf, int n, const char *zFormat, va_list ap);
+
+int
+gs_snprintf(char *zBuf, int n, const char *zFormat, ...);
+
+int
+gs_vsprintf(char *zBuf, const char *zFormat, va_list ap);
+
+int
+gs_sprintf(char *zBuf, const char *zFormat, ...);
+
+int
+gs_sscanf(char *buf, const char *format, ...);
+# 83 "./base/stdio_.h" 2
+# 23 "./base/gx.h" 2
+# 1 "./base/gserrors.h" 1
+# 50 "./base/gserrors.h"
+int gs_log_error(int, const char *, int);
+# 88 "./base/gserrors.h"
+const char *gs_errstr(int code);
+# 189 "./base/gserrors.h"
+int gs_throw_imp(const char *func, const char *file, int line,
+        int op, int code, const char *fmt, ...) __attribute__((__format__ (__printf__, 6, 7)));
+# 24 "./base/gx.h" 2
+# 1 "./base/gsio.h" 1
+# 25 "./base/gx.h" 2
+# 1 "./base/gstypes.h" 1
+# 28 "./base/gstypes.h"
+typedef ulong gs_id;
+# 45 "./base/gstypes.h"
+typedef struct gs_string_s {
+    byte *data; uint size;
+} gs_string;
+
+
+
+typedef struct gs_const_string_s {
+    const byte *data; uint size;
+} gs_const_string;
+typedef struct gs_param_string_s {
+    const byte *data; uint size;
+    bool persistent;
+} gs_param_string;
+# 71 "./base/gstypes.h"
+typedef struct gs_bytestring_s {
+    byte *data; uint size;
+    byte *bytes;
+} gs_bytestring;
+typedef struct gs_const_bytestring_s {
+    const byte *data; uint size;
+    const byte *bytes;
+} gs_const_bytestring;
+# 88 "./base/gstypes.h"
+typedef struct gs_point_s {
+    double x, y;
+} gs_point;
+typedef struct gs_int_point_s {
+    int x, y;
+} gs_int_point;
+
+
+
+
+
+typedef struct gs_log2_scale_point_s {
+    int x, y;
+} gs_log2_scale_point;
+
+
+
+
+
+
+
+typedef struct gs_rect_s {
+    gs_point p, q;
+} gs_rect;
+typedef struct gs_int_rect_s {
+    gs_int_point p, q;
+} gs_int_rect;
+
+
+
+
+
+
+typedef struct gs_range_s {
+    float rmin, rmax;
+} gs_range_t;
+# 26 "./base/gx.h" 2
+# 1 "./base/gsmemory.h" 1
+# 43 "./base/gsmemory.h"
+# 1 "./base/gslibctx.h" 1
+# 22 "./base/gslibctx.h"
+# 1 "./base/gs_dll_call.h" 1
+# 23 "./base/gslibctx.h" 2
+
+typedef struct name_table_s *name_table_ptr;
+
+
+
+typedef struct gs_fapi_server_s gs_fapi_server;
+
+
+
+
+typedef struct gs_font_dir_s gs_font_dir;
+
+typedef struct gs_lib_ctx_s
+{
+    gs_memory_t *memory;
+    FILE *fstdin;
+    FILE *fstdout;
+    FILE *fstderr;
+    FILE *fstdout2;
+    bool stdout_is_redirected;
+    bool stdout_to_stderr;
+    bool stdin_is_interactive;
+    void *caller_handle;
+    void *custom_color_callback;
+    int ( *stdin_fn)(void *caller_handle, char *buf, int len);
+    int ( *stdout_fn)(void *caller_handle, const char *str, int len);
+    int ( *stderr_fn)(void *caller_handle, const char *str, int len);
+    int ( *poll_fn)(void *caller_handle);
+    ulong gs_next_id;
+    void *top_of_system;
+
+
+    name_table_ptr gs_name_table;
+
+
+
+    bool dict_auto_expand;
+
+    struct gx_io_device_s **io_device_table;
+
+
+    bool screen_accurate_screens;
+    uint screen_min_screen_levels;
+
+
+    long real_time_0[2];
+
+
+    gs_font_dir *font_dir;
+
+
+
+    bool CPSI_mode;
+
+
+
+    char *profiledir;
+    int profiledir_len;
+    void *cms_context;
+    gs_fapi_server **fapi_servers;
+} gs_lib_ctx_t;
+
+
+
+
+
+int gs_lib_ctx_init( gs_memory_t *mem );
+
+
+
+
+void gs_lib_ctx_fin( gs_memory_t *mem );
+
+gs_lib_ctx_t *gs_lib_ctx_get_interp_instance( const gs_memory_t *mem );
+
+void *gs_lib_ctx_get_cms_context( const gs_memory_t *mem );
+void gs_lib_ctx_set_cms_context( const gs_memory_t *mem, void *cms_context );
+
+
+
+
+
+gs_memory_t * gs_lib_ctx_get_non_gc_memory_t(void);
+
+
+void gs_lib_ctx_set_icc_directory(const gs_memory_t *mem_gc, const char* pname,
+                        int dir_namelen);
+# 44 "./base/gsmemory.h" 2
+
+
+typedef struct gs_memory_struct_type_s gs_memory_struct_type_t;
+typedef const gs_memory_struct_type_t *gs_memory_type_ptr_t;
+# 57 "./base/gsmemory.h"
+typedef struct gs_ptr_procs_s gs_ptr_procs_t;
+typedef const gs_ptr_procs_t *gs_ptr_type_t;
+
+
+typedef struct gs_gc_root_s gs_gc_root_t;
+
+
+
+typedef client_name_t struct_name_t;
+
+
+uint gs_struct_type_size(gs_memory_type_ptr_t);
+
+
+struct_name_t gs_struct_type_name(gs_memory_type_ptr_t);
+
+
+
+
+
+
+
+typedef struct gs_memory_status_s {
+
+
+
+
+
+    ulong allocated;
+
+
+
+
+    ulong used;
+
+    bool is_thread_safe;
+} gs_memory_status_t;
+# 218 "./base/gsmemory.h"
+typedef struct gs_memory_procs_s {
+
+    byte *(*alloc_bytes_immovable)(gs_memory_t *mem, uint nbytes, client_name_t cname); void *(*resize_object)(gs_memory_t *mem, void *obj, uint new_num_elements, client_name_t cname); void (*free_object)(gs_memory_t *mem, void *data, client_name_t cname); gs_memory_t *(*stable)(gs_memory_t *mem); void (*status)(gs_memory_t *mem, gs_memory_status_t *status); void (*free_all)(gs_memory_t *mem, uint free_mask, client_name_t cname); void (*consolidate_free)(gs_memory_t *mem);
+# 246 "./base/gsmemory.h"
+    byte *(*alloc_bytes)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+# 257 "./base/gsmemory.h"
+    void *(*alloc_struct)(gs_memory_t *mem, gs_memory_type_ptr_t pstype, client_name_t cname);
+
+
+    void *(*alloc_struct_immovable)(gs_memory_t *mem, gs_memory_type_ptr_t pstype, client_name_t cname);
+# 271 "./base/gsmemory.h"
+    byte *(*alloc_byte_array)(gs_memory_t *mem, uint num_elements, uint elt_size, client_name_t cname);
+
+
+    byte *(*alloc_byte_array_immovable)(gs_memory_t *mem, uint num_elements, uint elt_size, client_name_t cname);
+# 285 "./base/gsmemory.h"
+    void *(*alloc_struct_array)(gs_memory_t *mem, uint num_elements, gs_memory_type_ptr_t pstype, client_name_t cname);
+
+
+    void *(*alloc_struct_array_immovable)(gs_memory_t *mem, uint num_elements, gs_memory_type_ptr_t pstype, client_name_t cname);
+# 298 "./base/gsmemory.h"
+    uint (*object_size)(gs_memory_t *mem, const void *obj);
+# 310 "./base/gsmemory.h"
+    gs_memory_type_ptr_t (*object_type)(const gs_memory_t *mem, const void *obj);
+# 320 "./base/gsmemory.h"
+    byte *(*alloc_string)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+
+
+    byte *(*alloc_string_immovable)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+# 335 "./base/gsmemory.h"
+    byte *(*resize_string)(gs_memory_t *mem, byte *data, uint old_num, uint new_num, client_name_t cname);
+# 346 "./base/gsmemory.h"
+    void (*free_string)(gs_memory_t *mem, byte *data, uint nbytes, client_name_t cname);
+# 360 "./base/gsmemory.h"
+    int (*register_root)(gs_memory_t *mem, gs_gc_root_t *root, gs_ptr_type_t ptype, void **pp, client_name_t cname);
+# 371 "./base/gsmemory.h"
+    void (*unregister_root)(gs_memory_t *mem, gs_gc_root_t *root, client_name_t cname);
+# 386 "./base/gsmemory.h"
+    void (*enable_free)(gs_memory_t *mem, bool enable);
+
+} gs_memory_procs_t;
+
+
+
+
+
+
+
+void gs_free_const_object(gs_memory_t *mem, const void *data,
+                          client_name_t cname);
+void gs_free_const_string(gs_memory_t *mem, const byte *data, uint nbytes,
+                          client_name_t cname);
+
+
+
+
+
+void gs_free_bytestring(gs_memory_t *mem, gs_bytestring *pbs,
+                        client_name_t cname);
+void gs_free_const_bytestring(gs_memory_t *mem, gs_const_bytestring *pbs,
+                              client_name_t cname);
+
+
+
+
+
+void *gs_resize_struct_array(gs_memory_t *mem, void *obj, uint num_elements,
+                             gs_memory_type_ptr_t pstype,
+                             client_name_t cname);
+
+
+int gs_register_struct_root(gs_memory_t *mem, gs_gc_root_t *root,
+                            void **pp, client_name_t cname);
+
+
+void gs_ignore_free_object(gs_memory_t *mem, void *data, client_name_t cname);
+void gs_ignore_free_string(gs_memory_t *mem, byte *data, uint nbytes, client_name_t cname);
+
+
+void gs_ignore_consolidate_free(gs_memory_t *mem);
+
+
+
+
+
+
+
+void *gs_raw_alloc_struct_immovable(gs_memory_t * rmem,
+                                    gs_memory_type_ptr_t pstype,
+                                    client_name_t cname);
+
+typedef struct pl_mem_node_s pl_mem_node_t;
+# 463 "./base/gsmemory.h"
+struct gs_memory_s {
+    gs_memory_t *stable_memory; gs_memory_procs_t procs; gs_lib_ctx_t *gs_lib_ctx; gs_memory_t *non_gc_memory; gs_memory_t *thread_safe_memory;
+};
+# 27 "./base/gx.h" 2
+# 1 "./base/gdebug.h" 1
+# 59 "./base/gdebug.h"
+typedef enum {
+
+
+
+# 1 "./base/gdbflags.h" 1
+# 25 "./base/gdbflags.h"
+gs_debug_flag_icc = 1,
+gs_debug_flag_validate_chunks = 2,
+gs_debug_flag_gc_disable = 3,
+# 57 "./base/gdbflags.h"
+gs_debug_flag_ps_op_names = '!',
+gs_debug_flag_contexts_detail = '"',
+gs_debug_flag_trace_errors = '#',
+gs_debug_flag_memfill_obj = '$',
+gs_debug_flag_ext_commands = '%',
+
+gs_debug_flag_contexts = '\'',
+
+
+gs_debug_flag_image = '*',
+gs_debug_flag_min_stack = '+',
+gs_debug_flag_no_path_banding = ',',
+
+gs_debug_flag_small_mem_tables = '.',
+gs_debug_flag_file_line = '/',
+gs_debug_flag_gc = '0',
+gs_debug_flag_type1 = '1',
+gs_debug_flag_curve = '2',
+gs_debug_flag_curve_detail = '3',
+gs_debug_flag_gc_strings = '4',
+gs_debug_flag_gc_strings_detail = '5',
+gs_debug_flag_gc_chunks = '6',
+gs_debug_flag_gc_objects = '7',
+gs_debug_flag_gc_refs = '8',
+gs_debug_flag_gc_pointers = '9',
+gs_debug_flag_time = ':',
+
+
+
+
+gs_debug_flag_validate_pointers = '?',
+gs_debug_flag_memfill_empty = '@',
+gs_debug_flag_alloc_detail = 'A',
+gs_debug_flag_bitmap_detail = 'B',
+gs_debug_flag_color_detail = 'C',
+gs_debug_flag_dict_detail = 'D',
+
+gs_debug_flag_fill_detail = 'F',
+
+gs_debug_flag_halftones_detail = 'H',
+gs_debug_flag_interp_detail = 'I',
+
+gs_debug_flag_char_cache_detail = 'K',
+gs_debug_flag_clist_detail = 'L',
+
+
+gs_debug_flag_stroke_detail = 'O',
+gs_debug_flag_paths_detail = 'P',
+
+
+gs_debug_flag_scanner = 'S',
+
+gs_debug_flag_undo_detail = 'U',
+gs_debug_flag_compositors_detail = 'V',
+
+
+gs_debug_flag_type1_hints_detail = 'Y',
+
+
+
+
+gs_debug_flag_ref_counts = '^',
+gs_debug_flag_high_level = '_',
+gs_debug_flag_no_hl_img_banding = '`',
+gs_debug_flag_alloc = 'a',
+gs_debug_flag_bitmap = 'b',
+gs_debug_flag_color_halftones = 'c',
+gs_debug_flag_dict = 'd',
+gs_debug_flag_external_calls = 'e',
+gs_debug_flag_fill = 'f',
+gs_debug_flag_gsave = 'g',
+gs_debug_flag_halftones = 'h',
+gs_debug_flag_interp = 'i',
+gs_debug_flag_comp_fonts = 'j',
+gs_debug_flag_char_cache = 'k',
+gs_debug_flag_clist = 'l',
+gs_debug_flag_makefont = 'm',
+gs_debug_flag_names = 'n',
+gs_debug_flag_stroke = 'o',
+gs_debug_flag_paths = 'p',
+gs_debug_flag_clipping = 'q',
+gs_debug_flag_arcs = 'r',
+gs_debug_flag_streams = 's',
+gs_debug_flag_tiling = 't',
+gs_debug_flag_undo = 'u',
+gs_debug_flag_compositors = 'v',
+gs_debug_flag_compress = 'w',
+gs_debug_flag_transforms = 'x',
+gs_debug_flag_type1_hints = 'y',
+gs_debug_flag_trapezoid_fill = 'z',
+
+
+
+gs_debug_flag_math = '~'
+# 63 "./base/gdebug.h" 2
+
+
+} gs_debug_flag;
+
+typedef struct {
+    int used;
+    char short_desc[20];
+    char long_desc[80];
+} gs_debug_flag_details;
+
+
+extern const byte gs_debug_flag_implied_by[127];
+extern const gs_debug_flag_details gs_debug_flags[127];
+
+
+int gs_debug_flags_parse(gs_memory_t *heap, const char *arg);
+void gs_debug_flags_list(gs_memory_t *heap);
+
+
+extern char gs_debug[128];
+bool gs_debug_c(int );
+# 92 "./base/gdebug.h"
+extern FILE *gs_debug_out;
+# 182 "./base/gdebug.h"
+void debug_print_string(const gs_memory_t *mem, const byte * str, uint len);
+void debug_dump_bytes(const gs_memory_t *mem,
+                      const byte * from, const byte * to,
+                      const char *msg);
+void debug_dump_bitmap(const gs_memory_t *mem,
+                       const byte * from, uint raster, uint height,
+                       const char *msg);
+
+void debug_print_string_hex_nomem(const byte * str, uint len);
+
+void debug_print_string_hex(const gs_memory_t *mem, const byte * str, uint len);
+# 28 "./base/gx.h" 2
+
+
+
+
+
+
+typedef struct gs_imager_state_s gs_imager_state;
+
+
+
+
+typedef struct gs_state_s gs_state;
+# 19 "./devices/gdevxalt.c" 2
+# 1 "./base/math_.h" 1
+# 29 "./base/math_.h"
+# 1 "/usr/include/math.h" 1 3 4
+# 33 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/huge_val.h" 1 3 4
+# 34 "/usr/include/math.h" 2 3 4
+
+# 1 "/usr/include/bits/huge_valf.h" 1 3 4
+# 36 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/bits/huge_vall.h" 1 3 4
+# 37 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/inf.h" 1 3 4
+# 40 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/nan.h" 1 3 4
+# 43 "/usr/include/math.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/mathdef.h" 1 3 4
+# 28 "/usr/include/bits/mathdef.h" 3 4
+typedef float float_t;
+typedef double double_t;
+# 47 "/usr/include/math.h" 2 3 4
+# 70 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern double acos (double __x) __attribute__ ((__nothrow__ )); extern double __acos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asin (double __x) __attribute__ ((__nothrow__ )); extern double __asin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan (double __x) __attribute__ ((__nothrow__ )); extern double __atan (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan2 (double __y, double __x) __attribute__ ((__nothrow__ )); extern double __atan2 (double __y, double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double cos (double __x) __attribute__ ((__nothrow__ )); extern double __cos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sin (double __x) __attribute__ ((__nothrow__ )); extern double __sin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tan (double __x) __attribute__ ((__nothrow__ )); extern double __tan (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double cosh (double __x) __attribute__ ((__nothrow__ )); extern double __cosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sinh (double __x) __attribute__ ((__nothrow__ )); extern double __sinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tanh (double __x) __attribute__ ((__nothrow__ )); extern double __tanh (double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern double acosh (double __x) __attribute__ ((__nothrow__ )); extern double __acosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asinh (double __x) __attribute__ ((__nothrow__ )); extern double __asinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atanh (double __x) __attribute__ ((__nothrow__ )); extern double __atanh (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double exp (double __x) __attribute__ ((__nothrow__ )); extern double __exp (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern double __frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ )); extern double __ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double log (double __x) __attribute__ ((__nothrow__ )); extern double __log (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log10 (double __x) __attribute__ ((__nothrow__ )); extern double __log10 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double modf (double __x, double *__iptr) __attribute__ ((__nothrow__ )); extern double __modf (double __x, double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern double expm1 (double __x) __attribute__ ((__nothrow__ )); extern double __expm1 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log1p (double __x) __attribute__ ((__nothrow__ )); extern double __log1p (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double logb (double __x) __attribute__ ((__nothrow__ )); extern double __logb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double exp2 (double __x) __attribute__ ((__nothrow__ )); extern double __exp2 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log2 (double __x) __attribute__ ((__nothrow__ )); extern double __log2 (double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern double pow (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __pow (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double sqrt (double __x) __attribute__ ((__nothrow__ )); extern double __sqrt (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double hypot (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __hypot (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double cbrt (double __x) __attribute__ ((__nothrow__ )); extern double __cbrt (double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern double ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmod (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fmod (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double drem (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __drem (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double significand (double __x) __attribute__ ((__nothrow__ )); extern double __significand (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern double nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double j0 (double) __attribute__ ((__nothrow__ )); extern double __j0 (double) __attribute__ ((__nothrow__ ));
+extern double j1 (double) __attribute__ ((__nothrow__ )); extern double __j1 (double) __attribute__ ((__nothrow__ ));
+extern double jn (int, double) __attribute__ ((__nothrow__ )); extern double __jn (int, double) __attribute__ ((__nothrow__ ));
+extern double y0 (double) __attribute__ ((__nothrow__ )); extern double __y0 (double) __attribute__ ((__nothrow__ ));
+extern double y1 (double) __attribute__ ((__nothrow__ )); extern double __y1 (double) __attribute__ ((__nothrow__ ));
+extern double yn (int, double) __attribute__ ((__nothrow__ )); extern double __yn (int, double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double erf (double) __attribute__ ((__nothrow__ )); extern double __erf (double) __attribute__ ((__nothrow__ ));
+extern double erfc (double) __attribute__ ((__nothrow__ )); extern double __erfc (double) __attribute__ ((__nothrow__ ));
+extern double lgamma (double) __attribute__ ((__nothrow__ )); extern double __lgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double tgamma (double) __attribute__ ((__nothrow__ )); extern double __tgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double gamma (double) __attribute__ ((__nothrow__ )); extern double __gamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ )); extern double __lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double rint (double __x) __attribute__ ((__nothrow__ )); extern double __rint (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern double nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double remainder (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __remainder (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double scalbn (double __x, int __n) __attribute__ ((__nothrow__ )); extern double __scalbn (double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogb (double __x) __attribute__ ((__nothrow__ )); extern int __ilogb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double scalbln (double __x, long int __n) __attribute__ ((__nothrow__ )); extern double __scalbln (double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern double nearbyint (double __x) __attribute__ ((__nothrow__ )); extern double __nearbyint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern double remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ )); extern double __remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrint (double __x) __attribute__ ((__nothrow__ )); extern long int __lrint (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrint (double __x) __attribute__ ((__nothrow__ )); extern long long int __llrint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lround (double __x) __attribute__ ((__nothrow__ )); extern long int __lround (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llround (double __x) __attribute__ ((__nothrow__ )); extern long long int __llround (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double fdim (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fdim (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassify (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbit (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern double fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ )); extern double __fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern double scalb (double __x, double __n) __attribute__ ((__nothrow__ )); extern double __scalb (double __x, double __n) __attribute__ ((__nothrow__ ));
+# 71 "/usr/include/math.h" 2 3 4
+# 89 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern float acosf (float __x) __attribute__ ((__nothrow__ )); extern float __acosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinf (float __x) __attribute__ ((__nothrow__ )); extern float __asinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanf (float __x) __attribute__ ((__nothrow__ )); extern float __atanf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atan2f (float __y, float __x) __attribute__ ((__nothrow__ )); extern float __atan2f (float __y, float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float cosf (float __x) __attribute__ ((__nothrow__ )); extern float __cosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinf (float __x) __attribute__ ((__nothrow__ )); extern float __sinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanf (float __x) __attribute__ ((__nothrow__ )); extern float __tanf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float coshf (float __x) __attribute__ ((__nothrow__ )); extern float __coshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinhf (float __x) __attribute__ ((__nothrow__ )); extern float __sinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanhf (float __x) __attribute__ ((__nothrow__ )); extern float __tanhf (float __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern float acoshf (float __x) __attribute__ ((__nothrow__ )); extern float __acoshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinhf (float __x) __attribute__ ((__nothrow__ )); extern float __asinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanhf (float __x) __attribute__ ((__nothrow__ )); extern float __atanhf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float expf (float __x) __attribute__ ((__nothrow__ )); extern float __expf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ )); extern float __frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ )); extern float __ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float logf (float __x) __attribute__ ((__nothrow__ )); extern float __logf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log10f (float __x) __attribute__ ((__nothrow__ )); extern float __log10f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float modff (float __x, float *__iptr) __attribute__ ((__nothrow__ )); extern float __modff (float __x, float *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern float expm1f (float __x) __attribute__ ((__nothrow__ )); extern float __expm1f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log1pf (float __x) __attribute__ ((__nothrow__ )); extern float __log1pf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float logbf (float __x) __attribute__ ((__nothrow__ )); extern float __logbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float exp2f (float __x) __attribute__ ((__nothrow__ )); extern float __exp2f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log2f (float __x) __attribute__ ((__nothrow__ )); extern float __log2f (float __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern float powf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __powf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float sqrtf (float __x) __attribute__ ((__nothrow__ )); extern float __sqrtf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float hypotf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __hypotf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float cbrtf (float __x) __attribute__ ((__nothrow__ )); extern float __cbrtf (float __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern float ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fmodf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fmodf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float dremf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __dremf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float significandf (float __x) __attribute__ ((__nothrow__ )); extern float __significandf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern float nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float j0f (float) __attribute__ ((__nothrow__ )); extern float __j0f (float) __attribute__ ((__nothrow__ ));
+extern float j1f (float) __attribute__ ((__nothrow__ )); extern float __j1f (float) __attribute__ ((__nothrow__ ));
+extern float jnf (int, float) __attribute__ ((__nothrow__ )); extern float __jnf (int, float) __attribute__ ((__nothrow__ ));
+extern float y0f (float) __attribute__ ((__nothrow__ )); extern float __y0f (float) __attribute__ ((__nothrow__ ));
+extern float y1f (float) __attribute__ ((__nothrow__ )); extern float __y1f (float) __attribute__ ((__nothrow__ ));
+extern float ynf (int, float) __attribute__ ((__nothrow__ )); extern float __ynf (int, float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float erff (float) __attribute__ ((__nothrow__ )); extern float __erff (float) __attribute__ ((__nothrow__ ));
+extern float erfcf (float) __attribute__ ((__nothrow__ )); extern float __erfcf (float) __attribute__ ((__nothrow__ ));
+extern float lgammaf (float) __attribute__ ((__nothrow__ )); extern float __lgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float tgammaf (float) __attribute__ ((__nothrow__ )); extern float __tgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float gammaf (float) __attribute__ ((__nothrow__ )); extern float __gammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ )); extern float __lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float rintf (float __x) __attribute__ ((__nothrow__ )); extern float __rintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern float nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float remainderf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __remainderf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float scalbnf (float __x, int __n) __attribute__ ((__nothrow__ )); extern float __scalbnf (float __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbf (float __x) __attribute__ ((__nothrow__ )); extern int __ilogbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ )); extern float __scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern float nearbyintf (float __x) __attribute__ ((__nothrow__ )); extern float __nearbyintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern float remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ )); extern float __remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintf (float __x) __attribute__ ((__nothrow__ )); extern long int __lrintf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llrintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundf (float __x) __attribute__ ((__nothrow__ )); extern long int __lroundf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llroundf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float fdimf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fdimf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern float fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ )); extern float __fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern float scalbf (float __x, float __n) __attribute__ ((__nothrow__ )); extern float __scalbf (float __x, float __n) __attribute__ ((__nothrow__ ));
+# 90 "/usr/include/math.h" 2 3 4
+# 133 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ )); extern long double __atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double cosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double coshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __coshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanhl (long double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acoshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acoshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanhl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double expl (long double __x) __attribute__ ((__nothrow__ )); extern long double __expl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern long double __frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ )); extern long double __ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double logl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log10l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log10l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ )); extern long double __modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern long double expm1l (long double __x) __attribute__ ((__nothrow__ )); extern long double __expm1l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log1pl (long double __x) __attribute__ ((__nothrow__ )); extern long double __log1pl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double logbl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double exp2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __exp2l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log2l (long double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern long double powl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __powl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double sqrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sqrtl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double cbrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cbrtl (long double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern long double ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double dreml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __dreml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double significandl (long double __x) __attribute__ ((__nothrow__ )); extern long double __significandl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern long double nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double j0l (long double) __attribute__ ((__nothrow__ )); extern long double __j0l (long double) __attribute__ ((__nothrow__ ));
+extern long double j1l (long double) __attribute__ ((__nothrow__ )); extern long double __j1l (long double) __attribute__ ((__nothrow__ ));
+extern long double jnl (int, long double) __attribute__ ((__nothrow__ )); extern long double __jnl (int, long double) __attribute__ ((__nothrow__ ));
+extern long double y0l (long double) __attribute__ ((__nothrow__ )); extern long double __y0l (long double) __attribute__ ((__nothrow__ ));
+extern long double y1l (long double) __attribute__ ((__nothrow__ )); extern long double __y1l (long double) __attribute__ ((__nothrow__ ));
+extern long double ynl (int, long double) __attribute__ ((__nothrow__ )); extern long double __ynl (int, long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double erfl (long double) __attribute__ ((__nothrow__ )); extern long double __erfl (long double) __attribute__ ((__nothrow__ ));
+extern long double erfcl (long double) __attribute__ ((__nothrow__ )); extern long double __erfcl (long double) __attribute__ ((__nothrow__ ));
+extern long double lgammal (long double) __attribute__ ((__nothrow__ )); extern long double __lgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double tgammal (long double) __attribute__ ((__nothrow__ )); extern long double __tgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double gammal (long double) __attribute__ ((__nothrow__ )); extern long double __gammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ )); extern long double __lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double rintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __rintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern long double nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ )); extern long double __scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbl (long double __x) __attribute__ ((__nothrow__ )); extern int __ilogbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ )); extern long double __scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double nearbyintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __nearbyintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern long double remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ )); extern long double __remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lrintl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llrintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lroundl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llroundl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern long double fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ )); extern long double __fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern long double scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ )); extern long double __scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ ));
+# 134 "/usr/include/math.h" 2 3 4
+# 149 "/usr/include/math.h" 3 4
+extern int signgam;
+# 190 "/usr/include/math.h" 3 4
+enum
+  {
+    FP_NAN =
+
+      0,
+    FP_INFINITE =
+
+      1,
+    FP_ZERO =
+
+      2,
+    FP_SUBNORMAL =
+
+      3,
+    FP_NORMAL =
+
+      4
+  };
+# 288 "/usr/include/math.h" 3 4
+typedef enum
+{
+  _IEEE_ = -1,
+  _SVID_,
+  _XOPEN_,
+  _POSIX_,
+  _ISOC_
+} _LIB_VERSION_TYPE;
+
+
+
+
+extern _LIB_VERSION_TYPE _LIB_VERSION;
+# 313 "/usr/include/math.h" 3 4
+struct exception
+
+  {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+  };
+
+
+
+
+extern int matherr (struct exception *__exc);
+# 413 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathinline.h" 1 3 4
+# 126 "/usr/include/bits/mathinline.h" 3 4
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitf (float __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x8) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbit (double __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x80) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitl (long double __x)
+{
+  __extension__ union { long double __l; int __i[3]; } __u = { __l: __x };
+  return (__u.__i[2] & 0x8000) != 0;
+}
+# 414 "/usr/include/math.h" 2 3 4
+# 30 "./base/math_.h" 2
+# 76 "./base/math_.h"
+extern double gs_sqrt(double, const char *, int);
+# 20 "./devices/gdevxalt.c" 2
+# 1 "./base/memory_.h" 1
+# 54 "./base/memory_.h"
+# 1 "/usr/include/string.h" 1 3 4
+# 32 "/usr/include/string.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/string.h" 2 3 4
+# 42 "/usr/include/string.h" 3 4
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 92 "/usr/include/string.h" 3 4
+extern void *memchr (const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 125 "/usr/include/string.h" 3 4
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcoll (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+
+
+# 1 "/usr/include/xlocale.h" 1 3 4
+# 27 "/usr/include/xlocale.h" 3 4
+typedef struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+} *__locale_t;
+
+
+typedef __locale_t locale_t;
+# 160 "/usr/include/string.h" 2 3 4
+
+
+extern int strcoll_l (const char *__s1, const char *__s2, __locale_t __l)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    __locale_t __l) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)));
+
+
+
+
+
+extern char *strdup (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern char *strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+# 232 "/usr/include/string.h" 3 4
+extern char *strchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 259 "/usr/include/string.h" 3 4
+extern char *strrchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 281 "/usr/include/string.h" 3 4
+extern size_t strcspn (const char *__s, const char *__reject)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern size_t strspn (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 311 "/usr/include/string.h" 3 4
+extern char *strpbrk (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 338 "/usr/include/string.h" 3 4
+extern char *strstr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 395 "/usr/include/string.h" 3 4
+extern size_t strlen (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__ ));
+# 423 "/usr/include/string.h" 3 4
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 441 "/usr/include/string.h" 3 4
+extern char *strerror_l (int __errnum, __locale_t __l) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void __bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 485 "/usr/include/string.h" 3 4
+extern char *index (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 513 "/usr/include/string.h" 3 4
+extern char *rindex (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int ffs (int __i) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 532 "/usr/include/string.h" 3 4
+extern int strcasecmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 555 "/usr/include/string.h" 3 4
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__ ));
+
+
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+# 630 "/usr/include/string.h" 3 4
+# 1 "/usr/include/bits/string.h" 1 3 4
+# 631 "/usr/include/string.h" 2 3 4
+
+
+# 1 "/usr/include/bits/string2.h" 1 3 4
+# 393 "/usr/include/bits/string2.h" 3 4
+extern void *__rawmemchr (const void *__s, int __c);
+# 968 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c1 (const char *__s, int __reject);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c1 (const char *__s, int __reject)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c2 (const char *__s, int __reject1,
+         int __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c2 (const char *__s, int __reject1, int __reject2)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c3 (const char *__s, int __reject1,
+         int __reject2, int __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c3 (const char *__s, int __reject1, int __reject2,
+       int __reject3)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2 && __s[__result] != __reject3)
+    ++__result;
+  return __result;
+}
+# 1044 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c1 (const char *__s, int __accept);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c1 (const char *__s, int __accept)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c2 (const char *__s, int __accept1, int __accept2)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2
+  || __s[__result] == __accept3)
+    ++__result;
+  return __result;
+}
+# 1120 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c2 (const char *__s, int __accept1, int __accept2)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2
+  && *__s != __accept3)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+# 1170 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strtok_r_1c (char *__s, char __sep, char **__nextp);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strtok_r_1c (char *__s, char __sep, char **__nextp)
+{
+  char *__result;
+  if (__s == ((void*)0))
+    __s = *__nextp;
+  while (*__s == __sep)
+    ++__s;
+  __result = ((void*)0);
+  if (*__s != '\0')
+    {
+      __result = __s++;
+      while (*__s != '\0')
+ if (*__s++ == __sep)
+   {
+     __s[-1] = '\0';
+     break;
+   }
+    }
+  *__nextp = __s;
+  return __result;
+}
+# 1202 "/usr/include/bits/string2.h" 3 4
+extern char *__strsep_g (char **__stringp, const char *__delim);
+# 1220 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_1c (char **__s, char __reject);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_1c (char **__s, char __reject)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0) && (*__s = (__extension__ (__builtin_constant_p (__reject) && !__builtin_constant_p (__retval) && (__reject) == '\0' ? (char *) __rawmemchr (__retval, __reject) : __builtin_strchr (__retval, __reject)))) != ((void*)0))
+    *(*__s)++ = '\0';
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_2c (char **__s, char __reject1, char __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_2c (char **__s, char __reject1, char __reject2)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_3c (char **__s, char __reject1, char __reject2,
+       char __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_3c (char **__s, char __reject1, char __reject2, char __reject3)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2 || *__cp == __reject3)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+# 1296 "/usr/include/bits/string2.h" 3 4
+# 1 "/usr/include/stdlib.h" 1 3 4
+# 32 "/usr/include/stdlib.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/stdlib.h" 2 3 4
+# 465 "/usr/include/stdlib.h" 3 4
+extern void *malloc (size_t __size) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+
+extern void *calloc (size_t __nmemb, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 1297 "/usr/include/bits/string2.h" 2 3 4
+
+
+
+
+extern char *__strdup (const char *__string) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 1320 "/usr/include/bits/string2.h" 3 4
+extern char *__strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 634 "/usr/include/string.h" 2 3 4
+# 55 "./base/memory_.h" 2
+# 21 "./devices/gdevxalt.c" 2
+# 1 "./base/x_.h" 1
+# 131 "./base/x_.h"
+# 1 "/usr/include/X11/Xlib.h" 1 3 4
+# 44 "/usr/include/X11/Xlib.h" 3 4
+# 1 "/usr/include/X11/X.h" 1 3 4
+# 66 "/usr/include/X11/X.h" 3 4
+typedef unsigned long XID;
+
+
+
+typedef unsigned long Mask;
+
+
+
+typedef unsigned long Atom;
+
+typedef unsigned long VisualID;
+typedef unsigned long Time;
+# 96 "/usr/include/X11/X.h" 3 4
+typedef XID Window;
+typedef XID Drawable;
+
+
+typedef XID Font;
+
+typedef XID Pixmap;
+typedef XID Cursor;
+typedef XID Colormap;
+typedef XID GContext;
+typedef XID KeySym;
+
+typedef unsigned char KeyCode;
+# 45 "/usr/include/X11/Xlib.h" 2 3 4
+
+
+# 1 "/usr/include/X11/Xfuncproto.h" 1 3 4
+# 48 "/usr/include/X11/Xlib.h" 2 3 4
+# 1 "/usr/include/X11/Xosdefs.h" 1 3 4
+# 49 "/usr/include/X11/Xlib.h" 2 3 4
+
+
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 51 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+typedef long int ptrdiff_t;
+# 90 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+typedef int wchar_t;
+# 118 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/__stddef_max_align_t.h" 1 3 4
+# 35 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/__stddef_max_align_t.h" 3 4
+typedef struct {
+  long long __clang_max_align_nonce1
+      __attribute__((__aligned__(__alignof__(long long))));
+  long double __clang_max_align_nonce2
+      __attribute__((__aligned__(__alignof__(long double))));
+} max_align_t;
+# 119 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 2 3 4
+# 52 "/usr/include/X11/Xlib.h" 2 3 4
+# 62 "/usr/include/X11/Xlib.h" 3 4
+extern int
+_Xmblen(
+    char *str,
+    int len
+    );
+# 76 "/usr/include/X11/Xlib.h" 3 4
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+
+
+typedef char *XPointer;
+# 148 "/usr/include/X11/Xlib.h" 3 4
+typedef struct _XExtData {
+ int number;
+ struct _XExtData *next;
+ int (*free_private)(
+ struct _XExtData *extension
+ );
+ XPointer private_data;
+} XExtData;
+
+
+
+
+typedef struct {
+ int extension;
+ int major_opcode;
+ int first_event;
+ int first_error;
+} XExtCodes;
+
+
+
+
+
+typedef struct {
+    int depth;
+    int bits_per_pixel;
+    int scanline_pad;
+} XPixmapFormatValues;
+
+
+
+
+
+typedef struct {
+ int function;
+ unsigned long plane_mask;
+ unsigned long foreground;
+ unsigned long background;
+ int line_width;
+ int line_style;
+ int cap_style;
+
+ int join_style;
+ int fill_style;
+
+ int fill_rule;
+ int arc_mode;
+ Pixmap tile;
+ Pixmap stipple;
+ int ts_x_origin;
+ int ts_y_origin;
+        Font font;
+ int subwindow_mode;
+ int graphics_exposures;
+ int clip_x_origin;
+ int clip_y_origin;
+ Pixmap clip_mask;
+ int dash_offset;
+ char dashes;
+} XGCValues;
+
+
+
+
+
+
+typedef struct _XGC
+
+
+
+
+
+
+
+*GC;
+
+
+
+
+typedef struct {
+ XExtData *ext_data;
+ VisualID visualid;
+
+
+
+ int class;
+
+ unsigned long red_mask, green_mask, blue_mask;
+ int bits_per_rgb;
+ int map_entries;
+} Visual;
+
+
+
+
+typedef struct {
+ int depth;
+ int nvisuals;
+ Visual *visuals;
+} Depth;
+
+
+
+
+
+
+
+struct _XDisplay;
+
+typedef struct {
+ XExtData *ext_data;
+ struct _XDisplay *display;
+ Window root;
+ int width, height;
+ int mwidth, mheight;
+ int ndepths;
+ Depth *depths;
+ int root_depth;
+ Visual *root_visual;
+ GC default_gc;
+ Colormap cmap;
+ unsigned long white_pixel;
+ unsigned long black_pixel;
+ int max_maps, min_maps;
+ int backing_store;
+ int save_unders;
+ long root_input_mask;
+} Screen;
+
+
+
+
+typedef struct {
+ XExtData *ext_data;
+ int depth;
+ int bits_per_pixel;
+ int scanline_pad;
+} ScreenFormat;
+
+
+
+
+typedef struct {
+    Pixmap background_pixmap;
+    unsigned long background_pixel;
+    Pixmap border_pixmap;
+    unsigned long border_pixel;
+    int bit_gravity;
+    int win_gravity;
+    int backing_store;
+    unsigned long backing_planes;
+    unsigned long backing_pixel;
+    int save_under;
+    long event_mask;
+    long do_not_propagate_mask;
+    int override_redirect;
+    Colormap colormap;
+    Cursor cursor;
+} XSetWindowAttributes;
+
+typedef struct {
+    int x, y;
+    int width, height;
+    int border_width;
+    int depth;
+    Visual *visual;
+    Window root;
+
+
+
+    int class;
+
+    int bit_gravity;
+    int win_gravity;
+    int backing_store;
+    unsigned long backing_planes;
+    unsigned long backing_pixel;
+    int save_under;
+    Colormap colormap;
+    int map_installed;
+    int map_state;
+    long all_event_masks;
+    long your_event_mask;
+    long do_not_propagate_mask;
+    int override_redirect;
+    Screen *screen;
+} XWindowAttributes;
+
+
+
+
+
+
+typedef struct {
+ int family;
+ int length;
+ char *address;
+} XHostAddress;
+
+
+
+
+typedef struct {
+ int typelength;
+ int valuelength;
+ char *type;
+ char *value;
+} XServerInterpretedAddress;
+
+
+
+
+typedef struct _XImage {
+    int width, height;
+    int xoffset;
+    int format;
+    char *data;
+    int byte_order;
+    int bitmap_unit;
+    int bitmap_bit_order;
+    int bitmap_pad;
+    int depth;
+    int bytes_per_line;
+    int bits_per_pixel;
+    unsigned long red_mask;
+    unsigned long green_mask;
+    unsigned long blue_mask;
+    XPointer obdata;
+    struct funcs {
+ struct _XImage *(*create_image)(
+  struct _XDisplay* ,
+  Visual* ,
+  unsigned int ,
+  int ,
+  int ,
+  char* ,
+  unsigned int ,
+  unsigned int ,
+  int ,
+  int );
+ int (*destroy_image) (struct _XImage *);
+ unsigned long (*get_pixel) (struct _XImage *, int, int);
+ int (*put_pixel) (struct _XImage *, int, int, unsigned long);
+ struct _XImage *(*sub_image)(struct _XImage *, int, int, unsigned int, unsigned int);
+ int (*add_pixel) (struct _XImage *, long);
+ } f;
+} XImage;
+
+
+
+
+typedef struct {
+    int x, y;
+    int width, height;
+    int border_width;
+    Window sibling;
+    int stack_mode;
+} XWindowChanges;
+
+
+
+
+typedef struct {
+ unsigned long pixel;
+ unsigned short red, green, blue;
+ char flags;
+ char pad;
+} XColor;
+
+
+
+
+
+
+typedef struct {
+    short x1, y1, x2, y2;
+} XSegment;
+
+typedef struct {
+    short x, y;
+} XPoint;
+
+typedef struct {
+    short x, y;
+    unsigned short width, height;
+} XRectangle;
+
+typedef struct {
+    short x, y;
+    unsigned short width, height;
+    short angle1, angle2;
+} XArc;
+
+
+
+
+typedef struct {
+        int key_click_percent;
+        int bell_percent;
+        int bell_pitch;
+        int bell_duration;
+        int led;
+        int led_mode;
+        int key;
+        int auto_repeat_mode;
+} XKeyboardControl;
+
+
+
+typedef struct {
+        int key_click_percent;
+ int bell_percent;
+ unsigned int bell_pitch, bell_duration;
+ unsigned long led_mask;
+ int global_auto_repeat;
+ char auto_repeats[32];
+} XKeyboardState;
+
+
+
+typedef struct {
+        Time time;
+ short x, y;
+} XTimeCoord;
+
+
+
+typedef struct {
+  int max_keypermod;
+  KeyCode *modifiermap;
+} XModifierKeymap;
+# 487 "/usr/include/X11/Xlib.h" 3 4
+typedef struct _XDisplay Display;
+
+
+struct _XPrivate;
+struct _XrmHashBucketRec;
+
+typedef struct
+
+
+
+{
+ XExtData *ext_data;
+ struct _XPrivate *private1;
+ int fd;
+ int private2;
+ int proto_major_version;
+ int proto_minor_version;
+ char *vendor;
+        XID private3;
+ XID private4;
+ XID private5;
+ int private6;
+ XID (*resource_alloc)(
+  struct _XDisplay*
+ );
+ int byte_order;
+ int bitmap_unit;
+ int bitmap_pad;
+ int bitmap_bit_order;
+ int nformats;
+ ScreenFormat *pixmap_format;
+ int private8;
+ int release;
+ struct _XPrivate *private9, *private10;
+ int qlen;
+ unsigned long last_request_read;
+ unsigned long request;
+ XPointer private11;
+ XPointer private12;
+ XPointer private13;
+ XPointer private14;
+ unsigned max_request_size;
+ struct _XrmHashBucketRec *db;
+ int (*private15)(
+  struct _XDisplay*
+  );
+ char *display_name;
+ int default_screen;
+ int nscreens;
+ Screen *screens;
+ unsigned long motion_buffer;
+ unsigned long private16;
+ int min_keycode;
+ int max_keycode;
+ XPointer private17;
+ XPointer private18;
+ int private19;
+ char *xdefaults;
+
+}
+
+
+
+*_XPrivDisplay;
+
+
+
+
+
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Window root;
+ Window subwindow;
+ Time time;
+ int x, y;
+ int x_root, y_root;
+ unsigned int state;
+ unsigned int keycode;
+ int same_screen;
+} XKeyEvent;
+typedef XKeyEvent XKeyPressedEvent;
+typedef XKeyEvent XKeyReleasedEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Window root;
+ Window subwindow;
+ Time time;
+ int x, y;
+ int x_root, y_root;
+ unsigned int state;
+ unsigned int button;
+ int same_screen;
+} XButtonEvent;
+typedef XButtonEvent XButtonPressedEvent;
+typedef XButtonEvent XButtonReleasedEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Window root;
+ Window subwindow;
+ Time time;
+ int x, y;
+ int x_root, y_root;
+ unsigned int state;
+ char is_hint;
+ int same_screen;
+} XMotionEvent;
+typedef XMotionEvent XPointerMovedEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Window root;
+ Window subwindow;
+ Time time;
+ int x, y;
+ int x_root, y_root;
+ int mode;
+ int detail;
+
+
+
+
+ int same_screen;
+ int focus;
+ unsigned int state;
+} XCrossingEvent;
+typedef XCrossingEvent XEnterWindowEvent;
+typedef XCrossingEvent XLeaveWindowEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ int mode;
+
+ int detail;
+
+
+
+
+
+} XFocusChangeEvent;
+typedef XFocusChangeEvent XFocusInEvent;
+typedef XFocusChangeEvent XFocusOutEvent;
+
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ char key_vector[32];
+} XKeymapEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ int x, y;
+ int width, height;
+ int count;
+} XExposeEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Drawable drawable;
+ int x, y;
+ int width, height;
+ int count;
+ int major_code;
+ int minor_code;
+} XGraphicsExposeEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Drawable drawable;
+ int major_code;
+ int minor_code;
+} XNoExposeEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ int state;
+} XVisibilityEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window parent;
+ Window window;
+ int x, y;
+ int width, height;
+ int border_width;
+ int override_redirect;
+} XCreateWindowEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+} XDestroyWindowEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ int from_configure;
+} XUnmapEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ int override_redirect;
+} XMapEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window parent;
+ Window window;
+} XMapRequestEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ Window parent;
+ int x, y;
+ int override_redirect;
+} XReparentEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ int x, y;
+ int width, height;
+ int border_width;
+ Window above;
+ int override_redirect;
+} XConfigureEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ int x, y;
+} XGravityEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ int width, height;
+} XResizeRequestEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window parent;
+ Window window;
+ int x, y;
+ int width, height;
+ int border_width;
+ Window above;
+ int detail;
+ unsigned long value_mask;
+} XConfigureRequestEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window event;
+ Window window;
+ int place;
+} XCirculateEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window parent;
+ Window window;
+ int place;
+} XCirculateRequestEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Atom atom;
+ Time time;
+ int state;
+} XPropertyEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Atom selection;
+ Time time;
+} XSelectionClearEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window owner;
+ Window requestor;
+ Atom selection;
+ Atom target;
+ Atom property;
+ Time time;
+} XSelectionRequestEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window requestor;
+ Atom selection;
+ Atom target;
+ Atom property;
+ Time time;
+} XSelectionEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Colormap colormap;
+
+
+
+ int new;
+
+ int state;
+} XColormapEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ Atom message_type;
+ int format;
+ union {
+  char b[20];
+  short s[10];
+  long l[5];
+  } data;
+} XClientMessageEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+ int request;
+
+ int first_keycode;
+ int count;
+} XMappingEvent;
+
+typedef struct {
+ int type;
+ Display *display;
+ XID resourceid;
+ unsigned long serial;
+ unsigned char error_code;
+ unsigned char request_code;
+ unsigned char minor_code;
+} XErrorEvent;
+
+typedef struct {
+ int type;
+ unsigned long serial;
+ int send_event;
+ Display *display;
+ Window window;
+} XAnyEvent;
+
+
+
+
+
+
+
+typedef struct
+    {
+    int type;
+    unsigned long serial;
+    int send_event;
+    Display *display;
+    int extension;
+    int evtype;
+    } XGenericEvent;
+
+typedef struct {
+    int type;
+    unsigned long serial;
+    int send_event;
+    Display *display;
+    int extension;
+    int evtype;
+    unsigned int cookie;
+    void *data;
+} XGenericEventCookie;
+
+
+
+
+
+typedef union _XEvent {
+        int type;
+ XAnyEvent xany;
+ XKeyEvent xkey;
+ XButtonEvent xbutton;
+ XMotionEvent xmotion;
+ XCrossingEvent xcrossing;
+ XFocusChangeEvent xfocus;
+ XExposeEvent xexpose;
+ XGraphicsExposeEvent xgraphicsexpose;
+ XNoExposeEvent xnoexpose;
+ XVisibilityEvent xvisibility;
+ XCreateWindowEvent xcreatewindow;
+ XDestroyWindowEvent xdestroywindow;
+ XUnmapEvent xunmap;
+ XMapEvent xmap;
+ XMapRequestEvent xmaprequest;
+ XReparentEvent xreparent;
+ XConfigureEvent xconfigure;
+ XGravityEvent xgravity;
+ XResizeRequestEvent xresizerequest;
+ XConfigureRequestEvent xconfigurerequest;
+ XCirculateEvent xcirculate;
+ XCirculateRequestEvent xcirculaterequest;
+ XPropertyEvent xproperty;
+ XSelectionClearEvent xselectionclear;
+ XSelectionRequestEvent xselectionrequest;
+ XSelectionEvent xselection;
+ XColormapEvent xcolormap;
+ XClientMessageEvent xclient;
+ XMappingEvent xmapping;
+ XErrorEvent xerror;
+ XKeymapEvent xkeymap;
+ XGenericEvent xgeneric;
+ XGenericEventCookie xcookie;
+ long pad[24];
+} XEvent;
+
+
+
+
+
+
+
+typedef struct {
+    short lbearing;
+    short rbearing;
+    short width;
+    short ascent;
+    short descent;
+    unsigned short attributes;
+} XCharStruct;
+
+
+
+
+
+typedef struct {
+    Atom name;
+    unsigned long card32;
+} XFontProp;
+
+typedef struct {
+    XExtData *ext_data;
+    Font fid;
+    unsigned direction;
+    unsigned min_char_or_byte2;
+    unsigned max_char_or_byte2;
+    unsigned min_byte1;
+    unsigned max_byte1;
+    int all_chars_exist;
+    unsigned default_char;
+    int n_properties;
+    XFontProp *properties;
+    XCharStruct min_bounds;
+    XCharStruct max_bounds;
+    XCharStruct *per_char;
+    int ascent;
+    int descent;
+} XFontStruct;
+
+
+
+
+typedef struct {
+    char *chars;
+    int nchars;
+    int delta;
+    Font font;
+} XTextItem;
+
+typedef struct {
+    unsigned char byte1;
+    unsigned char byte2;
+} XChar2b;
+
+typedef struct {
+    XChar2b *chars;
+    int nchars;
+    int delta;
+    Font font;
+} XTextItem16;
+
+
+typedef union { Display *display;
+  GC gc;
+  Visual *visual;
+  Screen *screen;
+  ScreenFormat *pixmap_format;
+  XFontStruct *font; } XEDataObject;
+
+typedef struct {
+    XRectangle max_ink_extent;
+    XRectangle max_logical_extent;
+} XFontSetExtents;
+
+
+
+
+
+typedef struct _XOM *XOM;
+typedef struct _XOC *XOC, *XFontSet;
+
+typedef struct {
+    char *chars;
+    int nchars;
+    int delta;
+    XFontSet font_set;
+} XmbTextItem;
+
+typedef struct {
+    wchar_t *chars;
+    int nchars;
+    int delta;
+    XFontSet font_set;
+} XwcTextItem;
+# 1121 "/usr/include/X11/Xlib.h" 3 4
+typedef struct {
+    int charset_count;
+    char **charset_list;
+} XOMCharSetList;
+
+typedef enum {
+    XOMOrientation_LTR_TTB,
+    XOMOrientation_RTL_TTB,
+    XOMOrientation_TTB_LTR,
+    XOMOrientation_TTB_RTL,
+    XOMOrientation_Context
+} XOrientation;
+
+typedef struct {
+    int num_orientation;
+    XOrientation *orientation;
+} XOMOrientation;
+
+typedef struct {
+    int num_font;
+    XFontStruct **font_struct_list;
+    char **font_name_list;
+} XOMFontInfo;
+
+typedef struct _XIM *XIM;
+typedef struct _XIC *XIC;
+
+typedef void (*XIMProc)(
+    XIM,
+    XPointer,
+    XPointer
+);
+
+typedef int (*XICProc)(
+    XIC,
+    XPointer,
+    XPointer
+);
+
+typedef void (*XIDProc)(
+    Display*,
+    XPointer,
+    XPointer
+);
+
+typedef unsigned long XIMStyle;
+
+typedef struct {
+    unsigned short count_styles;
+    XIMStyle *supported_styles;
+} XIMStyles;
+# 1233 "/usr/include/X11/Xlib.h" 3 4
+typedef void *XVaNestedList;
+
+typedef struct {
+    XPointer client_data;
+    XIMProc callback;
+} XIMCallback;
+
+typedef struct {
+    XPointer client_data;
+    XICProc callback;
+} XICCallback;
+
+typedef unsigned long XIMFeedback;
+# 1257 "/usr/include/X11/Xlib.h" 3 4
+typedef struct _XIMText {
+    unsigned short length;
+    XIMFeedback *feedback;
+    int encoding_is_wchar;
+    union {
+ char *multi_byte;
+ wchar_t *wide_char;
+    } string;
+} XIMText;
+
+typedef unsigned long XIMPreeditState;
+
+
+
+
+
+typedef struct _XIMPreeditStateNotifyCallbackStruct {
+    XIMPreeditState state;
+} XIMPreeditStateNotifyCallbackStruct;
+
+typedef unsigned long XIMResetState;
+
+
+
+
+typedef unsigned long XIMStringConversionFeedback;
+# 1291 "/usr/include/X11/Xlib.h" 3 4
+typedef struct _XIMStringConversionText {
+    unsigned short length;
+    XIMStringConversionFeedback *feedback;
+    int encoding_is_wchar;
+    union {
+ char *mbs;
+ wchar_t *wcs;
+    } string;
+} XIMStringConversionText;
+
+typedef unsigned short XIMStringConversionPosition;
+
+typedef unsigned short XIMStringConversionType;
+
+
+
+
+
+
+typedef unsigned short XIMStringConversionOperation;
+
+
+
+
+typedef enum {
+    XIMForwardChar, XIMBackwardChar,
+    XIMForwardWord, XIMBackwardWord,
+    XIMCaretUp, XIMCaretDown,
+    XIMNextLine, XIMPreviousLine,
+    XIMLineStart, XIMLineEnd,
+    XIMAbsolutePosition,
+    XIMDontChange
+} XIMCaretDirection;
+
+typedef struct _XIMStringConversionCallbackStruct {
+    XIMStringConversionPosition position;
+    XIMCaretDirection direction;
+    XIMStringConversionOperation operation;
+    unsigned short factor;
+    XIMStringConversionText *text;
+} XIMStringConversionCallbackStruct;
+
+typedef struct _XIMPreeditDrawCallbackStruct {
+    int caret;
+    int chg_first;
+    int chg_length;
+    XIMText *text;
+} XIMPreeditDrawCallbackStruct;
+
+typedef enum {
+    XIMIsInvisible,
+    XIMIsPrimary,
+    XIMIsSecondary
+} XIMCaretStyle;
+
+typedef struct _XIMPreeditCaretCallbackStruct {
+    int position;
+    XIMCaretDirection direction;
+    XIMCaretStyle style;
+} XIMPreeditCaretCallbackStruct;
+
+typedef enum {
+    XIMTextType,
+    XIMBitmapType
+} XIMStatusDataType;
+
+typedef struct _XIMStatusDrawCallbackStruct {
+    XIMStatusDataType type;
+    union {
+ XIMText *text;
+ Pixmap bitmap;
+    } data;
+} XIMStatusDrawCallbackStruct;
+
+typedef struct _XIMHotKeyTrigger {
+    KeySym keysym;
+    int modifier;
+    int modifier_mask;
+} XIMHotKeyTrigger;
+
+typedef struct _XIMHotKeyTriggers {
+    int num_hot_key;
+    XIMHotKeyTrigger *key;
+} XIMHotKeyTriggers;
+
+typedef unsigned long XIMHotKeyState;
+
+
+
+
+typedef struct {
+    unsigned short count_values;
+    char **supported_values;
+} XIMValuesList;
+
+
+
+
+
+
+
+extern int _Xdebug;
+
+extern XFontStruct *XLoadQueryFont(
+    Display* ,
+    const char*
+);
+
+extern XFontStruct *XQueryFont(
+    Display* ,
+    XID
+);
+
+
+extern XTimeCoord *XGetMotionEvents(
+    Display* ,
+    Window ,
+    Time ,
+    Time ,
+    int*
+);
+
+extern XModifierKeymap *XDeleteModifiermapEntry(
+    XModifierKeymap* ,
+
+
+
+    KeyCode ,
+
+    int
+);
+
+extern XModifierKeymap *XGetModifierMapping(
+    Display*
+);
+
+extern XModifierKeymap *XInsertModifiermapEntry(
+    XModifierKeymap* ,
+
+
+
+    KeyCode ,
+
+    int
+);
+
+extern XModifierKeymap *XNewModifiermap(
+    int
+);
+
+extern XImage *XCreateImage(
+    Display* ,
+    Visual* ,
+    unsigned int ,
+    int ,
+    int ,
+    char* ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+extern int XInitImage(
+    XImage*
+);
+extern XImage *XGetImage(
+    Display* ,
+    Drawable ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    unsigned long ,
+    int
+);
+extern XImage *XGetSubImage(
+    Display* ,
+    Drawable ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    unsigned long ,
+    int ,
+    XImage* ,
+    int ,
+    int
+);
+
+
+
+
+extern Display *XOpenDisplay(
+    const char*
+);
+
+extern void XrmInitialize(
+    void
+);
+
+extern char *XFetchBytes(
+    Display* ,
+    int*
+);
+extern char *XFetchBuffer(
+    Display* ,
+    int* ,
+    int
+);
+extern char *XGetAtomName(
+    Display* ,
+    Atom
+);
+extern int XGetAtomNames(
+    Display* ,
+    Atom* ,
+    int ,
+    char**
+);
+extern char *XGetDefault(
+    Display* ,
+    const char* ,
+    const char*
+);
+extern char *XDisplayName(
+    const char*
+);
+extern char *XKeysymToString(
+    KeySym
+);
+
+extern int (*XSynchronize(
+    Display* ,
+    int
+))(
+    Display*
+);
+extern int (*XSetAfterFunction(
+    Display* ,
+    int (*) (
+      Display*
+            )
+))(
+    Display*
+);
+extern Atom XInternAtom(
+    Display* ,
+    const char* ,
+    int
+);
+extern int XInternAtoms(
+    Display* ,
+    char** ,
+    int ,
+    int ,
+    Atom*
+);
+extern Colormap XCopyColormapAndFree(
+    Display* ,
+    Colormap
+);
+extern Colormap XCreateColormap(
+    Display* ,
+    Window ,
+    Visual* ,
+    int
+);
+extern Cursor XCreatePixmapCursor(
+    Display* ,
+    Pixmap ,
+    Pixmap ,
+    XColor* ,
+    XColor* ,
+    unsigned int ,
+    unsigned int
+);
+extern Cursor XCreateGlyphCursor(
+    Display* ,
+    Font ,
+    Font ,
+    unsigned int ,
+    unsigned int ,
+    XColor const * ,
+    XColor const *
+);
+extern Cursor XCreateFontCursor(
+    Display* ,
+    unsigned int
+);
+extern Font XLoadFont(
+    Display* ,
+    const char*
+);
+extern GC XCreateGC(
+    Display* ,
+    Drawable ,
+    unsigned long ,
+    XGCValues*
+);
+extern GContext XGContextFromGC(
+    GC
+);
+extern void XFlushGC(
+    Display* ,
+    GC
+);
+extern Pixmap XCreatePixmap(
+    Display* ,
+    Drawable ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int
+);
+extern Pixmap XCreateBitmapFromData(
+    Display* ,
+    Drawable ,
+    const char* ,
+    unsigned int ,
+    unsigned int
+);
+extern Pixmap XCreatePixmapFromBitmapData(
+    Display* ,
+    Drawable ,
+    char* ,
+    unsigned int ,
+    unsigned int ,
+    unsigned long ,
+    unsigned long ,
+    unsigned int
+);
+extern Window XCreateSimpleWindow(
+    Display* ,
+    Window ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int ,
+    unsigned long ,
+    unsigned long
+);
+extern Window XGetSelectionOwner(
+    Display* ,
+    Atom
+);
+extern Window XCreateWindow(
+    Display* ,
+    Window ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    unsigned int ,
+    Visual* ,
+    unsigned long ,
+    XSetWindowAttributes*
+);
+extern Colormap *XListInstalledColormaps(
+    Display* ,
+    Window ,
+    int*
+);
+extern char **XListFonts(
+    Display* ,
+    const char* ,
+    int ,
+    int*
+);
+extern char **XListFontsWithInfo(
+    Display* ,
+    const char* ,
+    int ,
+    int* ,
+    XFontStruct**
+);
+extern char **XGetFontPath(
+    Display* ,
+    int*
+);
+extern char **XListExtensions(
+    Display* ,
+    int*
+);
+extern Atom *XListProperties(
+    Display* ,
+    Window ,
+    int*
+);
+extern XHostAddress *XListHosts(
+    Display* ,
+    int* ,
+    int*
+);
+__attribute__((deprecated))
+extern KeySym XKeycodeToKeysym(
+    Display* ,
+
+
+
+    KeyCode ,
+
+    int
+);
+extern KeySym XLookupKeysym(
+    XKeyEvent* ,
+    int
+);
+extern KeySym *XGetKeyboardMapping(
+    Display* ,
+
+
+
+    KeyCode ,
+
+    int ,
+    int*
+);
+extern KeySym XStringToKeysym(
+    const char*
+);
+extern long XMaxRequestSize(
+    Display*
+);
+extern long XExtendedMaxRequestSize(
+    Display*
+);
+extern char *XResourceManagerString(
+    Display*
+);
+extern char *XScreenResourceString(
+ Screen*
+);
+extern unsigned long XDisplayMotionBufferSize(
+    Display*
+);
+extern VisualID XVisualIDFromVisual(
+    Visual*
+);
+
+
+
+extern int XInitThreads(
+    void
+);
+
+extern void XLockDisplay(
+    Display*
+);
+
+extern void XUnlockDisplay(
+    Display*
+);
+
+
+
+extern XExtCodes *XInitExtension(
+    Display* ,
+    const char*
+);
+
+extern XExtCodes *XAddExtension(
+    Display*
+);
+extern XExtData *XFindOnExtensionList(
+    XExtData** ,
+    int
+);
+extern XExtData **XEHeadOfExtensionList(
+    XEDataObject
+);
+
+
+extern Window XRootWindow(
+    Display* ,
+    int
+);
+extern Window XDefaultRootWindow(
+    Display*
+);
+extern Window XRootWindowOfScreen(
+    Screen*
+);
+extern Visual *XDefaultVisual(
+    Display* ,
+    int
+);
+extern Visual *XDefaultVisualOfScreen(
+    Screen*
+);
+extern GC XDefaultGC(
+    Display* ,
+    int
+);
+extern GC XDefaultGCOfScreen(
+    Screen*
+);
+extern unsigned long XBlackPixel(
+    Display* ,
+    int
+);
+extern unsigned long XWhitePixel(
+    Display* ,
+    int
+);
+extern unsigned long XAllPlanes(
+    void
+);
+extern unsigned long XBlackPixelOfScreen(
+    Screen*
+);
+extern unsigned long XWhitePixelOfScreen(
+    Screen*
+);
+extern unsigned long XNextRequest(
+    Display*
+);
+extern unsigned long XLastKnownRequestProcessed(
+    Display*
+);
+extern char *XServerVendor(
+    Display*
+);
+extern char *XDisplayString(
+    Display*
+);
+extern Colormap XDefaultColormap(
+    Display* ,
+    int
+);
+extern Colormap XDefaultColormapOfScreen(
+    Screen*
+);
+extern Display *XDisplayOfScreen(
+    Screen*
+);
+extern Screen *XScreenOfDisplay(
+    Display* ,
+    int
+);
+extern Screen *XDefaultScreenOfDisplay(
+    Display*
+);
+extern long XEventMaskOfScreen(
+    Screen*
+);
+
+extern int XScreenNumberOfScreen(
+    Screen*
+);
+
+typedef int (*XErrorHandler) (
+    Display* ,
+    XErrorEvent*
+);
+
+extern XErrorHandler XSetErrorHandler (
+    XErrorHandler
+);
+
+
+typedef int (*XIOErrorHandler) (
+    Display*
+);
+
+extern XIOErrorHandler XSetIOErrorHandler (
+    XIOErrorHandler
+);
+
+
+extern XPixmapFormatValues *XListPixmapFormats(
+    Display* ,
+    int*
+);
+extern int *XListDepths(
+    Display* ,
+    int ,
+    int*
+);
+
+
+
+extern int XReconfigureWMWindow(
+    Display* ,
+    Window ,
+    int ,
+    unsigned int ,
+    XWindowChanges*
+);
+
+extern int XGetWMProtocols(
+    Display* ,
+    Window ,
+    Atom** ,
+    int*
+);
+extern int XSetWMProtocols(
+    Display* ,
+    Window ,
+    Atom* ,
+    int
+);
+extern int XIconifyWindow(
+    Display* ,
+    Window ,
+    int
+);
+extern int XWithdrawWindow(
+    Display* ,
+    Window ,
+    int
+);
+extern int XGetCommand(
+    Display* ,
+    Window ,
+    char*** ,
+    int*
+);
+extern int XGetWMColormapWindows(
+    Display* ,
+    Window ,
+    Window** ,
+    int*
+);
+extern int XSetWMColormapWindows(
+    Display* ,
+    Window ,
+    Window* ,
+    int
+);
+extern void XFreeStringList(
+    char**
+);
+extern int XSetTransientForHint(
+    Display* ,
+    Window ,
+    Window
+);
+
+
+
+extern int XActivateScreenSaver(
+    Display*
+);
+
+extern int XAddHost(
+    Display* ,
+    XHostAddress*
+);
+
+extern int XAddHosts(
+    Display* ,
+    XHostAddress* ,
+    int
+);
+
+extern int XAddToExtensionList(
+    struct _XExtData** ,
+    XExtData*
+);
+
+extern int XAddToSaveSet(
+    Display* ,
+    Window
+);
+
+extern int XAllocColor(
+    Display* ,
+    Colormap ,
+    XColor*
+);
+
+extern int XAllocColorCells(
+    Display* ,
+    Colormap ,
+    int ,
+    unsigned long* ,
+    unsigned int ,
+    unsigned long* ,
+    unsigned int
+);
+
+extern int XAllocColorPlanes(
+    Display* ,
+    Colormap ,
+    int ,
+    unsigned long* ,
+    int ,
+    int ,
+    int ,
+    int ,
+    unsigned long* ,
+    unsigned long* ,
+    unsigned long*
+);
+
+extern int XAllocNamedColor(
+    Display* ,
+    Colormap ,
+    const char* ,
+    XColor* ,
+    XColor*
+);
+
+extern int XAllowEvents(
+    Display* ,
+    int ,
+    Time
+);
+
+extern int XAutoRepeatOff(
+    Display*
+);
+
+extern int XAutoRepeatOn(
+    Display*
+);
+
+extern int XBell(
+    Display* ,
+    int
+);
+
+extern int XBitmapBitOrder(
+    Display*
+);
+
+extern int XBitmapPad(
+    Display*
+);
+
+extern int XBitmapUnit(
+    Display*
+);
+
+extern int XCellsOfScreen(
+    Screen*
+);
+
+extern int XChangeActivePointerGrab(
+    Display* ,
+    unsigned int ,
+    Cursor ,
+    Time
+);
+
+extern int XChangeGC(
+    Display* ,
+    GC ,
+    unsigned long ,
+    XGCValues*
+);
+
+extern int XChangeKeyboardControl(
+    Display* ,
+    unsigned long ,
+    XKeyboardControl*
+);
+
+extern int XChangeKeyboardMapping(
+    Display* ,
+    int ,
+    int ,
+    KeySym* ,
+    int
+);
+
+extern int XChangePointerControl(
+    Display* ,
+    int ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+extern int XChangeProperty(
+    Display* ,
+    Window ,
+    Atom ,
+    Atom ,
+    int ,
+    int ,
+    const unsigned char* ,
+    int
+);
+
+extern int XChangeSaveSet(
+    Display* ,
+    Window ,
+    int
+);
+
+extern int XChangeWindowAttributes(
+    Display* ,
+    Window ,
+    unsigned long ,
+    XSetWindowAttributes*
+);
+
+extern int XCheckIfEvent(
+    Display* ,
+    XEvent* ,
+    int (*) (
+        Display* ,
+               XEvent* ,
+               XPointer
+             ) ,
+    XPointer
+);
+
+extern int XCheckMaskEvent(
+    Display* ,
+    long ,
+    XEvent*
+);
+
+extern int XCheckTypedEvent(
+    Display* ,
+    int ,
+    XEvent*
+);
+
+extern int XCheckTypedWindowEvent(
+    Display* ,
+    Window ,
+    int ,
+    XEvent*
+);
+
+extern int XCheckWindowEvent(
+    Display* ,
+    Window ,
+    long ,
+    XEvent*
+);
+
+extern int XCirculateSubwindows(
+    Display* ,
+    Window ,
+    int
+);
+
+extern int XCirculateSubwindowsDown(
+    Display* ,
+    Window
+);
+
+extern int XCirculateSubwindowsUp(
+    Display* ,
+    Window
+);
+
+extern int XClearArea(
+    Display* ,
+    Window ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int
+);
+
+extern int XClearWindow(
+    Display* ,
+    Window
+);
+
+extern int XCloseDisplay(
+    Display*
+);
+
+extern int XConfigureWindow(
+    Display* ,
+    Window ,
+    unsigned int ,
+    XWindowChanges*
+);
+
+extern int XConnectionNumber(
+    Display*
+);
+
+extern int XConvertSelection(
+    Display* ,
+    Atom ,
+    Atom ,
+    Atom ,
+    Window ,
+    Time
+);
+
+extern int XCopyArea(
+    Display* ,
+    Drawable ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern int XCopyGC(
+    Display* ,
+    GC ,
+    unsigned long ,
+    GC
+);
+
+extern int XCopyPlane(
+    Display* ,
+    Drawable ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int ,
+    unsigned long
+);
+
+extern int XDefaultDepth(
+    Display* ,
+    int
+);
+
+extern int XDefaultDepthOfScreen(
+    Screen*
+);
+
+extern int XDefaultScreen(
+    Display*
+);
+
+extern int XDefineCursor(
+    Display* ,
+    Window ,
+    Cursor
+);
+
+extern int XDeleteProperty(
+    Display* ,
+    Window ,
+    Atom
+);
+
+extern int XDestroyWindow(
+    Display* ,
+    Window
+);
+
+extern int XDestroySubwindows(
+    Display* ,
+    Window
+);
+
+extern int XDoesBackingStore(
+    Screen*
+);
+
+extern int XDoesSaveUnders(
+    Screen*
+);
+
+extern int XDisableAccessControl(
+    Display*
+);
+
+
+extern int XDisplayCells(
+    Display* ,
+    int
+);
+
+extern int XDisplayHeight(
+    Display* ,
+    int
+);
+
+extern int XDisplayHeightMM(
+    Display* ,
+    int
+);
+
+extern int XDisplayKeycodes(
+    Display* ,
+    int* ,
+    int*
+);
+
+extern int XDisplayPlanes(
+    Display* ,
+    int
+);
+
+extern int XDisplayWidth(
+    Display* ,
+    int
+);
+
+extern int XDisplayWidthMM(
+    Display* ,
+    int
+);
+
+extern int XDrawArc(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern int XDrawArcs(
+    Display* ,
+    Drawable ,
+    GC ,
+    XArc* ,
+    int
+);
+
+extern int XDrawImageString(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern int XDrawImageString16(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    const XChar2b* ,
+    int
+);
+
+extern int XDrawLine(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+extern int XDrawLines(
+    Display* ,
+    Drawable ,
+    GC ,
+    XPoint* ,
+    int ,
+    int
+);
+
+extern int XDrawPoint(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int
+);
+
+extern int XDrawPoints(
+    Display* ,
+    Drawable ,
+    GC ,
+    XPoint* ,
+    int ,
+    int
+);
+
+extern int XDrawRectangle(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XDrawRectangles(
+    Display* ,
+    Drawable ,
+    GC ,
+    XRectangle* ,
+    int
+);
+
+extern int XDrawSegments(
+    Display* ,
+    Drawable ,
+    GC ,
+    XSegment* ,
+    int
+);
+
+extern int XDrawString(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern int XDrawString16(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    const XChar2b* ,
+    int
+);
+
+extern int XDrawText(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    XTextItem* ,
+    int
+);
+
+extern int XDrawText16(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    XTextItem16* ,
+    int
+);
+
+extern int XEnableAccessControl(
+    Display*
+);
+
+extern int XEventsQueued(
+    Display* ,
+    int
+);
+
+extern int XFetchName(
+    Display* ,
+    Window ,
+    char**
+);
+
+extern int XFillArc(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern int XFillArcs(
+    Display* ,
+    Drawable ,
+    GC ,
+    XArc* ,
+    int
+);
+
+extern int XFillPolygon(
+    Display* ,
+    Drawable ,
+    GC ,
+    XPoint* ,
+    int ,
+    int ,
+    int
+);
+
+extern int XFillRectangle(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XFillRectangles(
+    Display* ,
+    Drawable ,
+    GC ,
+    XRectangle* ,
+    int
+);
+
+extern int XFlush(
+    Display*
+);
+
+extern int XForceScreenSaver(
+    Display* ,
+    int
+);
+
+extern int XFree(
+    void*
+);
+
+extern int XFreeColormap(
+    Display* ,
+    Colormap
+);
+
+extern int XFreeColors(
+    Display* ,
+    Colormap ,
+    unsigned long* ,
+    int ,
+    unsigned long
+);
+
+extern int XFreeCursor(
+    Display* ,
+    Cursor
+);
+
+extern int XFreeExtensionList(
+    char**
+);
+
+extern int XFreeFont(
+    Display* ,
+    XFontStruct*
+);
+
+extern int XFreeFontInfo(
+    char** ,
+    XFontStruct* ,
+    int
+);
+
+extern int XFreeFontNames(
+    char**
+);
+
+extern int XFreeFontPath(
+    char**
+);
+
+extern int XFreeGC(
+    Display* ,
+    GC
+);
+
+extern int XFreeModifiermap(
+    XModifierKeymap*
+);
+
+extern int XFreePixmap(
+    Display* ,
+    Pixmap
+);
+
+extern int XGeometry(
+    Display* ,
+    int ,
+    const char* ,
+    const char* ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int ,
+    int* ,
+    int* ,
+    int* ,
+    int*
+);
+
+extern int XGetErrorDatabaseText(
+    Display* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    char* ,
+    int
+);
+
+extern int XGetErrorText(
+    Display* ,
+    int ,
+    char* ,
+    int
+);
+
+extern int XGetFontProperty(
+    XFontStruct* ,
+    Atom ,
+    unsigned long*
+);
+
+extern int XGetGCValues(
+    Display* ,
+    GC ,
+    unsigned long ,
+    XGCValues*
+);
+
+extern int XGetGeometry(
+    Display* ,
+    Drawable ,
+    Window* ,
+    int* ,
+    int* ,
+    unsigned int* ,
+    unsigned int* ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XGetIconName(
+    Display* ,
+    Window ,
+    char**
+);
+
+extern int XGetInputFocus(
+    Display* ,
+    Window* ,
+    int*
+);
+
+extern int XGetKeyboardControl(
+    Display* ,
+    XKeyboardState*
+);
+
+extern int XGetPointerControl(
+    Display* ,
+    int* ,
+    int* ,
+    int*
+);
+
+extern int XGetPointerMapping(
+    Display* ,
+    unsigned char* ,
+    int
+);
+
+extern int XGetScreenSaver(
+    Display* ,
+    int* ,
+    int* ,
+    int* ,
+    int*
+);
+
+extern int XGetTransientForHint(
+    Display* ,
+    Window ,
+    Window*
+);
+
+extern int XGetWindowProperty(
+    Display* ,
+    Window ,
+    Atom ,
+    long ,
+    long ,
+    int ,
+    Atom ,
+    Atom* ,
+    int* ,
+    unsigned long* ,
+    unsigned long* ,
+    unsigned char**
+);
+
+extern int XGetWindowAttributes(
+    Display* ,
+    Window ,
+    XWindowAttributes*
+);
+
+extern int XGrabButton(
+    Display* ,
+    unsigned int ,
+    unsigned int ,
+    Window ,
+    int ,
+    unsigned int ,
+    int ,
+    int ,
+    Window ,
+    Cursor
+);
+
+extern int XGrabKey(
+    Display* ,
+    int ,
+    unsigned int ,
+    Window ,
+    int ,
+    int ,
+    int
+);
+
+extern int XGrabKeyboard(
+    Display* ,
+    Window ,
+    int ,
+    int ,
+    int ,
+    Time
+);
+
+extern int XGrabPointer(
+    Display* ,
+    Window ,
+    int ,
+    unsigned int ,
+    int ,
+    int ,
+    Window ,
+    Cursor ,
+    Time
+);
+
+extern int XGrabServer(
+    Display*
+);
+
+extern int XHeightMMOfScreen(
+    Screen*
+);
+
+extern int XHeightOfScreen(
+    Screen*
+);
+
+extern int XIfEvent(
+    Display* ,
+    XEvent* ,
+    int (*) (
+        Display* ,
+               XEvent* ,
+               XPointer
+             ) ,
+    XPointer
+);
+
+extern int XImageByteOrder(
+    Display*
+);
+
+extern int XInstallColormap(
+    Display* ,
+    Colormap
+);
+
+extern KeyCode XKeysymToKeycode(
+    Display* ,
+    KeySym
+);
+
+extern int XKillClient(
+    Display* ,
+    XID
+);
+
+extern int XLookupColor(
+    Display* ,
+    Colormap ,
+    const char* ,
+    XColor* ,
+    XColor*
+);
+
+extern int XLowerWindow(
+    Display* ,
+    Window
+);
+
+extern int XMapRaised(
+    Display* ,
+    Window
+);
+
+extern int XMapSubwindows(
+    Display* ,
+    Window
+);
+
+extern int XMapWindow(
+    Display* ,
+    Window
+);
+
+extern int XMaskEvent(
+    Display* ,
+    long ,
+    XEvent*
+);
+
+extern int XMaxCmapsOfScreen(
+    Screen*
+);
+
+extern int XMinCmapsOfScreen(
+    Screen*
+);
+
+extern int XMoveResizeWindow(
+    Display* ,
+    Window ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XMoveWindow(
+    Display* ,
+    Window ,
+    int ,
+    int
+);
+
+extern int XNextEvent(
+    Display* ,
+    XEvent*
+);
+
+extern int XNoOp(
+    Display*
+);
+
+extern int XParseColor(
+    Display* ,
+    Colormap ,
+    const char* ,
+    XColor*
+);
+
+extern int XParseGeometry(
+    const char* ,
+    int* ,
+    int* ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XPeekEvent(
+    Display* ,
+    XEvent*
+);
+
+extern int XPeekIfEvent(
+    Display* ,
+    XEvent* ,
+    int (*) (
+        Display* ,
+               XEvent* ,
+               XPointer
+             ) ,
+    XPointer
+);
+
+extern int XPending(
+    Display*
+);
+
+extern int XPlanesOfScreen(
+    Screen*
+);
+
+extern int XProtocolRevision(
+    Display*
+);
+
+extern int XProtocolVersion(
+    Display*
+);
+
+
+extern int XPutBackEvent(
+    Display* ,
+    XEvent*
+);
+
+extern int XPutImage(
+    Display* ,
+    Drawable ,
+    GC ,
+    XImage* ,
+    int ,
+    int ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XQLength(
+    Display*
+);
+
+extern int XQueryBestCursor(
+    Display* ,
+    Drawable ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XQueryBestSize(
+    Display* ,
+    int ,
+    Drawable ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XQueryBestStipple(
+    Display* ,
+    Drawable ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XQueryBestTile(
+    Display* ,
+    Drawable ,
+    unsigned int ,
+    unsigned int ,
+    unsigned int* ,
+    unsigned int*
+);
+
+extern int XQueryColor(
+    Display* ,
+    Colormap ,
+    XColor*
+);
+
+extern int XQueryColors(
+    Display* ,
+    Colormap ,
+    XColor* ,
+    int
+);
+
+extern int XQueryExtension(
+    Display* ,
+    const char* ,
+    int* ,
+    int* ,
+    int*
+);
+
+extern int XQueryKeymap(
+    Display* ,
+    char [32]
+);
+
+extern int XQueryPointer(
+    Display* ,
+    Window ,
+    Window* ,
+    Window* ,
+    int* ,
+    int* ,
+    int* ,
+    int* ,
+    unsigned int*
+);
+
+extern int XQueryTextExtents(
+    Display* ,
+    XID ,
+    const char* ,
+    int ,
+    int* ,
+    int* ,
+    int* ,
+    XCharStruct*
+);
+
+extern int XQueryTextExtents16(
+    Display* ,
+    XID ,
+    const XChar2b* ,
+    int ,
+    int* ,
+    int* ,
+    int* ,
+    XCharStruct*
+);
+
+extern int XQueryTree(
+    Display* ,
+    Window ,
+    Window* ,
+    Window* ,
+    Window** ,
+    unsigned int*
+);
+
+extern int XRaiseWindow(
+    Display* ,
+    Window
+);
+
+extern int XReadBitmapFile(
+    Display* ,
+    Drawable ,
+    const char* ,
+    unsigned int* ,
+    unsigned int* ,
+    Pixmap* ,
+    int* ,
+    int*
+);
+
+extern int XReadBitmapFileData(
+    const char* ,
+    unsigned int* ,
+    unsigned int* ,
+    unsigned char** ,
+    int* ,
+    int*
+);
+
+extern int XRebindKeysym(
+    Display* ,
+    KeySym ,
+    KeySym* ,
+    int ,
+    const unsigned char* ,
+    int
+);
+
+extern int XRecolorCursor(
+    Display* ,
+    Cursor ,
+    XColor* ,
+    XColor*
+);
+
+extern int XRefreshKeyboardMapping(
+    XMappingEvent*
+);
+
+extern int XRemoveFromSaveSet(
+    Display* ,
+    Window
+);
+
+extern int XRemoveHost(
+    Display* ,
+    XHostAddress*
+);
+
+extern int XRemoveHosts(
+    Display* ,
+    XHostAddress* ,
+    int
+);
+
+extern int XReparentWindow(
+    Display* ,
+    Window ,
+    Window ,
+    int ,
+    int
+);
+
+extern int XResetScreenSaver(
+    Display*
+);
+
+extern int XResizeWindow(
+    Display* ,
+    Window ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XRestackWindows(
+    Display* ,
+    Window* ,
+    int
+);
+
+extern int XRotateBuffers(
+    Display* ,
+    int
+);
+
+extern int XRotateWindowProperties(
+    Display* ,
+    Window ,
+    Atom* ,
+    int ,
+    int
+);
+
+extern int XScreenCount(
+    Display*
+);
+
+extern int XSelectInput(
+    Display* ,
+    Window ,
+    long
+);
+
+extern int XSendEvent(
+    Display* ,
+    Window ,
+    int ,
+    long ,
+    XEvent*
+);
+
+extern int XSetAccessControl(
+    Display* ,
+    int
+);
+
+extern int XSetArcMode(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetBackground(
+    Display* ,
+    GC ,
+    unsigned long
+);
+
+extern int XSetClipMask(
+    Display* ,
+    GC ,
+    Pixmap
+);
+
+extern int XSetClipOrigin(
+    Display* ,
+    GC ,
+    int ,
+    int
+);
+
+extern int XSetClipRectangles(
+    Display* ,
+    GC ,
+    int ,
+    int ,
+    XRectangle* ,
+    int ,
+    int
+);
+
+extern int XSetCloseDownMode(
+    Display* ,
+    int
+);
+
+extern int XSetCommand(
+    Display* ,
+    Window ,
+    char** ,
+    int
+);
+
+extern int XSetDashes(
+    Display* ,
+    GC ,
+    int ,
+    const char* ,
+    int
+);
+
+extern int XSetFillRule(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetFillStyle(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetFont(
+    Display* ,
+    GC ,
+    Font
+);
+
+extern int XSetFontPath(
+    Display* ,
+    char** ,
+    int
+);
+
+extern int XSetForeground(
+    Display* ,
+    GC ,
+    unsigned long
+);
+
+extern int XSetFunction(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetGraphicsExposures(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetIconName(
+    Display* ,
+    Window ,
+    const char*
+);
+
+extern int XSetInputFocus(
+    Display* ,
+    Window ,
+    int ,
+    Time
+);
+
+extern int XSetLineAttributes(
+    Display* ,
+    GC ,
+    unsigned int ,
+    int ,
+    int ,
+    int
+);
+
+extern int XSetModifierMapping(
+    Display* ,
+    XModifierKeymap*
+);
+
+extern int XSetPlaneMask(
+    Display* ,
+    GC ,
+    unsigned long
+);
+
+extern int XSetPointerMapping(
+    Display* ,
+    const unsigned char* ,
+    int
+);
+
+extern int XSetScreenSaver(
+    Display* ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+extern int XSetSelectionOwner(
+    Display* ,
+    Atom ,
+    Window ,
+    Time
+);
+
+extern int XSetState(
+    Display* ,
+    GC ,
+    unsigned long ,
+    unsigned long ,
+    int ,
+    unsigned long
+);
+
+extern int XSetStipple(
+    Display* ,
+    GC ,
+    Pixmap
+);
+
+extern int XSetSubwindowMode(
+    Display* ,
+    GC ,
+    int
+);
+
+extern int XSetTSOrigin(
+    Display* ,
+    GC ,
+    int ,
+    int
+);
+
+extern int XSetTile(
+    Display* ,
+    GC ,
+    Pixmap
+);
+
+extern int XSetWindowBackground(
+    Display* ,
+    Window ,
+    unsigned long
+);
+
+extern int XSetWindowBackgroundPixmap(
+    Display* ,
+    Window ,
+    Pixmap
+);
+
+extern int XSetWindowBorder(
+    Display* ,
+    Window ,
+    unsigned long
+);
+
+extern int XSetWindowBorderPixmap(
+    Display* ,
+    Window ,
+    Pixmap
+);
+
+extern int XSetWindowBorderWidth(
+    Display* ,
+    Window ,
+    unsigned int
+);
+
+extern int XSetWindowColormap(
+    Display* ,
+    Window ,
+    Colormap
+);
+
+extern int XStoreBuffer(
+    Display* ,
+    const char* ,
+    int ,
+    int
+);
+
+extern int XStoreBytes(
+    Display* ,
+    const char* ,
+    int
+);
+
+extern int XStoreColor(
+    Display* ,
+    Colormap ,
+    XColor*
+);
+
+extern int XStoreColors(
+    Display* ,
+    Colormap ,
+    XColor* ,
+    int
+);
+
+extern int XStoreName(
+    Display* ,
+    Window ,
+    const char*
+);
+
+extern int XStoreNamedColor(
+    Display* ,
+    Colormap ,
+    const char* ,
+    unsigned long ,
+    int
+);
+
+extern int XSync(
+    Display* ,
+    int
+);
+
+extern int XTextExtents(
+    XFontStruct* ,
+    const char* ,
+    int ,
+    int* ,
+    int* ,
+    int* ,
+    XCharStruct*
+);
+
+extern int XTextExtents16(
+    XFontStruct* ,
+    const XChar2b* ,
+    int ,
+    int* ,
+    int* ,
+    int* ,
+    XCharStruct*
+);
+
+extern int XTextWidth(
+    XFontStruct* ,
+    const char* ,
+    int
+);
+
+extern int XTextWidth16(
+    XFontStruct* ,
+    const XChar2b* ,
+    int
+);
+
+extern int XTranslateCoordinates(
+    Display* ,
+    Window ,
+    Window ,
+    int ,
+    int ,
+    int* ,
+    int* ,
+    Window*
+);
+
+extern int XUndefineCursor(
+    Display* ,
+    Window
+);
+
+extern int XUngrabButton(
+    Display* ,
+    unsigned int ,
+    unsigned int ,
+    Window
+);
+
+extern int XUngrabKey(
+    Display* ,
+    int ,
+    unsigned int ,
+    Window
+);
+
+extern int XUngrabKeyboard(
+    Display* ,
+    Time
+);
+
+extern int XUngrabPointer(
+    Display* ,
+    Time
+);
+
+extern int XUngrabServer(
+    Display*
+);
+
+extern int XUninstallColormap(
+    Display* ,
+    Colormap
+);
+
+extern int XUnloadFont(
+    Display* ,
+    Font
+);
+
+extern int XUnmapSubwindows(
+    Display* ,
+    Window
+);
+
+extern int XUnmapWindow(
+    Display* ,
+    Window
+);
+
+extern int XVendorRelease(
+    Display*
+);
+
+extern int XWarpPointer(
+    Display* ,
+    Window ,
+    Window ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern int XWidthMMOfScreen(
+    Screen*
+);
+
+extern int XWidthOfScreen(
+    Screen*
+);
+
+extern int XWindowEvent(
+    Display* ,
+    Window ,
+    long ,
+    XEvent*
+);
+
+extern int XWriteBitmapFile(
+    Display* ,
+    const char* ,
+    Pixmap ,
+    unsigned int ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern int XSupportsLocale (void);
+
+extern char *XSetLocaleModifiers(
+    const char*
+);
+
+extern XOM XOpenOM(
+    Display* ,
+    struct _XrmHashBucketRec* ,
+    const char* ,
+    const char*
+);
+
+extern int XCloseOM(
+    XOM
+);
+
+extern char *XSetOMValues(
+    XOM ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern char *XGetOMValues(
+    XOM ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Display *XDisplayOfOM(
+    XOM
+);
+
+extern char *XLocaleOfOM(
+    XOM
+);
+
+extern XOC XCreateOC(
+    XOM ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XDestroyOC(
+    XOC
+);
+
+extern XOM XOMOfOC(
+    XOC
+);
+
+extern char *XSetOCValues(
+    XOC ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern char *XGetOCValues(
+    XOC ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern XFontSet XCreateFontSet(
+    Display* ,
+    const char* ,
+    char*** ,
+    int* ,
+    char**
+);
+
+extern void XFreeFontSet(
+    Display* ,
+    XFontSet
+);
+
+extern int XFontsOfFontSet(
+    XFontSet ,
+    XFontStruct*** ,
+    char***
+);
+
+extern char *XBaseFontNameListOfFontSet(
+    XFontSet
+);
+
+extern char *XLocaleOfFontSet(
+    XFontSet
+);
+
+extern int XContextDependentDrawing(
+    XFontSet
+);
+
+extern int XDirectionalDependentDrawing(
+    XFontSet
+);
+
+extern int XContextualDrawing(
+    XFontSet
+);
+
+extern XFontSetExtents *XExtentsOfFontSet(
+    XFontSet
+);
+
+extern int XmbTextEscapement(
+    XFontSet ,
+    const char* ,
+    int
+);
+
+extern int XwcTextEscapement(
+    XFontSet ,
+    const wchar_t* ,
+    int
+);
+
+extern int Xutf8TextEscapement(
+    XFontSet ,
+    const char* ,
+    int
+);
+
+extern int XmbTextExtents(
+    XFontSet ,
+    const char* ,
+    int ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern int XwcTextExtents(
+    XFontSet ,
+    const wchar_t* ,
+    int ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern int Xutf8TextExtents(
+    XFontSet ,
+    const char* ,
+    int ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern int XmbTextPerCharExtents(
+    XFontSet ,
+    const char* ,
+    int ,
+    XRectangle* ,
+    XRectangle* ,
+    int ,
+    int* ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern int XwcTextPerCharExtents(
+    XFontSet ,
+    const wchar_t* ,
+    int ,
+    XRectangle* ,
+    XRectangle* ,
+    int ,
+    int* ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern int Xutf8TextPerCharExtents(
+    XFontSet ,
+    const char* ,
+    int ,
+    XRectangle* ,
+    XRectangle* ,
+    int ,
+    int* ,
+    XRectangle* ,
+    XRectangle*
+);
+
+extern void XmbDrawText(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    XmbTextItem* ,
+    int
+);
+
+extern void XwcDrawText(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    XwcTextItem* ,
+    int
+);
+
+extern void Xutf8DrawText(
+    Display* ,
+    Drawable ,
+    GC ,
+    int ,
+    int ,
+    XmbTextItem* ,
+    int
+);
+
+extern void XmbDrawString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern void XwcDrawString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const wchar_t* ,
+    int
+);
+
+extern void Xutf8DrawString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern void XmbDrawImageString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern void XwcDrawImageString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const wchar_t* ,
+    int
+);
+
+extern void Xutf8DrawImageString(
+    Display* ,
+    Drawable ,
+    XFontSet ,
+    GC ,
+    int ,
+    int ,
+    const char* ,
+    int
+);
+
+extern XIM XOpenIM(
+    Display* ,
+    struct _XrmHashBucketRec* ,
+    char* ,
+    char*
+);
+
+extern int XCloseIM(
+    XIM
+);
+
+extern char *XGetIMValues(
+    XIM , ...
+) __attribute__ ((__sentinel__(0)));
+
+extern char *XSetIMValues(
+    XIM , ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Display *XDisplayOfIM(
+    XIM
+);
+
+extern char *XLocaleOfIM(
+    XIM
+);
+
+extern XIC XCreateIC(
+    XIM , ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XDestroyIC(
+    XIC
+);
+
+extern void XSetICFocus(
+    XIC
+);
+
+extern void XUnsetICFocus(
+    XIC
+);
+
+extern wchar_t *XwcResetIC(
+    XIC
+);
+
+extern char *XmbResetIC(
+    XIC
+);
+
+extern char *Xutf8ResetIC(
+    XIC
+);
+
+extern char *XSetICValues(
+    XIC , ...
+) __attribute__ ((__sentinel__(0)));
+
+extern char *XGetICValues(
+    XIC , ...
+) __attribute__ ((__sentinel__(0)));
+
+extern XIM XIMOfIC(
+    XIC
+);
+
+extern int XFilterEvent(
+    XEvent* ,
+    Window
+);
+
+extern int XmbLookupString(
+    XIC ,
+    XKeyPressedEvent* ,
+    char* ,
+    int ,
+    KeySym* ,
+    int*
+);
+
+extern int XwcLookupString(
+    XIC ,
+    XKeyPressedEvent* ,
+    wchar_t* ,
+    int ,
+    KeySym* ,
+    int*
+);
+
+extern int Xutf8LookupString(
+    XIC ,
+    XKeyPressedEvent* ,
+    char* ,
+    int ,
+    KeySym* ,
+    int*
+);
+
+extern XVaNestedList XVaCreateNestedList(
+    int , ...
+) __attribute__ ((__sentinel__(0)));
+
+
+
+extern int XRegisterIMInstantiateCallback(
+    Display* ,
+    struct _XrmHashBucketRec* ,
+    char* ,
+    char* ,
+    XIDProc ,
+    XPointer
+);
+
+extern int XUnregisterIMInstantiateCallback(
+    Display* ,
+    struct _XrmHashBucketRec* ,
+    char* ,
+    char* ,
+    XIDProc ,
+    XPointer
+);
+
+typedef void (*XConnectionWatchProc)(
+    Display* ,
+    XPointer ,
+    int ,
+    int ,
+    XPointer*
+);
+
+
+extern int XInternalConnectionNumbers(
+    Display* ,
+    int** ,
+    int*
+);
+
+extern void XProcessInternalConnection(
+    Display* ,
+    int
+);
+
+extern int XAddConnectionWatch(
+    Display* ,
+    XConnectionWatchProc ,
+    XPointer
+);
+
+extern void XRemoveConnectionWatch(
+    Display* ,
+    XConnectionWatchProc ,
+    XPointer
+);
+
+extern void XSetAuthorization(
+    char * ,
+    int ,
+    char * ,
+    int
+);
+
+extern int _Xmbtowc(
+    wchar_t * ,
+    char * ,
+    int
+);
+
+extern int _Xwctomb(
+    char * ,
+    wchar_t
+);
+
+extern int XGetEventData(
+    Display* ,
+    XGenericEventCookie*
+);
+
+extern void XFreeEventData(
+    Display* ,
+    XGenericEventCookie*
+);
+
+
+#pragma clang diagnostic pop
+# 132 "./base/x_.h" 2
+# 1 "/usr/include/X11/Xproto.h" 1 3 4
+# 72 "/usr/include/X11/Xproto.h" 3 4
+# 1 "/usr/include/X11/Xmd.h" 1 3 4
+# 97 "/usr/include/X11/Xmd.h" 3 4
+typedef long INT64;
+typedef int INT32;
+
+
+
+typedef short INT16;
+
+typedef signed char INT8;
+
+
+typedef unsigned long CARD64;
+typedef unsigned int CARD32;
+
+
+
+
+typedef unsigned short CARD16;
+typedef unsigned char CARD8;
+
+typedef CARD32 BITS32;
+typedef CARD16 BITS16;
+
+typedef CARD8 BYTE;
+typedef CARD8 BOOL;
+# 73 "/usr/include/X11/Xproto.h" 2 3 4
+# 1 "/usr/include/X11/Xprotostr.h" 1 3 4
+# 54 "/usr/include/X11/Xprotostr.h" 3 4
+typedef struct _xSegment {
+    INT16 x1 , y1 , x2 , y2 ;
+} xSegment;
+
+
+
+typedef struct _xPoint {
+ INT16 x , y ;
+} xPoint;
+
+typedef struct _xRectangle {
+    INT16 x , y ;
+    CARD16 width , height ;
+} xRectangle;
+
+
+
+typedef struct _xArc {
+    INT16 x , y ;
+    CARD16 width , height ;
+    INT16 angle1 , angle2 ;
+} xArc;
+# 74 "/usr/include/X11/Xproto.h" 2 3 4
+# 259 "/usr/include/X11/Xproto.h" 3 4
+typedef CARD16 KeyButMask;
+# 269 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    CARD8 byteOrder;
+    BYTE pad;
+    CARD16 majorVersion , minorVersion ;
+    CARD16 nbytesAuthProto ;
+    CARD16 nbytesAuthString ;
+    CARD16 pad2 ;
+} xConnClientPrefix;
+# 288 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    CARD8 success;
+    BYTE lengthReason;
+    CARD16 majorVersion ,
+                   minorVersion ;
+    CARD16 length ;
+} xConnSetupPrefix;
+
+
+typedef struct {
+    CARD32 release ;
+    CARD32 ridBase ,
+                   ridMask ;
+    CARD32 motionBufferSize ;
+    CARD16 nbytesVendor ;
+    CARD16 maxRequestSize ;
+    CARD8 numRoots;
+    CARD8 numFormats;
+    CARD8 imageByteOrder;
+    CARD8 bitmapBitOrder;
+    CARD8 bitmapScanlineUnit,
+                   bitmapScanlinePad;
+    CARD8 minKeyCode, maxKeyCode;
+    CARD32 pad2 ;
+} xConnSetup;
+
+typedef struct {
+    CARD8 depth;
+    CARD8 bitsPerPixel;
+    CARD8 scanLinePad;
+    CARD8 pad1;
+    CARD32 pad2 ;
+} xPixmapFormat;
+
+
+
+typedef struct {
+    CARD8 depth;
+    CARD8 pad1;
+    CARD16 nVisuals ;
+    CARD32 pad2 ;
+    } xDepth;
+
+typedef struct {
+    CARD32 visualID ;
+
+
+
+    CARD8 class;
+
+    CARD8 bitsPerRGB;
+    CARD16 colormapEntries ;
+    CARD32 redMask , greenMask , blueMask ;
+    CARD32 pad ;
+    } xVisualType;
+
+typedef struct {
+    CARD32 windowId ;
+    CARD32 defaultColormap ;
+    CARD32 whitePixel , blackPixel ;
+    CARD32 currentInputMask ;
+    CARD16 pixWidth , pixHeight ;
+    CARD16 mmWidth , mmHeight ;
+    CARD16 minInstalledMaps , maxInstalledMaps ;
+    CARD32 rootVisualID ;
+    CARD8 backingStore;
+    BOOL saveUnders;
+    CARD8 rootDepth;
+    CARD8 nDepths;
+} xWindowRoot;
+# 367 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    CARD32 time ;
+    INT16 x , y ;
+} xTimecoord;
+
+typedef struct {
+    CARD8 family;
+    BYTE pad;
+    CARD16 length ;
+} xHostEntry;
+
+typedef struct {
+    INT16 leftSideBearing ,
+   rightSideBearing ,
+   characterWidth ,
+   ascent ,
+   descent ;
+    CARD16 attributes ;
+} xCharInfo;
+
+typedef struct {
+    CARD32 name ;
+    CARD32 value ;
+} xFontProp;
+
+
+
+
+typedef struct {
+    CARD8 len;
+
+    INT8 delta;
+} xTextElt;
+
+
+typedef struct {
+    CARD32 pixel ;
+    CARD16 red , green , blue ;
+    CARD8 flags;
+    CARD8 pad;
+} xColorItem;
+
+
+typedef struct {
+    CARD16 red , green , blue , pad ;
+} xrgb;
+
+typedef CARD8 KEYCODE;
+# 425 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    BYTE type;
+    BYTE data1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 data00 ;
+    CARD32 data01 ;
+    CARD32 data02 ;
+    CARD32 data03 ;
+    CARD32 data04 ;
+    CARD32 data05 ;
+    } xGenericReply;
+
+
+
+typedef struct {
+    BYTE type;
+    CARD8 backingStore;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 visualID ;
+
+
+
+    CARD16 class ;
+
+    CARD8 bitGravity;
+    CARD8 winGravity;
+    CARD32 backingBitPlanes ;
+    CARD32 backingPixel ;
+    BOOL saveUnder;
+    BOOL mapInstalled;
+    CARD8 mapState;
+    BOOL override;
+    CARD32 colormap ;
+    CARD32 allEventMasks ;
+    CARD32 yourEventMask ;
+    CARD16 doNotPropagateMask ;
+    CARD16 pad ;
+    } xGetWindowAttributesReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 depth;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 root ;
+    INT16 x , y ;
+    CARD16 width , height ;
+    CARD16 borderWidth ;
+    CARD16 pad1 ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    } xGetGeometryReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 root , parent ;
+    CARD16 nChildren ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    } xQueryTreeReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 atom ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xInternAtomReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nameLength ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xGetAtomNameReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 format;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 propertyType ;
+    CARD32 bytesAfter ;
+    CARD32 nItems ;
+    CARD32 pad1 ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    } xGetPropertyReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nProperties ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xListPropertiesReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 owner ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xGetSelectionOwnerReply;
+
+typedef struct {
+    BYTE type;
+    BYTE status;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad1 ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xGrabPointerReply;
+
+typedef xGrabPointerReply xGrabKeyboardReply;
+
+typedef struct {
+    BYTE type;
+    BOOL sameScreen;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 root , child ;
+    INT16 rootX , rootY , winX , winY ;
+    CARD16 mask ;
+    CARD16 pad1 ;
+    CARD32 pad ;
+    } xQueryPointerReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 nEvents ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xGetMotionEventsReply;
+
+typedef struct {
+    BYTE type;
+    BOOL sameScreen;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 child ;
+    INT16 dstX , dstY ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    } xTranslateCoordsReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 revertTo;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 focus ;
+    CARD32 pad1 ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    } xGetInputFocusReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    BYTE map[32];
+    } xQueryKeymapReply;
+
+
+typedef struct _xQueryFontReply {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    xCharInfo minBounds;
+    CARD32 walign1 ;
+    xCharInfo maxBounds;
+    CARD32 walign2 ;
+    CARD16 minCharOrByte2 , maxCharOrByte2 ;
+    CARD16 defaultChar ;
+    CARD16 nFontProps ;
+    CARD8 drawDirection;
+    CARD8 minByte1, maxByte1;
+    BOOL allCharsExist;
+    INT16 fontAscent , fontDescent ;
+    CARD32 nCharInfos ;
+} xQueryFontReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 drawDirection;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    INT16 fontAscent , fontDescent ;
+    INT16 overallAscent , overallDescent ;
+    INT32 overallWidth , overallLeft , overallRight ;
+    CARD32 pad ;
+    } xQueryTextExtentsReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nFonts ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xListFontsReply;
+
+
+typedef struct {
+    BYTE type;
+    CARD8 nameLength;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    xCharInfo minBounds;
+    CARD32 walign1 ;
+    xCharInfo maxBounds;
+    CARD32 walign2 ;
+    CARD16 minCharOrByte2 , maxCharOrByte2 ;
+    CARD16 defaultChar ;
+    CARD16 nFontProps ;
+    CARD8 drawDirection;
+    CARD8 minByte1, maxByte1;
+    BOOL allCharsExist;
+    INT16 fontAscent , fontDescent ;
+    CARD32 nReplies ;
+} xListFontsWithInfoReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nPaths ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xGetFontPathReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 depth;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 visual ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xGetImageReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nColormaps ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xListInstalledColormapsReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 red , green , blue ;
+    CARD16 pad2 ;
+    CARD32 pixel ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    } xAllocColorReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pixel ;
+    CARD16 exactRed , exactGreen , exactBlue ;
+    CARD16 screenRed , screenGreen , screenBlue ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    } xAllocNamedColorReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nPixels , nMasks ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xAllocColorCellsReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nPixels ;
+    CARD16 pad2 ;
+    CARD32 redMask , greenMask , blueMask ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    } xAllocColorPlanesReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nColors ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xQueryColorsReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 exactRed , exactGreen , exactBlue ;
+    CARD16 screenRed , screenGreen , screenBlue ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    } xLookupColorReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 width , height ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xQueryBestSizeReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    BOOL present;
+    CARD8 major_opcode;
+    CARD8 first_event;
+    CARD8 first_error;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xQueryExtensionReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 nExtensions;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xListExtensionsReply;
+
+
+typedef struct {
+    BYTE type;
+    CARD8 success;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xSetMappingReply;
+typedef xSetMappingReply xSetPointerMappingReply;
+typedef xSetMappingReply xSetModifierMappingReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 nElts;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xGetPointerMappingReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 keySymsPerKeyCode;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+} xGetKeyboardMappingReply;
+
+typedef struct {
+    BYTE type;
+    CARD8 numKeyPerModifier;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 pad1 ;
+    CARD32 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+} xGetModifierMappingReply;
+
+typedef struct {
+    BYTE type;
+    BOOL globalAutoRepeat;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD32 ledMask ;
+    CARD8 keyClickPercent, bellPercent;
+    CARD16 bellPitch , bellDuration ;
+    CARD16 pad ;
+    BYTE map[32];
+    } xGetKeyboardControlReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 accelNumerator , accelDenominator ;
+    CARD16 threshold ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xGetPointerControlReply;
+
+typedef struct {
+    BYTE type;
+    BYTE pad1;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 timeout , interval ;
+    BOOL preferBlanking;
+    BOOL allowExposures;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    } xGetScreenSaverReply;
+
+typedef struct {
+    BYTE type;
+    BOOL enabled;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 nHosts ;
+    CARD16 pad1 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+    } xListHostsReply;
+# 976 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    BYTE type;
+    BYTE errorCode;
+    CARD16 sequenceNumber ;
+    CARD32 resourceID ;
+    CARD16 minorCode ;
+    CARD8 majorCode;
+    BYTE pad1;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+} xError;
+
+
+
+
+
+
+typedef struct _xEvent {
+    union {
+ struct {
+     BYTE type;
+     BYTE detail;
+     CARD16 sequenceNumber ;
+     } u;
+ struct {
+            CARD32 pad00 ;
+     CARD32 time ;
+     CARD32 root , event , child ;
+     INT16 rootX , rootY , eventX , eventY ;
+     KeyButMask state ;
+     BOOL sameScreen;
+     BYTE pad1;
+ } keyButtonPointer;
+ struct {
+            CARD32 pad00 ;
+            CARD32 time ;
+     CARD32 root , event , child ;
+     INT16 rootX , rootY , eventX , eventY ;
+     KeyButMask state ;
+     BYTE mode;
+     BYTE flags;
+
+
+ } enterLeave;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     BYTE mode;
+     BYTE pad1, pad2, pad3;
+ } focus;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     CARD16 x , y , width , height ;
+     CARD16 count ;
+     CARD16 pad2 ;
+ } expose;
+ struct {
+            CARD32 pad00 ;
+     CARD32 drawable ;
+     CARD16 x , y , width , height ;
+     CARD16 minorEvent ;
+     CARD16 count ;
+     BYTE majorEvent;
+     BYTE pad1, pad2, pad3;
+ } graphicsExposure;
+ struct {
+            CARD32 pad00 ;
+     CARD32 drawable ;
+     CARD16 minorEvent ;
+     BYTE majorEvent;
+     BYTE bpad;
+ } noExposure;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     CARD8 state;
+     BYTE pad1, pad2, pad3;
+ } visibility;
+ struct {
+            CARD32 pad00 ;
+     CARD32 parent , window ;
+     INT16 x , y ;
+     CARD16 width , height , borderWidth ;
+     BOOL override;
+     BYTE bpad;
+        } createNotify;
+# 1074 "/usr/include/X11/Xproto.h" 3 4
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window ;
+ } destroyNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window ;
+     BOOL fromConfigure;
+     BYTE pad1, pad2, pad3;
+        } unmapNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window ;
+     BOOL override;
+     BYTE pad1, pad2, pad3;
+        } mapNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 parent , window ;
+        } mapRequest;
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window , parent ;
+     INT16 x , y ;
+     BOOL override;
+     BYTE pad1, pad2, pad3;
+ } reparent;
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window , aboveSibling ;
+     INT16 x , y ;
+     CARD16 width , height , borderWidth ;
+     BOOL override;
+     BYTE bpad;
+ } configureNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 parent , window , sibling ;
+     INT16 x , y ;
+     CARD16 width , height , borderWidth ;
+     CARD16 valueMask ;
+     CARD32 pad1 ;
+ } configureRequest;
+ struct {
+            CARD32 pad00 ;
+     CARD32 event , window ;
+     INT16 x , y ;
+     CARD32 pad1 , pad2 , pad3 , pad4 ;
+ } gravity;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     CARD16 width , height ;
+ } resizeRequest;
+ struct {
+
+
+            CARD32 pad00 ;
+     CARD32 event , window , parent ;
+     BYTE place;
+     BYTE pad1, pad2, pad3;
+ } circulate;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     CARD32 atom ;
+     CARD32 time ;
+     BYTE state;
+     BYTE pad1;
+     CARD16 pad2 ;
+ } property;
+ struct {
+            CARD32 pad00 ;
+            CARD32 time ;
+     CARD32 window ;
+     CARD32 atom ;
+ } selectionClear;
+ struct {
+            CARD32 pad00 ;
+            CARD32 time ;
+     CARD32 owner , requestor ;
+     CARD32 selection , target , property ;
+ } selectionRequest;
+ struct {
+            CARD32 pad00 ;
+            CARD32 time ;
+     CARD32 requestor ;
+     CARD32 selection , target , property ;
+ } selectionNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     CARD32 colormap ;
+
+
+
+     BOOL new;
+
+     BYTE state;
+     BYTE pad1, pad2;
+ } colormap;
+ struct {
+     CARD32 pad00 ;
+     CARD8 request;
+     CARD8 firstKeyCode;
+     CARD8 count;
+     BYTE pad1;
+ } mappingNotify;
+ struct {
+            CARD32 pad00 ;
+     CARD32 window ;
+     union {
+  struct {
+      CARD32 type ;
+      INT32 longs0 ;
+      INT32 longs1 ;
+      INT32 longs2 ;
+      INT32 longs3 ;
+      INT32 longs4 ;
+  } l;
+  struct {
+      CARD32 type ;
+      INT16 shorts0 ;
+      INT16 shorts1 ;
+      INT16 shorts2 ;
+      INT16 shorts3 ;
+      INT16 shorts4 ;
+      INT16 shorts5 ;
+      INT16 shorts6 ;
+      INT16 shorts7 ;
+      INT16 shorts8 ;
+      INT16 shorts9 ;
+  } s;
+  struct {
+      CARD32 type ;
+      INT8 bytes[20];
+  } b;
+     } u;
+ } clientMessage;
+    } u;
+} xEvent;
+# 1231 "/usr/include/X11/Xproto.h" 3 4
+typedef struct
+{
+    BYTE type;
+    CARD8 extension;
+    CARD16 sequenceNumber ;
+    CARD32 length ;
+    CARD16 evtype ;
+    CARD16 pad2 ;
+    CARD32 pad3 ;
+    CARD32 pad4 ;
+    CARD32 pad5 ;
+    CARD32 pad6 ;
+    CARD32 pad7 ;
+} xGenericEvent;
+
+
+
+
+
+
+
+typedef struct {
+    BYTE type;
+    BYTE map[31];
+    } xKeymapEvent;
+# 1264 "/usr/include/X11/Xproto.h" 3 4
+typedef union {
+    xGenericReply generic;
+    xGetGeometryReply geom;
+    xQueryTreeReply tree;
+    xInternAtomReply atom;
+    xGetAtomNameReply atomName;
+    xGetPropertyReply property;
+    xListPropertiesReply listProperties;
+    xGetSelectionOwnerReply selection;
+    xGrabPointerReply grabPointer;
+    xGrabKeyboardReply grabKeyboard;
+    xQueryPointerReply pointer;
+    xGetMotionEventsReply motionEvents;
+    xTranslateCoordsReply coords;
+    xGetInputFocusReply inputFocus;
+    xQueryTextExtentsReply textExtents;
+    xListFontsReply fonts;
+    xGetFontPathReply fontPath;
+    xGetImageReply image;
+    xListInstalledColormapsReply colormaps;
+    xAllocColorReply allocColor;
+    xAllocNamedColorReply allocNamedColor;
+    xAllocColorCellsReply colorCells;
+    xAllocColorPlanesReply colorPlanes;
+    xQueryColorsReply colors;
+    xLookupColorReply lookupColor;
+    xQueryBestSizeReply bestSize;
+    xQueryExtensionReply extension;
+    xListExtensionsReply extensions;
+    xSetModifierMappingReply setModifierMapping;
+    xGetModifierMappingReply getModifierMapping;
+    xSetPointerMappingReply setPointerMapping;
+    xGetKeyboardMappingReply getKeyboardMapping;
+    xGetPointerMappingReply getPointerMapping;
+    xGetPointerControlReply pointerControl;
+    xGetScreenSaverReply screenSaver;
+    xListHostsReply hosts;
+    xError error;
+    xEvent event;
+} xReply;
+# 1314 "/usr/include/X11/Xproto.h" 3 4
+typedef struct _xReq {
+ CARD8 reqType;
+ CARD8 data;
+ CARD16 length ;
+
+} xReq;
+# 1328 "/usr/include/X11/Xproto.h" 3 4
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 id ;
+    } xResourceReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 depth;
+    CARD16 length ;
+    CARD32 wid , parent ;
+    INT16 x , y ;
+    CARD16 width , height , borderWidth ;
+
+
+
+    CARD16 class ;
+
+    CARD32 visual ;
+    CARD32 mask ;
+} xCreateWindowReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 valueMask ;
+} xChangeWindowAttributesReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE mode;
+    CARD16 length ;
+    CARD32 window ;
+} xChangeSaveSetReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window , parent ;
+    INT16 x , y ;
+} xReparentWindowReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD16 mask ;
+    CARD16 pad2 ;
+} xConfigureWindowReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 direction;
+    CARD16 length ;
+    CARD32 window ;
+} xCirculateWindowReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL onlyIfExists;
+    CARD16 length ;
+    CARD16 nbytes ;
+    CARD16 pad ;
+} xInternAtomReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 mode;
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 property , type ;
+    CARD8 format;
+    BYTE pad[3];
+    CARD32 nUnits ;
+} xChangePropertyReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 property ;
+} xDeletePropertyReq;
+
+typedef struct {
+    CARD8 reqType;
+
+
+
+    BOOL delete;
+
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 property , type ;
+    CARD32 longOffset ;
+    CARD32 longLength ;
+} xGetPropertyReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 selection ;
+    CARD32 time ;
+} xSetSelectionOwnerReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 requestor ;
+    CARD32 selection , target , property ;
+    CARD32 time ;
+    } xConvertSelectionReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL propagate;
+    CARD16 length ;
+    CARD32 destination ;
+    CARD32 eventMask ;
+    xEvent event;
+} xSendEventReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL ownerEvents;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD16 eventMask ;
+    BYTE pointerMode, keyboardMode;
+    CARD32 confineTo ;
+    CARD32 cursor ;
+    CARD32 time ;
+} xGrabPointerReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL ownerEvents;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD16 eventMask ;
+    BYTE pointerMode, keyboardMode;
+    CARD32 confineTo ;
+    CARD32 cursor ;
+    CARD8 button;
+    BYTE pad;
+    CARD16 modifiers ;
+} xGrabButtonReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 button;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD16 modifiers ;
+    CARD16 pad ;
+} xUngrabButtonReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cursor ;
+    CARD32 time ;
+    CARD16 eventMask ;
+    CARD16 pad2 ;
+} xChangeActivePointerGrabReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL ownerEvents;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD32 time ;
+    BYTE pointerMode, keyboardMode;
+    CARD16 pad ;
+} xGrabKeyboardReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL ownerEvents;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD16 modifiers ;
+    CARD8 key;
+    BYTE pointerMode, keyboardMode;
+    BYTE pad1, pad2, pad3;
+} xGrabKeyReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 key;
+    CARD16 length ;
+    CARD32 grabWindow ;
+    CARD16 modifiers ;
+    CARD16 pad ;
+} xUngrabKeyReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 mode;
+    CARD16 length ;
+    CARD32 time ;
+} xAllowEventsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD32 start , stop ;
+} xGetMotionEventsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 srcWid , dstWid ;
+    INT16 srcX , srcY ;
+} xTranslateCoordsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 srcWid , dstWid ;
+    INT16 srcX , srcY ;
+    CARD16 srcWidth , srcHeight ;
+    INT16 dstX , dstY ;
+} xWarpPointerReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 revertTo;
+    CARD16 length ;
+    CARD32 focus ;
+    CARD32 time ;
+} xSetInputFocusReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 fid ;
+    CARD16 nbytes ;
+    BYTE pad1, pad2;
+} xOpenFontReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL oddLength;
+    CARD16 length ;
+    CARD32 fid ;
+    } xQueryTextExtentsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD16 maxNames ;
+    CARD16 nbytes ;
+} xListFontsReq;
+
+typedef xListFontsReq xListFontsWithInfoReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD16 nFonts ;
+    BYTE pad1, pad2;
+} xSetFontPathReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 depth;
+    CARD16 length ;
+    CARD32 pid ;
+    CARD32 drawable ;
+    CARD16 width , height ;
+} xCreatePixmapReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 gc ;
+    CARD32 drawable ;
+    CARD32 mask ;
+} xCreateGCReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 gc ;
+    CARD32 mask ;
+} xChangeGCReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 srcGC , dstGC ;
+    CARD32 mask ;
+} xCopyGCReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 gc ;
+    CARD16 dashOffset ;
+    CARD16 nDashes ;
+} xSetDashesReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE ordering;
+    CARD16 length ;
+    CARD32 gc ;
+    INT16 xOrigin , yOrigin ;
+} xSetClipRectanglesReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL exposures;
+    CARD16 length ;
+    CARD32 window ;
+    INT16 x , y ;
+    CARD16 width , height ;
+} xClearAreaReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 srcDrawable , dstDrawable ;
+    CARD32 gc ;
+    INT16 srcX , srcY , dstX , dstY ;
+    CARD16 width , height ;
+} xCopyAreaReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 srcDrawable , dstDrawable ;
+    CARD32 gc ;
+    INT16 srcX , srcY , dstX , dstY ;
+    CARD16 width , height ;
+    CARD32 bitPlane ;
+} xCopyPlaneReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE coordMode;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+} xPolyPointReq;
+
+typedef xPolyPointReq xPolyLineReq;
+
+
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+} xPolySegmentReq;
+
+typedef xPolySegmentReq xPolyArcReq;
+typedef xPolySegmentReq xPolyRectangleReq;
+typedef xPolySegmentReq xPolyFillRectangleReq;
+typedef xPolySegmentReq xPolyFillArcReq;
+
+typedef struct _FillPolyReq {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+    BYTE shape;
+    BYTE coordMode;
+    CARD16 pad1 ;
+} xFillPolyReq;
+
+
+typedef struct _PutImageReq {
+    CARD8 reqType;
+    CARD8 format;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+    CARD16 width , height ;
+    INT16 dstX , dstY ;
+    CARD8 leftPad;
+    CARD8 depth;
+    CARD16 pad ;
+} xPutImageReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 format;
+    CARD16 length ;
+    CARD32 drawable ;
+    INT16 x , y ;
+    CARD16 width , height ;
+    CARD32 planeMask ;
+} xGetImageReq;
+
+
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 pad;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+    INT16 x , y ;
+} xPolyTextReq;
+
+typedef xPolyTextReq xPolyText8Req;
+typedef xPolyTextReq xPolyText16Req;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE nChars;
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD32 gc ;
+    INT16 x , y ;
+} xImageTextReq;
+
+typedef xImageTextReq xImageText8Req;
+typedef xImageTextReq xImageText16Req;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE alloc;
+    CARD16 length ;
+    CARD32 mid ;
+    CARD32 window ;
+    CARD32 visual ;
+} xCreateColormapReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 mid ;
+    CARD32 srcCmap ;
+} xCopyColormapAndFreeReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD16 red , green , blue ;
+    CARD16 pad2 ;
+} xAllocColorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD16 nbytes ;
+    BYTE pad1, pad2;
+} xAllocNamedColorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL contiguous;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD16 colors , planes ;
+} xAllocColorCellsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BOOL contiguous;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD16 colors , red , green , blue ;
+} xAllocColorPlanesReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD32 planeMask ;
+} xFreeColorsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+} xStoreColorsReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 flags;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD32 pixel ;
+    CARD16 nbytes ;
+    BYTE pad1, pad2;
+    } xStoreNamedColorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+} xQueryColorsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cmap ;
+    CARD16 nbytes ;
+    BYTE pad1, pad2;
+} xLookupColorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cid ;
+    CARD32 source , mask ;
+    CARD16 foreRed , foreGreen , foreBlue ;
+    CARD16 backRed , backGreen , backBlue ;
+    CARD16 x , y ;
+} xCreateCursorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cid ;
+    CARD32 source , mask ;
+    CARD16 sourceChar , maskChar ;
+    CARD16 foreRed , foreGreen , foreBlue ;
+    CARD16 backRed , backGreen , backBlue ;
+} xCreateGlyphCursorReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 cursor ;
+    CARD16 foreRed , foreGreen , foreBlue ;
+    CARD16 backRed , backGreen , backBlue ;
+} xRecolorCursorReq;
+
+typedef struct {
+    CARD8 reqType;
+
+
+
+    CARD8 class;
+
+    CARD16 length ;
+    CARD32 drawable ;
+    CARD16 width , height ;
+} xQueryBestSizeReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD16 nbytes ;
+    BYTE pad1, pad2;
+} xQueryExtensionReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 numKeyPerModifier;
+    CARD16 length ;
+} xSetModifierMappingReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 nElts;
+    CARD16 length ;
+} xSetPointerMappingReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD8 firstKeyCode;
+    CARD8 count;
+    CARD16 pad1 ;
+} xGetKeyboardMappingReq;
+
+typedef struct {
+    CARD8 reqType;
+    CARD8 keyCodes;
+    CARD16 length ;
+    CARD8 firstKeyCode;
+    CARD8 keySymsPerKeyCode;
+    CARD16 pad1 ;
+} xChangeKeyboardMappingReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 mask ;
+} xChangeKeyboardControlReq;
+
+typedef struct {
+    CARD8 reqType;
+    INT8 percent;
+    CARD16 length ;
+} xBellReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    INT16 accelNum , accelDenum ;
+    INT16 threshold ;
+    BOOL doAccel, doThresh;
+} xChangePointerControlReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    INT16 timeout , interval ;
+    BYTE preferBlank, allowExpose;
+    CARD16 pad2 ;
+} xSetScreenSaverReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE mode;
+    CARD16 length ;
+    CARD8 hostFamily;
+    BYTE pad;
+    CARD16 hostLength ;
+} xChangeHostsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    } xListHostsReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE mode;
+    CARD16 length ;
+    } xChangeModeReq;
+
+typedef xChangeModeReq xSetAccessControlReq;
+typedef xChangeModeReq xSetCloseDownModeReq;
+typedef xChangeModeReq xForceScreenSaverReq;
+
+typedef struct {
+    CARD8 reqType;
+    BYTE pad;
+    CARD16 length ;
+    CARD32 window ;
+    CARD16 nAtoms ;
+    INT16 nPositions ;
+    } xRotatePropertiesReq;
+# 133 "./base/x_.h" 2
+# 1 "/usr/include/X11/Xatom.h" 1 3 4
+# 134 "./base/x_.h" 2
+# 1 "/usr/include/X11/Xutil.h" 1 3 4
+# 54 "/usr/include/X11/Xutil.h" 3 4
+# 1 "/usr/include/X11/keysym.h" 1 3 4
+# 73 "/usr/include/X11/keysym.h" 3 4
+# 1 "/usr/include/X11/keysymdef.h" 1 3 4
+# 74 "/usr/include/X11/keysym.h" 2 3 4
+# 55 "/usr/include/X11/Xutil.h" 2 3 4
+
+
+
+
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+# 81 "/usr/include/X11/Xutil.h" 3 4
+typedef struct {
+     long flags;
+ int x, y;
+ int width, height;
+ int min_width, min_height;
+ int max_width, max_height;
+     int width_inc, height_inc;
+ struct {
+  int x;
+  int y;
+ } min_aspect, max_aspect;
+ int base_width, base_height;
+ int win_gravity;
+} XSizeHints;
+# 119 "/usr/include/X11/Xutil.h" 3 4
+typedef struct {
+ long flags;
+ int input;
+
+ int initial_state;
+ Pixmap icon_pixmap;
+ Window icon_window;
+ int icon_x, icon_y;
+ Pixmap icon_mask;
+ XID window_group;
+
+} XWMHints;
+# 163 "/usr/include/X11/Xutil.h" 3 4
+typedef struct {
+    unsigned char *value;
+    Atom encoding;
+    int format;
+    unsigned long nitems;
+} XTextProperty;
+
+
+
+
+
+typedef enum {
+    XStringStyle,
+    XCompoundTextStyle,
+    XTextStyle,
+    XStdICCTextStyle,
+
+    XUTF8StringStyle
+} XICCEncodingStyle;
+
+typedef struct {
+ int min_width, min_height;
+ int max_width, max_height;
+ int width_inc, height_inc;
+} XIconSize;
+
+typedef struct {
+ char *res_name;
+ char *res_class;
+} XClassHint;
+# 231 "/usr/include/X11/Xutil.h" 3 4
+typedef struct _XComposeStatus {
+    XPointer compose_ptr;
+    int chars_matched;
+} XComposeStatus;
+# 273 "/usr/include/X11/Xutil.h" 3 4
+typedef struct _XRegion *Region;
+# 287 "/usr/include/X11/Xutil.h" 3 4
+typedef struct {
+  Visual *visual;
+  VisualID visualid;
+  int screen;
+  int depth;
+
+
+
+  int class;
+
+  unsigned long red_mask;
+  unsigned long green_mask;
+  unsigned long blue_mask;
+  int colormap_size;
+  int bits_per_rgb;
+} XVisualInfo;
+# 320 "/usr/include/X11/Xutil.h" 3 4
+typedef struct {
+ Colormap colormap;
+ unsigned long red_max;
+ unsigned long red_mult;
+ unsigned long green_max;
+ unsigned long green_mult;
+ unsigned long blue_max;
+ unsigned long blue_mult;
+ unsigned long base_pixel;
+ VisualID visualid;
+ XID killid;
+} XStandardColormap;
+# 357 "/usr/include/X11/Xutil.h" 3 4
+typedef int XContext;
+# 366 "/usr/include/X11/Xutil.h" 3 4
+extern XClassHint *XAllocClassHint (
+    void
+);
+
+extern XIconSize *XAllocIconSize (
+    void
+);
+
+extern XSizeHints *XAllocSizeHints (
+    void
+);
+
+extern XStandardColormap *XAllocStandardColormap (
+    void
+);
+
+extern XWMHints *XAllocWMHints (
+    void
+);
+
+extern int XClipBox(
+    Region ,
+    XRectangle*
+);
+
+extern Region XCreateRegion(
+    void
+);
+
+extern const char *XDefaultString (void);
+
+extern int XDeleteContext(
+    Display* ,
+    XID ,
+    XContext
+);
+
+extern int XDestroyRegion(
+    Region
+);
+
+extern int XEmptyRegion(
+    Region
+);
+
+extern int XEqualRegion(
+    Region ,
+    Region
+);
+
+extern int XFindContext(
+    Display* ,
+    XID ,
+    XContext ,
+    XPointer*
+);
+
+extern int XGetClassHint(
+    Display* ,
+    Window ,
+    XClassHint*
+);
+
+extern int XGetIconSizes(
+    Display* ,
+    Window ,
+    XIconSize** ,
+    int*
+);
+
+extern int XGetNormalHints(
+    Display* ,
+    Window ,
+    XSizeHints*
+);
+
+extern int XGetRGBColormaps(
+    Display* ,
+    Window ,
+    XStandardColormap** ,
+    int* ,
+    Atom
+);
+
+extern int XGetSizeHints(
+    Display* ,
+    Window ,
+    XSizeHints* ,
+    Atom
+);
+
+extern int XGetStandardColormap(
+    Display* ,
+    Window ,
+    XStandardColormap* ,
+    Atom
+);
+
+extern int XGetTextProperty(
+    Display* ,
+    Window ,
+    XTextProperty* ,
+    Atom
+);
+
+extern XVisualInfo *XGetVisualInfo(
+    Display* ,
+    long ,
+    XVisualInfo* ,
+    int*
+);
+
+extern int XGetWMClientMachine(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern XWMHints *XGetWMHints(
+    Display* ,
+    Window
+);
+
+extern int XGetWMIconName(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern int XGetWMName(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern int XGetWMNormalHints(
+    Display* ,
+    Window ,
+    XSizeHints* ,
+    long*
+);
+
+extern int XGetWMSizeHints(
+    Display* ,
+    Window ,
+    XSizeHints* ,
+    long* ,
+    Atom
+);
+
+extern int XGetZoomHints(
+    Display* ,
+    Window ,
+    XSizeHints*
+);
+
+extern int XIntersectRegion(
+    Region ,
+    Region ,
+    Region
+);
+
+extern void XConvertCase(
+    KeySym ,
+    KeySym* ,
+    KeySym*
+);
+
+extern int XLookupString(
+    XKeyEvent* ,
+    char* ,
+    int ,
+    KeySym* ,
+    XComposeStatus*
+);
+
+extern int XMatchVisualInfo(
+    Display* ,
+    int ,
+    int ,
+    int ,
+    XVisualInfo*
+);
+
+extern int XOffsetRegion(
+    Region ,
+    int ,
+    int
+);
+
+extern int XPointInRegion(
+    Region ,
+    int ,
+    int
+);
+
+extern Region XPolygonRegion(
+    XPoint* ,
+    int ,
+    int
+);
+
+extern int XRectInRegion(
+    Region ,
+    int ,
+    int ,
+    unsigned int ,
+    unsigned int
+);
+
+extern int XSaveContext(
+    Display* ,
+    XID ,
+    XContext ,
+    const char*
+);
+
+extern int XSetClassHint(
+    Display* ,
+    Window ,
+    XClassHint*
+);
+
+extern int XSetIconSizes(
+    Display* ,
+    Window ,
+    XIconSize* ,
+    int
+);
+
+extern int XSetNormalHints(
+    Display* ,
+    Window ,
+    XSizeHints*
+);
+
+extern void XSetRGBColormaps(
+    Display* ,
+    Window ,
+    XStandardColormap* ,
+    int ,
+    Atom
+);
+
+extern int XSetSizeHints(
+    Display* ,
+    Window ,
+    XSizeHints* ,
+    Atom
+);
+
+extern int XSetStandardProperties(
+    Display* ,
+    Window ,
+    const char* ,
+    const char* ,
+    Pixmap ,
+    char** ,
+    int ,
+    XSizeHints*
+);
+
+extern void XSetTextProperty(
+    Display* ,
+    Window ,
+    XTextProperty* ,
+    Atom
+);
+
+extern void XSetWMClientMachine(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern int XSetWMHints(
+    Display* ,
+    Window ,
+    XWMHints*
+);
+
+extern void XSetWMIconName(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern void XSetWMName(
+    Display* ,
+    Window ,
+    XTextProperty*
+);
+
+extern void XSetWMNormalHints(
+    Display* ,
+    Window ,
+    XSizeHints*
+);
+
+extern void XSetWMProperties(
+    Display* ,
+    Window ,
+    XTextProperty* ,
+    XTextProperty* ,
+    char** ,
+    int ,
+    XSizeHints* ,
+    XWMHints* ,
+    XClassHint*
+);
+
+extern void XmbSetWMProperties(
+    Display* ,
+    Window ,
+    const char* ,
+    const char* ,
+    char** ,
+    int ,
+    XSizeHints* ,
+    XWMHints* ,
+    XClassHint*
+);
+
+extern void Xutf8SetWMProperties(
+    Display* ,
+    Window ,
+    const char* ,
+    const char* ,
+    char** ,
+    int ,
+    XSizeHints* ,
+    XWMHints* ,
+    XClassHint*
+);
+
+extern void XSetWMSizeHints(
+    Display* ,
+    Window ,
+    XSizeHints* ,
+    Atom
+);
+
+extern int XSetRegion(
+    Display* ,
+    GC ,
+    Region
+);
+
+extern void XSetStandardColormap(
+    Display* ,
+    Window ,
+    XStandardColormap* ,
+    Atom
+);
+
+extern int XSetZoomHints(
+    Display* ,
+    Window ,
+    XSizeHints*
+);
+
+extern int XShrinkRegion(
+    Region ,
+    int ,
+    int
+);
+
+extern int XStringListToTextProperty(
+    char** ,
+    int ,
+    XTextProperty*
+);
+
+extern int XSubtractRegion(
+    Region ,
+    Region ,
+    Region
+);
+
+extern int XmbTextListToTextProperty(
+    Display* display,
+    char** list,
+    int count,
+    XICCEncodingStyle style,
+    XTextProperty* text_prop_return
+);
+
+extern int XwcTextListToTextProperty(
+    Display* display,
+    wchar_t** list,
+    int count,
+    XICCEncodingStyle style,
+    XTextProperty* text_prop_return
+);
+
+extern int Xutf8TextListToTextProperty(
+    Display* display,
+    char** list,
+    int count,
+    XICCEncodingStyle style,
+    XTextProperty* text_prop_return
+);
+
+extern void XwcFreeStringList(
+    wchar_t** list
+);
+
+extern int XTextPropertyToStringList(
+    XTextProperty* ,
+    char*** ,
+    int*
+);
+
+extern int XmbTextPropertyToTextList(
+    Display* display,
+    const XTextProperty* text_prop,
+    char*** list_return,
+    int* count_return
+);
+
+extern int XwcTextPropertyToTextList(
+    Display* display,
+    const XTextProperty* text_prop,
+    wchar_t*** list_return,
+    int* count_return
+);
+
+extern int Xutf8TextPropertyToTextList(
+    Display* display,
+    const XTextProperty* text_prop,
+    char*** list_return,
+    int* count_return
+);
+
+extern int XUnionRectWithRegion(
+    XRectangle* ,
+    Region ,
+    Region
+);
+
+extern int XUnionRegion(
+    Region ,
+    Region ,
+    Region
+);
+
+extern int XWMGeometry(
+    Display* ,
+    int ,
+    const char* ,
+    const char* ,
+    unsigned int ,
+    XSizeHints* ,
+    int* ,
+    int* ,
+    int* ,
+    int* ,
+    int*
+);
+
+extern int XXorRegion(
+    Region ,
+    Region ,
+    Region
+);
+
+
+#pragma clang diagnostic pop
+# 135 "./base/x_.h" 2
+# 1 "/usr/include/X11/Intrinsic.h" 1 3 4
+# 55 "/usr/include/X11/Intrinsic.h" 3 4
+# 1 "/usr/include/X11/Xresource.h" 1 3 4
+# 74 "/usr/include/X11/Xresource.h" 3 4
+extern char *Xpermalloc(
+    unsigned int
+);
+
+
+
+
+
+
+
+typedef int XrmQuark, *XrmQuarkList;
+
+
+typedef char *XrmString;
+
+
+
+extern XrmQuark XrmStringToQuark(
+    const char*
+);
+
+extern XrmQuark XrmPermStringToQuark(
+    const char*
+);
+
+
+extern XrmString XrmQuarkToString(
+    XrmQuark
+);
+
+extern XrmQuark XrmUniqueQuark(
+    void
+);
+# 117 "/usr/include/X11/Xresource.h" 3 4
+typedef enum {XrmBindTightly, XrmBindLoosely} XrmBinding, *XrmBindingList;
+
+extern void XrmStringToQuarkList(
+    const char* ,
+    XrmQuarkList
+);
+
+extern void XrmStringToBindingQuarkList(
+    const char* ,
+    XrmBindingList ,
+    XrmQuarkList
+);
+
+
+
+
+
+
+
+typedef XrmQuark XrmName;
+typedef XrmQuarkList XrmNameList;
+
+
+
+
+typedef XrmQuark XrmClass;
+typedef XrmQuarkList XrmClassList;
+# 156 "/usr/include/X11/Xresource.h" 3 4
+typedef XrmQuark XrmRepresentation;
+
+
+
+typedef struct {
+    unsigned int size;
+    XPointer addr;
+} XrmValue, *XrmValuePtr;
+# 172 "/usr/include/X11/Xresource.h" 3 4
+typedef struct _XrmHashBucketRec *XrmHashBucket;
+typedef XrmHashBucket *XrmHashTable;
+typedef XrmHashTable XrmSearchList[];
+typedef struct _XrmHashBucketRec *XrmDatabase;
+
+
+extern void XrmDestroyDatabase(
+    XrmDatabase
+);
+
+extern void XrmQPutResource(
+    XrmDatabase* ,
+    XrmBindingList ,
+    XrmQuarkList ,
+    XrmRepresentation ,
+    XrmValue*
+);
+
+extern void XrmPutResource(
+    XrmDatabase* ,
+    const char* ,
+    const char* ,
+    XrmValue*
+);
+
+extern void XrmQPutStringResource(
+    XrmDatabase* ,
+    XrmBindingList ,
+    XrmQuarkList ,
+    const char*
+);
+
+extern void XrmPutStringResource(
+    XrmDatabase* ,
+    const char* ,
+    const char*
+);
+
+extern void XrmPutLineResource(
+    XrmDatabase* ,
+    const char*
+);
+
+extern int XrmQGetResource(
+    XrmDatabase ,
+    XrmNameList ,
+    XrmClassList ,
+    XrmRepresentation* ,
+    XrmValue*
+);
+
+extern int XrmGetResource(
+    XrmDatabase ,
+    const char* ,
+    const char* ,
+    char** ,
+    XrmValue*
+);
+
+extern int XrmQGetSearchList(
+    XrmDatabase ,
+    XrmNameList ,
+    XrmClassList ,
+    XrmSearchList ,
+    int
+);
+
+extern int XrmQGetSearchResource(
+    XrmSearchList ,
+    XrmName ,
+    XrmClass ,
+    XrmRepresentation* ,
+    XrmValue*
+);
+# 255 "/usr/include/X11/Xresource.h" 3 4
+extern void XrmSetDatabase(
+    Display* ,
+    XrmDatabase
+);
+
+extern XrmDatabase XrmGetDatabase(
+    Display*
+);
+
+
+
+extern XrmDatabase XrmGetFileDatabase(
+    const char*
+);
+
+extern int XrmCombineFileDatabase(
+    const char* ,
+    XrmDatabase* ,
+    int
+);
+
+extern XrmDatabase XrmGetStringDatabase(
+    const char*
+);
+
+extern void XrmPutFileDatabase(
+    XrmDatabase ,
+    const char*
+);
+
+extern void XrmMergeDatabases(
+    XrmDatabase ,
+    XrmDatabase*
+);
+
+extern void XrmCombineDatabase(
+    XrmDatabase ,
+    XrmDatabase* ,
+    int
+);
+
+
+
+
+extern int XrmEnumerateDatabase(
+    XrmDatabase ,
+    XrmNameList ,
+    XrmClassList ,
+    int ,
+    int (*)(
+      XrmDatabase* ,
+      XrmBindingList ,
+      XrmQuarkList ,
+      XrmRepresentation* ,
+      XrmValue* ,
+      XPointer
+      ) ,
+    XPointer
+);
+
+extern const char *XrmLocaleOfDatabase(
+    XrmDatabase
+);
+# 326 "/usr/include/X11/Xresource.h" 3 4
+typedef enum {
+    XrmoptionNoArg,
+    XrmoptionIsArg,
+    XrmoptionStickyArg,
+    XrmoptionSepArg,
+    XrmoptionResArg,
+    XrmoptionSkipArg,
+    XrmoptionSkipLine,
+    XrmoptionSkipNArgs
+
+} XrmOptionKind;
+
+typedef struct {
+    char *option;
+    char *specifier;
+    XrmOptionKind argKind;
+    XPointer value;
+} XrmOptionDescRec, *XrmOptionDescList;
+
+
+extern void XrmParseCommand(
+    XrmDatabase* ,
+    XrmOptionDescList ,
+    int ,
+    const char* ,
+    int* ,
+    char**
+);
+# 56 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 66 "/usr/include/X11/Intrinsic.h" 3 4
+typedef char *String;
+# 90 "/usr/include/X11/Intrinsic.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 91 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 107 "/usr/include/X11/Intrinsic.h" 3 4
+typedef struct _WidgetRec *Widget;
+typedef Widget *WidgetList;
+typedef struct _WidgetClassRec *WidgetClass;
+typedef struct _CompositeRec *CompositeWidget;
+typedef struct _XtActionsRec *XtActionList;
+typedef struct _XtEventRec *XtEventTable;
+
+typedef struct _XtAppStruct *XtAppContext;
+typedef unsigned long XtValueMask;
+typedef unsigned long XtIntervalId;
+typedef unsigned long XtInputId;
+typedef unsigned long XtWorkProcId;
+typedef unsigned long XtSignalId;
+typedef unsigned int XtGeometryMask;
+typedef unsigned long XtGCMask;
+typedef unsigned long Pixel;
+typedef int XtCacheType;
+# 155 "/usr/include/X11/Intrinsic.h" 3 4
+typedef char Boolean;
+typedef long XtArgVal;
+typedef unsigned char XtEnum;
+
+
+typedef unsigned int Cardinal;
+typedef unsigned short Dimension;
+typedef short Position;
+
+typedef void* XtPointer;
+
+
+
+typedef XtPointer Opaque;
+
+
+# 1 "/usr/include/X11/Core.h" 1 3 4
+# 53 "/usr/include/X11/Core.h" 3 4
+typedef struct _WidgetClassRec *CoreWidgetClass;
+typedef struct _WidgetRec *CoreWidget;
+extern WidgetClass coreWidgetClass;
+
+
+extern WidgetClass widgetClass;
+# 171 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 1 "/usr/include/X11/Composite.h" 1 3 4
+# 51 "/usr/include/X11/Composite.h" 3 4
+typedef struct _CompositeClassRec *CompositeWidgetClass;
+
+typedef Cardinal (*XtOrderProc)(
+    Widget
+);
+
+
+
+extern void XtManageChildren(
+    WidgetList ,
+    Cardinal
+);
+
+extern void XtManageChild(
+    Widget
+);
+
+extern void XtUnmanageChildren(
+    WidgetList ,
+    Cardinal
+);
+
+extern void XtUnmanageChild(
+    Widget
+);
+
+typedef void (*XtDoChangeProc)(
+    Widget ,
+    WidgetList ,
+    Cardinal * ,
+    WidgetList ,
+    Cardinal * ,
+    XtPointer
+);
+
+extern void XtChangeManagedSet(
+    WidgetList ,
+    Cardinal ,
+    XtDoChangeProc ,
+    XtPointer ,
+    WidgetList ,
+    Cardinal
+);
+
+
+
+
+extern WidgetClass compositeWidgetClass;
+# 172 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 1 "/usr/include/X11/Constraint.h" 1 3 4
+# 53 "/usr/include/X11/Constraint.h" 3 4
+typedef struct _ConstraintClassRec *ConstraintWidgetClass;
+
+
+extern WidgetClass constraintWidgetClass;
+# 173 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 1 "/usr/include/X11/Object.h" 1 3 4
+# 53 "/usr/include/X11/Object.h" 3 4
+typedef struct _ObjectRec *Object;
+typedef struct _ObjectClassRec *ObjectClass;
+
+
+extern WidgetClass objectClass;
+# 174 "/usr/include/X11/Intrinsic.h" 2 3 4
+# 1 "/usr/include/X11/RectObj.h" 1 3 4
+# 53 "/usr/include/X11/RectObj.h" 3 4
+typedef struct _RectObjRec *RectObj;
+typedef struct _RectObjClassRec *RectObjClass;
+
+
+extern WidgetClass rectObjClass;
+# 175 "/usr/include/X11/Intrinsic.h" 2 3 4
+
+typedef struct _TranslationData *XtTranslations;
+typedef struct _TranslationData *XtAccelerators;
+typedef unsigned int Modifiers;
+
+typedef void (*XtActionProc)(
+    Widget ,
+    XEvent* ,
+    String* ,
+    Cardinal*
+);
+
+typedef XtActionProc* XtBoundActions;
+
+typedef struct _XtActionsRec{
+    String string;
+    XtActionProc proc;
+} XtActionsRec;
+
+typedef enum {
+
+
+    XtAddress,
+    XtBaseOffset,
+    XtImmediate,
+    XtResourceString,
+    XtResourceQuark,
+    XtWidgetBaseOffset,
+    XtProcedureArg
+} XtAddressMode;
+
+typedef struct {
+    XtAddressMode address_mode;
+    XtPointer address_id;
+    Cardinal size;
+} XtConvertArgRec, *XtConvertArgList;
+
+typedef void (*XtConvertArgProc)(
+    Widget ,
+    Cardinal* ,
+    XrmValue*
+);
+
+typedef struct {
+    XtGeometryMask request_mode;
+    Position x, y;
+    Dimension width, height, border_width;
+    Widget sibling;
+    int stack_mode;
+} XtWidgetGeometry;
+
+
+
+
+
+
+
+typedef void (*XtConverter)(
+    XrmValue* ,
+    Cardinal* ,
+    XrmValue* ,
+    XrmValue*
+);
+
+typedef Boolean (*XtTypeConverter)(
+    Display* ,
+    XrmValue* ,
+    Cardinal* ,
+    XrmValue* ,
+    XrmValue* ,
+    XtPointer*
+);
+
+typedef void (*XtDestructor)(
+    XtAppContext ,
+    XrmValue* ,
+    XtPointer ,
+    XrmValue* ,
+    Cardinal*
+);
+
+typedef Opaque XtCacheRef;
+
+typedef Opaque XtActionHookId;
+
+typedef void (*XtActionHookProc)(
+    Widget ,
+    XtPointer ,
+    String ,
+    XEvent* ,
+    String* ,
+    Cardinal*
+);
+
+typedef unsigned long XtBlockHookId;
+
+typedef void (*XtBlockHookProc)(
+    XtPointer
+);
+
+typedef void (*XtKeyProc)(
+    Display* ,
+    KeyCode ,
+    Modifiers ,
+    Modifiers* ,
+    KeySym*
+);
+
+typedef void (*XtCaseProc)(
+    Display* ,
+    KeySym ,
+    KeySym* ,
+    KeySym*
+);
+
+typedef void (*XtEventHandler)(
+    Widget ,
+    XtPointer ,
+    XEvent* ,
+    Boolean*
+);
+typedef unsigned long EventMask;
+
+typedef enum {XtListHead, XtListTail } XtListPosition;
+
+typedef unsigned long XtInputMask;
+
+
+
+
+
+typedef void (*XtTimerCallbackProc)(
+    XtPointer ,
+    XtIntervalId*
+);
+
+typedef void (*XtInputCallbackProc)(
+    XtPointer ,
+    int* ,
+    XtInputId*
+);
+
+typedef void (*XtSignalCallbackProc)(
+    XtPointer ,
+    XtSignalId*
+);
+
+typedef struct {
+    String name;
+    XtArgVal value;
+} Arg, *ArgList;
+
+typedef XtPointer XtVarArgsList;
+
+typedef void (*XtCallbackProc)(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+typedef struct _XtCallbackRec {
+    XtCallbackProc callback;
+    XtPointer closure;
+} XtCallbackRec, *XtCallbackList;
+
+typedef enum {
+ XtCallbackNoList,
+ XtCallbackHasNone,
+ XtCallbackHasSome
+} XtCallbackStatus;
+
+typedef enum {
+    XtGeometryYes,
+    XtGeometryNo,
+    XtGeometryAlmost,
+    XtGeometryDone
+} XtGeometryResult;
+
+typedef enum {XtGrabNone, XtGrabNonexclusive, XtGrabExclusive} XtGrabKind;
+
+typedef struct {
+    Widget shell_widget;
+    Widget enable_widget;
+} XtPopdownIDRec, *XtPopdownID;
+
+typedef struct _XtResource {
+    String resource_name;
+    String resource_class;
+    String resource_type;
+    Cardinal resource_size;
+    Cardinal resource_offset;
+    String default_type;
+    XtPointer default_addr;
+} XtResource, *XtResourceList;
+
+typedef void (*XtResourceDefaultProc)(
+    Widget ,
+    int ,
+    XrmValue*
+);
+
+typedef String (*XtLanguageProc)(
+    Display* ,
+    String ,
+    XtPointer
+);
+
+typedef void (*XtErrorMsgHandler)(
+    String ,
+    String ,
+    String ,
+    String ,
+    String* ,
+    Cardinal*
+);
+
+typedef void (*XtErrorHandler)(
+  String
+);
+
+typedef void (*XtCreatePopupChildProc)(
+    Widget
+);
+
+typedef Boolean (*XtWorkProc)(
+    XtPointer
+);
+
+typedef struct {
+    char match;
+    String substitution;
+} SubstitutionRec, *Substitution;
+
+typedef Boolean (*XtFilePredicate)(
+   String
+);
+
+typedef XtPointer XtRequestId;
+
+typedef Boolean (*XtConvertSelectionProc)(
+    Widget ,
+    Atom* ,
+    Atom* ,
+    Atom* ,
+    XtPointer* ,
+    unsigned long* ,
+    int*
+);
+
+typedef void (*XtLoseSelectionProc)(
+    Widget ,
+    Atom*
+);
+
+typedef void (*XtSelectionDoneProc)(
+    Widget ,
+    Atom* ,
+    Atom*
+);
+
+typedef void (*XtSelectionCallbackProc)(
+    Widget ,
+    XtPointer ,
+    Atom* ,
+    Atom* ,
+    XtPointer ,
+    unsigned long* ,
+    int*
+);
+
+typedef void (*XtLoseSelectionIncrProc)(
+    Widget ,
+    Atom* ,
+    XtPointer
+);
+
+typedef void (*XtSelectionDoneIncrProc)(
+    Widget ,
+    Atom* ,
+    Atom* ,
+    XtRequestId* ,
+    XtPointer
+);
+
+typedef Boolean (*XtConvertSelectionIncrProc)(
+    Widget ,
+    Atom* ,
+    Atom* ,
+    Atom* ,
+    XtPointer* ,
+    unsigned long* ,
+    int* ,
+    unsigned long* ,
+    XtPointer ,
+    XtRequestId*
+);
+
+typedef void (*XtCancelConvertSelectionProc)(
+    Widget ,
+    Atom* ,
+    Atom* ,
+    XtRequestId* ,
+    XtPointer
+);
+
+typedef Boolean (*XtEventDispatchProc)(
+    XEvent*
+);
+
+typedef void (*XtExtensionSelectProc)(
+    Widget ,
+    int* ,
+    XtPointer* ,
+    int ,
+    XtPointer
+);
+# 500 "/usr/include/X11/Intrinsic.h" 3 4
+extern Boolean XtConvertAndStore(
+    Widget ,
+    const char* ,
+    XrmValue* ,
+    const char* ,
+    XrmValue*
+);
+
+extern Boolean XtCallConverter(
+    Display* ,
+    XtTypeConverter ,
+    XrmValuePtr ,
+    Cardinal ,
+    XrmValuePtr ,
+    XrmValue* ,
+    XtCacheRef*
+);
+
+extern Boolean XtDispatchEvent(
+    XEvent*
+);
+
+extern Boolean XtCallAcceptFocus(
+    Widget ,
+    Time*
+);
+
+extern Boolean XtPeekEvent(
+    XEvent*
+);
+
+extern Boolean XtAppPeekEvent(
+    XtAppContext ,
+    XEvent*
+);
+
+extern Boolean XtIsSubclass(
+    Widget ,
+    WidgetClass
+);
+
+extern Boolean XtIsObject(
+    Widget
+);
+
+extern Boolean _XtCheckSubclassFlag(
+    Widget ,
+    XtEnum
+);
+
+extern Boolean _XtIsSubclassOf(
+    Widget ,
+    WidgetClass ,
+    WidgetClass ,
+    XtEnum
+);
+
+extern Boolean XtIsManaged(
+    Widget
+);
+
+extern Boolean XtIsRealized(
+    Widget
+);
+
+extern Boolean XtIsSensitive(
+    Widget
+);
+
+extern Boolean XtOwnSelection(
+    Widget ,
+    Atom ,
+    Time ,
+    XtConvertSelectionProc ,
+    XtLoseSelectionProc ,
+    XtSelectionDoneProc
+);
+
+extern Boolean XtOwnSelectionIncremental(
+    Widget ,
+    Atom ,
+    Time ,
+    XtConvertSelectionIncrProc ,
+    XtLoseSelectionIncrProc ,
+    XtSelectionDoneIncrProc ,
+    XtCancelConvertSelectionProc ,
+    XtPointer
+);
+
+extern XtGeometryResult XtMakeResizeRequest(
+    Widget ,
+    Dimension ,
+    Dimension ,
+    Dimension* ,
+    Dimension*
+);
+
+extern void XtTranslateCoords(
+    Widget ,
+    Position ,
+    Position ,
+    Position* ,
+    Position*
+);
+
+extern KeySym* XtGetKeysymTable(
+    Display* ,
+    KeyCode* ,
+    int*
+);
+
+extern void XtKeysymToKeycodeList(
+    Display* ,
+    KeySym ,
+    KeyCode** ,
+    Cardinal*
+);
+
+extern void XtStringConversionWarning(
+    const char* ,
+    const char*
+);
+
+extern void XtDisplayStringConversionWarning(
+    Display* ,
+    const char* ,
+    const char*
+);
+
+extern XtConvertArgRec const colorConvertArgs[];
+extern XtConvertArgRec const screenConvertArg[];
+
+extern void XtAppAddConverter(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    XtConverter ,
+    XtConvertArgList ,
+    Cardinal
+);
+
+extern void XtAddConverter(
+    const char* ,
+    const char* ,
+    XtConverter ,
+    XtConvertArgList ,
+    Cardinal
+);
+
+extern void XtSetTypeConverter(
+    const char* ,
+    const char* ,
+    XtTypeConverter ,
+    XtConvertArgList ,
+    Cardinal ,
+    XtCacheType ,
+    XtDestructor
+);
+
+extern void XtAppSetTypeConverter(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    XtTypeConverter ,
+    XtConvertArgList ,
+    Cardinal ,
+    XtCacheType ,
+    XtDestructor
+);
+
+extern void XtConvert(
+    Widget ,
+    const char* ,
+    XrmValue* ,
+    const char* ,
+    XrmValue*
+);
+
+extern void XtDirectConvert(
+    XtConverter ,
+    XrmValuePtr ,
+    Cardinal ,
+    XrmValuePtr ,
+    XrmValue*
+);
+
+
+
+
+
+
+
+extern XtTranslations XtParseTranslationTable(
+    const char*
+);
+
+extern XtAccelerators XtParseAcceleratorTable(
+    const char*
+);
+
+extern void XtOverrideTranslations(
+    Widget ,
+    XtTranslations
+);
+
+extern void XtAugmentTranslations(
+    Widget ,
+    XtTranslations
+);
+
+extern void XtInstallAccelerators(
+    Widget ,
+    Widget
+);
+
+extern void XtInstallAllAccelerators(
+    Widget ,
+    Widget
+);
+
+extern void XtUninstallTranslations(
+    Widget
+);
+
+extern void XtAppAddActions(
+    XtAppContext ,
+    XtActionList ,
+    Cardinal
+);
+
+extern void XtAddActions(
+    XtActionList ,
+    Cardinal
+);
+
+extern XtActionHookId XtAppAddActionHook(
+    XtAppContext ,
+    XtActionHookProc ,
+    XtPointer
+);
+
+extern void XtRemoveActionHook(
+    XtActionHookId
+);
+
+extern void XtGetActionList(
+    WidgetClass ,
+    XtActionList* ,
+    Cardinal*
+);
+
+extern void XtCallActionProc(
+    Widget ,
+    const char* ,
+    XEvent* ,
+    String* ,
+    Cardinal
+);
+
+extern void XtRegisterGrabAction(
+    XtActionProc ,
+    Boolean ,
+    unsigned int ,
+    int ,
+    int
+);
+
+extern void XtSetMultiClickTime(
+    Display* ,
+    int
+);
+
+extern int XtGetMultiClickTime(
+    Display*
+);
+
+extern KeySym XtGetActionKeysym(
+    XEvent* ,
+    Modifiers*
+);
+
+
+
+
+
+
+
+extern void XtTranslateKeycode(
+    Display* ,
+    KeyCode ,
+    Modifiers ,
+    Modifiers* ,
+    KeySym*
+);
+
+extern void XtTranslateKey(
+    Display* ,
+    KeyCode ,
+    Modifiers ,
+    Modifiers* ,
+    KeySym*
+);
+
+extern void XtSetKeyTranslator(
+    Display* ,
+    XtKeyProc
+);
+
+extern void XtRegisterCaseConverter(
+    Display* ,
+    XtCaseProc ,
+    KeySym ,
+    KeySym
+);
+
+extern void XtConvertCase(
+    Display* ,
+    KeySym ,
+    KeySym* ,
+    KeySym*
+);
+# 833 "/usr/include/X11/Intrinsic.h" 3 4
+extern void XtAddEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer
+);
+
+extern void XtRemoveEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer
+);
+
+extern void XtAddRawEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer
+);
+
+extern void XtRemoveRawEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer
+);
+
+extern void XtInsertEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer ,
+    XtListPosition
+);
+
+extern void XtInsertRawEventHandler(
+    Widget ,
+    EventMask ,
+    Boolean ,
+    XtEventHandler ,
+    XtPointer ,
+    XtListPosition
+);
+
+extern XtEventDispatchProc XtSetEventDispatcher(
+    Display* ,
+    int ,
+    XtEventDispatchProc
+);
+
+extern Boolean XtDispatchEventToWidget(
+    Widget ,
+    XEvent*
+);
+
+extern void XtInsertEventTypeHandler(
+    Widget ,
+    int ,
+    XtPointer ,
+    XtEventHandler ,
+    XtPointer ,
+    XtListPosition
+);
+
+extern void XtRemoveEventTypeHandler(
+    Widget ,
+    int ,
+    XtPointer ,
+    XtEventHandler ,
+    XtPointer
+);
+
+extern EventMask XtBuildEventMask(
+    Widget
+);
+
+extern void XtRegisterExtensionSelector(
+    Display* ,
+    int ,
+    int ,
+    XtExtensionSelectProc ,
+    XtPointer
+);
+
+extern void XtAddGrab(
+    Widget ,
+    Boolean ,
+    Boolean
+);
+
+extern void XtRemoveGrab(
+    Widget
+);
+
+extern void XtProcessEvent(
+    XtInputMask
+);
+
+extern void XtAppProcessEvent(
+    XtAppContext ,
+    XtInputMask
+);
+
+extern void XtMainLoop(
+    void
+);
+
+extern void XtAppMainLoop(
+    XtAppContext
+);
+
+extern void XtAddExposureToRegion(
+    XEvent* ,
+    Region
+);
+
+extern void XtSetKeyboardFocus(
+    Widget ,
+    Widget
+);
+
+extern Widget XtGetKeyboardFocusWidget(
+    Widget
+);
+
+extern XEvent* XtLastEventProcessed(
+    Display*
+);
+
+extern Time XtLastTimestampProcessed(
+    Display*
+);
+
+
+
+
+
+
+
+extern XtIntervalId XtAddTimeOut(
+    unsigned long ,
+    XtTimerCallbackProc ,
+    XtPointer
+);
+
+extern XtIntervalId XtAppAddTimeOut(
+    XtAppContext ,
+    unsigned long ,
+    XtTimerCallbackProc ,
+    XtPointer
+);
+
+extern void XtRemoveTimeOut(
+    XtIntervalId
+);
+
+extern XtInputId XtAddInput(
+    int ,
+    XtPointer ,
+    XtInputCallbackProc ,
+    XtPointer
+);
+
+extern XtInputId XtAppAddInput(
+    XtAppContext ,
+    int ,
+    XtPointer ,
+    XtInputCallbackProc ,
+    XtPointer
+);
+
+extern void XtRemoveInput(
+    XtInputId
+);
+
+extern XtSignalId XtAddSignal(
+    XtSignalCallbackProc ,
+    XtPointer );
+
+extern XtSignalId XtAppAddSignal(
+    XtAppContext ,
+    XtSignalCallbackProc ,
+    XtPointer
+);
+
+extern void XtRemoveSignal(
+    XtSignalId
+);
+
+extern void XtNoticeSignal(
+    XtSignalId
+);
+
+extern void XtNextEvent(
+    XEvent*
+);
+
+extern void XtAppNextEvent(
+    XtAppContext ,
+    XEvent*
+);
+
+
+
+
+
+
+
+extern Boolean XtPending(
+    void
+);
+
+extern XtInputMask XtAppPending(
+    XtAppContext
+);
+
+extern XtBlockHookId XtAppAddBlockHook(
+    XtAppContext ,
+    XtBlockHookProc ,
+    XtPointer
+);
+
+extern void XtRemoveBlockHook(
+    XtBlockHookId
+);
+# 1078 "/usr/include/X11/Intrinsic.h" 3 4
+extern Boolean XtIsOverrideShell(Widget );
+
+
+
+
+
+
+
+extern Boolean XtIsVendorShell(Widget );
+
+
+
+
+
+extern Boolean XtIsTransientShell(Widget );
+
+
+
+
+
+
+extern Boolean XtIsApplicationShell(Widget );
+
+
+
+
+
+extern Boolean XtIsSessionShell(Widget );
+
+
+
+
+extern void XtRealizeWidget(
+    Widget
+);
+
+void XtUnrealizeWidget(
+    Widget
+);
+
+extern void XtDestroyWidget(
+    Widget
+);
+
+extern void XtSetSensitive(
+    Widget ,
+    Boolean
+);
+
+extern void XtSetMappedWhenManaged(
+    Widget ,
+    Boolean
+);
+
+extern Widget XtNameToWidget(
+    Widget ,
+    const char*
+);
+
+extern Widget XtWindowToWidget(
+    Display* ,
+    Window
+);
+
+extern XtPointer XtGetClassExtension(
+    WidgetClass ,
+    Cardinal ,
+    XrmQuark ,
+    long ,
+    Cardinal
+);
+# 1160 "/usr/include/X11/Intrinsic.h" 3 4
+extern ArgList XtMergeArgLists(
+    ArgList ,
+    Cardinal ,
+    ArgList ,
+    Cardinal
+);
+# 1176 "/usr/include/X11/Intrinsic.h" 3 4
+extern XtVarArgsList XtVaCreateArgsList(
+    XtPointer , ...
+) __attribute__ ((__sentinel__(0)));
+# 1190 "/usr/include/X11/Intrinsic.h" 3 4
+extern Display *XtDisplay(
+    Widget
+);
+
+extern Display *XtDisplayOfObject(
+    Widget
+);
+
+extern Screen *XtScreen(
+    Widget
+);
+
+extern Screen *XtScreenOfObject(
+    Widget
+);
+
+extern Window XtWindow(
+    Widget
+);
+
+extern Window XtWindowOfObject(
+    Widget
+);
+
+extern String XtName(
+    Widget
+);
+
+extern WidgetClass XtSuperclass(
+    Widget
+);
+
+extern WidgetClass XtClass(
+    Widget
+);
+
+extern Widget XtParent(
+    Widget
+);
+
+
+
+
+extern void XtMapWidget(Widget );
+
+
+
+extern void XtUnmapWidget(Widget );
+
+
+
+extern void XtAddCallback(
+    Widget ,
+    const char* ,
+    XtCallbackProc ,
+    XtPointer
+);
+
+extern void XtRemoveCallback(
+    Widget ,
+    const char* ,
+    XtCallbackProc ,
+    XtPointer
+);
+
+extern void XtAddCallbacks(
+    Widget ,
+    const char* ,
+    XtCallbackList
+);
+
+extern void XtRemoveCallbacks(
+    Widget ,
+    const char* ,
+    XtCallbackList
+);
+
+extern void XtRemoveAllCallbacks(
+    Widget ,
+    const char*
+);
+
+
+extern void XtCallCallbacks(
+    Widget ,
+    const char* ,
+    XtPointer
+);
+
+extern void XtCallCallbackList(
+    Widget ,
+    XtCallbackList ,
+    XtPointer
+);
+
+extern XtCallbackStatus XtHasCallbacks(
+    Widget ,
+    const char*
+);
+# 1297 "/usr/include/X11/Intrinsic.h" 3 4
+extern XtGeometryResult XtMakeGeometryRequest(
+    Widget ,
+    XtWidgetGeometry* ,
+    XtWidgetGeometry*
+);
+
+extern XtGeometryResult XtQueryGeometry(
+    Widget ,
+    XtWidgetGeometry* ,
+    XtWidgetGeometry*
+);
+
+extern Widget XtCreatePopupShell(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtVaCreatePopupShell(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtPopup(
+    Widget ,
+    XtGrabKind
+);
+
+extern void XtPopupSpringLoaded(
+    Widget
+);
+
+extern void XtCallbackNone(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtCallbackNonexclusive(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtCallbackExclusive(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtPopdown(
+    Widget
+);
+
+extern void XtCallbackPopdown(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtMenuPopupAction(
+    Widget ,
+    XEvent* ,
+    String* ,
+    Cardinal*
+);
+
+extern Widget XtCreateWidget(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtCreateManagedWidget(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtVaCreateWidget(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Widget XtVaCreateManagedWidget(
+    const char* ,
+    WidgetClass ,
+    Widget ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Widget XtCreateApplicationShell(
+    const char* ,
+    WidgetClass ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtAppCreateShell(
+    const char* ,
+    const char* ,
+    WidgetClass ,
+    Display* ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtVaAppCreateShell(
+    const char* ,
+    const char* ,
+    WidgetClass ,
+    Display* ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+
+
+
+
+
+
+extern void XtToolkitInitialize(
+    void
+);
+
+extern XtLanguageProc XtSetLanguageProc(
+    XtAppContext ,
+    XtLanguageProc ,
+    XtPointer
+);
+
+extern void XtDisplayInitialize(
+    XtAppContext ,
+    Display* ,
+    const char* ,
+    const char* ,
+    XrmOptionDescRec* ,
+    Cardinal ,
+    int* ,
+    char**
+);
+
+extern Widget XtOpenApplication(
+    XtAppContext* ,
+    const char* ,
+    XrmOptionDescList ,
+    Cardinal ,
+    int* ,
+    String* ,
+    String* ,
+    WidgetClass ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtVaOpenApplication(
+    XtAppContext* ,
+    const char* ,
+    XrmOptionDescList ,
+    Cardinal ,
+    int* ,
+    String* ,
+    String* ,
+    WidgetClass ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Widget XtAppInitialize(
+    XtAppContext* ,
+    const char* ,
+    XrmOptionDescList ,
+    Cardinal ,
+    int* ,
+    String* ,
+    String* ,
+    ArgList ,
+    Cardinal
+);
+
+extern Widget XtVaAppInitialize(
+    XtAppContext* ,
+    const char* ,
+    XrmOptionDescList ,
+    Cardinal ,
+    int* ,
+    String* ,
+    String* ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern Widget XtInitialize(
+    const char* ,
+    const char* ,
+    XrmOptionDescRec* ,
+    Cardinal ,
+    int* ,
+    char**
+);
+
+extern Display *XtOpenDisplay(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    const char* ,
+    XrmOptionDescRec* ,
+    Cardinal ,
+    int* ,
+    char**
+);
+
+extern XtAppContext XtCreateApplicationContext(
+    void
+);
+
+extern void XtAppSetFallbackResources(
+    XtAppContext ,
+    String*
+);
+
+extern void XtDestroyApplicationContext(
+    XtAppContext
+);
+
+extern void XtInitializeWidgetClass(
+    WidgetClass
+);
+
+extern XtAppContext XtWidgetToApplicationContext(
+    Widget
+);
+
+extern XtAppContext XtDisplayToApplicationContext(
+    Display*
+);
+
+extern XrmDatabase XtDatabase(
+    Display*
+);
+
+extern XrmDatabase XtScreenDatabase(
+    Screen*
+);
+
+extern void XtCloseDisplay(
+    Display*
+);
+
+extern void XtGetApplicationResources(
+    Widget ,
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaGetApplicationResources(
+    Widget ,
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtGetSubresources(
+    Widget ,
+    XtPointer ,
+    const char* ,
+    const char* ,
+    XtResourceList ,
+    Cardinal ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaGetSubresources(
+    Widget ,
+    XtPointer ,
+    const char* ,
+    const char* ,
+    XtResourceList ,
+    Cardinal ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtSetValues(
+    Widget ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaSetValues(
+    Widget ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtGetValues(
+    Widget ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaGetValues(
+    Widget ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtSetSubvalues(
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaSetSubvalues(
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtGetSubvalues(
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ArgList ,
+    Cardinal
+);
+
+extern void XtVaGetSubvalues(
+    XtPointer ,
+    XtResourceList ,
+    Cardinal ,
+    ...
+) __attribute__ ((__sentinel__(0)));
+
+extern void XtGetResourceList(
+    WidgetClass ,
+    XtResourceList* ,
+    Cardinal*
+);
+
+extern void XtGetConstraintResourceList(
+    WidgetClass ,
+    XtResourceList* ,
+    Cardinal*
+);
+# 1685 "/usr/include/X11/Intrinsic.h" 3 4
+typedef struct _XtCheckpointTokenRec {
+    int save_type;
+    int interact_style;
+    Boolean shutdown;
+    Boolean fast;
+    Boolean cancel_shutdown;
+    int phase;
+    int interact_dialog_type;
+    Boolean request_cancel;
+    Boolean request_next_phase;
+    Boolean save_success;
+    int type;
+    Widget widget;
+} XtCheckpointTokenRec, *XtCheckpointToken;
+
+XtCheckpointToken XtSessionGetToken(
+    Widget
+);
+
+void XtSessionReturnToken(
+    XtCheckpointToken
+);
+
+
+
+
+
+
+
+extern XtErrorMsgHandler XtAppSetErrorMsgHandler(
+    XtAppContext ,
+    XtErrorMsgHandler
+);
+
+extern void XtSetErrorMsgHandler(
+    XtErrorMsgHandler
+);
+
+extern XtErrorMsgHandler XtAppSetWarningMsgHandler(
+    XtAppContext ,
+    XtErrorMsgHandler
+);
+
+extern void XtSetWarningMsgHandler(
+    XtErrorMsgHandler
+);
+
+extern void XtAppErrorMsg(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String* ,
+    Cardinal*
+);
+
+extern void XtErrorMsg(
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String* ,
+    Cardinal*
+);
+
+extern void XtAppWarningMsg(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String* ,
+    Cardinal*
+);
+
+extern void XtWarningMsg(
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String* ,
+    Cardinal*
+);
+
+extern XtErrorHandler XtAppSetErrorHandler(
+    XtAppContext ,
+    XtErrorHandler
+);
+
+extern void XtSetErrorHandler(
+    XtErrorHandler
+);
+
+extern XtErrorHandler XtAppSetWarningHandler(
+    XtAppContext ,
+    XtErrorHandler
+);
+
+extern void XtSetWarningHandler(
+    XtErrorHandler
+);
+
+extern void XtAppError(
+    XtAppContext ,
+    const char*
+);
+
+extern void XtError(
+    const char*
+);
+
+extern void XtAppWarning(
+    XtAppContext ,
+    const char*
+);
+
+extern void XtWarning(
+    const char*
+);
+
+extern XrmDatabase *XtAppGetErrorDatabase(
+    XtAppContext
+);
+
+extern XrmDatabase *XtGetErrorDatabase(
+    void
+);
+
+extern void XtAppGetErrorDatabaseText(
+    XtAppContext ,
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String ,
+    int ,
+    XrmDatabase
+);
+
+extern void XtGetErrorDatabaseText(
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    String ,
+    int
+);
+
+
+
+
+
+
+
+extern char *XtMalloc(
+    Cardinal
+);
+
+extern char *XtCalloc(
+    Cardinal ,
+    Cardinal
+);
+
+extern char *XtRealloc(
+    char* ,
+    Cardinal
+);
+
+extern void XtFree(
+    char*
+);
+
+
+
+
+extern Cardinal XtAsprintf(
+    String *new_string,
+    const char * restrict format,
+    ...
+) __attribute__((__format__(__printf__,2,3)));
+# 1903 "/usr/include/X11/Intrinsic.h" 3 4
+extern String XtNewString(String );
+# 1913 "/usr/include/X11/Intrinsic.h" 3 4
+extern XtWorkProcId XtAddWorkProc(
+    XtWorkProc ,
+    XtPointer
+);
+
+extern XtWorkProcId XtAppAddWorkProc(
+    XtAppContext ,
+    XtWorkProc ,
+    XtPointer
+);
+
+extern void XtRemoveWorkProc(
+    XtWorkProcId
+);
+
+
+
+
+
+
+
+extern GC XtGetGC(
+    Widget ,
+    XtGCMask ,
+    XGCValues*
+);
+
+extern GC XtAllocateGC(
+    Widget ,
+    Cardinal ,
+    XtGCMask ,
+    XGCValues* ,
+    XtGCMask ,
+    XtGCMask
+);
+
+
+
+
+
+extern void XtDestroyGC(
+    GC
+);
+
+extern void XtReleaseGC(
+    Widget ,
+    GC
+);
+
+
+
+extern void XtAppReleaseCacheRefs(
+    XtAppContext ,
+    XtCacheRef*
+);
+
+extern void XtCallbackReleaseCacheRef(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtCallbackReleaseCacheRefList(
+    Widget ,
+    XtPointer ,
+    XtPointer
+);
+
+extern void XtSetWMColormapWindows(
+    Widget ,
+    Widget* ,
+    Cardinal
+);
+
+extern String XtFindFile(
+    const char* ,
+    Substitution ,
+    Cardinal ,
+    XtFilePredicate
+);
+
+extern String XtResolvePathname(
+    Display* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    const char* ,
+    Substitution ,
+    Cardinal ,
+    XtFilePredicate
+);
+# 2013 "/usr/include/X11/Intrinsic.h" 3 4
+extern void XtDisownSelection(
+    Widget ,
+    Atom ,
+    Time
+);
+
+extern void XtGetSelectionValue(
+    Widget ,
+    Atom ,
+    Atom ,
+    XtSelectionCallbackProc ,
+    XtPointer ,
+    Time
+);
+
+extern void XtGetSelectionValues(
+    Widget ,
+    Atom ,
+    Atom* ,
+    int ,
+    XtSelectionCallbackProc ,
+    XtPointer* ,
+    Time
+);
+
+extern void XtAppSetSelectionTimeout(
+    XtAppContext ,
+    unsigned long
+);
+
+extern void XtSetSelectionTimeout(
+    unsigned long
+);
+
+extern unsigned long XtAppGetSelectionTimeout(
+    XtAppContext
+);
+
+extern unsigned long XtGetSelectionTimeout(
+    void
+);
+
+extern XSelectionRequestEvent *XtGetSelectionRequest(
+    Widget ,
+    Atom ,
+    XtRequestId
+);
+
+extern void XtGetSelectionValueIncremental(
+    Widget ,
+    Atom ,
+    Atom ,
+    XtSelectionCallbackProc ,
+    XtPointer ,
+    Time
+);
+
+extern void XtGetSelectionValuesIncremental(
+    Widget ,
+    Atom ,
+    Atom* ,
+    int ,
+    XtSelectionCallbackProc ,
+    XtPointer* ,
+    Time
+);
+
+extern void XtSetSelectionParameters(
+    Widget ,
+    Atom ,
+    Atom ,
+    XtPointer ,
+    unsigned long ,
+    int
+);
+
+extern void XtGetSelectionParameters(
+    Widget ,
+    Atom ,
+    XtRequestId ,
+    Atom* ,
+    XtPointer* ,
+    unsigned long* ,
+    int*
+);
+
+extern void XtCreateSelectionRequest(
+    Widget ,
+    Atom
+);
+
+extern void XtSendSelectionRequest(
+    Widget ,
+    Atom ,
+    Time
+);
+
+extern void XtCancelSelectionRequest(
+    Widget ,
+    Atom
+);
+
+extern Atom XtReservePropertyAtom(
+    Widget
+);
+
+extern void XtReleasePropertyAtom(
+    Widget ,
+    Atom
+);
+
+extern void XtGrabKey(
+    Widget ,
+    KeyCode ,
+    Modifiers ,
+    Boolean ,
+    int ,
+    int
+);
+
+extern void XtUngrabKey(
+    Widget ,
+    KeyCode ,
+    Modifiers
+);
+
+extern int XtGrabKeyboard(
+    Widget ,
+    Boolean ,
+    int ,
+    int ,
+    Time
+);
+
+extern void XtUngrabKeyboard(
+    Widget ,
+    Time
+);
+
+extern void XtGrabButton(
+    Widget ,
+    int ,
+    Modifiers ,
+    Boolean ,
+    unsigned int ,
+    int ,
+    int ,
+    Window ,
+    Cursor
+);
+
+extern void XtUngrabButton(
+    Widget ,
+    unsigned int ,
+    Modifiers
+);
+
+extern int XtGrabPointer(
+    Widget ,
+    Boolean ,
+    unsigned int ,
+    int ,
+    int ,
+    Window ,
+    Cursor ,
+    Time
+);
+
+extern void XtUngrabPointer(
+    Widget ,
+    Time
+);
+
+extern void XtGetApplicationNameAndClass(
+    Display* ,
+    String* ,
+    String*
+);
+
+extern void XtRegisterDrawable(
+    Display* ,
+    Drawable ,
+    Widget
+);
+
+extern void XtUnregisterDrawable(
+    Display* ,
+    Drawable
+);
+
+extern Widget XtHooksOfDisplay(
+    Display*
+);
+
+typedef struct {
+    String type;
+    Widget widget;
+    ArgList args;
+    Cardinal num_args;
+} XtCreateHookDataRec, *XtCreateHookData;
+
+typedef struct {
+    String type;
+    Widget widget;
+    XtPointer event_data;
+    Cardinal num_event_data;
+} XtChangeHookDataRec, *XtChangeHookData;
+
+typedef struct {
+    Widget old, req;
+    ArgList args;
+    Cardinal num_args;
+} XtChangeHookSetValuesDataRec, *XtChangeHookSetValuesData;
+
+typedef struct {
+    String type;
+    Widget widget;
+    XtGeometryMask changeMask;
+    XWindowChanges changes;
+} XtConfigureHookDataRec, *XtConfigureHookData;
+
+typedef struct {
+    String type;
+    Widget widget;
+    XtWidgetGeometry* request;
+    XtWidgetGeometry* reply;
+    XtGeometryResult result;
+} XtGeometryHookDataRec, *XtGeometryHookData;
+
+typedef struct {
+    String type;
+    Widget widget;
+} XtDestroyHookDataRec, *XtDestroyHookData;
+
+extern void XtGetDisplays(
+    XtAppContext ,
+    Display*** ,
+    Cardinal*
+);
+
+extern Boolean XtToolkitThreadInitialize(
+    void
+);
+
+extern void XtAppSetExitFlag(
+    XtAppContext
+);
+
+extern Boolean XtAppGetExitFlag(
+    XtAppContext
+);
+
+extern void XtAppLock(
+    XtAppContext
+);
+
+extern void XtAppUnlock(
+    XtAppContext
+);
+# 2280 "/usr/include/X11/Intrinsic.h" 3 4
+extern Boolean XtCvtStringToAcceleratorTable(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToAtom(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToBool(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToBoolean(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToCommandArgArray(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToCursor(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToDimension(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToDirectoryString(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToDisplay(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToFile(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToFloat(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToFont(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToFontSet(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToFontStruct(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToGravity(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToInitialState(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToInt(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToPixel(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+
+
+extern Boolean XtCvtStringToRestartStyle(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToShort(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToTranslationTable(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToUnsignedChar(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtStringToVisual(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+
+
+extern Boolean XtCvtIntToBool(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToBoolean(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToColor(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+
+
+extern Boolean XtCvtIntToFloat(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToFont(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToPixel(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToPixmap(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+
+
+extern Boolean XtCvtIntToShort(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+extern Boolean XtCvtIntToUnsignedChar(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+
+
+
+extern Boolean XtCvtColorToPixel(
+    Display* ,
+    XrmValuePtr ,
+    Cardinal* ,
+    XrmValuePtr ,
+    XrmValuePtr ,
+    XtPointer*
+);
+# 136 "./base/x_.h" 2
+# 1 "/usr/include/X11/StringDefs.h" 1 3 4
+# 316 "/usr/include/X11/StringDefs.h" 3 4
+extern const char XtStrings[];
+# 137 "./base/x_.h" 2
+# 1 "/usr/include/X11/Shell.h" 1 3 4
+# 51 "/usr/include/X11/Shell.h" 3 4
+# 1 "/usr/include/X11/SM/SMlib.h" 1 3 4
+# 34 "/usr/include/X11/SM/SMlib.h" 3 4
+# 1 "/usr/include/X11/SM/SM.h" 1 3 4
+# 35 "/usr/include/X11/SM/SMlib.h" 2 3 4
+# 1 "/usr/include/X11/ICE/ICElib.h" 1 3 4
+# 32 "/usr/include/X11/ICE/ICElib.h" 3 4
+# 1 "/usr/include/X11/ICE/ICE.h" 1 3 4
+# 33 "/usr/include/X11/ICE/ICElib.h" 2 3 4
+
+
+
+
+
+
+
+typedef void *IcePointer;
+
+typedef enum {
+    IcePoAuthHaveReply,
+    IcePoAuthRejected,
+    IcePoAuthFailed,
+    IcePoAuthDoneCleanup
+} IcePoAuthStatus;
+
+typedef enum {
+    IcePaAuthContinue,
+    IcePaAuthAccepted,
+    IcePaAuthRejected,
+    IcePaAuthFailed
+} IcePaAuthStatus;
+
+typedef enum {
+    IceConnectPending,
+    IceConnectAccepted,
+    IceConnectRejected,
+    IceConnectIOError
+} IceConnectStatus;
+
+typedef enum {
+    IceProtocolSetupSuccess,
+    IceProtocolSetupFailure,
+    IceProtocolSetupIOError,
+    IceProtocolAlreadyActive
+} IceProtocolSetupStatus;
+
+typedef enum {
+    IceAcceptSuccess,
+    IceAcceptFailure,
+    IceAcceptBadMalloc
+} IceAcceptStatus;
+
+typedef enum {
+    IceClosedNow,
+    IceClosedASAP,
+    IceConnectionInUse,
+    IceStartedShutdownNegotiation
+} IceCloseStatus;
+
+typedef enum {
+    IceProcessMessagesSuccess,
+    IceProcessMessagesIOError,
+    IceProcessMessagesConnectionClosed
+} IceProcessMessagesStatus;
+
+typedef struct {
+    unsigned long sequence_of_request;
+    int major_opcode_of_request;
+    int minor_opcode_of_request;
+    IcePointer reply;
+} IceReplyWaitInfo;
+
+typedef struct _IceConn *IceConn;
+typedef struct _IceListenObj *IceListenObj;
+
+typedef void (*IceWatchProc) (
+    IceConn ,
+    IcePointer ,
+    int ,
+    IcePointer *
+);
+
+typedef void (*IcePoProcessMsgProc) (
+    IceConn ,
+    IcePointer ,
+    int ,
+    unsigned long ,
+    int ,
+    IceReplyWaitInfo * ,
+    int *
+);
+
+typedef void (*IcePaProcessMsgProc) (
+    IceConn ,
+    IcePointer ,
+    int ,
+    unsigned long ,
+    int
+);
+
+typedef struct {
+    int major_version;
+    int minor_version;
+    IcePoProcessMsgProc process_msg_proc;
+} IcePoVersionRec;
+
+typedef struct {
+    int major_version;
+    int minor_version;
+    IcePaProcessMsgProc process_msg_proc;
+} IcePaVersionRec;
+
+typedef IcePoAuthStatus (*IcePoAuthProc) (
+    IceConn ,
+    IcePointer * ,
+    int ,
+    int ,
+    int ,
+    IcePointer ,
+    int * ,
+    IcePointer * ,
+    char **
+);
+
+typedef IcePaAuthStatus (*IcePaAuthProc) (
+    IceConn ,
+    IcePointer * ,
+    int ,
+    int ,
+    IcePointer ,
+    int * ,
+    IcePointer * ,
+    char **
+);
+
+typedef int (*IceHostBasedAuthProc) (
+    char *
+);
+
+typedef int (*IceProtocolSetupProc) (
+    IceConn ,
+    int ,
+    int ,
+    char * ,
+    char * ,
+    IcePointer * ,
+    char **
+);
+
+typedef void (*IceProtocolActivateProc) (
+    IceConn ,
+    IcePointer
+);
+
+typedef void (*IceIOErrorProc) (
+    IceConn
+);
+
+typedef void (*IcePingReplyProc) (
+    IceConn ,
+    IcePointer
+);
+
+typedef void (*IceErrorHandler) (
+    IceConn ,
+    int ,
+    int ,
+    unsigned long ,
+    int ,
+    int ,
+    IcePointer
+);
+
+typedef void (*IceIOErrorHandler) (
+    IceConn
+);
+# 208 "/usr/include/X11/ICE/ICElib.h" 3 4
+extern int IceRegisterForProtocolSetup (
+    const char * ,
+    const char * ,
+    const char * ,
+    int ,
+    IcePoVersionRec * ,
+    int ,
+    const char ** ,
+    IcePoAuthProc * ,
+    IceIOErrorProc
+);
+
+extern int IceRegisterForProtocolReply (
+    const char * ,
+    const char * ,
+    const char * ,
+    int ,
+    IcePaVersionRec * ,
+    int ,
+    const char ** ,
+    IcePaAuthProc * ,
+    IceHostBasedAuthProc ,
+    IceProtocolSetupProc ,
+    IceProtocolActivateProc ,
+    IceIOErrorProc
+);
+
+extern IceConn IceOpenConnection (
+    char * ,
+    IcePointer ,
+    int ,
+    int ,
+    int ,
+    char *
+);
+
+extern IcePointer IceGetConnectionContext (
+    IceConn
+);
+
+extern int IceListenForConnections (
+    int * ,
+    IceListenObj ** ,
+    int ,
+    char *
+);
+
+extern int IceListenForWellKnownConnections (
+    char * ,
+    int * ,
+    IceListenObj ** ,
+    int ,
+    char *
+);
+
+extern int IceGetListenConnectionNumber (
+    IceListenObj
+);
+
+extern char *IceGetListenConnectionString (
+    IceListenObj
+);
+
+extern char *IceComposeNetworkIdList (
+    int ,
+    IceListenObj *
+);
+
+extern void IceFreeListenObjs (
+    int ,
+    IceListenObj *
+);
+
+extern void IceSetHostBasedAuthProc (
+    IceListenObj ,
+    IceHostBasedAuthProc
+);
+
+extern IceConn IceAcceptConnection (
+    IceListenObj ,
+    IceAcceptStatus *
+);
+
+extern void IceSetShutdownNegotiation (
+    IceConn ,
+    int
+);
+
+extern int IceCheckShutdownNegotiation (
+    IceConn
+);
+
+extern IceCloseStatus IceCloseConnection (
+    IceConn
+);
+
+extern int IceAddConnectionWatch (
+    IceWatchProc ,
+    IcePointer
+);
+
+extern void IceRemoveConnectionWatch (
+    IceWatchProc ,
+    IcePointer
+);
+
+extern IceProtocolSetupStatus IceProtocolSetup (
+    IceConn ,
+    int ,
+    IcePointer ,
+    int ,
+    int * ,
+    int * ,
+    char ** ,
+    char ** ,
+    int ,
+    char *
+);
+
+extern int IceProtocolShutdown (
+    IceConn ,
+    int
+);
+
+extern IceProcessMessagesStatus IceProcessMessages (
+    IceConn ,
+    IceReplyWaitInfo * ,
+    int *
+);
+
+extern int IcePing (
+   IceConn ,
+   IcePingReplyProc ,
+   IcePointer
+);
+
+extern char *IceAllocScratch (
+   IceConn ,
+   unsigned long
+);
+
+extern int IceFlush (
+   IceConn
+);
+
+extern int IceGetOutBufSize (
+   IceConn
+);
+
+extern int IceGetInBufSize (
+   IceConn
+);
+
+extern IceConnectStatus IceConnectionStatus (
+    IceConn
+);
+
+extern char *IceVendor (
+    IceConn
+);
+
+extern char *IceRelease (
+    IceConn
+);
+
+extern int IceProtocolVersion (
+    IceConn
+);
+
+extern int IceProtocolRevision (
+    IceConn
+);
+
+extern int IceConnectionNumber (
+    IceConn
+);
+
+extern char *IceConnectionString (
+    IceConn
+);
+
+extern unsigned long IceLastSentSequenceNumber (
+    IceConn
+);
+
+extern unsigned long IceLastReceivedSequenceNumber (
+    IceConn
+);
+
+extern int IceSwapping (
+    IceConn
+);
+
+extern IceErrorHandler IceSetErrorHandler (
+    IceErrorHandler
+);
+
+extern IceIOErrorHandler IceSetIOErrorHandler (
+    IceIOErrorHandler
+);
+
+extern char *IceGetPeerName (
+    IceConn
+);
+
+
+
+
+
+extern int IceInitThreads (
+    void
+);
+
+extern void IceAppLockConn (
+    IceConn
+);
+
+extern void IceAppUnlockConn (
+    IceConn
+);
+# 36 "/usr/include/X11/SM/SMlib.h" 2 3 4
+
+
+
+
+
+
+typedef IcePointer SmPointer;
+
+
+
+
+
+
+typedef struct _SmcConn *SmcConn;
+typedef struct _SmsConn *SmsConn;
+
+
+
+
+
+
+typedef struct {
+    int length;
+    SmPointer value;
+} SmPropValue;
+
+typedef struct {
+    char *name;
+    char *type;
+    int num_vals;
+    SmPropValue *vals;
+} SmProp;
+
+
+
+
+
+
+
+typedef enum {
+    SmcClosedNow,
+    SmcClosedASAP,
+    SmcConnectionInUse
+} SmcCloseStatus;
+
+
+
+
+
+
+
+typedef void (*SmcSaveYourselfProc) (
+    SmcConn ,
+    SmPointer ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+typedef void (*SmcSaveYourselfPhase2Proc) (
+    SmcConn ,
+    SmPointer
+);
+
+typedef void (*SmcInteractProc) (
+    SmcConn ,
+    SmPointer
+);
+
+typedef void (*SmcDieProc) (
+    SmcConn ,
+    SmPointer
+);
+
+typedef void (*SmcShutdownCancelledProc) (
+    SmcConn ,
+    SmPointer
+);
+
+typedef void (*SmcSaveCompleteProc) (
+    SmcConn ,
+    SmPointer
+);
+
+typedef void (*SmcPropReplyProc) (
+    SmcConn ,
+    SmPointer ,
+    int ,
+    SmProp **
+);
+
+
+
+
+
+
+typedef struct {
+
+    struct {
+ SmcSaveYourselfProc callback;
+ SmPointer client_data;
+    } save_yourself;
+
+    struct {
+ SmcDieProc callback;
+ SmPointer client_data;
+    } die;
+
+    struct {
+ SmcSaveCompleteProc callback;
+ SmPointer client_data;
+    } save_complete;
+
+    struct {
+ SmcShutdownCancelledProc callback;
+ SmPointer client_data;
+    } shutdown_cancelled;
+
+} SmcCallbacks;
+# 168 "/usr/include/X11/SM/SMlib.h" 3 4
+typedef int (*SmsRegisterClientProc) (
+    SmsConn ,
+    SmPointer ,
+    char *
+);
+
+typedef void (*SmsInteractRequestProc) (
+    SmsConn ,
+    SmPointer ,
+    int
+);
+
+typedef void (*SmsInteractDoneProc) (
+    SmsConn ,
+    SmPointer ,
+    int
+);
+
+typedef void (*SmsSaveYourselfRequestProc) (
+    SmsConn ,
+    SmPointer ,
+    int ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+typedef void (*SmsSaveYourselfPhase2RequestProc) (
+    SmsConn ,
+    SmPointer
+);
+
+typedef void (*SmsSaveYourselfDoneProc) (
+    SmsConn ,
+    SmPointer ,
+    int
+);
+
+typedef void (*SmsCloseConnectionProc) (
+    SmsConn ,
+    SmPointer ,
+    int ,
+    char **
+);
+
+typedef void (*SmsSetPropertiesProc) (
+    SmsConn ,
+    SmPointer ,
+    int ,
+    SmProp **
+);
+
+typedef void (*SmsDeletePropertiesProc) (
+    SmsConn ,
+    SmPointer ,
+    int ,
+    char **
+);
+
+typedef void (*SmsGetPropertiesProc) (
+    SmsConn ,
+    SmPointer
+);
+
+
+
+
+
+
+typedef struct {
+
+    struct {
+ SmsRegisterClientProc callback;
+ SmPointer manager_data;
+    } register_client;
+
+    struct {
+ SmsInteractRequestProc callback;
+ SmPointer manager_data;
+    } interact_request;
+
+    struct {
+ SmsInteractDoneProc callback;
+ SmPointer manager_data;
+    } interact_done;
+
+    struct {
+ SmsSaveYourselfRequestProc callback;
+ SmPointer manager_data;
+    } save_yourself_request;
+
+    struct {
+ SmsSaveYourselfPhase2RequestProc callback;
+ SmPointer manager_data;
+    } save_yourself_phase2_request;
+
+    struct {
+ SmsSaveYourselfDoneProc callback;
+ SmPointer manager_data;
+    } save_yourself_done;
+
+    struct {
+ SmsCloseConnectionProc callback;
+ SmPointer manager_data;
+    } close_connection;
+
+    struct {
+ SmsSetPropertiesProc callback;
+ SmPointer manager_data;
+    } set_properties;
+
+    struct {
+ SmsDeletePropertiesProc callback;
+ SmPointer manager_data;
+    } delete_properties;
+
+    struct {
+ SmsGetPropertiesProc callback;
+ SmPointer manager_data;
+    } get_properties;
+
+} SmsCallbacks;
+# 306 "/usr/include/X11/SM/SMlib.h" 3 4
+typedef int (*SmsNewClientProc) (
+    SmsConn ,
+    SmPointer ,
+    unsigned long * ,
+    SmsCallbacks * ,
+    char **
+);
+
+
+
+
+
+
+
+typedef void (*SmcErrorHandler) (
+    SmcConn ,
+    int ,
+    int ,
+    unsigned long ,
+    int ,
+    int ,
+    SmPointer
+);
+
+typedef void (*SmsErrorHandler) (
+    SmsConn ,
+    int ,
+    int ,
+    unsigned long ,
+    int ,
+    int ,
+    SmPointer
+);
+# 348 "/usr/include/X11/SM/SMlib.h" 3 4
+extern SmcConn SmcOpenConnection (
+    char * ,
+    SmPointer ,
+    int ,
+    int ,
+    unsigned long ,
+    SmcCallbacks * ,
+    const char * ,
+    char ** ,
+    int ,
+    char *
+);
+
+extern SmcCloseStatus SmcCloseConnection (
+    SmcConn ,
+    int ,
+    char **
+);
+
+extern void SmcModifyCallbacks (
+    SmcConn ,
+    unsigned long ,
+    SmcCallbacks *
+);
+
+extern void SmcSetProperties (
+    SmcConn ,
+    int ,
+    SmProp **
+);
+
+extern void SmcDeleteProperties (
+    SmcConn ,
+    int ,
+    char **
+);
+
+extern int SmcGetProperties (
+    SmcConn ,
+    SmcPropReplyProc ,
+    SmPointer
+);
+
+extern int SmcInteractRequest (
+    SmcConn ,
+    int ,
+    SmcInteractProc ,
+    SmPointer
+);
+
+extern void SmcInteractDone (
+    SmcConn ,
+    int
+);
+
+extern void SmcRequestSaveYourself (
+    SmcConn ,
+    int ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+extern int SmcRequestSaveYourselfPhase2 (
+    SmcConn ,
+    SmcSaveYourselfPhase2Proc ,
+    SmPointer
+);
+
+extern void SmcSaveYourselfDone (
+    SmcConn ,
+    int
+);
+
+extern int SmcProtocolVersion (
+    SmcConn
+);
+
+extern int SmcProtocolRevision (
+    SmcConn
+);
+
+extern char *SmcVendor (
+    SmcConn
+);
+
+extern char *SmcRelease (
+    SmcConn
+);
+
+extern char *SmcClientID (
+    SmcConn
+);
+
+extern IceConn SmcGetIceConnection (
+    SmcConn
+);
+
+extern int SmsInitialize (
+    const char * ,
+    const char * ,
+    SmsNewClientProc ,
+    SmPointer ,
+    IceHostBasedAuthProc ,
+    int ,
+    char *
+);
+
+extern char *SmsClientHostName (
+    SmsConn
+);
+
+extern char *SmsGenerateClientID (
+    SmsConn
+);
+
+extern int SmsRegisterClientReply (
+    SmsConn ,
+    char *
+);
+
+extern void SmsSaveYourself (
+    SmsConn ,
+    int ,
+    int ,
+    int ,
+    int
+);
+
+extern void SmsSaveYourselfPhase2 (
+    SmsConn
+);
+
+extern void SmsInteract (
+    SmsConn
+);
+
+extern void SmsDie (
+    SmsConn
+);
+
+extern void SmsSaveComplete (
+    SmsConn
+);
+
+extern void SmsShutdownCancelled (
+    SmsConn
+);
+
+extern void SmsReturnProperties (
+    SmsConn ,
+    int ,
+    SmProp **
+);
+
+extern void SmsCleanUp (
+    SmsConn
+);
+
+extern int SmsProtocolVersion (
+    SmsConn
+);
+
+extern int SmsProtocolRevision (
+    SmsConn
+);
+
+extern char *SmsClientID (
+    SmsConn
+);
+
+extern IceConn SmsGetIceConnection (
+    SmsConn
+);
+
+extern SmcErrorHandler SmcSetErrorHandler (
+    SmcErrorHandler
+);
+
+extern SmsErrorHandler SmsSetErrorHandler (
+    SmsErrorHandler
+);
+
+extern void SmFreeProperty (
+    SmProp *
+);
+
+extern void SmFreeReasons (
+    int ,
+    char **
+);
+# 52 "/usr/include/X11/Shell.h" 2 3 4
+# 189 "/usr/include/X11/Shell.h" 3 4
+extern const char XtShellStrings[];
+# 543 "/usr/include/X11/Shell.h" 3 4
+typedef struct _ShellClassRec *ShellWidgetClass;
+typedef struct _OverrideShellClassRec *OverrideShellWidgetClass;
+typedef struct _WMShellClassRec *WMShellWidgetClass;
+typedef struct _TransientShellClassRec *TransientShellWidgetClass;
+typedef struct _TopLevelShellClassRec *TopLevelShellWidgetClass;
+typedef struct _ApplicationShellClassRec *ApplicationShellWidgetClass;
+typedef struct _SessionShellClassRec *SessionShellWidgetClass;
+
+
+extern WidgetClass shellWidgetClass;
+extern WidgetClass overrideShellWidgetClass;
+extern WidgetClass wmShellWidgetClass;
+extern WidgetClass transientShellWidgetClass;
+extern WidgetClass topLevelShellWidgetClass;
+extern WidgetClass applicationShellWidgetClass;
+extern WidgetClass sessionShellWidgetClass;
+# 138 "./base/x_.h" 2
+# 22 "./devices/gdevxalt.c" 2
+
+# 1 "./base/gsparam.h" 1
+# 22 "./base/gsparam.h"
+# 1 "./base/gsstype.h" 1
+# 23 "./base/gsstype.h"
+typedef struct gc_state_s gc_state_t;
+
+
+
+
+
+typedef struct enum_ptr_s {
+    const void *ptr;
+    uint size;
+} enum_ptr_t;
+# 81 "./base/gsstype.h"
+typedef struct struct_shared_procs_s struct_shared_procs_t;
+
+struct gs_memory_struct_type_s {
+        uint ssize;
+        struct_name_t sname;
+
+
+
+
+        const struct_shared_procs_t *shared;
+
+
+
+        void (*clear_marks)(const gs_memory_t *cmem, void *pre, uint size, const gs_memory_struct_type_t *pstype);
+        gs_ptr_type_t (*enum_ptrs)(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+        void (*reloc_ptrs)(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+        void (*finalize)(const gs_memory_t *cmem, void *ptr);
+
+
+
+        const void *proc_data;
+};
+# 23 "./base/gsparam.h" 2
+# 36 "./base/gsparam.h"
+typedef struct gs_param_list_s gs_param_list;
+
+
+
+typedef const char *gs_param_name;
+# 50 "./base/gsparam.h"
+typedef enum {
+
+    gs_param_type_null, gs_param_type_bool, gs_param_type_int,
+    gs_param_type_long, gs_param_type_float,
+
+    gs_param_type_string, gs_param_type_name,
+    gs_param_type_int_array, gs_param_type_float_array,
+    gs_param_type_string_array, gs_param_type_name_array,
+
+    gs_param_type_dict, gs_param_type_dict_int_keys, gs_param_type_array
+} gs_param_type;
+# 75 "./base/gsparam.h"
+typedef struct gs_param_int_array_s { const int *data; uint size; bool persistent; } gs_param_int_array;
+typedef struct gs_param_float_array_s { const float *data; uint size; bool persistent; } gs_param_float_array;
+typedef struct gs_param_string_array_s { const gs_param_string *data; uint size; bool persistent; } gs_param_string_array;
+# 93 "./base/gsparam.h"
+typedef struct gs_param_collection_s {
+    gs_param_list *list;
+    uint size;
+} gs_param_collection;
+typedef gs_param_collection gs_param_dict;
+typedef gs_param_collection gs_param_array;
+# 120 "./base/gsparam.h"
+extern const byte gs_param_type_sizes[];
+extern const byte gs_param_type_base_sizes[];
+# 136 "./base/gsparam.h"
+typedef union gs_param_value_s {
+    bool b; int i; long l; float f; gs_param_string s; gs_param_string n; gs_param_int_array ia; gs_param_float_array fa; gs_param_string_array sa; gs_param_string_array na; gs_param_collection d;
+} gs_param_value;
+
+
+
+
+
+typedef struct gs_param_typed_value_s {
+    gs_param_value value;
+    gs_param_type type;
+} gs_param_typed_value;
+
+
+
+
+
+
+gs_ptr_type_t gs_param_typed_value_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void gs_param_typed_value_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+
+
+
+
+
+
+typedef enum {
+
+
+
+    gs_param_collection_dict_any = 0,
+
+
+
+
+
+    gs_param_collection_dict_int_keys = 1,
+
+
+
+
+    gs_param_collection_array = 2
+
+} gs_param_collection_type_t;
+# 195 "./base/gsparam.h"
+typedef union gs_param_enumerator_s {
+    int intval;
+    long longval;
+    void *pvoid;
+    char *pchar;
+} gs_param_enumerator_t;
+typedef gs_param_string gs_param_key_t;
+# 256 "./base/gsparam.h"
+typedef struct gs_param_list_procs_s {
+# 268 "./base/gsparam.h"
+         int (*xmit_typed)(gs_param_list *, gs_param_name, gs_param_typed_value *);
+# 278 "./base/gsparam.h"
+         int (*begin_xmit_collection)(gs_param_list *, gs_param_name, gs_param_dict *, gs_param_collection_type_t);
+# 296 "./base/gsparam.h"
+         int (*end_xmit_collection)(gs_param_list *, gs_param_name, gs_param_dict *);
+# 312 "./base/gsparam.h"
+         int (*next_key)(gs_param_list *, gs_param_enumerator_t *, gs_param_key_t *);
+# 326 "./base/gsparam.h"
+         int (*request)(gs_param_list *, gs_param_name);
+# 341 "./base/gsparam.h"
+         int (*requested)(const gs_param_list *, gs_param_name);
+# 350 "./base/gsparam.h"
+         int (*get_policy)(gs_param_list *, gs_param_name);
+# 362 "./base/gsparam.h"
+         int (*signal_error)(gs_param_list *, gs_param_name, int);
+# 375 "./base/gsparam.h"
+         int (*commit)(gs_param_list *);
+
+
+
+} gs_param_list_procs;
+
+
+int param_read_requested_typed(gs_param_list *, gs_param_name,
+                                  gs_param_typed_value *);
+
+
+
+
+
+
+int param_read_null(gs_param_list *, gs_param_name);
+int param_write_null(gs_param_list *, gs_param_name);
+int param_read_bool(gs_param_list *, gs_param_name, bool *);
+int param_write_bool(gs_param_list *, gs_param_name, const bool *);
+int param_read_int(gs_param_list *, gs_param_name, int *);
+int param_write_int(gs_param_list *, gs_param_name, const int *);
+int param_read_long(gs_param_list *, gs_param_name, long *);
+int param_write_long(gs_param_list *, gs_param_name, const long *);
+int param_read_float(gs_param_list *, gs_param_name, float *);
+int param_write_float(gs_param_list *, gs_param_name, const float *);
+int param_read_string(gs_param_list *, gs_param_name, gs_param_string *);
+int param_write_string(gs_param_list *, gs_param_name,
+                       const gs_param_string *);
+int param_read_name(gs_param_list *, gs_param_name, gs_param_string *);
+int param_write_name(gs_param_list *, gs_param_name,
+                     const gs_param_string *);
+int param_read_int_array(gs_param_list *, gs_param_name,
+                         gs_param_int_array *);
+int param_write_int_array(gs_param_list *, gs_param_name,
+                          const gs_param_int_array *);
+int param_write_int_values(gs_param_list *, gs_param_name,
+                           const int *, uint, bool);
+int param_read_float_array(gs_param_list *, gs_param_name,
+                           gs_param_float_array *);
+int param_write_float_array(gs_param_list *, gs_param_name,
+                            const gs_param_float_array *);
+int param_write_float_values(gs_param_list *, gs_param_name,
+                             const float *, uint, bool);
+int param_read_string_array(gs_param_list *, gs_param_name,
+                            gs_param_string_array *);
+int param_write_string_array(gs_param_list *, gs_param_name,
+                             const gs_param_string_array *);
+int param_read_name_array(gs_param_list *, gs_param_name,
+                          gs_param_string_array *);
+int param_write_name_array(gs_param_list *, gs_param_name,
+                           const gs_param_string_array *);
+# 439 "./base/gsparam.h"
+struct gs_param_list_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+};
+
+
+
+
+void gs_param_list_set_persist_keys(gs_param_list *, bool);
+
+
+void param_init_enumerator(gs_param_enumerator_t * penum);
+
+
+
+
+
+
+typedef struct gs_param_item_s {
+    const char *key;
+    byte type;
+    short offset;
+} gs_param_item_t;
+
+
+
+
+
+
+int gs_param_read_items(gs_param_list * plist, void *obj,
+                        const gs_param_item_t * items);
+int gs_param_write_items(gs_param_list * plist, const void *obj,
+                         const void *default_obj,
+                         const gs_param_item_t * items);
+
+
+void gs_param_list_init(gs_param_list *, const gs_param_list_procs *,
+                        gs_memory_t *);
+
+
+
+
+
+
+int param_coerce_typed(gs_param_typed_value * pvalue,
+                       gs_param_type req_type, gs_memory_t * mem);
+
+
+
+
+
+
+
+int gs_param_request_default(gs_param_list *, gs_param_name);
+int gs_param_requested_default(const gs_param_list *, gs_param_name);
+# 520 "./base/gsparam.h"
+typedef struct gs_c_param_s gs_c_param;
+typedef struct gs_c_param_list_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+    gs_c_param *head;
+    gs_param_list *target;
+    uint count;
+    bool any_requested;
+    gs_param_collection_type_t coll_type;
+} gs_c_param_list;
+# 540 "./base/gsparam.h"
+void gs_c_param_list_set_target(gs_c_param_list *, gs_param_list *);
+
+
+
+
+
+gs_c_param_list *gs_c_param_list_alloc(gs_memory_t *, client_name_t);
+void gs_c_param_list_write(gs_c_param_list *, gs_memory_t *);
+void gs_c_param_list_write_more(gs_c_param_list *);
+void gs_c_param_list_read(gs_c_param_list *);
+void gs_c_param_list_release(gs_c_param_list *);
+# 24 "./devices/gdevxalt.c" 2
+# 1 "./base/gsstruct.h" 1
+# 85 "./base/gsstruct.h"
+typedef struct obj_header_s obj_header_t;
+
+
+
+
+
+
+
+struct gs_ptr_procs_s {
+
+
+
+
+
+    void (*unmark)(enum_ptr_t *, gc_state_t *);
+
+
+
+
+
+
+    bool (*mark)(enum_ptr_t *, gc_state_t *);
+# 116 "./base/gsstruct.h"
+    void *(*reloc)(const void *, gc_state_t *);
+
+};
+
+
+
+extern const gs_ptr_procs_t ptr_struct_procs;
+
+
+
+extern const gs_ptr_procs_t ptr_string_procs;
+
+extern const gs_ptr_procs_t ptr_const_string_procs;
+
+
+
+extern const gs_ptr_procs_t ptr_name_index_procs;
+
+
+
+
+
+
+struct gs_gc_root_s {
+    gs_gc_root_t *next;
+    gs_ptr_type_t ptype;
+    void **p;
+    bool free_on_unregister;
+};
+# 180 "./base/gsstruct.h"
+typedef struct gc_procs_common_s {
+    void *(*reloc_struct_ptr)(const void *, gc_state_t *); void (*reloc_string)(gs_string *, gc_state_t *); void (*reloc_const_string)(gs_const_string *, gc_state_t *); void (*reloc_param_string)(gs_param_string *, gc_state_t *);
+} gc_procs_common_t;
+
+
+
+
+
+
+
+gs_ptr_type_t gs_no_struct_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void gs_no_struct_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+
+
+
+
+
+extern const gs_memory_struct_type_t st_free;
+
+
+
+extern const gs_memory_struct_type_t st_bytes;
+
+
+
+extern const gs_memory_struct_type_t st_gc_root_t;
+# 216 "./base/gsstruct.h"
+extern const gs_memory_struct_type_t st_const_string_element;
+# 237 "./base/gsstruct.h"
+typedef enum {
+    GC_ELT_OBJ,
+    GC_ELT_STRING,
+    GC_ELT_CONST_STRING
+} gc_ptr_type_index_t;
+
+typedef struct gc_ptr_element_s {
+    ushort type;
+    ushort offset;
+} gc_ptr_element_t;
+# 261 "./base/gsstruct.h"
+typedef struct gc_struct_data_s {
+    ushort num_ptrs;
+    ushort super_offset;
+    const gs_memory_struct_type_t *super_type;
+    const gc_ptr_element_t *ptrs;
+} gc_struct_data_t;
+# 284 "./base/gsstruct.h"
+gs_ptr_type_t basic_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void basic_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+# 375 "./base/gsstruct.h"
+extern gs_ptr_type_t
+    enum_bytestring(enum_ptr_t *pep, const gs_bytestring *pbs);
+
+
+extern gs_ptr_type_t
+    enum_const_bytestring(enum_ptr_t *pep, const gs_const_bytestring *pbs);
+# 435 "./base/gsstruct.h"
+extern void reloc_bytestring(gs_bytestring *pbs, gc_state_t *gcst);
+
+
+extern void reloc_const_bytestring(gs_const_bytestring *pbs, gc_state_t *gcst);
+# 25 "./devices/gdevxalt.c" 2
+# 1 "./base/gxdevice.h" 1
+# 23 "./base/gxdevice.h"
+# 1 "./base/gxdevcli.h" 1
+# 23 "./base/gxdevcli.h"
+# 1 "./base/stdint_.h" 1
+# 43 "./base/stdint_.h"
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 1 3
+# 63 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 3
+# 1 "/usr/include/stdint.h" 1 3 4
+# 26 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/bits/wchar.h" 1 3 4
+# 22 "/usr/include/bits/wchar.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/wchar.h" 2 3 4
+# 27 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/stdint.h" 2 3 4
+# 48 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+
+typedef unsigned int uint32_t;
+
+
+
+typedef unsigned long int uint64_t;
+# 65 "/usr/include/stdint.h" 3 4
+typedef signed char int_least8_t;
+typedef short int int_least16_t;
+typedef int int_least32_t;
+
+typedef long int int_least64_t;
+
+
+
+
+
+
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+
+typedef unsigned long int uint_least64_t;
+# 90 "/usr/include/stdint.h" 3 4
+typedef signed char int_fast8_t;
+
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+# 103 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint_fast8_t;
+
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+# 119 "/usr/include/stdint.h" 3 4
+typedef long int intptr_t;
+
+
+typedef unsigned long int uintptr_t;
+# 134 "/usr/include/stdint.h" 3 4
+typedef long int intmax_t;
+typedef unsigned long int uintmax_t;
+# 64 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 2 3
+# 44 "./base/stdint_.h" 2
+# 131 "./base/stdint_.h"
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 1 3
+# 26 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 3
+# 1 "/usr/include/inttypes.h" 1 3 4
+# 34 "/usr/include/inttypes.h" 3 4
+typedef int __gwchar_t;
+# 278 "/usr/include/inttypes.h" 3 4
+typedef struct
+  {
+    long int quot;
+    long int rem;
+  } imaxdiv_t;
+# 297 "/usr/include/inttypes.h" 3 4
+extern intmax_t imaxabs (intmax_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern imaxdiv_t imaxdiv (intmax_t __numer, intmax_t __denom)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern intmax_t strtoimax (const char *__restrict __nptr,
+      char **__restrict __endptr, int __base) __attribute__ ((__nothrow__ ));
+
+
+extern uintmax_t strtoumax (const char *__restrict __nptr,
+       char ** __restrict __endptr, int __base) __attribute__ ((__nothrow__ ));
+
+
+extern intmax_t wcstoimax (const __gwchar_t *__restrict __nptr,
+      __gwchar_t **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ ));
+
+
+extern uintmax_t wcstoumax (const __gwchar_t *__restrict __nptr,
+       __gwchar_t ** __restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long int __strtol_internal (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) intmax_t
+__attribute__ ((__nothrow__ )) strtoimax (const char *__restrict nptr, char **__restrict endptr, int base)
+
+{
+  return __strtol_internal (nptr, endptr, base, 0);
+}
+
+extern unsigned long int __strtoul_internal (const char *__restrict __nptr,
+          char ** __restrict __endptr,
+          int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) uintmax_t
+__attribute__ ((__nothrow__ )) strtoumax (const char *__restrict nptr, char **__restrict endptr, int base)
+
+{
+  return __strtoul_internal (nptr, endptr, base, 0);
+}
+
+extern long int __wcstol_internal (const __gwchar_t * __restrict __nptr,
+       __gwchar_t **__restrict __endptr,
+       int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) intmax_t
+__attribute__ ((__nothrow__ )) wcstoimax (const __gwchar_t *__restrict nptr, __gwchar_t **__restrict endptr, int base)
+
+{
+  return __wcstol_internal (nptr, endptr, base, 0);
+}
+
+extern unsigned long int __wcstoul_internal (const __gwchar_t *
+          __restrict __nptr,
+          __gwchar_t **
+          __restrict __endptr,
+          int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) uintmax_t
+__attribute__ ((__nothrow__ )) wcstoumax (const __gwchar_t *__restrict nptr, __gwchar_t **__restrict endptr, int base)
+
+{
+  return __wcstoul_internal (nptr, endptr, base, 0);
+}
+# 27 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 2 3
+# 132 "./base/stdint_.h" 2
+# 24 "./base/gxdevcli.h" 2
+# 1 "./base/gscompt.h" 1
+# 41 "./base/gscompt.h"
+typedef struct gs_composite_s gs_composite_t;
+
+
+
+
+
+
+gs_id gs_composite_id(const gs_composite_t * pcte);
+# 25 "./base/gxdevcli.h" 2
+# 1 "./base/gsdcolor.h" 1
+# 22 "./base/gsdcolor.h"
+# 1 "./base/gsccolor.h" 1
+# 27 "./base/gsccolor.h"
+typedef struct gs_pattern_instance_s gs_pattern_instance_t;
+# 61 "./base/gsccolor.h"
+typedef struct gs_paint_color_s {
+    float values[(64)];
+
+
+
+} gs_paint_color;
+
+
+
+
+typedef struct gs_client_color_s gs_client_color;
+
+
+struct gs_client_color_s {
+    gs_pattern_instance_t *pattern;
+    gs_paint_color paint;
+
+
+
+
+};
+
+extern const gs_memory_struct_type_t st_client_color;
+# 93 "./base/gsccolor.h"
+typedef enum {
+    GRAY_SCALE,
+    DEVICE_RGB,
+    DEVICE_CMYK,
+    CIE_XYZ,
+    DEVICEN,
+    ICC,
+    UNKNOWN,
+    OTHER
+} gs_transparency_color_t;
+
+
+
+
+
+
+typedef enum {
+    GX_CINFO_POLARITY_UNKNOWN = -1,
+    GX_CINFO_POLARITY_SUBTRACTIVE = 0,
+    GX_CINFO_POLARITY_ADDITIVE
+} gx_color_polarity_t;
+# 23 "./base/gsdcolor.h" 2
+# 1 "./base/gxarith.h" 1
+# 27 "./base/gxarith.h"
+int imod(int m, int n);
+
+
+int igcd(int x, int y);
+
+
+
+
+
+int idivmod(int a, int b, int m);
+
+
+
+
+int ilog2(int n);
+# 24 "./base/gsdcolor.h" 2
+# 1 "./base/gxbitmap.h" 1
+# 23 "./base/gxbitmap.h"
+# 1 "./base/gsbitmap.h" 1
+# 54 "./base/gsbitmap.h"
+typedef gs_id gs_bitmap_id;
+# 75 "./base/gsbitmap.h"
+typedef struct gs_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gs_bitmap;
+typedef struct gs_const_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gs_const_bitmap;
+# 96 "./base/gsbitmap.h"
+typedef struct gs_tile_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gs_tile_bitmap;
+typedef struct gs_const_tile_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gs_const_tile_bitmap;
+# 124 "./base/gsbitmap.h"
+typedef struct gs_depth_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; byte pix_depth; byte num_comps;
+} gs_depth_bitmap;
+typedef struct gs_const_depth_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; byte pix_depth; byte num_comps;
+} gs_const_depth_bitmap;
+
+
+
+
+
+
+typedef struct gs_tile_depth_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; byte pix_depth; byte num_comps;
+} gs_tile_depth_bitmap;
+typedef struct gs_const_tile_depth_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; byte pix_depth; byte num_comps;
+} gs_const_tile_depth_bitmap;
+# 155 "./base/gsbitmap.h"
+extern const gs_memory_struct_type_t st_gs_bitmap;
+extern const gs_memory_struct_type_t st_gs_tile_bitmap;
+extern const gs_memory_struct_type_t st_gs_depth_bitmap;
+extern const gs_memory_struct_type_t st_gs_tile_depth_bitmap;
+# 24 "./base/gxbitmap.h" 2
+
+
+typedef gs_bitmap_id gx_bitmap_id;
+# 83 "./base/gxbitmap.h"
+typedef struct gx_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gx_bitmap;
+typedef struct gx_const_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gx_const_bitmap;
+
+
+
+
+
+
+
+typedef struct gx_tile_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gx_tile_bitmap;
+typedef struct gx_const_tile_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gx_const_tile_bitmap;
+# 150 "./base/gxbitmap.h"
+typedef struct gx_strip_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; ushort rep_shift; ushort shift; int num_planes;
+} gx_strip_bitmap;
+typedef struct gx_const_strip_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; ushort rep_shift; ushort shift; int num_planes;
+} gx_const_strip_bitmap;
+
+extern const gs_memory_struct_type_t st_gx_strip_bitmap;
+# 25 "./base/gsdcolor.h" 2
+# 1 "./base/gxhttile.h" 1
+# 32 "./base/gxhttile.h"
+typedef struct gx_ht_tile_s gx_ht_tile;
+
+
+
+struct gx_ht_tile_s {
+    gx_strip_bitmap tiles;
+    int level;
+
+
+    uint index;
+
+};
+# 26 "./base/gsdcolor.h" 2
+# 1 "./base/gxcindex.h" 1
+# 23 "./base/gxcindex.h"
+# 1 "./base/gsbitops.h" 1
+# 279 "./base/gsbitops.h"
+void bits_fill_rectangle(byte * dest, int dest_bit, uint raster,
+                      uint pattern, int width_bits, int height);
+void bits_fill_rectangle_masked(byte * dest, int dest_bit, uint raster,
+                      uint pattern, uint src_mask,
+                      int width_bits, int height);
+
+
+void bits_replicate_horizontally(byte * data, uint width, uint height,
+               uint raster, uint replicated_width, uint replicated_raster);
+
+
+void bits_replicate_vertically(byte * data, uint height, uint raster,
+    uint replicated_height);
+
+
+void bits_bounding_box(const byte * data, uint height, uint raster,
+    gs_int_rect * pbox);
+
+
+
+
+void bits_compress_scaled(const byte * src, int srcx, uint width,
+    uint height, uint sraster, byte * dest, uint draster,
+    const gs_log2_scale_point * plog2_scale, int log2_out_bits);
+
+
+typedef struct bits_plane_s {
+    union bpd_ {
+        byte *write;
+        const byte *read;
+    } data;
+    int raster;
+    int depth;
+    int x;
+} bits_plane_t;
+int bits_extract_plane(const bits_plane_t *dest ,
+    const bits_plane_t *source , int shift, int width, int height);
+
+
+int bits_expand_plane(const bits_plane_t *dest ,
+    const bits_plane_t *source , int shift, int width, int height);
+
+
+void bytes_fill_rectangle(byte * dest, uint raster,
+    byte value, int width_bytes, int height);
+
+
+void bytes_copy_rectangle(byte * dest, uint dest_raster,
+    const byte * src, uint src_raster, int width_bytes, int height);
+
+
+
+int bytes_rectangle_is_const(const byte * src, uint src_raster, int width_bytes, int height);
+
+
+
+void bytes_copy_rectangle_zero_padding(byte * dest, uint dest_raster,
+    const byte * src, uint src_raster, int width_bytes, int height);
+# 24 "./base/gxcindex.h" 2
+# 58 "./base/gxcindex.h"
+enum { ARCH_SIZEOF_GX_COLOR_INDEX__must_equal__sizeof_GX_COLOR_INDEX_TYPE = 1/!!(8 == sizeof(unsigned long int)) };
+typedef unsigned long int gx_color_index_data;
+# 87 "./base/gxcindex.h"
+typedef gx_color_index_data gx_color_index;
+# 27 "./base/gsdcolor.h" 2
+
+
+
+typedef struct gx_device_color_s gx_device_color;
+
+
+
+
+typedef struct gx_device_color_saved_s gx_device_color_saved;
+
+
+
+
+typedef struct gx_device_halftone_s gx_device_halftone;
+# 92 "./base/gsdcolor.h"
+bool gx_device_color_equal(const gx_device_color *pdevc1,
+                           const gx_device_color *pdevc2);
+# 164 "./base/gsdcolor.h"
+void gx_complete_halftone(gx_device_color *pdevc, int num_comps,
+                          gx_device_halftone *pdht);
+# 190 "./base/gsdcolor.h"
+typedef struct gx_color_tile_s gx_color_tile;
+# 260 "./base/gsdcolor.h"
+typedef struct gx_device_color_type_s gx_device_color_type_t;
+typedef const gx_device_color_type_t *gx_device_color_type;
+
+struct gx_device_color_s {
+
+
+
+
+    gx_device_color_type type;
+
+
+
+
+
+
+    union _c {
+        gx_color_index pure;
+        struct _bin {
+            const gx_device_halftone *b_ht;
+            gx_color_index color[2];
+            uint b_level;
+            int b_index;
+            gx_ht_tile *b_tile;
+        } binary;
+        struct _col {
+            gx_device_halftone *c_ht;
+            ushort num_components;
+            byte c_base[(8 * 8)];
+            uint c_level[(8 * 8)];
+            ushort alpha;
+
+
+
+
+
+
+            gx_color_index plane_mask;
+
+
+        } colored;
+        struct _pat {
+            gx_color_tile *p_tile;
+        } pattern;
+        struct _devn {
+            ushort values[(64)];
+        } devn;
+    } colors;
+    gs_int_point phase;
+
+
+
+
+
+
+
+    bool ccolor_valid;
+
+
+
+
+
+
+    gs_client_color ccolor;
+
+    struct _mask {
+        struct mp_ {
+            int x, y;
+        } m_phase;
+        gx_bitmap_id id;
+        gx_color_tile *m_tile;
+    } mask;
+};
+# 376 "./base/gsdcolor.h"
+struct gx_device_color_saved_s {
+    gx_device_color_type type;
+    union _svc {
+        gx_color_index pure;
+        struct _svbin {
+            gx_color_index b_color[2];
+            uint b_level;
+            int b_index;
+        } binary;
+        struct _svcol {
+            byte c_base[(8 * 8)];
+            uint c_level[(8 * 8)];
+            ushort alpha;
+        } colored;
+        struct _svdevn {
+            ushort values[(8 * 8)];
+        } devn;
+        struct _pattern {
+            gs_id id;
+            gs_int_point phase;
+        } pattern;
+        struct _pattern2 {
+            gs_id id;
+            bool shfill;
+        } pattern2;
+    } colors;
+    gs_int_point phase;
+};
+# 415 "./base/gsdcolor.h"
+extern const gx_device_color_type_t *const gx_dc_type_none;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_null;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_pure;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_devn;
+# 434 "./base/gsdcolor.h"
+extern const gx_device_color_type_t *const gx_dc_type_ht_binary;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_ht_colored;
+# 26 "./base/gxdevcli.h" 2
+# 1 "./base/gsmatrix.h" 1
+# 31 "./base/gsmatrix.h"
+struct gs_matrix_s {
+    float xx, xy, yx, yy, tx, ty;
+};
+struct gs_matrix_double_s {
+  double xx, xy, yx, yy, tx, ty;
+};
+
+
+
+typedef struct gs_matrix_s gs_matrix;
+
+
+
+typedef struct gs_matrix_double_s gs_matrix_double;
+# 62 "./base/gsmatrix.h"
+void gs_make_identity(gs_matrix *);
+int gs_make_translation(double, double, gs_matrix *),
+    gs_make_scaling(double, double, gs_matrix *),
+    gs_make_rotation(double, gs_matrix *);
+
+
+int gs_matrix_multiply(const gs_matrix *, const gs_matrix *, gs_matrix *),
+    gs_matrix_multiply_double(const gs_matrix_double *, const gs_matrix *, gs_matrix_double *),
+    gs_matrix_invert(const gs_matrix *, gs_matrix *),
+    gs_matrix_invert_to_double(const gs_matrix *, gs_matrix_double *),
+    gs_matrix_translate(const gs_matrix *, double, double, gs_matrix *),
+    gs_matrix_scale(const gs_matrix *, double, double, gs_matrix *),
+    gs_matrix_rotate(const gs_matrix *, double, gs_matrix *);
+
+
+int gs_matrix_compare(const gs_matrix *, const gs_matrix *);
+
+
+int gs_point_transform(double, double, const gs_matrix *, gs_point *),
+    gs_point_transform_inverse(double, double, const gs_matrix *, gs_point *),
+    gs_distance_transform(double, double, const gs_matrix *, gs_point *),
+    gs_distance_transform_inverse(double, double, const gs_matrix *, gs_point *),
+    gs_points_bbox(const gs_point[4], gs_rect *),
+    gs_bbox_transform_only(const gs_rect *, const gs_matrix *, gs_point[4]),
+    gs_bbox_transform(const gs_rect *, const gs_matrix *, gs_rect *),
+    gs_bbox_transform_inverse(const gs_rect *, const gs_matrix *, gs_rect *);
+
+
+
+
+typedef struct stream_s stream;
+
+int sget_matrix(stream *, gs_matrix *);
+int sput_matrix(stream *, const gs_matrix *);
+# 27 "./base/gxdevcli.h" 2
+# 1 "./base/gsiparam.h" 1
+# 46 "./base/gsiparam.h"
+typedef struct gx_image_type_s gx_image_type_t;
+# 55 "./base/gsiparam.h"
+typedef struct gs_image_common_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix;
+} gs_image_common_t;
+# 66 "./base/gsiparam.h"
+typedef enum {
+    gs_image_type1,
+    gs_image_type2,
+    gs_image_type3,
+    gs_image_type3x,
+    gs_image_type4
+} gs_image_parent_t;
+# 121 "./base/gsiparam.h"
+typedef struct gs_data_image_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate;
+} gs_data_image_t;
+# 144 "./base/gsiparam.h"
+typedef enum {
+
+    gs_image_format_chunky = 0,
+
+    gs_image_format_component_planar = 1,
+
+    gs_image_format_bit_planar = 2
+} gs_image_format_t;
+
+
+
+
+typedef struct gs_color_space_s gs_color_space;
+# 182 "./base/gsiparam.h"
+typedef struct gs_pixel_image_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate; gs_image_format_t format; bool CombineWithColor; gs_color_space *ColorSpace;
+} gs_pixel_image_t;
+
+extern const gs_memory_struct_type_t st_gs_pixel_image;
+# 196 "./base/gsiparam.h"
+typedef enum {
+
+    gs_image_alpha_none = 0,
+
+    gs_image_alpha_first,
+
+    gs_image_alpha_last
+} gs_image_alpha_t;
+
+typedef struct gs_image1_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate; gs_image_format_t format; bool CombineWithColor; gs_color_space *ColorSpace;
+
+
+
+
+    bool ImageMask;
+
+
+
+
+    bool adjust;
+
+
+
+
+
+    gs_image_alpha_t Alpha;
+
+
+
+
+
+
+    gs_image_parent_t image_parent_type;
+} gs_image1_t;
+
+
+extern const gs_memory_struct_type_t st_gs_image1;
+
+
+
+
+
+
+
+typedef gs_image1_t gs_image_t;
+# 250 "./base/gsiparam.h"
+void
+
+
+
+     gs_image_common_t_init(gs_image_common_t * pic),
+
+
+
+
+
+
+
+     gs_data_image_t_init(gs_data_image_t * pim, int num_components),
+
+
+
+
+
+
+    gs_pixel_image_t_init(gs_pixel_image_t * pim,
+                          gs_color_space * color_space);
+# 284 "./base/gsiparam.h"
+void gs_image_t_init_adjust(gs_image_t * pim, gs_color_space * pcs,
+                            bool adjust);
+
+
+void gs_image_t_init_mask_adjust(gs_image_t * pim, bool write_1s,
+                                 bool adjust);
+# 320 "./base/gsiparam.h"
+typedef struct ht_landscape_info_s {
+    int count;
+    int widths[((1 << 3)*8)];
+    int xstart;
+    int curr_pos;
+    int index;
+    int num_contones;
+    bool offset_set;
+    bool flipy;
+    int y_pos;
+} ht_landscape_info_t;
+# 28 "./base/gxdevcli.h" 2
+# 1 "./base/gsrefct.h" 1
+# 50 "./base/gsrefct.h"
+typedef struct rc_header_s rc_header;
+struct rc_header_s {
+    long ref_count;
+    gs_memory_t *memory;
+
+
+    void (*free)(gs_memory_t *, void *, client_name_t);
+};
+# 72 "./base/gsrefct.h"
+void rc_free_struct_only(gs_memory_t *, void *, client_name_t);
+# 29 "./base/gxdevcli.h" 2
+# 1 "./base/gsropt.h" 1
+# 79 "./base/gsropt.h"
+typedef enum {
+    rop2_0 = 0,
+    rop2_S = 0xc,
+
+    rop2_D = 0xa,
+
+    rop2_1 = 0xf,
+
+
+    rop2_default = rop2_S
+} gs_rop2_t;
+# 98 "./base/gsropt.h"
+typedef enum {
+    rop3_0 = 0,
+
+
+
+
+    rop3_D = 0xaa,
+
+    rop3_1 = 0xff,
+    rop3_default = 0xf0 | 0xcc
+} gs_rop3_t;
+# 217 "./base/gsropt.h"
+typedef uint gs_logical_operation_t;
+# 256 "./base/gsropt.h"
+typedef unsigned long rop_operand;
+typedef rop_operand (*rop_proc)(rop_operand D, rop_operand S, rop_operand T);
+
+
+typedef enum {
+    rop_usage_none = 0,
+    rop_usage_D = 1,
+    rop_usage_S = 2,
+    rop_usage_DS = 3,
+    rop_usage_T = 4,
+    rop_usage_DT = 5,
+    rop_usage_ST = 6,
+    rop_usage_DST = 7
+} rop_usage_t;
+
+
+extern const rop_proc rop_proc_table[256];
+
+
+extern const byte rop_usage_table[256];
+
+
+
+
+
+
+
+typedef struct rop_run_op_s rop_run_op;
+
+
+
+
+typedef union rop_source_s {
+    struct {
+        const byte *ptr;
+        int pos;
+    } b;
+    rop_operand c;
+} rop_source;
+
+struct rop_run_op_s {
+    void (*run)(rop_run_op *, byte *dest, int len);
+    void (*runswap)(rop_run_op *, byte *dest, int len);
+    rop_source s;
+    rop_source t;
+    int rop;
+    byte depth;
+    byte flags;
+    byte dpos;
+    const byte *scolors;
+    const byte *tcolors;
+    void (*release)(rop_run_op *);
+    void *opaque;
+};
+
+
+enum {
+    rop_s_constant = 1,
+    rop_t_constant = 2,
+    rop_s_1bit = 4,
+    rop_t_1bit = 8
+};
+# 328 "./base/gsropt.h"
+void rop_get_run_op(rop_run_op *op, int rop, int depth, int flags);
+# 338 "./base/gsropt.h"
+void rop_set_s_constant(rop_run_op *op, int s);
+void rop_set_s_bitmap(rop_run_op *op, const byte *s);
+void rop_set_s_bitmap_subbyte(rop_run_op *op, const byte *s, int startbitpos);
+void rop_set_s_colors(rop_run_op *op, const byte *scolors);
+void rop_set_t_constant(rop_run_op *op, int t);
+void rop_set_t_bitmap(rop_run_op *op, const byte *t);
+void rop_set_t_bitmap_subbyte(rop_run_op *op, const byte *s, int startbitpos);
+void rop_set_t_colors(rop_run_op *op, const byte *scolors);
+
+
+
+
+
+
+
+void rop_run(rop_run_op *op, byte *d, int len);
+
+
+
+void rop_run_subbyte(rop_run_op *op, byte *d, int startbitpos, int len);
+
+
+void rop_release_run_op(rop_run_op *op);
+# 30 "./base/gxdevcli.h" 2
+
+# 1 "./base/gstparam.h" 1
+# 24 "./base/gstparam.h"
+# 1 "./base/gscspace.h" 1
+# 142 "./base/gscspace.h"
+typedef struct gsicc_link_s gsicc_link_t;
+
+
+
+
+
+
+
+typedef struct cmm_profile_s cmm_profile_t;
+# 166 "./base/gscspace.h"
+typedef enum {
+
+
+    gs_color_space_index_DeviceGray = 0,
+    gs_color_space_index_DeviceRGB,
+
+
+    gs_color_space_index_DeviceCMYK,
+
+
+    gs_color_space_index_DevicePixel,
+    gs_color_space_index_DeviceN,
+
+
+
+    gs_color_space_index_CIEDEFG,
+    gs_color_space_index_CIEDEF,
+    gs_color_space_index_CIEABC,
+    gs_color_space_index_CIEA,
+    gs_color_space_index_Separation,
+    gs_color_space_index_Indexed,
+    gs_color_space_index_Pattern,
+
+
+    gs_color_space_index_ICC
+
+} gs_color_space_index;
+# 201 "./base/gscspace.h"
+typedef struct gs_color_space_type_s gs_color_space_type;
+# 212 "./base/gscspace.h"
+typedef struct gs_device_pixel_params_s {
+    int depth;
+} gs_device_pixel_params;
+typedef struct gs_cie_a_s gs_cie_a;
+typedef struct gs_cie_abc_s gs_cie_abc;
+typedef struct gs_cie_def_s gs_cie_def;
+typedef struct gs_cie_defg_s gs_cie_defg;
+
+
+
+typedef struct gs_device_n_map_s gs_device_n_map;
+
+
+
+
+typedef struct gs_device_n_attributes_s gs_device_n_attributes;
+
+
+
+
+
+
+typedef ulong gs_separation_name;
+# 243 "./base/gscspace.h"
+typedef int (gs_callback_func_get_colorname_string)
+     (const gs_memory_t *mem, gs_separation_name colorname, unsigned char **ppstr, unsigned int *plen);
+
+typedef enum { SEP_NONE, SEP_ALL, SEP_OTHER } separation_type;
+
+typedef struct gs_separation_params_s {
+    gs_separation_name sep_name;
+    gs_device_n_map *map;
+    separation_type sep_type;
+    bool use_alt_cspace;
+    gs_callback_func_get_colorname_string *get_colorname_string;
+} gs_separation_params;
+
+typedef struct gs_device_n_params_s {
+    gs_separation_name *names;
+    uint num_components;
+    gs_device_n_map *map;
+    gs_device_n_attributes *colorants;
+    bool use_alt_cspace;
+    gs_callback_func_get_colorname_string *get_colorname_string;
+} gs_device_n_params;
+
+
+typedef struct client_color_space_data_s client_color_space_data_t;
+# 276 "./base/gscspace.h"
+typedef struct gs_indexed_map_s gs_indexed_map;
+
+typedef struct gs_indexed_params_s {
+    int hival;
+    int n_comps;
+    union {
+        gs_const_string table;
+        gs_indexed_map *map;
+    } lookup;
+    bool use_proc;
+} gs_indexed_params;
+
+
+
+
+
+typedef struct gs_pattern_params_s {
+    bool has_base_space;
+} gs_pattern_params;
+# 309 "./base/gscspace.h"
+struct gs_color_space_s {
+    const gs_color_space_type *type;
+    rc_header rc;
+    gs_id id;
+    gs_color_space *base_space;
+    gs_color_space *icc_equivalent;
+    client_color_space_data_t *pclient_color_space_data;
+    cmm_profile_t *cmm_icc_profile_data;
+    union {
+        gs_device_pixel_params pixel;
+        gs_cie_defg * defg;
+        gs_cie_def * def;
+        gs_cie_abc * abc;
+        gs_cie_a * a;
+        gs_separation_params separation;
+        gs_device_n_params device_n;
+        gs_indexed_params indexed;
+        gs_pattern_params pattern;
+
+    } params;
+};
+# 346 "./base/gscspace.h"
+gs_color_space *gs_cspace_new_DeviceGray(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_DeviceRGB(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_DeviceCMYK(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_ICC(gs_memory_t *pmem, gs_state * pgs,
+                                  int components);
+
+
+
+
+gs_color_space_index gs_color_space_get_index(const gs_color_space *);
+
+
+bool gs_color_space_is_CIE(const gs_color_space * pcs);
+bool gs_color_space_is_ICC(const gs_color_space * pcs);
+bool gs_color_space_is_PSCIE(const gs_color_space * pcs);
+int gs_colorspace_set_icc_equivalent(gs_color_space *pcs, bool *islab,
+                                     gs_memory_t *memory);
+
+
+int gs_color_space_num_components(const gs_color_space *);
+
+
+
+
+
+
+bool gs_color_space_equal(const gs_color_space *pcs1,
+                          const gs_color_space *pcs2);
+
+
+
+
+
+
+void gs_color_space_restrict_color(gs_client_color *, const gs_color_space *);
+
+
+
+
+
+
+const gs_color_space *gs_cspace_base_space(const gs_color_space * pcspace);
+
+
+
+
+void rc_increment_cs(gs_color_space *pcs);
+
+void rc_decrement_cs(gs_color_space *pcs, const char *cname);
+
+void rc_decrement_only_cs(gs_color_space *pcs, const char *cname);
+
+void cs_adjust_counts_icc(gs_state *pgs, int delta);
+# 25 "./base/gstparam.h" 2
+
+
+
+typedef enum {
+    BLEND_MODE_Normal,
+    BLEND_MODE_Multiply,
+    BLEND_MODE_Screen,
+    BLEND_MODE_Difference,
+    BLEND_MODE_Darken,
+    BLEND_MODE_Lighten,
+    BLEND_MODE_ColorDodge,
+    BLEND_MODE_ColorBurn,
+    BLEND_MODE_Exclusion,
+    BLEND_MODE_HardLight,
+    BLEND_MODE_Overlay,
+    BLEND_MODE_SoftLight,
+    BLEND_MODE_Luminosity,
+    BLEND_MODE_Hue,
+    BLEND_MODE_Saturation,
+    BLEND_MODE_Color,
+
+
+
+    BLEND_MODE_Compatible
+} gs_blend_mode_t;
+# 62 "./base/gstparam.h"
+typedef struct gs_function_s gs_function_t;
+
+
+
+
+typedef struct gs_transparency_group_params_s {
+    const gs_color_space *ColorSpace;
+    bool Isolated;
+    bool Knockout;
+    bool image_with_SMask;
+    bool idle;
+    uint mask_id;
+    int group_color_numcomps;
+    gs_transparency_color_t group_color;
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gs_transparency_group_params_t;
+
+
+typedef enum {
+    TRANSPARENCY_MASK_Alpha,
+    TRANSPARENCY_MASK_Luminosity
+} gs_transparency_mask_subtype_t;
+
+
+
+
+
+
+typedef struct gs_transparency_mask_params_s {
+    const gs_color_space *ColorSpace;
+    gs_transparency_mask_subtype_t subtype;
+    int Background_components;
+    float Background[(64)];
+    float GrayBackground;
+    int (*TransferFunction)(double in, float *out, void *proc_data);
+    gs_function_t *TransferFunction_data;
+    bool replacing;
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gs_transparency_mask_params_t;
+
+
+
+
+typedef struct gx_transparency_mask_params_s {
+    gs_transparency_mask_subtype_t subtype;
+    int group_color_numcomps;
+    gs_transparency_color_t group_color;
+    int Background_components;
+    float Background[(64)];
+    float GrayBackground;
+    bool function_is_identity;
+    bool idle;
+    bool replacing;
+    uint mask_id;
+    byte transfer_fn[256];
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gx_transparency_mask_params_t;
+# 145 "./base/gstparam.h"
+typedef enum {
+    TRANSPARENCY_CHANNEL_Opacity = 0,
+    TRANSPARENCY_CHANNEL_Shape = 1
+} gs_transparency_channel_selector_t;
+# 32 "./base/gxdevcli.h" 2
+# 1 "./base/gsxfont.h" 1
+# 24 "./base/gsxfont.h"
+typedef ulong gx_xglyph;
+
+
+
+
+struct gx_xfont_procs_s;
+typedef struct gx_xfont_procs_s gx_xfont_procs;
+
+
+struct gx_xfont_s;
+typedef struct gx_xfont_s gx_xfont;
+# 33 "./base/gxdevcli.h" 2
+
+
+# 1 "./base/gxcvalue.h" 1
+# 23 "./base/gxcvalue.h"
+typedef unsigned short gx_color_value;
+# 36 "./base/gxdevcli.h" 2
+# 1 "./base/gxfixed.h" 1
+# 28 "./base/gxfixed.h"
+typedef int fixed;
+typedef uint ufixed;
+# 162 "./base/gxfixed.h"
+fixed fixed_mult_quo(fixed A, fixed B, fixed C);
+# 182 "./base/gxfixed.h"
+bool
+gx_intersect_small_bars(fixed q0x, fixed q0y, fixed q1x, fixed q1y, fixed q2x, fixed q2y,
+                        fixed q3x, fixed q3y, fixed *ry, fixed *ey);
+# 233 "./base/gxfixed.h"
+typedef struct gs_fixed_point_s {
+    fixed x, y;
+} gs_fixed_point;
+
+
+typedef struct gs_fixed_rect_s {
+    gs_fixed_point p, q;
+} gs_fixed_rect;
+# 37 "./base/gxdevcli.h" 2
+# 1 "./base/gxtext.h" 1
+# 22 "./base/gxtext.h"
+# 1 "./base/gstext.h" 1
+# 22 "./base/gstext.h"
+# 1 "./base/gsccode.h" 1
+# 27 "./base/gsccode.h"
+typedef ulong gs_char;
+# 74 "./base/gsccode.h"
+typedef ulong gs_glyph;
+# 92 "./base/gsccode.h"
+typedef bool (*gs_glyph_mark_proc_t)(const gs_memory_t *mem, gs_glyph glyph, void *proc_data);
+
+
+typedef enum {
+    ENCODING_INDEX_UNKNOWN = -1,
+
+    ENCODING_INDEX_STANDARD = 0,
+    ENCODING_INDEX_ISOLATIN1,
+    ENCODING_INDEX_SYMBOL,
+    ENCODING_INDEX_DINGBATS,
+    ENCODING_INDEX_WINANSI,
+    ENCODING_INDEX_MACROMAN,
+    ENCODING_INDEX_MACEXPERT,
+
+
+    ENCODING_INDEX_MACGLYPH,
+    ENCODING_INDEX_ALOGLYPH,
+    ENCODING_INDEX_ALXGLYPH,
+    ENCODING_INDEX_CFFSTRINGS
+
+} gs_encoding_index_t;
+# 125 "./base/gsccode.h"
+typedef enum gs_glyph_space_s {
+    GLYPH_SPACE_NAME,
+    GLYPH_SPACE_INDEX,
+    GLYPH_SPACE_NOGEN
+} gs_glyph_space_t;
+
+
+
+
+
+
+typedef int (*gs_glyph_name_proc_t)(const gs_memory_t *mem,
+                                    gs_glyph glyph, gs_const_string *pstr,
+                                    void *proc_data);
+# 23 "./base/gstext.h" 2
+# 1 "./base/gscpm.h" 1
+# 22 "./base/gscpm.h"
+typedef enum {
+    cpm_show,
+    cpm_charwidth,
+    cpm_false_charpath,
+    cpm_true_charpath,
+    cpm_false_charboxpath,
+    cpm_true_charboxpath
+} gs_char_path_mode;
+
+typedef enum {
+    CACHE_DEVICE_NONE = 0,
+    CACHE_DEVICE_NOT_CACHING,
+    CACHE_DEVICE_NONE_AND_CLIP,
+    CACHE_DEVICE_CACHING
+} gs_in_cache_device_t;
+# 24 "./base/gstext.h" 2
+# 99 "./base/gstext.h"
+typedef struct gs_text_params_s {
+
+    uint operation;
+    union sd_ {
+        const byte *bytes;
+        const gs_char *chars;
+        const gs_glyph *glyphs;
+        gs_char d_char;
+        gs_glyph d_glyph;
+    } data;
+    uint size;
+
+
+    gs_point delta_all;
+    gs_point delta_space;
+    union s_ {
+        gs_char s_char;
+        gs_glyph s_glyph;
+    } space;
+
+
+
+
+
+    const float *x_widths;
+    const float *y_widths;
+    uint widths_size;
+} gs_text_params_t;
+# 135 "./base/gstext.h"
+int gs_text_replaced_width(const gs_text_params_t *text, uint index,
+                           gs_point *pwidth);
+
+
+
+
+
+
+
+typedef struct gs_text_enum_s gs_text_enum_t;
+
+
+
+
+
+typedef struct gx_device_s gx_device;
+# 162 "./base/gstext.h"
+typedef struct gs_font_s gs_font;
+
+
+
+typedef struct gx_path_s gx_path;
+
+
+
+typedef struct gx_clip_path_s gx_clip_path;
+# 194 "./base/gstext.h"
+int gx_device_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+
+
+
+
+
+
+int gs_text_begin(gs_state * pgs, const gs_text_params_t * text,
+                  gs_memory_t * mem, gs_text_enum_t ** ppenum);
+
+
+
+
+
+int gs_text_update_dev_color(gs_state * pgs, gs_text_enum_t * pte);
+
+
+int
+gs_show_begin(gs_state *, const byte *, uint,
+              gs_memory_t *, gs_text_enum_t **),
+    gs_ashow_begin(gs_state *, double, double, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_widthshow_begin(gs_state *, double, double, gs_char,
+                       const byte *, uint,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_awidthshow_begin(gs_state *, double, double, gs_char,
+                        double, double, const byte *, uint,
+                        gs_memory_t *, gs_text_enum_t **),
+    gs_kshow_begin(gs_state *, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_xyshow_begin(gs_state *, const byte *, uint,
+                    const float *, const float *, uint,
+                    gs_memory_t *, gs_text_enum_t **),
+    gs_glyphshow_begin(gs_state *, gs_glyph,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_cshow_begin(gs_state *, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_stringwidth_begin(gs_state *, const byte *, uint,
+                         gs_memory_t *, gs_text_enum_t **),
+    gs_charpath_begin(gs_state *, const byte *, uint, bool,
+                      gs_memory_t *, gs_text_enum_t **),
+    gs_glyphpath_begin(gs_state *, gs_glyph, bool,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_glyphwidth_begin(gs_state *, gs_glyph,
+                        gs_memory_t *, gs_text_enum_t **),
+    gs_charboxpath_begin(gs_state *, const byte *, uint, bool,
+                         gs_memory_t *, gs_text_enum_t **);
+
+
+int gs_text_size(gs_state * pgs, gs_text_params_t *text, gs_memory_t * mem);
+
+gs_text_params_t *gs_get_text_params(gs_text_enum_t *pte);
+
+
+
+
+int gs_text_restart(gs_text_enum_t *pte, const gs_text_params_t *text);
+
+
+
+
+int gs_text_resync(gs_text_enum_t *pte, const gs_text_enum_t *pfrom);
+# 287 "./base/gstext.h"
+int gs_text_process(gs_text_enum_t *pte);
+
+
+gs_font *gs_text_current_font(const gs_text_enum_t *pte);
+gs_char gs_text_current_char(const gs_text_enum_t *pte);
+gs_char gs_text_next_char(const gs_text_enum_t *pte);
+gs_glyph gs_text_current_glyph(const gs_text_enum_t *pte);
+int gs_text_total_width(const gs_text_enum_t *pte, gs_point *pwidth);
+
+
+
+
+
+
+bool gs_text_is_width_only(const gs_text_enum_t *pte);
+
+
+
+
+int gs_text_current_width(const gs_text_enum_t *pte, gs_point *pwidth);
+
+
+
+
+
+typedef enum {
+    TEXT_SET_CHAR_WIDTH,
+    TEXT_SET_CACHE_DEVICE,
+    TEXT_SET_CACHE_DEVICE2
+} gs_text_cache_control_t;
+int
+    gs_text_set_cache(gs_text_enum_t *pte, const double *values,
+                      gs_text_cache_control_t control),
+    gs_text_setcharwidth(gs_text_enum_t *pte, const double wxy[2]),
+    gs_text_setcachedevice(gs_text_enum_t *pte, const double wbox[6]),
+    gs_text_setcachedevice2(gs_text_enum_t *pte, const double wbox2[10]);
+
+
+int gs_text_retry(gs_text_enum_t *pte);
+
+
+void gs_text_release(gs_text_enum_t *pte, client_name_t cname);
+
+
+int gs_text_count_chars(gs_state * pgs, gs_text_params_t *text, gs_memory_t * mem);
+# 23 "./base/gxtext.h" 2
+
+
+
+typedef struct gs_text_enum_procs_s gs_text_enum_procs_t;
+
+
+
+typedef struct cached_fm_pair_s cached_fm_pair;
+
+
+
+
+
+typedef struct gs_text_returned_s {
+    gs_char current_char;
+    gs_glyph current_glyph;
+    gs_point total_width;
+} gs_text_returned_t;
+# 56 "./base/gxtext.h"
+typedef struct gx_font_stack_item_s {
+    gs_font *font;
+    uint index;
+
+
+
+} gx_font_stack_item_t;
+typedef struct gx_font_stack_s {
+    int depth;
+    gx_font_stack_item_t items[1 + 5];
+} gx_font_stack_t;
+# 79 "./base/gxtext.h"
+void rc_free_text_enum(gs_memory_t *, void *, client_name_t);
+# 127 "./base/gxtext.h"
+struct gs_text_enum_s {
+    gs_text_params_t text; gx_device *dev; gx_device *imaging_dev; gs_imager_state *pis; gs_font *orig_font; gx_path *path; const gx_device_color *pdcolor; const gx_clip_path *pcpath; gs_memory_t *memory; const gs_text_enum_procs_t *procs; rc_header rc; void *enum_client_data; gs_font *current_font; gs_glyph outer_CID; bool is_pure_color; gs_log2_scale_point log2_scale; cached_fm_pair *pair; uint index; uint xy_index; gx_font_stack_t fstack; int cmap_code; bool single_byte_space; int bytes_decoded; gs_point FontBBox_as_Metrics2; ulong text_enum_id; bool device_disabled_grid_fitting; gs_log2_scale_point fapi_log2_scale; gs_point fapi_glyph_shift; gs_text_returned_t returned;
+};
+# 179 "./base/gxtext.h"
+int gs_text_enum_init(gs_text_enum_t *pte,
+                      const gs_text_enum_procs_t *procs,
+                      gx_device *dev, gs_imager_state *pis,
+                      const gs_text_params_t *text,
+                      gs_font *font, gx_path *path,
+                      const gx_device_color *pdcolor,
+                      const gx_clip_path *pcpath,
+                      gs_memory_t *mem);
+
+
+
+
+
+
+
+void gs_text_enum_copy_dynamic(gs_text_enum_t *pto,
+                               const gs_text_enum_t *pfrom,
+                               bool for_return);
+# 227 "./base/gxtext.h"
+struct gs_text_enum_procs_s {
+# 240 "./base/gxtext.h"
+    int (*resync)(gs_text_enum_t *pte, const gs_text_enum_t *pfrom);
+# 270 "./base/gxtext.h"
+    int (*process)(gs_text_enum_t *pte);
+# 281 "./base/gxtext.h"
+    bool (*is_width_only)(const gs_text_enum_t *pte);
+# 290 "./base/gxtext.h"
+    int (*current_width)(const gs_text_enum_t *pte, gs_point *pwidth);
+# 301 "./base/gxtext.h"
+    int (*set_cache)(gs_text_enum_t *pte, const double *values, gs_text_cache_control_t control);
+# 311 "./base/gxtext.h"
+    int (*retry)(gs_text_enum_t *pte);
+# 322 "./base/gxtext.h"
+    void (*release)(gs_text_enum_t *pte, client_name_t cname);
+
+};
+
+
+void gx_default_text_release(gs_text_enum_t *pte, client_name_t cname);
+# 38 "./base/gxdevcli.h" 2
+# 1 "./base/gxcmap.h" 1
+# 23 "./base/gxcmap.h"
+# 1 "./base/gscsel.h" 1
+# 27 "./base/gscsel.h"
+typedef enum {
+    gs_color_select_all = -1,
+    gs_color_select_texture = 0,
+    gs_color_select_source = 1
+} gs_color_select_t;
+# 24 "./base/gxcmap.h" 2
+# 1 "./base/gxfmap.h" 1
+# 24 "./base/gxfmap.h"
+# 1 "./base/gxfrac.h" 1
+# 27 "./base/gxfrac.h"
+typedef short frac;
+typedef short signed_frac;
+# 25 "./base/gxfmap.h" 2
+# 1 "./base/gxtmap.h" 1
+# 29 "./base/gxtmap.h"
+typedef struct gx_transfer_map_s gx_transfer_map;
+
+
+
+
+
+typedef float (*gs_mapping_proc) (double, const gx_transfer_map *);
+
+
+
+
+
+typedef float (*gs_mapping_closure_proc_t) (double value,
+                                            const gx_transfer_map * pmap,
+                                            const void *proc_data);
+typedef struct gs_mapping_closure_s {
+    gs_mapping_closure_proc_t proc;
+    const void *data;
+} gs_mapping_closure_t;
+# 26 "./base/gxfmap.h" 2
+# 41 "./base/gxfmap.h"
+struct gx_transfer_map_s {
+    rc_header rc;
+    gs_mapping_proc proc;
+    gs_mapping_closure_t closure;
+
+    gs_id id;
+    frac values[(1 << 8)];
+};
+
+extern const gs_memory_struct_type_t st_transfer_map;
+
+
+
+
+
+void gx_set_identity_transfer(gx_transfer_map *);
+# 65 "./base/gxfmap.h"
+frac gx_color_frac_map(frac, const frac *);
+# 99 "./base/gxfmap.h"
+float gs_mapped_transfer(double, const gx_transfer_map *);
+
+
+
+
+float gs_identity_transfer(double, const gx_transfer_map *);
+# 25 "./base/gxcmap.h" 2
+# 89 "./base/gxcmap.h"
+struct gx_cm_color_map_procs_s {
+    void (*map_gray) (gx_device * dev, frac gray, frac * out);
+    void (*map_rgb) (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+    void (*map_cmyk) (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+};
+
+typedef struct gx_cm_color_map_procs_s gx_cm_color_map_procs;
+
+
+
+
+void gray_cs_to_gray_cm (gx_device * dev, frac gray, frac * out);
+void rgb_cs_to_rgb_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+void cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+# 116 "./base/gxcmap.h"
+struct gx_color_map_procs_s {
+    void (*map_gray)(frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_rgb)(frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_cmyk)(frac, frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t, const gs_color_space *);
+    void (*map_rgb_alpha)(frac, frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_separation)(frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_devicen)(const frac *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    bool (*is_halftoned)(const gs_imager_state *, gx_device *);
+};
+typedef struct gx_color_map_procs_s gx_color_map_procs;
+
+
+
+
+
+
+const gx_color_map_procs *
+    gx_get_cmap_procs(const gs_imager_state *, const gx_device *);
+const gx_color_map_procs *
+    gx_default_get_cmap_procs(const gs_imager_state *, const gx_device *);
+
+
+
+
+
+
+void gx_set_cmap_procs(gs_imager_state *, const gx_device *);
+# 167 "./base/gxcmap.h"
+extern void gx_default_gray_cs_to_gray_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_gray_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_gray_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_rgb_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_rgb_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_rgb_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_error_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_error_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_error_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+# 239 "./base/gxcmap.h"
+int (gx_error_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevGray_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevRGB_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevCMYK_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevRGBK_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+
+
+
+
+
+const gx_cm_color_map_procs * (gx_error_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevGray_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevRGB_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevCMYK_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevRGBK_get_color_mapping_procs)(const gx_device * dev);
+
+
+
+
+
+gx_color_index (gx_error_encode_color)(gx_device * dev, const gx_color_value colors[]);
+gx_color_index (gx_default_encode_color)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+gx_color_index (gx_default_gray_fast_encode)(gx_device * dev, const gx_color_value colors[]);
+gx_color_index (gx_default_gray_encode)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+
+gx_color_index (gx_backwards_compatible_gray_encode)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+int (gx_error_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+int (gx_default_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+
+
+
+
+
+frac gx_unit_frac(float fvalue);
+
+
+
+bool gx_device_uses_std_cmap_procs(gx_device * dev,
+                                   const gs_imager_state * pis);
+bool fwd_uses_fwd_cmap_procs(gx_device * dev);
+const gx_cm_color_map_procs* fwd_get_target_cmap_procs(gx_device * dev);
+void cmap_transfer_halftone(gx_color_value *pconc, gx_device_color * pdc,
+     const gs_imager_state * pis, gx_device * dev, bool has_transfer,
+     bool has_halftone, gs_color_select_t select);
+void cmap_transfer(gx_color_value *pconc, const gs_imager_state * pis,
+                   gx_device * dev);
+void cmap_transfer_plane(gx_color_value *pconc, const gs_imager_state *pis,
+                    gx_device *dev, int plane);
+# 39 "./base/gxdevcli.h" 2
+# 1 "./base/gsnamecl.h" 1
+# 24 "./base/gsnamecl.h"
+# 1 "./base/gxcspace.h" 1
+# 48 "./base/gxcspace.h"
+struct gs_color_space_type_s {
+
+    gs_color_space_index index;
+
+
+
+
+
+
+
+    bool can_be_base_space;
+    bool can_be_alt_space;
+
+
+
+
+
+
+    gs_memory_type_ptr_t stype;
+# 82 "./base/gxcspace.h"
+        int (*num_components)(const gs_color_space *);
+# 92 "./base/gxcspace.h"
+        void (*init_color)(gs_client_color *, const gs_color_space *);
+
+
+
+
+
+
+
+        void (*restrict_color)(gs_client_color *, const gs_color_space *);
+# 110 "./base/gxcspace.h"
+        const gs_color_space *(*concrete_space)(const gs_color_space *, const gs_imager_state *);
+# 125 "./base/gxcspace.h"
+        int (*concretize_color)(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+
+
+
+
+
+
+
+        int (*remap_concrete_color)(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+
+
+
+
+
+        int (*remap_color)(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+
+
+
+        int (*install_cspace)(gs_color_space *, gs_state *);
+# 163 "./base/gxcspace.h"
+        int (*set_overprint)(const gs_color_space *, gs_state *);
+
+
+
+
+
+        void (*final)(const gs_color_space *);
+# 184 "./base/gxcspace.h"
+        void (*adjust_color_count)(const gs_client_color *, const gs_color_space *, int);
+# 201 "./base/gxcspace.h"
+        int (*serialize)(const gs_color_space *, stream *);
+# 213 "./base/gxcspace.h"
+        int (*is_linear)(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+# 222 "./base/gxcspace.h"
+        gx_color_polarity_t (*polarity)(const gs_color_space *);
+};
+
+extern const gs_memory_struct_type_t st_base_color_space;
+
+
+
+
+
+int gx_num_components_1(const gs_color_space *);
+int gx_num_components_3(const gs_color_space *);
+int gx_num_components_4(const gs_color_space *);
+gx_color_polarity_t gx_polarity_subtractive(const gs_color_space *);
+gx_color_polarity_t gx_polarity_additive(const gs_color_space *);
+gx_color_polarity_t gx_polarity_unknown(const gs_color_space *);
+void gx_init_paint_1(gs_client_color *, const gs_color_space *);
+void gx_init_paint_3(gs_client_color *, const gs_color_space *);
+void gx_init_paint_4(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_1(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_3(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_4(gs_client_color *, const gs_color_space *);
+const gs_color_space *gx_no_concrete_space(const gs_color_space *, const gs_imager_state *);
+const gs_color_space *gx_same_concrete_space(const gs_color_space *, const gs_imager_state *);
+int gx_no_concretize_color(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_default_remap_color(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_no_install_cspace(gs_color_space *, gs_state *);
+int gx_spot_colors_set_overprint(const gs_color_space *, gs_state *);
+int gx_simulated_set_overprint(const gs_color_space *, gs_state *);
+void gx_no_adjust_color_count(const gs_client_color *, const gs_color_space *, int);
+int gx_serialize_cspace_type(const gs_color_space *, stream *);
+int gx_cspace_no_linear(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+int gx_cspace_is_linear_default(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+
+
+
+
+
+int gx_remap_DeviceGray(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceGray(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DGray(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_remap_DeviceRGB(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceRGB(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DRGB(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_remap_DeviceCMYK(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceCMYK(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DCMYK(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+extern const gs_memory_struct_type_t st_color_space;
+
+
+gs_color_space *
+gs_cspace_alloc(gs_memory_t *mem, const gs_color_space_type *pcstype);
+
+
+
+
+gx_color_index check_cmyk_color_model_comps(gx_device * dev);
+gx_color_index check_rgb_color_model_comps(gx_device * dev);
+
+
+int gx_set_overprint_cmyk(const gs_color_space * pcs, gs_state * pgs);
+int gx_set_overprint_rgb(const gs_color_space * pcs, gs_state * pgs);
+# 25 "./base/gsnamecl.h" 2
+# 80 "./base/gsnamecl.h"
+typedef struct gs_context_state_s i_ctx_t;
+# 99 "./base/gsnamecl.h"
+int custom_color_callback_put_params(gs_state * pgs, gs_param_list * plist);
+# 108 "./base/gsnamecl.h"
+int custom_color_callback_get_params(gs_state * pgs, gs_param_list * plist);
+
+
+
+
+
+bool custom_color_callback_install_Separation(gs_color_space * pcs,
+                                                        gs_state * pgs);
+
+
+
+
+
+bool custom_color_callback_install_DeviceN(gs_color_space * pcs, gs_state * pgs);
+
+
+
+
+
+int gx_remap_concrete_custom_color_Separation(const frac * pconc,
+        const gs_color_space * pcs, gx_device_color * pdc,
+        const gs_imager_state * pis, gx_device * dev, gs_color_select_t select);
+
+
+
+
+
+int gx_remap_concrete_custom_color_DeviceN(const frac * pconc,
+        const gs_color_space * pcs, gx_device_color * pdc,
+        const gs_imager_state * pis, gx_device * dev, gs_color_select_t select);
+# 155 "./base/gsnamecl.h"
+typedef struct client_custom_color_params_s {
+
+    struct client_custom_color_procs_s * client_procs;
+
+    void * data;
+} client_custom_color_params_t;
+# 169 "./base/gsnamecl.h"
+typedef struct client_color_space_data_s {
+        void (*client_adjust_cspace_count)(const gs_color_space *, int);
+} client_color_space__data_t;
+
+
+
+
+typedef struct client_custom_color_procs_s {
+
+
+
+    bool (* install_DeviceGray)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceGray)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+    bool (* install_DeviceRGB)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceRGB)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+    bool (* install_DeviceCMYK)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceCMYK)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_Separation)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_Separation)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_DeviceN)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceN)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedA)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+# 254 "./base/gsnamecl.h"
+    int (* remap_CIEBasedA)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedABC)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedABC)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedDEF)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedDEF)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedDEFG)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedDEFG)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_ICCBased)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_ICCBased)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+} client_custom_color_procs_t;
+# 40 "./base/gxdevcli.h" 2
+# 1 "./base/gp.h" 1
+# 24 "./base/gp.h"
+# 1 "./base/gscdefs.h" 1
+# 31 "./base/gscdefs.h"
+extern const long gs_buildtime;
+extern const char *const gs_copyright;
+extern const char *const gs_product;
+extern const char *const gs_productfamily;
+extern const long gs_version;
+extern const long gs_revision;
+extern const long gs_revisiondate;
+extern const long gs_serialnumber;
+
+
+extern const char *const gs_doc_directory;
+extern const char *const gs_lib_default_path;
+extern const char *const gs_init_file;
+extern const char *const gs_dev_defaults;
+# 55 "./base/gscdefs.h"
+extern const unsigned gx_image_class_table_count;
+
+
+
+extern const unsigned gx_image_type_table_count;
+# 68 "./base/gscdefs.h"
+extern const unsigned gx_io_device_table_count;
+# 25 "./base/gp.h" 2
+# 35 "./base/gp.h"
+# 1 "./base/gpgetenv.h" 1
+# 39 "./base/gpgetenv.h"
+int gp_getenv(const char *key, char *ptr, int *plen);
+# 36 "./base/gp.h" 2
+
+
+
+
+# 1 "./base/srdline.h" 1
+# 45 "./base/srdline.h"
+extern int sreadline(stream *s_in, stream *s_out, void *readline_data, gs_const_string *prompt, gs_string *buf, gs_memory_t *bufmem, uint *pcount, bool *pin_eol, bool (*is_stdin)(const stream *));
+# 41 "./base/gp.h" 2
+# 55 "./base/gp.h"
+void gp_init(void);
+
+
+
+
+
+void gp_exit(int exit_status, int code);
+
+
+
+
+
+void gp_do_exit(int exit_status);
+# 76 "./base/gp.h"
+const char *gp_strerror(int);
+# 99 "./base/gp.h"
+int gp_defaultpapersize(char *ptr, int *plen);
+
+
+
+
+
+
+
+int gp_serialnumber(void);
+
+
+
+
+
+
+
+void gp_get_realtime(long ptm[2]);
+
+
+
+
+
+void gp_get_usertime(long ptm[2]);
+# 136 "./base/gp.h"
+int gp_readline_init(void **preadline_data, gs_memory_t *mem);
+
+
+
+
+int gp_readline(stream *s_in, stream *s_out, void *readline_data,
+                gs_const_string *prompt, gs_string *buf,
+                gs_memory_t *bufmem, uint *pcount, bool *pin_eol,
+                bool (*is_stdin)(const stream *));
+
+
+
+
+void gp_readline_finit(void *readline_data);
+# 161 "./base/gp.h"
+int gp_stdin_read(char *buf, int len, int interactive, FILE *f);
+# 170 "./base/gp.h"
+const char *gp_getenv_display(void);
+# 189 "./base/gp.h"
+extern const char gp_file_name_list_separator;
+
+
+extern const char gp_scratch_file_name_prefix[];
+
+
+extern const char gp_null_file_name[];
+
+
+extern const char gp_current_directory_name[];
+
+
+
+
+extern const char gp_fmode_binary_suffix[];
+
+
+
+extern const char gp_fmode_rb[];
+extern const char gp_fmode_wb[];
+# 227 "./base/gp.h"
+FILE *gp_open_scratch_file(const gs_memory_t *mem,
+                           const char *prefix,
+                                 char fname[4096],
+                           const char *mode);
+
+
+FILE *gp_fopen(const char *fname, const char *mode);
+
+
+
+int gp_setmode_binary(FILE * pfile, bool mode);
+
+typedef enum {
+    gp_combine_small_buffer = -1,
+    gp_combine_cant_handle = 0,
+    gp_combine_success = 1
+} gp_file_name_combine_result;
+# 252 "./base/gp.h"
+gp_file_name_combine_result gp_file_name_combine(const char *prefix, uint plen,
+            const char *fname, uint flen, bool no_sibling, char *buffer, uint *blen);
+# 264 "./base/gp.h"
+uint gp_file_name_root(const char *fname, uint len);
+# 273 "./base/gp.h"
+uint gs_file_name_check_separator(const char *fname, int len, const char *item);
+
+
+
+
+
+bool gp_file_name_is_parent(const char *fname, uint len);
+
+
+
+
+
+bool gp_file_name_is_current(const char *fname, uint len);
+
+
+
+
+
+const char *gp_file_name_current(void);
+
+
+
+
+
+const char *gp_file_name_separator(void);
+
+
+
+
+
+const char *gp_file_name_directory_separator(void);
+
+
+
+
+
+const char *gp_file_name_parent(void);
+
+
+
+
+bool gp_file_name_is_parent_allowed(void);
+
+
+
+
+
+bool gp_file_name_is_empty_item_meanful(void);
+
+
+
+
+
+int gp_read_macresource(byte *buf, const char *fname,
+                                     const uint type, const ushort id);
+
+
+bool gp_file_name_good_char(unsigned char c);
+# 352 "./base/gp.h"
+int gp_cache_insert(int type, byte *key, int keylen, void *buffer, int buflen);
+
+
+typedef void *(*gp_cache_alloc)(void *userdata, int bytes);
+int gp_cache_query(int type, byte* key, int keylen, void **buffer,
+    gp_cache_alloc alloc, void *userdata);
+# 379 "./base/gp.h"
+FILE *gp_open_printer(const gs_memory_t *mem,
+                            char fname[4096],
+                            int binary_mode);
+# 390 "./base/gp.h"
+void gp_close_printer(const gs_memory_t *mem,
+                            FILE *pfile,
+                      const char *fname);
+
+
+
+
+
+typedef struct file_enum_s file_enum;
+# 412 "./base/gp.h"
+file_enum *gp_enumerate_files_init(const char *pat, uint patlen,
+                                   gs_memory_t * memory);
+# 422 "./base/gp.h"
+uint gp_enumerate_files_next(file_enum * pfen, char *ptr, uint maxlen);
+
+
+
+
+
+
+
+void gp_enumerate_files_close(file_enum * pfen);
+# 441 "./base/gp.h"
+void *gp_enumerate_fonts_init(gs_memory_t *mem);
+# 450 "./base/gp.h"
+int gp_enumerate_fonts_next(void *enum_state, char **fontname, char **path);
+
+
+void gp_enumerate_fonts_free(void *enum_state);
+# 483 "./base/gp.h"
+FILE *gp_fopen_64(const char *filename, const char *mode);
+
+FILE *gp_open_scratch_file_64(const gs_memory_t *mem,
+                              const char *prefix,
+                                    char fname[4096],
+                              const char *mode);
+FILE *gp_open_printer_64(const gs_memory_t *mem,
+                               char fname[4096],
+                               int binary_mode);
+
+int64_t gp_ftell_64(FILE *strm);
+
+int gp_fseek_64(FILE *strm, int64_t offset, int origin);
+
+bool gp_fseekable (FILE *f);
+# 511 "./base/gp.h"
+int
+gp_local_arg_encoding_get_codepoint(FILE *file, const char **astr);
+# 41 "./base/gxdevcli.h" 2
+# 1 "./base/gscms.h" 1
+# 25 "./base/gscms.h"
+# 1 "./base/gsdevice.h" 1
+# 29 "./base/gsdevice.h"
+typedef struct gx_device_memory_s gx_device_memory;
+# 44 "./base/gsdevice.h"
+const gx_device *gs_getdevice(int);
+const gx_device *gs_getdefaultdevice(void);
+
+int gs_opendevice(gx_device *);
+int gs_copyscanlines(gx_device *, int, byte *, uint, int *, uint *);
+int gs_copydevice(gx_device **, const gx_device *, gs_memory_t *);
+
+
+
+
+
+int gs_copydevice2(gx_device **pnew_dev, const gx_device *dev,
+                   bool keep_open, gs_memory_t *mem);
+
+
+
+int gs_makewordimagedevice(gx_device ** pnew_dev, const gs_matrix * pmat,
+                           uint width, uint height,
+                           const byte * colors, int num_colors,
+                           bool word_oriented, bool page_device,
+                           gs_memory_t * mem);
+
+
+
+int gs_initialize_wordimagedevice(gx_device_memory * new_dev,
+                                  const gs_matrix * pmat,
+                                  uint width, uint height,
+                                  const byte * colors, int colors_size,
+                                  bool word_oriented, bool page_device,
+                                  gs_memory_t * mem);
+const char *gs_devicename(const gx_device *);
+void gs_deviceinitialmatrix(gx_device *, gs_matrix *);
+
+
+int gs_get_device_or_hw_params(gx_device *, gs_param_list *, bool);
+
+
+
+
+
+
+
+int gs_putdeviceparams(gx_device *, gs_param_list *);
+int gs_closedevice(gx_device *);
+# 96 "./base/gsdevice.h"
+int gs_imager_putdeviceparams(gs_imager_state *pis, gx_device *dev,
+                              gs_param_list *plist);
+# 106 "./base/gsdevice.h"
+int gs_flushpage(gs_state *);
+int gs_copypage(gs_state *);
+int gs_output_page(gs_state *, int, int);
+int gs_nulldevice(gs_state *);
+int gs_setdevice(gs_state *, gx_device *);
+int gs_setdevice_no_erase(gs_state *, gx_device *);
+
+int gs_setdevice_no_init(gs_state *, gx_device *);
+gx_device *gs_currentdevice(const gs_state *);
+
+
+
+
+
+
+int gs_state_putdeviceparams(gs_state *pgs, gs_param_list *plist);
+# 26 "./base/gscms.h" 2
+# 1 "./base/gxsync.h" 1
+# 24 "./base/gxsync.h"
+# 1 "./base/gpsync.h" 1
+# 37 "./base/gpsync.h"
+typedef union {
+    void *dummy1;
+    double dummy2;
+    long dummy3;
+    int64_t dummy4;
+} gp_semaphore;
+
+uint gp_semaphore_sizeof(void);
+
+
+
+
+int gp_semaphore_open(gp_semaphore * sema);
+int gp_semaphore_close(gp_semaphore * sema);
+int gp_semaphore_wait(gp_semaphore * sema);
+int gp_semaphore_signal(gp_semaphore * sema);
+
+
+
+
+
+
+typedef union {
+    void *dummy_;
+    double dummy2;
+    long dummy3;
+    int64_t dummy4;
+} gp_monitor;
+
+uint gp_monitor_sizeof(void);
+
+
+
+
+int gp_monitor_open(gp_monitor * mon);
+int gp_monitor_close(gp_monitor * mon);
+int gp_monitor_enter(gp_monitor * mon);
+int gp_monitor_leave(gp_monitor * mon);
+
+
+
+
+
+
+
+typedef void (*gp_thread_creation_callback_t) (void *);
+int gp_create_thread(gp_thread_creation_callback_t, void *);
+# 95 "./base/gpsync.h"
+typedef void *gp_thread_id;
+int gp_thread_start(gp_thread_creation_callback_t fun, void *arg, gp_thread_id *thread);
+
+
+
+
+
+
+void gp_thread_finish(gp_thread_id thread);
+# 25 "./base/gxsync.h" 2
+
+
+
+
+
+
+
+
+typedef struct gx_semaphore_s {
+    gs_memory_t *memory;
+    gp_semaphore native;
+
+} gx_semaphore_t;
+
+gx_semaphore_t *
+    gx_semaphore_alloc(
+                       gs_memory_t * memory
+                       );
+void
+    gx_semaphore_free(
+                      gx_semaphore_t * sema
+                      );
+
+
+
+
+
+
+
+typedef struct gx_monitor_s {
+    gs_memory_t *memory;
+    gp_monitor native;
+} gx_monitor_t;
+
+gx_monitor_t *
+    gx_monitor_alloc(
+                     gs_memory_t * memory
+                     );
+void
+    gx_monitor_free(
+                    gx_monitor_t * mon
+                    );
+# 27 "./base/gscms.h" 2
+# 44 "./base/gscms.h"
+typedef unsigned short icc_output_type;
+# 54 "./base/gscms.h"
+typedef struct gs_range_icc_s {
+    gs_range_t ranges[15];
+} gs_range_icc_t;
+# 66 "./base/gscms.h"
+typedef struct gsicc_device_cm_s {
+    cmm_profile_t *gray_profile;
+    cmm_profile_t *rgb_profile;
+    cmm_profile_t *cmyk_profile;
+    cmm_profile_t *device_link_profile;
+    gs_memory_t *memory;
+} gsicc_device_cm_t;
+
+
+typedef enum {
+    gsUNDEFINED = 0,
+    gsGRAY,
+    gsRGB,
+    gsCMYK,
+    gsNCHANNEL,
+    gsCIEXYZ,
+    gsCIELAB,
+    gsNAMED
+} gsicc_colorbuffer_t;
+
+typedef struct gsicc_bufferdesc_s {
+    unsigned char num_chan;
+    unsigned char bytes_per_chan;
+    bool has_alpha;
+    bool alpha_first;
+    bool little_endian;
+    bool is_planar;
+    int plane_stride;
+    int row_stride;
+    int num_rows;
+    int pixels_per_row;
+} gsicc_bufferdesc_t;
+
+
+
+typedef void (*gscms_trans_color_proc_t) (gx_device * dev, gsicc_link_t *icclink,
+                                          void *inputcolor, void *outputcolor,
+                                          int num_bytes);
+
+typedef void (*gscms_trans_buffer_proc_t) (gx_device * dev, gsicc_link_t *icclink,
+                                           gsicc_bufferdesc_t *input_buff_desc,
+                                           gsicc_bufferdesc_t *output_buff_desc,
+                                           void *inputbuffer, void *outputbuffer);
+
+typedef void (*gscms_link_free_proc_t) (gsicc_link_t *icclink);
+
+typedef bool (*gscms_monitor_proc_t) (void *inputcolor, int num_bytes);
+
+typedef struct gscms_procs_s {
+    gscms_trans_buffer_proc_t map_buffer;
+    gscms_trans_color_proc_t map_color;
+    gscms_link_free_proc_t free_link;
+    gscms_monitor_proc_t is_color;
+} gscms_procs_t;
+# 129 "./base/gscms.h"
+typedef enum {
+    gsPERCEPTUAL = 0,
+    gsRELATIVECOLORIMETRIC,
+    gsSATURATION,
+    gsABSOLUTECOLORIMETRIC,
+    gsPERCEPTUAL_OR,
+    gsRELATIVECOLORIMETRIC_OR,
+    gsSATURATION_OR,
+    gsABSOLUTECOLORIMETRIC_OR,
+    gsRINOTSPECIFIED = 8
+} gsicc_rendering_intents_t;
+
+
+
+
+
+typedef enum {
+    gsBLACKPTCOMP_OFF = 0,
+    gsBLACKPTCOMP_ON,
+    gsBLACKPTCOMP_OFF_OR = 4,
+    gsBLACKPTCOMP_ON_OR,
+    gsBPNOTSPECIFIED = 8
+} gsicc_blackptcomp_t;
+
+
+
+typedef enum {
+    gsCMM_DEFAULT = 0,
+    gsCMM_NONE,
+    gsCMM_REPLACE
+} gsicc_cmm_t;
+
+
+
+typedef enum {
+    gsBLACKPRESERVE_OFF = 0,
+    gsBLACKPRESERVE_KONLY,
+    gsBLACKPRESERVE_KPLANE,
+    gsBKPRESNOTSPECIFIED = 8
+} gsicc_blackpreserve_t;
+# 178 "./base/gscms.h"
+typedef enum {
+    gsDEFAULTPROFILE = 0,
+    gsGRAPHICPROFILE,
+    gsIMAGEPROFILE,
+    gsTEXTPROFILE,
+    gsPROOFPROFILE,
+    gsLINKPROFILE,
+    gsOIPROFILE
+} gsicc_profile_types_t;
+
+typedef enum {
+    gsSRC_GRAPPRO = 0,
+    gsSRC_IMAGPRO,
+    gsSRC_TEXTPRO,
+} gsicc_profile_srctypes_t;
+
+
+
+
+typedef enum {
+    GS_UNKNOWN_TAG = 0x0,
+    GS_TEXT_TAG = 0x1,
+    GS_IMAGE_TAG = 0x2,
+    GS_PATH_TAG = 0x4,
+    GS_UNTOUCHED_TAG = 0x8,
+    GS_DEVICE_ENCODES_TAGS = 0x80
+} gs_graphics_type_tag_t;
+
+
+typedef struct gsicc_rendering_param_s {
+    gsicc_rendering_intents_t rendering_intent;
+    gsicc_blackptcomp_t black_point_comp;
+    gsicc_blackpreserve_t preserve_black;
+    gs_graphics_type_tag_t graphics_type_tag;
+    gsicc_cmm_t cmm;
+    bool override_icc;
+} gsicc_rendering_param_t;
+
+
+typedef struct cmm_srcgtag_profile_s {
+    cmm_profile_t *rgb_profiles[3];
+    gsicc_rendering_param_t rgb_rend_cond[3];
+    cmm_profile_t *cmyk_profiles[3];
+    gsicc_rendering_param_t cmyk_rend_cond[3];
+    cmm_profile_t *color_warp_profile;
+    gs_memory_t *memory;
+    int name_length;
+    char *name;
+    rc_header rc;
+} cmm_srcgtag_profile_t;
+
+typedef struct gsicc_colorname_s gsicc_colorname_t;
+
+struct gsicc_colorname_s {
+    char *name;
+    int length;
+    gsicc_colorname_t *next;
+};
+
+typedef struct gsicc_namelist_s gsicc_namelist_t;
+
+
+
+typedef struct gs_devicen_color_map_s gs_devicen_color_map;
+
+
+struct gsicc_namelist_s {
+    int count;
+    gsicc_colorname_t *head;
+    char *name_str;
+    gs_devicen_color_map *color_map;
+    bool equiv_cmyk_set;
+
+
+
+
+};
+
+
+typedef struct cmm_dev_profile_s {
+        cmm_profile_t *device_profile[4];
+        cmm_profile_t *proof_profile;
+        cmm_profile_t *link_profile;
+        cmm_profile_t *oi_profile;
+        gsicc_rendering_param_t rendercond[4];
+        bool devicegraytok;
+        bool graydetection;
+        bool pageneutralcolor;
+        bool usefastcolor;
+        bool supports_devn;
+        bool sim_overprint;
+        gsicc_namelist_t *spotnames;
+        bool prebandthreshold;
+        gs_memory_t *memory;
+        rc_header rc;
+} cmm_dev_profile_t;
+# 282 "./base/gscms.h"
+typedef enum {
+    DEFAULT_NONE,
+    DEFAULT_GRAY,
+    DEFAULT_RGB,
+    DEFAULT_CMYK,
+    NAMED_TYPE,
+    LAB_TYPE,
+    DEVICEN_TYPE,
+    DEFAULT_GRAY_s,
+    DEFAULT_RGB_s,
+    DEFAULT_CMYK_s,
+    LAB_TYPE_s,
+    CAL_GRAY,
+    CAL_RGB,
+    CIE_A,
+    CIE_ABC,
+    CIE_DEF,
+    CIE_DEFG,
+    CIE_CRD
+} gsicc_profile_t;
+# 324 "./base/gscms.h"
+typedef struct gsicc_serialized_profile_s {
+    unsigned char num_comps; unsigned char num_comps_out; bool islab; bool isdevlink; gsicc_profile_t default_match; gsicc_colorbuffer_t data_cs; gs_range_icc_t Range; int64_t hashcode; bool hash_is_valid; int devicen_permute[15]; bool devicen_permute_needed; int buffer_size; bool rend_is_valid; gsicc_rendering_param_t rend_cond;
+} gsicc_serialized_profile_t;
+
+
+
+
+struct cmm_profile_s {
+    unsigned char num_comps; unsigned char num_comps_out; bool islab; bool isdevlink; gsicc_profile_t default_match; gsicc_colorbuffer_t data_cs; gs_range_icc_t Range; int64_t hashcode; bool hash_is_valid; int devicen_permute[15]; bool devicen_permute_needed; int buffer_size; bool rend_is_valid; gsicc_rendering_param_t rend_cond;
+    byte *buffer;
+    gx_device *dev;
+    gsicc_namelist_t *spotnames;
+    void *profile_handle;
+    rc_header rc;
+    int name_length;
+    char *name;
+
+
+
+
+    gs_memory_t *memory;
+    gx_monitor_t *lock;
+};
+# 371 "./base/gscms.h"
+typedef struct gsicc_profile_entry_s gsicc_profile_entry_t;
+
+struct gsicc_profile_entry_s {
+    gs_color_space *color_space;
+    gsicc_profile_entry_t *next;
+    int64_t key;
+};
+
+
+
+typedef struct gsicc_profile_cache_s {
+    gsicc_profile_entry_t *head;
+    int num_entries;
+    rc_header rc;
+    gs_memory_t *memory;
+} gsicc_profile_cache_t;
+
+
+
+
+typedef enum {
+    DEVICETYPE,
+    ICCTYPE,
+    CRDTYPE,
+    CIEATYPE,
+    CIEABCTYPE,
+    CIEDEFTYPE,
+    CIEDEFGTYPE
+} gs_colortype_t;
+# 408 "./base/gscms.h"
+typedef struct gsicc_hashlink_s {
+    int64_t link_hashcode;
+    int64_t src_hash;
+    int64_t des_hash;
+    int64_t rend_hash;
+} gsicc_hashlink_t;
+
+struct gsicc_link_s {
+    void *link_handle;
+    gscms_procs_t procs;
+    gsicc_hashlink_t hashcode;
+    struct gsicc_link_cache_s *icc_link_cache;
+    int ref_count;
+    gsicc_link_t *next;
+    gx_semaphore_t *wait;
+    int num_waiting;
+    bool includes_softproof;
+    bool includes_devlink;
+    bool is_identity;
+    bool valid;
+    bool is_monitored;
+    gscms_procs_t orig_procs;
+    gsicc_colorbuffer_t data_cs;
+    int num_input;
+    int num_output;
+};
+
+
+
+
+
+
+typedef struct gsicc_link_cache_s {
+    gsicc_link_t *head;
+    int num_links;
+    rc_header rc;
+    gs_memory_t *memory;
+    gx_monitor_t *lock;
+    gx_semaphore_t *wait;
+    int num_waiting;
+} gsicc_link_cache_t;
+# 467 "./base/gscms.h"
+typedef struct gsicc_devicen_entry_s gsicc_devicen_entry_t;
+
+struct gsicc_devicen_entry_s {
+    cmm_profile_t *iccprofile;
+    gsicc_devicen_entry_t *next;
+};
+
+typedef struct gsicc_devicen_s gsicc_devicen_t;
+
+struct gsicc_devicen_s {
+    gsicc_devicen_entry_t *head;
+    gsicc_devicen_entry_t *final;
+    int count;
+};
+
+
+
+
+
+typedef struct gsicc_smask_s {
+    cmm_profile_t *smask_gray;
+    cmm_profile_t *smask_rgb;
+    cmm_profile_t *smask_cmyk;
+    gs_memory_t *memory;
+    bool swapped;
+} gsicc_smask_t;
+
+
+
+typedef struct gsicc_manager_s {
+    cmm_profile_t *device_named;
+    cmm_profile_t *default_gray;
+    cmm_profile_t *default_rgb;
+    cmm_profile_t *default_cmyk;
+    cmm_profile_t *lab_profile;
+    cmm_profile_t *graytok_profile;
+    gsicc_devicen_t *device_n;
+    gsicc_smask_t *smask_profiles;
+    bool override_internal;
+    cmm_srcgtag_profile_t *srcgtag_profile;
+    gs_memory_t *memory;
+    rc_header rc;
+} gsicc_manager_t;
+# 42 "./base/gxdevcli.h" 2
+# 1 "./base/gxrplane.h" 1
+# 32 "./base/gxrplane.h"
+typedef struct gx_render_plane_s {
+    int depth;
+    int shift;
+    int index;
+} gx_render_plane_t;
+# 45 "./base/gxrplane.h"
+int gx_render_plane_init(gx_render_plane_t *render_plane,
+                         const gx_device *dev, int index);
+# 43 "./base/gxdevcli.h" 2
+# 139 "./base/gxdevcli.h"
+typedef struct gx_fill_params_s gx_fill_params;
+
+
+
+typedef struct gx_stroke_params_s gx_stroke_params;
+
+
+
+
+
+
+
+typedef struct patch_fill_state_s patch_fill_state_t;
+
+
+
+
+
+
+typedef struct gx_image_enum_common_s gx_image_enum_common_t;
+
+
+
+
+
+
+typedef struct gs_pattern1_instance_s gs_pattern1_instance_t;
+
+
+
+typedef gx_device_color gx_drawing_color;
+
+
+
+typedef enum {
+    go_text,
+    go_graphics
+} graphics_object_type;
+
+
+typedef struct gs_fixed_edge_s {
+    gs_fixed_point start;
+    gs_fixed_point end;
+} gs_fixed_edge;
+
+
+
+
+typedef struct gs_get_bits_params_s gs_get_bits_params_t;
+
+
+
+typedef struct gx_device_anti_alias_info_s {
+    int text_bits;
+    int graphics_bits;
+} gx_device_anti_alias_info;
+
+typedef int32_t frac31;
+
+
+
+
+typedef struct gs_linear_color_edge_s {
+    gs_fixed_point start;
+    gs_fixed_point end;
+    const frac31 *c0, *c1;
+    fixed clip_x;
+} gs_linear_color_edge;
+# 234 "./base/gxdevcli.h"
+typedef enum {
+    GX_CINFO_UNKNOWN_SEP_LIN = -1,
+    GX_CINFO_SEP_LIN_NONE = 0,
+    GX_CINFO_SEP_LIN
+} gx_color_enc_sep_lin_t;
+# 262 "./base/gxdevcli.h"
+typedef enum {
+    GX_CINFO_OPMODE_UNKNOWN = -1,
+    GX_CINFO_OPMODE_NOT = 0,
+    GX_CINFO_OPMODE = 1,
+    GX_CINFO_OPMODE_RGB,
+    GC_CINFO_OPMODE_RGB_SET
+} gx_cm_opmode_t;
+# 297 "./base/gxdevcli.h"
+typedef struct gx_device_color_info_s {
+
+
+
+
+
+
+    int max_components;
+
+
+
+
+
+
+
+    int num_components;
+
+
+
+
+
+
+
+    gx_color_polarity_t polarity;
+
+
+
+
+
+
+
+    ushort depth;
+# 356 "./base/gxdevcli.h"
+    byte gray_index;
+# 378 "./base/gxdevcli.h"
+    uint max_gray;
+    uint max_color;
+
+    uint dither_grays;
+    uint dither_colors;
+
+
+
+
+
+    gx_device_anti_alias_info anti_alias;
+# 426 "./base/gxdevcli.h"
+    gx_color_enc_sep_lin_t separable_and_linear;
+    byte comp_shift[(8 * 8)];
+    byte comp_bits[(8 * 8)];
+    gx_color_index comp_mask[(8 * 8)];
+
+
+
+
+    const char * cm_name;
+# 452 "./base/gxdevcli.h"
+    gx_cm_opmode_t opmode;
+    gx_color_index process_comps;
+    int black_component;} gx_device_color_info;
+# 616 "./base/gxdevcli.h"
+typedef struct gx_device_procs_s gx_device_procs;
+
+
+
+typedef struct gx_page_device_procs_s {
+
+
+
+    int (*install)(gx_device *dev, gs_state *pgs);
+
+
+
+    int (*begin_page)(gx_device *dev, gs_state *pgs);
+
+
+
+    int (*end_page)(gx_device *dev, int reason, gs_state *pgs);
+
+} gx_page_device_procs;
+
+
+int gx_default_install(gx_device *dev, gs_state *pgs);
+int gx_default_begin_page(gx_device *dev, gs_state *pgs);
+int gx_default_end_page(gx_device *dev, int reason, gs_state *pgs);
+# 651 "./base/gxdevcli.h"
+typedef struct gx_stroked_gradient_recognizer_s {
+    bool stroke_stored;
+    gs_fixed_point orig[4], adjusted[4];
+} gx_stroked_gradient_recognizer_t;
+# 683 "./base/gxdevcli.h"
+typedef struct gx_device_cached_colors_s {
+    gx_color_index black, white;
+} gx_device_cached_colors_t;
+
+
+
+
+
+
+
+typedef struct gx_band_params_s {
+    int BandWidth;
+    int BandHeight;
+    long BandBufferSpace;
+} gx_band_params_t;
+
+
+
+typedef enum {
+    BandingAuto = 0,
+    BandingAlways,
+    BandingNever
+} gdev_banding_type;
+
+
+
+
+typedef struct gdev_space_params_s {
+    long MaxBitmap;
+    long BufferSpace;
+    gx_band_params_t band;
+    bool params_are_read_only;
+    gdev_banding_type banding_type;
+} gdev_space_params;
+# 1290 "./base/gxdevcli.h"
+typedef enum {
+    pattern_manage__can_accum,
+    pattern_manage__start_accum,
+    pattern_manage__finish_accum,
+    pattern_manage__load,
+    pattern_manage__shading_area,
+    pattern_manage__is_cpath_accum,
+    pattern_manage__shfill_doesnt_need_path,
+    pattern_manage__handles_clip_path
+} pattern_manage_t;
+# 1343 "./base/gxdevcli.h"
+typedef struct gs_fill_attributes_s {
+      const gs_fixed_rect *clip;
+      bool swap_axes;
+      const gx_device_halftone *ht;
+      gs_logical_operation_t lop;
+      fixed ystart, yend;
+      patch_fill_state_t *pfs;
+} gs_fill_attributes;
+# 1423 "./base/gxdevcli.h"
+typedef struct gs_devn_params_s gs_devn_params;
+# 1507 "./base/gxdevcli.h"
+typedef struct gx_process_page_options_s gx_process_page_options_t;
+
+struct gx_process_page_options_s
+{
+    int (*init_buffer_fn)(void *arg, gx_device *dev, gs_memory_t *memory, int w, int h, void **buffer);
+    void (*free_buffer_fn)(void *arg, gx_device *dev, gs_memory_t *memory, void *buffer);
+    int (*process_fn)(void *arg, gx_device *dev, gx_device *bdev, const gs_int_rect *rect, void *buffer);
+    int (*output_fn)(void *arg, gx_device *dev, void *buffer);
+    void *arg;
+    int options;
+};
+# 1613 "./base/gxdevcli.h"
+typedef struct gx_image_plane_s {
+    const byte *data;
+    int data_x;
+    uint raster;
+} gx_image_plane_t;
+# 1631 "./base/gxdevcli.h"
+int gx_image_data(gx_image_enum_common_t *info, const byte **planes,
+                  int data_x, uint raster, int height);
+
+
+
+
+int gx_image_plane_data(gx_image_enum_common_t *info,
+                        const gx_image_plane_t *planes, int height);
+int gx_image_plane_data_rows(gx_image_enum_common_t *info,
+                             const gx_image_plane_t *planes, int height,
+                             int *rows_used);
+int gx_image_flush(gx_image_enum_common_t *info);
+bool gx_image_planes_wanted(const gx_image_enum_common_t *info, byte *wanted);
+int gx_image_end(gx_image_enum_common_t *info, bool draw_last);
+# 1661 "./base/gxdevcli.h"
+struct gx_device_procs_s { int (*open_device)(gx_device *dev); void (*get_initial_matrix)(gx_device *dev, gs_matrix *pmat); int (*sync_output)(gx_device *dev); int (*output_page)(gx_device *dev, int num_copies, int flush); int (*close_device)(gx_device *dev); gx_color_index (*map_rgb_color)(gx_device *dev, const gx_color_value cv[]); int (*map_color_rgb)(gx_device *dev, gx_color_index color, gx_color_value rgb[3]); int (*fill_rectangle)(gx_device *dev, int x, int y, int width, int height, gx_color_index color); int (*tile_rectangle)(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y); int (*copy_mono)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1); int (*copy_color)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height); int (*obsolete_draw_line)(gx_device *dev, int x0, int y0, int x1, int y1, gx_color_index color); int (*get_bits)(gx_device *dev, int y, byte *data, byte **actual_data); int (*get_params)(gx_device *dev, gs_param_list *plist); int (*put_params)(gx_device *dev, gs_param_list *plist); gx_color_index (*map_cmyk_color)(gx_device *dev, const gx_color_value cv[]); const gx_xfont_procs *(*get_xfont_procs)(gx_device *dev); gx_device *(*get_xfont_device)(gx_device *dev); gx_color_index (*map_rgb_alpha_color)(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha); gx_device *(*get_page_device)(gx_device *dev); int (*get_alpha_bits)(gx_device *dev, graphics_object_type type); int (*copy_alpha)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth); int (*get_band)(gx_device *dev, int y, int *band_start); int (*copy_rop)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop); int (*fill_path)(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*stroke_path)(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*fill_mask)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath); int (*fill_trapezoid)(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*fill_parallelogram)(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*fill_triangle)(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*draw_thin_line)(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty); int (*begin_image)(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo); int (*image_data)(gx_device *dev, gx_image_enum_common_t *info, const byte **planes, int data_x, uint raster, int height); int (*end_image)(gx_device *dev, gx_image_enum_common_t *info, bool draw_last); int (*strip_tile_rectangle)(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y); int (*strip_copy_rop)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop); void (*get_clipping_box)(gx_device *dev, gs_fixed_rect *pbox); int (*begin_typed_image)(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo); int (*get_bits_rectangle)(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread); int (*map_color_rgb_alpha)(gx_device *dev, gx_color_index color, gx_color_value rgba[4]); int (*create_compositor)(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev); int (*get_hardware_params)(gx_device *dev, gs_param_list *plist); int (*text_begin)(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte); int (*finish_copydevice)(gx_device *dev, const gx_device *from_dev); int (*begin_transparency_group)(gx_device *dev, const gs_transparency_group_params_t *ptgp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem); int (*end_transparency_group)(gx_device *dev, gs_imager_state *pis); int (*begin_transparency_mask)(gx_device *dev, const gx_transparency_mask_params_t *ptmp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem); int (*end_transparency_mask)(gx_device *dev, gs_imager_state *pis); int (*discard_transparency_layer)(gx_device *dev, gs_imager_state *pis); const gx_cm_color_map_procs * ((*get_color_mapping_procs))(const gx_device * dev); int ((*get_color_comp_index))(gx_device * dev, const char * pname, int name_size, int component_type); gx_color_index ((*encode_color))(gx_device * dev, const gx_color_value colors[]); int ((*decode_color))(gx_device * dev, gx_color_index cindex, gx_color_value colors[]); int (*pattern_manage)(gx_device *pdev, gx_bitmap_id id, gs_pattern1_instance_t *pinst, pattern_manage_t function); int (*fill_rectangle_hl_color)(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*include_color_space)(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length); int (*fill_linear_color_scanline)(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den ); int (*fill_linear_color_trapezoid)(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3); int (*fill_linear_color_triangle)(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2); int (*update_spot_equivalent_colors)(gx_device *dev, const gs_state * pgs); gs_devn_params * (*ret_devn_params)(gx_device *dev); int (*fillpage)(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc); int (*push_transparency_state)(gx_device *dev, gs_imager_state *pis); int (*pop_transparency_state)(gx_device *dev, gs_imager_state *pis); int (*put_image)(gx_device *dev, const byte *buffer, int num_chan, int x, int y, int width, int height, int row_stride, int plane_stride, int alpha_plane_index, int tag_plane_index); int (*dev_spec_op)(gx_device *dev, int op, void *data, int datasize); int (*copy_planes)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, int plane_height); int (*get_profile)(gx_device *dev, cmm_dev_profile_t **dev_profile); void (*set_graphics_type_tag)(gx_device *dev, gs_graphics_type_tag_t); int (*strip_copy_rop2)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height); int (*strip_tile_rect_devn)(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y); int (*copy_alpha_hl_color)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth); int (*process_page)(gx_device *dev, gx_process_page_options_t *options);};
+# 1677 "./base/gxdevcli.h"
+int gx_copy_mono_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_copy_color_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_copy_alpha_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+
+
+struct gx_device_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs;
+};
+
+extern const gs_memory_struct_type_t st_device;
+void gx_device_finalize(const gs_memory_t *cmem, void *ptr);
+# 1697 "./base/gxdevcli.h"
+gx_device *gx_device_enum_ptr(gx_device *);
+gx_device *gx_device_reloc_ptr(gx_device *, gc_state_t *);
+
+
+
+typedef gx_color_index (*dev_proc_map_rgb_color_t)(gx_device *dev, const gx_color_value cv[]);
+typedef int (*dev_proc_map_color_rgb_t)(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+# 1716 "./base/gxdevcli.h"
+typedef struct gx_device_forward_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+} gx_device_forward;
+
+extern const gs_memory_struct_type_t st_device_forward;
+# 1730 "./base/gxdevcli.h"
+typedef struct gx_device_null_s gx_device_null;
+
+struct gx_device_null_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+};
+extern const gx_device_null gs_null_device;
+
+
+
+extern const gs_memory_struct_type_t st_device_null;
+# 1753 "./base/gxdevcli.h"
+void gx_device_init(gx_device * dev, const gx_device * proto,
+                    gs_memory_t * mem, bool internal);
+
+
+
+
+
+
+void gx_device_init_on_stack(gx_device * dev, const gx_device * proto,
+                             gs_memory_t * mem);
+
+
+
+
+void gs_make_null_device(gx_device_null *dev_null, gx_device *target,
+                         gs_memory_t *mem);
+
+bool gs_is_null_device(gx_device *dev);
+
+
+void gx_device_set_target(gx_device_forward *fdev, gx_device *target);
+
+
+void gx_device_retain(gx_device *dev, bool retained);
+
+
+
+uint gx_device_raster(const gx_device * dev, bool pad_to_word);
+
+
+
+uint gx_device_raster_chunky(const gx_device * dev, bool pad);
+
+
+
+uint gx_device_raster_plane(const gx_device * dev, const gx_render_plane_t *render_plane);
+
+
+
+
+
+int gx_device_adjust_resolution(gx_device * dev, int actual_width, int actual_height, int fit);
+
+
+
+void gx_device_set_margins(gx_device * dev, const float *margins ,
+                           bool move_origin);
+
+
+void gx_device_set_width_height(gx_device * dev, int width, int height);
+
+
+void gx_device_set_resolution(gx_device * dev, double x_dpi, double y_dpi);
+
+
+void gx_device_set_media_size(gx_device * dev, double media_width, double media_height);
+# 1818 "./base/gxdevcli.h"
+void gx_set_device_only(gs_state *, gx_device *);
+
+
+int gs_closedevice(gx_device *);
+
+
+void gx_device_free_local(gx_device *);
+
+
+
+
+
+
+typedef struct gx_device_type_s {
+    gs_memory_type_ptr_t stype;
+    int (*initialize)(gx_device *);
+} gx_device_type;
+# 24 "./base/gxdevice.h" 2
+# 1 "./base/gsfname.h" 1
+# 33 "./base/gsfname.h"
+typedef struct gx_io_device_s gx_io_device;
+
+
+typedef struct gs_parsed_file_name_s {
+    gs_memory_t *memory;
+    gx_io_device *iodev;
+    const char *fname;
+    uint len;
+} gs_parsed_file_name_t;
+
+
+int gs_parse_file_name(gs_parsed_file_name_t *, const char *, uint,
+                       const gs_memory_t *);
+
+
+int gs_parse_real_file_name(gs_parsed_file_name_t *, const char *, uint,
+                            gs_memory_t *, client_name_t);
+
+
+int gs_terminate_file_name(gs_parsed_file_name_t *, gs_memory_t *,
+                           client_name_t);
+
+
+void gs_free_file_name(gs_parsed_file_name_t *, client_name_t);
+# 25 "./base/gxdevice.h" 2
+
+
+
+
+
+# 1 "./base/gsmalloc.h" 1
+# 26 "./base/gsmalloc.h"
+typedef struct gs_malloc_block_s gs_malloc_block_t;
+typedef struct gs_malloc_memory_s {
+    gs_memory_t *stable_memory; gs_memory_procs_t procs; gs_lib_ctx_t *gs_lib_ctx; gs_memory_t *non_gc_memory; gs_memory_t *thread_safe_memory;
+    gs_malloc_block_t *allocated;
+    long limit;
+    long used;
+    long max_used;
+    gx_monitor_t *monitor;
+} gs_malloc_memory_t;
+
+
+gs_malloc_memory_t *gs_malloc_memory_init(void);
+
+
+
+
+
+
+
+gs_memory_t * gs_malloc_init(void);
+void gs_malloc_release(gs_memory_t *mem);
+# 56 "./base/gsmalloc.h"
+int gs_malloc_wrap(gs_memory_t **wrapped, gs_malloc_memory_t *contents);
+
+
+gs_malloc_memory_t *gs_malloc_wrapped_contents(gs_memory_t *wrapped);
+
+
+gs_malloc_memory_t *gs_malloc_unwrap(gs_memory_t *wrapped);
+# 31 "./base/gxdevice.h" 2
+
+
+
+
+# 1 "./base/gxstdio.h" 1
+# 36 "./base/gxdevice.h" 2
+# 239 "./base/gxdevice.h"
+int gx_default_open_device(gx_device *dev);
+void gx_default_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+void gx_upright_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+int gx_default_sync_output(gx_device *dev);
+int gx_default_output_page(gx_device *dev, int num_copies, int flush);
+int gx_default_close_device(gx_device *dev);
+gx_color_index gx_default_w_b_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_w_b_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+int gx_default_tile_rectangle(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_default_copy_mono(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_default_copy_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_default_draw_line(gx_device *dev, int x0, int y0, int x1, int y1, gx_color_index color);
+int gx_no_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_default_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_default_get_params(gx_device *dev, gs_param_list *plist);
+int gx_default_put_params(gx_device *dev, gs_param_list *plist);
+gx_color_index gx_default_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+const gx_xfont_procs *gx_default_get_xfont_procs(gx_device *dev);
+gx_device *gx_default_get_xfont_device(gx_device *dev);
+gx_color_index gx_default_map_rgb_alpha_color(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha);
+gx_device *gx_default_get_page_device(gx_device *dev);
+gx_device *gx_page_device_get_page_device(gx_device *dev);
+int gx_default_get_alpha_bits(gx_device *dev, graphics_object_type type);
+int gx_no_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_default_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_default_get_band(gx_device *dev, int y, int *band_start);
+int gx_no_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_fill_mask(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath);
+int gx_default_fill_trapezoid(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_fill_parallelogram(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_fill_triangle(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_draw_thin_line(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty);
+int gx_default_begin_image(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_default_image_data(gx_device *dev, gx_image_enum_common_t *info, const byte **planes, int data_x, uint raster, int height);
+int gx_default_end_image(gx_device *dev, gx_image_enum_common_t *info, bool draw_last);
+int gx_default_strip_tile_rectangle(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_no_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+void gx_default_get_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+void gx_get_largest_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+int gx_default_begin_typed_image(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_no_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_default_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_default_map_color_rgb_alpha(gx_device *dev, gx_color_index color, gx_color_value rgba[4]);
+int gx_no_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+
+
+int gx_default_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_null_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_default_get_hardware_params(gx_device *dev, gs_param_list *plist);
+int gx_default_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+int gx_default_finish_copydevice(gx_device *dev, const gx_device *from_dev);
+int gx_default_dev_spec_op(gx_device *dev, int op, void *data, int datasize);
+int gx_default_fill_rectangle_hl_color(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_include_color_space(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length);
+int gx_default_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_hl_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_default_fill_linear_color_trapezoid(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3);
+int gx_default_fill_linear_color_triangle(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2);
+int gx_default_update_spot_equivalent_colors(gx_device *dev, const gs_state * pgs);
+gs_devn_params * gx_default_ret_devn_params(gx_device *dev);
+int gx_default_fillpage(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc);
+int gx_default_get_profile(gx_device *dev, cmm_dev_profile_t **dev_profile);
+void gx_default_set_graphics_type_tag(gx_device *dev, gs_graphics_type_tag_t);
+int gx_default_strip_copy_rop2(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height);
+int gx_default_strip_tile_rect_devn(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y);
+int gx_default_copy_alpha_hl_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth);
+int gx_default_process_page(gx_device *dev, gx_process_page_options_t *options);
+
+
+
+
+
+gx_color_index gx_default_b_w_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_b_w_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+gx_color_index gx_default_gray_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_gray_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int gx_default_rgb_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+
+
+
+
+gx_color_index gx_default_rgb_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+gx_color_index cmyk_1bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int cmyk_1bit_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int (cmyk_1bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index cmyk_8bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int cmyk_8bit_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int (cmyk_8bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index cmyk_16bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int (cmyk_16bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index (gx_default_8bit_map_gray_color)(gx_device * dev, const gx_color_value colors[]);
+int (gx_default_8bit_map_color_gray)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+
+
+int gx_forward_close_device(gx_device *dev);
+void gx_forward_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+int gx_forward_sync_output(gx_device *dev);
+int gx_forward_output_page(gx_device *dev, int num_copies, int flush);
+gx_color_index gx_forward_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_forward_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int gx_forward_fill_rectangle(gx_device *dev, int x, int y, int width, int height, gx_color_index color);
+int gx_forward_tile_rectangle(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_forward_copy_mono(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_forward_copy_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_forward_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_forward_get_params(gx_device *dev, gs_param_list *plist);
+int gx_forward_put_params(gx_device *dev, gs_param_list *plist);
+gx_color_index gx_forward_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+const gx_xfont_procs *gx_forward_get_xfont_procs(gx_device *dev);
+gx_device *gx_forward_get_xfont_device(gx_device *dev);
+gx_color_index gx_forward_map_rgb_alpha_color(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha);
+gx_device *gx_forward_get_page_device(gx_device *dev);
+
+int gx_forward_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_forward_get_band(gx_device *dev, int y, int *band_start);
+int gx_forward_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_forward_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_fill_mask(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath);
+int gx_forward_fill_trapezoid(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_fill_parallelogram(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_fill_triangle(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_draw_thin_line(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty);
+int gx_forward_begin_image(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+
+
+int gx_forward_strip_tile_rectangle(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_forward_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+void gx_forward_get_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+int gx_forward_begin_typed_image(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_forward_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_forward_map_color_rgb_alpha(gx_device *dev, gx_color_index color, gx_color_value rgba[4]);
+
+int gx_forward_get_hardware_params(gx_device *dev, gs_param_list *plist);
+int gx_forward_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+const gx_cm_color_map_procs * (gx_forward_get_color_mapping_procs)(const gx_device * dev);
+int (gx_forward_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+gx_color_index (gx_forward_encode_color)(gx_device * dev, const gx_color_value colors[]);
+int (gx_forward_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+int gx_forward_dev_spec_op(gx_device *dev, int op, void *data, int datasize);
+int gx_forward_fill_rectangle_hl_color(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_include_color_space(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length);
+int gx_forward_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_forward_fill_linear_color_trapezoid(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3);
+int gx_forward_fill_linear_color_triangle(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2);
+int gx_forward_update_spot_equivalent_colors(gx_device *dev, const gs_state * pgs);
+gs_devn_params * gx_forward_ret_devn_params(gx_device *dev);
+int gx_forward_fillpage(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc);
+int gx_forward_copy_planes(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, int plane_height);
+int gx_forward_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_forward_get_profile(gx_device *dev, cmm_dev_profile_t **dev_profile);
+void gx_forward_set_graphics_type_tag(gx_device *dev, gs_graphics_type_tag_t);
+int gx_forward_strip_copy_rop2(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height);
+int gx_forward_strip_tile_rect_devn(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y);
+int gx_forward_copy_alpha_hl_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth);
+
+
+
+
+void gx_device_set_procs(gx_device *);
+
+
+void gx_device_fill_in_procs(gx_device *);
+void gx_device_forward_fill_in_procs(gx_device_forward *);
+
+
+void gx_device_forward_color_procs(gx_device_forward *);
+
+
+
+
+
+void check_device_separable(gx_device * dev);
+
+
+
+
+void set_linear_color_bits_mask_shift(gx_device * dev);
+
+
+
+
+void gx_device_copy_color_procs(gx_device *dev, const gx_device *target);
+
+
+gx_color_index gx_device_black(gx_device *dev);
+
+
+
+gx_color_index gx_device_white(gx_device *dev);
+
+
+
+
+
+void gx_device_decache_colors(gx_device *dev);
+
+
+
+
+
+void gx_device_copy_color_params(gx_device *dev, const gx_device *target);
+
+
+
+
+
+
+void gx_device_copy_params(gx_device *dev, const gx_device *target);
+# 464 "./base/gxdevice.h"
+int gx_parse_output_file_name(gs_parsed_file_name_t *pfn,
+                              const char **pfmt, const char *fname,
+                              uint len, gs_memory_t *memory);
+
+
+
+
+bool gx_outputfile_is_separate_pages(const char *fname, gs_memory_t *memory);
+
+
+
+
+
+int gx_device_open_output_file(const gx_device * dev, char *fname,
+                               bool binary, bool positionable,
+                               FILE ** pfile);
+
+
+int gx_device_close_output_file(const gx_device * dev, const char *fname,
+                                FILE *file);
+
+
+int gx_device_delete_output_file(const gx_device * dev, const char *fname);
+# 505 "./base/gxdevice.h"
+int gx_finish_output_page(gx_device *dev, int num_copies, int flush);
+# 596 "./base/gxdevice.h"
+typedef struct gdev_input_media_s {
+    float PageSize[4];
+    const char *MediaColor;
+    float MediaWeight;
+    const char *MediaType;
+} gdev_input_media_t;
+
+
+extern const gdev_input_media_t gdev_input_media_default;
+
+void gdev_input_media_init(gdev_input_media_t * pim);
+
+int gdev_begin_input_media(gs_param_list * mlist, gs_param_dict * pdict,
+                           int count);
+
+int gdev_write_input_page_size(int index, gs_param_dict * pdict,
+                               double width_points, double height_points);
+
+int gdev_write_input_media(int index, gs_param_dict * pdict,
+                           const gdev_input_media_t * pim);
+
+int gdev_end_input_media(gs_param_list * mlist, gs_param_dict * pdict);
+
+typedef struct gdev_output_media_s {
+    const char *OutputType;
+} gdev_output_media_t;
+
+
+extern const gdev_output_media_t gdev_output_media_default;
+
+int gdev_begin_output_media(gs_param_list * mlist, gs_param_dict * pdict,
+                            int count);
+
+int gdev_write_output_media(int index, gs_param_dict * pdict,
+                            const gdev_output_media_t * pom);
+
+
+void gx_default_put_icc_dir(gs_param_string *icc_pro, gx_device * dev);
+
+int gdev_end_output_media(gs_param_list * mlist, gs_param_dict * pdict);
+
+void gx_device_request_leadingedge(gx_device *dev, int le_req);
+# 26 "./devices/gdevxalt.c" 2
+
+# 1 "./devices/gdevx.h" 1
+# 24 "./devices/gdevx.h"
+typedef unsigned long x_pixel;
+
+
+# 1 "./base/gdevbbox.h" 1
+# 74 "./base/gdevbbox.h"
+typedef struct gx_device_bbox_procs_s {
+
+
+
+    bool (*init_box)(void *proc_data);
+
+
+
+    void (*get_box)(const void *proc_data, gs_fixed_rect *pbox);
+
+
+
+    void (*add_rect)(void *proc_data, fixed x0, fixed y0, fixed x1, fixed y1);
+
+
+
+    bool (*in_rect)(const void *proc_data, const gs_fixed_rect *pbox);
+
+} gx_device_bbox_procs_t;
+
+bool bbox_default_init_box(void *proc_data);
+void bbox_default_get_box(const void *proc_data, gs_fixed_rect *pbox);
+void bbox_default_add_rect(void *proc_data, fixed x0, fixed y0, fixed x1, fixed y1);
+bool bbox_default_in_rect(const void *proc_data, const gs_fixed_rect *pbox);
+# 110 "./base/gdevbbox.h"
+typedef struct gx_device_bbox_s gx_device_bbox;
+
+
+
+
+struct gx_device_bbox_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target; bool free_standing; bool forward_open_close; gx_device_bbox_procs_t box_procs; void *box_proc_data; bool white_is_opaque; gs_fixed_rect bbox; gx_color_index black, white; gx_color_index transparent;
+};
+
+extern const gs_memory_struct_type_t st_device_bbox;
+
+
+
+
+
+
+void gx_device_bbox_init(gx_device_bbox * dev, gx_device * target, gs_memory_t *mem);
+
+
+void gx_device_bbox_fwd_open_close(gx_device_bbox * dev,
+                                   bool forward_open_close);
+
+
+void gx_device_bbox_set_white_opaque(gx_device_bbox *dev,
+                                     bool white_is_opaque);
+
+
+void gx_device_bbox_bbox(gx_device_bbox * dev, gs_rect * pbbox);
+
+
+void gx_device_bbox_release(gx_device_bbox *dev);
+# 27 "./devices/gdevx.h" 2
+# 1 "./devices/gdevxcmp.h" 1
+# 31 "./devices/gdevxcmp.h"
+typedef struct x11_rgb_s {
+    gx_color_value rgb[3];
+    bool defined;
+} x11_rgb_t;
+
+
+typedef struct x11_color_s x11_color_t;
+struct x11_color_s {
+    XColor color;
+    x11_color_t *next;
+};
+
+
+
+
+
+
+typedef ushort X_color_value;
+
+
+
+
+
+typedef struct x11_cmap_values_s {
+    int cv_shift;
+    X_color_value nearest[64];
+    int pixel_shift;
+} x11_cmap_values_t;
+
+
+
+typedef struct x11_cman_s {
+
+
+
+
+
+    int num_rgb;
+# 78 "./devices/gdevxcmp.h"
+    struct cmm_ {
+        X_color_value red, green, blue;
+    } color_mask, match_mask;
+
+
+
+    struct {
+
+
+
+
+
+        XStandardColormap *map;
+
+
+
+
+
+        bool fast;
+        x11_cmap_values_t red, green, blue;
+
+
+
+
+
+
+        bool free_map;
+
+    } std_cmap;
+# 115 "./devices/gdevxcmp.h"
+    struct cmc_ {
+        int size;
+        x11_rgb_t *values;
+    } color_to_rgb;
+# 127 "./devices/gdevxcmp.h"
+    x_pixel *dither_ramp;
+
+
+
+
+
+
+
+    struct cmd_ {
+        int size;
+        x11_color_t **colors;
+        int shift;
+        int used;
+        int max_used;
+    } dynamic;
+
+} x11_cman_t;
+# 28 "./devices/gdevx.h" 2
+
+
+extern XtResource gdev_x_resources[];
+extern const int gdev_x_resource_count;
+extern String gdev_x_fallback_resources[];
+
+
+typedef struct gx_device_X_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target; bool free_standing; bool forward_open_close; gx_device_bbox_procs_t box_procs; void *box_proc_data; bool white_is_opaque; gs_fixed_rect bbox; gx_color_index black, white; gx_color_index transparent;
+
+
+
+
+
+    bool is_buffered;
+    bool IsPageDevice;
+    byte *buffer;
+    long buffer_size;
+
+
+    XImage image;
+
+
+    Display *dpy;
+    Screen *scr;
+    XVisualInfo *vinfo;
+    Colormap cmap;
+    Window win;
+    GC gc;
+
+
+    Window pwin;
+
+
+    Pixmap bpixmap;
+
+    int ghostview;
+    Window mwin;
+    gs_matrix initial_matrix;
+    Atom NEXT, PAGE, DONE;
+    struct {
+        gs_int_rect box;
+        long area;
+        long total;
+        int count;
+    } update;
+    Pixmap dest;
+    x_pixel colors_or;
+    x_pixel colors_and;
+
+
+    struct {
+        Pixmap pixmap;
+        GC gc;
+        int raster, height;
+    } cp;
+
+
+
+    struct {
+        Pixmap pixmap;
+        Pixmap no_pixmap;
+        gx_bitmap_id id;
+        int width, height, raster;
+        x_pixel fore_c, back_c;
+    } ht;
+
+
+    int function;
+    int fill_style;
+    Font fid;
+# 116 "./devices/gdevx.h"
+    x_pixel back_color, fore_color;
+
+    Pixel background, foreground;
+
+
+
+
+
+    x11_cman_t cman;
+# 147 "./devices/gdevx.h"
+    Pixel borderColor;
+    Dimension borderWidth;
+    String geometry;
+    int maxGrayRamp, maxRGBRamp;
+    String palette;
+    float xResolution, yResolution;
+
+
+    Boolean useBackingPixmap;
+    Boolean useXPutImage;
+    Boolean useXSetTile;
+# 167 "./devices/gdevx.h"
+    bool AlwaysUpdate;
+
+
+
+
+
+    int MaxTempPixmap;
+
+
+
+
+    int MaxTempImage;
+
+
+
+
+    struct {
+        int item_count;
+
+        int char_count;
+        gs_int_point origin;
+        int x;
+
+        XTextItem items[12];
+
+        char chars[25];
+    } text;
+# 203 "./devices/gdevx.h"
+} gx_device_X;
+
+
+
+
+
+
+void gdev_x_send_event(gx_device_X *xdev, Atom msg);
+
+
+void x_update_add(gx_device_X *, int, int, int, int);
+void gdev_x_clear_window(gx_device_X *);
+int x_catch_free_colors(Display *, XErrorEvent *);
+
+
+
+
+
+
+
+int gdev_x_setup_colors(gx_device_X *);
+void gdev_x_free_colors(gx_device_X *);
+void gdev_x_free_dynamic_colors(gx_device_X *);
+
+
+int gdev_x_open(gx_device_X *);
+int gdev_x_close(gx_device_X *);
+
+
+gx_color_index gdev_x_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gdev_x_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int gdev_x_get_params(gx_device *dev, gs_param_list *plist);
+int gdev_x_put_params(gx_device *dev, gs_param_list *plist);
+int gdev_x_finish_copydevice(gx_device *dev, const gx_device *from_dev);
+# 28 "./devices/gdevxalt.c" 2
+
+extern const gx_device_X gs_x11_device;
+extern const gx_device_X gs_x11alpha_device;
+
+
+
+
+
+
+typedef struct {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+    gx_color_index color_cache[16];
+
+
+
+
+    int (*alt_map_color)(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+} gx_device_X_wrapper;
+
+
+
+
+
+
+
+static gs_ptr_type_t gdevx_wrapper_enum_ptrs(const gs_memory_t *mem, const void *vptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { return (*(st_device_forward).enum_ptrs)(mem, vptr, size, index-(0), pep, &(st_device_forward), gcst); } static void gdevx_wrapper_reloc_ptrs(void *vptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { { (*(st_device_forward).reloc_ptrs)(vptr, size, &(st_device_forward), gcst); } } static const gs_memory_struct_type_t st_device_X_wrapper = { sizeof(gx_device_X_wrapper), "gx_device_X_wrapper", 0, 0, gdevx_wrapper_enum_ptrs, gdevx_wrapper_reloc_ptrs, gx_device_finalize, 0 };
+
+
+
+
+
+
+static int get_dev_target(gx_device **, gx_device *);
+
+static int get_target_info(gx_device *);
+static gx_color_index x_alt_map_color(gx_device *, gx_color_index);
+
+
+static void
+x_clear_color_cache(gx_device * dev)
+{
+    gx_device_X_wrapper *xdev = (gx_device_X_wrapper *) dev;
+    int i;
+
+    for (i = 0; i < (sizeof(xdev->color_cache) / sizeof((xdev->color_cache)[0])); ++i)
+        xdev->color_cache[i] = ((gx_color_index)(~0));
+    gx_device_decache_colors(dev);
+}
+
+
+
+static int
+x_wrap_open(gx_device * dev)
+{
+    gx_device *tdev;
+    int rcode, code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    rcode = (*((tdev)->procs.open_device)) (tdev);
+    if (rcode < 0)
+        return rcode;
+    tdev->is_open = ((bool)1);
+    code = get_target_info(dev);
+    return (code < 0 ? code : rcode);
+}
+
+static int
+x_forward_sync_output(gx_device * dev)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.sync_output)) (tdev);
+}
+
+static int
+x_forward_output_page(gx_device * dev, int num_copies, int flush)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.output_page)) (tdev, num_copies, flush);
+}
+
+static int
+x_wrap_close(gx_device * dev)
+{
+
+
+
+
+
+    gx_device_set_target((gx_device_forward *)dev, ((void*)0));
+    x_clear_color_cache(dev);
+    return 0;
+}
+
+static int
+x_wrap_map_color_rgb(gx_device * dev, gx_color_index color,
+                     gx_color_value prgb[3])
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.map_color_rgb)) (tdev,
+                                             x_alt_map_color(dev, color),
+                                             prgb);
+}
+
+static int
+x_wrap_fill_rectangle(gx_device * dev, int x, int y, int w, int h,
+                      gx_color_index color)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.fill_rectangle)) (tdev, x, y, w, h,
+                                              x_alt_map_color(dev, color));
+}
+
+static int
+x_wrap_copy_mono(gx_device * dev,
+                 const byte * base, int sourcex, int raster, gx_bitmap_id id,
+                 int x, int y, int w, int h,
+                 gx_color_index zero, gx_color_index one)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.copy_mono)) (tdev, base, sourcex, raster, id,
+                                         x, y, w, h,
+                                         x_alt_map_color(dev, zero),
+                                         x_alt_map_color(dev, one));
+
+}
+
+static int
+x_wrap_copy_color(gx_device * dev, const byte * base, int sourcex,
+                  int raster, gx_bitmap_id id, int x, int y, int w, int h)
+{
+    gx_device *tdev;
+
+
+    int depth_bytes, source_bits;
+    int block_w, block_h;
+    int xblock, yblock;
+    byte mapped[480];
+    int code;
+
+    do { do { if ( (x | y) < 0 ) { if ( x < 0 ) w += x, sourcex -= x, x = 0; if ( y < 0 ) h += y, base -= (int)(y * raster), id = 0L, y = 0; } if ( w > (dev)->width - x ) w = (dev)->width - x; } while (0); if ( h > (dev)->height - y ) h = (dev)->height - y; if ( w <= 0 || h <= 0 ) return 0; } while (0);
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+
+    if (tdev->color_info.depth & 7)
+        return gx_default_copy_color(dev, base, sourcex, raster, id,
+                                     x, y, w, h);
+    depth_bytes = tdev->color_info.depth >> 3;
+    source_bits = dev->color_info.depth;
+    {
+        int mapped_pixels = 480 / depth_bytes;
+
+        if (w > mapped_pixels >> 1)
+            block_w = (((w) < (mapped_pixels)) ? (w) : (mapped_pixels)), block_h = 1;
+        else
+            block_w = w, block_h = mapped_pixels / w;
+    }
+    for (yblock = y; yblock < y + h; yblock += block_h)
+        for (xblock = x; xblock < x + w; xblock += block_w) {
+            byte *p = mapped;
+            int xend = (((xblock + block_w) < (x + w)) ? (xblock + block_w) : (x + w));
+            int yend = (((yblock + block_h) < (y + h)) ? (yblock + block_h) : (y + h));
+            int xcur, ycur;
+            int code;
+
+            for (ycur = yblock; ycur < yend; ++ycur)
+                for (xcur = xblock; xcur < xend; ++xcur) {
+                    int sbit = (xcur - x + sourcex) * source_bits;
+                    uint sbyte =
+                        base[(ycur - y) * raster + (sbit >> 3)];
+                    uint spixel =
+                        ((sbyte << (sbit & 7)) & 0xff) >> (8 - source_bits);
+                    gx_color_index cindex =
+                        ((gx_device_X_wrapper *) dev)->color_cache[spixel];
+
+                    if (cindex == ((gx_color_index)(~0)))
+                        cindex = x_alt_map_color(dev, spixel);
+                    switch (depth_bytes) {
+                        case 4:
+                            *p++ = (byte) (cindex >> 24);
+                        case 3:
+                            *p++ = (byte) (cindex >> 16);
+                        case 2:
+                            *p++ = (byte) (cindex >> 8);
+                        default :
+                            *p++ = (byte) cindex;
+                    }
+                }
+            code = (*((tdev)->procs.copy_color))
+                (tdev, mapped, 0, (xend - xblock) * depth_bytes, 0L,
+                 xblock, yblock, xend - xblock, yend - yblock);
+            if (code < 0)
+                return code;
+        }
+    return 0;
+}
+
+static int
+x_forward_copy_color(gx_device * dev, const byte * base, int sourcex,
+                     int raster, gx_bitmap_id id, int x, int y, int w, int h)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.copy_color)) (tdev, base, sourcex, raster, id,
+                                          x, y, w, h);
+}
+
+static int
+x_forward_get_bits(gx_device * dev, int y, byte * str, byte ** actual_data)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    return (*((tdev)->procs.get_bits)) (tdev, y, str, actual_data);
+}
+
+static int
+x_wrap_get_bits(gx_device * dev, int y, byte * str, byte ** actual_data)
+{
+    int depth = dev->color_info.depth;
+    gx_device *tdev;
+    int width;
+    int sdepth;
+    byte smask;
+    uint dsize;
+    gs_memory_t *mem = dev->memory;
+    byte *row;
+    byte *base;
+    int code;
+    gx_color_index pixel_in = ((gx_color_index)(~0));
+
+
+
+
+
+
+
+    gx_color_index pixel_out = 0;
+    int xi;
+    int sbit;
+
+    byte *l_dptr = (str); int l_dbit = (0); byte l_dbyte = ((l_dbit) ? (byte)(*(l_dptr) & (0xff00 >> (l_dbit))) : 0);
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    width = tdev->width;
+    sdepth = tdev->color_info.depth;
+    smask = (sdepth <= 8 ? (1 << sdepth) - 1 : 0xff);
+    dsize = (width * sdepth + 7) / 8;
+    row = (*(mem)->procs.alloc_bytes)(mem, dsize, "x_wrap_get_bits");
+    if (row == 0)
+        return ((-25));
+    code = (*((tdev)->procs.get_bits)) (tdev, y, row, &base);
+    if (code < 0)
+        goto gx;
+    for (sbit = 0, xi = 0; xi < width; sbit += sdepth, ++xi) {
+        const byte *sptr = base + (sbit >> 3);
+        gx_color_index pixel;
+        gx_color_value rgb[3];
+        int i;
+
+        if (sdepth <= 8)
+            pixel = (*sptr >> (8 - sdepth - (sbit & 7))) & smask;
+        else {
+            pixel = 0;
+            for (i = 0; i < sdepth; i += 8, ++sptr)
+                pixel = (pixel << 8) + *sptr;
+        }
+        if (pixel != pixel_in) {
+            (*((tdev)->procs.map_color_rgb))(tdev, pixel, rgb);
+            pixel_in = pixel;
+            if (dev->color_info.num_components <= 3)
+                pixel_out = (*((dev)->procs.map_rgb_color))(dev, rgb);
+            else {
+
+                gx_color_value c = ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) - rgb[0];
+                gx_color_value m = ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) - rgb[1];
+                gx_color_value y = ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) - rgb[2];
+                gx_color_value k = (c < m ? (((c) < (y)) ? (c) : (y)) : (((m) < (y)) ? (m) : (y)));
+
+                gx_color_value cmyk[4];
+                cmyk[0] = c - k; cmyk[1] = m - k; cmyk[2] = y - k; cmyk[3] = k;
+                pixel_out = (*((dev)->procs.map_cmyk_color))(dev, cmyk);
+            }
+        }
+        if (sizeof(pixel_out) > 4) do { switch ( (depth) >> 2 ) { case 0: if ( (l_dbit += (depth)) == 8 ) *(l_dptr)++ = l_dbyte | (byte)(pixel_out), l_dbyte = 0, l_dbit = 0; else l_dbyte |= (byte)((pixel_out) << (8 - l_dbit)); break; case 1: if ( l_dbit ^= 4 ) l_dbyte = (byte)((pixel_out) << 4); else *(l_dptr)++ = l_dbyte | ((byte)(pixel_out)); break; case 3: if ( l_dbit ^= 4 ) *(l_dptr)++ = (byte)((pixel_out) >> 4), l_dbyte = (byte)((pixel_out) << 4); else *(l_dptr) = l_dbyte | (byte)((pixel_out) >> 8), (l_dptr)[1] = (byte)(pixel_out), l_dptr += 2; break; case 16: *(l_dptr)++ = (byte)((pixel_out) >> ((56) >= 8 * sizeof((pixel_out)) ? (56) & (8 * sizeof((pixel_out)) - 1) : (56))); case 14: *(l_dptr)++ = (byte)((pixel_out) >> ((48) >= 8 * sizeof((pixel_out)) ? (48) & (8 * sizeof((pixel_out)) - 1) : (48))); case 12: *(l_dptr)++ = (byte)((pixel_out) >> ((40) >= 8 * sizeof((pixel_out)) ? (40) & (8 * sizeof((pixel_out)) - 1) : (40))); case 10: *(l_dptr)++ = (byte)((pixel_out) >> ((32) >= 8 * sizeof((pixel_out)) ? (32) & (8 * sizeof((pixel_out)) - 1) : (32))); case 8: *(l_dptr)++ = (byte)((pixel_out) >> 24); case 6: *(l_dptr)++ = (byte)((pixel_out) >> 16); case 4: *(l_dptr)++ = (byte)((pixel_out) >> 8); case 2: *(l_dptr)++ = (byte)(pixel_out); break; default: return ((-15)); } } while (0); else do { switch ( (depth) >> 2 ) { case 0: if ( (l_dbit += (depth)) == 8 ) *(l_dptr)++ = l_dbyte | (byte)(pixel_out), l_dbyte = 0, l_dbit = 0; else l_dbyte |= (byte)((pixel_out) << (8 - l_dbit)); break; case 1: if ( l_dbit ^= 4 ) l_dbyte = (byte)((pixel_out) << 4); else *(l_dptr)++ = l_dbyte | ((byte)(pixel_out)); break; case 3: if ( l_dbit ^= 4 ) *(l_dptr)++ = (byte)((pixel_out) >> 4), l_dbyte = (byte)((pixel_out) << 4); else *(l_dptr) = l_dbyte | (byte)((pixel_out) >> 8), (l_dptr)[1] = (byte)(pixel_out), l_dptr += 2; break; case 8: *(l_dptr)++ = (byte)((pixel_out) >> 24); case 6: *(l_dptr)++ = (byte)((pixel_out) >> 16); case 4: *(l_dptr)++ = (byte)((pixel_out) >> 8); case 2: *(l_dptr)++ = (byte)(pixel_out); break; default: return ((-15)); } } while (0);
+    }
+    if ( (l_dbit) != 0 ) *(l_dptr) = l_dbyte | (*(l_dptr) & (0xff >> (l_dbit)));;
+  gx:((mem)->procs.free_object(mem, row, "x_wrap_get_bits"));
+    if (actual_data)
+        *actual_data = str;
+    return code;
+}
+
+static int
+x_wrap_get_params(gx_device * dev, gs_param_list * plist)
+{
+    gx_device *tdev;
+
+    gx_device_X save_dev;
+    int ecode;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    save_dev = *(gx_device_X *) tdev;
+    if (tdev->is_open)
+        tdev->color_info = dev->color_info;
+    tdev->dname = dev->dname;
+    ecode = (*((tdev)->procs.get_params)) (tdev, plist);
+    *(gx_device_X *) tdev = save_dev;
+    return ecode;
+}
+
+static int
+x_wrap_put_params(gx_device * dev, gs_param_list * plist)
+{
+    gx_device *tdev;
+    gx_device_color_info cinfo;
+    const char *dname;
+    int rcode, code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+
+
+
+
+    cinfo = tdev->color_info;
+    dname = tdev->dname;
+    tdev->color_info = dev->color_info;
+    tdev->dname = dev->dname;
+    rcode = (*((tdev)->procs.put_params)) (tdev, plist);
+    tdev->color_info = cinfo;
+    tdev->dname = dname;
+    if (rcode < 0)
+        return rcode;
+    code = get_target_info(dev);
+    return (code < 0 ? code : rcode);
+}
+
+
+
+
+static int
+get_dev_target(gx_device ** ptdev, gx_device * dev)
+{
+    gx_device *tdev = ((gx_device_forward *) dev)->target;
+
+    if (tdev == 0) {
+
+        int code = gs_copydevice(&tdev, (const gx_device *)&gs_x11_device,
+                                 dev->memory);
+
+        if (code < 0)
+            return 0;
+        check_device_separable(tdev);
+        gx_device_fill_in_procs(tdev);
+        gx_device_set_target((gx_device_forward *)dev, tdev);
+        x_clear_color_cache(dev);
+    }
+    *ptdev = tdev;
+    return 0;
+}
+
+
+static int
+get_target_info(gx_device * dev)
+{
+    gx_device *tdev;
+    int code;
+
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+
+
+
+
+
+    dev->width = tdev->width;;
+    dev->height = tdev->height;;
+    dev->MediaSize[0] = tdev->MediaSize[0];; dev->MediaSize[1] = tdev->MediaSize[1];;
+    dev->ImagingBBox[0] = tdev->ImagingBBox[0];; dev->ImagingBBox[1] = tdev->ImagingBBox[1];; dev->ImagingBBox[2] = tdev->ImagingBBox[2];; dev->ImagingBBox[3] = tdev->ImagingBBox[3];;
+    dev->ImagingBBox_set = tdev->ImagingBBox_set;;
+    dev->HWResolution[0] = tdev->HWResolution[0];; dev->HWResolution[1] = tdev->HWResolution[1];;
+    dev->MarginsHWResolution[0] = tdev->MarginsHWResolution[0];; dev->MarginsHWResolution[1] = tdev->MarginsHWResolution[1];;
+    dev->Margins[0] = tdev->Margins[0];; dev->Margins[1] = tdev->Margins[1];;
+    dev->HWMargins[0] = tdev->HWMargins[0];; dev->HWMargins[1] = tdev->HWMargins[1];; dev->HWMargins[2] = tdev->HWMargins[2];; dev->HWMargins[3] = tdev->HWMargins[3];;
+    if (dev->color_info.num_components == 3) {
+
+        gx_device_anti_alias_info aa;
+
+        aa = dev->color_info.anti_alias;
+        dev->color_info = tdev->color_info;;
+        dev->color_info.anti_alias = aa;
+    }
+
+
+
+
+
+    x_clear_color_cache(dev);
+    return 0;
+}
+
+
+static gx_color_index
+x_alt_map_color(gx_device * dev, gx_color_index color)
+{
+    gx_device_X_wrapper *xdev = (gx_device_X_wrapper *) dev;
+    gx_device *tdev;
+    gx_color_value rgb[3];
+    gx_color_index cindex;
+    int result;
+    int code;
+
+    if (color == ((gx_color_index)(~0)))
+        return color;
+    if (color < 16) {
+        cindex = ((gx_device_X_wrapper *) dev)->color_cache[color];
+        if (cindex != ((gx_color_index)(~0)))
+            return cindex;
+    }
+    if ((code = get_dev_target(&tdev, dev)) < 0)
+        return code;
+    result = xdev->alt_map_color(dev, color, rgb);
+    if (result >= 0)
+        cindex = result;
+    else
+        cindex = ((tdev)->procs.map_rgb_color)(tdev, rgb);
+    if (color < 16)
+        ((gx_device_X_wrapper *) dev)->color_cache[color] = cindex;
+    return cindex;
+}
+
+
+
+
+static int x_cmyk_open(gx_device *dev);
+static int x_cmyk_put_params(gx_device *dev, gs_param_list *plist);
+static gx_color_index x_cmyk_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+
+static int x_cmyk_alt_map_color(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+static const gx_device_procs x_cmyk_procs = {
+    x_cmyk_open,
+    gx_forward_get_initial_matrix,
+    x_forward_sync_output,
+    x_forward_output_page,
+    x_wrap_close,
+    ((void*)0),
+    x_wrap_map_color_rgb,
+    x_wrap_fill_rectangle,
+    gx_default_tile_rectangle,
+    x_wrap_copy_mono,
+    x_wrap_copy_color,
+    gx_default_draw_line,
+    x_wrap_get_bits,
+    x_wrap_get_params,
+    x_cmyk_put_params,
+    x_cmyk_map_cmyk_color,
+    gx_forward_get_xfont_procs,
+    gx_forward_get_xfont_device,
+    ((void*)0),
+    gx_forward_get_page_device,
+    gx_default_get_alpha_bits,
+    ((void*)0)
+};
+
+
+const gx_device_X_wrapper gs_x11cmyk_device = {
+    sizeof(gx_device_X_wrapper), &x_cmyk_procs, "x11cmyk", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 4 , ((4) == 3 ? 0xff : (4) - 1) , 1 , 1 , 2 , 2 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_cmyk_alt_map_color
+};
+const gx_device_X_wrapper gs_x11cmyk2_device = {
+    sizeof(gx_device_X_wrapper), &x_cmyk_procs, "x11cmyk2", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 8 , ((4) == 3 ? 0xff : (4) - 1) , 3 , 3 , 4 , 4 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_cmyk_alt_map_color
+};
+const gx_device_X_wrapper gs_x11cmyk4_device = {
+    sizeof(gx_device_X_wrapper), &x_cmyk_procs, "x11cmyk4", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 16 , ((4) == 3 ? 0xff : (4) - 1) , 15 , 15 , 16 , 16 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_cmyk_alt_map_color
+};
+const gx_device_X_wrapper gs_x11cmyk8_device = {
+    sizeof(gx_device_X_wrapper), &x_cmyk_procs, "x11cmyk8", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 32 , ((4) == 3 ? 0xff : (4) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_cmyk_alt_map_color
+};
+
+
+static int
+x_cmyk_alt_map_color(gx_device * dev, gx_color_index color,
+                     gx_color_value rgb[3])
+{
+    int shift = dev->color_info.depth >> 2;
+    int mask = (1 << shift) - 1;
+
+    gx_color_value scale = ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / mask;
+    int cw = ~color & mask;
+    int cb = cw - ((color >> shift) & mask);
+    int cg = cw - ((color >> (shift * 2)) & mask);
+    int cr = cw - ((color >> (shift * 3)) & mask);
+
+    rgb[0] = (((cr) > (0)) ? (cr) : (0)) * scale;
+    rgb[1] = (((cg) > (0)) ? (cg) : (0)) * scale;
+    rgb[2] = (((cb) > (0)) ? (cb) : (0)) * scale;
+    return -1;
+}
+
+
+static void
+x_cmyk_set_procs(gx_device *dev)
+{
+    if (dev->color_info.depth == 4) {
+        ((dev)->procs.map_cmyk_color = (cmyk_1bit_map_cmyk_color));
+    } else {
+        ((dev)->procs.map_cmyk_color = (x_cmyk_map_cmyk_color));
+    }
+}
+
+
+
+static int
+x_cmyk_open(gx_device *dev)
+{
+    int code = x_wrap_open(dev);
+
+    if (code >= 0)
+        x_cmyk_set_procs(dev);
+    return code;
+}
+
+static int
+x_cmyk_put_params(gx_device * dev, gs_param_list * plist)
+{
+    int code = x_wrap_put_params(dev, plist);
+
+    if (code >= 0)
+        x_cmyk_set_procs(dev);
+    return code;
+}
+
+static gx_color_index
+x_cmyk_map_cmyk_color(gx_device * dev, const gx_color_value cv[])
+{
+    int shift = dev->color_info.depth >> 2;
+    gx_color_index pixel = cv[0] >> ((sizeof(gx_color_value) * 8) - shift);
+    gx_color_value c, m, y, k;
+    c = cv[0]; m = cv[1]; y = cv[2]; k = cv[3];
+    pixel = (pixel << shift) | (m >> ((sizeof(gx_color_value) * 8) - shift));
+    pixel = (pixel << shift) | (y >> ((sizeof(gx_color_value) * 8) - shift));
+    return (pixel << shift) | (k >> ((sizeof(gx_color_value) * 8) - shift));
+}
+
+
+
+
+static int x_mono_alt_map_color(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+static const gx_device_procs x_mono_procs = {
+    x_wrap_open,
+    gx_forward_get_initial_matrix,
+    x_forward_sync_output,
+    x_forward_output_page,
+    x_wrap_close,
+    gx_default_b_w_map_rgb_color,
+    x_wrap_map_color_rgb,
+    x_wrap_fill_rectangle,
+    gx_default_tile_rectangle,
+    x_wrap_copy_mono,
+    gx_default_copy_color,
+    gx_default_draw_line,
+    x_wrap_get_bits,
+    x_wrap_get_params,
+    x_wrap_put_params,
+    gx_default_map_cmyk_color,
+    gx_forward_get_xfont_procs,
+    gx_forward_get_xfont_device,
+    ((void*)0),
+    gx_forward_get_page_device,
+    gx_default_get_alpha_bits,
+    ((void*)0)
+};
+
+
+const gx_device_X_wrapper gs_x11mono_device = {
+    sizeof(gx_device_X_wrapper), &x_mono_procs, "x11mono", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {1 , 1 , ( (1) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 1 , ((1) == 3 ? 0xff : (1) - 1) , 1 , 0 , 2 , 0 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (1) == 1 ? "DeviceGray" : ((1) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_mono_alt_map_color
+};
+
+
+static int
+x_mono_alt_map_color(gx_device * dev, gx_color_index color,
+                     gx_color_value rgb[3])
+{
+    rgb[0] = rgb[1] = rgb[2] = (color ? 0 : ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)));
+    return -1;
+}
+
+
+
+
+static int x_gray_alt_map_color(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+static const gx_device_procs x_gray_procs = {
+    x_wrap_open,
+    gx_forward_get_initial_matrix,
+    x_forward_sync_output,
+    x_forward_output_page,
+    x_wrap_close,
+    gx_default_gray_map_rgb_color,
+    x_wrap_map_color_rgb,
+    x_wrap_fill_rectangle,
+    gx_default_tile_rectangle,
+    x_wrap_copy_mono,
+    x_wrap_copy_color,
+    gx_default_draw_line,
+    x_wrap_get_bits,
+    x_wrap_get_params,
+    x_wrap_put_params,
+    gx_default_map_cmyk_color,
+    gx_forward_get_xfont_procs,
+    gx_forward_get_xfont_device,
+    ((void*)0),
+    gx_forward_get_page_device,
+    gx_default_get_alpha_bits,
+    ((void*)0)
+};
+
+
+const gx_device_X_wrapper gs_x11gray2_device = {
+    sizeof(gx_device_X_wrapper), &x_gray_procs, "x11gray2", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {1 , 1 , ( (1) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 2 , ((1) == 3 ? 0xff : (1) - 1) , 3 , 0 , 4 , 0 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (1) == 1 ? "DeviceGray" : ((1) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_gray_alt_map_color
+};
+
+const gx_device_X_wrapper gs_x11gray4_device = {
+    sizeof(gx_device_X_wrapper), &x_gray_procs, "x11gray4", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {1 , 1 , ( (1) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 4 , ((1) == 3 ? 0xff : (1) - 1) , 15 , 0 , 16 , 0 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (1) == 1 ? "DeviceGray" : ((1) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_gray_alt_map_color
+};
+
+
+static int
+x_gray_alt_map_color(gx_device * dev, gx_color_index color,
+                     gx_color_value rgb[3])
+{
+    rgb[0] = rgb[1] = rgb[2] =
+        color * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / dev->color_info.max_gray;
+    return -1;
+}
+
+
+
+
+
+static gx_color_index
+x_alpha_map_rgb_alpha_color(gx_device * dev,
+ gx_color_value r, gx_color_value g, gx_color_value b, gx_color_value alpha)
+{
+    gx_color_index color;
+    gx_color_value cv[3];
+    byte abyte = alpha >> ((sizeof(gx_color_value) * 8) - 8);
+    cv[0] = r; cv[1] = g; cv[2] = b;
+    color = gx_forward_map_rgb_color(dev, cv);
+    return (abyte == 0 ? (gx_color_index)0xff << 24 :
+            ((gx_color_index) (abyte ^ 0xff) << 24) + color);
+}
+
+
+
+
+static gx_color_index x_rg16x_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+static gx_color_index x_rg32x_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+
+static int x_rg16x_alt_map_color(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+static int x_rg32x_alt_map_color(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+# 783 "./devices/gdevxalt.c"
+static const gx_device_procs x_rg16x_procs = {
+    x_wrap_open, gx_forward_get_initial_matrix, x_forward_sync_output, x_forward_output_page, x_wrap_close, x_rg16x_map_rgb_color, x_wrap_map_color_rgb, x_wrap_fill_rectangle, gx_default_tile_rectangle, x_wrap_copy_mono, x_forward_copy_color, gx_default_draw_line, x_forward_get_bits, x_wrap_get_params, x_wrap_put_params, gx_forward_map_cmyk_color, gx_forward_get_xfont_procs, gx_forward_get_xfont_device, x_alpha_map_rgb_alpha_color, gx_forward_get_page_device, gx_default_get_alpha_bits, gx_default_copy_alpha
+};
+const gx_device_X_wrapper gs_x11rg16x_device = {
+    sizeof(gx_device_X_wrapper), &x_rg16x_procs, "x11rg16x", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 16 , ((3) == 3 ? 0xff : (3) - 1) , 31 , 31 , 32 , 32 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_rg16x_alt_map_color
+};
+
+static const gx_device_procs x_rg32x_procs = {
+    x_wrap_open, gx_forward_get_initial_matrix, x_forward_sync_output, x_forward_output_page, x_wrap_close, x_rg32x_map_rgb_color, x_wrap_map_color_rgb, x_wrap_fill_rectangle, gx_default_tile_rectangle, x_wrap_copy_mono, x_forward_copy_color, gx_default_draw_line, x_forward_get_bits, x_wrap_get_params, x_wrap_put_params, gx_forward_map_cmyk_color, gx_forward_get_xfont_procs, gx_forward_get_xfont_device, x_alpha_map_rgb_alpha_color, gx_forward_get_page_device, gx_default_get_alpha_bits, gx_default_copy_alpha
+};
+const gx_device_X_wrapper gs_x11rg32x_device = {
+    sizeof(gx_device_X_wrapper), &x_rg32x_procs, "x11rg32x", 0 , &st_device_X_wrapper, 0 , 0 , { 0 } , 0 , 0 , 0, {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 32 , ((3) == 3 ? 0xff : (3) - 1) , 1023 , 1023 , 1024 , 1024 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, (16*72) * 85 / 10, (16*72) * 11, 0 , 0 , 0 , 0 , { (float)(((((16*72) * 85 / 10) * 72.0 + 0.5) - 0.5) / ((16*72))) , (float)(((((16*72) * 11) * 72.0 + 0.5) - 0.5) / ((16*72))) }, { 0, 0, 0, 0 } , 0 , { (16*72), (16*72) } , { (16*72), (16*72) }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+    {0}, 0, {0}, x_rg32x_alt_map_color
+};
+
+
+static gx_color_index
+x_rg16x_map_rgb_color(gx_device * dev, const gx_color_value cv[])
+{
+
+    gx_color_value r, g, b;
+    r = cv[0]; g = cv[1]; b = cv[2];
+    return (r >> ((sizeof(gx_color_value) * 8) - 6)) +
+        ((g >> ((sizeof(gx_color_value) * 8) - 5)) << 11) +
+        ((b >> ((sizeof(gx_color_value) * 8) - 5)) << 6);
+}
+static gx_color_index
+x_rg32x_map_rgb_color(gx_device * dev, const gx_color_value cv[])
+{
+
+    gx_color_value r, g, b;
+    r = cv[0]; g = cv[1]; b = cv[2];
+    return (r >> ((sizeof(gx_color_value) * 8) - 11)) +
+        ((gx_color_index)(g >> ((sizeof(gx_color_value) * 8) - 11)) << 21) +
+        ((gx_color_index)(b >> ((sizeof(gx_color_value) * 8) - 10)) << 11);
+}
+
+
+static int
+x_rg16x_alt_map_color(gx_device * dev, gx_color_index color,
+                      gx_color_value rgb[3])
+{
+    rgb[0] = (color & 0x3f) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x3f;
+    rgb[1] = ((color >> 11) & 0x1f) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x1f;
+    rgb[2] = ((color >> 6) & 0x1f) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x1f;
+    return -1;
+}
+static int
+x_rg32x_alt_map_color(gx_device * dev, gx_color_index color,
+                      gx_color_value rgb[3])
+{
+    rgb[0] = (color & 0x7ff) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x7ff;
+    rgb[1] = ((color >> 21) & 0x7ff) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x7ff;
+    rgb[2] = ((color >> 11) & 0x3ff) * ((gx_color_value)((1L << (sizeof(gx_color_value) * 8)) - 1)) / 0x3ff;
+    return -1;
+}
