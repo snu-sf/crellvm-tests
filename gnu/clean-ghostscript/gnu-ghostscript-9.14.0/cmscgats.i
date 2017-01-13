@@ -1,0 +1,9510 @@
+# 1 "./lcms2/src/cmscgats.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 316 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "./lcms2/src/cmscgats.c" 2
+# 27 "./lcms2/src/cmscgats.c"
+# 1 "./lcms2/src/lcms2_internal.h" 1
+# 31 "./lcms2/src/lcms2_internal.h"
+# 1 "./lcms2/include/lcms2_plugin.h" 1
+# 46 "./lcms2/include/lcms2_plugin.h"
+# 1 "./lcms2/include/lcms2.h" 1
+# 64 "./lcms2/include/lcms2.h"
+# 1 "/usr/include/stdio.h" 1 3 4
+# 27 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 345 "/usr/include/features.h" 3 4
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 346 "/usr/include/features.h" 2 3 4
+# 375 "/usr/include/features.h" 3 4
+# 1 "/usr/include/sys/cdefs.h" 1 3 4
+# 392 "/usr/include/sys/cdefs.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 393 "/usr/include/sys/cdefs.h" 2 3 4
+# 376 "/usr/include/features.h" 2 3 4
+# 399 "/usr/include/features.h" 3 4
+# 1 "/usr/include/gnu/stubs.h" 1 3 4
+# 10 "/usr/include/gnu/stubs.h" 3 4
+# 1 "/usr/include/gnu/stubs-64.h" 1 3 4
+# 11 "/usr/include/gnu/stubs.h" 2 3 4
+# 400 "/usr/include/features.h" 2 3 4
+# 28 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 62 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+typedef long unsigned int size_t;
+# 34 "/usr/include/stdio.h" 2 3 4
+
+# 1 "/usr/include/bits/types.h" 1 3 4
+# 27 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+
+
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+
+
+
+
+
+
+
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+# 130 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/typesizes.h" 1 3 4
+# 131 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+
+typedef int __daddr_t;
+typedef int __key_t;
+
+
+typedef int __clockid_t;
+
+
+typedef void * __timer_t;
+
+
+typedef long int __blksize_t;
+
+
+
+
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+
+
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+
+
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+
+
+typedef long int __fsword_t;
+
+typedef long int __ssize_t;
+
+
+typedef long int __syscall_slong_t;
+
+typedef unsigned long int __syscall_ulong_t;
+
+
+
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+
+
+typedef long int __intptr_t;
+
+
+typedef unsigned int __socklen_t;
+# 36 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+
+
+
+
+struct _IO_FILE;
+
+
+
+typedef struct _IO_FILE FILE;
+# 64 "/usr/include/stdio.h" 3 4
+typedef struct _IO_FILE __FILE;
+# 74 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/libio.h" 1 3 4
+# 32 "/usr/include/libio.h" 3 4
+# 1 "/usr/include/_G_config.h" 1 3 4
+# 15 "/usr/include/_G_config.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 16 "/usr/include/_G_config.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/wchar.h" 1 3 4
+# 82 "/usr/include/wchar.h" 3 4
+typedef struct
+{
+  int __count;
+  union
+  {
+
+    unsigned int __wch;
+
+
+
+    char __wchb[4];
+  } __value;
+} __mbstate_t;
+# 21 "/usr/include/_G_config.h" 2 3 4
+typedef struct
+{
+  __off_t __pos;
+  __mbstate_t __state;
+} _G_fpos_t;
+typedef struct
+{
+  __off64_t __pos;
+  __mbstate_t __state;
+} _G_fpos64_t;
+# 33 "/usr/include/libio.h" 2 3 4
+# 50 "/usr/include/libio.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 1 3 4
+# 30 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list va_list;
+# 50 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 51 "/usr/include/libio.h" 2 3 4
+# 145 "/usr/include/libio.h" 3 4
+struct _IO_jump_t; struct _IO_FILE;
+# 155 "/usr/include/libio.h" 3 4
+typedef void _IO_lock_t;
+
+
+
+
+
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+
+
+
+  int _pos;
+# 178 "/usr/include/libio.h" 3 4
+};
+
+
+enum __codecvt_result
+{
+  __codecvt_ok,
+  __codecvt_partial,
+  __codecvt_error,
+  __codecvt_noconv
+};
+# 246 "/usr/include/libio.h" 3 4
+struct _IO_FILE {
+  int _flags;
+
+
+
+
+  char* _IO_read_ptr;
+  char* _IO_read_end;
+  char* _IO_read_base;
+  char* _IO_write_base;
+  char* _IO_write_ptr;
+  char* _IO_write_end;
+  char* _IO_buf_base;
+  char* _IO_buf_end;
+
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+
+  struct _IO_marker *_markers;
+
+  struct _IO_FILE *_chain;
+
+  int _fileno;
+
+
+
+  int _flags2;
+
+  __off_t _old_offset;
+
+
+
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+
+
+
+  _IO_lock_t *_lock;
+# 294 "/usr/include/libio.h" 3 4
+  __off64_t _offset;
+# 303 "/usr/include/libio.h" 3 4
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+  size_t __pad5;
+
+  int _mode;
+
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+
+};
+
+
+typedef struct _IO_FILE _IO_FILE;
+
+
+struct _IO_FILE_plus;
+
+extern struct _IO_FILE_plus _IO_2_1_stdin_;
+extern struct _IO_FILE_plus _IO_2_1_stdout_;
+extern struct _IO_FILE_plus _IO_2_1_stderr_;
+# 339 "/usr/include/libio.h" 3 4
+typedef __ssize_t __io_read_fn (void *__cookie, char *__buf, size_t __nbytes);
+
+
+
+
+
+
+
+typedef __ssize_t __io_write_fn (void *__cookie, const char *__buf,
+     size_t __n);
+
+
+
+
+
+
+
+typedef int __io_seek_fn (void *__cookie, __off64_t *__pos, int __w);
+
+
+typedef int __io_close_fn (void *__cookie);
+# 391 "/usr/include/libio.h" 3 4
+extern int __underflow (_IO_FILE *);
+extern int __uflow (_IO_FILE *);
+extern int __overflow (_IO_FILE *, int);
+# 435 "/usr/include/libio.h" 3 4
+extern int _IO_getc (_IO_FILE *__fp);
+extern int _IO_putc (int __c, _IO_FILE *__fp);
+extern int _IO_feof (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+extern int _IO_ferror (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+
+extern int _IO_peekc_locked (_IO_FILE *__fp);
+
+
+
+
+
+extern void _IO_flockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern void _IO_funlockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern int _IO_ftrylockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 465 "/usr/include/libio.h" 3 4
+extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+   __gnuc_va_list, int *__restrict);
+extern int _IO_vfprintf (_IO_FILE *__restrict, const char *__restrict,
+    __gnuc_va_list);
+extern __ssize_t _IO_padn (_IO_FILE *, int, __ssize_t);
+extern size_t _IO_sgetn (_IO_FILE *, void *, size_t);
+
+extern __off64_t _IO_seekoff (_IO_FILE *, __off64_t, int, int);
+extern __off64_t _IO_seekpos (_IO_FILE *, __off64_t, int);
+
+extern void _IO_free_backup_area (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 75 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+typedef __gnuc_va_list va_list;
+# 90 "/usr/include/stdio.h" 3 4
+typedef __off_t off_t;
+# 102 "/usr/include/stdio.h" 3 4
+typedef __ssize_t ssize_t;
+
+
+
+
+
+
+
+typedef _G_fpos_t fpos_t;
+# 164 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio_lim.h" 1 3 4
+# 165 "/usr/include/stdio.h" 2 3 4
+
+
+
+extern struct _IO_FILE *stdin;
+extern struct _IO_FILE *stdout;
+extern struct _IO_FILE *stderr;
+
+
+
+
+
+
+
+extern int remove (const char *__filename) __attribute__ ((__nothrow__ ));
+
+extern int rename (const char *__old, const char *__new) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int renameat (int __oldfd, const char *__old, int __newfd,
+       const char *__new) __attribute__ ((__nothrow__ ));
+# 195 "/usr/include/stdio.h" 3 4
+extern FILE *tmpfile (void) ;
+# 209 "/usr/include/stdio.h" 3 4
+extern char *tmpnam (char *__s) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+extern char *tmpnam_r (char *__s) __attribute__ ((__nothrow__ )) ;
+# 227 "/usr/include/stdio.h" 3 4
+extern char *tempnam (const char *__dir, const char *__pfx)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 237 "/usr/include/stdio.h" 3 4
+extern int fclose (FILE *__stream);
+
+
+
+
+extern int fflush (FILE *__stream);
+# 252 "/usr/include/stdio.h" 3 4
+extern int fflush_unlocked (FILE *__stream);
+# 272 "/usr/include/stdio.h" 3 4
+extern FILE *fopen (const char *__restrict __filename,
+      const char *__restrict __modes) ;
+
+
+
+
+extern FILE *freopen (const char *__restrict __filename,
+        const char *__restrict __modes,
+        FILE *__restrict __stream) ;
+# 306 "/usr/include/stdio.h" 3 4
+extern FILE *fdopen (int __fd, const char *__modes) __attribute__ ((__nothrow__ )) ;
+# 319 "/usr/include/stdio.h" 3 4
+extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
+  __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+
+extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      int __modes, size_t __n) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+         size_t __size) __attribute__ ((__nothrow__ ));
+
+
+extern void setlinebuf (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 356 "/usr/include/stdio.h" 3 4
+extern int fprintf (FILE *__restrict __stream,
+      const char *__restrict __format, ...);
+
+
+
+
+extern int printf (const char *__restrict __format, ...);
+
+extern int sprintf (char *__restrict __s,
+      const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg);
+
+
+
+
+extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+
+extern int vsprintf (char *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int snprintf (char *__restrict __s, size_t __maxlen,
+       const char *__restrict __format, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 4)));
+
+extern int vsnprintf (char *__restrict __s, size_t __maxlen,
+        const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 0)));
+# 412 "/usr/include/stdio.h" 3 4
+extern int vdprintf (int __fd, const char *__restrict __fmt,
+       __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__printf__, 2, 0)));
+extern int dprintf (int __fd, const char *__restrict __fmt, ...)
+     __attribute__ ((__format__ (__printf__, 2, 3)));
+# 425 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream,
+     const char *__restrict __format, ...) ;
+
+
+
+
+extern int scanf (const char *__restrict __format, ...) ;
+
+extern int sscanf (const char *__restrict __s,
+     const char *__restrict __format, ...) __attribute__ ((__nothrow__ ));
+# 443 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream, const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf") ;
+
+
+extern int scanf (const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf") ;
+
+extern int sscanf (const char *__restrict __s, const char *__restrict __format, ...) __asm__ ("" "__isoc99_sscanf") __attribute__ ((__nothrow__ ));
+# 471 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
+      __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+
+
+
+
+
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+
+
+extern int vsscanf (const char *__restrict __s,
+      const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 494 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
+
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (const char *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vsscanf") __attribute__ ((__nothrow__ ))
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 531 "/usr/include/stdio.h" 3 4
+extern int fgetc (FILE *__stream);
+extern int getc (FILE *__stream);
+
+
+
+
+
+extern int getchar (void);
+# 550 "/usr/include/stdio.h" 3 4
+extern int getc_unlocked (FILE *__stream);
+extern int getchar_unlocked (void);
+# 561 "/usr/include/stdio.h" 3 4
+extern int fgetc_unlocked (FILE *__stream);
+# 573 "/usr/include/stdio.h" 3 4
+extern int fputc (int __c, FILE *__stream);
+extern int putc (int __c, FILE *__stream);
+
+
+
+
+
+extern int putchar (int __c);
+# 594 "/usr/include/stdio.h" 3 4
+extern int fputc_unlocked (int __c, FILE *__stream);
+
+
+
+
+
+
+
+extern int putc_unlocked (int __c, FILE *__stream);
+extern int putchar_unlocked (int __c);
+
+
+
+
+
+
+extern int getw (FILE *__stream);
+
+
+extern int putw (int __w, FILE *__stream);
+# 622 "/usr/include/stdio.h" 3 4
+extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+          ;
+# 665 "/usr/include/stdio.h" 3 4
+extern __ssize_t __getdelim (char **__restrict __lineptr,
+          size_t *__restrict __n, int __delimiter,
+          FILE *__restrict __stream) ;
+extern __ssize_t getdelim (char **__restrict __lineptr,
+        size_t *__restrict __n, int __delimiter,
+        FILE *__restrict __stream) ;
+
+
+
+
+
+
+
+extern __ssize_t getline (char **__restrict __lineptr,
+       size_t *__restrict __n,
+       FILE *__restrict __stream) ;
+# 689 "/usr/include/stdio.h" 3 4
+extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
+
+
+
+
+
+extern int puts (const char *__s);
+
+
+
+
+
+
+extern int ungetc (int __c, FILE *__stream);
+
+
+
+
+
+
+extern size_t fread (void *__restrict __ptr, size_t __size,
+       size_t __n, FILE *__restrict __stream) ;
+
+
+
+
+extern size_t fwrite (const void *__restrict __ptr, size_t __size,
+        size_t __n, FILE *__restrict __s);
+# 737 "/usr/include/stdio.h" 3 4
+extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
+         size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
+          size_t __n, FILE *__restrict __stream);
+# 749 "/usr/include/stdio.h" 3 4
+extern int fseek (FILE *__stream, long int __off, int __whence);
+
+
+
+
+extern long int ftell (FILE *__stream) ;
+
+
+
+
+extern void rewind (FILE *__stream);
+# 773 "/usr/include/stdio.h" 3 4
+extern int fseeko (FILE *__stream, __off_t __off, int __whence);
+
+
+
+
+extern __off_t ftello (FILE *__stream) ;
+# 798 "/usr/include/stdio.h" 3 4
+extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
+
+
+
+
+extern int fsetpos (FILE *__stream, const fpos_t *__pos);
+# 826 "/usr/include/stdio.h" 3 4
+extern void clearerr (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+extern int feof (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+extern int ferror (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern void clearerr_unlocked (FILE *__stream) __attribute__ ((__nothrow__ ));
+extern int feof_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+extern int ferror_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 846 "/usr/include/stdio.h" 3 4
+extern void perror (const char *__s);
+
+
+
+
+
+
+
+# 1 "/usr/include/bits/sys_errlist.h" 1 3 4
+# 26 "/usr/include/bits/sys_errlist.h" 3 4
+extern int sys_nerr;
+extern const char *const sys_errlist[];
+# 854 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+extern int fileno (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int fileno_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 873 "/usr/include/stdio.h" 3 4
+extern FILE *popen (const char *__command, const char *__modes) ;
+
+
+
+
+
+extern int pclose (FILE *__stream);
+
+
+
+
+
+extern char *ctermid (char *__s) __attribute__ ((__nothrow__ ));
+# 913 "/usr/include/stdio.h" 3 4
+extern void flockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 934 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio.h" 1 3 4
+# 35 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+vprintf (const char *__restrict __fmt, __gnuc_va_list __arg)
+{
+  return vfprintf (stdout, __fmt, __arg);
+}
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar (void)
+{
+  return _IO_getc (stdin);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fgetc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar_unlocked (void)
+{
+  return (__builtin_expect (((stdin)->_IO_read_ptr >= (stdin)->_IO_read_end), 0) ? __uflow (stdin) : *(unsigned char *) (stdin)->_IO_read_ptr++);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar (int __c)
+{
+  return _IO_putc (__c, stdout);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fputc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar_unlocked (int __c)
+{
+  return (__builtin_expect (((stdout)->_IO_write_ptr >= (stdout)->_IO_write_end), 0) ? __overflow (stdout, (unsigned char) (__c)) : (unsigned char) (*(stdout)->_IO_write_ptr++ = (__c)));
+}
+# 124 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) feof_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x10) != 0);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) ferror_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x20) != 0);
+}
+# 935 "/usr/include/stdio.h" 2 3 4
+# 65 "./lcms2/include/lcms2.h" 2
+
+
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/limits.h" 1 3
+# 37 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/limits.h" 3
+# 1 "/usr/include/limits.h" 1 3 4
+# 144 "/usr/include/limits.h" 3 4
+# 1 "/usr/include/bits/posix1_lim.h" 1 3 4
+# 160 "/usr/include/bits/posix1_lim.h" 3 4
+# 1 "/usr/include/bits/local_lim.h" 1 3 4
+# 38 "/usr/include/bits/local_lim.h" 3 4
+# 1 "/usr/include/linux/limits.h" 1 3 4
+# 39 "/usr/include/bits/local_lim.h" 2 3 4
+# 161 "/usr/include/bits/posix1_lim.h" 2 3 4
+# 145 "/usr/include/limits.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/posix2_lim.h" 1 3 4
+# 149 "/usr/include/limits.h" 2 3 4
+# 38 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/limits.h" 2 3
+# 68 "./lcms2/include/lcms2.h" 2
+# 1 "/usr/include/time.h" 1 3 4
+# 37 "/usr/include/time.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 38 "/usr/include/time.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 42 "/usr/include/time.h" 2 3 4
+# 59 "/usr/include/time.h" 3 4
+typedef __clock_t clock_t;
+# 75 "/usr/include/time.h" 3 4
+typedef __time_t time_t;
+# 91 "/usr/include/time.h" 3 4
+typedef __clockid_t clockid_t;
+# 103 "/usr/include/time.h" 3 4
+typedef __timer_t timer_t;
+# 120 "/usr/include/time.h" 3 4
+struct timespec
+  {
+    __time_t tv_sec;
+    __syscall_slong_t tv_nsec;
+  };
+# 133 "/usr/include/time.h" 3 4
+struct tm
+{
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+
+
+  long int tm_gmtoff;
+  const char *tm_zone;
+
+
+
+
+};
+# 161 "/usr/include/time.h" 3 4
+struct itimerspec
+  {
+    struct timespec it_interval;
+    struct timespec it_value;
+  };
+
+
+struct sigevent;
+
+
+
+
+
+typedef __pid_t pid_t;
+# 189 "/usr/include/time.h" 3 4
+extern clock_t clock (void) __attribute__ ((__nothrow__ ));
+
+
+extern time_t time (time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+extern double difftime (time_t __time1, time_t __time0)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern time_t mktime (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern size_t strftime (char *__restrict __s, size_t __maxsize,
+   const char *__restrict __format,
+   const struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+# 221 "/usr/include/time.h" 3 4
+# 1 "/usr/include/xlocale.h" 1 3 4
+# 27 "/usr/include/xlocale.h" 3 4
+typedef struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+} *__locale_t;
+
+
+typedef __locale_t locale_t;
+# 222 "/usr/include/time.h" 2 3 4
+
+extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
+     const char *__restrict __format,
+     const struct tm *__restrict __tp,
+     __locale_t __loc) __attribute__ ((__nothrow__ ));
+# 239 "/usr/include/time.h" 3 4
+extern struct tm *gmtime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+extern struct tm *localtime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern struct tm *gmtime_r (const time_t *__restrict __timer,
+       struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+
+
+
+extern struct tm *localtime_r (const time_t *__restrict __timer,
+          struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern char *asctime (const struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern char *ctime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern char *asctime_r (const struct tm *__restrict __tp,
+   char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+extern char *ctime_r (const time_t *__restrict __timer,
+        char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern char *__tzname[2];
+extern int __daylight;
+extern long int __timezone;
+
+
+
+
+extern char *tzname[2];
+
+
+
+extern void tzset (void) __attribute__ ((__nothrow__ ));
+
+
+
+extern int daylight;
+extern long int timezone;
+
+
+
+
+
+extern int stime (const time_t *__when) __attribute__ ((__nothrow__ ));
+# 319 "/usr/include/time.h" 3 4
+extern time_t timegm (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern time_t timelocal (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern int dysize (int __year) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 334 "/usr/include/time.h" 3 4
+extern int nanosleep (const struct timespec *__requested_time,
+        struct timespec *__remaining);
+
+
+
+extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __attribute__ ((__nothrow__ ));
+
+
+extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern int clock_nanosleep (clockid_t __clock_id, int __flags,
+       const struct timespec *__req,
+       struct timespec *__rem);
+
+
+extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int timer_create (clockid_t __clock_id,
+    struct sigevent *__restrict __evp,
+    timer_t *__restrict __timerid) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_delete (timer_t __timerid) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_settime (timer_t __timerid, int __flags,
+     const struct itimerspec *__restrict __value,
+     struct itimerspec *__restrict __ovalue) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
+     __attribute__ ((__nothrow__ ));
+
+
+extern int timer_getoverrun (timer_t __timerid) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int timespec_get (struct timespec *__ts, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 69 "./lcms2/include/lcms2.h" 2
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3
+# 51 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3
+typedef long int ptrdiff_t;
+# 90 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3
+typedef int wchar_t;
+# 118 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/__stddef_max_align_t.h" 1 3
+# 35 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/__stddef_max_align_t.h" 3
+typedef struct {
+  long long __clang_max_align_nonce1
+      __attribute__((__aligned__(__alignof__(long long))));
+  long double __clang_max_align_nonce2
+      __attribute__((__aligned__(__alignof__(long double))));
+} max_align_t;
+# 119 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 2 3
+# 70 "./lcms2/include/lcms2.h" 2
+# 84 "./lcms2/include/lcms2.h"
+typedef unsigned char cmsUInt8Number;
+typedef signed char cmsInt8Number;
+
+
+
+
+
+
+typedef float cmsFloat32Number;
+typedef double cmsFloat64Number;
+
+
+
+ typedef unsigned short cmsUInt16Number;
+
+
+
+
+
+
+
+  typedef short cmsInt16Number;
+# 114 "./lcms2/include/lcms2.h"
+ typedef unsigned int cmsUInt32Number;
+
+
+
+
+
+
+
+ typedef int cmsInt32Number;
+# 132 "./lcms2/include/lcms2.h"
+    typedef unsigned long cmsUInt64Number;
+
+
+
+
+
+
+      typedef long cmsInt64Number;
+# 155 "./lcms2/include/lcms2.h"
+typedef cmsUInt32Number cmsSignature;
+typedef cmsUInt16Number cmsU8Fixed8Number;
+typedef cmsInt32Number cmsS15Fixed16Number;
+typedef cmsUInt32Number cmsU16Fixed16Number;
+
+
+typedef int cmsBool;
+# 272 "./lcms2/include/lcms2.h"
+typedef enum {
+    cmsSigChromaticityType = 0x6368726D,
+    cmsSigColorantOrderType = 0x636C726F,
+    cmsSigColorantTableType = 0x636C7274,
+    cmsSigCrdInfoType = 0x63726469,
+    cmsSigCurveType = 0x63757276,
+    cmsSigDataType = 0x64617461,
+    cmsSigDictType = 0x64696374,
+    cmsSigDateTimeType = 0x6474696D,
+    cmsSigDeviceSettingsType = 0x64657673,
+    cmsSigLut16Type = 0x6d667432,
+    cmsSigLut8Type = 0x6d667431,
+    cmsSigLutAtoBType = 0x6d414220,
+    cmsSigLutBtoAType = 0x6d424120,
+    cmsSigMeasurementType = 0x6D656173,
+    cmsSigMultiLocalizedUnicodeType = 0x6D6C7563,
+    cmsSigMultiProcessElementType = 0x6D706574,
+    cmsSigNamedColorType = 0x6E636f6C,
+    cmsSigNamedColor2Type = 0x6E636C32,
+    cmsSigParametricCurveType = 0x70617261,
+    cmsSigProfileSequenceDescType = 0x70736571,
+    cmsSigProfileSequenceIdType = 0x70736964,
+    cmsSigResponseCurveSet16Type = 0x72637332,
+    cmsSigS15Fixed16ArrayType = 0x73663332,
+    cmsSigScreeningType = 0x7363726E,
+    cmsSigSignatureType = 0x73696720,
+    cmsSigTextType = 0x74657874,
+    cmsSigTextDescriptionType = 0x64657363,
+    cmsSigU16Fixed16ArrayType = 0x75663332,
+    cmsSigUcrBgType = 0x62666420,
+    cmsSigUInt16ArrayType = 0x75693136,
+    cmsSigUInt32ArrayType = 0x75693332,
+    cmsSigUInt64ArrayType = 0x75693634,
+    cmsSigUInt8ArrayType = 0x75693038,
+    cmsSigVcgtType = 0x76636774,
+    cmsSigViewingConditionsType = 0x76696577,
+    cmsSigXYZType = 0x58595A20
+
+
+} cmsTagTypeSignature;
+
+
+typedef enum {
+    cmsSigAToB0Tag = 0x41324230,
+    cmsSigAToB1Tag = 0x41324231,
+    cmsSigAToB2Tag = 0x41324232,
+    cmsSigBlueColorantTag = 0x6258595A,
+    cmsSigBlueMatrixColumnTag = 0x6258595A,
+    cmsSigBlueTRCTag = 0x62545243,
+    cmsSigBToA0Tag = 0x42324130,
+    cmsSigBToA1Tag = 0x42324131,
+    cmsSigBToA2Tag = 0x42324132,
+    cmsSigCalibrationDateTimeTag = 0x63616C74,
+    cmsSigCharTargetTag = 0x74617267,
+    cmsSigChromaticAdaptationTag = 0x63686164,
+    cmsSigChromaticityTag = 0x6368726D,
+    cmsSigColorantOrderTag = 0x636C726F,
+    cmsSigColorantTableTag = 0x636C7274,
+    cmsSigColorantTableOutTag = 0x636C6F74,
+    cmsSigColorimetricIntentImageStateTag = 0x63696973,
+    cmsSigCopyrightTag = 0x63707274,
+    cmsSigCrdInfoTag = 0x63726469,
+    cmsSigDataTag = 0x64617461,
+    cmsSigDateTimeTag = 0x6474696D,
+    cmsSigDeviceMfgDescTag = 0x646D6E64,
+    cmsSigDeviceModelDescTag = 0x646D6464,
+    cmsSigDeviceSettingsTag = 0x64657673,
+    cmsSigDToB0Tag = 0x44324230,
+    cmsSigDToB1Tag = 0x44324231,
+    cmsSigDToB2Tag = 0x44324232,
+    cmsSigDToB3Tag = 0x44324233,
+    cmsSigBToD0Tag = 0x42324430,
+    cmsSigBToD1Tag = 0x42324431,
+    cmsSigBToD2Tag = 0x42324432,
+    cmsSigBToD3Tag = 0x42324433,
+    cmsSigGamutTag = 0x67616D74,
+    cmsSigGrayTRCTag = 0x6b545243,
+    cmsSigGreenColorantTag = 0x6758595A,
+    cmsSigGreenMatrixColumnTag = 0x6758595A,
+    cmsSigGreenTRCTag = 0x67545243,
+    cmsSigLuminanceTag = 0x6C756d69,
+    cmsSigMeasurementTag = 0x6D656173,
+    cmsSigMediaBlackPointTag = 0x626B7074,
+    cmsSigMediaWhitePointTag = 0x77747074,
+    cmsSigNamedColorTag = 0x6E636f6C,
+    cmsSigNamedColor2Tag = 0x6E636C32,
+    cmsSigOutputResponseTag = 0x72657370,
+    cmsSigPerceptualRenderingIntentGamutTag = 0x72696730,
+    cmsSigPreview0Tag = 0x70726530,
+    cmsSigPreview1Tag = 0x70726531,
+    cmsSigPreview2Tag = 0x70726532,
+    cmsSigProfileDescriptionTag = 0x64657363,
+    cmsSigProfileDescriptionMLTag = 0x6473636d,
+    cmsSigProfileSequenceDescTag = 0x70736571,
+    cmsSigProfileSequenceIdTag = 0x70736964,
+    cmsSigPs2CRD0Tag = 0x70736430,
+    cmsSigPs2CRD1Tag = 0x70736431,
+    cmsSigPs2CRD2Tag = 0x70736432,
+    cmsSigPs2CRD3Tag = 0x70736433,
+    cmsSigPs2CSATag = 0x70733273,
+    cmsSigPs2RenderingIntentTag = 0x70733269,
+    cmsSigRedColorantTag = 0x7258595A,
+    cmsSigRedMatrixColumnTag = 0x7258595A,
+    cmsSigRedTRCTag = 0x72545243,
+    cmsSigSaturationRenderingIntentGamutTag = 0x72696732,
+    cmsSigScreeningDescTag = 0x73637264,
+    cmsSigScreeningTag = 0x7363726E,
+    cmsSigTechnologyTag = 0x74656368,
+    cmsSigUcrBgTag = 0x62666420,
+    cmsSigViewingCondDescTag = 0x76756564,
+    cmsSigViewingConditionsTag = 0x76696577,
+    cmsSigVcgtTag = 0x76636774,
+    cmsSigMetaTag = 0x6D657461
+
+} cmsTagSignature;
+
+
+
+typedef enum {
+    cmsSigDigitalCamera = 0x6463616D,
+    cmsSigFilmScanner = 0x6673636E,
+    cmsSigReflectiveScanner = 0x7273636E,
+    cmsSigInkJetPrinter = 0x696A6574,
+    cmsSigThermalWaxPrinter = 0x74776178,
+    cmsSigElectrophotographicPrinter = 0x6570686F,
+    cmsSigElectrostaticPrinter = 0x65737461,
+    cmsSigDyeSublimationPrinter = 0x64737562,
+    cmsSigPhotographicPaperPrinter = 0x7270686F,
+    cmsSigFilmWriter = 0x6670726E,
+    cmsSigVideoMonitor = 0x7669646D,
+    cmsSigVideoCamera = 0x76696463,
+    cmsSigProjectionTelevision = 0x706A7476,
+    cmsSigCRTDisplay = 0x43525420,
+    cmsSigPMDisplay = 0x504D4420,
+    cmsSigAMDisplay = 0x414D4420,
+    cmsSigPhotoCD = 0x4B504344,
+    cmsSigPhotoImageSetter = 0x696D6773,
+    cmsSigGravure = 0x67726176,
+    cmsSigOffsetLithography = 0x6F666673,
+    cmsSigSilkscreen = 0x73696C6B,
+    cmsSigFlexography = 0x666C6578,
+    cmsSigMotionPictureFilmScanner = 0x6D706673,
+    cmsSigMotionPictureFilmRecorder = 0x6D706672,
+    cmsSigDigitalMotionPictureCamera = 0x646D7063,
+    cmsSigDigitalCinemaProjector = 0x64636A70
+
+} cmsTechnologySignature;
+
+
+
+typedef enum {
+    cmsSigXYZData = 0x58595A20,
+    cmsSigLabData = 0x4C616220,
+    cmsSigLuvData = 0x4C757620,
+    cmsSigYCbCrData = 0x59436272,
+    cmsSigYxyData = 0x59787920,
+    cmsSigRgbData = 0x52474220,
+    cmsSigGrayData = 0x47524159,
+    cmsSigHsvData = 0x48535620,
+    cmsSigHlsData = 0x484C5320,
+    cmsSigCmykData = 0x434D594B,
+    cmsSigCmyData = 0x434D5920,
+    cmsSigMCH1Data = 0x4D434831,
+    cmsSigMCH2Data = 0x4D434832,
+    cmsSigMCH3Data = 0x4D434833,
+    cmsSigMCH4Data = 0x4D434834,
+    cmsSigMCH5Data = 0x4D434835,
+    cmsSigMCH6Data = 0x4D434836,
+    cmsSigMCH7Data = 0x4D434837,
+    cmsSigMCH8Data = 0x4D434838,
+    cmsSigMCH9Data = 0x4D434839,
+    cmsSigMCHAData = 0x4D434841,
+    cmsSigMCHBData = 0x4D434842,
+    cmsSigMCHCData = 0x4D434843,
+    cmsSigMCHDData = 0x4D434844,
+    cmsSigMCHEData = 0x4D434845,
+    cmsSigMCHFData = 0x4D434846,
+    cmsSigNamedData = 0x6e6d636c,
+    cmsSig1colorData = 0x31434C52,
+    cmsSig2colorData = 0x32434C52,
+    cmsSig3colorData = 0x33434C52,
+    cmsSig4colorData = 0x34434C52,
+    cmsSig5colorData = 0x35434C52,
+    cmsSig6colorData = 0x36434C52,
+    cmsSig7colorData = 0x37434C52,
+    cmsSig8colorData = 0x38434C52,
+    cmsSig9colorData = 0x39434C52,
+    cmsSig10colorData = 0x41434C52,
+    cmsSig11colorData = 0x42434C52,
+    cmsSig12colorData = 0x43434C52,
+    cmsSig13colorData = 0x44434C52,
+    cmsSig14colorData = 0x45434C52,
+    cmsSig15colorData = 0x46434C52,
+    cmsSigLuvKData = 0x4C75764B
+
+} cmsColorSpaceSignature;
+
+
+typedef enum {
+    cmsSigInputClass = 0x73636E72,
+    cmsSigDisplayClass = 0x6D6E7472,
+    cmsSigOutputClass = 0x70727472,
+    cmsSigLinkClass = 0x6C696E6B,
+    cmsSigAbstractClass = 0x61627374,
+    cmsSigColorSpaceClass = 0x73706163,
+    cmsSigNamedColorClass = 0x6e6d636c
+
+} cmsProfileClassSignature;
+
+
+typedef enum {
+    cmsSigMacintosh = 0x4150504C,
+    cmsSigMicrosoft = 0x4D534654,
+    cmsSigSolaris = 0x53554E57,
+    cmsSigSGI = 0x53474920,
+    cmsSigTaligent = 0x54474E54,
+    cmsSigUnices = 0x2A6E6978
+
+} cmsPlatformSignature;
+# 503 "./lcms2/include/lcms2.h"
+typedef enum {
+    cmsSigCurveSetElemType = 0x63767374,
+    cmsSigMatrixElemType = 0x6D617466,
+    cmsSigCLutElemType = 0x636C7574,
+
+    cmsSigBAcsElemType = 0x62414353,
+    cmsSigEAcsElemType = 0x65414353,
+
+
+    cmsSigXYZ2LabElemType = 0x6C327820,
+    cmsSigLab2XYZElemType = 0x78326C20,
+    cmsSigNamedColorElemType = 0x6E636C20,
+    cmsSigLabV2toV4 = 0x32203420,
+    cmsSigLabV4toV2 = 0x34203220,
+
+
+    cmsSigIdentityElemType = 0x69646E20,
+
+
+    cmsSigLab2FloatPCS = 0x64326C20,
+    cmsSigFloatPCS2Lab = 0x6C326420,
+    cmsSigXYZ2FloatPCS = 0x64327820,
+    cmsSigFloatPCS2XYZ = 0x78326420
+
+} cmsStageSignature;
+
+
+typedef enum {
+
+    cmsSigFormulaCurveSeg = 0x70617266,
+    cmsSigSampledCurveSeg = 0x73616D66,
+    cmsSigSegmentedCurve = 0x63757266
+
+} cmsCurveSegSignature;
+# 557 "./lcms2/include/lcms2.h"
+typedef struct {
+    cmsUInt32Number len;
+    cmsUInt32Number flag;
+    cmsUInt8Number data[1];
+
+} cmsICCData;
+
+
+typedef struct {
+    cmsUInt16Number year;
+    cmsUInt16Number month;
+    cmsUInt16Number day;
+    cmsUInt16Number hours;
+    cmsUInt16Number minutes;
+    cmsUInt16Number seconds;
+
+} cmsDateTimeNumber;
+
+
+typedef struct {
+    cmsS15Fixed16Number X;
+    cmsS15Fixed16Number Y;
+    cmsS15Fixed16Number Z;
+
+} cmsEncodedXYZNumber;
+
+
+
+typedef union {
+    cmsUInt8Number ID8[16];
+    cmsUInt16Number ID16[8];
+    cmsUInt32Number ID32[4];
+
+} cmsProfileID;
+
+
+
+
+
+
+
+typedef struct {
+    cmsUInt32Number size;
+    cmsSignature cmmId;
+    cmsUInt32Number version;
+    cmsProfileClassSignature deviceClass;
+    cmsColorSpaceSignature colorSpace;
+    cmsColorSpaceSignature pcs;
+    cmsDateTimeNumber date;
+    cmsSignature magic;
+    cmsPlatformSignature platform;
+    cmsUInt32Number flags;
+    cmsSignature manufacturer;
+    cmsUInt32Number model;
+    cmsUInt64Number attributes;
+    cmsUInt32Number renderingIntent;
+    cmsEncodedXYZNumber illuminant;
+    cmsSignature creator;
+    cmsProfileID profileID;
+    cmsInt8Number reserved[28];
+
+} cmsICCHeader;
+
+
+typedef struct {
+    cmsTagTypeSignature sig;
+    cmsInt8Number reserved[4];
+
+} cmsTagBase;
+
+
+typedef struct {
+    cmsTagSignature sig;
+    cmsUInt32Number offset;
+    cmsUInt32Number size;
+
+} cmsTagEntry;
+
+
+
+
+
+typedef void* cmsHANDLE ;
+typedef void* cmsHPROFILE;
+typedef void* cmsHTRANSFORM;
+# 927 "./lcms2/include/lcms2.h"
+typedef struct {
+        cmsFloat64Number X;
+        cmsFloat64Number Y;
+        cmsFloat64Number Z;
+
+    } cmsCIEXYZ;
+
+typedef struct {
+        cmsFloat64Number x;
+        cmsFloat64Number y;
+        cmsFloat64Number Y;
+
+    } cmsCIExyY;
+
+typedef struct {
+        cmsFloat64Number L;
+        cmsFloat64Number a;
+        cmsFloat64Number b;
+
+    } cmsCIELab;
+
+typedef struct {
+        cmsFloat64Number L;
+        cmsFloat64Number C;
+        cmsFloat64Number h;
+
+    } cmsCIELCh;
+
+typedef struct {
+        cmsFloat64Number J;
+        cmsFloat64Number C;
+        cmsFloat64Number h;
+
+    } cmsJCh;
+
+typedef struct {
+        cmsCIEXYZ Red;
+        cmsCIEXYZ Green;
+        cmsCIEXYZ Blue;
+
+    } cmsCIEXYZTRIPLE;
+
+typedef struct {
+        cmsCIExyY Red;
+        cmsCIExyY Green;
+        cmsCIExyY Blue;
+
+    } cmsCIExyYTRIPLE;
+# 987 "./lcms2/include/lcms2.h"
+typedef struct {
+        cmsUInt32Number Observer;
+        cmsCIEXYZ Backing;
+        cmsUInt32Number Geometry;
+        cmsFloat64Number Flare;
+        cmsUInt32Number IlluminantType;
+
+    } cmsICCMeasurementConditions;
+
+typedef struct {
+        cmsCIEXYZ IlluminantXYZ;
+        cmsCIEXYZ SurroundXYZ;
+        cmsUInt32Number IlluminantType;
+
+    } cmsICCViewingConditions;
+
+
+
+       int cmsstrcasecmp(const char* s1, const char* s2);
+       long int cmsfilelength(FILE* f);
+
+
+
+
+
+
+
+typedef struct _cmsContext_struct* cmsContext;
+
+       cmsContext cmsCreateContext(void* Plugin, void* UserData);
+       void cmsDeleteContext(cmsContext ContexID);
+       cmsContext cmsDupContext(cmsContext ContextID, void* NewUserData);
+       void* cmsGetContextUserData(cmsContext ContextID);
+
+
+
+       cmsBool cmsPlugin(void* Plugin);
+       cmsBool cmsPluginTHR(cmsContext ContextID, void* Plugin);
+       void cmsUnregisterPlugins(void);
+       void cmsUnregisterPluginsTHR(cmsContext ContextID);
+# 1059 "./lcms2/include/lcms2.h"
+typedef void (* cmsLogErrorHandlerFunction)(cmsContext ContextID, cmsUInt32Number ErrorCode, const char *Text);
+
+
+       void cmsSetLogErrorHandler(cmsLogErrorHandlerFunction Fn);
+       void cmsSetLogErrorHandlerTHR(cmsContext ContextID, cmsLogErrorHandlerFunction Fn);
+
+
+
+
+       const cmsCIEXYZ* cmsD50_XYZ(void);
+       const cmsCIExyY* cmsD50_xyY(void);
+
+
+       void cmsXYZ2xyY(cmsCIExyY* Dest, const cmsCIEXYZ* Source);
+       void cmsxyY2XYZ(cmsCIEXYZ* Dest, const cmsCIExyY* Source);
+       void cmsXYZ2Lab(const cmsCIEXYZ* WhitePoint, cmsCIELab* Lab, const cmsCIEXYZ* xyz);
+       void cmsLab2XYZ(const cmsCIEXYZ* WhitePoint, cmsCIEXYZ* xyz, const cmsCIELab* Lab);
+       void cmsLab2LCh(cmsCIELCh*LCh, const cmsCIELab* Lab);
+       void cmsLCh2Lab(cmsCIELab* Lab, const cmsCIELCh* LCh);
+
+
+       void cmsLabEncoded2Float(cmsCIELab* Lab, const cmsUInt16Number wLab[3]);
+       void cmsLabEncoded2FloatV2(cmsCIELab* Lab, const cmsUInt16Number wLab[3]);
+       void cmsFloat2LabEncoded(cmsUInt16Number wLab[3], const cmsCIELab* Lab);
+       void cmsFloat2LabEncodedV2(cmsUInt16Number wLab[3], const cmsCIELab* Lab);
+       void cmsXYZEncoded2Float(cmsCIEXYZ* fxyz, const cmsUInt16Number XYZ[3]);
+       void cmsFloat2XYZEncoded(cmsUInt16Number XYZ[3], const cmsCIEXYZ* fXYZ);
+
+
+       cmsFloat64Number cmsDeltaE(const cmsCIELab* Lab1, const cmsCIELab* Lab2);
+       cmsFloat64Number cmsCIE94DeltaE(const cmsCIELab* Lab1, const cmsCIELab* Lab2);
+       cmsFloat64Number cmsBFDdeltaE(const cmsCIELab* Lab1, const cmsCIELab* Lab2);
+       cmsFloat64Number cmsCMCdeltaE(const cmsCIELab* Lab1, const cmsCIELab* Lab2, cmsFloat64Number l, cmsFloat64Number c);
+       cmsFloat64Number cmsCIE2000DeltaE(const cmsCIELab* Lab1, const cmsCIELab* Lab2, cmsFloat64Number Kl, cmsFloat64Number Kc, cmsFloat64Number Kh);
+
+
+       cmsBool cmsWhitePointFromTemp(cmsCIExyY* WhitePoint, cmsFloat64Number TempK);
+       cmsBool cmsTempFromWhitePoint(cmsFloat64Number* TempK, const cmsCIExyY* WhitePoint);
+
+
+       cmsBool cmsAdaptToIlluminant(cmsCIEXYZ* Result, const cmsCIEXYZ* SourceWhitePt,
+                                                                           const cmsCIEXYZ* Illuminant,
+                                                                           const cmsCIEXYZ* Value);
+# 1117 "./lcms2/include/lcms2.h"
+typedef struct {
+    cmsCIEXYZ whitePoint;
+    cmsFloat64Number Yb;
+    cmsFloat64Number La;
+    int surround;
+    cmsFloat64Number D_value;
+
+    } cmsViewingConditions;
+
+       cmsHANDLE cmsCIECAM02Init(cmsContext ContextID, const cmsViewingConditions* pVC);
+       void cmsCIECAM02Done(cmsHANDLE hModel);
+       void cmsCIECAM02Forward(cmsHANDLE hModel, const cmsCIEXYZ* pIn, cmsJCh* pOut);
+       void cmsCIECAM02Reverse(cmsHANDLE hModel, const cmsJCh* pIn, cmsCIEXYZ* pOut);
+
+
+
+
+
+
+
+typedef struct {
+    cmsFloat32Number x0, x1;
+    cmsInt32Number Type;
+    cmsFloat64Number Params[10];
+    cmsUInt32Number nGridPoints;
+    cmsFloat32Number* SampledPoints;
+
+} cmsCurveSegment;
+
+
+typedef struct _cms_curve_struct cmsToneCurve;
+
+       cmsToneCurve* cmsBuildSegmentedToneCurve(cmsContext ContextID, cmsInt32Number nSegments, const cmsCurveSegment Segments[]);
+       cmsToneCurve* cmsBuildParametricToneCurve(cmsContext ContextID, cmsInt32Number Type, const cmsFloat64Number Params[]);
+       cmsToneCurve* cmsBuildGamma(cmsContext ContextID, cmsFloat64Number Gamma);
+       cmsToneCurve* cmsBuildTabulatedToneCurve16(cmsContext ContextID, cmsInt32Number nEntries, const cmsUInt16Number values[]);
+       cmsToneCurve* cmsBuildTabulatedToneCurveFloat(cmsContext ContextID, cmsUInt32Number nEntries, const cmsFloat32Number values[]);
+       void cmsFreeToneCurve(cmsToneCurve* Curve);
+       void cmsFreeToneCurveTriple(cmsToneCurve* Curve[3]);
+       cmsToneCurve* cmsDupToneCurve(const cmsToneCurve* Src);
+       cmsToneCurve* cmsReverseToneCurve(const cmsToneCurve* InGamma);
+       cmsToneCurve* cmsReverseToneCurveEx(cmsInt32Number nResultSamples, const cmsToneCurve* InGamma);
+       cmsToneCurve* cmsJoinToneCurve(cmsContext ContextID, const cmsToneCurve* X, const cmsToneCurve* Y, cmsUInt32Number nPoints);
+       cmsBool cmsSmoothToneCurve(cmsToneCurve* Tab, cmsFloat64Number lambda);
+       cmsFloat32Number cmsEvalToneCurveFloat(const cmsToneCurve* Curve, cmsFloat32Number v);
+       cmsUInt16Number cmsEvalToneCurve16(const cmsToneCurve* Curve, cmsUInt16Number v);
+       cmsBool cmsIsToneCurveMultisegment(const cmsToneCurve* InGamma);
+       cmsBool cmsIsToneCurveLinear(const cmsToneCurve* Curve);
+       cmsBool cmsIsToneCurveMonotonic(const cmsToneCurve* t);
+       cmsBool cmsIsToneCurveDescending(const cmsToneCurve* t);
+       cmsInt32Number cmsGetToneCurveParametricType(const cmsToneCurve* t);
+       cmsFloat64Number cmsEstimateGamma(const cmsToneCurve* t, cmsFloat64Number Precision);
+
+
+       cmsUInt32Number cmsGetToneCurveEstimatedTableEntries(const cmsToneCurve* t);
+       const cmsUInt16Number* cmsGetToneCurveEstimatedTable(const cmsToneCurve* t);
+
+
+
+
+
+typedef struct _cmsPipeline_struct cmsPipeline;
+typedef struct _cmsStage_struct cmsStage;
+
+
+       cmsPipeline* cmsPipelineAlloc(cmsContext ContextID, cmsUInt32Number InputChannels, cmsUInt32Number OutputChannels);
+       void cmsPipelineFree(cmsPipeline* lut);
+       cmsPipeline* cmsPipelineDup(const cmsPipeline* Orig);
+
+       cmsContext cmsGetPipelineContextID(const cmsPipeline* lut);
+       cmsUInt32Number cmsPipelineInputChannels(const cmsPipeline* lut);
+       cmsUInt32Number cmsPipelineOutputChannels(const cmsPipeline* lut);
+
+       cmsUInt32Number cmsPipelineStageCount(const cmsPipeline* lut);
+       cmsStage* cmsPipelineGetPtrToFirstStage(const cmsPipeline* lut);
+       cmsStage* cmsPipelineGetPtrToLastStage(const cmsPipeline* lut);
+
+       void cmsPipelineEval16(const cmsUInt16Number In[], cmsUInt16Number Out[], const cmsPipeline* lut);
+       void cmsPipelineEvalFloat(const cmsFloat32Number In[], cmsFloat32Number Out[], const cmsPipeline* lut);
+       cmsBool cmsPipelineEvalReverseFloat(cmsFloat32Number Target[], cmsFloat32Number Result[], cmsFloat32Number Hint[], const cmsPipeline* lut);
+       cmsBool cmsPipelineCat(cmsPipeline* l1, const cmsPipeline* l2);
+       cmsBool cmsPipelineSetSaveAs8bitsFlag(cmsPipeline* lut, cmsBool On);
+
+
+typedef enum { cmsAT_BEGIN, cmsAT_END } cmsStageLoc;
+
+       int cmsPipelineInsertStage(cmsPipeline* lut, cmsStageLoc loc, cmsStage* mpe);
+       void cmsPipelineUnlinkStage(cmsPipeline* lut, cmsStageLoc loc, cmsStage** mpe);
+
+
+
+
+
+
+       cmsBool cmsPipelineCheckAndRetreiveStages(const cmsPipeline* Lut, cmsUInt32Number n, ...);
+
+
+
+       cmsStage* cmsStageAllocIdentity(cmsContext ContextID, cmsUInt32Number nChannels);
+       cmsStage* cmsStageAllocToneCurves(cmsContext ContextID, cmsUInt32Number nChannels, cmsToneCurve* const Curves[]);
+       cmsStage* cmsStageAllocMatrix(cmsContext ContextID, cmsUInt32Number Rows, cmsUInt32Number Cols, const cmsFloat64Number* Matrix, const cmsFloat64Number* Offset);
+
+       cmsStage* cmsStageAllocCLut16bit(cmsContext ContextID, cmsUInt32Number nGridPoints, cmsUInt32Number inputChan, cmsUInt32Number outputChan, const cmsUInt16Number* Table);
+       cmsStage* cmsStageAllocCLutFloat(cmsContext ContextID, cmsUInt32Number nGridPoints, cmsUInt32Number inputChan, cmsUInt32Number outputChan, const cmsFloat32Number* Table);
+
+       cmsStage* cmsStageAllocCLut16bitGranular(cmsContext ContextID, const cmsUInt32Number clutPoints[], cmsUInt32Number inputChan, cmsUInt32Number outputChan, const cmsUInt16Number* Table);
+       cmsStage* cmsStageAllocCLutFloatGranular(cmsContext ContextID, const cmsUInt32Number clutPoints[], cmsUInt32Number inputChan, cmsUInt32Number outputChan, const cmsFloat32Number* Table);
+
+       cmsStage* cmsStageDup(cmsStage* mpe);
+       void cmsStageFree(cmsStage* mpe);
+       cmsStage* cmsStageNext(const cmsStage* mpe);
+
+       cmsUInt32Number cmsStageInputChannels(const cmsStage* mpe);
+       cmsUInt32Number cmsStageOutputChannels(const cmsStage* mpe);
+       cmsStageSignature cmsStageType(const cmsStage* mpe);
+       void* cmsStageData(const cmsStage* mpe);
+
+
+typedef cmsInt32Number (* cmsSAMPLER16) (register const cmsUInt16Number In[],
+                                            register cmsUInt16Number Out[],
+                                            register void * Cargo);
+
+typedef cmsInt32Number (* cmsSAMPLERFLOAT)(register const cmsFloat32Number In[],
+                                            register cmsFloat32Number Out[],
+                                            register void * Cargo);
+
+
+
+
+
+       cmsBool cmsStageSampleCLut16bit(cmsStage* mpe, cmsSAMPLER16 Sampler, void* Cargo, cmsUInt32Number dwFlags);
+       cmsBool cmsStageSampleCLutFloat(cmsStage* mpe, cmsSAMPLERFLOAT Sampler, void* Cargo, cmsUInt32Number dwFlags);
+
+
+       cmsBool cmsSliceSpace16(cmsUInt32Number nInputs, const cmsUInt32Number clutPoints[],
+                                                   cmsSAMPLER16 Sampler, void * Cargo);
+
+       cmsBool cmsSliceSpaceFloat(cmsUInt32Number nInputs, const cmsUInt32Number clutPoints[],
+                                                   cmsSAMPLERFLOAT Sampler, void * Cargo);
+
+
+
+typedef struct _cms_MLU_struct cmsMLU;
+
+
+
+
+       cmsMLU* cmsMLUalloc(cmsContext ContextID, cmsUInt32Number nItems);
+       void cmsMLUfree(cmsMLU* mlu);
+       cmsMLU* cmsMLUdup(const cmsMLU* mlu);
+
+       cmsBool cmsMLUsetASCII(cmsMLU* mlu,
+                                                  const char LanguageCode[3], const char CountryCode[3],
+                                                  const char* ASCIIString);
+       cmsBool cmsMLUsetWide(cmsMLU* mlu,
+                                                  const char LanguageCode[3], const char CountryCode[3],
+                                                  const wchar_t* WideString);
+
+       cmsUInt32Number cmsMLUgetASCII(const cmsMLU* mlu,
+                                                  const char LanguageCode[3], const char CountryCode[3],
+                                                  char* Buffer, cmsUInt32Number BufferSize);
+
+       cmsUInt32Number cmsMLUgetWide(const cmsMLU* mlu,
+                                                 const char LanguageCode[3], const char CountryCode[3],
+                                                 wchar_t* Buffer, cmsUInt32Number BufferSize);
+
+       cmsBool cmsMLUgetTranslation(const cmsMLU* mlu,
+                                                         const char LanguageCode[3], const char CountryCode[3],
+                                                         char ObtainedLanguage[3], char ObtainedCountry[3]);
+
+       cmsUInt32Number cmsMLUtranslationsCount(const cmsMLU* mlu);
+
+       cmsBool cmsMLUtranslationsCodes(const cmsMLU* mlu,
+                                                             cmsUInt32Number idx,
+                                                             char LanguageCode[3],
+                                                             char CountryCode[3]);
+
+
+
+typedef struct {
+        cmsToneCurve* Ucr;
+        cmsToneCurve* Bg;
+        cmsMLU* Desc;
+
+} cmsUcrBg;
+# 1318 "./lcms2/include/lcms2.h"
+typedef struct {
+    cmsFloat64Number Frequency;
+    cmsFloat64Number ScreenAngle;
+    cmsUInt32Number SpotShape;
+
+} cmsScreeningChannel;
+
+typedef struct {
+    cmsUInt32Number Flag;
+    cmsUInt32Number nChannels;
+    cmsScreeningChannel Channels[16];
+
+} cmsScreening;
+
+
+
+
+typedef struct _cms_NAMEDCOLORLIST_struct cmsNAMEDCOLORLIST;
+
+       cmsNAMEDCOLORLIST* cmsAllocNamedColorList(cmsContext ContextID,
+                                                           cmsUInt32Number n,
+                                                           cmsUInt32Number ColorantCount,
+                                                           const char* Prefix, const char* Suffix);
+
+       void cmsFreeNamedColorList(cmsNAMEDCOLORLIST* v);
+       cmsNAMEDCOLORLIST* cmsDupNamedColorList(const cmsNAMEDCOLORLIST* v);
+       cmsBool cmsAppendNamedColor(cmsNAMEDCOLORLIST* v, const char* Name,
+                                                            cmsUInt16Number PCS[3],
+                                                            cmsUInt16Number Colorant[16]);
+
+       cmsUInt32Number cmsNamedColorCount(const cmsNAMEDCOLORLIST* v);
+       cmsInt32Number cmsNamedColorIndex(const cmsNAMEDCOLORLIST* v, const char* Name);
+
+       cmsBool cmsNamedColorInfo(const cmsNAMEDCOLORLIST* NamedColorList, cmsUInt32Number nColor,
+                                                      char* Name,
+                                                      char* Prefix,
+                                                      char* Suffix,
+                                                      cmsUInt16Number* PCS,
+                                                      cmsUInt16Number* Colorant);
+
+
+       cmsNAMEDCOLORLIST* cmsGetNamedColorList(cmsHTRANSFORM xform);
+
+
+
+
+
+typedef struct {
+
+    cmsSignature deviceMfg;
+    cmsSignature deviceModel;
+    cmsUInt64Number attributes;
+    cmsTechnologySignature technology;
+    cmsProfileID ProfileID;
+    cmsMLU* Manufacturer;
+    cmsMLU* Model;
+    cmsMLU* Description;
+
+} cmsPSEQDESC;
+
+typedef struct {
+
+    cmsUInt32Number n;
+    cmsContext ContextID;
+    cmsPSEQDESC* seq;
+
+} cmsSEQ;
+
+       cmsSEQ* cmsAllocProfileSequenceDescription(cmsContext ContextID, cmsUInt32Number n);
+       cmsSEQ* cmsDupProfileSequenceDescription(const cmsSEQ* pseq);
+       void cmsFreeProfileSequenceDescription(cmsSEQ* pseq);
+
+
+
+typedef struct _cmsDICTentry_struct {
+
+    struct _cmsDICTentry_struct* Next;
+
+    cmsMLU *DisplayName;
+    cmsMLU *DisplayValue;
+    wchar_t* Name;
+    wchar_t* Value;
+
+} cmsDICTentry;
+
+       cmsHANDLE cmsDictAlloc(cmsContext ContextID);
+       void cmsDictFree(cmsHANDLE hDict);
+       cmsHANDLE cmsDictDup(cmsHANDLE hDict);
+
+       cmsBool cmsDictAddEntry(cmsHANDLE hDict, const wchar_t* Name, const wchar_t* Value, const cmsMLU *DisplayName, const cmsMLU *DisplayValue);
+       const cmsDICTentry* cmsDictGetEntryList(cmsHANDLE hDict);
+       const cmsDICTentry* cmsDictNextEntry(const cmsDICTentry* e);
+
+
+       cmsHPROFILE cmsCreateProfilePlaceholder(cmsContext ContextID);
+
+       cmsContext cmsGetProfileContextID(cmsHPROFILE hProfile);
+       cmsInt32Number cmsGetTagCount(cmsHPROFILE hProfile);
+       cmsTagSignature cmsGetTagSignature(cmsHPROFILE hProfile, cmsUInt32Number n);
+       cmsBool cmsIsTag(cmsHPROFILE hProfile, cmsTagSignature sig);
+
+
+       void* cmsReadTag(cmsHPROFILE hProfile, cmsTagSignature sig);
+       cmsBool cmsWriteTag(cmsHPROFILE hProfile, cmsTagSignature sig, const void* data);
+       cmsBool cmsLinkTag(cmsHPROFILE hProfile, cmsTagSignature sig, cmsTagSignature dest);
+       cmsTagSignature cmsTagLinkedTo(cmsHPROFILE hProfile, cmsTagSignature sig);
+
+
+       cmsInt32Number cmsReadRawTag(cmsHPROFILE hProfile, cmsTagSignature sig, void* Buffer, cmsUInt32Number BufferSize);
+       cmsBool cmsWriteRawTag(cmsHPROFILE hProfile, cmsTagSignature sig, const void* data, cmsUInt32Number Size);
+
+
+
+
+
+
+
+       cmsUInt32Number cmsGetHeaderFlags(cmsHPROFILE hProfile);
+       void cmsGetHeaderAttributes(cmsHPROFILE hProfile, cmsUInt64Number* Flags);
+       void cmsGetHeaderProfileID(cmsHPROFILE hProfile, cmsUInt8Number* ProfileID);
+       cmsBool cmsGetHeaderCreationDateTime(cmsHPROFILE hProfile, struct tm *Dest);
+       cmsUInt32Number cmsGetHeaderRenderingIntent(cmsHPROFILE hProfile);
+
+       void cmsSetHeaderFlags(cmsHPROFILE hProfile, cmsUInt32Number Flags);
+       cmsUInt32Number cmsGetHeaderManufacturer(cmsHPROFILE hProfile);
+       void cmsSetHeaderManufacturer(cmsHPROFILE hProfile, cmsUInt32Number manufacturer);
+       cmsUInt32Number cmsGetHeaderCreator(cmsHPROFILE hProfile);
+       cmsUInt32Number cmsGetHeaderModel(cmsHPROFILE hProfile);
+       void cmsSetHeaderModel(cmsHPROFILE hProfile, cmsUInt32Number model);
+       void cmsSetHeaderAttributes(cmsHPROFILE hProfile, cmsUInt64Number Flags);
+       void cmsSetHeaderProfileID(cmsHPROFILE hProfile, cmsUInt8Number* ProfileID);
+       void cmsSetHeaderRenderingIntent(cmsHPROFILE hProfile, cmsUInt32Number RenderingIntent);
+
+       cmsColorSpaceSignature
+                                   cmsGetPCS(cmsHPROFILE hProfile);
+       void cmsSetPCS(cmsHPROFILE hProfile, cmsColorSpaceSignature pcs);
+       cmsColorSpaceSignature
+                                   cmsGetColorSpace(cmsHPROFILE hProfile);
+       void cmsSetColorSpace(cmsHPROFILE hProfile, cmsColorSpaceSignature sig);
+       cmsProfileClassSignature
+                                   cmsGetDeviceClass(cmsHPROFILE hProfile);
+       void cmsSetDeviceClass(cmsHPROFILE hProfile, cmsProfileClassSignature sig);
+       void cmsSetProfileVersion(cmsHPROFILE hProfile, cmsFloat64Number Version);
+       cmsFloat64Number cmsGetProfileVersion(cmsHPROFILE hProfile);
+
+       cmsUInt32Number cmsGetEncodedICCversion(cmsHPROFILE hProfile);
+       void cmsSetEncodedICCversion(cmsHPROFILE hProfile, cmsUInt32Number Version);
+
+
+
+
+
+
+       cmsBool cmsIsIntentSupported(cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number UsedDirection);
+       cmsBool cmsIsMatrixShaper(cmsHPROFILE hProfile);
+       cmsBool cmsIsCLUT(cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number UsedDirection);
+
+
+       cmsColorSpaceSignature _cmsICCcolorSpace(int OurNotation);
+       int _cmsLCMScolorSpace(cmsColorSpaceSignature ProfileSpace);
+
+       cmsUInt32Number cmsChannelsOf(cmsColorSpaceSignature ColorSpace);
+
+
+       cmsUInt32Number cmsFormatterForColorspaceOfProfile(cmsHPROFILE hProfile, cmsUInt32Number nBytes, cmsBool lIsFloat);
+       cmsUInt32Number cmsFormatterForPCSOfProfile(cmsHPROFILE hProfile, cmsUInt32Number nBytes, cmsBool lIsFloat);
+
+
+
+typedef enum {
+             cmsInfoDescription = 0,
+             cmsInfoManufacturer = 1,
+             cmsInfoModel = 2,
+             cmsInfoCopyright = 3
+} cmsInfoType;
+
+       cmsUInt32Number cmsGetProfileInfo(cmsHPROFILE hProfile, cmsInfoType Info,
+                                                            const char LanguageCode[3], const char CountryCode[3],
+                                                            wchar_t* Buffer, cmsUInt32Number BufferSize);
+
+       cmsUInt32Number cmsGetProfileInfoASCII(cmsHPROFILE hProfile, cmsInfoType Info,
+                                                            const char LanguageCode[3], const char CountryCode[3],
+                                                            char* Buffer, cmsUInt32Number BufferSize);
+
+
+
+typedef struct _cms_io_handler cmsIOHANDLER;
+
+       cmsIOHANDLER* cmsOpenIOhandlerFromFile(cmsContext ContextID, const char* FileName, const char* AccessMode);
+       cmsIOHANDLER* cmsOpenIOhandlerFromStream(cmsContext ContextID, FILE* Stream);
+       cmsIOHANDLER* cmsOpenIOhandlerFromMem(cmsContext ContextID, void *Buffer, cmsUInt32Number size, const char* AccessMode);
+       cmsIOHANDLER* cmsOpenIOhandlerFromNULL(cmsContext ContextID);
+       cmsBool cmsCloseIOhandler(cmsIOHANDLER* io);
+
+
+
+       cmsBool cmsMD5computeID(cmsHPROFILE hProfile);
+
+
+
+       cmsHPROFILE cmsOpenProfileFromFile(const char *ICCProfile, const char *sAccess);
+       cmsHPROFILE cmsOpenProfileFromFileTHR(cmsContext ContextID, const char *ICCProfile, const char *sAccess);
+       cmsHPROFILE cmsOpenProfileFromStream(FILE* ICCProfile, const char* sAccess);
+       cmsHPROFILE cmsOpenProfileFromStreamTHR(cmsContext ContextID, FILE* ICCProfile, const char* sAccess);
+       cmsHPROFILE cmsOpenProfileFromMem(const void * MemPtr, cmsUInt32Number dwSize);
+       cmsHPROFILE cmsOpenProfileFromMemTHR(cmsContext ContextID, const void * MemPtr, cmsUInt32Number dwSize);
+       cmsHPROFILE cmsOpenProfileFromIOhandlerTHR(cmsContext ContextID, cmsIOHANDLER* io);
+       cmsHPROFILE cmsOpenProfileFromIOhandler2THR(cmsContext ContextID, cmsIOHANDLER* io, cmsBool write);
+       cmsBool cmsCloseProfile(cmsHPROFILE hProfile);
+
+       cmsBool cmsSaveProfileToFile(cmsHPROFILE hProfile, const char* FileName);
+       cmsBool cmsSaveProfileToStream(cmsHPROFILE hProfile, FILE* Stream);
+       cmsBool cmsSaveProfileToMem(cmsHPROFILE hProfile, void *MemPtr, cmsUInt32Number* BytesNeeded);
+       cmsUInt32Number cmsSaveProfileToIOhandler(cmsHPROFILE hProfile, cmsIOHANDLER* io);
+
+
+
+       cmsHPROFILE cmsCreateRGBProfileTHR(cmsContext ContextID,
+                                                   const cmsCIExyY* WhitePoint,
+                                                   const cmsCIExyYTRIPLE* Primaries,
+                                                   cmsToneCurve* const TransferFunction[3]);
+
+       cmsHPROFILE cmsCreateRGBProfile(const cmsCIExyY* WhitePoint,
+                                                   const cmsCIExyYTRIPLE* Primaries,
+                                                   cmsToneCurve* const TransferFunction[3]);
+
+       cmsHPROFILE cmsCreateGrayProfileTHR(cmsContext ContextID,
+                                                    const cmsCIExyY* WhitePoint,
+                                                    const cmsToneCurve* TransferFunction);
+
+       cmsHPROFILE cmsCreateGrayProfile(const cmsCIExyY* WhitePoint,
+                                                    const cmsToneCurve* TransferFunction);
+
+       cmsHPROFILE cmsCreateLinearizationDeviceLinkTHR(cmsContext ContextID,
+                                                                cmsColorSpaceSignature ColorSpace,
+                                                                cmsToneCurve* const TransferFunctions[]);
+
+       cmsHPROFILE cmsCreateLinearizationDeviceLink(cmsColorSpaceSignature ColorSpace,
+                                                                cmsToneCurve* const TransferFunctions[]);
+
+       cmsHPROFILE cmsCreateInkLimitingDeviceLinkTHR(cmsContext ContextID,
+                                                              cmsColorSpaceSignature ColorSpace, cmsFloat64Number Limit);
+
+       cmsHPROFILE cmsCreateInkLimitingDeviceLink(cmsColorSpaceSignature ColorSpace, cmsFloat64Number Limit);
+
+
+       cmsHPROFILE cmsCreateLab2ProfileTHR(cmsContext ContextID, const cmsCIExyY* WhitePoint);
+       cmsHPROFILE cmsCreateLab2Profile(const cmsCIExyY* WhitePoint);
+       cmsHPROFILE cmsCreateLab4ProfileTHR(cmsContext ContextID, const cmsCIExyY* WhitePoint);
+       cmsHPROFILE cmsCreateLab4Profile(const cmsCIExyY* WhitePoint);
+
+       cmsHPROFILE cmsCreateXYZProfileTHR(cmsContext ContextID);
+       cmsHPROFILE cmsCreateXYZProfile(void);
+
+       cmsHPROFILE cmsCreate_sRGBProfileTHR(cmsContext ContextID);
+       cmsHPROFILE cmsCreate_sRGBProfile(void);
+
+       cmsHPROFILE cmsCreateBCHSWabstractProfileTHR(cmsContext ContextID,
+                                                             int nLUTPoints,
+                                                             cmsFloat64Number Bright,
+                                                             cmsFloat64Number Contrast,
+                                                             cmsFloat64Number Hue,
+                                                             cmsFloat64Number Saturation,
+                                                             int TempSrc,
+                                                             int TempDest);
+
+       cmsHPROFILE cmsCreateBCHSWabstractProfile(int nLUTPoints,
+                                                             cmsFloat64Number Bright,
+                                                             cmsFloat64Number Contrast,
+                                                             cmsFloat64Number Hue,
+                                                             cmsFloat64Number Saturation,
+                                                             int TempSrc,
+                                                             int TempDest);
+
+       cmsHPROFILE cmsCreateNULLProfileTHR(cmsContext ContextID);
+       cmsHPROFILE cmsCreateNULLProfile(void);
+
+
+       cmsHPROFILE cmsTransform2DeviceLink(cmsHTRANSFORM hTransform, cmsFloat64Number Version, cmsUInt32Number dwFlags);
+# 1615 "./lcms2/include/lcms2.h"
+       cmsUInt32Number cmsGetSupportedIntents(cmsUInt32Number nMax, cmsUInt32Number* Codes, char** Descriptions);
+       cmsUInt32Number cmsGetSupportedIntentsTHR(cmsContext ContextID, cmsUInt32Number nMax, cmsUInt32Number* Codes, char** Descriptions);
+# 1652 "./lcms2/include/lcms2.h"
+       cmsHTRANSFORM cmsCreateTransformTHR(cmsContext ContextID,
+                                                  cmsHPROFILE Input,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsHPROFILE Output,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number dwFlags);
+
+       cmsHTRANSFORM cmsCreateTransform(cmsHPROFILE Input,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsHPROFILE Output,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number dwFlags);
+
+       cmsHTRANSFORM cmsCreateProofingTransformTHR(cmsContext ContextID,
+                                                  cmsHPROFILE Input,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsHPROFILE Output,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsHPROFILE Proofing,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number ProofingIntent,
+                                                  cmsUInt32Number dwFlags);
+
+       cmsHTRANSFORM cmsCreateProofingTransform(cmsHPROFILE Input,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsHPROFILE Output,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsHPROFILE Proofing,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number ProofingIntent,
+                                                  cmsUInt32Number dwFlags);
+
+       cmsHTRANSFORM cmsCreateMultiprofileTransformTHR(cmsContext ContextID,
+                                                  cmsHPROFILE hProfiles[],
+                                                  cmsUInt32Number nProfiles,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number dwFlags);
+
+
+       cmsHTRANSFORM cmsCreateMultiprofileTransform(cmsHPROFILE hProfiles[],
+                                                  cmsUInt32Number nProfiles,
+                                                  cmsUInt32Number InputFormat,
+                                                  cmsUInt32Number OutputFormat,
+                                                  cmsUInt32Number Intent,
+                                                  cmsUInt32Number dwFlags);
+
+
+       cmsHTRANSFORM cmsCreateExtendedTransform(cmsContext ContextID,
+                                                   cmsUInt32Number nProfiles, cmsHPROFILE hProfiles[],
+                                                   cmsBool BPC[],
+                                                   cmsUInt32Number Intents[],
+                                                   cmsFloat64Number AdaptationStates[],
+                                                   cmsHPROFILE hGamutProfile,
+                                                   cmsUInt32Number nGamutPCSposition,
+                                                   cmsUInt32Number InputFormat,
+                                                   cmsUInt32Number OutputFormat,
+                                                   cmsUInt32Number dwFlags);
+
+       void cmsDeleteTransform(cmsHTRANSFORM hTransform);
+
+       void cmsDoTransform(cmsHTRANSFORM Transform,
+                                                 const void * InputBuffer,
+                                                 void * OutputBuffer,
+                                                 cmsUInt32Number Size);
+
+       void cmsDoTransformStride(cmsHTRANSFORM Transform,
+                                                 const void * InputBuffer,
+                                                 void * OutputBuffer,
+                                                 cmsUInt32Number Size,
+                                                 cmsUInt32Number Stride);
+
+
+       void cmsSetAlarmCodes(const cmsUInt16Number NewAlarm[16]);
+       void cmsGetAlarmCodes(cmsUInt16Number NewAlarm[16]);
+
+
+       void cmsSetAlarmCodesTHR(cmsContext ContextID,
+                                                          const cmsUInt16Number AlarmCodes[16]);
+       void cmsGetAlarmCodesTHR(cmsContext ContextID,
+                                                          cmsUInt16Number AlarmCodes[16]);
+
+
+
+
+       cmsFloat64Number cmsSetAdaptationState(cmsFloat64Number d);
+       cmsFloat64Number cmsSetAdaptationStateTHR(cmsContext ContextID, cmsFloat64Number d);
+
+
+
+
+       cmsContext cmsGetTransformContextID(cmsHTRANSFORM hTransform);
+
+
+       cmsUInt32Number cmsGetTransformInputFormat(cmsHTRANSFORM hTransform);
+       cmsUInt32Number cmsGetTransformOutputFormat(cmsHTRANSFORM hTransform);
+
+
+       cmsBool cmsChangeBuffersFormat(cmsHTRANSFORM hTransform,
+                                                         cmsUInt32Number InputFormat,
+                                                         cmsUInt32Number OutputFormat);
+
+
+
+
+
+typedef enum { cmsPS_RESOURCE_CSA, cmsPS_RESOURCE_CRD } cmsPSResourceType;
+
+
+       cmsUInt32Number cmsGetPostScriptColorResource(cmsContext ContextID,
+                                                                cmsPSResourceType Type,
+                                                                cmsHPROFILE hProfile,
+                                                                cmsUInt32Number Intent,
+                                                                cmsUInt32Number dwFlags,
+                                                                cmsIOHANDLER* io);
+
+       cmsUInt32Number cmsGetPostScriptCSA(cmsContext ContextID, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags, void* Buffer, cmsUInt32Number dwBufferLen);
+       cmsUInt32Number cmsGetPostScriptCRD(cmsContext ContextID, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags, void* Buffer, cmsUInt32Number dwBufferLen);
+
+
+
+
+       cmsHANDLE cmsIT8Alloc(cmsContext ContextID);
+       void cmsIT8Free(cmsHANDLE hIT8);
+
+
+       cmsUInt32Number cmsIT8TableCount(cmsHANDLE hIT8);
+       cmsInt32Number cmsIT8SetTable(cmsHANDLE hIT8, cmsUInt32Number nTable);
+
+
+       cmsHANDLE cmsIT8LoadFromFile(cmsContext ContextID, const char* cFileName);
+       cmsHANDLE cmsIT8LoadFromMem(cmsContext ContextID, void *Ptr, cmsUInt32Number len);
+
+
+       cmsBool cmsIT8SaveToFile(cmsHANDLE hIT8, const char* cFileName);
+       cmsBool cmsIT8SaveToMem(cmsHANDLE hIT8, void *MemPtr, cmsUInt32Number* BytesNeeded);
+
+
+       const char* cmsIT8GetSheetType(cmsHANDLE hIT8);
+       cmsBool cmsIT8SetSheetType(cmsHANDLE hIT8, const char* Type);
+
+       cmsBool cmsIT8SetComment(cmsHANDLE hIT8, const char* cComment);
+
+       cmsBool cmsIT8SetPropertyStr(cmsHANDLE hIT8, const char* cProp, const char *Str);
+       cmsBool cmsIT8SetPropertyDbl(cmsHANDLE hIT8, const char* cProp, cmsFloat64Number Val);
+       cmsBool cmsIT8SetPropertyHex(cmsHANDLE hIT8, const char* cProp, cmsUInt32Number Val);
+       cmsBool cmsIT8SetPropertyMulti(cmsHANDLE hIT8, const char* Key, const char* SubKey, const char *Buffer);
+       cmsBool cmsIT8SetPropertyUncooked(cmsHANDLE hIT8, const char* Key, const char* Buffer);
+
+
+       const char* cmsIT8GetProperty(cmsHANDLE hIT8, const char* cProp);
+       cmsFloat64Number cmsIT8GetPropertyDbl(cmsHANDLE hIT8, const char* cProp);
+       const char* cmsIT8GetPropertyMulti(cmsHANDLE hIT8, const char* Key, const char *SubKey);
+       cmsUInt32Number cmsIT8EnumProperties(cmsHANDLE hIT8, char ***PropertyNames);
+       cmsUInt32Number cmsIT8EnumPropertyMulti(cmsHANDLE hIT8, const char* cProp, const char ***SubpropertyNames);
+
+
+       const char* cmsIT8GetDataRowCol(cmsHANDLE hIT8, int row, int col);
+       cmsFloat64Number cmsIT8GetDataRowColDbl(cmsHANDLE hIT8, int row, int col);
+
+       cmsBool cmsIT8SetDataRowCol(cmsHANDLE hIT8, int row, int col,
+                                                const char* Val);
+
+       cmsBool cmsIT8SetDataRowColDbl(cmsHANDLE hIT8, int row, int col,
+                                                cmsFloat64Number Val);
+
+       const char* cmsIT8GetData(cmsHANDLE hIT8, const char* cPatch, const char* cSample);
+
+
+       cmsFloat64Number cmsIT8GetDataDbl(cmsHANDLE hIT8, const char* cPatch, const char* cSample);
+
+       cmsBool cmsIT8SetData(cmsHANDLE hIT8, const char* cPatch,
+                                                const char* cSample,
+                                                const char *Val);
+
+       cmsBool cmsIT8SetDataDbl(cmsHANDLE hIT8, const char* cPatch,
+                                                const char* cSample,
+                                                cmsFloat64Number Val);
+
+       int cmsIT8FindDataFormat(cmsHANDLE hIT8, const char* cSample);
+       cmsBool cmsIT8SetDataFormat(cmsHANDLE hIT8, int n, const char *Sample);
+       int cmsIT8EnumDataFormat(cmsHANDLE hIT8, char ***SampleNames);
+
+       const char* cmsIT8GetPatchName(cmsHANDLE hIT8, int nPatch, char* buffer);
+       int cmsIT8GetPatchByName(cmsHANDLE hIT8, const char *cPatch);
+
+
+       int cmsIT8SetTableByLabel(cmsHANDLE hIT8, const char* cSet, const char* cField, const char* ExpectedType);
+
+       cmsBool cmsIT8SetIndexColumn(cmsHANDLE hIT8, const char* cSample);
+
+
+       void cmsIT8DefineDblFormat(cmsHANDLE hIT8, const char* Formatter);
+
+
+
+       cmsHANDLE cmsGBDAlloc(cmsContext ContextID);
+       void cmsGBDFree(cmsHANDLE hGBD);
+       cmsBool cmsGDBAddPoint(cmsHANDLE hGBD, const cmsCIELab* Lab);
+       cmsBool cmsGDBCompute(cmsHANDLE hGDB, cmsUInt32Number dwFlags);
+       cmsBool cmsGDBCheckPoint(cmsHANDLE hGBD, const cmsCIELab* Lab);
+
+
+
+
+       cmsBool cmsDetectBlackPoint(cmsCIEXYZ* BlackPoint, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags);
+       cmsBool cmsDetectDestinationBlackPoint(cmsCIEXYZ* BlackPoint, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags);
+
+
+       cmsFloat64Number cmsDetectTAC(cmsHPROFILE hProfile);
+
+
+
+       cmsBool cmsDesaturateLab(cmsCIELab* Lab,
+                                                   double amax, double amin,
+                                                   double bmax, double bmin);
+# 47 "./lcms2/include/lcms2_plugin.h" 2
+
+
+
+# 1 "/usr/include/stdlib.h" 1 3 4
+# 32 "/usr/include/stdlib.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+
+
+
+
+# 1 "/usr/include/bits/waitflags.h" 1 3 4
+# 42 "/usr/include/stdlib.h" 2 3 4
+# 1 "/usr/include/bits/waitstatus.h" 1 3 4
+# 64 "/usr/include/bits/waitstatus.h" 3 4
+# 1 "/usr/include/endian.h" 1 3 4
+# 36 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/endian.h" 1 3 4
+# 37 "/usr/include/endian.h" 2 3 4
+# 60 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 28 "/usr/include/bits/byteswap.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/bits/byteswap.h" 2 3 4
+
+
+
+
+
+
+# 1 "/usr/include/bits/byteswap-16.h" 1 3 4
+# 36 "/usr/include/bits/byteswap.h" 2 3 4
+# 61 "/usr/include/endian.h" 2 3 4
+# 65 "/usr/include/bits/waitstatus.h" 2 3 4
+
+union wait
+  {
+    int w_status;
+    struct
+      {
+
+ unsigned int __w_termsig:7;
+ unsigned int __w_coredump:1;
+ unsigned int __w_retcode:8;
+ unsigned int:16;
+
+
+
+
+
+
+
+      } __wait_terminated;
+    struct
+      {
+
+ unsigned int __w_stopval:8;
+ unsigned int __w_stopsig:8;
+ unsigned int:16;
+
+
+
+
+
+
+      } __wait_stopped;
+  };
+# 43 "/usr/include/stdlib.h" 2 3 4
+# 67 "/usr/include/stdlib.h" 3 4
+typedef union
+  {
+    union wait *__uptr;
+    int *__iptr;
+  } __WAIT_STATUS __attribute__ ((__transparent_union__));
+# 97 "/usr/include/stdlib.h" 3 4
+typedef struct
+  {
+    int quot;
+    int rem;
+  } div_t;
+
+
+
+typedef struct
+  {
+    long int quot;
+    long int rem;
+  } ldiv_t;
+
+
+
+
+
+
+
+__extension__ typedef struct
+  {
+    long long int quot;
+    long long int rem;
+  } lldiv_t;
+# 139 "/usr/include/stdlib.h" 3 4
+extern size_t __ctype_get_mb_cur_max (void) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern double atof (const char *__nptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern int atoi (const char *__nptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+extern long int atol (const char *__nptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+__extension__ extern long long int atoll (const char *__nptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern double strtod (const char *__restrict __nptr,
+        char **__restrict __endptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern float strtof (const char *__restrict __nptr,
+       char **__restrict __endptr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+extern long double strtold (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern long int strtol (const char *__restrict __nptr,
+   char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+extern unsigned long int strtoul (const char *__restrict __nptr,
+      char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+__extension__
+extern long long int strtoq (const char *__restrict __nptr,
+        char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+__extension__
+extern unsigned long long int strtouq (const char *__restrict __nptr,
+           char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+__extension__
+extern long long int strtoll (const char *__restrict __nptr,
+         char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+__extension__
+extern unsigned long long int strtoull (const char *__restrict __nptr,
+     char **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 277 "/usr/include/stdlib.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) atoi (const char *__nptr)
+{
+  return (int) strtol (__nptr, (char **) ((void*)0), 10);
+}
+extern __inline __attribute__ ((__gnu_inline__)) long int
+__attribute__ ((__nothrow__ )) atol (const char *__nptr)
+{
+  return strtol (__nptr, (char **) ((void*)0), 10);
+}
+
+
+
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) long long int
+__attribute__ ((__nothrow__ )) atoll (const char *__nptr)
+{
+  return strtoll (__nptr, (char **) ((void*)0), 10);
+}
+# 305 "/usr/include/stdlib.h" 3 4
+extern char *l64a (long int __n) __attribute__ ((__nothrow__ )) ;
+
+
+extern long int a64l (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+# 1 "/usr/include/sys/types.h" 1 3 4
+# 33 "/usr/include/sys/types.h" 3 4
+typedef __u_char u_char;
+typedef __u_short u_short;
+typedef __u_int u_int;
+typedef __u_long u_long;
+typedef __quad_t quad_t;
+typedef __u_quad_t u_quad_t;
+typedef __fsid_t fsid_t;
+
+
+
+
+typedef __loff_t loff_t;
+
+
+
+typedef __ino_t ino_t;
+# 60 "/usr/include/sys/types.h" 3 4
+typedef __dev_t dev_t;
+
+
+
+
+typedef __gid_t gid_t;
+
+
+
+
+typedef __mode_t mode_t;
+
+
+
+
+typedef __nlink_t nlink_t;
+
+
+
+
+typedef __uid_t uid_t;
+# 104 "/usr/include/sys/types.h" 3 4
+typedef __id_t id_t;
+# 115 "/usr/include/sys/types.h" 3 4
+typedef __daddr_t daddr_t;
+typedef __caddr_t caddr_t;
+
+
+
+
+
+typedef __key_t key_t;
+# 146 "/usr/include/sys/types.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 147 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef unsigned long int ulong;
+typedef unsigned short int ushort;
+typedef unsigned int uint;
+# 194 "/usr/include/sys/types.h" 3 4
+typedef int int8_t __attribute__ ((__mode__ (__QI__)));
+typedef int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef int int64_t __attribute__ ((__mode__ (__DI__)));
+
+
+typedef unsigned int u_int8_t __attribute__ ((__mode__ (__QI__)));
+typedef unsigned int u_int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int u_int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int u_int64_t __attribute__ ((__mode__ (__DI__)));
+
+typedef int register_t __attribute__ ((__mode__ (__word__)));
+# 219 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/sys/select.h" 1 3 4
+# 30 "/usr/include/sys/select.h" 3 4
+# 1 "/usr/include/bits/select.h" 1 3 4
+# 22 "/usr/include/bits/select.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/select.h" 2 3 4
+# 31 "/usr/include/sys/select.h" 2 3 4
+
+
+# 1 "/usr/include/bits/sigset.h" 1 3 4
+# 23 "/usr/include/bits/sigset.h" 3 4
+typedef int __sig_atomic_t;
+
+
+
+
+typedef struct
+  {
+    unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+  } __sigset_t;
+# 34 "/usr/include/sys/select.h" 2 3 4
+
+
+
+typedef __sigset_t sigset_t;
+
+
+
+
+
+
+
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 30 "/usr/include/bits/time.h" 3 4
+struct timeval
+  {
+    __time_t tv_sec;
+    __suseconds_t tv_usec;
+  };
+# 46 "/usr/include/sys/select.h" 2 3 4
+
+
+typedef __suseconds_t suseconds_t;
+
+
+
+
+
+typedef long int __fd_mask;
+# 64 "/usr/include/sys/select.h" 3 4
+typedef struct
+  {
+
+
+
+
+
+
+    __fd_mask __fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
+
+
+  } fd_set;
+
+
+
+
+
+
+typedef __fd_mask fd_mask;
+# 106 "/usr/include/sys/select.h" 3 4
+extern int select (int __nfds, fd_set *__restrict __readfds,
+     fd_set *__restrict __writefds,
+     fd_set *__restrict __exceptfds,
+     struct timeval *__restrict __timeout);
+# 118 "/usr/include/sys/select.h" 3 4
+extern int pselect (int __nfds, fd_set *__restrict __readfds,
+      fd_set *__restrict __writefds,
+      fd_set *__restrict __exceptfds,
+      const struct timespec *__restrict __timeout,
+      const __sigset_t *__restrict __sigmask);
+# 220 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/sysmacros.h" 1 3 4
+# 31 "/usr/include/sys/sysmacros.h" 3 4
+__extension__
+extern unsigned int gnu_dev_major (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned int gnu_dev_minor (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned long long int gnu_dev_makedev (unsigned int __major,
+            unsigned int __minor)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_major (unsigned long long int __dev)
+{
+  return ((__dev >> 8) & 0xfff) | ((unsigned int) (__dev >> 32) & ~0xfff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_minor (unsigned long long int __dev)
+{
+  return (__dev & 0xff) | ((unsigned int) (__dev >> 12) & ~0xff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned long long int
+__attribute__ ((__nothrow__ )) gnu_dev_makedev (unsigned int __major, unsigned int __minor)
+{
+  return ((__minor & 0xff) | ((__major & 0xfff) << 8)
+   | (((unsigned long long int) (__minor & ~0xff)) << 12)
+   | (((unsigned long long int) (__major & ~0xfff)) << 32));
+}
+# 223 "/usr/include/sys/types.h" 2 3 4
+
+
+
+
+
+typedef __blksize_t blksize_t;
+
+
+
+
+
+
+typedef __blkcnt_t blkcnt_t;
+
+
+
+typedef __fsblkcnt_t fsblkcnt_t;
+
+
+
+typedef __fsfilcnt_t fsfilcnt_t;
+# 270 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/bits/pthreadtypes.h" 1 3 4
+# 21 "/usr/include/bits/pthreadtypes.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 22 "/usr/include/bits/pthreadtypes.h" 2 3 4
+# 60 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef unsigned long int pthread_t;
+
+
+union pthread_attr_t
+{
+  char __size[56];
+  long int __align;
+};
+
+typedef union pthread_attr_t pthread_attr_t;
+
+
+
+
+
+typedef struct __pthread_internal_list
+{
+  struct __pthread_internal_list *__prev;
+  struct __pthread_internal_list *__next;
+} __pthread_list_t;
+# 90 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef union
+{
+  struct __pthread_mutex_s
+  {
+    int __lock;
+    unsigned int __count;
+    int __owner;
+
+    unsigned int __nusers;
+
+
+
+    int __kind;
+
+    int __spins;
+    __pthread_list_t __list;
+# 115 "/usr/include/bits/pthreadtypes.h" 3 4
+  } __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_mutexattr_t;
+
+
+
+
+typedef union
+{
+  struct
+  {
+    int __lock;
+    unsigned int __futex;
+    __extension__ unsigned long long int __total_seq;
+    __extension__ unsigned long long int __wakeup_seq;
+    __extension__ unsigned long long int __woken_seq;
+    void *__mutex;
+    unsigned int __nwaiters;
+    unsigned int __broadcast_seq;
+  } __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_condattr_t;
+
+
+
+typedef unsigned int pthread_key_t;
+
+
+
+typedef int pthread_once_t;
+
+
+
+
+
+typedef union
+{
+
+  struct
+  {
+    int __lock;
+    unsigned int __nr_readers;
+    unsigned int __readers_wakeup;
+    unsigned int __writer_wakeup;
+    unsigned int __nr_readers_queued;
+    unsigned int __nr_writers_queued;
+    int __writer;
+    int __shared;
+    unsigned long int __pad1;
+    unsigned long int __pad2;
+
+
+    unsigned int __flags;
+
+  } __data;
+# 202 "/usr/include/bits/pthreadtypes.h" 3 4
+  char __size[56];
+  long int __align;
+} pthread_rwlock_t;
+
+typedef union
+{
+  char __size[8];
+  long int __align;
+} pthread_rwlockattr_t;
+
+
+
+
+
+typedef volatile int pthread_spinlock_t;
+
+
+
+
+typedef union
+{
+  char __size[32];
+  long int __align;
+} pthread_barrier_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_barrierattr_t;
+# 271 "/usr/include/sys/types.h" 2 3 4
+# 315 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+
+
+extern long int random (void) __attribute__ ((__nothrow__ ));
+
+
+extern void srandom (unsigned int __seed) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern char *initstate (unsigned int __seed, char *__statebuf,
+   size_t __statelen) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+extern char *setstate (char *__statebuf) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+struct random_data
+  {
+    int32_t *fptr;
+    int32_t *rptr;
+    int32_t *state;
+    int rand_type;
+    int rand_deg;
+    int rand_sep;
+    int32_t *end_ptr;
+  };
+
+extern int random_r (struct random_data *__restrict __buf,
+       int32_t *__restrict __result) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int srandom_r (unsigned int __seed, struct random_data *__buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+extern int initstate_r (unsigned int __seed, char *__restrict __statebuf,
+   size_t __statelen,
+   struct random_data *__restrict __buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)));
+
+extern int setstate_r (char *__restrict __statebuf,
+         struct random_data *__restrict __buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern int rand (void) __attribute__ ((__nothrow__ ));
+
+extern void srand (unsigned int __seed) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int rand_r (unsigned int *__seed) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double drand48 (void) __attribute__ ((__nothrow__ ));
+extern double erand48 (unsigned short int __xsubi[3]) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int lrand48 (void) __attribute__ ((__nothrow__ ));
+extern long int nrand48 (unsigned short int __xsubi[3])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int mrand48 (void) __attribute__ ((__nothrow__ ));
+extern long int jrand48 (unsigned short int __xsubi[3])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern void srand48 (long int __seedval) __attribute__ ((__nothrow__ ));
+extern unsigned short int *seed48 (unsigned short int __seed16v[3])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+extern void lcong48 (unsigned short int __param[7]) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+struct drand48_data
+  {
+    unsigned short int __x[3];
+    unsigned short int __old_x[3];
+    unsigned short int __c;
+    unsigned short int __init;
+    unsigned long long int __a;
+  };
+
+
+extern int drand48_r (struct drand48_data *__restrict __buffer,
+        double *__restrict __result) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern int erand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        double *__restrict __result) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int lrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern int nrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int mrand48_r (struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern int jrand48_r (unsigned short int __xsubi[3],
+        struct drand48_data *__restrict __buffer,
+        long int *__restrict __result)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int srand48_r (long int __seedval, struct drand48_data *__buffer)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+extern int seed48_r (unsigned short int __seed16v[3],
+       struct drand48_data *__buffer) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int lcong48_r (unsigned short int __param[7],
+        struct drand48_data *__buffer)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+# 465 "/usr/include/stdlib.h" 3 4
+extern void *malloc (size_t __size) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+
+extern void *calloc (size_t __nmemb, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 479 "/usr/include/stdlib.h" 3 4
+extern void *realloc (void *__ptr, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__warn_unused_result__));
+
+extern void free (void *__ptr) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern void cfree (void *__ptr) __attribute__ ((__nothrow__ ));
+
+
+
+
+# 1 "/usr/include/alloca.h" 1 3 4
+# 24 "/usr/include/alloca.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 25 "/usr/include/alloca.h" 2 3 4
+
+
+
+
+
+
+
+extern void *alloca (size_t __size) __attribute__ ((__nothrow__ ));
+# 492 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+
+extern void *valloc (size_t __size) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+
+
+
+
+extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+extern void *aligned_alloc (size_t __alignment, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__, __alloc_size__ (2)));
+
+
+
+
+extern void abort (void) __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+
+extern int atexit (void (*__func) (void)) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+extern int at_quick_exit (void (*__func) (void)) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern void exit (int __status) __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+
+
+
+extern void quick_exit (int __status) __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+
+extern void _Exit (int __status) __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+extern char *getenv (const char *__name) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+# 577 "/usr/include/stdlib.h" 3 4
+extern int putenv (char *__string) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int setenv (const char *__name, const char *__value, int __replace)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+extern int unsetenv (const char *__name) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int clearenv (void) __attribute__ ((__nothrow__ ));
+# 605 "/usr/include/stdlib.h" 3 4
+extern char *mktemp (char *__template) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 619 "/usr/include/stdlib.h" 3 4
+extern int mkstemp (char *__template) __attribute__ ((__nonnull__ (1))) ;
+# 641 "/usr/include/stdlib.h" 3 4
+extern int mkstemps (char *__template, int __suffixlen) __attribute__ ((__nonnull__ (1))) ;
+# 662 "/usr/include/stdlib.h" 3 4
+extern char *mkdtemp (char *__template) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+# 716 "/usr/include/stdlib.h" 3 4
+extern int system (const char *__command) ;
+# 733 "/usr/include/stdlib.h" 3 4
+extern char *realpath (const char *__restrict __name,
+         char *__restrict __resolved) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+typedef int (*__compar_fn_t) (const void *, const void *);
+# 754 "/usr/include/stdlib.h" 3 4
+extern void *bsearch (const void *__key, const void *__base,
+        size_t __nmemb, size_t __size, __compar_fn_t __compar)
+     __attribute__ ((__nonnull__ (1, 2, 5))) ;
+
+
+
+extern void qsort (void *__base, size_t __nmemb, size_t __size,
+     __compar_fn_t __compar) __attribute__ ((__nonnull__ (1, 4)));
+# 770 "/usr/include/stdlib.h" 3 4
+extern int abs (int __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+extern long int labs (long int __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+
+
+
+__extension__ extern long long int llabs (long long int __x)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+
+
+
+
+
+
+
+extern div_t div (int __numer, int __denom)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+extern ldiv_t ldiv (long int __numer, long int __denom)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+
+
+
+
+__extension__ extern lldiv_t lldiv (long long int __numer,
+        long long int __denom)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__)) ;
+# 807 "/usr/include/stdlib.h" 3 4
+extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4))) ;
+
+
+
+
+extern char *fcvt (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4))) ;
+
+
+
+
+extern char *gcvt (double __value, int __ndigit, char *__buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3))) ;
+
+
+
+
+extern char *qecvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qfcvt (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4))) ;
+extern char *qgcvt (long double __value, int __ndigit, char *__buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3))) ;
+
+
+
+
+extern int ecvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int fcvt_r (double __value, int __ndigit, int *__restrict __decpt,
+     int *__restrict __sign, char *__restrict __buf,
+     size_t __len) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4, 5)));
+
+extern int qecvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4, 5)));
+extern int qfcvt_r (long double __value, int __ndigit,
+      int *__restrict __decpt, int *__restrict __sign,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4, 5)));
+
+
+
+
+
+
+
+extern int mblen (const char *__s, size_t __n) __attribute__ ((__nothrow__ )) ;
+
+
+extern int mbtowc (wchar_t *__restrict __pwc,
+     const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__ )) ;
+
+
+extern int wctomb (char *__s, wchar_t __wchar) __attribute__ ((__nothrow__ )) ;
+
+
+
+extern size_t mbstowcs (wchar_t *__restrict __pwcs,
+   const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__ ));
+
+extern size_t wcstombs (char *__restrict __s,
+   const wchar_t *__restrict __pwcs, size_t __n)
+     __attribute__ ((__nothrow__ ));
+# 884 "/usr/include/stdlib.h" 3 4
+extern int rpmatch (const char *__response) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+# 895 "/usr/include/stdlib.h" 3 4
+extern int getsubopt (char **__restrict __optionp,
+        char *const *__restrict __tokens,
+        char **__restrict __valuep)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2, 3))) ;
+# 947 "/usr/include/stdlib.h" 3 4
+extern int getloadavg (double __loadavg[], int __nelem)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+# 1 "/usr/include/bits/stdlib-float.h" 1 3 4
+# 25 "/usr/include/bits/stdlib-float.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) double
+__attribute__ ((__nothrow__ )) atof (const char *__nptr)
+{
+  return strtod (__nptr, (char **) ((void*)0));
+}
+# 952 "/usr/include/stdlib.h" 2 3 4
+# 51 "./lcms2/include/lcms2_plugin.h" 2
+# 1 "/usr/include/math.h" 1 3 4
+# 33 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/huge_val.h" 1 3 4
+# 34 "/usr/include/math.h" 2 3 4
+
+# 1 "/usr/include/bits/huge_valf.h" 1 3 4
+# 36 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/bits/huge_vall.h" 1 3 4
+# 37 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/inf.h" 1 3 4
+# 40 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/nan.h" 1 3 4
+# 43 "/usr/include/math.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/mathdef.h" 1 3 4
+# 28 "/usr/include/bits/mathdef.h" 3 4
+typedef float float_t;
+typedef double double_t;
+# 47 "/usr/include/math.h" 2 3 4
+# 70 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern double acos (double __x) __attribute__ ((__nothrow__ )); extern double __acos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asin (double __x) __attribute__ ((__nothrow__ )); extern double __asin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan (double __x) __attribute__ ((__nothrow__ )); extern double __atan (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan2 (double __y, double __x) __attribute__ ((__nothrow__ )); extern double __atan2 (double __y, double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double cos (double __x) __attribute__ ((__nothrow__ )); extern double __cos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sin (double __x) __attribute__ ((__nothrow__ )); extern double __sin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tan (double __x) __attribute__ ((__nothrow__ )); extern double __tan (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double cosh (double __x) __attribute__ ((__nothrow__ )); extern double __cosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sinh (double __x) __attribute__ ((__nothrow__ )); extern double __sinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tanh (double __x) __attribute__ ((__nothrow__ )); extern double __tanh (double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern double acosh (double __x) __attribute__ ((__nothrow__ )); extern double __acosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asinh (double __x) __attribute__ ((__nothrow__ )); extern double __asinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atanh (double __x) __attribute__ ((__nothrow__ )); extern double __atanh (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double exp (double __x) __attribute__ ((__nothrow__ )); extern double __exp (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern double __frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ )); extern double __ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double log (double __x) __attribute__ ((__nothrow__ )); extern double __log (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log10 (double __x) __attribute__ ((__nothrow__ )); extern double __log10 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double modf (double __x, double *__iptr) __attribute__ ((__nothrow__ )); extern double __modf (double __x, double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern double expm1 (double __x) __attribute__ ((__nothrow__ )); extern double __expm1 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log1p (double __x) __attribute__ ((__nothrow__ )); extern double __log1p (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double logb (double __x) __attribute__ ((__nothrow__ )); extern double __logb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double exp2 (double __x) __attribute__ ((__nothrow__ )); extern double __exp2 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log2 (double __x) __attribute__ ((__nothrow__ )); extern double __log2 (double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern double pow (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __pow (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double sqrt (double __x) __attribute__ ((__nothrow__ )); extern double __sqrt (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double hypot (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __hypot (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double cbrt (double __x) __attribute__ ((__nothrow__ )); extern double __cbrt (double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern double ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmod (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fmod (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double drem (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __drem (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double significand (double __x) __attribute__ ((__nothrow__ )); extern double __significand (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern double nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double j0 (double) __attribute__ ((__nothrow__ )); extern double __j0 (double) __attribute__ ((__nothrow__ ));
+extern double j1 (double) __attribute__ ((__nothrow__ )); extern double __j1 (double) __attribute__ ((__nothrow__ ));
+extern double jn (int, double) __attribute__ ((__nothrow__ )); extern double __jn (int, double) __attribute__ ((__nothrow__ ));
+extern double y0 (double) __attribute__ ((__nothrow__ )); extern double __y0 (double) __attribute__ ((__nothrow__ ));
+extern double y1 (double) __attribute__ ((__nothrow__ )); extern double __y1 (double) __attribute__ ((__nothrow__ ));
+extern double yn (int, double) __attribute__ ((__nothrow__ )); extern double __yn (int, double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double erf (double) __attribute__ ((__nothrow__ )); extern double __erf (double) __attribute__ ((__nothrow__ ));
+extern double erfc (double) __attribute__ ((__nothrow__ )); extern double __erfc (double) __attribute__ ((__nothrow__ ));
+extern double lgamma (double) __attribute__ ((__nothrow__ )); extern double __lgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double tgamma (double) __attribute__ ((__nothrow__ )); extern double __tgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double gamma (double) __attribute__ ((__nothrow__ )); extern double __gamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ )); extern double __lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double rint (double __x) __attribute__ ((__nothrow__ )); extern double __rint (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern double nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double remainder (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __remainder (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double scalbn (double __x, int __n) __attribute__ ((__nothrow__ )); extern double __scalbn (double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogb (double __x) __attribute__ ((__nothrow__ )); extern int __ilogb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double scalbln (double __x, long int __n) __attribute__ ((__nothrow__ )); extern double __scalbln (double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern double nearbyint (double __x) __attribute__ ((__nothrow__ )); extern double __nearbyint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern double remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ )); extern double __remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrint (double __x) __attribute__ ((__nothrow__ )); extern long int __lrint (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrint (double __x) __attribute__ ((__nothrow__ )); extern long long int __llrint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lround (double __x) __attribute__ ((__nothrow__ )); extern long int __lround (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llround (double __x) __attribute__ ((__nothrow__ )); extern long long int __llround (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double fdim (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fdim (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassify (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbit (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern double fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ )); extern double __fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern double scalb (double __x, double __n) __attribute__ ((__nothrow__ )); extern double __scalb (double __x, double __n) __attribute__ ((__nothrow__ ));
+# 71 "/usr/include/math.h" 2 3 4
+# 89 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern float acosf (float __x) __attribute__ ((__nothrow__ )); extern float __acosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinf (float __x) __attribute__ ((__nothrow__ )); extern float __asinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanf (float __x) __attribute__ ((__nothrow__ )); extern float __atanf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atan2f (float __y, float __x) __attribute__ ((__nothrow__ )); extern float __atan2f (float __y, float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float cosf (float __x) __attribute__ ((__nothrow__ )); extern float __cosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinf (float __x) __attribute__ ((__nothrow__ )); extern float __sinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanf (float __x) __attribute__ ((__nothrow__ )); extern float __tanf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float coshf (float __x) __attribute__ ((__nothrow__ )); extern float __coshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinhf (float __x) __attribute__ ((__nothrow__ )); extern float __sinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanhf (float __x) __attribute__ ((__nothrow__ )); extern float __tanhf (float __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern float acoshf (float __x) __attribute__ ((__nothrow__ )); extern float __acoshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinhf (float __x) __attribute__ ((__nothrow__ )); extern float __asinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanhf (float __x) __attribute__ ((__nothrow__ )); extern float __atanhf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float expf (float __x) __attribute__ ((__nothrow__ )); extern float __expf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ )); extern float __frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ )); extern float __ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float logf (float __x) __attribute__ ((__nothrow__ )); extern float __logf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log10f (float __x) __attribute__ ((__nothrow__ )); extern float __log10f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float modff (float __x, float *__iptr) __attribute__ ((__nothrow__ )); extern float __modff (float __x, float *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern float expm1f (float __x) __attribute__ ((__nothrow__ )); extern float __expm1f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log1pf (float __x) __attribute__ ((__nothrow__ )); extern float __log1pf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float logbf (float __x) __attribute__ ((__nothrow__ )); extern float __logbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float exp2f (float __x) __attribute__ ((__nothrow__ )); extern float __exp2f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log2f (float __x) __attribute__ ((__nothrow__ )); extern float __log2f (float __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern float powf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __powf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float sqrtf (float __x) __attribute__ ((__nothrow__ )); extern float __sqrtf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float hypotf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __hypotf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float cbrtf (float __x) __attribute__ ((__nothrow__ )); extern float __cbrtf (float __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern float ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fmodf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fmodf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float dremf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __dremf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float significandf (float __x) __attribute__ ((__nothrow__ )); extern float __significandf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern float nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float j0f (float) __attribute__ ((__nothrow__ )); extern float __j0f (float) __attribute__ ((__nothrow__ ));
+extern float j1f (float) __attribute__ ((__nothrow__ )); extern float __j1f (float) __attribute__ ((__nothrow__ ));
+extern float jnf (int, float) __attribute__ ((__nothrow__ )); extern float __jnf (int, float) __attribute__ ((__nothrow__ ));
+extern float y0f (float) __attribute__ ((__nothrow__ )); extern float __y0f (float) __attribute__ ((__nothrow__ ));
+extern float y1f (float) __attribute__ ((__nothrow__ )); extern float __y1f (float) __attribute__ ((__nothrow__ ));
+extern float ynf (int, float) __attribute__ ((__nothrow__ )); extern float __ynf (int, float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float erff (float) __attribute__ ((__nothrow__ )); extern float __erff (float) __attribute__ ((__nothrow__ ));
+extern float erfcf (float) __attribute__ ((__nothrow__ )); extern float __erfcf (float) __attribute__ ((__nothrow__ ));
+extern float lgammaf (float) __attribute__ ((__nothrow__ )); extern float __lgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float tgammaf (float) __attribute__ ((__nothrow__ )); extern float __tgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float gammaf (float) __attribute__ ((__nothrow__ )); extern float __gammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ )); extern float __lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float rintf (float __x) __attribute__ ((__nothrow__ )); extern float __rintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern float nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float remainderf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __remainderf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float scalbnf (float __x, int __n) __attribute__ ((__nothrow__ )); extern float __scalbnf (float __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbf (float __x) __attribute__ ((__nothrow__ )); extern int __ilogbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ )); extern float __scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern float nearbyintf (float __x) __attribute__ ((__nothrow__ )); extern float __nearbyintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern float remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ )); extern float __remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintf (float __x) __attribute__ ((__nothrow__ )); extern long int __lrintf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llrintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundf (float __x) __attribute__ ((__nothrow__ )); extern long int __lroundf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llroundf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float fdimf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fdimf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern float fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ )); extern float __fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern float scalbf (float __x, float __n) __attribute__ ((__nothrow__ )); extern float __scalbf (float __x, float __n) __attribute__ ((__nothrow__ ));
+# 90 "/usr/include/math.h" 2 3 4
+# 133 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ )); extern long double __atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double cosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double coshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __coshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanhl (long double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acoshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acoshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanhl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double expl (long double __x) __attribute__ ((__nothrow__ )); extern long double __expl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern long double __frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ )); extern long double __ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double logl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log10l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log10l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ )); extern long double __modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern long double expm1l (long double __x) __attribute__ ((__nothrow__ )); extern long double __expm1l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log1pl (long double __x) __attribute__ ((__nothrow__ )); extern long double __log1pl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double logbl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double exp2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __exp2l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log2l (long double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern long double powl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __powl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double sqrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sqrtl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double cbrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cbrtl (long double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern long double ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double dreml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __dreml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double significandl (long double __x) __attribute__ ((__nothrow__ )); extern long double __significandl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern long double nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double j0l (long double) __attribute__ ((__nothrow__ )); extern long double __j0l (long double) __attribute__ ((__nothrow__ ));
+extern long double j1l (long double) __attribute__ ((__nothrow__ )); extern long double __j1l (long double) __attribute__ ((__nothrow__ ));
+extern long double jnl (int, long double) __attribute__ ((__nothrow__ )); extern long double __jnl (int, long double) __attribute__ ((__nothrow__ ));
+extern long double y0l (long double) __attribute__ ((__nothrow__ )); extern long double __y0l (long double) __attribute__ ((__nothrow__ ));
+extern long double y1l (long double) __attribute__ ((__nothrow__ )); extern long double __y1l (long double) __attribute__ ((__nothrow__ ));
+extern long double ynl (int, long double) __attribute__ ((__nothrow__ )); extern long double __ynl (int, long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double erfl (long double) __attribute__ ((__nothrow__ )); extern long double __erfl (long double) __attribute__ ((__nothrow__ ));
+extern long double erfcl (long double) __attribute__ ((__nothrow__ )); extern long double __erfcl (long double) __attribute__ ((__nothrow__ ));
+extern long double lgammal (long double) __attribute__ ((__nothrow__ )); extern long double __lgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double tgammal (long double) __attribute__ ((__nothrow__ )); extern long double __tgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double gammal (long double) __attribute__ ((__nothrow__ )); extern long double __gammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ )); extern long double __lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double rintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __rintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern long double nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ )); extern long double __scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbl (long double __x) __attribute__ ((__nothrow__ )); extern int __ilogbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ )); extern long double __scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double nearbyintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __nearbyintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern long double remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ )); extern long double __remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lrintl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llrintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lroundl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llroundl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern long double fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ )); extern long double __fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern long double scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ )); extern long double __scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ ));
+# 134 "/usr/include/math.h" 2 3 4
+# 149 "/usr/include/math.h" 3 4
+extern int signgam;
+# 190 "/usr/include/math.h" 3 4
+enum
+  {
+    FP_NAN =
+
+      0,
+    FP_INFINITE =
+
+      1,
+    FP_ZERO =
+
+      2,
+    FP_SUBNORMAL =
+
+      3,
+    FP_NORMAL =
+
+      4
+  };
+# 288 "/usr/include/math.h" 3 4
+typedef enum
+{
+  _IEEE_ = -1,
+  _SVID_,
+  _XOPEN_,
+  _POSIX_,
+  _ISOC_
+} _LIB_VERSION_TYPE;
+
+
+
+
+extern _LIB_VERSION_TYPE _LIB_VERSION;
+# 313 "/usr/include/math.h" 3 4
+struct exception
+
+  {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+  };
+
+
+
+
+extern int matherr (struct exception *__exc);
+# 413 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathinline.h" 1 3 4
+# 126 "/usr/include/bits/mathinline.h" 3 4
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitf (float __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x8) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbit (double __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x80) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitl (long double __x)
+{
+  __extension__ union { long double __l; int __i[3]; } __u = { __l: __x };
+  return (__u.__i[2] & 0x8000) != 0;
+}
+# 414 "/usr/include/math.h" 2 3 4
+# 52 "./lcms2/include/lcms2_plugin.h" 2
+
+# 1 "/usr/include/memory.h" 1 3 4
+# 29 "/usr/include/memory.h" 3 4
+# 1 "/usr/include/string.h" 1 3 4
+# 32 "/usr/include/string.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/string.h" 2 3 4
+# 42 "/usr/include/string.h" 3 4
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 92 "/usr/include/string.h" 3 4
+extern void *memchr (const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 125 "/usr/include/string.h" 3 4
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcoll (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 162 "/usr/include/string.h" 3 4
+extern int strcoll_l (const char *__s1, const char *__s2, __locale_t __l)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    __locale_t __l) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)));
+
+
+
+
+
+extern char *strdup (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern char *strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+# 232 "/usr/include/string.h" 3 4
+extern char *strchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 259 "/usr/include/string.h" 3 4
+extern char *strrchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 281 "/usr/include/string.h" 3 4
+extern size_t strcspn (const char *__s, const char *__reject)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern size_t strspn (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 311 "/usr/include/string.h" 3 4
+extern char *strpbrk (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 338 "/usr/include/string.h" 3 4
+extern char *strstr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 395 "/usr/include/string.h" 3 4
+extern size_t strlen (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__ ));
+# 423 "/usr/include/string.h" 3 4
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 441 "/usr/include/string.h" 3 4
+extern char *strerror_l (int __errnum, __locale_t __l) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void __bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 485 "/usr/include/string.h" 3 4
+extern char *index (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 513 "/usr/include/string.h" 3 4
+extern char *rindex (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int ffs (int __i) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 532 "/usr/include/string.h" 3 4
+extern int strcasecmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 555 "/usr/include/string.h" 3 4
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__ ));
+
+
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+# 630 "/usr/include/string.h" 3 4
+# 1 "/usr/include/bits/string.h" 1 3 4
+# 631 "/usr/include/string.h" 2 3 4
+
+
+# 1 "/usr/include/bits/string2.h" 1 3 4
+# 393 "/usr/include/bits/string2.h" 3 4
+extern void *__rawmemchr (const void *__s, int __c);
+# 968 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c1 (const char *__s, int __reject);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c1 (const char *__s, int __reject)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c2 (const char *__s, int __reject1,
+         int __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c2 (const char *__s, int __reject1, int __reject2)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c3 (const char *__s, int __reject1,
+         int __reject2, int __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c3 (const char *__s, int __reject1, int __reject2,
+       int __reject3)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2 && __s[__result] != __reject3)
+    ++__result;
+  return __result;
+}
+# 1044 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c1 (const char *__s, int __accept);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c1 (const char *__s, int __accept)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c2 (const char *__s, int __accept1, int __accept2)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2
+  || __s[__result] == __accept3)
+    ++__result;
+  return __result;
+}
+# 1120 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c2 (const char *__s, int __accept1, int __accept2)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2
+  && *__s != __accept3)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+# 1170 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strtok_r_1c (char *__s, char __sep, char **__nextp);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strtok_r_1c (char *__s, char __sep, char **__nextp)
+{
+  char *__result;
+  if (__s == ((void*)0))
+    __s = *__nextp;
+  while (*__s == __sep)
+    ++__s;
+  __result = ((void*)0);
+  if (*__s != '\0')
+    {
+      __result = __s++;
+      while (*__s != '\0')
+ if (*__s++ == __sep)
+   {
+     __s[-1] = '\0';
+     break;
+   }
+    }
+  *__nextp = __s;
+  return __result;
+}
+# 1202 "/usr/include/bits/string2.h" 3 4
+extern char *__strsep_g (char **__stringp, const char *__delim);
+# 1220 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_1c (char **__s, char __reject);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_1c (char **__s, char __reject)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0) && (*__s = (__extension__ (__builtin_constant_p (__reject) && !__builtin_constant_p (__retval) && (__reject) == '\0' ? (char *) __rawmemchr (__retval, __reject) : __builtin_strchr (__retval, __reject)))) != ((void*)0))
+    *(*__s)++ = '\0';
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_2c (char **__s, char __reject1, char __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_2c (char **__s, char __reject1, char __reject2)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_3c (char **__s, char __reject1, char __reject2,
+       char __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_3c (char **__s, char __reject1, char __reject2, char __reject3)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2 || *__cp == __reject3)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+# 1301 "/usr/include/bits/string2.h" 3 4
+extern char *__strdup (const char *__string) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 1320 "/usr/include/bits/string2.h" 3 4
+extern char *__strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 634 "/usr/include/string.h" 2 3 4
+# 30 "/usr/include/memory.h" 2 3 4
+# 54 "./lcms2/include/lcms2_plugin.h" 2
+# 71 "./lcms2/include/lcms2_plugin.h"
+typedef struct {
+    cmsFloat64Number n[3];
+
+    } cmsVEC3;
+
+
+typedef struct {
+    cmsVEC3 v[3];
+
+    } cmsMAT3;
+
+       void _cmsVEC3init(cmsVEC3* r, cmsFloat64Number x, cmsFloat64Number y, cmsFloat64Number z);
+       void _cmsVEC3minus(cmsVEC3* r, const cmsVEC3* a, const cmsVEC3* b);
+       void _cmsVEC3cross(cmsVEC3* r, const cmsVEC3* u, const cmsVEC3* v);
+       cmsFloat64Number _cmsVEC3dot(const cmsVEC3* u, const cmsVEC3* v);
+       cmsFloat64Number _cmsVEC3length(const cmsVEC3* a);
+       cmsFloat64Number _cmsVEC3distance(const cmsVEC3* a, const cmsVEC3* b);
+
+       void _cmsMAT3identity(cmsMAT3* a);
+       cmsBool _cmsMAT3isIdentity(const cmsMAT3* a);
+       void _cmsMAT3per(cmsMAT3* r, const cmsMAT3* a, const cmsMAT3* b);
+       cmsBool _cmsMAT3inverse(const cmsMAT3* a, cmsMAT3* b);
+       cmsBool _cmsMAT3solve(cmsVEC3* x, cmsMAT3* a, cmsVEC3* b);
+       void _cmsMAT3eval(cmsVEC3* r, const cmsMAT3* a, const cmsVEC3* v);
+
+
+
+
+       void cmsSignalError(cmsContext ContextID, cmsUInt32Number ErrorCode, const char *ErrorText, ...);
+
+
+
+       void* _cmsMalloc(cmsContext ContextID, cmsUInt32Number size);
+       void* _cmsMallocZero(cmsContext ContextID, cmsUInt32Number size);
+       void* _cmsCalloc(cmsContext ContextID, cmsUInt32Number num, cmsUInt32Number size);
+       void* _cmsRealloc(cmsContext ContextID, void* Ptr, cmsUInt32Number NewSize);
+       void _cmsFree(cmsContext ContextID, void* Ptr);
+       void* _cmsDupMem(cmsContext ContextID, const void* Org, cmsUInt32Number size);
+
+
+
+struct _cms_io_handler {
+
+    void* stream;
+
+    cmsContext ContextID;
+    cmsUInt32Number UsedSpace;
+    cmsUInt32Number ReportedSize;
+    char PhysicalFile[256];
+
+    cmsUInt32Number (* Read)(struct _cms_io_handler* iohandler, void *Buffer,
+                                                                  cmsUInt32Number size,
+                                                                  cmsUInt32Number count);
+    cmsBool (* Seek)(struct _cms_io_handler* iohandler, cmsUInt32Number offset);
+    cmsBool (* Close)(struct _cms_io_handler* iohandler);
+    cmsUInt32Number (* Tell)(struct _cms_io_handler* iohandler);
+    cmsBool (* Write)(struct _cms_io_handler* iohandler, cmsUInt32Number size,
+                                                                   const void* Buffer);
+};
+
+
+       cmsUInt16Number _cmsAdjustEndianess16(cmsUInt16Number Word);
+       cmsUInt32Number _cmsAdjustEndianess32(cmsUInt32Number Value);
+       void _cmsAdjustEndianess64(cmsUInt64Number* Result, cmsUInt64Number* QWord);
+
+
+       cmsBool _cmsReadUInt8Number(cmsIOHANDLER* io, cmsUInt8Number* n);
+       cmsBool _cmsReadUInt16Number(cmsIOHANDLER* io, cmsUInt16Number* n);
+       cmsBool _cmsReadUInt32Number(cmsIOHANDLER* io, cmsUInt32Number* n);
+       cmsBool _cmsReadFloat32Number(cmsIOHANDLER* io, cmsFloat32Number* n);
+       cmsBool _cmsReadUInt64Number(cmsIOHANDLER* io, cmsUInt64Number* n);
+       cmsBool _cmsRead15Fixed16Number(cmsIOHANDLER* io, cmsFloat64Number* n);
+       cmsBool _cmsReadXYZNumber(cmsIOHANDLER* io, cmsCIEXYZ* XYZ);
+       cmsBool _cmsReadUInt16Array(cmsIOHANDLER* io, cmsUInt32Number n, cmsUInt16Number* Array);
+
+       cmsBool _cmsWriteUInt8Number(cmsIOHANDLER* io, cmsUInt8Number n);
+       cmsBool _cmsWriteUInt16Number(cmsIOHANDLER* io, cmsUInt16Number n);
+       cmsBool _cmsWriteUInt32Number(cmsIOHANDLER* io, cmsUInt32Number n);
+       cmsBool _cmsWriteFloat32Number(cmsIOHANDLER* io, cmsFloat32Number n);
+       cmsBool _cmsWriteUInt64Number(cmsIOHANDLER* io, cmsUInt64Number* n);
+       cmsBool _cmsWrite15Fixed16Number(cmsIOHANDLER* io, cmsFloat64Number n);
+       cmsBool _cmsWriteXYZNumber(cmsIOHANDLER* io, const cmsCIEXYZ* XYZ);
+       cmsBool _cmsWriteUInt16Array(cmsIOHANDLER* io, cmsUInt32Number n, const cmsUInt16Number* Array);
+
+
+typedef struct {
+    cmsTagTypeSignature sig;
+    cmsInt8Number reserved[4];
+
+} _cmsTagBase;
+
+
+       cmsTagTypeSignature _cmsReadTypeBase(cmsIOHANDLER* io);
+       cmsBool _cmsWriteTypeBase(cmsIOHANDLER* io, cmsTagTypeSignature sig);
+
+
+       cmsBool _cmsReadAlignment(cmsIOHANDLER* io);
+       cmsBool _cmsWriteAlignment(cmsIOHANDLER* io);
+
+
+       cmsBool _cmsIOPrintf(cmsIOHANDLER* io, const char* frm, ...);
+
+
+       cmsFloat64Number _cms8Fixed8toDouble(cmsUInt16Number fixed8);
+       cmsUInt16Number _cmsDoubleTo8Fixed8(cmsFloat64Number val);
+
+       cmsFloat64Number _cms15Fixed16toDouble(cmsS15Fixed16Number fix32);
+       cmsS15Fixed16Number _cmsDoubleTo15Fixed16(cmsFloat64Number v);
+
+
+       void _cmsEncodeDateTimeNumber(cmsDateTimeNumber *Dest, const struct tm *Source);
+       void _cmsDecodeDateTimeNumber(const cmsDateTimeNumber *Source, struct tm *Dest);
+
+
+
+
+typedef void (* _cmsFreeUserDataFn)(cmsContext ContextID, void* Data);
+typedef void* (* _cmsDupUserDataFn)(cmsContext ContextID, const void* Data);
+# 207 "./lcms2/include/lcms2_plugin.h"
+typedef struct _cmsPluginBaseStruct {
+
+        cmsUInt32Number Magic;
+        cmsUInt32Number ExpectedVersion;
+        cmsUInt32Number Type;
+        struct _cmsPluginBaseStruct* Next;
+
+} cmsPluginBase;
+# 223 "./lcms2/include/lcms2_plugin.h"
+typedef void* (* _cmsMallocFnPtrType)(cmsContext ContextID, cmsUInt32Number size);
+typedef void (* _cmsFreeFnPtrType)(cmsContext ContextID, void *Ptr);
+typedef void* (* _cmsReallocFnPtrType)(cmsContext ContextID, void* Ptr, cmsUInt32Number NewSize);
+
+typedef void* (* _cmsMalloZerocFnPtrType)(cmsContext ContextID, cmsUInt32Number size);
+typedef void* (* _cmsCallocFnPtrType)(cmsContext ContextID, cmsUInt32Number num, cmsUInt32Number size);
+typedef void* (* _cmsDupFnPtrType)(cmsContext ContextID, const void* Org, cmsUInt32Number size);
+
+typedef struct {
+
+        cmsPluginBase base;
+
+
+        _cmsMallocFnPtrType MallocPtr;
+        _cmsFreeFnPtrType FreePtr;
+        _cmsReallocFnPtrType ReallocPtr;
+
+
+       _cmsMalloZerocFnPtrType MallocZeroPtr;
+       _cmsCallocFnPtrType CallocPtr;
+       _cmsDupFnPtrType DupPtr;
+
+} cmsPluginMemHandler;
+
+
+
+
+
+struct _cms_interp_struc;
+
+
+
+
+
+
+typedef void (* _cmsInterpFn16)(register const cmsUInt16Number Input[],
+                                register cmsUInt16Number Output[],
+                                register const struct _cms_interp_struc* p);
+
+
+
+
+typedef void (* _cmsInterpFnFloat)(cmsFloat32Number const Input[],
+                                   cmsFloat32Number Output[],
+                                   const struct _cms_interp_struc* p);
+
+
+
+
+typedef union {
+    _cmsInterpFn16 Lerp16;
+    _cmsInterpFnFloat LerpFloat;
+} cmsInterpFunction;
+# 285 "./lcms2/include/lcms2_plugin.h"
+typedef struct _cms_interp_struc {
+
+    cmsContext ContextID;
+
+    cmsUInt32Number dwFlags;
+    cmsUInt32Number nInputs;
+    cmsUInt32Number nOutputs;
+
+    cmsUInt32Number nSamples[8];
+    cmsUInt32Number Domain[8];
+
+    cmsUInt32Number opta[8];
+
+
+
+    const void *Table;
+    cmsInterpFunction Interpolation;
+
+ } cmsInterpParams;
+
+
+typedef cmsInterpFunction (* cmsInterpFnFactory)(cmsUInt32Number nInputChannels, cmsUInt32Number nOutputChannels, cmsUInt32Number dwFlags);
+
+
+typedef struct {
+    cmsPluginBase base;
+
+
+    cmsInterpFnFactory InterpolatorsFactory;
+
+} cmsPluginInterpolation;
+
+
+
+
+
+
+typedef cmsFloat64Number (* cmsParametricCurveEvaluator)(cmsInt32Number Type, const cmsFloat64Number Params[10], cmsFloat64Number R);
+
+
+typedef struct {
+    cmsPluginBase base;
+
+    cmsUInt32Number nFunctions;
+    cmsUInt32Number FunctionTypes[20];
+    cmsUInt32Number ParameterCount[20];
+
+    cmsParametricCurveEvaluator Evaluator;
+
+} cmsPluginParametricCurves;
+
+
+
+
+
+
+struct _cmstransform_struct;
+
+typedef cmsUInt8Number* (* cmsFormatter16)(register struct _cmstransform_struct* CMMcargo,
+                                           register cmsUInt16Number Values[],
+                                           register cmsUInt8Number* Buffer,
+                                           register cmsUInt32Number Stride);
+
+typedef cmsUInt8Number* (* cmsFormatterFloat)(struct _cmstransform_struct* CMMcargo,
+                                              cmsFloat32Number Values[],
+                                              cmsUInt8Number* Buffer,
+                                              cmsUInt32Number Stride);
+
+
+typedef union {
+    cmsFormatter16 Fmt16;
+    cmsFormatterFloat FmtFloat;
+
+} cmsFormatter;
+
+
+
+
+typedef enum { cmsFormatterInput=0, cmsFormatterOutput=1 } cmsFormatterDirection;
+
+typedef cmsFormatter (* cmsFormatterFactory)(cmsUInt32Number Type,
+                                             cmsFormatterDirection Dir,
+                                             cmsUInt32Number dwFlags);
+
+
+typedef struct {
+    cmsPluginBase base;
+    cmsFormatterFactory FormattersFactory;
+
+} cmsPluginFormatters;
+
+
+
+
+
+typedef struct _cms_typehandler_struct {
+
+        cmsTagTypeSignature Signature;
+
+
+        void * (* ReadPtr)(struct _cms_typehandler_struct* self,
+                             cmsIOHANDLER* io,
+                             cmsUInt32Number* nItems,
+                             cmsUInt32Number SizeOfTag);
+
+
+        cmsBool (* WritePtr)(struct _cms_typehandler_struct* self,
+                              cmsIOHANDLER* io,
+                              void* Ptr,
+                              cmsUInt32Number nItems);
+
+
+        void* (* DupPtr)(struct _cms_typehandler_struct* self,
+                           const void *Ptr,
+                           cmsUInt32Number n);
+
+
+        void (* FreePtr)(struct _cms_typehandler_struct* self,
+                            void *Ptr);
+
+
+        cmsContext ContextID;
+        cmsUInt32Number ICCVersion;
+
+} cmsTagTypeHandler;
+
+
+typedef struct {
+        cmsPluginBase base;
+        cmsTagTypeHandler Handler;
+
+} cmsPluginTagType;
+
+
+
+
+
+
+typedef struct {
+
+    cmsUInt32Number ElemCount;
+
+
+    cmsUInt32Number nSupportedTypes;
+    cmsTagTypeSignature SupportedTypes[20];
+
+
+    cmsTagTypeSignature (* DecideType)(cmsFloat64Number ICCVersion, const void *Data);
+
+} cmsTagDescriptor;
+
+
+typedef struct {
+    cmsPluginBase base;
+
+    cmsTagSignature Signature;
+    cmsTagDescriptor Descriptor;
+
+} cmsPluginTag;
+# 452 "./lcms2/include/lcms2_plugin.h"
+typedef cmsPipeline* (* cmsIntentFn)( cmsContext ContextID,
+                                      cmsUInt32Number nProfiles,
+                                      cmsUInt32Number Intents[],
+                                      cmsHPROFILE hProfiles[],
+                                      cmsBool BPC[],
+                                      cmsFloat64Number AdaptationStates[],
+                                      cmsUInt32Number dwFlags);
+
+
+
+typedef struct {
+    cmsPluginBase base;
+    cmsUInt32Number Intent;
+    cmsIntentFn Link;
+    char Description[256];
+
+} cmsPluginRenderingIntent;
+
+
+
+       cmsPipeline* _cmsDefaultICCintents(cmsContext ContextID,
+                                                     cmsUInt32Number nProfiles,
+                                                     cmsUInt32Number Intents[],
+                                                     cmsHPROFILE hProfiles[],
+                                                     cmsBool BPC[],
+                                                     cmsFloat64Number AdaptationStates[],
+                                                     cmsUInt32Number dwFlags);
+
+
+
+
+
+
+typedef void (* _cmsStageEvalFn) (const cmsFloat32Number In[], cmsFloat32Number Out[], const cmsStage* mpe);
+typedef void*(* _cmsStageDupElemFn) (cmsStage* mpe);
+typedef void (* _cmsStageFreeElemFn) (cmsStage* mpe);
+
+
+
+       cmsStage* _cmsStageAllocPlaceholder(cmsContext ContextID,
+                                cmsStageSignature Type,
+                                cmsUInt32Number InputChannels,
+                                cmsUInt32Number OutputChannels,
+                                _cmsStageEvalFn EvalPtr,
+                                _cmsStageDupElemFn DupElemPtr,
+                                _cmsStageFreeElemFn FreePtr,
+                                void* Data);
+typedef struct {
+      cmsPluginBase base;
+      cmsTagTypeHandler Handler;
+
+} cmsPluginMultiProcessElement;
+
+
+
+
+
+typedef struct {
+    cmsUInt32Number nCurves;
+    cmsToneCurve** TheCurves;
+
+} _cmsStageToneCurvesData;
+
+
+typedef struct {
+    cmsFloat64Number* Double;
+    cmsFloat64Number* Offset;
+
+} _cmsStageMatrixData;
+
+
+typedef struct {
+
+    union {
+        cmsUInt16Number* T;
+        cmsFloat32Number* TFloat;
+
+    } Tab;
+
+    cmsInterpParams* Params;
+    cmsUInt32Number nEntries;
+    cmsBool HasFloatValues;
+
+} _cmsStageCLutData;
+# 544 "./lcms2/include/lcms2_plugin.h"
+typedef void (* _cmsOPTeval16Fn)(register const cmsUInt16Number In[],
+                                     register cmsUInt16Number Out[],
+                                     register const void* Data);
+
+
+typedef cmsBool (* _cmsOPToptimizeFn)(cmsPipeline** Lut,
+                                       cmsUInt32Number Intent,
+                                       cmsUInt32Number* InputFormat,
+                                       cmsUInt32Number* OutputFormat,
+                                       cmsUInt32Number* dwFlags);
+
+
+
+
+       void _cmsPipelineSetOptimizationParameters(cmsPipeline* Lut,
+                                               _cmsOPTeval16Fn Eval16,
+                                               void* PrivateData,
+                                               _cmsFreeUserDataFn FreePrivateDataFn,
+                                               _cmsDupUserDataFn DupPrivateDataFn);
+
+typedef struct {
+      cmsPluginBase base;
+
+
+      _cmsOPToptimizeFn OptimizePtr;
+
+} cmsPluginOptimization;
+
+
+
+typedef void (* _cmsTransformFn)(struct _cmstransform_struct *CMMcargo,
+                                     const void* InputBuffer,
+                                     void* OutputBuffer,
+                                     cmsUInt32Number Size,
+                                     cmsUInt32Number Stride);
+
+typedef cmsBool (* _cmsTransformFactory)(_cmsTransformFn* xform,
+                                         void** UserData,
+                                         _cmsFreeUserDataFn* FreePrivateDataFn,
+                                         cmsPipeline** Lut,
+                                         cmsUInt32Number* InputFormat,
+                                         cmsUInt32Number* OutputFormat,
+                                         cmsUInt32Number* dwFlags);
+
+
+
+       void _cmsSetTransformUserData(struct _cmstransform_struct *CMMcargo, void* ptr, _cmsFreeUserDataFn FreePrivateDataFn);
+       void * _cmsGetTransformUserData(struct _cmstransform_struct *CMMcargo);
+
+
+
+       void _cmsGetTransformFormatters16 (struct _cmstransform_struct *CMMcargo, cmsFormatter16* FromInput, cmsFormatter16* ToOutput);
+       void _cmsGetTransformFormattersFloat(struct _cmstransform_struct *CMMcargo, cmsFormatterFloat* FromInput, cmsFormatterFloat* ToOutput);
+
+typedef struct {
+      cmsPluginBase base;
+
+
+      _cmsTransformFactory Factory;
+
+} cmsPluginTransform;
+
+
+
+
+typedef void* (* _cmsCreateMutexFnPtrType)(cmsContext ContextID);
+typedef void (* _cmsDestroyMutexFnPtrType)(cmsContext ContextID, void* mtx);
+typedef cmsBool (* _cmsLockMutexFnPtrType)(cmsContext ContextID, void* mtx);
+typedef void (* _cmsUnlockMutexFnPtrType)(cmsContext ContextID, void* mtx);
+
+typedef struct {
+      cmsPluginBase base;
+
+     _cmsCreateMutexFnPtrType CreateMutexPtr;
+     _cmsDestroyMutexFnPtrType DestroyMutexPtr;
+     _cmsLockMutexFnPtrType LockMutexPtr;
+     _cmsUnlockMutexFnPtrType UnlockMutexPtr;
+
+} cmsPluginMutex;
+
+       void* _cmsCreateMutex(cmsContext ContextID);
+       void _cmsDestroyMutex(cmsContext ContextID, void* mtx);
+       cmsBool _cmsLockMutex(cmsContext ContextID, void* mtx);
+       void _cmsUnlockMutex(cmsContext ContextID, void* mtx);
+# 32 "./lcms2/src/lcms2_internal.h" 2
+
+
+
+# 1 "/usr/include/ctype.h" 1 3 4
+# 47 "/usr/include/ctype.h" 3 4
+enum
+{
+  _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
+  _ISlower = ((1) < 8 ? ((1 << (1)) << 8) : ((1 << (1)) >> 8)),
+  _ISalpha = ((2) < 8 ? ((1 << (2)) << 8) : ((1 << (2)) >> 8)),
+  _ISdigit = ((3) < 8 ? ((1 << (3)) << 8) : ((1 << (3)) >> 8)),
+  _ISxdigit = ((4) < 8 ? ((1 << (4)) << 8) : ((1 << (4)) >> 8)),
+  _ISspace = ((5) < 8 ? ((1 << (5)) << 8) : ((1 << (5)) >> 8)),
+  _ISprint = ((6) < 8 ? ((1 << (6)) << 8) : ((1 << (6)) >> 8)),
+  _ISgraph = ((7) < 8 ? ((1 << (7)) << 8) : ((1 << (7)) >> 8)),
+  _ISblank = ((8) < 8 ? ((1 << (8)) << 8) : ((1 << (8)) >> 8)),
+  _IScntrl = ((9) < 8 ? ((1 << (9)) << 8) : ((1 << (9)) >> 8)),
+  _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
+  _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
+};
+# 80 "/usr/include/ctype.h" 3 4
+extern const unsigned short int **__ctype_b_loc (void)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+extern const __int32_t **__ctype_tolower_loc (void)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+extern const __int32_t **__ctype_toupper_loc (void)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 111 "/usr/include/ctype.h" 3 4
+extern int isalnum (int) __attribute__ ((__nothrow__ ));
+extern int isalpha (int) __attribute__ ((__nothrow__ ));
+extern int iscntrl (int) __attribute__ ((__nothrow__ ));
+extern int isdigit (int) __attribute__ ((__nothrow__ ));
+extern int islower (int) __attribute__ ((__nothrow__ ));
+extern int isgraph (int) __attribute__ ((__nothrow__ ));
+extern int isprint (int) __attribute__ ((__nothrow__ ));
+extern int ispunct (int) __attribute__ ((__nothrow__ ));
+extern int isspace (int) __attribute__ ((__nothrow__ ));
+extern int isupper (int) __attribute__ ((__nothrow__ ));
+extern int isxdigit (int) __attribute__ ((__nothrow__ ));
+
+
+
+extern int tolower (int __c) __attribute__ ((__nothrow__ ));
+
+
+extern int toupper (int __c) __attribute__ ((__nothrow__ ));
+# 137 "/usr/include/ctype.h" 3 4
+extern int isblank (int) __attribute__ ((__nothrow__ ));
+# 151 "/usr/include/ctype.h" 3 4
+extern int isascii (int __c) __attribute__ ((__nothrow__ ));
+
+
+
+extern int toascii (int __c) __attribute__ ((__nothrow__ ));
+
+
+
+extern int _toupper (int) __attribute__ ((__nothrow__ ));
+extern int _tolower (int) __attribute__ ((__nothrow__ ));
+# 215 "/usr/include/ctype.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) tolower (int __c)
+{
+  return __c >= -128 && __c < 256 ? (*__ctype_tolower_loc ())[__c] : __c;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) toupper (int __c)
+{
+  return __c >= -128 && __c < 256 ? (*__ctype_toupper_loc ())[__c] : __c;
+}
+# 272 "/usr/include/ctype.h" 3 4
+extern int isalnum_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isalpha_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int iscntrl_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isdigit_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int islower_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isgraph_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isprint_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int ispunct_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isspace_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isupper_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+extern int isxdigit_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+
+extern int isblank_l (int, __locale_t) __attribute__ ((__nothrow__ ));
+
+
+
+extern int __tolower_l (int __c, __locale_t __l) __attribute__ ((__nothrow__ ));
+extern int tolower_l (int __c, __locale_t __l) __attribute__ ((__nothrow__ ));
+
+
+extern int __toupper_l (int __c, __locale_t __l) __attribute__ ((__nothrow__ ));
+extern int toupper_l (int __c, __locale_t __l) __attribute__ ((__nothrow__ ));
+# 36 "./lcms2/src/lcms2_internal.h" 2
+
+
+# 1 "/usr/include/assert.h" 1 3 4
+# 68 "/usr/include/assert.h" 3 4
+extern void __assert_fail (const char *__assertion, const char *__file,
+      unsigned int __line, const char *__function)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+extern void __assert_perror_fail (int __errnum, const char *__file,
+      unsigned int __line, const char *__function)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+
+
+
+
+extern void __assert (const char *__assertion, const char *__file, int __line)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__noreturn__));
+# 39 "./lcms2/src/lcms2_internal.h" 2
+# 129 "./lcms2/src/lcms2_internal.h"
+static inline cmsS15Fixed16Number _cmsToFixedDomain(int a) { return a + ((a + 0x7fff) / 0xffff); }
+static inline int _cmsFromFixedDomain(cmsS15Fixed16Number a) { return a - ((a + 0x7fff) >> 16); }
+
+
+
+
+
+
+
+static inline int _cmsQuickFloor(cmsFloat64Number val)
+{
+
+
+
+    const cmsFloat64Number _lcms_double2fixmagic = 68719476736.0 * 1.5;
+    union {
+        cmsFloat64Number val;
+        int halves[2];
+    } temp;
+
+    temp.val = val + _lcms_double2fixmagic;
+
+
+
+
+    return temp.halves[0] >> 16;
+
+
+}
+
+
+static inline cmsUInt16Number _cmsQuickFloorWord(cmsFloat64Number d)
+{
+    return (cmsUInt16Number) _cmsQuickFloor(d - 32767.0) + 32767U;
+}
+
+
+static inline cmsUInt16Number _cmsQuickSaturateWord(cmsFloat64Number d)
+{
+    d += 0.5;
+    if (d <= 0) return 0;
+    if (d >= 65535.0) return 0xffff;
+
+    return _cmsQuickFloorWord(d);
+}
+# 295 "./lcms2/src/lcms2_internal.h"
+# 1 "/usr/include/pthread.h" 1 3 4
+# 23 "/usr/include/pthread.h" 3 4
+# 1 "/usr/include/sched.h" 1 3 4
+# 29 "/usr/include/sched.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 30 "/usr/include/sched.h" 2 3 4
+# 42 "/usr/include/sched.h" 3 4
+# 1 "/usr/include/bits/sched.h" 1 3 4
+# 73 "/usr/include/bits/sched.h" 3 4
+struct sched_param
+  {
+    int __sched_priority;
+  };
+# 104 "/usr/include/bits/sched.h" 3 4
+struct __sched_param
+  {
+    int __sched_priority;
+  };
+# 119 "/usr/include/bits/sched.h" 3 4
+typedef unsigned long int __cpu_mask;
+
+
+
+
+
+
+typedef struct
+{
+  __cpu_mask __bits[1024 / (8 * sizeof (__cpu_mask))];
+} cpu_set_t;
+# 204 "/usr/include/bits/sched.h" 3 4
+extern int __sched_cpucount (size_t __setsize, const cpu_set_t *__setp)
+  __attribute__ ((__nothrow__ ));
+extern cpu_set_t *__sched_cpualloc (size_t __count) __attribute__ ((__nothrow__ )) ;
+extern void __sched_cpufree (cpu_set_t *__set) __attribute__ ((__nothrow__ ));
+# 43 "/usr/include/sched.h" 2 3 4
+
+
+
+
+
+
+
+extern int sched_setparam (__pid_t __pid, const struct sched_param *__param)
+     __attribute__ ((__nothrow__ ));
+
+
+extern int sched_getparam (__pid_t __pid, struct sched_param *__param) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_setscheduler (__pid_t __pid, int __policy,
+          const struct sched_param *__param) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_getscheduler (__pid_t __pid) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_yield (void) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_get_priority_max (int __algorithm) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_get_priority_min (int __algorithm) __attribute__ ((__nothrow__ ));
+
+
+extern int sched_rr_get_interval (__pid_t __pid, struct timespec *__t) __attribute__ ((__nothrow__ ));
+# 24 "/usr/include/pthread.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/setjmp.h" 1 3 4
+# 26 "/usr/include/bits/setjmp.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 27 "/usr/include/bits/setjmp.h" 2 3 4
+
+
+
+
+typedef long int __jmp_buf[8];
+# 28 "/usr/include/pthread.h" 2 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/pthread.h" 2 3 4
+
+
+
+enum
+{
+  PTHREAD_CREATE_JOINABLE,
+
+  PTHREAD_CREATE_DETACHED
+
+};
+
+
+
+enum
+{
+  PTHREAD_MUTEX_TIMED_NP,
+  PTHREAD_MUTEX_RECURSIVE_NP,
+  PTHREAD_MUTEX_ERRORCHECK_NP,
+  PTHREAD_MUTEX_ADAPTIVE_NP
+
+  ,
+  PTHREAD_MUTEX_NORMAL = PTHREAD_MUTEX_TIMED_NP,
+  PTHREAD_MUTEX_RECURSIVE = PTHREAD_MUTEX_RECURSIVE_NP,
+  PTHREAD_MUTEX_ERRORCHECK = PTHREAD_MUTEX_ERRORCHECK_NP,
+  PTHREAD_MUTEX_DEFAULT = PTHREAD_MUTEX_NORMAL
+
+
+
+
+
+};
+
+
+
+
+enum
+{
+  PTHREAD_MUTEX_STALLED,
+  PTHREAD_MUTEX_STALLED_NP = PTHREAD_MUTEX_STALLED,
+  PTHREAD_MUTEX_ROBUST,
+  PTHREAD_MUTEX_ROBUST_NP = PTHREAD_MUTEX_ROBUST
+};
+
+
+
+
+
+enum
+{
+  PTHREAD_PRIO_NONE,
+  PTHREAD_PRIO_INHERIT,
+  PTHREAD_PRIO_PROTECT
+};
+# 113 "/usr/include/pthread.h" 3 4
+enum
+{
+  PTHREAD_RWLOCK_PREFER_READER_NP,
+  PTHREAD_RWLOCK_PREFER_WRITER_NP,
+  PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP,
+  PTHREAD_RWLOCK_DEFAULT_NP = PTHREAD_RWLOCK_PREFER_READER_NP
+};
+# 154 "/usr/include/pthread.h" 3 4
+enum
+{
+  PTHREAD_INHERIT_SCHED,
+
+  PTHREAD_EXPLICIT_SCHED
+
+};
+
+
+
+enum
+{
+  PTHREAD_SCOPE_SYSTEM,
+
+  PTHREAD_SCOPE_PROCESS
+
+};
+
+
+
+enum
+{
+  PTHREAD_PROCESS_PRIVATE,
+
+  PTHREAD_PROCESS_SHARED
+
+};
+# 189 "/usr/include/pthread.h" 3 4
+struct _pthread_cleanup_buffer
+{
+  void (*__routine) (void *);
+  void *__arg;
+  int __canceltype;
+  struct _pthread_cleanup_buffer *__prev;
+};
+
+
+enum
+{
+  PTHREAD_CANCEL_ENABLE,
+
+  PTHREAD_CANCEL_DISABLE
+
+};
+enum
+{
+  PTHREAD_CANCEL_DEFERRED,
+
+  PTHREAD_CANCEL_ASYNCHRONOUS
+
+};
+# 232 "/usr/include/pthread.h" 3 4
+extern int pthread_create (pthread_t *__restrict __newthread,
+      const pthread_attr_t *__restrict __attr,
+      void *(*__start_routine) (void *),
+      void *__restrict __arg) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+
+
+extern void pthread_exit (void *__retval) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+
+extern int pthread_join (pthread_t __th, void **__thread_return);
+# 270 "/usr/include/pthread.h" 3 4
+extern int pthread_detach (pthread_t __th) __attribute__ ((__nothrow__ ));
+
+
+
+extern pthread_t pthread_self (void) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int pthread_equal (pthread_t __thread1, pthread_t __thread2)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+
+extern int pthread_attr_init (pthread_attr_t *__attr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_attr_destroy (pthread_attr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_attr_getdetachstate (const pthread_attr_t *__attr,
+     int *__detachstate)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setdetachstate (pthread_attr_t *__attr,
+     int __detachstate)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_attr_getguardsize (const pthread_attr_t *__attr,
+          size_t *__guardsize)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setguardsize (pthread_attr_t *__attr,
+          size_t __guardsize)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_attr_getschedparam (const pthread_attr_t *__restrict __attr,
+           struct sched_param *__restrict __param)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setschedparam (pthread_attr_t *__restrict __attr,
+           const struct sched_param *__restrict
+           __param) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_getschedpolicy (const pthread_attr_t *__restrict
+     __attr, int *__restrict __policy)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setschedpolicy (pthread_attr_t *__attr, int __policy)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_attr_getinheritsched (const pthread_attr_t *__restrict
+      __attr, int *__restrict __inherit)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setinheritsched (pthread_attr_t *__attr,
+      int __inherit)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_attr_getscope (const pthread_attr_t *__restrict __attr,
+      int *__restrict __scope)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_attr_setscope (pthread_attr_t *__attr, int __scope)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_attr_getstackaddr (const pthread_attr_t *__restrict
+          __attr, void **__restrict __stackaddr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) __attribute__ ((__deprecated__));
+
+
+
+
+
+extern int pthread_attr_setstackaddr (pthread_attr_t *__attr,
+          void *__stackaddr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) __attribute__ ((__deprecated__));
+
+
+extern int pthread_attr_getstacksize (const pthread_attr_t *__restrict
+          __attr, size_t *__restrict __stacksize)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern int pthread_attr_setstacksize (pthread_attr_t *__attr,
+          size_t __stacksize)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_attr_getstack (const pthread_attr_t *__restrict __attr,
+      void **__restrict __stackaddr,
+      size_t *__restrict __stacksize)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+
+
+
+extern int pthread_attr_setstack (pthread_attr_t *__attr, void *__stackaddr,
+      size_t __stacksize) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 420 "/usr/include/pthread.h" 3 4
+extern int pthread_setschedparam (pthread_t __target_thread, int __policy,
+      const struct sched_param *__param)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3)));
+
+
+extern int pthread_getschedparam (pthread_t __target_thread,
+      int *__restrict __policy,
+      struct sched_param *__restrict __param)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+
+
+extern int pthread_setschedprio (pthread_t __target_thread, int __prio)
+     __attribute__ ((__nothrow__ ));
+# 485 "/usr/include/pthread.h" 3 4
+extern int pthread_once (pthread_once_t *__once_control,
+    void (*__init_routine) (void)) __attribute__ ((__nonnull__ (1, 2)));
+# 497 "/usr/include/pthread.h" 3 4
+extern int pthread_setcancelstate (int __state, int *__oldstate);
+
+
+
+extern int pthread_setcanceltype (int __type, int *__oldtype);
+
+
+extern int pthread_cancel (pthread_t __th);
+
+
+
+
+extern void pthread_testcancel (void);
+
+
+
+
+typedef struct
+{
+  struct
+  {
+    __jmp_buf __cancel_jmp_buf;
+    int __mask_was_saved;
+  } __cancel_jmp_buf[1];
+  void *__pad[4];
+} __pthread_unwind_buf_t __attribute__ ((__aligned__));
+# 531 "/usr/include/pthread.h" 3 4
+struct __pthread_cleanup_frame
+{
+  void (*__cancel_routine) (void *);
+  void *__cancel_arg;
+  int __do_it;
+  int __cancel_type;
+};
+# 671 "/usr/include/pthread.h" 3 4
+extern void __pthread_register_cancel (__pthread_unwind_buf_t *__buf)
+                            ;
+# 683 "/usr/include/pthread.h" 3 4
+extern void __pthread_unregister_cancel (__pthread_unwind_buf_t *__buf)
+                         ;
+# 724 "/usr/include/pthread.h" 3 4
+extern void __pthread_unwind_next (__pthread_unwind_buf_t *__buf)
+                             __attribute__ ((__noreturn__))
+
+     __attribute__ ((__weak__))
+
+     ;
+
+
+
+struct __jmp_buf_tag;
+extern int __sigsetjmp (struct __jmp_buf_tag *__env, int __savemask) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int pthread_mutex_init (pthread_mutex_t *__mutex,
+          const pthread_mutexattr_t *__mutexattr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutex_destroy (pthread_mutex_t *__mutex)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutex_trylock (pthread_mutex_t *__mutex)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutex_lock (pthread_mutex_t *__mutex)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_mutex_timedlock (pthread_mutex_t *__restrict __mutex,
+        const struct timespec *__restrict
+        __abstime) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int pthread_mutex_unlock (pthread_mutex_t *__mutex)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_mutex_getprioceiling (const pthread_mutex_t *
+      __restrict __mutex,
+      int *__restrict __prioceiling)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int pthread_mutex_setprioceiling (pthread_mutex_t *__restrict __mutex,
+      int __prioceiling,
+      int *__restrict __old_ceiling)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+
+extern int pthread_mutex_consistent (pthread_mutex_t *__mutex)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 797 "/usr/include/pthread.h" 3 4
+extern int pthread_mutexattr_init (pthread_mutexattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutexattr_destroy (pthread_mutexattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutexattr_getpshared (const pthread_mutexattr_t *
+      __restrict __attr,
+      int *__restrict __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_mutexattr_setpshared (pthread_mutexattr_t *__attr,
+      int __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_mutexattr_gettype (const pthread_mutexattr_t *__restrict
+          __attr, int *__restrict __kind)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern int pthread_mutexattr_settype (pthread_mutexattr_t *__attr, int __kind)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_mutexattr_getprotocol (const pthread_mutexattr_t *
+       __restrict __attr,
+       int *__restrict __protocol)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int pthread_mutexattr_setprotocol (pthread_mutexattr_t *__attr,
+       int __protocol)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_mutexattr_getprioceiling (const pthread_mutexattr_t *
+          __restrict __attr,
+          int *__restrict __prioceiling)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_mutexattr_setprioceiling (pthread_mutexattr_t *__attr,
+          int __prioceiling)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_mutexattr_getrobust (const pthread_mutexattr_t *__attr,
+     int *__robustness)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+
+extern int pthread_mutexattr_setrobust (pthread_mutexattr_t *__attr,
+     int __robustness)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 879 "/usr/include/pthread.h" 3 4
+extern int pthread_rwlock_init (pthread_rwlock_t *__restrict __rwlock,
+    const pthread_rwlockattr_t *__restrict
+    __attr) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlock_destroy (pthread_rwlock_t *__rwlock)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlock_rdlock (pthread_rwlock_t *__rwlock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlock_tryrdlock (pthread_rwlock_t *__rwlock)
+  __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_rwlock_timedrdlock (pthread_rwlock_t *__restrict __rwlock,
+           const struct timespec *__restrict
+           __abstime) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int pthread_rwlock_wrlock (pthread_rwlock_t *__rwlock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlock_trywrlock (pthread_rwlock_t *__rwlock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_rwlock_timedwrlock (pthread_rwlock_t *__restrict __rwlock,
+           const struct timespec *__restrict
+           __abstime) __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int pthread_rwlock_unlock (pthread_rwlock_t *__rwlock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int pthread_rwlockattr_init (pthread_rwlockattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlockattr_destroy (pthread_rwlockattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlockattr_getpshared (const pthread_rwlockattr_t *
+       __restrict __attr,
+       int *__restrict __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_rwlockattr_setpshared (pthread_rwlockattr_t *__attr,
+       int __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_rwlockattr_getkind_np (const pthread_rwlockattr_t *
+       __restrict __attr,
+       int *__restrict __pref)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_rwlockattr_setkind_np (pthread_rwlockattr_t *__attr,
+       int __pref) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+extern int pthread_cond_init (pthread_cond_t *__restrict __cond,
+         const pthread_condattr_t *__restrict __cond_attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_cond_destroy (pthread_cond_t *__cond)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_cond_signal (pthread_cond_t *__cond)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_cond_broadcast (pthread_cond_t *__cond)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int pthread_cond_wait (pthread_cond_t *__restrict __cond,
+         pthread_mutex_t *__restrict __mutex)
+     __attribute__ ((__nonnull__ (1, 2)));
+# 991 "/usr/include/pthread.h" 3 4
+extern int pthread_cond_timedwait (pthread_cond_t *__restrict __cond,
+       pthread_mutex_t *__restrict __mutex,
+       const struct timespec *__restrict __abstime)
+     __attribute__ ((__nonnull__ (1, 2, 3)));
+
+
+
+
+extern int pthread_condattr_init (pthread_condattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_condattr_destroy (pthread_condattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_condattr_getpshared (const pthread_condattr_t *
+     __restrict __attr,
+     int *__restrict __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_condattr_setpshared (pthread_condattr_t *__attr,
+     int __pshared) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_condattr_getclock (const pthread_condattr_t *
+          __restrict __attr,
+          __clockid_t *__restrict __clock_id)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_condattr_setclock (pthread_condattr_t *__attr,
+          __clockid_t __clock_id)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 1035 "/usr/include/pthread.h" 3 4
+extern int pthread_spin_init (pthread_spinlock_t *__lock, int __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_spin_destroy (pthread_spinlock_t *__lock)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_spin_lock (pthread_spinlock_t *__lock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_spin_trylock (pthread_spinlock_t *__lock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_spin_unlock (pthread_spinlock_t *__lock)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int pthread_barrier_init (pthread_barrier_t *__restrict __barrier,
+     const pthread_barrierattr_t *__restrict
+     __attr, unsigned int __count)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_barrier_destroy (pthread_barrier_t *__barrier)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_barrier_wait (pthread_barrier_t *__barrier)
+     __attribute__ ((__nothrow__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_barrierattr_init (pthread_barrierattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_barrierattr_destroy (pthread_barrierattr_t *__attr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_barrierattr_getpshared (const pthread_barrierattr_t *
+        __restrict __attr,
+        int *__restrict __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int pthread_barrierattr_setpshared (pthread_barrierattr_t *__attr,
+        int __pshared)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 1102 "/usr/include/pthread.h" 3 4
+extern int pthread_key_create (pthread_key_t *__key,
+          void (*__destr_function) (void *))
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int pthread_key_delete (pthread_key_t __key) __attribute__ ((__nothrow__ ));
+
+
+extern void *pthread_getspecific (pthread_key_t __key) __attribute__ ((__nothrow__ ));
+
+
+extern int pthread_setspecific (pthread_key_t __key,
+    const void *__pointer) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int pthread_getcpuclockid (pthread_t __thread_id,
+      __clockid_t *__clock_id)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 1136 "/usr/include/pthread.h" 3 4
+extern int pthread_atfork (void (*__prepare) (void),
+      void (*__parent) (void),
+      void (*__child) (void)) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) pthread_equal (pthread_t __thread1, pthread_t __thread2)
+{
+  return __thread1 == __thread2;
+}
+# 296 "./lcms2/src/lcms2_internal.h" 2
+
+
+typedef pthread_mutex_t _cmsMutex;
+
+
+static inline int _cmsLockPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_lock(m);
+}
+
+static inline int _cmsUnlockPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_unlock(m);
+}
+
+static inline int _cmsInitMutexPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_init(m, ((void*)0));
+}
+
+static inline int _cmsDestroyMutexPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_destroy(m);
+}
+
+static inline int _cmsEnterCriticalSectionPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_lock(m);
+}
+
+static inline int _cmsLeaveCriticalSectionPrimitive(_cmsMutex *m)
+{
+ return pthread_mutex_unlock(m);
+}
+# 378 "./lcms2/src/lcms2_internal.h"
+void* _cmsPluginMalloc(cmsContext ContextID, cmsUInt32Number size);
+
+
+cmsBool _cmsRegisterMemHandlerPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterInterpPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterParametricCurvesPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterFormattersPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterTagTypePlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterTagPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterRenderingIntentPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterMultiProcessElementPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterOptimizationPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterTransformPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+cmsBool _cmsRegisterMutexPlugin(cmsContext ContextID, cmsPluginBase* Plugin);
+
+
+
+
+typedef struct _cmsSubAllocator_chunk_st {
+
+    cmsUInt8Number* Block;
+    cmsUInt32Number BlockSize;
+    cmsUInt32Number Used;
+
+    struct _cmsSubAllocator_chunk_st* next;
+
+} _cmsSubAllocator_chunk;
+
+
+typedef struct {
+
+    cmsContext ContextID;
+    _cmsSubAllocator_chunk* h;
+
+} _cmsSubAllocator;
+
+
+_cmsSubAllocator* _cmsCreateSubAlloc(cmsContext ContextID, cmsUInt32Number Initial);
+void _cmsSubAllocDestroy(_cmsSubAllocator* s);
+void* _cmsSubAlloc(_cmsSubAllocator* s, cmsUInt32Number size);
+void* _cmsSubAllocDup(_cmsSubAllocator* s, const void *ptr, cmsUInt32Number size);
+
+
+
+
+typedef enum {
+
+    UserPtr,
+    Logger,
+    AlarmCodesContext,
+    AdaptationStateContext,
+    MemPlugin,
+    InterpPlugin,
+    CurvesPlugin,
+    FormattersPlugin,
+    TagTypePlugin,
+    TagPlugin,
+    IntentPlugin,
+    MPEPlugin,
+    OptimizationPlugin,
+    TransformPlugin,
+    MutexPlugin,
+
+
+    MemoryClientMax
+
+} _cmsMemoryClient;
+
+
+
+typedef struct {
+
+    _cmsMallocFnPtrType MallocPtr;
+    _cmsMalloZerocFnPtrType MallocZeroPtr;
+    _cmsFreeFnPtrType FreePtr;
+    _cmsReallocFnPtrType ReallocPtr;
+    _cmsCallocFnPtrType CallocPtr;
+    _cmsDupFnPtrType DupPtr;
+
+} _cmsMemPluginChunkType;
+
+
+void _cmsInstallAllocFunctions(cmsPluginMemHandler* Plugin, _cmsMemPluginChunkType* ptr);
+
+
+struct _cmsContext_struct {
+
+    struct _cmsContext_struct* Next;
+    _cmsSubAllocator* MemPool;
+
+    void* chunks[MemoryClientMax];
+
+
+    _cmsMemPluginChunkType DefaultMemoryManager;
+};
+
+
+
+struct _cmsContext_struct* _cmsGetContext(cmsContext ContextID);
+
+
+void* _cmsContextGetClientChunk(cmsContext id, _cmsMemoryClient mc);
+
+
+
+
+
+
+
+typedef struct {
+
+    cmsLogErrorHandlerFunction LogErrorHandler;
+
+} _cmsLogErrorChunkType;
+
+
+extern _cmsLogErrorChunkType _cmsLogErrorChunk;
+
+
+void _cmsAllocLogErrorChunk(struct _cmsContext_struct* ctx,
+                            const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    cmsUInt16Number AlarmCodes[16];
+
+} _cmsAlarmCodesChunkType;
+
+
+extern _cmsAlarmCodesChunkType _cmsAlarmCodesChunk;
+
+
+void _cmsAllocAlarmCodesChunk(struct _cmsContext_struct* ctx,
+                            const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    cmsFloat64Number AdaptationState;
+
+} _cmsAdaptationStateChunkType;
+
+
+extern _cmsAdaptationStateChunkType _cmsAdaptationStateChunk;
+
+
+void _cmsAllocAdaptationStateChunk(struct _cmsContext_struct* ctx,
+                                   const struct _cmsContext_struct* src);
+
+
+
+extern _cmsMemPluginChunkType _cmsMemPluginChunk;
+
+
+void _cmsAllocMemPluginChunk(struct _cmsContext_struct* ctx,
+                             const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    cmsInterpFnFactory Interpolators;
+
+} _cmsInterpPluginChunkType;
+
+
+extern _cmsInterpPluginChunkType _cmsInterpPluginChunk;
+
+
+void _cmsAllocInterpPluginChunk(struct _cmsContext_struct* ctx,
+                                const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cmsParametricCurvesCollection_st* ParametricCurves;
+
+} _cmsCurvesPluginChunkType;
+
+
+extern _cmsCurvesPluginChunkType _cmsCurvesPluginChunk;
+
+
+void _cmsAllocCurvesPluginChunk(struct _cmsContext_struct* ctx,
+                                                      const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cms_formatters_factory_list* FactoryList;
+
+} _cmsFormattersPluginChunkType;
+
+
+extern _cmsFormattersPluginChunkType _cmsFormattersPluginChunk;
+
+
+void _cmsAllocFormattersPluginChunk(struct _cmsContext_struct* ctx,
+                                                       const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cmsTagTypeLinkedList_st* TagTypes;
+
+} _cmsTagTypePluginChunkType;
+
+
+
+extern _cmsTagTypePluginChunkType _cmsTagTypePluginChunk;
+
+
+
+extern _cmsTagTypePluginChunkType _cmsMPETypePluginChunk;
+
+
+void _cmsAllocTagTypePluginChunk(struct _cmsContext_struct* ctx,
+                                                        const struct _cmsContext_struct* src);
+
+void _cmsAllocMPETypePluginChunk(struct _cmsContext_struct* ctx,
+                                                        const struct _cmsContext_struct* src);
+
+typedef struct {
+
+    struct _cmsTagLinkedList_st* Tag;
+
+} _cmsTagPluginChunkType;
+
+
+
+extern _cmsTagPluginChunkType _cmsTagPluginChunk;
+
+
+void _cmsAllocTagPluginChunk(struct _cmsContext_struct* ctx,
+                                                      const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cms_intents_list* Intents;
+
+} _cmsIntentsPluginChunkType;
+
+
+
+extern _cmsIntentsPluginChunkType _cmsIntentsPluginChunk;
+
+
+void _cmsAllocIntentsPluginChunk(struct _cmsContext_struct* ctx,
+                                                        const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cmsOptimizationCollection_st* OptimizationCollection;
+
+} _cmsOptimizationPluginChunkType;
+
+
+
+extern _cmsOptimizationPluginChunkType _cmsOptimizationPluginChunk;
+
+
+void _cmsAllocOptimizationPluginChunk(struct _cmsContext_struct* ctx,
+                                         const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    struct _cmsTransformCollection_st* TransformCollection;
+
+} _cmsTransformPluginChunkType;
+
+
+extern _cmsTransformPluginChunkType _cmsTransformPluginChunk;
+
+
+void _cmsAllocTransformPluginChunk(struct _cmsContext_struct* ctx,
+                                        const struct _cmsContext_struct* src);
+
+
+typedef struct {
+
+    _cmsCreateMutexFnPtrType CreateMutexPtr;
+    _cmsDestroyMutexFnPtrType DestroyMutexPtr;
+    _cmsLockMutexFnPtrType LockMutexPtr;
+    _cmsUnlockMutexFnPtrType UnlockMutexPtr;
+
+} _cmsMutexPluginChunkType;
+
+
+extern _cmsMutexPluginChunkType _cmsMutexPluginChunk;
+
+
+void _cmsAllocMutexPluginChunk(struct _cmsContext_struct* ctx,
+                                        const struct _cmsContext_struct* src);
+
+
+
+typedef struct {
+
+    cmsUInt16Number Language;
+    cmsUInt16Number Country;
+
+    cmsUInt32Number StrW;
+    cmsUInt32Number Len;
+
+} _cmsMLUentry;
+
+struct _cms_MLU_struct {
+
+    cmsContext ContextID;
+
+
+    int AllocatedEntries;
+    int UsedEntries;
+    _cmsMLUentry* Entries;
+
+
+    cmsUInt32Number PoolSize;
+    cmsUInt32Number PoolUsed;
+    void* MemPool;
+};
+
+
+typedef struct {
+
+    char Name[256];
+    cmsUInt16Number PCS[3];
+    cmsUInt16Number DeviceColorant[16];
+
+} _cmsNAMEDCOLOR;
+
+struct _cms_NAMEDCOLORLIST_struct {
+
+    cmsUInt32Number nColors;
+    cmsUInt32Number Allocated;
+    cmsUInt32Number ColorantCount;
+
+    char Prefix[33];
+    char Suffix[33];
+
+    _cmsNAMEDCOLOR* List;
+
+    cmsContext ContextID;
+};
+# 753 "./lcms2/src/lcms2_internal.h"
+typedef struct _cms_iccprofile_struct {
+
+
+    cmsIOHANDLER* IOhandler;
+
+
+    cmsContext ContextID;
+
+
+    struct tm Created;
+
+
+    cmsUInt32Number Version;
+    cmsProfileClassSignature DeviceClass;
+    cmsColorSpaceSignature ColorSpace;
+    cmsColorSpaceSignature PCS;
+    cmsUInt32Number RenderingIntent;
+
+    cmsUInt32Number flags;
+    cmsUInt32Number manufacturer, model;
+    cmsUInt64Number attributes;
+    cmsUInt32Number creator;
+
+    cmsProfileID ProfileID;
+
+
+    cmsUInt32Number TagCount;
+    cmsTagSignature TagNames[100];
+    cmsTagSignature TagLinked[100];
+    cmsUInt32Number TagSizes[100];
+    cmsUInt32Number TagOffsets[100];
+    cmsBool TagSaveAsRaw[100];
+    void * TagPtrs[100];
+    cmsTagTypeHandler* TagTypeHandlers[100];
+
+
+
+    cmsBool IsWrite;
+
+
+    void * UsrMutex;
+
+} _cmsICCPROFILE;
+
+
+cmsBool _cmsReadHeader(_cmsICCPROFILE* Icc);
+cmsBool _cmsWriteHeader(_cmsICCPROFILE* Icc, cmsUInt32Number UsedSpace);
+int _cmsSearchTag(_cmsICCPROFILE* Icc, cmsTagSignature sig, cmsBool lFollowLinks);
+
+
+cmsTagTypeHandler* _cmsGetTagTypeHandler(cmsContext ContextID, cmsTagTypeSignature sig);
+cmsTagTypeSignature _cmsGetTagTrueType(cmsHPROFILE hProfile, cmsTagSignature sig);
+cmsTagDescriptor* _cmsGetTagDescriptor(cmsContext ContextID, cmsTagSignature sig);
+
+
+
+void _cmsTagSignature2String(char String[5], cmsTagSignature sig);
+
+
+
+cmsInterpParams* _cmsComputeInterpParams(cmsContext ContextID, int nSamples, int InputChan, int OutputChan, const void* Table, cmsUInt32Number dwFlags);
+cmsInterpParams* _cmsComputeInterpParamsEx(cmsContext ContextID, const cmsUInt32Number nSamples[], int InputChan, int OutputChan, const void* Table, cmsUInt32Number dwFlags);
+void _cmsFreeInterpParams(cmsInterpParams* p);
+cmsBool _cmsSetInterpolationRoutine(cmsContext ContextID, cmsInterpParams* p);
+
+
+
+
+
+
+
+struct _cms_curve_struct {
+
+    cmsInterpParams* InterpParams;
+
+    cmsUInt32Number nSegments;
+    cmsCurveSegment* Segments;
+    cmsInterpParams** SegInterp;
+
+    cmsParametricCurveEvaluator* Evals;
+
+
+    cmsUInt32Number nEntries;
+    cmsUInt16Number* Table16;
+};
+
+
+
+
+
+struct _cmsStage_struct {
+
+    cmsContext ContextID;
+
+    cmsStageSignature Type;
+    cmsStageSignature Implements;
+
+    cmsUInt32Number InputChannels;
+    cmsUInt32Number OutputChannels;
+
+    _cmsStageEvalFn EvalPtr;
+    _cmsStageDupElemFn DupElemPtr;
+    _cmsStageFreeElemFn FreePtr;
+
+
+    void* Data;
+
+
+    struct _cmsStage_struct* Next;
+};
+
+
+
+cmsStage* _cmsStageAllocLab2XYZ(cmsContext ContextID);
+cmsStage* _cmsStageAllocXYZ2Lab(cmsContext ContextID);
+cmsStage* _cmsStageAllocLabPrelin(cmsContext ContextID);
+cmsStage* _cmsStageAllocLabV2ToV4(cmsContext ContextID);
+cmsStage* _cmsStageAllocLabV2ToV4curves(cmsContext ContextID);
+cmsStage* _cmsStageAllocLabV4ToV2(cmsContext ContextID);
+cmsStage* _cmsStageAllocNamedColor(cmsNAMEDCOLORLIST* NamedColorList, cmsBool UsePCS);
+cmsStage* _cmsStageAllocIdentityCurves(cmsContext ContextID, int nChannels);
+cmsStage* _cmsStageAllocIdentityCLut(cmsContext ContextID, int nChan);
+cmsStage* _cmsStageNormalizeFromLabFloat(cmsContext ContextID);
+cmsStage* _cmsStageNormalizeFromXyzFloat(cmsContext ContextID);
+cmsStage* _cmsStageNormalizeToLabFloat(cmsContext ContextID);
+cmsStage* _cmsStageNormalizeToXyzFloat(cmsContext ContextID);
+
+
+cmsToneCurve** _cmsStageGetPtrToCurveSet(const cmsStage* mpe);
+
+
+
+typedef void (* _cmsPipelineEvalFloatFn)(const cmsFloat32Number In[],
+                                         cmsFloat32Number Out[],
+                                         const void* Data);
+
+struct _cmsPipeline_struct {
+
+    cmsStage* Elements;
+    cmsUInt32Number InputChannels, OutputChannels;
+
+
+    void *Data;
+
+   _cmsOPTeval16Fn Eval16Fn;
+   _cmsPipelineEvalFloatFn EvalFloatFn;
+   _cmsFreeUserDataFn FreeDataFn;
+   _cmsDupUserDataFn DupDataFn;
+
+    cmsContext ContextID;
+
+    cmsBool SaveAs8Bits;
+};
+
+
+
+
+
+
+cmsPipeline* _cmsReadInputLUT(cmsHPROFILE hProfile, int Intent);
+cmsPipeline* _cmsReadOutputLUT(cmsHPROFILE hProfile, int Intent);
+cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent);
+
+
+cmsBool _cmsReadMediaWhitePoint(cmsCIEXYZ* Dest, cmsHPROFILE hProfile);
+cmsBool _cmsReadCHAD(cmsMAT3* Dest, cmsHPROFILE hProfile);
+
+
+
+cmsPipeline* _cmsLinkProfiles(cmsContext ContextID,
+                              cmsUInt32Number nProfiles,
+                              cmsUInt32Number TheIntents[],
+                              cmsHPROFILE hProfiles[],
+                              cmsBool BPC[],
+                              cmsFloat64Number AdaptationStates[],
+                              cmsUInt32Number dwFlags);
+
+
+
+cmsSEQ* _cmsReadProfileSequence(cmsHPROFILE hProfile);
+cmsBool _cmsWriteProfileSequence(cmsHPROFILE hProfile, const cmsSEQ* seq);
+cmsSEQ* _cmsCompileProfileSequence(cmsContext ContextID, cmsUInt32Number nProfiles, cmsHPROFILE hProfiles[]);
+
+
+
+
+cmsUInt16Number _cmsQuantizeVal(cmsFloat64Number i, int MaxSamples);
+int _cmsReasonableGridpointsByColorspace(cmsColorSpaceSignature Colorspace, cmsUInt32Number dwFlags);
+
+cmsBool _cmsEndPointsBySpace(cmsColorSpaceSignature Space,
+                                      cmsUInt16Number **White,
+                                      cmsUInt16Number **Black,
+                                      cmsUInt32Number *nOutputs);
+
+cmsBool _cmsOptimizePipeline(cmsContext ContextID,
+                                      cmsPipeline** Lut,
+                                      int Intent,
+                                      cmsUInt32Number* InputFormat,
+                                      cmsUInt32Number* OutputFormat,
+                                      cmsUInt32Number* dwFlags );
+
+
+
+
+cmsPipeline* _cmsCreateGamutCheckPipeline(cmsContext ContextID,
+                                              cmsHPROFILE hProfiles[],
+                                              cmsBool BPC[],
+                                              cmsUInt32Number Intents[],
+                                              cmsFloat64Number AdaptationStates[],
+                                              cmsUInt32Number nGamutPCSposition,
+                                              cmsHPROFILE hGamut);
+
+
+
+
+
+
+cmsBool _cmsFormatterIsFloat(cmsUInt32Number Type);
+cmsBool _cmsFormatterIs8bit(cmsUInt32Number Type);
+
+cmsFormatter _cmsGetFormatter(cmsContext ContextID,
+                                 cmsUInt32Number Type,
+                                 cmsFormatterDirection Dir,
+                                 cmsUInt32Number dwFlags);
+
+
+
+
+
+cmsFloat32Number _cmsHalf2Float(cmsUInt16Number h);
+cmsUInt16Number _cmsFloat2Half(cmsFloat32Number flt);
+
+
+
+
+
+struct _cmstransform_struct;
+
+typedef struct {
+
+
+    cmsUInt16Number CacheIn[16];
+    cmsUInt16Number CacheOut[16];
+
+} _cmsCACHE;
+
+
+
+
+typedef struct _cmstransform_struct {
+
+    cmsUInt32Number InputFormat, OutputFormat;
+
+
+    _cmsTransformFn xform;
+
+
+    cmsFormatter16 FromInput;
+    cmsFormatter16 ToOutput;
+
+    cmsFormatterFloat FromInputFloat;
+    cmsFormatterFloat ToOutputFloat;
+
+
+    _cmsCACHE Cache;
+
+
+    cmsPipeline* Lut;
+
+
+    cmsPipeline* GamutCheck;
+
+
+    cmsNAMEDCOLORLIST* InputColorant;
+    cmsNAMEDCOLORLIST* OutputColorant;
+
+
+    cmsColorSpaceSignature EntryColorSpace;
+    cmsColorSpaceSignature ExitColorSpace;
+
+
+    cmsCIEXYZ EntryWhitePoint;
+    cmsCIEXYZ ExitWhitePoint;
+
+
+    cmsSEQ* Sequence;
+
+    cmsUInt32Number dwOriginalFlags;
+    cmsFloat64Number AdaptationState;
+
+
+    cmsUInt32Number RenderingIntent;
+
+
+    cmsContext ContextID;
+
+
+    void* UserData;
+    _cmsFreeUserDataFn FreeUserData;
+
+} _cmsTRANSFORM;
+
+
+
+cmsHTRANSFORM _cmsChain2Lab(cmsContext ContextID,
+                            cmsUInt32Number nProfiles,
+                            cmsUInt32Number InputFormat,
+                            cmsUInt32Number OutputFormat,
+                            const cmsUInt32Number Intents[],
+                            const cmsHPROFILE hProfiles[],
+                            const cmsBool BPC[],
+                            const cmsFloat64Number AdaptationStates[],
+                            cmsUInt32Number dwFlags);
+
+
+cmsToneCurve* _cmsBuildKToneCurve(cmsContext ContextID,
+                            cmsUInt32Number nPoints,
+                            cmsUInt32Number nProfiles,
+                            const cmsUInt32Number Intents[],
+                            const cmsHPROFILE hProfiles[],
+                            const cmsBool BPC[],
+                            const cmsFloat64Number AdaptationStates[],
+                            cmsUInt32Number dwFlags);
+
+cmsBool _cmsAdaptationMatrix(cmsMAT3* r, const cmsMAT3* ConeMatrix, const cmsCIEXYZ* FromIll, const cmsCIEXYZ* ToIll);
+
+cmsBool _cmsBuildRGB2XYZtransferMatrix(cmsMAT3* r, const cmsCIExyY* WhitePoint, const cmsCIExyYTRIPLE* Primaries);
+# 28 "./lcms2/src/cmscgats.c" 2
+# 49 "./lcms2/src/cmscgats.c"
+typedef enum {
+
+        SUNDEFINED,
+        SINUM,
+        SDNUM,
+        SIDENT,
+        SSTRING,
+        SCOMMENT,
+        SEOLN,
+        SEOF,
+        SSYNERROR,
+
+
+
+        SBEGIN_DATA,
+        SBEGIN_DATA_FORMAT,
+        SEND_DATA,
+        SEND_DATA_FORMAT,
+        SKEYWORD,
+        SDATA_FORMAT_ID,
+        SINCLUDE
+
+    } SYMBOL;
+
+
+
+typedef enum {
+
+        WRITE_UNCOOKED,
+        WRITE_STRINGIFY,
+        WRITE_HEXADECIMAL,
+        WRITE_BINARY,
+        WRITE_PAIR
+
+    } WRITEMODE;
+
+
+typedef struct _KeyVal {
+
+        struct _KeyVal* Next;
+        char* Keyword;
+        struct _KeyVal* NextSubkey;
+        char* Subkey;
+        char* Value;
+        WRITEMODE WriteAs;
+
+   } KEYVALUE;
+
+
+
+typedef struct _OwnedMem {
+
+        struct _OwnedMem* Next;
+        void * Ptr;
+
+   } OWNEDMEM;
+
+
+typedef struct _SubAllocator {
+
+         cmsUInt8Number* Block;
+         cmsUInt32Number BlockSize;
+         cmsUInt32Number Used;
+
+    } SUBALLOCATOR;
+
+
+typedef struct _Table {
+
+        char SheetType[1024];
+
+        int nSamples, nPatches;
+        int SampleID;
+
+        KEYVALUE* HeaderList;
+
+        char** DataFormat;
+        char** Data;
+
+    } TABLE;
+
+
+typedef struct _FileContext {
+        char FileName[256];
+        FILE* Stream;
+    } FILECTX;
+
+
+typedef struct {
+
+
+        cmsUInt32Number TablesCount;
+        cmsUInt32Number nTable;
+
+        TABLE Tab[255];
+
+
+        OWNEDMEM* MemorySink;
+        SUBALLOCATOR Allocator;
+
+
+        SYMBOL sy;
+        int ch;
+
+        int inum;
+        cmsFloat64Number dnum;
+        char id[128];
+        char str[1024];
+
+
+        KEYVALUE* ValidKeywords;
+        KEYVALUE* ValidSampleID;
+
+        char* Source;
+        int lineno;
+
+        FILECTX* FileStack[20];
+        int IncludeSP;
+
+        char* MemoryBlock;
+
+        char DoubleFormatter[128];
+
+        cmsContext ContextID;
+
+   } cmsIT8;
+
+
+
+typedef struct {
+
+        FILE* stream;
+
+        cmsUInt8Number* Base;
+        cmsUInt8Number* Ptr;
+        cmsUInt32Number Used;
+        cmsUInt32Number Max;
+
+    } SAVESTREAM;
+
+
+
+
+
+
+typedef struct {
+
+        const char *id;
+        SYMBOL sy;
+
+   } KEYWORD;
+
+
+static const KEYWORD TabKeys[] = {
+
+        {"$INCLUDE", SINCLUDE},
+        {".INCLUDE", SINCLUDE},
+
+        {"BEGIN_DATA", SBEGIN_DATA },
+        {"BEGIN_DATA_FORMAT", SBEGIN_DATA_FORMAT },
+        {"DATA_FORMAT_IDENTIFIER", SDATA_FORMAT_ID},
+        {"END_DATA", SEND_DATA},
+        {"END_DATA_FORMAT", SEND_DATA_FORMAT},
+        {"KEYWORD", SKEYWORD}
+        };
+
+
+
+
+
+
+typedef struct {
+        const char *id;
+        WRITEMODE as;
+    } PROPERTY;
+
+static PROPERTY PredefinedProperties[] = {
+
+        {"NUMBER_OF_FIELDS", WRITE_UNCOOKED},
+        {"NUMBER_OF_SETS", WRITE_UNCOOKED},
+        {"ORIGINATOR", WRITE_STRINGIFY},
+        {"FILE_DESCRIPTOR", WRITE_STRINGIFY},
+        {"CREATED", WRITE_STRINGIFY},
+        {"DESCRIPTOR", WRITE_STRINGIFY},
+        {"DIFFUSE_GEOMETRY", WRITE_STRINGIFY},
+        {"MANUFACTURER", WRITE_STRINGIFY},
+        {"MANUFACTURE", WRITE_STRINGIFY},
+        {"PROD_DATE", WRITE_STRINGIFY},
+        {"SERIAL", WRITE_STRINGIFY},
+
+        {"MATERIAL", WRITE_STRINGIFY},
+
+
+
+        {"INSTRUMENTATION", WRITE_STRINGIFY},
+
+
+
+
+
+        {"MEASUREMENT_SOURCE", WRITE_STRINGIFY},
+
+
+        {"PRINT_CONDITIONS", WRITE_STRINGIFY},
+
+
+
+
+        {"SAMPLE_BACKING", WRITE_STRINGIFY},
+
+
+        {"CHISQ_DOF", WRITE_STRINGIFY},
+
+
+
+        {"MEASUREMENT_GEOMETRY", WRITE_STRINGIFY},
+
+
+
+
+
+       {"FILTER", WRITE_STRINGIFY},
+
+
+       {"POLARIZATION", WRITE_STRINGIFY},
+
+
+       {"WEIGHTING_FUNCTION", WRITE_PAIR},
+# 287 "./lcms2/src/cmscgats.c"
+       {"COMPUTATIONAL_PARAMETER", WRITE_PAIR},
+
+
+
+       {"TARGET_TYPE", WRITE_STRINGIFY},
+
+       {"COLORANT", WRITE_STRINGIFY},
+
+       {"TABLE_DESCRIPTOR", WRITE_STRINGIFY},
+
+       {"TABLE_NAME", WRITE_STRINGIFY}
+};
+
+
+
+
+
+static const char* PredefinedSampleID[] = {
+        "SAMPLE_ID",
+        "STRING",
+
+
+        "CMYK_C",
+        "CMYK_M",
+        "CMYK_Y",
+        "CMYK_K",
+        "D_RED",
+        "D_GREEN",
+        "D_BLUE",
+        "D_VIS",
+        "D_MAJOR_FILTER",
+        "RGB_R",
+        "RGB_G",
+        "RGB_B",
+        "SPECTRAL_NM",
+        "SPECTRAL_PCT",
+        "SPECTRAL_DEC",
+        "XYZ_X",
+        "XYZ_Y",
+        "XYZ_Z",
+        "XYY_X"
+        "XYY_Y",
+        "XYY_CAPY",
+        "LAB_L",
+        "LAB_A",
+        "LAB_B",
+        "LAB_C",
+        "LAB_H",
+        "LAB_DE",
+        "LAB_DE_94",
+        "LAB_DE_CMC",
+        "LAB_DE_2000",
+        "MEAN_DE",
+
+        "STDEV_X",
+        "STDEV_Y",
+        "STDEV_Z",
+        "STDEV_L",
+        "STDEV_A",
+        "STDEV_B",
+        "STDEV_DE",
+        "CHI_SQD_PAR"};
+
+
+
+
+
+
+static void* AllocChunk(cmsIT8* it8, cmsUInt32Number size);
+
+
+static
+cmsBool isseparator(int c)
+{
+    return (c == ' ') || (c == '\t') ;
+}
+
+
+static
+cmsBool ismiddle(int c)
+{
+   return (!isseparator(c) && (c != '#') && (c !='\"') && (c != '\'') && (c > 32) && (c < 127));
+}
+
+
+static
+cmsBool isidchar(int c)
+{
+   return ((*__ctype_b_loc ())[(int) ((c))] & (unsigned short int) _ISalnum) || ismiddle(c);
+}
+
+
+static
+cmsBool isfirstidchar(int c)
+{
+     return !((*__ctype_b_loc ())[(int) ((c))] & (unsigned short int) _ISdigit) && ismiddle(c);
+}
+
+
+static
+cmsBool isabsolutepath(const char *path)
+{
+    char ThreeChars[4];
+
+    if(path == ((void*)0))
+        return 0;
+    if (path[0] == 0)
+        return 0;
+
+    __builtin_strncpy (ThreeChars, path, 3);
+    ThreeChars[3] = 0;
+
+    if(ThreeChars[0] == '/')
+        return 1;
+
+
+
+
+
+    return 0;
+}
+
+
+
+
+static
+cmsBool BuildAbsolutePath(const char *relPath, const char *basePath, char *buffer, cmsUInt32Number MaxLen)
+{
+    char *tail;
+    cmsUInt32Number len;
+
+
+    if (isabsolutepath(relPath)) {
+
+        __builtin_strncpy (buffer, relPath, MaxLen);
+        buffer[MaxLen-1] = 0;
+        return 1;
+    }
+
+
+    __builtin_strncpy (buffer, basePath, MaxLen);
+    buffer[MaxLen-1] = 0;
+
+    tail = strrchr(buffer, '/');
+    if (tail == ((void*)0)) return 0;
+
+    len = (cmsUInt32Number) (tail - buffer);
+    if (len >= MaxLen) return 0;
+
+
+    __builtin_strncpy (tail + 1, relPath, MaxLen - len);
+
+    return 1;
+}
+
+
+
+static
+const char* NoMeta(const char* str)
+{
+    if ((__extension__ (__builtin_constant_p ('%') && !__builtin_constant_p (str) && ('%') == '\0' ? (char *) __rawmemchr (str, '%') : __builtin_strchr (str, '%'))) != ((void*)0))
+        return "**** CORRUPTED FORMAT STRING ***";
+
+    return str;
+}
+
+
+static
+cmsBool SynError(cmsIT8* it8, const char *Txt, ...)
+{
+    char Buffer[256], ErrMsg[1024];
+    va_list args;
+
+    __builtin_va_start(args, Txt);
+    vsnprintf(Buffer, 255, Txt, args);
+    Buffer[255] = 0;
+    __builtin_va_end(args);
+
+    snprintf(ErrMsg, 1023, "%s: Line %d, %s", it8->FileStack[it8 ->IncludeSP]->FileName, it8->lineno, Buffer);
+    ErrMsg[1023] = 0;
+    it8->sy = SSYNERROR;
+    cmsSignalError(it8 ->ContextID, 12, "%s", ErrMsg);
+    return 0;
+}
+
+
+static
+cmsBool Check(cmsIT8* it8, SYMBOL sy, const char* Err)
+{
+        if (it8 -> sy != sy)
+                return SynError(it8, NoMeta(Err));
+        return 1;
+}
+
+
+static
+void NextCh(cmsIT8* it8)
+{
+    if (it8 -> FileStack[it8 ->IncludeSP]->Stream) {
+
+        it8 ->ch = fgetc(it8 ->FileStack[it8 ->IncludeSP]->Stream);
+
+        if (feof(it8 -> FileStack[it8 ->IncludeSP]->Stream)) {
+
+            if (it8 ->IncludeSP > 0) {
+
+                fclose(it8 ->FileStack[it8->IncludeSP--]->Stream);
+                it8 -> ch = ' ';
+
+            } else
+                it8 ->ch = 0;
+        }
+    }
+    else {
+        it8->ch = *it8->Source;
+        if (it8->ch) it8->Source++;
+    }
+}
+
+
+
+static
+SYMBOL BinSrchKey(const char *id)
+{
+    int l = 1;
+    int r = (sizeof(TabKeys)/sizeof(KEYWORD));
+    int x, res;
+
+    while (r >= l)
+    {
+        x = (l+r)/2;
+        res = cmsstrcasecmp(id, TabKeys[x-1].id);
+        if (res == 0) return TabKeys[x-1].sy;
+        if (res < 0) r = x - 1;
+        else l = x + 1;
+    }
+
+    return SUNDEFINED;
+}
+
+
+
+static
+cmsFloat64Number xpow10(int n)
+{
+    return pow(10, (cmsFloat64Number) n);
+}
+
+
+
+static
+void ReadReal(cmsIT8* it8, int inum)
+{
+    it8->dnum = (cmsFloat64Number) inum;
+
+    while (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISdigit)) {
+
+        it8->dnum = it8->dnum * 10.0 + (it8->ch - '0');
+        NextCh(it8);
+    }
+
+    if (it8->ch == '.') {
+
+        cmsFloat64Number frac = 0.0;
+        int prec = 0;
+
+        NextCh(it8);
+
+        while (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISdigit)) {
+
+            frac = frac * 10.0 + (it8->ch - '0');
+            prec++;
+            NextCh(it8);
+        }
+
+        it8->dnum = it8->dnum + (frac / xpow10(prec));
+    }
+
+
+    if ((__extension__ ({ int __res; if (sizeof (it8->ch) > 1) { if (__builtin_constant_p (it8->ch)) { int __c = (it8->ch); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (it8->ch); } else __res = (*__ctype_toupper_loc ())[(int) (it8->ch)]; __res; })) == 'E') {
+
+        int e;
+        int sgn;
+
+        NextCh(it8); sgn = 1;
+
+        if (it8->ch == '-') {
+
+            sgn = -1; NextCh(it8);
+        }
+        else
+            if (it8->ch == '+') {
+
+                sgn = +1;
+                NextCh(it8);
+            }
+
+            e = 0;
+            while (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISdigit)) {
+
+                if ((cmsFloat64Number) e * 10L < 2147483647)
+                    e = e * 10 + (it8->ch - '0');
+
+                NextCh(it8);
+            }
+
+            e = sgn*e;
+            it8 -> dnum = it8 -> dnum * xpow10(e);
+    }
+}
+
+
+
+
+static
+cmsFloat64Number ParseFloatNumber(const char *Buffer)
+{
+    cmsFloat64Number dnum = 0.0;
+    int sign = 1;
+
+
+    if (Buffer == ((void*)0)) return 0.0;
+
+    if (*Buffer == '-' || *Buffer == '+') {
+
+         sign = (*Buffer == '-') ? -1 : 1;
+         Buffer++;
+    }
+
+
+    while (*Buffer && ((*__ctype_b_loc ())[(int) (((int) *Buffer))] & (unsigned short int) _ISdigit)) {
+
+        dnum = dnum * 10.0 + (*Buffer - '0');
+        if (*Buffer) Buffer++;
+    }
+
+    if (*Buffer == '.') {
+
+        cmsFloat64Number frac = 0.0;
+        int prec = 0;
+
+        if (*Buffer) Buffer++;
+
+        while (*Buffer && ((*__ctype_b_loc ())[(int) (((int) *Buffer))] & (unsigned short int) _ISdigit)) {
+
+            frac = frac * 10.0 + (*Buffer - '0');
+            prec++;
+            if (*Buffer) Buffer++;
+        }
+
+        dnum = dnum + (frac / xpow10(prec));
+    }
+
+
+    if (*Buffer && (__extension__ ({ int __res; if (sizeof (*Buffer) > 1) { if (__builtin_constant_p (*Buffer)) { int __c = (*Buffer); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (*Buffer); } else __res = (*__ctype_toupper_loc ())[(int) (*Buffer)]; __res; })) == 'E') {
+
+        int e;
+        int sgn;
+
+        if (*Buffer) Buffer++;
+        sgn = 1;
+
+        if (*Buffer == '-') {
+
+            sgn = -1;
+            if (*Buffer) Buffer++;
+        }
+        else
+            if (*Buffer == '+') {
+
+                sgn = +1;
+                if (*Buffer) Buffer++;
+            }
+
+            e = 0;
+            while (*Buffer && ((*__ctype_b_loc ())[(int) (((int) *Buffer))] & (unsigned short int) _ISdigit)) {
+
+                if ((cmsFloat64Number) e * 10L < 2147483647)
+                    e = e * 10 + (*Buffer - '0');
+
+                if (*Buffer) Buffer++;
+            }
+
+            e = sgn*e;
+            dnum = dnum * xpow10(e);
+    }
+
+    return sign * dnum;
+}
+
+
+
+static
+void InSymbol(cmsIT8* it8)
+{
+    register char *idptr;
+    register int k;
+    SYMBOL key;
+    int sng;
+
+    do {
+
+        while (isseparator(it8->ch))
+            NextCh(it8);
+
+        if (isfirstidchar(it8->ch)) {
+
+            k = 0;
+            idptr = it8->id;
+
+            do {
+
+                if (++k < 128) *idptr++ = (char) it8->ch;
+
+                NextCh(it8);
+
+            } while (isidchar(it8->ch));
+
+            *idptr = '\0';
+
+
+            key = BinSrchKey(it8->id);
+            if (key == SUNDEFINED) it8->sy = SIDENT;
+            else it8->sy = key;
+
+        }
+        else
+            if (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISdigit) || it8->ch == '.' || it8->ch == '-' || it8->ch == '+')
+            {
+                int sign = 1;
+
+                if (it8->ch == '-') {
+                    sign = -1;
+                    NextCh(it8);
+                }
+
+                it8->inum = 0;
+                it8->sy = SINUM;
+
+                if (it8->ch == '0') {
+
+                    NextCh(it8);
+                    if ((__extension__ ({ int __res; if (sizeof (it8->ch) > 1) { if (__builtin_constant_p (it8->ch)) { int __c = (it8->ch); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (it8->ch); } else __res = (*__ctype_toupper_loc ())[(int) (it8->ch)]; __res; })) == 'X') {
+
+                        int j;
+
+                        NextCh(it8);
+                        while (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISxdigit))
+                        {
+                            it8->ch = (__extension__ ({ int __res; if (sizeof (it8->ch) > 1) { if (__builtin_constant_p (it8->ch)) { int __c = (it8->ch); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (it8->ch); } else __res = (*__ctype_toupper_loc ())[(int) (it8->ch)]; __res; }));
+                            if (it8->ch >= 'A' && it8->ch <= 'F') j = it8->ch -'A'+10;
+                            else j = it8->ch - '0';
+
+                            if ((long) it8->inum * 16L > (long) 2147483647)
+                            {
+                                SynError(it8, "Invalid hexadecimal number");
+                                return;
+                            }
+
+                            it8->inum = it8->inum * 16 + j;
+                            NextCh(it8);
+                        }
+                        return;
+                    }
+
+                    if ((__extension__ ({ int __res; if (sizeof (it8->ch) > 1) { if (__builtin_constant_p (it8->ch)) { int __c = (it8->ch); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (it8->ch); } else __res = (*__ctype_toupper_loc ())[(int) (it8->ch)]; __res; })) == 'B') {
+
+                        int j;
+
+                        NextCh(it8);
+                        while (it8->ch == '0' || it8->ch == '1')
+                        {
+                            j = it8->ch - '0';
+
+                            if ((long) it8->inum * 2L > (long) 2147483647)
+                            {
+                                SynError(it8, "Invalid binary number");
+                                return;
+                            }
+
+                            it8->inum = it8->inum * 2 + j;
+                            NextCh(it8);
+                        }
+                        return;
+                    }
+                }
+
+
+                while (((*__ctype_b_loc ())[(int) ((it8->ch))] & (unsigned short int) _ISdigit)) {
+
+                    if ((long) it8->inum * 10L > (long) 2147483647) {
+                        ReadReal(it8, it8->inum);
+                        it8->sy = SDNUM;
+                        it8->dnum *= sign;
+                        return;
+                    }
+
+                    it8->inum = it8->inum * 10 + (it8->ch - '0');
+                    NextCh(it8);
+                }
+
+                if (it8->ch == '.') {
+
+                    ReadReal(it8, it8->inum);
+                    it8->sy = SDNUM;
+                    it8->dnum *= sign;
+                    return;
+                }
+
+                it8 -> inum *= sign;
+
+
+
+                if (isidchar(it8 ->ch)) {
+
+                    if (it8 ->sy == SINUM) {
+
+                        sprintf(it8->id, "%d", it8->inum);
+                    }
+                    else {
+
+                        sprintf(it8->id, it8 ->DoubleFormatter, it8->dnum);
+                    }
+
+                    k = (int) strlen(it8 ->id);
+                    idptr = it8 ->id + k;
+                    do {
+
+                        if (++k < 128) *idptr++ = (char) it8->ch;
+
+                        NextCh(it8);
+
+                    } while (isidchar(it8->ch));
+
+                    *idptr = '\0';
+                    it8->sy = SIDENT;
+                }
+                return;
+
+            }
+            else
+                switch ((int) it8->ch) {
+
+
+        case '\x1a':
+            NextCh(it8);
+            break;
+
+
+        case 0:
+        case -1:
+            it8->sy = SEOF;
+            break;
+
+
+
+        case '\r':
+            NextCh(it8);
+            if (it8 ->ch == '\n')
+                NextCh(it8);
+            it8->sy = SEOLN;
+            it8->lineno++;
+            break;
+
+        case '\n':
+            NextCh(it8);
+            it8->sy = SEOLN;
+            it8->lineno++;
+            break;
+
+
+        case '#':
+            NextCh(it8);
+            while (it8->ch && it8->ch != '\n' && it8->ch != '\r')
+                NextCh(it8);
+
+            it8->sy = SCOMMENT;
+            break;
+
+
+        case '\'':
+        case '\"':
+            idptr = it8->str;
+            sng = it8->ch;
+            k = 0;
+            NextCh(it8);
+
+            while (k < 1024 && it8->ch != sng) {
+
+                if (it8->ch == '\n'|| it8->ch == '\r') k = 1024 +1;
+                else {
+                    *idptr++ = (char) it8->ch;
+                    NextCh(it8);
+                    k++;
+                }
+            }
+
+            it8->sy = SSTRING;
+            *idptr = '\0';
+            NextCh(it8);
+            break;
+
+
+        default:
+            SynError(it8, "Unrecognized character: 0x%x", it8 ->ch);
+            return;
+            }
+
+    } while (it8->sy == SCOMMENT);
+
+
+
+    if (it8 -> sy == SINCLUDE) {
+
+                FILECTX* FileNest;
+
+                if(it8 -> IncludeSP >= (20 -1)) {
+
+                    SynError(it8, "Too many recursion levels");
+                    return;
+                }
+
+                InSymbol(it8);
+                if (!Check(it8, SSTRING, "Filename expected")) return;
+
+                FileNest = it8 -> FileStack[it8 -> IncludeSP + 1];
+                if(FileNest == ((void*)0)) {
+
+                    FileNest = it8 ->FileStack[it8 -> IncludeSP + 1] = (FILECTX*)AllocChunk(it8, sizeof(FILECTX));
+
+
+                }
+
+                if (BuildAbsolutePath(it8->str,
+                                      it8->FileStack[it8->IncludeSP]->FileName,
+                                      FileNest->FileName, 256 -1) == 0) {
+                    SynError(it8, "File path too long");
+                    return;
+                }
+
+                FileNest->Stream = fopen(FileNest->FileName, "rt");
+                if (FileNest->Stream == ((void*)0)) {
+
+                        SynError(it8, "File %s not found", FileNest->FileName);
+                        return;
+                }
+                it8->IncludeSP++;
+
+                it8 ->ch = ' ';
+                InSymbol(it8);
+    }
+
+}
+
+
+static
+cmsBool CheckEOLN(cmsIT8* it8)
+{
+        if (!Check(it8, SEOLN, "Expected separator")) return 0;
+        while (it8 -> sy == SEOLN)
+                        InSymbol(it8);
+        return 1;
+
+}
+
+
+
+static
+void Skip(cmsIT8* it8, SYMBOL sy)
+{
+        if (it8->sy == sy && it8->sy != SEOF)
+                        InSymbol(it8);
+}
+
+
+
+static
+void SkipEOLN(cmsIT8* it8)
+{
+    while (it8->sy == SEOLN) {
+             InSymbol(it8);
+    }
+}
+
+
+
+static
+cmsBool GetVal(cmsIT8* it8, char* Buffer, cmsUInt32Number max, const char* ErrorTitle)
+{
+    switch (it8->sy) {
+
+    case SEOLN:
+                  Buffer[0]=0;
+                  break;
+    case SIDENT: __builtin_strncpy (Buffer, it8->id, max);
+                  Buffer[max-1]=0;
+                  break;
+    case SINUM: snprintf(Buffer, max, "%d", it8 -> inum); break;
+    case SDNUM: snprintf(Buffer, max, it8->DoubleFormatter, it8 -> dnum); break;
+    case SSTRING: __builtin_strncpy (Buffer, it8->str, max);
+                  Buffer[max-1] = 0;
+                  break;
+
+
+    default:
+         return SynError(it8, "%s", ErrorTitle);
+    }
+
+    Buffer[max] = 0;
+    return 1;
+}
+
+
+
+static
+TABLE* GetTable(cmsIT8* it8)
+{
+   if ((it8 -> nTable >= it8 ->TablesCount)) {
+
+           SynError(it8, "Table %d out of sequence", it8 -> nTable);
+           return it8 -> Tab;
+   }
+
+   return it8 ->Tab + it8 ->nTable;
+}
+
+
+
+
+
+void cmsIT8Free(cmsHANDLE hIT8)
+{
+   cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    if (it8 == ((void*)0))
+        return;
+
+    if (it8->MemorySink) {
+
+        OWNEDMEM* p;
+        OWNEDMEM* n;
+
+        for (p = it8->MemorySink; p != ((void*)0); p = n) {
+
+            n = p->Next;
+            if (p->Ptr) _cmsFree(it8 ->ContextID, p->Ptr);
+            _cmsFree(it8 ->ContextID, p);
+        }
+    }
+
+    if (it8->MemoryBlock)
+        _cmsFree(it8 ->ContextID, it8->MemoryBlock);
+
+    _cmsFree(it8 ->ContextID, it8);
+}
+
+
+
+static
+void* AllocBigBlock(cmsIT8* it8, cmsUInt32Number size)
+{
+    OWNEDMEM* ptr1;
+    void* ptr = _cmsMallocZero(it8->ContextID, size);
+
+    if (ptr != ((void*)0)) {
+
+        ptr1 = (OWNEDMEM*) _cmsMallocZero(it8 ->ContextID, sizeof(OWNEDMEM));
+
+        if (ptr1 == ((void*)0)) {
+
+            _cmsFree(it8 ->ContextID, ptr);
+            return ((void*)0);
+        }
+
+        ptr1-> Ptr = ptr;
+        ptr1-> Next = it8 -> MemorySink;
+        it8 -> MemorySink = ptr1;
+    }
+
+    return ptr;
+}
+
+
+
+static
+void* AllocChunk(cmsIT8* it8, cmsUInt32Number size)
+{
+    cmsUInt32Number Free = it8 ->Allocator.BlockSize - it8 ->Allocator.Used;
+    cmsUInt8Number* ptr;
+
+    size = (((size)+(sizeof(void *) - 1)) & ~(sizeof(void *) - 1));
+
+    if (size > Free) {
+
+        if (it8 -> Allocator.BlockSize == 0)
+
+                it8 -> Allocator.BlockSize = 20*1024;
+        else
+                it8 ->Allocator.BlockSize *= 2;
+
+        if (it8 ->Allocator.BlockSize < size)
+                it8 ->Allocator.BlockSize = size;
+
+        it8 ->Allocator.Used = 0;
+        it8 ->Allocator.Block = (cmsUInt8Number*) AllocBigBlock(it8, it8 ->Allocator.BlockSize);
+    }
+
+    ptr = it8 ->Allocator.Block + it8 ->Allocator.Used;
+    it8 ->Allocator.Used += size;
+
+    return (void*) ptr;
+
+}
+
+
+
+static
+char *AllocString(cmsIT8* it8, const char* str)
+{
+    cmsUInt32Number Size = (cmsUInt32Number) strlen(str)+1;
+    char *ptr;
+
+
+    ptr = (char *) AllocChunk(it8, Size);
+    if (ptr) __builtin_strncpy (ptr, str, Size-1);
+
+    return ptr;
+}
+
+
+
+static
+cmsBool IsAvailableOnList(KEYVALUE* p, const char* Key, const char* Subkey, KEYVALUE** LastPtr)
+{
+    if (LastPtr) *LastPtr = p;
+
+    for (; p != ((void*)0); p = p->Next) {
+
+        if (LastPtr) *LastPtr = p;
+
+        if (*Key != '#') {
+
+            if (cmsstrcasecmp(Key, p->Keyword) == 0)
+                break;
+        }
+    }
+
+    if (p == ((void*)0))
+        return 0;
+
+    if (Subkey == 0)
+        return 1;
+
+    for (; p != ((void*)0); p = p->NextSubkey) {
+
+        if (p ->Subkey == ((void*)0)) continue;
+
+        if (LastPtr) *LastPtr = p;
+
+        if (cmsstrcasecmp(Subkey, p->Subkey) == 0)
+            return 1;
+    }
+
+    return 0;
+}
+
+
+
+
+static
+KEYVALUE* AddToList(cmsIT8* it8, KEYVALUE** Head, const char *Key, const char *Subkey, const char* xValue, WRITEMODE WriteAs)
+{
+    KEYVALUE* p;
+    KEYVALUE* last;
+
+
+
+
+    if (IsAvailableOnList(*Head, Key, Subkey, &p)) {
+
+
+
+
+    }
+    else {
+
+        last = p;
+
+
+        p = (KEYVALUE*) AllocChunk(it8, sizeof(KEYVALUE));
+        if (p == ((void*)0))
+        {
+            SynError(it8, "AddToList: out of memory");
+            return ((void*)0);
+        }
+
+
+        p->Keyword = AllocString(it8, Key);
+        p->Subkey = (Subkey == ((void*)0)) ? ((void*)0) : AllocString(it8, Subkey);
+
+
+        if (*Head == ((void*)0)) {
+            *Head = p;
+        }
+        else
+        {
+            if (Subkey != ((void*)0) && last != ((void*)0)) {
+
+                last->NextSubkey = p;
+
+
+
+
+                while (last->Next != ((void*)0))
+                         last = last->Next;
+            }
+
+            if (last != ((void*)0)) last->Next = p;
+        }
+
+        p->Next = ((void*)0);
+        p->NextSubkey = ((void*)0);
+    }
+
+    p->WriteAs = WriteAs;
+
+    if (xValue != ((void*)0)) {
+
+        p->Value = AllocString(it8, xValue);
+    }
+    else {
+        p->Value = ((void*)0);
+    }
+
+    return p;
+}
+
+static
+KEYVALUE* AddAvailableProperty(cmsIT8* it8, const char* Key, WRITEMODE as)
+{
+    return AddToList(it8, &it8->ValidKeywords, Key, ((void*)0), ((void*)0), as);
+}
+
+
+static
+KEYVALUE* AddAvailableSampleID(cmsIT8* it8, const char* Key)
+{
+    return AddToList(it8, &it8->ValidSampleID, Key, ((void*)0), ((void*)0), WRITE_UNCOOKED);
+}
+
+
+static
+void AllocTable(cmsIT8* it8)
+{
+    TABLE* t;
+
+    t = it8 ->Tab + it8 ->TablesCount;
+
+    t->HeaderList = ((void*)0);
+    t->DataFormat = ((void*)0);
+    t->Data = ((void*)0);
+
+    it8 ->TablesCount++;
+}
+
+
+cmsInt32Number cmsIT8SetTable(cmsHANDLE IT8, cmsUInt32Number nTable)
+{
+     cmsIT8* it8 = (cmsIT8*) IT8;
+
+     if (nTable >= it8 ->TablesCount) {
+
+         if (nTable == it8 ->TablesCount) {
+
+             AllocTable(it8);
+         }
+         else {
+             SynError(it8, "Table %d is out of sequence", nTable);
+             return -1;
+         }
+     }
+
+     it8 ->nTable = nTable;
+
+     return (cmsInt32Number) nTable;
+}
+
+
+
+
+cmsHANDLE cmsIT8Alloc(cmsContext ContextID)
+{
+    cmsIT8* it8;
+    cmsUInt32Number i;
+
+    it8 = (cmsIT8*) _cmsMallocZero(ContextID, sizeof(cmsIT8));
+    if (it8 == ((void*)0)) return ((void*)0);
+
+    AllocTable(it8);
+
+    it8->MemoryBlock = ((void*)0);
+    it8->MemorySink = ((void*)0);
+
+    it8 ->nTable = 0;
+
+    it8->ContextID = ContextID;
+    it8->Allocator.Used = 0;
+    it8->Allocator.Block = ((void*)0);
+    it8->Allocator.BlockSize = 0;
+
+    it8->ValidKeywords = ((void*)0);
+    it8->ValidSampleID = ((void*)0);
+
+    it8 -> sy = SUNDEFINED;
+    it8 -> ch = ' ';
+    it8 -> Source = ((void*)0);
+    it8 -> inum = 0;
+    it8 -> dnum = 0.0;
+
+    it8->FileStack[0] = (FILECTX*)AllocChunk(it8, sizeof(FILECTX));
+    it8->IncludeSP = 0;
+    it8 -> lineno = 1;
+
+    strcpy(it8->DoubleFormatter, "%.10g");
+    cmsIT8SetSheetType((cmsHANDLE) it8, "CGATS.17");
+
+
+
+    for (i=0; i < (sizeof(PredefinedProperties)/sizeof(PROPERTY)); i++)
+            AddAvailableProperty(it8, PredefinedProperties[i].id, PredefinedProperties[i].as);
+
+    for (i=0; i < (sizeof(PredefinedSampleID)/sizeof(char *)); i++)
+            AddAvailableSampleID(it8, PredefinedSampleID[i]);
+
+
+   return (cmsHANDLE) it8;
+}
+
+
+const char* cmsIT8GetSheetType(cmsHANDLE hIT8)
+{
+        return GetTable((cmsIT8*) hIT8)->SheetType;
+}
+
+cmsBool cmsIT8SetSheetType(cmsHANDLE hIT8, const char* Type)
+{
+        TABLE* t = GetTable((cmsIT8*) hIT8);
+
+        __builtin_strncpy (t ->SheetType, Type, 1024 -1);
+        t ->SheetType[1024 -1] = 0;
+        return 1;
+}
+
+cmsBool cmsIT8SetComment(cmsHANDLE hIT8, const char* Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    if (!Val) return 0;
+    if (!*Val) return 0;
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, "# ", ((void*)0), Val, WRITE_UNCOOKED) != ((void*)0);
+}
+
+
+cmsBool cmsIT8SetPropertyStr(cmsHANDLE hIT8, const char* Key, const char *Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    if (!Val) return 0;
+    if (!*Val) return 0;
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, Key, ((void*)0), Val, WRITE_STRINGIFY) != ((void*)0);
+}
+
+cmsBool cmsIT8SetPropertyDbl(cmsHANDLE hIT8, const char* cProp, cmsFloat64Number Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    char Buffer[1024];
+
+    sprintf(Buffer, it8->DoubleFormatter, Val);
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, cProp, ((void*)0), Buffer, WRITE_UNCOOKED) != ((void*)0);
+}
+
+cmsBool cmsIT8SetPropertyHex(cmsHANDLE hIT8, const char* cProp, cmsUInt32Number Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    char Buffer[1024];
+
+    sprintf(Buffer, "%u", Val);
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, cProp, ((void*)0), Buffer, WRITE_HEXADECIMAL) != ((void*)0);
+}
+
+cmsBool cmsIT8SetPropertyUncooked(cmsHANDLE hIT8, const char* Key, const char* Buffer)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, Key, ((void*)0), Buffer, WRITE_UNCOOKED) != ((void*)0);
+}
+
+cmsBool cmsIT8SetPropertyMulti(cmsHANDLE hIT8, const char* Key, const char* SubKey, const char *Buffer)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    return AddToList(it8, &GetTable(it8)->HeaderList, Key, SubKey, Buffer, WRITE_PAIR) != ((void*)0);
+}
+
+
+const char* cmsIT8GetProperty(cmsHANDLE hIT8, const char* Key)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    KEYVALUE* p;
+
+    if (IsAvailableOnList(GetTable(it8) -> HeaderList, Key, ((void*)0), &p))
+    {
+        return p -> Value;
+    }
+    return ((void*)0);
+}
+
+
+cmsFloat64Number cmsIT8GetPropertyDbl(cmsHANDLE hIT8, const char* cProp)
+{
+    const char *v = cmsIT8GetProperty(hIT8, cProp);
+
+    if (v == ((void*)0)) return 0.0;
+
+    return ParseFloatNumber(v);
+}
+
+const char* cmsIT8GetPropertyMulti(cmsHANDLE hIT8, const char* Key, const char *SubKey)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    KEYVALUE* p;
+
+    if (IsAvailableOnList(GetTable(it8) -> HeaderList, Key, SubKey, &p)) {
+        return p -> Value;
+    }
+    return ((void*)0);
+}
+
+
+
+
+static
+void AllocateDataFormat(cmsIT8* it8)
+{
+    TABLE* t = GetTable(it8);
+
+    if (t -> DataFormat) return;
+
+    t -> nSamples = (int) cmsIT8GetPropertyDbl(it8, "NUMBER_OF_FIELDS");
+
+    if (t -> nSamples <= 0) {
+
+        SynError(it8, "AllocateDataFormat: Unknown NUMBER_OF_FIELDS");
+        t -> nSamples = 10;
+        }
+
+    t -> DataFormat = (char**) AllocChunk (it8, ((cmsUInt32Number) t->nSamples + 1) * sizeof(char *));
+    if (t->DataFormat == ((void*)0)) {
+
+        SynError(it8, "AllocateDataFormat: Unable to allocate dataFormat array");
+    }
+
+}
+
+static
+const char *GetDataFormat(cmsIT8* it8, int n)
+{
+    TABLE* t = GetTable(it8);
+
+    if (t->DataFormat)
+        return t->DataFormat[n];
+
+    return ((void*)0);
+}
+
+static
+cmsBool SetDataFormat(cmsIT8* it8, int n, const char *label)
+{
+    TABLE* t = GetTable(it8);
+
+    if (!t->DataFormat)
+        AllocateDataFormat(it8);
+
+    if (n > t -> nSamples) {
+        SynError(it8, "More than NUMBER_OF_FIELDS fields.");
+        return 0;
+    }
+
+    if (t->DataFormat) {
+        t->DataFormat[n] = AllocString(it8, label);
+    }
+
+    return 1;
+}
+
+
+cmsBool cmsIT8SetDataFormat(cmsHANDLE h, int n, const char *Sample)
+{
+        cmsIT8* it8 = (cmsIT8*) h;
+        return SetDataFormat(it8, n, Sample);
+}
+
+static
+void AllocateDataSet(cmsIT8* it8)
+{
+    TABLE* t = GetTable(it8);
+
+    if (t -> Data) return;
+
+    t-> nSamples = atoi(cmsIT8GetProperty(it8, "NUMBER_OF_FIELDS"));
+    t-> nPatches = atoi(cmsIT8GetProperty(it8, "NUMBER_OF_SETS"));
+
+    t-> Data = (char**)AllocChunk (it8, ((cmsUInt32Number) t->nSamples + 1) * ((cmsUInt32Number) t->nPatches + 1) *sizeof (char*));
+    if (t->Data == ((void*)0)) {
+
+        SynError(it8, "AllocateDataSet: Unable to allocate data array");
+    }
+
+}
+
+static
+char* GetData(cmsIT8* it8, int nSet, int nField)
+{
+    TABLE* t = GetTable(it8);
+    int nSamples = t -> nSamples;
+    int nPatches = t -> nPatches;
+
+    if (nSet >= nPatches || nField >= nSamples)
+        return ((void*)0);
+
+    if (!t->Data) return ((void*)0);
+    return t->Data [nSet * nSamples + nField];
+}
+
+static
+cmsBool SetData(cmsIT8* it8, int nSet, int nField, const char *Val)
+{
+    TABLE* t = GetTable(it8);
+
+    if (!t->Data)
+        AllocateDataSet(it8);
+
+    if (!t->Data) return 0;
+
+    if (nSet > t -> nPatches || nSet < 0) {
+
+            return SynError(it8, "Patch %d out of range, there are %d patches", nSet, t -> nPatches);
+    }
+
+    if (nField > t ->nSamples || nField < 0) {
+            return SynError(it8, "Sample %d out of range, there are %d samples", nField, t ->nSamples);
+
+    }
+
+    t->Data [nSet * t -> nSamples + nField] = AllocString(it8, Val);
+    return 1;
+}
+
+
+
+
+
+
+static
+void WriteStr(SAVESTREAM* f, const char *str)
+{
+    cmsUInt32Number len;
+
+    if (str == ((void*)0))
+        str = " ";
+
+
+    len = (cmsUInt32Number) strlen(str);
+    f ->Used += len;
+
+
+    if (f ->stream) {
+
+        if (fwrite(str, 1, len, f->stream) != len) {
+            cmsSignalError(0, 7, "Write to file error in CGATS parser");
+            return;
+        }
+
+    }
+    else {
+
+        if (f ->Base) {
+
+            if (f ->Used > f ->Max) {
+
+                 cmsSignalError(0, 7, "Write to memory overflows in CGATS parser");
+                 return;
+            }
+
+            memmove(f ->Ptr, str, len);
+            f->Ptr += len;
+        }
+
+    }
+}
+
+
+
+
+static
+void Writef(SAVESTREAM* f, const char* frm, ...)
+{
+    char Buffer[4096];
+    va_list args;
+
+    __builtin_va_start(args, frm);
+    vsnprintf(Buffer, 4095, frm, args);
+    Buffer[4095] = 0;
+    WriteStr(f, Buffer);
+    __builtin_va_end(args);
+
+}
+
+
+static
+void WriteHeader(cmsIT8* it8, SAVESTREAM* fp)
+{
+    KEYVALUE* p;
+    TABLE* t = GetTable(it8);
+
+
+    WriteStr(fp, t->SheetType);
+    WriteStr(fp, "\n");
+
+    for (p = t->HeaderList; (p != ((void*)0)); p = p->Next)
+    {
+        if (*p ->Keyword == '#') {
+
+            char* Pt;
+
+            WriteStr(fp, "#\n# ");
+            for (Pt = p ->Value; *Pt; Pt++) {
+
+
+                Writef(fp, "%c", *Pt);
+
+                if (*Pt == '\n') {
+                    WriteStr(fp, "# ");
+                }
+            }
+
+            WriteStr(fp, "\n#\n");
+            continue;
+        }
+
+
+        if (!IsAvailableOnList(it8-> ValidKeywords, p->Keyword, ((void*)0), ((void*)0))) {
+
+
+
+
+
+
+
+            AddAvailableProperty(it8, p->Keyword, WRITE_UNCOOKED);
+        }
+
+        WriteStr(fp, p->Keyword);
+        if (p->Value) {
+
+            switch (p ->WriteAs) {
+
+            case WRITE_UNCOOKED:
+                    Writef(fp, "\t%s", p ->Value);
+                    break;
+
+            case WRITE_STRINGIFY:
+                    Writef(fp, "\t\"%s\"", p->Value );
+                    break;
+
+            case WRITE_HEXADECIMAL:
+                    Writef(fp, "\t0x%X", atoi(p ->Value));
+                    break;
+
+            case WRITE_BINARY:
+                    Writef(fp, "\t0x%B", atoi(p ->Value));
+                    break;
+
+            case WRITE_PAIR:
+                    Writef(fp, "\t\"%s,%s\"", p->Subkey, p->Value);
+                    break;
+
+            default: SynError(it8, "Unknown write mode %d", p ->WriteAs);
+                     return;
+            }
+        }
+
+        WriteStr (fp, "\n");
+    }
+
+}
+
+
+
+static
+void WriteDataFormat(SAVESTREAM* fp, cmsIT8* it8)
+{
+    int i, nSamples;
+    TABLE* t = GetTable(it8);
+
+    if (!t -> DataFormat) return;
+
+       WriteStr(fp, "BEGIN_DATA_FORMAT\n");
+       WriteStr(fp, " ");
+       nSamples = atoi(cmsIT8GetProperty(it8, "NUMBER_OF_FIELDS"));
+
+       for (i = 0; i < nSamples; i++) {
+
+              WriteStr(fp, t->DataFormat[i]);
+              WriteStr(fp, ((i == (nSamples-1)) ? "\n" : "\t"));
+          }
+
+       WriteStr (fp, "END_DATA_FORMAT\n");
+}
+
+
+
+static
+void WriteData(SAVESTREAM* fp, cmsIT8* it8)
+{
+       int i, j;
+       TABLE* t = GetTable(it8);
+
+       if (!t->Data) return;
+
+       WriteStr (fp, "BEGIN_DATA\n");
+
+       t->nPatches = atoi(cmsIT8GetProperty(it8, "NUMBER_OF_SETS"));
+
+       for (i = 0; i < t-> nPatches; i++) {
+
+              WriteStr(fp, " ");
+
+              for (j = 0; j < t->nSamples; j++) {
+
+                     char *ptr = t->Data[i*t->nSamples+j];
+
+                     if (ptr == ((void*)0)) WriteStr(fp, "\"\"");
+                     else {
+
+
+                         if ((__extension__ (__builtin_constant_p (' ') && !__builtin_constant_p (ptr) && (' ') == '\0' ? (char *) __rawmemchr (ptr, ' ') : __builtin_strchr (ptr, ' '))) != ((void*)0)) {
+
+                             WriteStr(fp, "\"");
+                             WriteStr(fp, ptr);
+                             WriteStr(fp, "\"");
+                         }
+                         else
+                            WriteStr(fp, ptr);
+                     }
+
+                     WriteStr(fp, ((j == (t->nSamples-1)) ? "\n" : "\t"));
+              }
+       }
+       WriteStr (fp, "END_DATA\n");
+}
+
+
+
+
+cmsBool cmsIT8SaveToFile(cmsHANDLE hIT8, const char* cFileName)
+{
+    SAVESTREAM sd;
+    cmsUInt32Number i;
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    memset(&sd, 0, sizeof(sd));
+
+    sd.stream = fopen(cFileName, "wt");
+    if (!sd.stream) return 0;
+
+    for (i=0; i < it8 ->TablesCount; i++) {
+
+            cmsIT8SetTable(hIT8, i);
+            WriteHeader(it8, &sd);
+            WriteDataFormat(&sd, it8);
+            WriteData(&sd, it8);
+    }
+
+    if (fclose(sd.stream) != 0) return 0;
+
+    return 1;
+}
+
+
+
+cmsBool cmsIT8SaveToMem(cmsHANDLE hIT8, void *MemPtr, cmsUInt32Number* BytesNeeded)
+{
+    SAVESTREAM sd;
+    cmsUInt32Number i;
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    memset(&sd, 0, sizeof(sd));
+
+    sd.stream = ((void*)0);
+    sd.Base = (cmsUInt8Number*) MemPtr;
+    sd.Ptr = sd.Base;
+
+    sd.Used = 0;
+
+    if (sd.Base)
+        sd.Max = *BytesNeeded;
+    else
+        sd.Max = 0;
+
+    for (i=0; i < it8 ->TablesCount; i++) {
+
+        cmsIT8SetTable(hIT8, i);
+        WriteHeader(it8, &sd);
+        WriteDataFormat(&sd, it8);
+        WriteData(&sd, it8);
+    }
+
+    sd.Used++;
+
+    if (sd.Base)
+        *sd.Ptr = 0;
+
+    *BytesNeeded = sd.Used;
+
+    return 1;
+}
+
+
+
+
+static
+cmsBool DataFormatSection(cmsIT8* it8)
+{
+    int iField = 0;
+    TABLE* t = GetTable(it8);
+
+    InSymbol(it8);
+    CheckEOLN(it8);
+
+    while (it8->sy != SEND_DATA_FORMAT &&
+        it8->sy != SEOLN &&
+        it8->sy != SEOF &&
+        it8->sy != SSYNERROR) {
+
+            if (it8->sy != SIDENT) {
+
+                return SynError(it8, "Sample type expected");
+            }
+
+            if (!SetDataFormat(it8, iField, it8->id)) return 0;
+            iField++;
+
+            InSymbol(it8);
+            SkipEOLN(it8);
+       }
+
+       SkipEOLN(it8);
+       Skip(it8, SEND_DATA_FORMAT);
+       SkipEOLN(it8);
+
+       if (iField != t ->nSamples) {
+           SynError(it8, "Count mismatch. NUMBER_OF_FIELDS was %d, found %d\n", t ->nSamples, iField);
+
+
+       }
+
+       return 1;
+}
+
+
+
+static
+cmsBool DataSection (cmsIT8* it8)
+{
+    int iField = 0;
+    int iSet = 0;
+    char Buffer[256];
+    TABLE* t = GetTable(it8);
+
+    InSymbol(it8);
+    CheckEOLN(it8);
+
+    if (!t->Data)
+        AllocateDataSet(it8);
+
+    while (it8->sy != SEND_DATA && it8->sy != SEOF)
+    {
+        if (iField >= t -> nSamples) {
+            iField = 0;
+            iSet++;
+
+        }
+
+        if (it8->sy != SEND_DATA && it8->sy != SEOF) {
+
+            if (!GetVal(it8, Buffer, 255, "Sample data expected"))
+                return 0;
+
+            if (!SetData(it8, iSet, iField, Buffer))
+                return 0;
+
+            iField++;
+
+            InSymbol(it8);
+            SkipEOLN(it8);
+        }
+    }
+
+    SkipEOLN(it8);
+    Skip(it8, SEND_DATA);
+    SkipEOLN(it8);
+
+
+
+    if ((iSet+1) != t -> nPatches)
+        return SynError(it8, "Count mismatch. NUMBER_OF_SETS was %d, found %d\n", t ->nPatches, iSet+1);
+
+    return 1;
+}
+
+
+
+
+static
+cmsBool HeaderSection(cmsIT8* it8)
+{
+    char VarName[128];
+    char Buffer[1024];
+    KEYVALUE* Key;
+
+        while (it8->sy != SEOF &&
+               it8->sy != SSYNERROR &&
+               it8->sy != SBEGIN_DATA_FORMAT &&
+               it8->sy != SBEGIN_DATA) {
+
+
+        switch (it8 -> sy) {
+
+        case SKEYWORD:
+                InSymbol(it8);
+                if (!GetVal(it8, Buffer, 1024 -1, "Keyword expected")) return 0;
+                if (!AddAvailableProperty(it8, Buffer, WRITE_UNCOOKED)) return 0;
+                InSymbol(it8);
+                break;
+
+
+        case SDATA_FORMAT_ID:
+                InSymbol(it8);
+                if (!GetVal(it8, Buffer, 1024 -1, "Keyword expected")) return 0;
+                if (!AddAvailableSampleID(it8, Buffer)) return 0;
+                InSymbol(it8);
+                break;
+
+
+        case SIDENT:
+                __builtin_strncpy (VarName, it8->id, 128 -1);
+                VarName[128 -1] = 0;
+
+                if (!IsAvailableOnList(it8-> ValidKeywords, VarName, ((void*)0), &Key)) {
+
+
+
+
+                    Key = AddAvailableProperty(it8, VarName, WRITE_UNCOOKED);
+                    if (Key == ((void*)0)) return 0;
+
+                }
+
+                InSymbol(it8);
+                if (!GetVal(it8, Buffer, 1024 -1, "Property data expected")) return 0;
+
+                if(Key->WriteAs != WRITE_PAIR) {
+                    AddToList(it8, &GetTable(it8)->HeaderList, VarName, ((void*)0), Buffer,
+                                (it8->sy == SSTRING) ? WRITE_STRINGIFY : WRITE_UNCOOKED);
+                }
+                else {
+                    const char *Subkey;
+                    char *Nextkey;
+                    if (it8->sy != SSTRING)
+                        return SynError(it8, "Invalid value '%s' for property '%s'.", Buffer, VarName);
+
+
+                    for (Subkey = Buffer; Subkey != ((void*)0); Subkey = Nextkey)
+                    {
+                        char *Value, *temp;
+
+
+                        Nextkey = (char*) (__extension__ (__builtin_constant_p (';') && !__builtin_constant_p (Subkey) && (';') == '\0' ? (char *) __rawmemchr (Subkey, ';') : __builtin_strchr (Subkey, ';')));
+                        if(Nextkey)
+                            *Nextkey++ = '\0';
+
+
+                        Value = (char*) strrchr(Subkey, ',');
+                        if(Value == ((void*)0))
+                            return SynError(it8, "Invalid value for property '%s'.", VarName);
+
+
+                        temp = Value++;
+                        do *temp-- = '\0'; while(temp >= Subkey && *temp == ' ');
+
+
+                        temp = Value + strlen(Value) - 1;
+                        while(*temp == ' ') *temp-- = '\0';
+
+
+                        Subkey += __extension__ ({ char __a0, __a1, __a2; (__builtin_constant_p (" ") && ((size_t)(const void *)((" ") + 1) - (size_t)(const void *)(" ") == 1) ? ((__builtin_constant_p (Subkey) && ((size_t)(const void *)((Subkey) + 1) - (size_t)(const void *)(Subkey) == 1)) ? __builtin_strspn (Subkey, " ") : ((__a0 = ((const char *) (" "))[0], __a0 == '\0') ? ((void) (Subkey), (size_t) 0) : ((__a1 = ((const char *) (" "))[1], __a1 == '\0') ? __strspn_c1 (Subkey, __a0) : ((__a2 = ((const char *) (" "))[2], __a2 == '\0') ? __strspn_c2 (Subkey, __a0, __a1) : (((const char *) (" "))[3] == '\0' ? __strspn_c3 (Subkey, __a0, __a1, __a2) : __builtin_strspn (Subkey, " ")))))) : __builtin_strspn (Subkey, " ")); });
+                        Value += __extension__ ({ char __a0, __a1, __a2; (__builtin_constant_p (" ") && ((size_t)(const void *)((" ") + 1) - (size_t)(const void *)(" ") == 1) ? ((__builtin_constant_p (Value) && ((size_t)(const void *)((Value) + 1) - (size_t)(const void *)(Value) == 1)) ? __builtin_strspn (Value, " ") : ((__a0 = ((const char *) (" "))[0], __a0 == '\0') ? ((void) (Value), (size_t) 0) : ((__a1 = ((const char *) (" "))[1], __a1 == '\0') ? __strspn_c1 (Value, __a0) : ((__a2 = ((const char *) (" "))[2], __a2 == '\0') ? __strspn_c2 (Value, __a0, __a1) : (((const char *) (" "))[3] == '\0' ? __strspn_c3 (Value, __a0, __a1, __a2) : __builtin_strspn (Value, " ")))))) : __builtin_strspn (Value, " ")); });
+
+                        if(Subkey[0] == 0 || Value[0] == 0)
+                            return SynError(it8, "Invalid value for property '%s'.", VarName);
+                        AddToList(it8, &GetTable(it8)->HeaderList, VarName, Subkey, Value, WRITE_PAIR);
+                    }
+                }
+
+                InSymbol(it8);
+                break;
+
+
+        case SEOLN: break;
+
+        default:
+                return SynError(it8, "expected keyword or identifier");
+        }
+
+    SkipEOLN(it8);
+    }
+
+    return 1;
+
+}
+
+
+static
+void ReadType(cmsIT8* it8, char* SheetTypePtr)
+{
+
+
+    while (isseparator(it8->ch))
+            NextCh(it8);
+
+    while (it8->ch != '\r' && it8 ->ch != '\n' && it8->ch != '\t' && it8 -> ch != -1) {
+
+        *SheetTypePtr++= (char) it8 ->ch;
+        NextCh(it8);
+    }
+
+    *SheetTypePtr = 0;
+}
+
+
+static
+cmsBool ParseIT8(cmsIT8* it8, cmsBool nosheet)
+{
+    char* SheetTypePtr = it8 ->Tab[0].SheetType;
+
+    if (nosheet == 0) {
+        ReadType(it8, SheetTypePtr);
+    }
+
+    InSymbol(it8);
+
+    SkipEOLN(it8);
+
+    while (it8-> sy != SEOF &&
+           it8-> sy != SSYNERROR) {
+
+            switch (it8 -> sy) {
+
+            case SBEGIN_DATA_FORMAT:
+                    if (!DataFormatSection(it8)) return 0;
+                    break;
+
+            case SBEGIN_DATA:
+
+                    if (!DataSection(it8)) return 0;
+
+                    if (it8 -> sy != SEOF) {
+
+                            AllocTable(it8);
+                            it8 ->nTable = it8 ->TablesCount - 1;
+
+
+
+
+                            if (nosheet == 0) {
+
+                                if (it8 ->sy == SIDENT) {
+
+
+
+                                     while (isseparator(it8->ch))
+                                         NextCh(it8);
+
+
+                                    if (it8 ->ch == '\n' || it8->ch == '\r') {
+
+                                         cmsIT8SetSheetType(it8, it8 ->id);
+                                         InSymbol(it8);
+                                    }
+                                    else
+                                    {
+
+                                        cmsIT8SetSheetType(it8, "");
+                                    }
+                                }
+                                else
+
+                                    if (it8 ->sy == SSTRING) {
+                                        cmsIT8SetSheetType(it8, it8 ->str);
+                                        InSymbol(it8);
+                                    }
+                           }
+
+                    }
+                    break;
+
+            case SEOLN:
+                    SkipEOLN(it8);
+                    break;
+
+            default:
+                    if (!HeaderSection(it8)) return 0;
+           }
+
+    }
+
+    return (it8 -> sy != SSYNERROR);
+}
+
+
+
+
+
+static
+void CookPointers(cmsIT8* it8)
+{
+    int idField, i;
+    char* Fld;
+    cmsUInt32Number j;
+    cmsUInt32Number nOldTable = it8 ->nTable;
+
+    for (j=0; j < it8 ->TablesCount; j++) {
+
+    TABLE* t = it8 ->Tab + j;
+
+    t -> SampleID = 0;
+    it8 ->nTable = j;
+
+    for (idField = 0; idField < t -> nSamples; idField++)
+    {
+        if (t ->DataFormat == ((void*)0)){
+            SynError(it8, "Undefined DATA_FORMAT");
+            return;
+        }
+
+        Fld = t->DataFormat[idField];
+        if (!Fld) continue;
+
+
+        if (cmsstrcasecmp(Fld, "SAMPLE_ID") == 0) {
+
+            t -> SampleID = idField;
+
+            for (i=0; i < t -> nPatches; i++) {
+
+                char *Data = GetData(it8, i, idField);
+                if (Data) {
+                    char Buffer[256];
+
+                    __builtin_strncpy (Buffer, Data, 255);
+                    Buffer[255] = 0;
+
+                    if (strlen(Buffer) <= strlen(Data))
+                        strcpy(Data, Buffer);
+                    else
+                        SetData(it8, i, idField, Buffer);
+
+                }
+            }
+
+        }
+
+
+
+        if ((cmsstrcasecmp(Fld, "LABEL") == 0) || Fld[0] == '$' ) {
+
+
+                    for (i=0; i < t -> nPatches; i++) {
+
+                            char *Label = GetData(it8, i, idField);
+
+                            if (Label) {
+
+                                cmsUInt32Number k;
+
+
+
+
+                                for (k=0; k < it8 ->TablesCount; k++) {
+
+                                    TABLE* Table = it8 ->Tab + k;
+                                    KEYVALUE* p;
+
+                                    if (IsAvailableOnList(Table->HeaderList, Label, ((void*)0), &p)) {
+
+
+                                        char Buffer[256];
+
+                                        char *Type = p ->Value;
+                                        int nTable = (int) k;
+
+                                        snprintf(Buffer, 255, "%s %d %s", Label, nTable, Type );
+
+                                        SetData(it8, i, idField, Buffer);
+                                    }
+                                }
+
+
+                            }
+
+                    }
+
+
+        }
+
+    }
+    }
+
+    it8 ->nTable = nOldTable;
+}
+
+
+
+
+static
+int IsMyBlock(cmsUInt8Number* Buffer, int n)
+{
+    int words = 1, space = 0, quot = 0;
+    int i;
+
+    if (n < 10) return 0;
+
+    if (n > 132)
+        n = 132;
+
+    for (i = 1; i < n; i++) {
+
+        switch(Buffer[i])
+        {
+        case '\n':
+        case '\r':
+            return ((quot == 1) || (words > 2)) ? 0 : words;
+        case '\t':
+        case ' ':
+            if(!quot && !space)
+                space = 1;
+            break;
+        case '\"':
+            quot = !quot;
+            break;
+        default:
+            if (Buffer[i] < 32) return 0;
+            if (Buffer[i] > 127) return 0;
+            words += space;
+            space = 0;
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+static
+cmsBool IsMyFile(const char* FileName)
+{
+   FILE *fp;
+   cmsUInt32Number Size;
+   cmsUInt8Number Ptr[133];
+
+   fp = fopen(FileName, "rt");
+   if (!fp) {
+       cmsSignalError(0, 1, "File '%s' not found", FileName);
+       return 0;
+   }
+
+   Size = (cmsUInt32Number) fread(Ptr, 1, 132, fp);
+
+   if (fclose(fp) != 0)
+       return 0;
+
+   Ptr[Size] = '\0';
+
+   return IsMyBlock(Ptr, Size);
+}
+
+
+
+
+cmsHANDLE cmsIT8LoadFromMem(cmsContext ContextID, void *Ptr, cmsUInt32Number len)
+{
+    cmsHANDLE hIT8;
+    cmsIT8* it8;
+    int type;
+
+    (((Ptr != ((void*)0))) ? (void) (0) : __assert_fail ("(Ptr != ((void*)0))", "./lcms2/src/cmscgats.c", 2297, __PRETTY_FUNCTION__));
+    (((len != 0)) ? (void) (0) : __assert_fail ("(len != 0)", "./lcms2/src/cmscgats.c", 2298, __PRETTY_FUNCTION__));
+
+    type = IsMyBlock((cmsUInt8Number*)Ptr, len);
+    if (type == 0) return ((void*)0);
+
+    hIT8 = cmsIT8Alloc(ContextID);
+    if (!hIT8) return ((void*)0);
+
+    it8 = (cmsIT8*) hIT8;
+    it8 ->MemoryBlock = (char*) _cmsMalloc(ContextID, len + 1);
+
+    __builtin_strncpy (it8 ->MemoryBlock, (const char*) Ptr, len);
+    it8 ->MemoryBlock[len] = 0;
+
+    __builtin_strncpy (it8->FileStack[0]->FileName, "", 256 -1);
+    it8-> Source = it8 -> MemoryBlock;
+
+    if (!ParseIT8(it8, type-1)) {
+
+        cmsIT8Free(hIT8);
+        return 0;
+    }
+
+    CookPointers(it8);
+    it8 ->nTable = 0;
+
+    _cmsFree(ContextID, it8->MemoryBlock);
+    it8 -> MemoryBlock = ((void*)0);
+
+    return hIT8;
+
+
+}
+
+
+cmsHANDLE cmsIT8LoadFromFile(cmsContext ContextID, const char* cFileName)
+{
+
+     cmsHANDLE hIT8;
+     cmsIT8* it8;
+     int type;
+
+     (((cFileName != ((void*)0))) ? (void) (0) : __assert_fail ("(cFileName != ((void*)0))", "./lcms2/src/cmscgats.c", 2340, __PRETTY_FUNCTION__));
+
+     type = IsMyFile(cFileName);
+     if (type == 0) return ((void*)0);
+
+     hIT8 = cmsIT8Alloc(ContextID);
+     it8 = (cmsIT8*) hIT8;
+     if (!hIT8) return ((void*)0);
+
+
+     it8 ->FileStack[0]->Stream = fopen(cFileName, "rt");
+
+     if (!it8 ->FileStack[0]->Stream) {
+         cmsIT8Free(hIT8);
+         return ((void*)0);
+     }
+
+
+    __builtin_strncpy (it8->FileStack[0]->FileName, cFileName, 256 -1);
+    it8->FileStack[0]->FileName[256 -1] = 0;
+
+    if (!ParseIT8(it8, type-1)) {
+
+            fclose(it8 ->FileStack[0]->Stream);
+            cmsIT8Free(hIT8);
+            return ((void*)0);
+    }
+
+    CookPointers(it8);
+    it8 ->nTable = 0;
+
+    if (fclose(it8 ->FileStack[0]->Stream)!= 0) {
+            cmsIT8Free(hIT8);
+            return ((void*)0);
+    }
+
+    return hIT8;
+
+}
+
+int cmsIT8EnumDataFormat(cmsHANDLE hIT8, char ***SampleNames)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    TABLE* t;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2385, __PRETTY_FUNCTION__));
+
+    t = GetTable(it8);
+
+    if (SampleNames)
+        *SampleNames = t -> DataFormat;
+    return t -> nSamples;
+}
+
+
+cmsUInt32Number cmsIT8EnumProperties(cmsHANDLE hIT8, char ***PropertyNames)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    KEYVALUE* p;
+    cmsUInt32Number n;
+    char **Props;
+    TABLE* t;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2403, __PRETTY_FUNCTION__));
+
+    t = GetTable(it8);
+
+
+
+    n = 0;
+    for (p = t -> HeaderList; p != ((void*)0); p = p->Next) {
+        n++;
+    }
+
+
+    Props = (char **) AllocChunk(it8, sizeof(char *) * n);
+
+
+    n = 0;
+    for (p = t -> HeaderList; p != ((void*)0); p = p->Next) {
+        Props[n++] = p -> Keyword;
+    }
+
+    *PropertyNames = Props;
+    return n;
+}
+
+cmsUInt32Number cmsIT8EnumPropertyMulti(cmsHANDLE hIT8, const char* cProp, const char ***SubpropertyNames)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    KEYVALUE *p, *tmp;
+    cmsUInt32Number n;
+    const char **Props;
+    TABLE* t;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2435, __PRETTY_FUNCTION__));
+
+
+    t = GetTable(it8);
+
+    if(!IsAvailableOnList(t->HeaderList, cProp, ((void*)0), &p)) {
+        *SubpropertyNames = 0;
+        return 0;
+    }
+
+
+
+    n = 0;
+    for (tmp = p; tmp != ((void*)0); tmp = tmp->NextSubkey) {
+        if(tmp->Subkey != ((void*)0))
+            n++;
+    }
+
+
+    Props = (const char **) AllocChunk(it8, sizeof(char *) * n);
+
+
+    n = 0;
+    for (tmp = p; tmp != ((void*)0); tmp = tmp->NextSubkey) {
+        if(tmp->Subkey != ((void*)0))
+            Props[n++] = p ->Subkey;
+    }
+
+    *SubpropertyNames = Props;
+    return n;
+}
+
+static
+int LocatePatch(cmsIT8* it8, const char* cPatch)
+{
+    int i;
+    const char *data;
+    TABLE* t = GetTable(it8);
+
+    for (i=0; i < t-> nPatches; i++) {
+
+        data = GetData(it8, i, t->SampleID);
+
+        if (data != ((void*)0)) {
+
+                if (cmsstrcasecmp(data, cPatch) == 0)
+                        return i;
+                }
+        }
+
+
+        return -1;
+}
+
+
+static
+int LocateEmptyPatch(cmsIT8* it8)
+{
+    int i;
+    const char *data;
+    TABLE* t = GetTable(it8);
+
+    for (i=0; i < t-> nPatches; i++) {
+
+        data = GetData(it8, i, t->SampleID);
+
+        if (data == ((void*)0))
+            return i;
+
+    }
+
+    return -1;
+}
+
+static
+int LocateSample(cmsIT8* it8, const char* cSample)
+{
+    int i;
+    const char *fld;
+    TABLE* t = GetTable(it8);
+
+    for (i=0; i < t->nSamples; i++) {
+
+        fld = GetDataFormat(it8, i);
+        if (cmsstrcasecmp(fld, cSample) == 0)
+            return i;
+    }
+
+    return -1;
+
+}
+
+
+int cmsIT8FindDataFormat(cmsHANDLE hIT8, const char* cSample)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2532, __PRETTY_FUNCTION__));
+
+    return LocateSample(it8, cSample);
+}
+
+
+
+const char* cmsIT8GetDataRowCol(cmsHANDLE hIT8, int row, int col)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2543, __PRETTY_FUNCTION__));
+
+    return GetData(it8, row, col);
+}
+
+
+cmsFloat64Number cmsIT8GetDataRowColDbl(cmsHANDLE hIT8, int row, int col)
+{
+    const char* Buffer;
+
+    Buffer = cmsIT8GetDataRowCol(hIT8, row, col);
+
+    if (Buffer == ((void*)0)) return 0.0;
+
+    return ParseFloatNumber(Buffer);
+}
+
+
+cmsBool cmsIT8SetDataRowCol(cmsHANDLE hIT8, int row, int col, const char* Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2565, __PRETTY_FUNCTION__));
+
+    return SetData(it8, row, col, Val);
+}
+
+
+cmsBool cmsIT8SetDataRowColDbl(cmsHANDLE hIT8, int row, int col, cmsFloat64Number Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    char Buff[256];
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2576, __PRETTY_FUNCTION__));
+
+    sprintf(Buff, it8->DoubleFormatter, Val);
+
+    return SetData(it8, row, col, Buff);
+}
+
+
+
+const char* cmsIT8GetData(cmsHANDLE hIT8, const char* cPatch, const char* cSample)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    int iField, iSet;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2590, __PRETTY_FUNCTION__));
+
+    iField = LocateSample(it8, cSample);
+    if (iField < 0) {
+        return ((void*)0);
+    }
+
+    iSet = LocatePatch(it8, cPatch);
+    if (iSet < 0) {
+            return ((void*)0);
+    }
+
+    return GetData(it8, iSet, iField);
+}
+
+
+cmsFloat64Number cmsIT8GetDataDbl(cmsHANDLE it8, const char* cPatch, const char* cSample)
+{
+    const char* Buffer;
+
+    Buffer = cmsIT8GetData(it8, cPatch, cSample);
+
+    return ParseFloatNumber(Buffer);
+}
+
+
+
+cmsBool cmsIT8SetData(cmsHANDLE hIT8, const char* cPatch, const char* cSample, const char *Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    int iField, iSet;
+    TABLE* t;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2623, __PRETTY_FUNCTION__));
+
+    t = GetTable(it8);
+
+    iField = LocateSample(it8, cSample);
+
+    if (iField < 0)
+        return 0;
+
+    if (t-> nPatches == 0) {
+
+        AllocateDataFormat(it8);
+        AllocateDataSet(it8);
+        CookPointers(it8);
+    }
+
+    if (cmsstrcasecmp(cSample, "SAMPLE_ID") == 0) {
+
+        iSet = LocateEmptyPatch(it8);
+        if (iSet < 0) {
+            return SynError(it8, "Couldn't add more patches '%s'\n", cPatch);
+        }
+
+        iField = t -> SampleID;
+    }
+    else {
+        iSet = LocatePatch(it8, cPatch);
+        if (iSet < 0) {
+            return 0;
+        }
+    }
+
+    return SetData(it8, iSet, iField, Val);
+}
+
+
+cmsBool cmsIT8SetDataDbl(cmsHANDLE hIT8, const char* cPatch,
+                                   const char* cSample,
+                                   cmsFloat64Number Val)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    char Buff[256];
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2666, __PRETTY_FUNCTION__));
+
+    snprintf(Buff, 255, it8->DoubleFormatter, Val);
+    return cmsIT8SetData(hIT8, cPatch, cSample, Buff);
+}
+
+
+
+const char* cmsIT8GetPatchName(cmsHANDLE hIT8, int nPatch, char* buffer)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    TABLE* t;
+    char* Data;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2680, __PRETTY_FUNCTION__));
+
+    t = GetTable(it8);
+    Data = GetData(it8, nPatch, t->SampleID);
+
+    if (!Data) return ((void*)0);
+    if (!buffer) return Data;
+
+    __builtin_strncpy (buffer, Data, 1024 -1);
+    buffer[1024 -1] = 0;
+    return buffer;
+}
+
+int cmsIT8GetPatchByName(cmsHANDLE hIT8, const char *cPatch)
+{
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2695, __PRETTY_FUNCTION__));
+
+    return LocatePatch((cmsIT8*)hIT8, cPatch);
+}
+
+cmsUInt32Number cmsIT8TableCount(cmsHANDLE hIT8)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2704, __PRETTY_FUNCTION__));
+
+    return it8 ->TablesCount;
+}
+
+
+
+
+int cmsIT8SetTableByLabel(cmsHANDLE hIT8, const char* cSet, const char* cField, const char* ExpectedType)
+{
+    const char* cLabelFld;
+    char Type[256], Label[256];
+    int nTable;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2718, __PRETTY_FUNCTION__));
+
+    if (cField != ((void*)0) && *cField == 0)
+            cField = "LABEL";
+
+    if (cField == ((void*)0))
+            cField = "LABEL";
+
+    cLabelFld = cmsIT8GetData(hIT8, cSet, cField);
+    if (!cLabelFld) return -1;
+
+    if (sscanf(cLabelFld, "%255s %d %255s", Label, &nTable, Type) != 3)
+            return -1;
+
+    if (ExpectedType != ((void*)0) && *ExpectedType == 0)
+        ExpectedType = ((void*)0);
+
+    if (ExpectedType) {
+
+        if (cmsstrcasecmp(Type, ExpectedType) != 0) return -1;
+    }
+
+    return cmsIT8SetTable(hIT8, nTable);
+}
+
+
+cmsBool cmsIT8SetIndexColumn(cmsHANDLE hIT8, const char* cSample)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+    int pos;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2749, __PRETTY_FUNCTION__));
+
+    pos = LocateSample(it8, cSample);
+    if(pos == -1)
+        return 0;
+
+    it8->Tab[it8->nTable].SampleID = pos;
+    return 1;
+}
+
+
+void cmsIT8DefineDblFormat(cmsHANDLE hIT8, const char* Formatter)
+{
+    cmsIT8* it8 = (cmsIT8*) hIT8;
+
+    (((hIT8 != ((void*)0))) ? (void) (0) : __assert_fail ("(hIT8 != ((void*)0))", "./lcms2/src/cmscgats.c", 2764, __PRETTY_FUNCTION__));
+
+    if (Formatter == ((void*)0))
+        strcpy(it8->DoubleFormatter, "%.10g");
+    else
+        __builtin_strncpy (it8->DoubleFormatter, Formatter, sizeof(it8->DoubleFormatter));
+
+    it8 ->DoubleFormatter[sizeof(it8 ->DoubleFormatter)-1] = 0;
+}

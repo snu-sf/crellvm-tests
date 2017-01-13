@@ -1,0 +1,149 @@
+	.text
+	.file	"imap_cmd_move_up.bc"
+	.globl	move_up_command_new
+	.align	16, 0x90
+	.type	move_up_command_new,@function
+move_up_command_new:                    # @move_up_command_new
+	.cfi_startproc
+# BB#0:                                 # %entry
+	pushq	%rbp
+.Ltmp0:
+	.cfi_def_cfa_offset 16
+.Ltmp1:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+.Ltmp2:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	movl	$1, %eax
+	movl	%eax, %ecx
+	movl	$48, %eax
+	movl	%eax, %esi
+	movq	%rdi, -8(%rbp)
+	movq	%rcx, %rdi
+	callq	g_malloc_n
+	movabsq	$.L.str, %rdi
+	movq	%rax, -16(%rbp)
+	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rcx
+	movq	%rax, 32(%rcx)
+	movq	-16(%rbp), %rax
+	movl	$0, 40(%rax)
+	movq	-16(%rbp), %rax
+	movq	%rax, -24(%rbp)         # 8-byte Spill
+	callq	gettext
+	movabsq	$move_up_command_class, %rdx
+	movq	-24(%rbp), %rdi         # 8-byte Reload
+	movq	%rax, %rsi
+	callq	command_init
+	addq	$32, %rsp
+	popq	%rbp
+	retq
+.Lfunc_end0:
+	.size	move_up_command_new, .Lfunc_end0-move_up_command_new
+	.cfi_endproc
+
+	.align	16, 0x90
+	.type	move_up_command_execute,@function
+move_up_command_execute:                # @move_up_command_execute
+	.cfi_startproc
+# BB#0:                                 # %entry
+	pushq	%rbp
+.Ltmp3:
+	.cfi_def_cfa_offset 16
+.Ltmp4:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+.Ltmp5:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	movabsq	$move_up_one_object, %rsi
+	movq	%rdi, -8(%rbp)
+	movq	-8(%rbp), %rdi
+	movq	%rdi, -16(%rbp)
+	movq	-16(%rbp), %rdi
+	movq	32(%rdi), %rdi
+	movq	-16(%rbp), %rax
+	movq	%rax, %rdx
+	callq	object_list_add_move_cb
+	movq	%rax, -24(%rbp)
+	movq	-16(%rbp), %rax
+	movq	32(%rax), %rdi
+	callq	object_list_move_selected_up
+	movq	-16(%rbp), %rax
+	movq	32(%rax), %rdi
+	movq	-24(%rbp), %rsi
+	callq	object_list_remove_move_cb
+	xorl	%eax, %eax
+	addq	$32, %rsp
+	popq	%rbp
+	retq
+.Lfunc_end1:
+	.size	move_up_command_execute, .Lfunc_end1-move_up_command_execute
+	.cfi_endproc
+
+	.align	16, 0x90
+	.type	move_up_one_object,@function
+move_up_one_object:                     # @move_up_one_object
+	.cfi_startproc
+# BB#0:                                 # %entry
+	pushq	%rbp
+.Ltmp6:
+	.cfi_def_cfa_offset 16
+.Ltmp7:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+.Ltmp8:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	movq	%rdi, -8(%rbp)
+	movq	%rsi, -16(%rbp)
+	movq	-16(%rbp), %rsi
+	movq	%rsi, -24(%rbp)
+	movq	-24(%rbp), %rsi
+	cmpl	$0, 40(%rsi)
+	je	.LBB2_2
+# BB#1:                                 # %if.then
+	movq	-24(%rbp), %rdi
+	movq	-24(%rbp), %rax
+	movq	32(%rax), %rax
+	movq	-8(%rbp), %rsi
+	movq	%rdi, -32(%rbp)         # 8-byte Spill
+	movq	%rax, %rdi
+	callq	object_up_command_new
+	movq	-32(%rbp), %rdi         # 8-byte Reload
+	movq	%rax, %rsi
+	callq	command_add_subcommand
+	movq	-24(%rbp), %rax
+	movl	$0, 40(%rax)
+	jmp	.LBB2_3
+.LBB2_2:                                # %if.else
+	movq	-24(%rbp), %rax
+	movl	$1, 40(%rax)
+.LBB2_3:                                # %if.end
+	addq	$32, %rsp
+	popq	%rbp
+	retq
+.Lfunc_end2:
+	.size	move_up_one_object, .Lfunc_end2-move_up_one_object
+	.cfi_endproc
+
+	.type	.L.str,@object          # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"Move Up"
+	.size	.L.str, 8
+
+	.type	move_up_command_class,@object # @move_up_command_class
+	.data
+	.align	8
+move_up_command_class:
+	.quad	0
+	.quad	move_up_command_execute
+	.quad	0
+	.quad	0
+	.size	move_up_command_class, 32
+
+
+	.ident	"clang version 3.7.0 (tags/RELEASE_370/final)"
+	.section	".note.GNU-stack","",@progbits

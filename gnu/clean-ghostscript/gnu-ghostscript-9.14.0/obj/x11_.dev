@@ -1,0 +1,4 @@
+-obj ./obj/gdevx.o ./obj/gdevxcmp.o ./obj/gdevxini.o ./obj/gdevxres.o ./obj/gsparamx.o
+-link
+-lib Xt SM ICE Xext X11
+-include ./obj/bboxutil

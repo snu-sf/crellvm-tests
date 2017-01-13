@@ -1,0 +1,17775 @@
+# 1 "./devices/vector/gdevpdf.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 316 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "./devices/vector/gdevpdf.c" 2
+# 18 "./devices/vector/gdevpdf.c"
+# 1 "./base/fcntl_.h" 1
+# 30 "./base/fcntl_.h"
+# 1 "./base/std.h" 1
+# 22 "./base/std.h"
+# 1 "./base/stdpre.h" 1
+# 253 "./base/stdpre.h"
+typedef unsigned char byte;
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+# 273 "./base/stdpre.h"
+# 1 "/usr/include/sys/types.h" 1 3 4
+# 25 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 345 "/usr/include/features.h" 3 4
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 346 "/usr/include/features.h" 2 3 4
+# 375 "/usr/include/features.h" 3 4
+# 1 "/usr/include/sys/cdefs.h" 1 3 4
+# 392 "/usr/include/sys/cdefs.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 393 "/usr/include/sys/cdefs.h" 2 3 4
+# 376 "/usr/include/features.h" 2 3 4
+# 399 "/usr/include/features.h" 3 4
+# 1 "/usr/include/gnu/stubs.h" 1 3 4
+# 10 "/usr/include/gnu/stubs.h" 3 4
+# 1 "/usr/include/gnu/stubs-64.h" 1 3 4
+# 11 "/usr/include/gnu/stubs.h" 2 3 4
+# 400 "/usr/include/features.h" 2 3 4
+# 26 "/usr/include/sys/types.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/types.h" 1 3 4
+# 27 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+
+
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+
+
+
+
+
+
+
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+# 130 "/usr/include/bits/types.h" 3 4
+# 1 "/usr/include/bits/typesizes.h" 1 3 4
+# 131 "/usr/include/bits/types.h" 2 3 4
+
+
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct { int __val[2]; } __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+
+typedef int __daddr_t;
+typedef int __key_t;
+
+
+typedef int __clockid_t;
+
+
+typedef void * __timer_t;
+
+
+typedef long int __blksize_t;
+
+
+
+
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+
+
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+
+
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+
+
+typedef long int __fsword_t;
+
+typedef long int __ssize_t;
+
+
+typedef long int __syscall_slong_t;
+
+typedef unsigned long int __syscall_ulong_t;
+
+
+
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+
+
+typedef long int __intptr_t;
+
+
+typedef unsigned int __socklen_t;
+# 30 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef __u_char u_char;
+typedef __u_short u_short;
+typedef __u_int u_int;
+typedef __u_long u_long;
+typedef __quad_t quad_t;
+typedef __u_quad_t u_quad_t;
+typedef __fsid_t fsid_t;
+
+
+
+
+typedef __loff_t loff_t;
+
+
+
+
+
+typedef __ino64_t ino_t;
+
+
+
+
+typedef __ino64_t ino64_t;
+
+
+
+
+typedef __dev_t dev_t;
+
+
+
+
+typedef __gid_t gid_t;
+
+
+
+
+typedef __mode_t mode_t;
+
+
+
+
+typedef __nlink_t nlink_t;
+
+
+
+
+typedef __uid_t uid_t;
+
+
+
+
+
+
+
+typedef __off64_t off_t;
+
+
+
+
+typedef __off64_t off64_t;
+
+
+
+
+typedef __pid_t pid_t;
+
+
+
+
+
+typedef __id_t id_t;
+
+
+
+
+typedef __ssize_t ssize_t;
+
+
+
+
+
+typedef __daddr_t daddr_t;
+typedef __caddr_t caddr_t;
+
+
+
+
+
+typedef __key_t key_t;
+# 132 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/time.h" 1 3 4
+# 59 "/usr/include/time.h" 3 4
+typedef __clock_t clock_t;
+# 75 "/usr/include/time.h" 3 4
+typedef __time_t time_t;
+# 91 "/usr/include/time.h" 3 4
+typedef __clockid_t clockid_t;
+# 103 "/usr/include/time.h" 3 4
+typedef __timer_t timer_t;
+# 133 "/usr/include/sys/types.h" 2 3 4
+# 146 "/usr/include/sys/types.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 62 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 3 4
+typedef long unsigned int size_t;
+# 147 "/usr/include/sys/types.h" 2 3 4
+
+
+
+typedef unsigned long int ulong_;
+typedef unsigned short int ushort_;
+typedef unsigned int uint_;
+# 194 "/usr/include/sys/types.h" 3 4
+typedef int int8_t __attribute__ ((__mode__ (__QI__)));
+typedef int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef int int64_t __attribute__ ((__mode__ (__DI__)));
+
+
+typedef unsigned int u_int8_t __attribute__ ((__mode__ (__QI__)));
+typedef unsigned int u_int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int u_int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int u_int64_t __attribute__ ((__mode__ (__DI__)));
+
+typedef int register_t __attribute__ ((__mode__ (__word__)));
+# 216 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/endian.h" 1 3 4
+# 36 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/endian.h" 1 3 4
+# 37 "/usr/include/endian.h" 2 3 4
+# 60 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 28 "/usr/include/bits/byteswap.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 29 "/usr/include/bits/byteswap.h" 2 3 4
+
+
+
+
+
+
+# 1 "/usr/include/bits/byteswap-16.h" 1 3 4
+# 36 "/usr/include/bits/byteswap.h" 2 3 4
+# 61 "/usr/include/endian.h" 2 3 4
+# 217 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/select.h" 1 3 4
+# 30 "/usr/include/sys/select.h" 3 4
+# 1 "/usr/include/bits/select.h" 1 3 4
+# 22 "/usr/include/bits/select.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/select.h" 2 3 4
+# 31 "/usr/include/sys/select.h" 2 3 4
+
+
+# 1 "/usr/include/bits/sigset.h" 1 3 4
+# 23 "/usr/include/bits/sigset.h" 3 4
+typedef int __sig_atomic_t;
+
+
+
+
+typedef struct
+  {
+    unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+  } __sigset_t;
+# 34 "/usr/include/sys/select.h" 2 3 4
+
+
+
+typedef __sigset_t sigset_t;
+
+
+
+
+
+
+# 1 "/usr/include/time.h" 1 3 4
+# 120 "/usr/include/time.h" 3 4
+struct timespec
+  {
+    __time_t tv_sec;
+    __syscall_slong_t tv_nsec;
+  };
+# 44 "/usr/include/sys/select.h" 2 3 4
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 30 "/usr/include/bits/time.h" 3 4
+struct timeval
+  {
+    __time_t tv_sec;
+    __suseconds_t tv_usec;
+  };
+# 46 "/usr/include/sys/select.h" 2 3 4
+
+
+typedef __suseconds_t suseconds_t;
+
+
+
+
+
+typedef long int __fd_mask;
+# 64 "/usr/include/sys/select.h" 3 4
+typedef struct
+  {
+
+
+
+
+
+
+    __fd_mask __fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
+
+
+  } fd_set;
+
+
+
+
+
+
+typedef __fd_mask fd_mask;
+# 106 "/usr/include/sys/select.h" 3 4
+extern int select (int __nfds, fd_set *__restrict __readfds,
+     fd_set *__restrict __writefds,
+     fd_set *__restrict __exceptfds,
+     struct timeval *__restrict __timeout);
+# 118 "/usr/include/sys/select.h" 3 4
+extern int pselect (int __nfds, fd_set *__restrict __readfds,
+      fd_set *__restrict __writefds,
+      fd_set *__restrict __exceptfds,
+      const struct timespec *__restrict __timeout,
+      const __sigset_t *__restrict __sigmask);
+# 220 "/usr/include/sys/types.h" 2 3 4
+
+
+# 1 "/usr/include/sys/sysmacros.h" 1 3 4
+# 31 "/usr/include/sys/sysmacros.h" 3 4
+__extension__
+extern unsigned int gnu_dev_major (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned int gnu_dev_minor (unsigned long long int __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+__extension__
+extern unsigned long long int gnu_dev_makedev (unsigned int __major,
+            unsigned int __minor)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_major (unsigned long long int __dev)
+{
+  return ((__dev >> 8) & 0xfff) | ((unsigned int) (__dev >> 32) & ~0xfff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned int
+__attribute__ ((__nothrow__ )) gnu_dev_minor (unsigned long long int __dev)
+{
+  return (__dev & 0xff) | ((unsigned int) (__dev >> 12) & ~0xff);
+}
+
+__extension__ extern __inline __attribute__ ((__gnu_inline__)) __attribute__ ((__const__)) unsigned long long int
+__attribute__ ((__nothrow__ )) gnu_dev_makedev (unsigned int __major, unsigned int __minor)
+{
+  return ((__minor & 0xff) | ((__major & 0xfff) << 8)
+   | (((unsigned long long int) (__minor & ~0xff)) << 12)
+   | (((unsigned long long int) (__major & ~0xfff)) << 32));
+}
+# 223 "/usr/include/sys/types.h" 2 3 4
+
+
+
+
+
+typedef __blksize_t blksize_t;
+# 248 "/usr/include/sys/types.h" 3 4
+typedef __blkcnt64_t blkcnt_t;
+
+
+
+typedef __fsblkcnt64_t fsblkcnt_t;
+
+
+
+typedef __fsfilcnt64_t fsfilcnt_t;
+
+
+
+
+
+typedef __blkcnt64_t blkcnt64_t;
+typedef __fsblkcnt64_t fsblkcnt64_t;
+typedef __fsfilcnt64_t fsfilcnt64_t;
+
+
+
+
+
+
+# 1 "/usr/include/bits/pthreadtypes.h" 1 3 4
+# 21 "/usr/include/bits/pthreadtypes.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 22 "/usr/include/bits/pthreadtypes.h" 2 3 4
+# 60 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef unsigned long int pthread_t;
+
+
+union pthread_attr_t
+{
+  char __size[56];
+  long int __align;
+};
+
+typedef union pthread_attr_t pthread_attr_t;
+
+
+
+
+
+typedef struct __pthread_internal_list
+{
+  struct __pthread_internal_list *__prev;
+  struct __pthread_internal_list *__next;
+} __pthread_list_t;
+# 90 "/usr/include/bits/pthreadtypes.h" 3 4
+typedef union
+{
+  struct __pthread_mutex_s
+  {
+    int __lock;
+    unsigned int __count;
+    int __owner;
+
+    unsigned int __nusers;
+
+
+
+    int __kind;
+
+    int __spins;
+    __pthread_list_t __list;
+# 115 "/usr/include/bits/pthreadtypes.h" 3 4
+  } __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_mutexattr_t;
+
+
+
+
+typedef union
+{
+  struct
+  {
+    int __lock;
+    unsigned int __futex;
+    __extension__ unsigned long long int __total_seq;
+    __extension__ unsigned long long int __wakeup_seq;
+    __extension__ unsigned long long int __woken_seq;
+    void *__mutex;
+    unsigned int __nwaiters;
+    unsigned int __broadcast_seq;
+  } __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_condattr_t;
+
+
+
+typedef unsigned int pthread_key_t;
+
+
+
+typedef int pthread_once_t;
+
+
+
+
+
+typedef union
+{
+
+  struct
+  {
+    int __lock;
+    unsigned int __nr_readers;
+    unsigned int __readers_wakeup;
+    unsigned int __writer_wakeup;
+    unsigned int __nr_readers_queued;
+    unsigned int __nr_writers_queued;
+    int __writer;
+    int __shared;
+    unsigned long int __pad1;
+    unsigned long int __pad2;
+
+
+    unsigned int __flags;
+
+  } __data;
+# 202 "/usr/include/bits/pthreadtypes.h" 3 4
+  char __size[56];
+  long int __align;
+} pthread_rwlock_t;
+
+typedef union
+{
+  char __size[8];
+  long int __align;
+} pthread_rwlockattr_t;
+
+
+
+
+
+typedef volatile int pthread_spinlock_t;
+
+
+
+
+typedef union
+{
+  char __size[32];
+  long int __align;
+} pthread_barrier_t;
+
+typedef union
+{
+  char __size[4];
+  int __align;
+} pthread_barrierattr_t;
+# 271 "/usr/include/sys/types.h" 2 3 4
+# 274 "./base/stdpre.h" 2
+# 294 "./base/stdpre.h"
+typedef int bool;
+# 331 "./base/stdpre.h"
+typedef const char *ptr_ord_t;
+# 390 "./base/stdpre.h"
+typedef const char *client_name_t;
+# 401 "./base/stdpre.h"
+# 1 "./base/stdpn.h" 1
+# 402 "./base/stdpre.h" 2
+# 23 "./base/std.h" 2
+
+
+# 1 "./obj/arch.h" 1
+# 26 "./base/std.h" 2
+# 69 "./base/std.h"
+typedef ushort bits16;
+
+
+typedef uint bits32;
+# 158 "./base/std.h"
+# 1 "/usr/include/stdio.h" 1 3 4
+# 33 "/usr/include/stdio.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 34 "/usr/include/stdio.h" 2 3 4
+# 44 "/usr/include/stdio.h" 3 4
+struct _IO_FILE;
+
+
+
+typedef struct _IO_FILE FILE;
+# 64 "/usr/include/stdio.h" 3 4
+typedef struct _IO_FILE __FILE;
+# 74 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/libio.h" 1 3 4
+# 32 "/usr/include/libio.h" 3 4
+# 1 "/usr/include/_G_config.h" 1 3 4
+# 15 "/usr/include/_G_config.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 16 "/usr/include/_G_config.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/wchar.h" 1 3 4
+# 82 "/usr/include/wchar.h" 3 4
+typedef struct
+{
+  int __count;
+  union
+  {
+
+    unsigned int __wch;
+
+
+
+    char __wchb[4];
+  } __value;
+} __mbstate_t;
+# 21 "/usr/include/_G_config.h" 2 3 4
+typedef struct
+{
+  __off_t __pos;
+  __mbstate_t __state;
+} _G_fpos_t;
+typedef struct
+{
+  __off64_t __pos;
+  __mbstate_t __state;
+} _G_fpos64_t;
+# 33 "/usr/include/libio.h" 2 3 4
+# 50 "/usr/include/libio.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 1 3 4
+# 30 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list va_list;
+# 50 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 51 "/usr/include/libio.h" 2 3 4
+# 145 "/usr/include/libio.h" 3 4
+struct _IO_jump_t; struct _IO_FILE;
+# 155 "/usr/include/libio.h" 3 4
+typedef void _IO_lock_t;
+
+
+
+
+
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+
+
+
+  int _pos;
+# 178 "/usr/include/libio.h" 3 4
+};
+
+
+enum __codecvt_result
+{
+  __codecvt_ok,
+  __codecvt_partial,
+  __codecvt_error,
+  __codecvt_noconv
+};
+# 246 "/usr/include/libio.h" 3 4
+struct _IO_FILE {
+  int _flags;
+
+
+
+
+  char* _IO_read_ptr;
+  char* _IO_read_end;
+  char* _IO_read_base;
+  char* _IO_write_base;
+  char* _IO_write_ptr;
+  char* _IO_write_end;
+  char* _IO_buf_base;
+  char* _IO_buf_end;
+
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+
+  struct _IO_marker *_markers;
+
+  struct _IO_FILE *_chain;
+
+  int _fileno;
+
+
+
+  int _flags2;
+
+  __off_t _old_offset;
+
+
+
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+
+
+
+  _IO_lock_t *_lock;
+# 294 "/usr/include/libio.h" 3 4
+  __off64_t _offset;
+# 303 "/usr/include/libio.h" 3 4
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+  size_t __pad5;
+
+  int _mode;
+
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+
+};
+
+
+typedef struct _IO_FILE _IO_FILE;
+
+
+struct _IO_FILE_plus;
+
+extern struct _IO_FILE_plus _IO_2_1_stdin_;
+extern struct _IO_FILE_plus _IO_2_1_stdout_;
+extern struct _IO_FILE_plus _IO_2_1_stderr_;
+# 339 "/usr/include/libio.h" 3 4
+typedef __ssize_t __io_read_fn (void *__cookie, char *__buf, size_t __nbytes);
+
+
+
+
+
+
+
+typedef __ssize_t __io_write_fn (void *__cookie, const char *__buf,
+     size_t __n);
+
+
+
+
+
+
+
+typedef int __io_seek_fn (void *__cookie, __off64_t *__pos, int __w);
+
+
+typedef int __io_close_fn (void *__cookie);
+# 391 "/usr/include/libio.h" 3 4
+extern int __underflow (_IO_FILE *);
+extern int __uflow (_IO_FILE *);
+extern int __overflow (_IO_FILE *, int);
+# 435 "/usr/include/libio.h" 3 4
+extern int _IO_getc (_IO_FILE *__fp);
+extern int _IO_putc (int __c, _IO_FILE *__fp);
+extern int _IO_feof (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+extern int _IO_ferror (_IO_FILE *__fp) __attribute__ ((__nothrow__ ));
+
+extern int _IO_peekc_locked (_IO_FILE *__fp);
+
+
+
+
+
+extern void _IO_flockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern void _IO_funlockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+extern int _IO_ftrylockfile (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 465 "/usr/include/libio.h" 3 4
+extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
+   __gnuc_va_list, int *__restrict);
+extern int _IO_vfprintf (_IO_FILE *__restrict, const char *__restrict,
+    __gnuc_va_list);
+extern __ssize_t _IO_padn (_IO_FILE *, int, __ssize_t);
+extern size_t _IO_sgetn (_IO_FILE *, void *, size_t);
+
+extern __off64_t _IO_seekoff (_IO_FILE *, __off64_t, int, int);
+extern __off64_t _IO_seekpos (_IO_FILE *, __off64_t, int);
+
+extern void _IO_free_backup_area (_IO_FILE *) __attribute__ ((__nothrow__ ));
+# 75 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+typedef __gnuc_va_list va_list;
+# 112 "/usr/include/stdio.h" 3 4
+typedef _G_fpos64_t fpos_t;
+
+
+
+typedef _G_fpos64_t fpos64_t;
+# 164 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio_lim.h" 1 3 4
+# 165 "/usr/include/stdio.h" 2 3 4
+
+
+
+extern struct _IO_FILE *stdin;
+extern struct _IO_FILE *stdout;
+extern struct _IO_FILE *stderr;
+
+
+
+
+
+
+
+extern int remove (const char *__filename) __attribute__ ((__nothrow__ ));
+
+extern int rename (const char *__old, const char *__new) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int renameat (int __oldfd, const char *__old, int __newfd,
+       const char *__new) __attribute__ ((__nothrow__ ));
+# 198 "/usr/include/stdio.h" 3 4
+extern FILE *tmpfile (void) __asm__ ("" "tmpfile64") ;
+
+
+
+
+
+
+extern FILE *tmpfile64 (void) ;
+
+
+
+extern char *tmpnam (char *__s) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+extern char *tmpnam_r (char *__s) __attribute__ ((__nothrow__ )) ;
+# 227 "/usr/include/stdio.h" 3 4
+extern char *tempnam (const char *__dir, const char *__pfx)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 237 "/usr/include/stdio.h" 3 4
+extern int fclose (FILE *__stream);
+
+
+
+
+extern int fflush (FILE *__stream);
+# 252 "/usr/include/stdio.h" 3 4
+extern int fflush_unlocked (FILE *__stream);
+# 283 "/usr/include/stdio.h" 3 4
+extern FILE *fopen (const char *__restrict __filename, const char *__restrict __modes) __asm__ ("" "fopen64")
+
+       ;
+extern FILE *freopen (const char *__restrict __filename, const char *__restrict __modes, FILE *__restrict __stream) __asm__ ("" "freopen64")
+
+
+       ;
+
+
+
+
+
+
+
+extern FILE *fopen64 (const char *__restrict __filename,
+        const char *__restrict __modes) ;
+extern FILE *freopen64 (const char *__restrict __filename,
+   const char *__restrict __modes,
+   FILE *__restrict __stream) ;
+
+
+
+
+extern FILE *fdopen (int __fd, const char *__modes) __attribute__ ((__nothrow__ )) ;
+# 319 "/usr/include/stdio.h" 3 4
+extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
+  __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+
+extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      int __modes, size_t __n) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+         size_t __size) __attribute__ ((__nothrow__ ));
+
+
+extern void setlinebuf (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 356 "/usr/include/stdio.h" 3 4
+extern int fprintf (FILE *__restrict __stream,
+      const char *__restrict __format, ...);
+
+
+
+
+extern int printf (const char *__restrict __format, ...);
+
+extern int sprintf (char *__restrict __s,
+      const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg);
+
+
+
+
+extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+
+extern int vsprintf (char *__restrict __s, const char *__restrict __format,
+       __gnuc_va_list __arg) __attribute__ ((__nothrow__));
+
+
+
+
+
+extern int snprintf (char *__restrict __s, size_t __maxlen,
+       const char *__restrict __format, ...)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 4)));
+
+extern int vsnprintf (char *__restrict __s, size_t __maxlen,
+        const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 0)));
+# 412 "/usr/include/stdio.h" 3 4
+extern int vdprintf (int __fd, const char *__restrict __fmt,
+       __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__printf__, 2, 0)));
+extern int dprintf (int __fd, const char *__restrict __fmt, ...)
+     __attribute__ ((__format__ (__printf__, 2, 3)));
+# 425 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream,
+     const char *__restrict __format, ...) ;
+
+
+
+
+extern int scanf (const char *__restrict __format, ...) ;
+
+extern int sscanf (const char *__restrict __s,
+     const char *__restrict __format, ...) __attribute__ ((__nothrow__ ));
+# 443 "/usr/include/stdio.h" 3 4
+extern int fscanf (FILE *__restrict __stream, const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf") ;
+
+
+extern int scanf (const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf") ;
+
+extern int sscanf (const char *__restrict __s, const char *__restrict __format, ...) __asm__ ("" "__isoc99_sscanf") __attribute__ ((__nothrow__ ));
+# 471 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
+      __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+
+
+
+
+
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+
+
+extern int vsscanf (const char *__restrict __s,
+      const char *__restrict __format, __gnuc_va_list __arg)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 494 "/usr/include/stdio.h" 3 4
+extern int vfscanf (FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
+extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
+
+     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
+extern int vsscanf (const char *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vsscanf") __attribute__ ((__nothrow__ ))
+
+
+
+     __attribute__ ((__format__ (__scanf__, 2, 0)));
+# 531 "/usr/include/stdio.h" 3 4
+extern int fgetc (FILE *__stream);
+extern int getc (FILE *__stream);
+
+
+
+
+
+extern int getchar (void);
+# 550 "/usr/include/stdio.h" 3 4
+extern int getc_unlocked (FILE *__stream);
+extern int getchar_unlocked (void);
+# 561 "/usr/include/stdio.h" 3 4
+extern int fgetc_unlocked (FILE *__stream);
+# 573 "/usr/include/stdio.h" 3 4
+extern int fputc (int __c, FILE *__stream);
+extern int putc (int __c, FILE *__stream);
+
+
+
+
+
+extern int putchar (int __c);
+# 594 "/usr/include/stdio.h" 3 4
+extern int fputc_unlocked (int __c, FILE *__stream);
+
+
+
+
+
+
+
+extern int putc_unlocked (int __c, FILE *__stream);
+extern int putchar_unlocked (int __c);
+
+
+
+
+
+
+extern int getw (FILE *__stream);
+
+
+extern int putw (int __w, FILE *__stream);
+# 622 "/usr/include/stdio.h" 3 4
+extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+          ;
+# 665 "/usr/include/stdio.h" 3 4
+extern __ssize_t __getdelim (char **__restrict __lineptr,
+          size_t *__restrict __n, int __delimiter,
+          FILE *__restrict __stream) ;
+extern __ssize_t getdelim (char **__restrict __lineptr,
+        size_t *__restrict __n, int __delimiter,
+        FILE *__restrict __stream) ;
+
+
+
+
+
+
+
+extern __ssize_t getline (char **__restrict __lineptr,
+       size_t *__restrict __n,
+       FILE *__restrict __stream) ;
+# 689 "/usr/include/stdio.h" 3 4
+extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
+
+
+
+
+
+extern int puts (const char *__s);
+
+
+
+
+
+
+extern int ungetc (int __c, FILE *__stream);
+
+
+
+
+
+
+extern size_t fread (void *__restrict __ptr, size_t __size,
+       size_t __n, FILE *__restrict __stream) ;
+
+
+
+
+extern size_t fwrite (const void *__restrict __ptr, size_t __size,
+        size_t __n, FILE *__restrict __s);
+# 737 "/usr/include/stdio.h" 3 4
+extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
+         size_t __n, FILE *__restrict __stream) ;
+extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
+          size_t __n, FILE *__restrict __stream);
+# 749 "/usr/include/stdio.h" 3 4
+extern int fseek (FILE *__stream, long int __off, int __whence);
+
+
+
+
+extern long int ftell (FILE *__stream) ;
+
+
+
+
+extern void rewind (FILE *__stream);
+# 781 "/usr/include/stdio.h" 3 4
+extern int fseeko (FILE *__stream, __off64_t __off, int __whence) __asm__ ("" "fseeko64");
+
+
+extern __off64_t ftello (FILE *__stream) __asm__ ("" "ftello64");
+# 806 "/usr/include/stdio.h" 3 4
+extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos) __asm__ ("" "fgetpos64");
+
+extern int fsetpos (FILE *__stream, const fpos_t *__pos) __asm__ ("" "fsetpos64");
+# 818 "/usr/include/stdio.h" 3 4
+extern int fseeko64 (FILE *__stream, __off64_t __off, int __whence);
+extern __off64_t ftello64 (FILE *__stream) ;
+extern int fgetpos64 (FILE *__restrict __stream, fpos64_t *__restrict __pos);
+extern int fsetpos64 (FILE *__stream, const fpos64_t *__pos);
+
+
+
+
+extern void clearerr (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+extern int feof (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+extern int ferror (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern void clearerr_unlocked (FILE *__stream) __attribute__ ((__nothrow__ ));
+extern int feof_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+extern int ferror_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 846 "/usr/include/stdio.h" 3 4
+extern void perror (const char *__s);
+
+
+
+
+
+
+
+# 1 "/usr/include/bits/sys_errlist.h" 1 3 4
+# 26 "/usr/include/bits/sys_errlist.h" 3 4
+extern int sys_nerr;
+extern const char *const sys_errlist[];
+# 854 "/usr/include/stdio.h" 2 3 4
+
+
+
+
+extern int fileno (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int fileno_unlocked (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+# 873 "/usr/include/stdio.h" 3 4
+extern FILE *popen (const char *__command, const char *__modes) ;
+
+
+
+
+
+extern int pclose (FILE *__stream);
+
+
+
+
+
+extern char *ctermid (char *__s) __attribute__ ((__nothrow__ ));
+# 913 "/usr/include/stdio.h" 3 4
+extern void flockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ )) ;
+
+
+extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ ));
+# 934 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/stdio.h" 1 3 4
+# 35 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+vprintf (const char *__restrict __fmt, __gnuc_va_list __arg)
+{
+  return vfprintf (stdout, __fmt, __arg);
+}
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar (void)
+{
+  return _IO_getc (stdin);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fgetc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getc_unlocked (FILE *__fp)
+{
+  return (__builtin_expect (((__fp)->_IO_read_ptr >= (__fp)->_IO_read_end), 0) ? __uflow (__fp) : *(unsigned char *) (__fp)->_IO_read_ptr++);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+getchar_unlocked (void)
+{
+  return (__builtin_expect (((stdin)->_IO_read_ptr >= (stdin)->_IO_read_end), 0) ? __uflow (stdin) : *(unsigned char *) (stdin)->_IO_read_ptr++);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar (int __c)
+{
+  return _IO_putc (__c, stdout);
+}
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+fputc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putc_unlocked (int __c, FILE *__stream)
+{
+  return (__builtin_expect (((__stream)->_IO_write_ptr >= (__stream)->_IO_write_end), 0) ? __overflow (__stream, (unsigned char) (__c)) : (unsigned char) (*(__stream)->_IO_write_ptr++ = (__c)));
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+putchar_unlocked (int __c)
+{
+  return (__builtin_expect (((stdout)->_IO_write_ptr >= (stdout)->_IO_write_end), 0) ? __overflow (stdout, (unsigned char) (__c)) : (unsigned char) (*(stdout)->_IO_write_ptr++ = (__c)));
+}
+# 124 "/usr/include/bits/stdio.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) feof_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x10) != 0);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) ferror_unlocked (FILE *__stream)
+{
+  return (((__stream)->_flags & 0x20) != 0);
+}
+# 935 "/usr/include/stdio.h" 2 3 4
+# 159 "./base/std.h" 2
+
+
+
+
+
+
+typedef struct gs_memory_s gs_memory_t;
+# 184 "./base/std.h"
+int outwrite(const gs_memory_t *mem, const char *str, int len);
+int errwrite(const gs_memory_t *mem, const char *str, int len);
+void outflush(const gs_memory_t *mem);
+void errflush(const gs_memory_t *mem);
+
+
+
+
+
+int errwrite_nomem(const char *str, int len);
+void errflush_nomem(void);
+# 210 "./base/std.h"
+int outprintf(const gs_memory_t *mem, const char *fmt, ...) __attribute__((__format__ (__printf__, 2, 3)));
+int errprintf(const gs_memory_t *mem, const char *fmt, ...) __attribute__((__format__ (__printf__, 2, 3)));
+
+int errprintf_nomem(const char *fmt, ...) __attribute__((__format__ (__printf__, 1, 2)));
+# 284 "./base/std.h"
+void dprintf_file_and_line(const char *, int);
+
+
+
+
+
+
+void dflush(void);
+# 352 "./base/std.h"
+void dmprintf_file_and_line(const gs_memory_t *,const char *, int);
+# 417 "./base/std.h"
+void printf_program_ident(const gs_memory_t *mem, const char *program_name, long revision_number);
+
+
+
+void eprintf_program_ident(const char *program_name, long revision_number);
+
+void emprintf_program_ident(const gs_memory_t *mem,
+                            const char *program_name,
+                            long revision_number);
+const char *gs_program_name(void);
+long gs_revision_number(void);
+long gs_version_number(void);
+# 530 "./base/std.h"
+void lprintf_file_and_line(const char *, int);
+# 562 "./base/std.h"
+void mlprintf_file_and_line(const gs_memory_t *,const char *, int);
+# 31 "./base/fcntl_.h" 2
+# 1 "/usr/include/fcntl.h" 1 3 4
+# 35 "/usr/include/fcntl.h" 3 4
+# 1 "/usr/include/bits/fcntl.h" 1 3 4
+# 35 "/usr/include/bits/fcntl.h" 3 4
+struct flock
+  {
+    short int l_type;
+    short int l_whence;
+
+
+
+
+    __off64_t l_start;
+    __off64_t l_len;
+
+    __pid_t l_pid;
+  };
+
+
+struct flock64
+  {
+    short int l_type;
+    short int l_whence;
+    __off64_t l_start;
+    __off64_t l_len;
+    __pid_t l_pid;
+  };
+
+
+
+
+# 1 "/usr/include/bits/fcntl-linux.h" 1 3 4
+# 62 "/usr/include/bits/fcntl.h" 2 3 4
+# 36 "/usr/include/fcntl.h" 2 3 4
+# 67 "/usr/include/fcntl.h" 3 4
+# 1 "/usr/include/time.h" 1 3 4
+# 68 "/usr/include/fcntl.h" 2 3 4
+# 1 "/usr/include/bits/stat.h" 1 3 4
+# 46 "/usr/include/bits/stat.h" 3 4
+struct stat
+  {
+    __dev_t st_dev;
+
+
+
+
+    __ino_t st_ino;
+
+
+
+
+
+
+
+    __nlink_t st_nlink;
+    __mode_t st_mode;
+
+    __uid_t st_uid;
+    __gid_t st_gid;
+
+    int __pad0;
+
+    __dev_t st_rdev;
+
+
+
+
+    __off_t st_size;
+
+
+
+    __blksize_t st_blksize;
+
+    __blkcnt_t st_blocks;
+# 91 "/usr/include/bits/stat.h" 3 4
+    struct timespec st_atim;
+    struct timespec st_mtim;
+    struct timespec st_ctim;
+# 106 "/usr/include/bits/stat.h" 3 4
+    __syscall_slong_t __unused[3];
+# 115 "/usr/include/bits/stat.h" 3 4
+  };
+
+
+
+struct stat64
+  {
+    __dev_t st_dev;
+
+    __ino64_t st_ino;
+    __nlink_t st_nlink;
+    __mode_t st_mode;
+
+
+
+
+
+
+    __uid_t st_uid;
+    __gid_t st_gid;
+
+    int __pad0;
+    __dev_t st_rdev;
+    __off_t st_size;
+
+
+
+
+
+    __blksize_t st_blksize;
+    __blkcnt64_t st_blocks;
+
+
+
+
+
+
+
+    struct timespec st_atim;
+    struct timespec st_mtim;
+    struct timespec st_ctim;
+# 164 "/usr/include/bits/stat.h" 3 4
+    __syscall_slong_t __unused[3];
+
+
+
+  };
+# 69 "/usr/include/fcntl.h" 2 3 4
+# 154 "/usr/include/fcntl.h" 3 4
+extern int fcntl (int __fd, int __cmd, ...);
+# 166 "/usr/include/fcntl.h" 3 4
+extern int open (const char *__file, int __oflag, ...) __asm__ ("" "open64")
+     __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int open64 (const char *__file, int __oflag, ...) __attribute__ ((__nonnull__ (1)));
+# 191 "/usr/include/fcntl.h" 3 4
+extern int openat (int __fd, const char *__file, int __oflag, ...) __asm__ ("" "openat64") __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+
+extern int openat64 (int __fd, const char *__file, int __oflag, ...)
+     __attribute__ ((__nonnull__ (2)));
+# 212 "/usr/include/fcntl.h" 3 4
+extern int creat (const char *__file, mode_t __mode) __asm__ ("" "creat64") __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int creat64 (const char *__file, mode_t __mode) __attribute__ ((__nonnull__ (1)));
+# 241 "/usr/include/fcntl.h" 3 4
+extern int lockf (int __fd, int __cmd, __off64_t __len) __asm__ ("" "lockf64");
+
+
+
+
+
+extern int lockf64 (int __fd, int __cmd, off64_t __len);
+# 259 "/usr/include/fcntl.h" 3 4
+extern int posix_fadvise (int __fd, __off64_t __offset, __off64_t __len, int __advise) __asm__ ("" "posix_fadvise64") __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern int posix_fadvise64 (int __fd, off64_t __offset, off64_t __len,
+       int __advise) __attribute__ ((__nothrow__ ));
+# 280 "/usr/include/fcntl.h" 3 4
+extern int posix_fallocate (int __fd, __off64_t __offset, __off64_t __len) __asm__ ("" "posix_fallocate64");
+
+
+
+
+
+
+
+extern int posix_fallocate64 (int __fd, off64_t __offset, off64_t __len);
+# 32 "./base/fcntl_.h" 2
+# 19 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/memory_.h" 1
+# 54 "./base/memory_.h"
+# 1 "/usr/include/string.h" 1 3 4
+# 32 "/usr/include/string.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/string.h" 2 3 4
+# 42 "/usr/include/string.h" 3 4
+extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+       size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void *memmove (void *__dest, const void *__src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+
+extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+        int __c, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 92 "/usr/include/string.h" 3 4
+extern void *memchr (const void *__s, int __c, size_t __n)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 125 "/usr/include/string.h" 3 4
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+        size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strcoll (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+extern size_t strxfrm (char *__restrict __dest,
+         const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+
+
+# 1 "/usr/include/xlocale.h" 1 3 4
+# 27 "/usr/include/xlocale.h" 3 4
+typedef struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
+} *__locale_t;
+
+
+typedef __locale_t locale_t;
+# 160 "/usr/include/string.h" 2 3 4
+
+
+extern int strcoll_l (const char *__s1, const char *__s2, __locale_t __l)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
+
+extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
+    __locale_t __l) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)));
+
+
+
+
+
+extern char *strdup (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern char *strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+# 232 "/usr/include/string.h" 3 4
+extern char *strchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 259 "/usr/include/string.h" 3 4
+extern char *strrchr (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 281 "/usr/include/string.h" 3 4
+extern size_t strcspn (const char *__s, const char *__reject)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern size_t strspn (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 311 "/usr/include/string.h" 3 4
+extern char *strpbrk (const char *__s, const char *__accept)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 338 "/usr/include/string.h" 3 4
+extern char *strstr (const char *__haystack, const char *__needle)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern char *__strtok_r (char *__restrict __s,
+    const char *__restrict __delim,
+    char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+
+extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+         char **__restrict __save_ptr)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 395 "/usr/include/string.h" 3 4
+extern size_t strlen (const char *__s)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern size_t strnlen (const char *__string, size_t __maxlen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern char *strerror (int __errnum) __attribute__ ((__nothrow__ ));
+# 423 "/usr/include/string.h" 3 4
+extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 441 "/usr/include/string.h" 3 4
+extern char *strerror_l (int __errnum, __locale_t __l) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern void __bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 485 "/usr/include/string.h" 3 4
+extern char *index (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+# 513 "/usr/include/string.h" 3 4
+extern char *rindex (const char *__s, int __c)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int ffs (int __i) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 532 "/usr/include/string.h" 3 4
+extern int strcasecmp (const char *__s1, const char *__s2)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+# 555 "/usr/include/string.h" 3 4
+extern char *strsep (char **__restrict __stringp,
+       const char *__restrict __delim)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern char *strsignal (int __sig) __attribute__ ((__nothrow__ ));
+
+
+extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern char *__stpncpy (char *__restrict __dest,
+   const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern char *stpncpy (char *__restrict __dest,
+        const char *__restrict __src, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+# 630 "/usr/include/string.h" 3 4
+# 1 "/usr/include/bits/string.h" 1 3 4
+# 631 "/usr/include/string.h" 2 3 4
+
+
+# 1 "/usr/include/bits/string2.h" 1 3 4
+# 393 "/usr/include/bits/string2.h" 3 4
+extern void *__rawmemchr (const void *__s, int __c);
+# 968 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c1 (const char *__s, int __reject);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c1 (const char *__s, int __reject)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c2 (const char *__s, int __reject1,
+         int __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c2 (const char *__s, int __reject1, int __reject2)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strcspn_c3 (const char *__s, int __reject1,
+         int __reject2, int __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strcspn_c3 (const char *__s, int __reject1, int __reject2,
+       int __reject3)
+{
+  register size_t __result = 0;
+  while (__s[__result] != '\0' && __s[__result] != __reject1
+  && __s[__result] != __reject2 && __s[__result] != __reject3)
+    ++__result;
+  return __result;
+}
+# 1044 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c1 (const char *__s, int __accept);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c1 (const char *__s, int __accept)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c2 (const char *__s, int __accept1, int __accept2)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2)
+    ++__result;
+  return __result;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) size_t __strspn_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) size_t
+__strspn_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+  register size_t __result = 0;
+
+  while (__s[__result] == __accept1 || __s[__result] == __accept2
+  || __s[__result] == __accept3)
+    ++__result;
+  return __result;
+}
+# 1120 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c2 (const char *__s, int __accept1,
+        int __accept2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c2 (const char *__s, int __accept1, int __accept2)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strpbrk_c3 (const char *__s, int __accept1,
+        int __accept2, int __accept3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strpbrk_c3 (const char *__s, int __accept1, int __accept2, int __accept3)
+{
+
+  while (*__s != '\0' && *__s != __accept1 && *__s != __accept2
+  && *__s != __accept3)
+    ++__s;
+  return *__s == '\0' ? ((void*)0) : (char *) (size_t) __s;
+}
+# 1170 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strtok_r_1c (char *__s, char __sep, char **__nextp);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strtok_r_1c (char *__s, char __sep, char **__nextp)
+{
+  char *__result;
+  if (__s == ((void*)0))
+    __s = *__nextp;
+  while (*__s == __sep)
+    ++__s;
+  __result = ((void*)0);
+  if (*__s != '\0')
+    {
+      __result = __s++;
+      while (*__s != '\0')
+ if (*__s++ == __sep)
+   {
+     __s[-1] = '\0';
+     break;
+   }
+    }
+  *__nextp = __s;
+  return __result;
+}
+# 1202 "/usr/include/bits/string2.h" 3 4
+extern char *__strsep_g (char **__stringp, const char *__delim);
+# 1220 "/usr/include/bits/string2.h" 3 4
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_1c (char **__s, char __reject);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_1c (char **__s, char __reject)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0) && (*__s = (__extension__ (__builtin_constant_p (__reject) && !__builtin_constant_p (__retval) && (__reject) == '\0' ? (char *) __rawmemchr (__retval, __reject) : __builtin_strchr (__retval, __reject)))) != ((void*)0))
+    *(*__s)++ = '\0';
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_2c (char **__s, char __reject1, char __reject2);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_2c (char **__s, char __reject1, char __reject2)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+
+extern __inline __attribute__ ((__gnu_inline__)) char *__strsep_3c (char **__s, char __reject1, char __reject2,
+       char __reject3);
+extern __inline __attribute__ ((__gnu_inline__)) char *
+__strsep_3c (char **__s, char __reject1, char __reject2, char __reject3)
+{
+  register char *__retval = *__s;
+  if (__retval != ((void*)0))
+    {
+      register char *__cp = __retval;
+      while (1)
+ {
+   if (*__cp == '\0')
+     {
+       __cp = ((void*)0);
+   break;
+     }
+   if (*__cp == __reject1 || *__cp == __reject2 || *__cp == __reject3)
+     {
+       *__cp++ = '\0';
+       break;
+     }
+   ++__cp;
+ }
+      *__s = __cp;
+    }
+  return __retval;
+}
+# 1296 "/usr/include/bits/string2.h" 3 4
+# 1 "/usr/include/stdlib.h" 1 3 4
+# 32 "/usr/include/stdlib.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 33 "/usr/include/stdlib.h" 2 3 4
+# 465 "/usr/include/stdlib.h" 3 4
+extern void *malloc (size_t __size) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+
+extern void *calloc (size_t __nmemb, size_t __size)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__)) ;
+# 1297 "/usr/include/bits/string2.h" 2 3 4
+
+
+
+
+extern char *__strdup (const char *__string) __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 1320 "/usr/include/bits/string2.h" 3 4
+extern char *__strndup (const char *__string, size_t __n)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__malloc__));
+# 634 "/usr/include/string.h" 2 3 4
+# 55 "./base/memory_.h" 2
+# 20 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/time_.h" 1
+# 30 "./base/time_.h"
+# 1 "./obj/gconfig_.h" 1
+# 31 "./base/time_.h" 2
+
+
+
+
+
+
+# 1 "/usr/include/sys/time.h" 1 3 4
+# 26 "/usr/include/sys/time.h" 3 4
+# 1 "/usr/include/time.h" 1 3 4
+# 27 "/usr/include/sys/time.h" 2 3 4
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 29 "/usr/include/sys/time.h" 2 3 4
+# 56 "/usr/include/sys/time.h" 3 4
+struct timezone
+  {
+    int tz_minuteswest;
+    int tz_dsttime;
+  };
+
+typedef struct timezone *__restrict __timezone_ptr_t;
+# 72 "/usr/include/sys/time.h" 3 4
+extern int gettimeofday (struct timeval *__restrict __tv,
+    __timezone_ptr_t __tz) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int settimeofday (const struct timeval *__tv,
+    const struct timezone *__tz)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int adjtime (const struct timeval *__delta,
+      struct timeval *__olddelta) __attribute__ ((__nothrow__ ));
+
+
+
+
+enum __itimer_which
+  {
+
+    ITIMER_REAL = 0,
+
+
+    ITIMER_VIRTUAL = 1,
+
+
+
+    ITIMER_PROF = 2
+
+  };
+
+
+
+struct itimerval
+  {
+
+    struct timeval it_interval;
+
+    struct timeval it_value;
+  };
+
+
+
+
+
+
+typedef int __itimer_which_t;
+
+
+
+
+extern int getitimer (__itimer_which_t __which,
+        struct itimerval *__value) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int setitimer (__itimer_which_t __which,
+        const struct itimerval *__restrict __new,
+        struct itimerval *__restrict __old) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int utimes (const char *__file, const struct timeval __tvp[2])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int lutimes (const char *__file, const struct timeval __tvp[2])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern int futimes (int __fd, const struct timeval __tvp[2]) __attribute__ ((__nothrow__ ));
+# 38 "./base/time_.h" 2
+
+
+
+
+
+
+
+
+# 1 "/usr/include/time.h" 1 3 4
+# 37 "/usr/include/time.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 38 "/usr/include/time.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/time.h" 1 3 4
+# 42 "/usr/include/time.h" 2 3 4
+# 133 "/usr/include/time.h" 3 4
+struct tm
+{
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+
+
+  long int tm_gmtoff;
+  const char *tm_zone;
+
+
+
+
+};
+# 161 "/usr/include/time.h" 3 4
+struct itimerspec
+  {
+    struct timespec it_interval;
+    struct timespec it_value;
+  };
+
+
+struct sigevent;
+# 189 "/usr/include/time.h" 3 4
+extern clock_t clock (void) __attribute__ ((__nothrow__ ));
+
+
+extern time_t time (time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+extern double difftime (time_t __time1, time_t __time0)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern time_t mktime (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern size_t strftime (char *__restrict __s, size_t __maxsize,
+   const char *__restrict __format,
+   const struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+# 223 "/usr/include/time.h" 3 4
+extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
+     const char *__restrict __format,
+     const struct tm *__restrict __tp,
+     __locale_t __loc) __attribute__ ((__nothrow__ ));
+# 239 "/usr/include/time.h" 3 4
+extern struct tm *gmtime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+extern struct tm *localtime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern struct tm *gmtime_r (const time_t *__restrict __timer,
+       struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+
+
+
+extern struct tm *localtime_r (const time_t *__restrict __timer,
+          struct tm *__restrict __tp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern char *asctime (const struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern char *ctime (const time_t *__timer) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern char *asctime_r (const struct tm *__restrict __tp,
+   char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+extern char *ctime_r (const time_t *__restrict __timer,
+        char *__restrict __buf) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern char *__tzname[2];
+extern int __daylight;
+extern long int __timezone;
+
+
+
+
+extern char *tzname[2];
+
+
+
+extern void tzset (void) __attribute__ ((__nothrow__ ));
+
+
+
+extern int daylight;
+extern long int timezone;
+
+
+
+
+
+extern int stime (const time_t *__when) __attribute__ ((__nothrow__ ));
+# 319 "/usr/include/time.h" 3 4
+extern time_t timegm (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern time_t timelocal (struct tm *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern int dysize (int __year) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+# 334 "/usr/include/time.h" 3 4
+extern int nanosleep (const struct timespec *__requested_time,
+        struct timespec *__remaining);
+
+
+
+extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __attribute__ ((__nothrow__ ));
+
+
+extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) __attribute__ ((__nothrow__ ));
+
+
+extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern int clock_nanosleep (clockid_t __clock_id, int __flags,
+       const struct timespec *__req,
+       struct timespec *__rem);
+
+
+extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int timer_create (clockid_t __clock_id,
+    struct sigevent *__restrict __evp,
+    timer_t *__restrict __timerid) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_delete (timer_t __timerid) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_settime (timer_t __timerid, int __flags,
+     const struct itimerspec *__restrict __value,
+     struct itimerspec *__restrict __ovalue) __attribute__ ((__nothrow__ ));
+
+
+extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
+     __attribute__ ((__nothrow__ ));
+
+
+extern int timer_getoverrun (timer_t __timerid) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int timespec_get (struct timespec *__ts, int __base)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 47 "./base/time_.h" 2
+# 82 "./base/time_.h"
+# 1 "/usr/include/sys/times.h" 1 3 4
+# 34 "/usr/include/sys/times.h" 3 4
+struct tms
+  {
+    clock_t tms_utime;
+    clock_t tms_stime;
+
+    clock_t tms_cutime;
+    clock_t tms_cstime;
+  };
+
+
+
+
+
+
+extern clock_t times (struct tms *__buffer) __attribute__ ((__nothrow__ ));
+# 83 "./base/time_.h" 2
+# 21 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/unistd_.h" 1
+# 53 "./base/unistd_.h"
+# 1 "/usr/include/unistd.h" 1 3 4
+# 202 "/usr/include/unistd.h" 3 4
+# 1 "/usr/include/bits/posix_opt.h" 1 3 4
+# 203 "/usr/include/unistd.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/environments.h" 1 3 4
+# 22 "/usr/include/bits/environments.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/environments.h" 2 3 4
+# 207 "/usr/include/unistd.h" 2 3 4
+# 226 "/usr/include/unistd.h" 3 4
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stddef.h" 1 3 4
+# 227 "/usr/include/unistd.h" 2 3 4
+# 255 "/usr/include/unistd.h" 3 4
+typedef __useconds_t useconds_t;
+# 267 "/usr/include/unistd.h" 3 4
+typedef __intptr_t intptr_t;
+
+
+
+
+
+
+typedef __socklen_t socklen_t;
+# 287 "/usr/include/unistd.h" 3 4
+extern int access (const char *__name, int __type) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 304 "/usr/include/unistd.h" 3 4
+extern int faccessat (int __fd, const char *__file, int __type, int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2))) ;
+# 337 "/usr/include/unistd.h" 3 4
+extern __off64_t lseek (int __fd, __off64_t __offset, int __whence) __asm__ ("" "lseek64") __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern __off64_t lseek64 (int __fd, __off64_t __offset, int __whence)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern int close (int __fd);
+
+
+
+
+
+
+extern ssize_t read (int __fd, void *__buf, size_t __nbytes) ;
+
+
+
+
+
+extern ssize_t write (int __fd, const void *__buf, size_t __n) ;
+# 388 "/usr/include/unistd.h" 3 4
+extern ssize_t pread (int __fd, void *__buf, size_t __nbytes, __off64_t __offset) __asm__ ("" "pread64") ;
+
+
+extern ssize_t pwrite (int __fd, const void *__buf, size_t __nbytes, __off64_t __offset) __asm__ ("" "pwrite64") ;
+# 404 "/usr/include/unistd.h" 3 4
+extern ssize_t pread64 (int __fd, void *__buf, size_t __nbytes,
+   __off64_t __offset) ;
+
+
+extern ssize_t pwrite64 (int __fd, const void *__buf, size_t __n,
+    __off64_t __offset) ;
+
+
+
+
+
+
+
+extern int pipe (int __pipedes[2]) __attribute__ ((__nothrow__ )) ;
+# 432 "/usr/include/unistd.h" 3 4
+extern unsigned int alarm (unsigned int __seconds) __attribute__ ((__nothrow__ ));
+# 444 "/usr/include/unistd.h" 3 4
+extern unsigned int sleep (unsigned int __seconds);
+
+
+
+
+
+
+
+extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern int usleep (__useconds_t __useconds);
+# 469 "/usr/include/unistd.h" 3 4
+extern int pause (void);
+
+
+
+extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+
+extern int fchownat (int __fd, const char *__file, __uid_t __owner,
+       __gid_t __group, int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+extern int chdir (const char *__path) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int fchdir (int __fd) __attribute__ ((__nothrow__ )) ;
+# 511 "/usr/include/unistd.h" 3 4
+extern char *getcwd (char *__buf, size_t __size) __attribute__ ((__nothrow__ )) ;
+# 525 "/usr/include/unistd.h" 3 4
+extern char *getwd (char *__buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) __attribute__ ((__deprecated__)) ;
+
+
+
+
+extern int dup (int __fd) __attribute__ ((__nothrow__ )) ;
+
+
+extern int dup2 (int __fd, int __fd2) __attribute__ ((__nothrow__ ));
+# 543 "/usr/include/unistd.h" 3 4
+extern char **__environ;
+
+
+
+
+
+
+
+extern int execve (const char *__path, char *const __argv[],
+     char *const __envp[]) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern int execv (const char *__path, char *const __argv[])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int execle (const char *__path, const char *__arg, ...)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int execl (const char *__path, const char *__arg, ...)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+extern int execvp (const char *__file, char *const __argv[])
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+extern int execlp (const char *__file, const char *__arg, ...)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+# 598 "/usr/include/unistd.h" 3 4
+extern int nice (int __inc) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern void _exit (int __status) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+# 1 "/usr/include/bits/confname.h" 1 3 4
+# 25 "/usr/include/bits/confname.h" 3 4
+enum
+  {
+    _PC_LINK_MAX,
+
+    _PC_MAX_CANON,
+
+    _PC_MAX_INPUT,
+
+    _PC_NAME_MAX,
+
+    _PC_PATH_MAX,
+
+    _PC_PIPE_BUF,
+
+    _PC_CHOWN_RESTRICTED,
+
+    _PC_NO_TRUNC,
+
+    _PC_VDISABLE,
+
+    _PC_SYNC_IO,
+
+    _PC_ASYNC_IO,
+
+    _PC_PRIO_IO,
+
+    _PC_SOCK_MAXBUF,
+
+    _PC_FILESIZEBITS,
+
+    _PC_REC_INCR_XFER_SIZE,
+
+    _PC_REC_MAX_XFER_SIZE,
+
+    _PC_REC_MIN_XFER_SIZE,
+
+    _PC_REC_XFER_ALIGN,
+
+    _PC_ALLOC_SIZE_MIN,
+
+    _PC_SYMLINK_MAX,
+
+    _PC_2_SYMLINKS
+
+  };
+
+
+enum
+  {
+    _SC_ARG_MAX,
+
+    _SC_CHILD_MAX,
+
+    _SC_CLK_TCK,
+
+    _SC_NGROUPS_MAX,
+
+    _SC_OPEN_MAX,
+
+    _SC_STREAM_MAX,
+
+    _SC_TZNAME_MAX,
+
+    _SC_JOB_CONTROL,
+
+    _SC_SAVED_IDS,
+
+    _SC_REALTIME_SIGNALS,
+
+    _SC_PRIORITY_SCHEDULING,
+
+    _SC_TIMERS,
+
+    _SC_ASYNCHRONOUS_IO,
+
+    _SC_PRIORITIZED_IO,
+
+    _SC_SYNCHRONIZED_IO,
+
+    _SC_FSYNC,
+
+    _SC_MAPPED_FILES,
+
+    _SC_MEMLOCK,
+
+    _SC_MEMLOCK_RANGE,
+
+    _SC_MEMORY_PROTECTION,
+
+    _SC_MESSAGE_PASSING,
+
+    _SC_SEMAPHORES,
+
+    _SC_SHARED_MEMORY_OBJECTS,
+
+    _SC_AIO_LISTIO_MAX,
+
+    _SC_AIO_MAX,
+
+    _SC_AIO_PRIO_DELTA_MAX,
+
+    _SC_DELAYTIMER_MAX,
+
+    _SC_MQ_OPEN_MAX,
+
+    _SC_MQ_PRIO_MAX,
+
+    _SC_VERSION,
+
+    _SC_PAGESIZE,
+
+
+    _SC_RTSIG_MAX,
+
+    _SC_SEM_NSEMS_MAX,
+
+    _SC_SEM_VALUE_MAX,
+
+    _SC_SIGQUEUE_MAX,
+
+    _SC_TIMER_MAX,
+
+
+
+
+    _SC_BC_BASE_MAX,
+
+    _SC_BC_DIM_MAX,
+
+    _SC_BC_SCALE_MAX,
+
+    _SC_BC_STRING_MAX,
+
+    _SC_COLL_WEIGHTS_MAX,
+
+    _SC_EQUIV_CLASS_MAX,
+
+    _SC_EXPR_NEST_MAX,
+
+    _SC_LINE_MAX,
+
+    _SC_RE_DUP_MAX,
+
+    _SC_CHARCLASS_NAME_MAX,
+
+
+    _SC_2_VERSION,
+
+    _SC_2_C_BIND,
+
+    _SC_2_C_DEV,
+
+    _SC_2_FORT_DEV,
+
+    _SC_2_FORT_RUN,
+
+    _SC_2_SW_DEV,
+
+    _SC_2_LOCALEDEF,
+
+
+    _SC_PII,
+
+    _SC_PII_XTI,
+
+    _SC_PII_SOCKET,
+
+    _SC_PII_INTERNET,
+
+    _SC_PII_OSI,
+
+    _SC_POLL,
+
+    _SC_SELECT,
+
+    _SC_UIO_MAXIOV,
+
+    _SC_IOV_MAX = _SC_UIO_MAXIOV,
+
+    _SC_PII_INTERNET_STREAM,
+
+    _SC_PII_INTERNET_DGRAM,
+
+    _SC_PII_OSI_COTS,
+
+    _SC_PII_OSI_CLTS,
+
+    _SC_PII_OSI_M,
+
+    _SC_T_IOV_MAX,
+
+
+
+    _SC_THREADS,
+
+    _SC_THREAD_SAFE_FUNCTIONS,
+
+    _SC_GETGR_R_SIZE_MAX,
+
+    _SC_GETPW_R_SIZE_MAX,
+
+    _SC_LOGIN_NAME_MAX,
+
+    _SC_TTY_NAME_MAX,
+
+    _SC_THREAD_DESTRUCTOR_ITERATIONS,
+
+    _SC_THREAD_KEYS_MAX,
+
+    _SC_THREAD_STACK_MIN,
+
+    _SC_THREAD_THREADS_MAX,
+
+    _SC_THREAD_ATTR_STACKADDR,
+
+    _SC_THREAD_ATTR_STACKSIZE,
+
+    _SC_THREAD_PRIORITY_SCHEDULING,
+
+    _SC_THREAD_PRIO_INHERIT,
+
+    _SC_THREAD_PRIO_PROTECT,
+
+    _SC_THREAD_PROCESS_SHARED,
+
+
+    _SC_NPROCESSORS_CONF,
+
+    _SC_NPROCESSORS_ONLN,
+
+    _SC_PHYS_PAGES,
+
+    _SC_AVPHYS_PAGES,
+
+    _SC_ATEXIT_MAX,
+
+    _SC_PASS_MAX,
+
+
+    _SC_XOPEN_VERSION,
+
+    _SC_XOPEN_XCU_VERSION,
+
+    _SC_XOPEN_UNIX,
+
+    _SC_XOPEN_CRYPT,
+
+    _SC_XOPEN_ENH_I18N,
+
+    _SC_XOPEN_SHM,
+
+
+    _SC_2_CHAR_TERM,
+
+    _SC_2_C_VERSION,
+
+    _SC_2_UPE,
+
+
+    _SC_XOPEN_XPG2,
+
+    _SC_XOPEN_XPG3,
+
+    _SC_XOPEN_XPG4,
+
+
+    _SC_CHAR_BIT,
+
+    _SC_CHAR_MAX,
+
+    _SC_CHAR_MIN,
+
+    _SC_INT_MAX,
+
+    _SC_INT_MIN,
+
+    _SC_LONG_BIT,
+
+    _SC_WORD_BIT,
+
+    _SC_MB_LEN_MAX,
+
+    _SC_NZERO,
+
+    _SC_SSIZE_MAX,
+
+    _SC_SCHAR_MAX,
+
+    _SC_SCHAR_MIN,
+
+    _SC_SHRT_MAX,
+
+    _SC_SHRT_MIN,
+
+    _SC_UCHAR_MAX,
+
+    _SC_UINT_MAX,
+
+    _SC_ULONG_MAX,
+
+    _SC_USHRT_MAX,
+
+
+    _SC_NL_ARGMAX,
+
+    _SC_NL_LANGMAX,
+
+    _SC_NL_MSGMAX,
+
+    _SC_NL_NMAX,
+
+    _SC_NL_SETMAX,
+
+    _SC_NL_TEXTMAX,
+
+
+    _SC_XBS5_ILP32_OFF32,
+
+    _SC_XBS5_ILP32_OFFBIG,
+
+    _SC_XBS5_LP64_OFF64,
+
+    _SC_XBS5_LPBIG_OFFBIG,
+
+
+    _SC_XOPEN_LEGACY,
+
+    _SC_XOPEN_REALTIME,
+
+    _SC_XOPEN_REALTIME_THREADS,
+
+
+    _SC_ADVISORY_INFO,
+
+    _SC_BARRIERS,
+
+    _SC_BASE,
+
+    _SC_C_LANG_SUPPORT,
+
+    _SC_C_LANG_SUPPORT_R,
+
+    _SC_CLOCK_SELECTION,
+
+    _SC_CPUTIME,
+
+    _SC_THREAD_CPUTIME,
+
+    _SC_DEVICE_IO,
+
+    _SC_DEVICE_SPECIFIC,
+
+    _SC_DEVICE_SPECIFIC_R,
+
+    _SC_FD_MGMT,
+
+    _SC_FIFO,
+
+    _SC_PIPE,
+
+    _SC_FILE_ATTRIBUTES,
+
+    _SC_FILE_LOCKING,
+
+    _SC_FILE_SYSTEM,
+
+    _SC_MONOTONIC_CLOCK,
+
+    _SC_MULTI_PROCESS,
+
+    _SC_SINGLE_PROCESS,
+
+    _SC_NETWORKING,
+
+    _SC_READER_WRITER_LOCKS,
+
+    _SC_SPIN_LOCKS,
+
+    _SC_REGEXP,
+
+    _SC_REGEX_VERSION,
+
+    _SC_SHELL,
+
+    _SC_SIGNALS,
+
+    _SC_SPAWN,
+
+    _SC_SPORADIC_SERVER,
+
+    _SC_THREAD_SPORADIC_SERVER,
+
+    _SC_SYSTEM_DATABASE,
+
+    _SC_SYSTEM_DATABASE_R,
+
+    _SC_TIMEOUTS,
+
+    _SC_TYPED_MEMORY_OBJECTS,
+
+    _SC_USER_GROUPS,
+
+    _SC_USER_GROUPS_R,
+
+    _SC_2_PBS,
+
+    _SC_2_PBS_ACCOUNTING,
+
+    _SC_2_PBS_LOCATE,
+
+    _SC_2_PBS_MESSAGE,
+
+    _SC_2_PBS_TRACK,
+
+    _SC_SYMLOOP_MAX,
+
+    _SC_STREAMS,
+
+    _SC_2_PBS_CHECKPOINT,
+
+
+    _SC_V6_ILP32_OFF32,
+
+    _SC_V6_ILP32_OFFBIG,
+
+    _SC_V6_LP64_OFF64,
+
+    _SC_V6_LPBIG_OFFBIG,
+
+
+    _SC_HOST_NAME_MAX,
+
+    _SC_TRACE,
+
+    _SC_TRACE_EVENT_FILTER,
+
+    _SC_TRACE_INHERIT,
+
+    _SC_TRACE_LOG,
+
+
+    _SC_LEVEL1_ICACHE_SIZE,
+
+    _SC_LEVEL1_ICACHE_ASSOC,
+
+    _SC_LEVEL1_ICACHE_LINESIZE,
+
+    _SC_LEVEL1_DCACHE_SIZE,
+
+    _SC_LEVEL1_DCACHE_ASSOC,
+
+    _SC_LEVEL1_DCACHE_LINESIZE,
+
+    _SC_LEVEL2_CACHE_SIZE,
+
+    _SC_LEVEL2_CACHE_ASSOC,
+
+    _SC_LEVEL2_CACHE_LINESIZE,
+
+    _SC_LEVEL3_CACHE_SIZE,
+
+    _SC_LEVEL3_CACHE_ASSOC,
+
+    _SC_LEVEL3_CACHE_LINESIZE,
+
+    _SC_LEVEL4_CACHE_SIZE,
+
+    _SC_LEVEL4_CACHE_ASSOC,
+
+    _SC_LEVEL4_CACHE_LINESIZE,
+
+
+
+    _SC_IPV6 = _SC_LEVEL1_ICACHE_SIZE + 50,
+
+    _SC_RAW_SOCKETS,
+
+
+    _SC_V7_ILP32_OFF32,
+
+    _SC_V7_ILP32_OFFBIG,
+
+    _SC_V7_LP64_OFF64,
+
+    _SC_V7_LPBIG_OFFBIG,
+
+
+    _SC_SS_REPL_MAX,
+
+
+    _SC_TRACE_EVENT_NAME_MAX,
+
+    _SC_TRACE_NAME_MAX,
+
+    _SC_TRACE_SYS_MAX,
+
+    _SC_TRACE_USER_EVENT_MAX,
+
+
+    _SC_XOPEN_STREAMS,
+
+
+    _SC_THREAD_ROBUST_PRIO_INHERIT,
+
+    _SC_THREAD_ROBUST_PRIO_PROTECT
+
+  };
+
+
+enum
+  {
+    _CS_PATH,
+
+
+    _CS_V6_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_GNU_LIBC_VERSION,
+
+    _CS_GNU_LIBPTHREAD_VERSION,
+
+
+    _CS_V5_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_V7_WIDTH_RESTRICTED_ENVS,
+
+
+
+    _CS_LFS_CFLAGS = 1000,
+
+    _CS_LFS_LDFLAGS,
+
+    _CS_LFS_LIBS,
+
+    _CS_LFS_LINTFLAGS,
+
+    _CS_LFS64_CFLAGS,
+
+    _CS_LFS64_LDFLAGS,
+
+    _CS_LFS64_LIBS,
+
+    _CS_LFS64_LINTFLAGS,
+
+
+    _CS_XBS5_ILP32_OFF32_CFLAGS = 1100,
+
+    _CS_XBS5_ILP32_OFF32_LDFLAGS,
+
+    _CS_XBS5_ILP32_OFF32_LIBS,
+
+    _CS_XBS5_ILP32_OFF32_LINTFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_CFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_XBS5_ILP32_OFFBIG_LIBS,
+
+    _CS_XBS5_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_XBS5_LP64_OFF64_CFLAGS,
+
+    _CS_XBS5_LP64_OFF64_LDFLAGS,
+
+    _CS_XBS5_LP64_OFF64_LIBS,
+
+    _CS_XBS5_LP64_OFF64_LINTFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LIBS,
+
+    _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS,
+
+
+    _CS_POSIX_V6_ILP32_OFF32_CFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LDFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LIBS,
+
+    _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LIBS,
+
+    _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_CFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_LDFLAGS,
+
+    _CS_POSIX_V6_LP64_OFF64_LIBS,
+
+    _CS_POSIX_V6_LP64_OFF64_LINTFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LIBS,
+
+    _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS,
+
+
+    _CS_POSIX_V7_ILP32_OFF32_CFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LDFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LIBS,
+
+    _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LIBS,
+
+    _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_CFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_LDFLAGS,
+
+    _CS_POSIX_V7_LP64_OFF64_LIBS,
+
+    _CS_POSIX_V7_LP64_OFF64_LINTFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LIBS,
+
+    _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS,
+
+
+    _CS_V6_ENV,
+
+    _CS_V7_ENV
+
+  };
+# 610 "/usr/include/unistd.h" 2 3 4
+
+
+extern long int pathconf (const char *__path, int __name)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+extern long int fpathconf (int __fd, int __name) __attribute__ ((__nothrow__ ));
+
+
+extern long int sysconf (int __name) __attribute__ ((__nothrow__ ));
+
+
+
+extern size_t confstr (int __name, char *__buf, size_t __len) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern __pid_t getpid (void) __attribute__ ((__nothrow__ ));
+
+
+extern __pid_t getppid (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern __pid_t getpgrp (void) __attribute__ ((__nothrow__ ));
+# 646 "/usr/include/unistd.h" 3 4
+extern __pid_t __getpgid (__pid_t __pid) __attribute__ ((__nothrow__ ));
+
+extern __pid_t getpgid (__pid_t __pid) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern int setpgid (__pid_t __pid, __pid_t __pgid) __attribute__ ((__nothrow__ ));
+# 672 "/usr/include/unistd.h" 3 4
+extern int setpgrp (void) __attribute__ ((__nothrow__ ));
+# 689 "/usr/include/unistd.h" 3 4
+extern __pid_t setsid (void) __attribute__ ((__nothrow__ ));
+
+
+
+extern __pid_t getsid (__pid_t __pid) __attribute__ ((__nothrow__ ));
+
+
+
+extern __uid_t getuid (void) __attribute__ ((__nothrow__ ));
+
+
+extern __uid_t geteuid (void) __attribute__ ((__nothrow__ ));
+
+
+extern __gid_t getgid (void) __attribute__ ((__nothrow__ ));
+
+
+extern __gid_t getegid (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int getgroups (int __size, __gid_t __list[]) __attribute__ ((__nothrow__ )) ;
+# 722 "/usr/include/unistd.h" 3 4
+extern int setuid (__uid_t __uid) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int setreuid (__uid_t __ruid, __uid_t __euid) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int seteuid (__uid_t __uid) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern int setgid (__gid_t __gid) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int setregid (__gid_t __rgid, __gid_t __egid) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+extern int setegid (__gid_t __gid) __attribute__ ((__nothrow__ )) ;
+# 778 "/usr/include/unistd.h" 3 4
+extern __pid_t fork (void) __attribute__ ((__nothrow__));
+
+
+
+
+
+
+
+extern __pid_t vfork (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern char *ttyname (int __fd) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+extern int isatty (int __fd) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int ttyslot (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int link (const char *__from, const char *__to)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern int linkat (int __fromfd, const char *__from, int __tofd,
+     const char *__to, int __flags)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4))) ;
+
+
+
+
+extern int symlink (const char *__from, const char *__to)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern ssize_t readlink (const char *__restrict __path,
+    char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2))) ;
+
+
+
+
+extern int symlinkat (const char *__from, int __tofd,
+        const char *__to) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 3))) ;
+
+
+extern ssize_t readlinkat (int __fd, const char *__restrict __path,
+      char *__restrict __buf, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3))) ;
+
+
+
+extern int unlink (const char *__name) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int unlinkat (int __fd, const char *__name, int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+extern int rmdir (const char *__path) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+extern __pid_t tcgetpgrp (int __fd) __attribute__ ((__nothrow__ ));
+
+
+extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern char *getlogin (void);
+
+
+
+
+
+
+
+extern int getlogin_r (char *__name, size_t __name_len) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int setlogin (const char *__name) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+# 893 "/usr/include/unistd.h" 3 4
+# 1 "/usr/include/getopt.h" 1 3 4
+# 58 "/usr/include/getopt.h" 3 4
+extern char *optarg;
+# 72 "/usr/include/getopt.h" 3 4
+extern int optind;
+
+
+
+
+extern int opterr;
+
+
+
+extern int optopt;
+# 151 "/usr/include/getopt.h" 3 4
+extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
+       __attribute__ ((__nothrow__ ));
+# 894 "/usr/include/unistd.h" 2 3 4
+
+
+
+
+
+
+
+extern int gethostname (char *__name, size_t __len) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+extern int sethostname (const char *__name, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern int sethostid (long int __id) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+extern int getdomainname (char *__name, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+extern int setdomainname (const char *__name, size_t __len)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+extern int vhangup (void) __attribute__ ((__nothrow__ ));
+
+
+extern int revoke (const char *__file) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+
+
+extern int profil (unsigned short int *__sample_buffer, size_t __size,
+     size_t __offset, unsigned int __scale)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int acct (const char *__name) __attribute__ ((__nothrow__ ));
+
+
+
+extern char *getusershell (void) __attribute__ ((__nothrow__ ));
+extern void endusershell (void) __attribute__ ((__nothrow__ ));
+extern void setusershell (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int daemon (int __nochdir, int __noclose) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern int chroot (const char *__path) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+extern char *getpass (const char *__prompt) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+
+
+extern int fsync (int __fd);
+# 991 "/usr/include/unistd.h" 3 4
+extern long int gethostid (void);
+
+
+extern void sync (void) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int getpagesize (void) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern int getdtablesize (void) __attribute__ ((__nothrow__ ));
+# 1019 "/usr/include/unistd.h" 3 4
+extern int truncate (const char *__file, __off64_t __length) __asm__ ("" "truncate64") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+
+
+
+
+
+
+extern int truncate64 (const char *__file, __off64_t __length)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+# 1041 "/usr/include/unistd.h" 3 4
+extern int ftruncate (int __fd, __off64_t __length) __asm__ ("" "ftruncate64") __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+
+extern int ftruncate64 (int __fd, __off64_t __length) __attribute__ ((__nothrow__ )) ;
+# 1059 "/usr/include/unistd.h" 3 4
+extern int brk (void *__addr) __attribute__ ((__nothrow__ )) ;
+
+
+
+
+
+extern void *sbrk (intptr_t __delta) __attribute__ ((__nothrow__ ));
+# 1080 "/usr/include/unistd.h" 3 4
+extern long int syscall (long int __sysno, ...) __attribute__ ((__nothrow__ ));
+# 1134 "/usr/include/unistd.h" 3 4
+extern int fdatasync (int __fildes);
+# 54 "./base/unistd_.h" 2
+# 22 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/gx.h" 1
+# 22 "./base/gx.h"
+# 1 "./base/stdio_.h" 1
+# 44 "./base/stdio_.h"
+int unlink(const char *);
+# 82 "./base/stdio_.h"
+# 1 "./base/gssprintf.h" 1
+# 21 "./base/gssprintf.h"
+int
+gs_vsnprintf(char *zBuf, int n, const char *zFormat, va_list ap);
+
+int
+gs_snprintf(char *zBuf, int n, const char *zFormat, ...);
+
+int
+gs_vsprintf(char *zBuf, const char *zFormat, va_list ap);
+
+int
+gs_sprintf(char *zBuf, const char *zFormat, ...);
+
+int
+gs_sscanf(char *buf, const char *format, ...);
+# 83 "./base/stdio_.h" 2
+# 23 "./base/gx.h" 2
+# 1 "./base/gserrors.h" 1
+# 50 "./base/gserrors.h"
+int gs_log_error(int, const char *, int);
+# 88 "./base/gserrors.h"
+const char *gs_errstr(int code);
+# 189 "./base/gserrors.h"
+int gs_throw_imp(const char *func, const char *file, int line,
+        int op, int code, const char *fmt, ...) __attribute__((__format__ (__printf__, 6, 7)));
+# 24 "./base/gx.h" 2
+# 1 "./base/gsio.h" 1
+# 25 "./base/gx.h" 2
+# 1 "./base/gstypes.h" 1
+# 28 "./base/gstypes.h"
+typedef ulong gs_id;
+# 45 "./base/gstypes.h"
+typedef struct gs_string_s {
+    byte *data; uint size;
+} gs_string;
+
+
+
+typedef struct gs_const_string_s {
+    const byte *data; uint size;
+} gs_const_string;
+typedef struct gs_param_string_s {
+    const byte *data; uint size;
+    bool persistent;
+} gs_param_string;
+# 71 "./base/gstypes.h"
+typedef struct gs_bytestring_s {
+    byte *data; uint size;
+    byte *bytes;
+} gs_bytestring;
+typedef struct gs_const_bytestring_s {
+    const byte *data; uint size;
+    const byte *bytes;
+} gs_const_bytestring;
+# 88 "./base/gstypes.h"
+typedef struct gs_point_s {
+    double x, y;
+} gs_point;
+typedef struct gs_int_point_s {
+    int x, y;
+} gs_int_point;
+
+
+
+
+
+typedef struct gs_log2_scale_point_s {
+    int x, y;
+} gs_log2_scale_point;
+
+
+
+
+
+
+
+typedef struct gs_rect_s {
+    gs_point p, q;
+} gs_rect;
+typedef struct gs_int_rect_s {
+    gs_int_point p, q;
+} gs_int_rect;
+
+
+
+
+
+
+typedef struct gs_range_s {
+    float rmin, rmax;
+} gs_range_t;
+# 26 "./base/gx.h" 2
+# 1 "./base/gsmemory.h" 1
+# 43 "./base/gsmemory.h"
+# 1 "./base/gslibctx.h" 1
+# 22 "./base/gslibctx.h"
+# 1 "./base/gs_dll_call.h" 1
+# 23 "./base/gslibctx.h" 2
+
+typedef struct name_table_s *name_table_ptr;
+
+
+
+typedef struct gs_fapi_server_s gs_fapi_server;
+
+
+
+
+typedef struct gs_font_dir_s gs_font_dir;
+
+typedef struct gs_lib_ctx_s
+{
+    gs_memory_t *memory;
+    FILE *fstdin;
+    FILE *fstdout;
+    FILE *fstderr;
+    FILE *fstdout2;
+    bool stdout_is_redirected;
+    bool stdout_to_stderr;
+    bool stdin_is_interactive;
+    void *caller_handle;
+    void *custom_color_callback;
+    int ( *stdin_fn)(void *caller_handle, char *buf, int len);
+    int ( *stdout_fn)(void *caller_handle, const char *str, int len);
+    int ( *stderr_fn)(void *caller_handle, const char *str, int len);
+    int ( *poll_fn)(void *caller_handle);
+    ulong gs_next_id;
+    void *top_of_system;
+
+
+    name_table_ptr gs_name_table;
+
+
+
+    bool dict_auto_expand;
+
+    struct gx_io_device_s **io_device_table;
+
+
+    bool screen_accurate_screens;
+    uint screen_min_screen_levels;
+
+
+    long real_time_0[2];
+
+
+    gs_font_dir *font_dir;
+
+
+
+    bool CPSI_mode;
+
+
+
+    char *profiledir;
+    int profiledir_len;
+    void *cms_context;
+    gs_fapi_server **fapi_servers;
+} gs_lib_ctx_t;
+
+
+
+
+
+int gs_lib_ctx_init( gs_memory_t *mem );
+
+
+
+
+void gs_lib_ctx_fin( gs_memory_t *mem );
+
+gs_lib_ctx_t *gs_lib_ctx_get_interp_instance( const gs_memory_t *mem );
+
+void *gs_lib_ctx_get_cms_context( const gs_memory_t *mem );
+void gs_lib_ctx_set_cms_context( const gs_memory_t *mem, void *cms_context );
+
+
+
+
+
+gs_memory_t * gs_lib_ctx_get_non_gc_memory_t(void);
+
+
+void gs_lib_ctx_set_icc_directory(const gs_memory_t *mem_gc, const char* pname,
+                        int dir_namelen);
+# 44 "./base/gsmemory.h" 2
+
+
+typedef struct gs_memory_struct_type_s gs_memory_struct_type_t;
+typedef const gs_memory_struct_type_t *gs_memory_type_ptr_t;
+# 57 "./base/gsmemory.h"
+typedef struct gs_ptr_procs_s gs_ptr_procs_t;
+typedef const gs_ptr_procs_t *gs_ptr_type_t;
+
+
+typedef struct gs_gc_root_s gs_gc_root_t;
+
+
+
+typedef client_name_t struct_name_t;
+
+
+uint gs_struct_type_size(gs_memory_type_ptr_t);
+
+
+struct_name_t gs_struct_type_name(gs_memory_type_ptr_t);
+
+
+
+
+
+
+
+typedef struct gs_memory_status_s {
+
+
+
+
+
+    ulong allocated;
+
+
+
+
+    ulong used;
+
+    bool is_thread_safe;
+} gs_memory_status_t;
+# 218 "./base/gsmemory.h"
+typedef struct gs_memory_procs_s {
+
+    byte *(*alloc_bytes_immovable)(gs_memory_t *mem, uint nbytes, client_name_t cname); void *(*resize_object)(gs_memory_t *mem, void *obj, uint new_num_elements, client_name_t cname); void (*free_object)(gs_memory_t *mem, void *data, client_name_t cname); gs_memory_t *(*stable)(gs_memory_t *mem); void (*status)(gs_memory_t *mem, gs_memory_status_t *status); void (*free_all)(gs_memory_t *mem, uint free_mask, client_name_t cname); void (*consolidate_free)(gs_memory_t *mem);
+# 246 "./base/gsmemory.h"
+    byte *(*alloc_bytes)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+# 257 "./base/gsmemory.h"
+    void *(*alloc_struct)(gs_memory_t *mem, gs_memory_type_ptr_t pstype, client_name_t cname);
+
+
+    void *(*alloc_struct_immovable)(gs_memory_t *mem, gs_memory_type_ptr_t pstype, client_name_t cname);
+# 271 "./base/gsmemory.h"
+    byte *(*alloc_byte_array)(gs_memory_t *mem, uint num_elements, uint elt_size, client_name_t cname);
+
+
+    byte *(*alloc_byte_array_immovable)(gs_memory_t *mem, uint num_elements, uint elt_size, client_name_t cname);
+# 285 "./base/gsmemory.h"
+    void *(*alloc_struct_array)(gs_memory_t *mem, uint num_elements, gs_memory_type_ptr_t pstype, client_name_t cname);
+
+
+    void *(*alloc_struct_array_immovable)(gs_memory_t *mem, uint num_elements, gs_memory_type_ptr_t pstype, client_name_t cname);
+# 298 "./base/gsmemory.h"
+    uint (*object_size)(gs_memory_t *mem, const void *obj);
+# 310 "./base/gsmemory.h"
+    gs_memory_type_ptr_t (*object_type)(const gs_memory_t *mem, const void *obj);
+# 320 "./base/gsmemory.h"
+    byte *(*alloc_string)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+
+
+    byte *(*alloc_string_immovable)(gs_memory_t *mem, uint nbytes, client_name_t cname);
+# 335 "./base/gsmemory.h"
+    byte *(*resize_string)(gs_memory_t *mem, byte *data, uint old_num, uint new_num, client_name_t cname);
+# 346 "./base/gsmemory.h"
+    void (*free_string)(gs_memory_t *mem, byte *data, uint nbytes, client_name_t cname);
+# 360 "./base/gsmemory.h"
+    int (*register_root)(gs_memory_t *mem, gs_gc_root_t *root, gs_ptr_type_t ptype, void **pp, client_name_t cname);
+# 371 "./base/gsmemory.h"
+    void (*unregister_root)(gs_memory_t *mem, gs_gc_root_t *root, client_name_t cname);
+# 386 "./base/gsmemory.h"
+    void (*enable_free)(gs_memory_t *mem, bool enable);
+
+} gs_memory_procs_t;
+
+
+
+
+
+
+
+void gs_free_const_object(gs_memory_t *mem, const void *data,
+                          client_name_t cname);
+void gs_free_const_string(gs_memory_t *mem, const byte *data, uint nbytes,
+                          client_name_t cname);
+
+
+
+
+
+void gs_free_bytestring(gs_memory_t *mem, gs_bytestring *pbs,
+                        client_name_t cname);
+void gs_free_const_bytestring(gs_memory_t *mem, gs_const_bytestring *pbs,
+                              client_name_t cname);
+
+
+
+
+
+void *gs_resize_struct_array(gs_memory_t *mem, void *obj, uint num_elements,
+                             gs_memory_type_ptr_t pstype,
+                             client_name_t cname);
+
+
+int gs_register_struct_root(gs_memory_t *mem, gs_gc_root_t *root,
+                            void **pp, client_name_t cname);
+
+
+void gs_ignore_free_object(gs_memory_t *mem, void *data, client_name_t cname);
+void gs_ignore_free_string(gs_memory_t *mem, byte *data, uint nbytes, client_name_t cname);
+
+
+void gs_ignore_consolidate_free(gs_memory_t *mem);
+
+
+
+
+
+
+
+void *gs_raw_alloc_struct_immovable(gs_memory_t * rmem,
+                                    gs_memory_type_ptr_t pstype,
+                                    client_name_t cname);
+
+typedef struct pl_mem_node_s pl_mem_node_t;
+# 463 "./base/gsmemory.h"
+struct gs_memory_s {
+    gs_memory_t *stable_memory; gs_memory_procs_t procs; gs_lib_ctx_t *gs_lib_ctx; gs_memory_t *non_gc_memory; gs_memory_t *thread_safe_memory;
+};
+# 27 "./base/gx.h" 2
+# 1 "./base/gdebug.h" 1
+# 59 "./base/gdebug.h"
+typedef enum {
+
+
+
+# 1 "./base/gdbflags.h" 1
+# 25 "./base/gdbflags.h"
+gs_debug_flag_icc = 1,
+gs_debug_flag_validate_chunks = 2,
+gs_debug_flag_gc_disable = 3,
+# 57 "./base/gdbflags.h"
+gs_debug_flag_ps_op_names = '!',
+gs_debug_flag_contexts_detail = '"',
+gs_debug_flag_trace_errors = '#',
+gs_debug_flag_memfill_obj = '$',
+gs_debug_flag_ext_commands = '%',
+
+gs_debug_flag_contexts = '\'',
+
+
+gs_debug_flag_image = '*',
+gs_debug_flag_min_stack = '+',
+gs_debug_flag_no_path_banding = ',',
+
+gs_debug_flag_small_mem_tables = '.',
+gs_debug_flag_file_line = '/',
+gs_debug_flag_gc = '0',
+gs_debug_flag_type1 = '1',
+gs_debug_flag_curve = '2',
+gs_debug_flag_curve_detail = '3',
+gs_debug_flag_gc_strings = '4',
+gs_debug_flag_gc_strings_detail = '5',
+gs_debug_flag_gc_chunks = '6',
+gs_debug_flag_gc_objects = '7',
+gs_debug_flag_gc_refs = '8',
+gs_debug_flag_gc_pointers = '9',
+gs_debug_flag_time = ':',
+
+
+
+
+gs_debug_flag_validate_pointers = '?',
+gs_debug_flag_memfill_empty = '@',
+gs_debug_flag_alloc_detail = 'A',
+gs_debug_flag_bitmap_detail = 'B',
+gs_debug_flag_color_detail = 'C',
+gs_debug_flag_dict_detail = 'D',
+
+gs_debug_flag_fill_detail = 'F',
+
+gs_debug_flag_halftones_detail = 'H',
+gs_debug_flag_interp_detail = 'I',
+
+gs_debug_flag_char_cache_detail = 'K',
+gs_debug_flag_clist_detail = 'L',
+
+
+gs_debug_flag_stroke_detail = 'O',
+gs_debug_flag_paths_detail = 'P',
+
+
+gs_debug_flag_scanner = 'S',
+
+gs_debug_flag_undo_detail = 'U',
+gs_debug_flag_compositors_detail = 'V',
+
+
+gs_debug_flag_type1_hints_detail = 'Y',
+
+
+
+
+gs_debug_flag_ref_counts = '^',
+gs_debug_flag_high_level = '_',
+gs_debug_flag_no_hl_img_banding = '`',
+gs_debug_flag_alloc = 'a',
+gs_debug_flag_bitmap = 'b',
+gs_debug_flag_color_halftones = 'c',
+gs_debug_flag_dict = 'd',
+gs_debug_flag_external_calls = 'e',
+gs_debug_flag_fill = 'f',
+gs_debug_flag_gsave = 'g',
+gs_debug_flag_halftones = 'h',
+gs_debug_flag_interp = 'i',
+gs_debug_flag_comp_fonts = 'j',
+gs_debug_flag_char_cache = 'k',
+gs_debug_flag_clist = 'l',
+gs_debug_flag_makefont = 'm',
+gs_debug_flag_names = 'n',
+gs_debug_flag_stroke = 'o',
+gs_debug_flag_paths = 'p',
+gs_debug_flag_clipping = 'q',
+gs_debug_flag_arcs = 'r',
+gs_debug_flag_streams = 's',
+gs_debug_flag_tiling = 't',
+gs_debug_flag_undo = 'u',
+gs_debug_flag_compositors = 'v',
+gs_debug_flag_compress = 'w',
+gs_debug_flag_transforms = 'x',
+gs_debug_flag_type1_hints = 'y',
+gs_debug_flag_trapezoid_fill = 'z',
+
+
+
+gs_debug_flag_math = '~'
+# 63 "./base/gdebug.h" 2
+
+
+} gs_debug_flag;
+
+typedef struct {
+    int used;
+    char short_desc[20];
+    char long_desc[80];
+} gs_debug_flag_details;
+
+
+extern const byte gs_debug_flag_implied_by[127];
+extern const gs_debug_flag_details gs_debug_flags[127];
+
+
+int gs_debug_flags_parse(gs_memory_t *heap, const char *arg);
+void gs_debug_flags_list(gs_memory_t *heap);
+
+
+extern char gs_debug[128];
+bool gs_debug_c(int );
+# 92 "./base/gdebug.h"
+extern FILE *gs_debug_out;
+# 182 "./base/gdebug.h"
+void debug_print_string(const gs_memory_t *mem, const byte * str, uint len);
+void debug_dump_bytes(const gs_memory_t *mem,
+                      const byte * from, const byte * to,
+                      const char *msg);
+void debug_dump_bitmap(const gs_memory_t *mem,
+                       const byte * from, uint raster, uint height,
+                       const char *msg);
+
+void debug_print_string_hex_nomem(const byte * str, uint len);
+
+void debug_print_string_hex(const gs_memory_t *mem, const byte * str, uint len);
+# 28 "./base/gx.h" 2
+
+
+
+
+
+
+typedef struct gs_imager_state_s gs_imager_state;
+
+
+
+
+typedef struct gs_state_s gs_state;
+# 23 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/gp.h" 1
+# 24 "./base/gp.h"
+# 1 "./base/gscdefs.h" 1
+# 31 "./base/gscdefs.h"
+extern const long gs_buildtime;
+extern const char *const gs_copyright;
+extern const char *const gs_product;
+extern const char *const gs_productfamily;
+extern const long gs_version;
+extern const long gs_revision;
+extern const long gs_revisiondate;
+extern const long gs_serialnumber;
+
+
+extern const char *const gs_doc_directory;
+extern const char *const gs_lib_default_path;
+extern const char *const gs_init_file;
+extern const char *const gs_dev_defaults;
+# 55 "./base/gscdefs.h"
+extern const unsigned gx_image_class_table_count;
+
+
+
+extern const unsigned gx_image_type_table_count;
+# 68 "./base/gscdefs.h"
+extern const unsigned gx_io_device_table_count;
+# 25 "./base/gp.h" 2
+# 35 "./base/gp.h"
+# 1 "./base/gpgetenv.h" 1
+# 39 "./base/gpgetenv.h"
+int gp_getenv(const char *key, char *ptr, int *plen);
+# 36 "./base/gp.h" 2
+
+
+
+
+# 1 "./base/srdline.h" 1
+# 36 "./base/srdline.h"
+typedef struct stream_s stream;
+# 45 "./base/srdline.h"
+extern int sreadline(stream *s_in, stream *s_out, void *readline_data, gs_const_string *prompt, gs_string *buf, gs_memory_t *bufmem, uint *pcount, bool *pin_eol, bool (*is_stdin)(const stream *));
+# 41 "./base/gp.h" 2
+
+
+
+
+# 1 "./base/stdint_.h" 1
+# 43 "./base/stdint_.h"
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 1 3
+# 63 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 3
+# 1 "/usr/include/stdint.h" 1 3 4
+# 26 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/bits/wchar.h" 1 3 4
+# 22 "/usr/include/bits/wchar.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 23 "/usr/include/bits/wchar.h" 2 3 4
+# 27 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/stdint.h" 2 3 4
+# 48 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+
+typedef unsigned int uint32_t;
+
+
+
+typedef unsigned long int uint64_t;
+# 65 "/usr/include/stdint.h" 3 4
+typedef signed char int_least8_t;
+typedef short int int_least16_t;
+typedef int int_least32_t;
+
+typedef long int int_least64_t;
+
+
+
+
+
+
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+
+typedef unsigned long int uint_least64_t;
+# 90 "/usr/include/stdint.h" 3 4
+typedef signed char int_fast8_t;
+
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+# 103 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint_fast8_t;
+
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+# 122 "/usr/include/stdint.h" 3 4
+typedef unsigned long int uintptr_t;
+# 134 "/usr/include/stdint.h" 3 4
+typedef long int intmax_t;
+typedef unsigned long int uintmax_t;
+# 64 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/stdint.h" 2 3
+# 44 "./base/stdint_.h" 2
+# 131 "./base/stdint_.h"
+# 1 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 1 3
+# 26 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 3
+# 1 "/usr/include/inttypes.h" 1 3 4
+# 34 "/usr/include/inttypes.h" 3 4
+typedef int __gwchar_t;
+# 278 "/usr/include/inttypes.h" 3 4
+typedef struct
+  {
+    long int quot;
+    long int rem;
+  } imaxdiv_t;
+# 297 "/usr/include/inttypes.h" 3 4
+extern intmax_t imaxabs (intmax_t __n) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern imaxdiv_t imaxdiv (intmax_t __numer, intmax_t __denom)
+      __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern intmax_t strtoimax (const char *__restrict __nptr,
+      char **__restrict __endptr, int __base) __attribute__ ((__nothrow__ ));
+
+
+extern uintmax_t strtoumax (const char *__restrict __nptr,
+       char ** __restrict __endptr, int __base) __attribute__ ((__nothrow__ ));
+
+
+extern intmax_t wcstoimax (const __gwchar_t *__restrict __nptr,
+      __gwchar_t **__restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ ));
+
+
+extern uintmax_t wcstoumax (const __gwchar_t *__restrict __nptr,
+       __gwchar_t ** __restrict __endptr, int __base)
+     __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long int __strtol_internal (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) intmax_t
+__attribute__ ((__nothrow__ )) strtoimax (const char *__restrict nptr, char **__restrict endptr, int base)
+
+{
+  return __strtol_internal (nptr, endptr, base, 0);
+}
+
+extern unsigned long int __strtoul_internal (const char *__restrict __nptr,
+          char ** __restrict __endptr,
+          int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) uintmax_t
+__attribute__ ((__nothrow__ )) strtoumax (const char *__restrict nptr, char **__restrict endptr, int base)
+
+{
+  return __strtoul_internal (nptr, endptr, base, 0);
+}
+
+extern long int __wcstol_internal (const __gwchar_t * __restrict __nptr,
+       __gwchar_t **__restrict __endptr,
+       int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) intmax_t
+__attribute__ ((__nothrow__ )) wcstoimax (const __gwchar_t *__restrict nptr, __gwchar_t **__restrict endptr, int base)
+
+{
+  return __wcstol_internal (nptr, endptr, base, 0);
+}
+
+extern unsigned long int __wcstoul_internal (const __gwchar_t *
+          __restrict __nptr,
+          __gwchar_t **
+          __restrict __endptr,
+          int __base, int __group)
+  __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1))) ;
+
+extern __inline __attribute__ ((__gnu_inline__)) uintmax_t
+__attribute__ ((__nothrow__ )) wcstoumax (const __gwchar_t *__restrict nptr, __gwchar_t **__restrict endptr, int base)
+
+{
+  return __wcstoul_internal (nptr, endptr, base, 0);
+}
+# 27 "/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/../lib/clang/3.7.0/include/inttypes.h" 2 3
+# 132 "./base/stdint_.h" 2
+# 46 "./base/gp.h" 2
+# 55 "./base/gp.h"
+void gp_init(void);
+
+
+
+
+
+void gp_exit(int exit_status, int code);
+
+
+
+
+
+void gp_do_exit(int exit_status);
+# 76 "./base/gp.h"
+const char *gp_strerror(int);
+# 99 "./base/gp.h"
+int gp_defaultpapersize(char *ptr, int *plen);
+
+
+
+
+
+
+
+int gp_serialnumber(void);
+
+
+
+
+
+
+
+void gp_get_realtime(long ptm[2]);
+
+
+
+
+
+void gp_get_usertime(long ptm[2]);
+# 136 "./base/gp.h"
+int gp_readline_init(void **preadline_data, gs_memory_t *mem);
+
+
+
+
+int gp_readline(stream *s_in, stream *s_out, void *readline_data,
+                gs_const_string *prompt, gs_string *buf,
+                gs_memory_t *bufmem, uint *pcount, bool *pin_eol,
+                bool (*is_stdin)(const stream *));
+
+
+
+
+void gp_readline_finit(void *readline_data);
+# 161 "./base/gp.h"
+int gp_stdin_read(char *buf, int len, int interactive, FILE *f);
+# 170 "./base/gp.h"
+const char *gp_getenv_display(void);
+# 189 "./base/gp.h"
+extern const char gp_file_name_list_separator;
+
+
+extern const char gp_scratch_file_name_prefix[];
+
+
+extern const char gp_null_file_name[];
+
+
+extern const char gp_current_directory_name[];
+
+
+
+
+extern const char gp_fmode_binary_suffix[];
+
+
+
+extern const char gp_fmode_rb[];
+extern const char gp_fmode_wb[];
+# 227 "./base/gp.h"
+FILE *gp_open_scratch_file(const gs_memory_t *mem,
+                           const char *prefix,
+                                 char fname[4096],
+                           const char *mode);
+
+
+FILE *gp_fopen(const char *fname, const char *mode);
+
+
+
+int gp_setmode_binary(FILE * pfile, bool mode);
+
+typedef enum {
+    gp_combine_small_buffer = -1,
+    gp_combine_cant_handle = 0,
+    gp_combine_success = 1
+} gp_file_name_combine_result;
+# 252 "./base/gp.h"
+gp_file_name_combine_result gp_file_name_combine(const char *prefix, uint plen,
+            const char *fname, uint flen, bool no_sibling, char *buffer, uint *blen);
+# 264 "./base/gp.h"
+uint gp_file_name_root(const char *fname, uint len);
+# 273 "./base/gp.h"
+uint gs_file_name_check_separator(const char *fname, int len, const char *item);
+
+
+
+
+
+bool gp_file_name_is_parent(const char *fname, uint len);
+
+
+
+
+
+bool gp_file_name_is_current(const char *fname, uint len);
+
+
+
+
+
+const char *gp_file_name_current(void);
+
+
+
+
+
+const char *gp_file_name_separator(void);
+
+
+
+
+
+const char *gp_file_name_directory_separator(void);
+
+
+
+
+
+const char *gp_file_name_parent(void);
+
+
+
+
+bool gp_file_name_is_parent_allowed(void);
+
+
+
+
+
+bool gp_file_name_is_empty_item_meanful(void);
+
+
+
+
+
+int gp_read_macresource(byte *buf, const char *fname,
+                                     const uint type, const ushort id);
+
+
+bool gp_file_name_good_char(unsigned char c);
+# 352 "./base/gp.h"
+int gp_cache_insert(int type, byte *key, int keylen, void *buffer, int buflen);
+
+
+typedef void *(*gp_cache_alloc)(void *userdata, int bytes);
+int gp_cache_query(int type, byte* key, int keylen, void **buffer,
+    gp_cache_alloc alloc, void *userdata);
+# 379 "./base/gp.h"
+FILE *gp_open_printer(const gs_memory_t *mem,
+                            char fname[4096],
+                            int binary_mode);
+# 390 "./base/gp.h"
+void gp_close_printer(const gs_memory_t *mem,
+                            FILE *pfile,
+                      const char *fname);
+
+
+
+
+
+typedef struct file_enum_s file_enum;
+# 412 "./base/gp.h"
+file_enum *gp_enumerate_files_init(const char *pat, uint patlen,
+                                   gs_memory_t * memory);
+# 422 "./base/gp.h"
+uint gp_enumerate_files_next(file_enum * pfen, char *ptr, uint maxlen);
+
+
+
+
+
+
+
+void gp_enumerate_files_close(file_enum * pfen);
+# 441 "./base/gp.h"
+void *gp_enumerate_fonts_init(gs_memory_t *mem);
+# 450 "./base/gp.h"
+int gp_enumerate_fonts_next(void *enum_state, char **fontname, char **path);
+
+
+void gp_enumerate_fonts_free(void *enum_state);
+# 483 "./base/gp.h"
+FILE *gp_fopen_64(const char *filename, const char *mode);
+
+FILE *gp_open_scratch_file_64(const gs_memory_t *mem,
+                              const char *prefix,
+                                    char fname[4096],
+                              const char *mode);
+FILE *gp_open_printer_64(const gs_memory_t *mem,
+                               char fname[4096],
+                               int binary_mode);
+
+int64_t gp_ftell_64(FILE *strm);
+
+int gp_fseek_64(FILE *strm, int64_t offset, int origin);
+
+bool gp_fseekable (FILE *f);
+# 511 "./base/gp.h"
+int
+gp_local_arg_encoding_get_codepoint(FILE *file, const char **astr);
+# 24 "./devices/vector/gdevpdf.c" 2
+
+# 1 "./base/gxdevice.h" 1
+# 23 "./base/gxdevice.h"
+# 1 "./base/gxdevcli.h" 1
+# 24 "./base/gxdevcli.h"
+# 1 "./base/gscompt.h" 1
+# 41 "./base/gscompt.h"
+typedef struct gs_composite_s gs_composite_t;
+
+
+
+
+
+
+gs_id gs_composite_id(const gs_composite_t * pcte);
+# 25 "./base/gxdevcli.h" 2
+# 1 "./base/gsdcolor.h" 1
+# 22 "./base/gsdcolor.h"
+# 1 "./base/gsccolor.h" 1
+# 22 "./base/gsccolor.h"
+# 1 "./base/gsstype.h" 1
+# 23 "./base/gsstype.h"
+typedef struct gc_state_s gc_state_t;
+
+
+
+
+
+typedef struct enum_ptr_s {
+    const void *ptr;
+    uint size;
+} enum_ptr_t;
+# 81 "./base/gsstype.h"
+typedef struct struct_shared_procs_s struct_shared_procs_t;
+
+struct gs_memory_struct_type_s {
+        uint ssize;
+        struct_name_t sname;
+
+
+
+
+        const struct_shared_procs_t *shared;
+
+
+
+        void (*clear_marks)(const gs_memory_t *cmem, void *pre, uint size, const gs_memory_struct_type_t *pstype);
+        gs_ptr_type_t (*enum_ptrs)(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+        void (*reloc_ptrs)(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+        void (*finalize)(const gs_memory_t *cmem, void *ptr);
+
+
+
+        const void *proc_data;
+};
+# 23 "./base/gsccolor.h" 2
+
+
+
+
+typedef struct gs_pattern_instance_s gs_pattern_instance_t;
+# 61 "./base/gsccolor.h"
+typedef struct gs_paint_color_s {
+    float values[(64)];
+
+
+
+} gs_paint_color;
+
+
+
+
+typedef struct gs_client_color_s gs_client_color;
+
+
+struct gs_client_color_s {
+    gs_pattern_instance_t *pattern;
+    gs_paint_color paint;
+
+
+
+
+};
+
+extern const gs_memory_struct_type_t st_client_color;
+# 93 "./base/gsccolor.h"
+typedef enum {
+    GRAY_SCALE,
+    DEVICE_RGB,
+    DEVICE_CMYK,
+    CIE_XYZ,
+    DEVICEN,
+    ICC,
+    UNKNOWN,
+    OTHER
+} gs_transparency_color_t;
+
+
+
+
+
+
+typedef enum {
+    GX_CINFO_POLARITY_UNKNOWN = -1,
+    GX_CINFO_POLARITY_SUBTRACTIVE = 0,
+    GX_CINFO_POLARITY_ADDITIVE
+} gx_color_polarity_t;
+# 23 "./base/gsdcolor.h" 2
+# 1 "./base/gxarith.h" 1
+# 27 "./base/gxarith.h"
+int imod(int m, int n);
+
+
+int igcd(int x, int y);
+
+
+
+
+
+int idivmod(int a, int b, int m);
+
+
+
+
+int ilog2(int n);
+# 24 "./base/gsdcolor.h" 2
+# 1 "./base/gxbitmap.h" 1
+# 23 "./base/gxbitmap.h"
+# 1 "./base/gsbitmap.h" 1
+# 54 "./base/gsbitmap.h"
+typedef gs_id gs_bitmap_id;
+# 75 "./base/gsbitmap.h"
+typedef struct gs_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gs_bitmap;
+typedef struct gs_const_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gs_const_bitmap;
+# 96 "./base/gsbitmap.h"
+typedef struct gs_tile_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gs_tile_bitmap;
+typedef struct gs_const_tile_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gs_const_tile_bitmap;
+# 124 "./base/gsbitmap.h"
+typedef struct gs_depth_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; byte pix_depth; byte num_comps;
+} gs_depth_bitmap;
+typedef struct gs_const_depth_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; byte pix_depth; byte num_comps;
+} gs_const_depth_bitmap;
+
+
+
+
+
+
+typedef struct gs_tile_depth_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; byte pix_depth; byte num_comps;
+} gs_tile_depth_bitmap;
+typedef struct gs_const_tile_depth_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; byte pix_depth; byte num_comps;
+} gs_const_tile_depth_bitmap;
+# 155 "./base/gsbitmap.h"
+extern const gs_memory_struct_type_t st_gs_bitmap;
+extern const gs_memory_struct_type_t st_gs_tile_bitmap;
+extern const gs_memory_struct_type_t st_gs_depth_bitmap;
+extern const gs_memory_struct_type_t st_gs_tile_depth_bitmap;
+# 24 "./base/gxbitmap.h" 2
+
+
+typedef gs_bitmap_id gx_bitmap_id;
+# 83 "./base/gxbitmap.h"
+typedef struct gx_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gx_bitmap;
+typedef struct gx_const_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id;
+} gx_const_bitmap;
+
+
+
+
+
+
+
+typedef struct gx_tile_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gx_tile_bitmap;
+typedef struct gx_const_tile_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height;
+} gx_const_tile_bitmap;
+# 150 "./base/gxbitmap.h"
+typedef struct gx_strip_bitmap_s {
+    byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; ushort rep_shift; ushort shift; int num_planes;
+} gx_strip_bitmap;
+typedef struct gx_const_strip_bitmap_s {
+    const byte * data; int raster; gs_int_point size; gs_bitmap_id id; ushort rep_width, rep_height; ushort rep_shift; ushort shift; int num_planes;
+} gx_const_strip_bitmap;
+
+extern const gs_memory_struct_type_t st_gx_strip_bitmap;
+# 25 "./base/gsdcolor.h" 2
+# 1 "./base/gxhttile.h" 1
+# 32 "./base/gxhttile.h"
+typedef struct gx_ht_tile_s gx_ht_tile;
+
+
+
+struct gx_ht_tile_s {
+    gx_strip_bitmap tiles;
+    int level;
+
+
+    uint index;
+
+};
+# 26 "./base/gsdcolor.h" 2
+# 1 "./base/gxcindex.h" 1
+# 23 "./base/gxcindex.h"
+# 1 "./base/gsbitops.h" 1
+# 279 "./base/gsbitops.h"
+void bits_fill_rectangle(byte * dest, int dest_bit, uint raster,
+                      uint pattern, int width_bits, int height);
+void bits_fill_rectangle_masked(byte * dest, int dest_bit, uint raster,
+                      uint pattern, uint src_mask,
+                      int width_bits, int height);
+
+
+void bits_replicate_horizontally(byte * data, uint width, uint height,
+               uint raster, uint replicated_width, uint replicated_raster);
+
+
+void bits_replicate_vertically(byte * data, uint height, uint raster,
+    uint replicated_height);
+
+
+void bits_bounding_box(const byte * data, uint height, uint raster,
+    gs_int_rect * pbox);
+
+
+
+
+void bits_compress_scaled(const byte * src, int srcx, uint width,
+    uint height, uint sraster, byte * dest, uint draster,
+    const gs_log2_scale_point * plog2_scale, int log2_out_bits);
+
+
+typedef struct bits_plane_s {
+    union bpd_ {
+        byte *write;
+        const byte *read;
+    } data;
+    int raster;
+    int depth;
+    int x;
+} bits_plane_t;
+int bits_extract_plane(const bits_plane_t *dest ,
+    const bits_plane_t *source , int shift, int width, int height);
+
+
+int bits_expand_plane(const bits_plane_t *dest ,
+    const bits_plane_t *source , int shift, int width, int height);
+
+
+void bytes_fill_rectangle(byte * dest, uint raster,
+    byte value, int width_bytes, int height);
+
+
+void bytes_copy_rectangle(byte * dest, uint dest_raster,
+    const byte * src, uint src_raster, int width_bytes, int height);
+
+
+
+int bytes_rectangle_is_const(const byte * src, uint src_raster, int width_bytes, int height);
+
+
+
+void bytes_copy_rectangle_zero_padding(byte * dest, uint dest_raster,
+    const byte * src, uint src_raster, int width_bytes, int height);
+# 24 "./base/gxcindex.h" 2
+# 58 "./base/gxcindex.h"
+enum { ARCH_SIZEOF_GX_COLOR_INDEX__must_equal__sizeof_GX_COLOR_INDEX_TYPE = 1/!!(8 == sizeof(unsigned long int)) };
+typedef unsigned long int gx_color_index_data;
+# 87 "./base/gxcindex.h"
+typedef gx_color_index_data gx_color_index;
+# 27 "./base/gsdcolor.h" 2
+
+
+
+typedef struct gx_device_color_s gx_device_color;
+
+
+
+
+typedef struct gx_device_color_saved_s gx_device_color_saved;
+
+
+
+
+typedef struct gx_device_halftone_s gx_device_halftone;
+# 92 "./base/gsdcolor.h"
+bool gx_device_color_equal(const gx_device_color *pdevc1,
+                           const gx_device_color *pdevc2);
+# 164 "./base/gsdcolor.h"
+void gx_complete_halftone(gx_device_color *pdevc, int num_comps,
+                          gx_device_halftone *pdht);
+# 190 "./base/gsdcolor.h"
+typedef struct gx_color_tile_s gx_color_tile;
+# 260 "./base/gsdcolor.h"
+typedef struct gx_device_color_type_s gx_device_color_type_t;
+typedef const gx_device_color_type_t *gx_device_color_type;
+
+struct gx_device_color_s {
+
+
+
+
+    gx_device_color_type type;
+
+
+
+
+
+
+    union _c {
+        gx_color_index pure;
+        struct _bin {
+            const gx_device_halftone *b_ht;
+            gx_color_index color[2];
+            uint b_level;
+            int b_index;
+            gx_ht_tile *b_tile;
+        } binary;
+        struct _col {
+            gx_device_halftone *c_ht;
+            ushort num_components;
+            byte c_base[(8 * 8)];
+            uint c_level[(8 * 8)];
+            ushort alpha;
+
+
+
+
+
+
+            gx_color_index plane_mask;
+
+
+        } colored;
+        struct _pat {
+            gx_color_tile *p_tile;
+        } pattern;
+        struct _devn {
+            ushort values[(64)];
+        } devn;
+    } colors;
+    gs_int_point phase;
+
+
+
+
+
+
+
+    bool ccolor_valid;
+
+
+
+
+
+
+    gs_client_color ccolor;
+
+    struct _mask {
+        struct mp_ {
+            int x, y;
+        } m_phase;
+        gx_bitmap_id id;
+        gx_color_tile *m_tile;
+    } mask;
+};
+# 376 "./base/gsdcolor.h"
+struct gx_device_color_saved_s {
+    gx_device_color_type type;
+    union _svc {
+        gx_color_index pure;
+        struct _svbin {
+            gx_color_index b_color[2];
+            uint b_level;
+            int b_index;
+        } binary;
+        struct _svcol {
+            byte c_base[(8 * 8)];
+            uint c_level[(8 * 8)];
+            ushort alpha;
+        } colored;
+        struct _svdevn {
+            ushort values[(8 * 8)];
+        } devn;
+        struct _pattern {
+            gs_id id;
+            gs_int_point phase;
+        } pattern;
+        struct _pattern2 {
+            gs_id id;
+            bool shfill;
+        } pattern2;
+    } colors;
+    gs_int_point phase;
+};
+# 415 "./base/gsdcolor.h"
+extern const gx_device_color_type_t *const gx_dc_type_none;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_null;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_pure;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_devn;
+# 434 "./base/gsdcolor.h"
+extern const gx_device_color_type_t *const gx_dc_type_ht_binary;
+
+
+extern const gx_device_color_type_t *const gx_dc_type_ht_colored;
+# 26 "./base/gxdevcli.h" 2
+# 1 "./base/gsmatrix.h" 1
+# 31 "./base/gsmatrix.h"
+struct gs_matrix_s {
+    float xx, xy, yx, yy, tx, ty;
+};
+struct gs_matrix_double_s {
+  double xx, xy, yx, yy, tx, ty;
+};
+
+
+
+typedef struct gs_matrix_s gs_matrix;
+
+
+
+typedef struct gs_matrix_double_s gs_matrix_double;
+# 62 "./base/gsmatrix.h"
+void gs_make_identity(gs_matrix *);
+int gs_make_translation(double, double, gs_matrix *),
+    gs_make_scaling(double, double, gs_matrix *),
+    gs_make_rotation(double, gs_matrix *);
+
+
+int gs_matrix_multiply(const gs_matrix *, const gs_matrix *, gs_matrix *),
+    gs_matrix_multiply_double(const gs_matrix_double *, const gs_matrix *, gs_matrix_double *),
+    gs_matrix_invert(const gs_matrix *, gs_matrix *),
+    gs_matrix_invert_to_double(const gs_matrix *, gs_matrix_double *),
+    gs_matrix_translate(const gs_matrix *, double, double, gs_matrix *),
+    gs_matrix_scale(const gs_matrix *, double, double, gs_matrix *),
+    gs_matrix_rotate(const gs_matrix *, double, gs_matrix *);
+
+
+int gs_matrix_compare(const gs_matrix *, const gs_matrix *);
+
+
+int gs_point_transform(double, double, const gs_matrix *, gs_point *),
+    gs_point_transform_inverse(double, double, const gs_matrix *, gs_point *),
+    gs_distance_transform(double, double, const gs_matrix *, gs_point *),
+    gs_distance_transform_inverse(double, double, const gs_matrix *, gs_point *),
+    gs_points_bbox(const gs_point[4], gs_rect *),
+    gs_bbox_transform_only(const gs_rect *, const gs_matrix *, gs_point[4]),
+    gs_bbox_transform(const gs_rect *, const gs_matrix *, gs_rect *),
+    gs_bbox_transform_inverse(const gs_rect *, const gs_matrix *, gs_rect *);
+
+
+
+
+
+
+int sget_matrix(stream *, gs_matrix *);
+int sput_matrix(stream *, const gs_matrix *);
+# 27 "./base/gxdevcli.h" 2
+# 1 "./base/gsiparam.h" 1
+# 46 "./base/gsiparam.h"
+typedef struct gx_image_type_s gx_image_type_t;
+# 55 "./base/gsiparam.h"
+typedef struct gs_image_common_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix;
+} gs_image_common_t;
+# 66 "./base/gsiparam.h"
+typedef enum {
+    gs_image_type1,
+    gs_image_type2,
+    gs_image_type3,
+    gs_image_type3x,
+    gs_image_type4
+} gs_image_parent_t;
+# 121 "./base/gsiparam.h"
+typedef struct gs_data_image_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate;
+} gs_data_image_t;
+# 144 "./base/gsiparam.h"
+typedef enum {
+
+    gs_image_format_chunky = 0,
+
+    gs_image_format_component_planar = 1,
+
+    gs_image_format_bit_planar = 2
+} gs_image_format_t;
+
+
+
+
+typedef struct gs_color_space_s gs_color_space;
+# 182 "./base/gsiparam.h"
+typedef struct gs_pixel_image_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate; gs_image_format_t format; bool CombineWithColor; gs_color_space *ColorSpace;
+} gs_pixel_image_t;
+
+extern const gs_memory_struct_type_t st_gs_pixel_image;
+# 196 "./base/gsiparam.h"
+typedef enum {
+
+    gs_image_alpha_none = 0,
+
+    gs_image_alpha_first,
+
+    gs_image_alpha_last
+} gs_image_alpha_t;
+
+typedef struct gs_image1_s {
+    const gx_image_type_t *type; gs_matrix ImageMatrix; int Width; int Height; int BitsPerComponent; float Decode[((64) + 1) * 2]; bool Interpolate; gs_image_format_t format; bool CombineWithColor; gs_color_space *ColorSpace;
+
+
+
+
+    bool ImageMask;
+
+
+
+
+    bool adjust;
+
+
+
+
+
+    gs_image_alpha_t Alpha;
+
+
+
+
+
+
+    gs_image_parent_t image_parent_type;
+} gs_image1_t;
+
+
+extern const gs_memory_struct_type_t st_gs_image1;
+
+
+
+
+
+
+
+typedef gs_image1_t gs_image_t;
+# 250 "./base/gsiparam.h"
+void
+
+
+
+     gs_image_common_t_init(gs_image_common_t * pic),
+
+
+
+
+
+
+
+     gs_data_image_t_init(gs_data_image_t * pim, int num_components),
+
+
+
+
+
+
+    gs_pixel_image_t_init(gs_pixel_image_t * pim,
+                          gs_color_space * color_space);
+# 284 "./base/gsiparam.h"
+void gs_image_t_init_adjust(gs_image_t * pim, gs_color_space * pcs,
+                            bool adjust);
+
+
+void gs_image_t_init_mask_adjust(gs_image_t * pim, bool write_1s,
+                                 bool adjust);
+# 320 "./base/gsiparam.h"
+typedef struct ht_landscape_info_s {
+    int count;
+    int widths[((1 << 3)*8)];
+    int xstart;
+    int curr_pos;
+    int index;
+    int num_contones;
+    bool offset_set;
+    bool flipy;
+    int y_pos;
+} ht_landscape_info_t;
+# 28 "./base/gxdevcli.h" 2
+# 1 "./base/gsrefct.h" 1
+# 50 "./base/gsrefct.h"
+typedef struct rc_header_s rc_header;
+struct rc_header_s {
+    long ref_count;
+    gs_memory_t *memory;
+
+
+    void (*free)(gs_memory_t *, void *, client_name_t);
+};
+# 72 "./base/gsrefct.h"
+void rc_free_struct_only(gs_memory_t *, void *, client_name_t);
+# 29 "./base/gxdevcli.h" 2
+# 1 "./base/gsropt.h" 1
+# 79 "./base/gsropt.h"
+typedef enum {
+    rop2_0 = 0,
+    rop2_S = 0xc,
+
+    rop2_D = 0xa,
+
+    rop2_1 = 0xf,
+
+
+    rop2_default = rop2_S
+} gs_rop2_t;
+# 98 "./base/gsropt.h"
+typedef enum {
+    rop3_0 = 0,
+
+
+
+
+    rop3_D = 0xaa,
+
+    rop3_1 = 0xff,
+    rop3_default = 0xf0 | 0xcc
+} gs_rop3_t;
+# 217 "./base/gsropt.h"
+typedef uint gs_logical_operation_t;
+# 256 "./base/gsropt.h"
+typedef unsigned long rop_operand;
+typedef rop_operand (*rop_proc)(rop_operand D, rop_operand S, rop_operand T);
+
+
+typedef enum {
+    rop_usage_none = 0,
+    rop_usage_D = 1,
+    rop_usage_S = 2,
+    rop_usage_DS = 3,
+    rop_usage_T = 4,
+    rop_usage_DT = 5,
+    rop_usage_ST = 6,
+    rop_usage_DST = 7
+} rop_usage_t;
+
+
+extern const rop_proc rop_proc_table[256];
+
+
+extern const byte rop_usage_table[256];
+
+
+
+
+
+
+
+typedef struct rop_run_op_s rop_run_op;
+
+
+
+
+typedef union rop_source_s {
+    struct {
+        const byte *ptr;
+        int pos;
+    } b;
+    rop_operand c;
+} rop_source;
+
+struct rop_run_op_s {
+    void (*run)(rop_run_op *, byte *dest, int len);
+    void (*runswap)(rop_run_op *, byte *dest, int len);
+    rop_source s;
+    rop_source t;
+    int rop;
+    byte depth;
+    byte flags;
+    byte dpos;
+    const byte *scolors;
+    const byte *tcolors;
+    void (*release)(rop_run_op *);
+    void *opaque;
+};
+
+
+enum {
+    rop_s_constant = 1,
+    rop_t_constant = 2,
+    rop_s_1bit = 4,
+    rop_t_1bit = 8
+};
+# 328 "./base/gsropt.h"
+void rop_get_run_op(rop_run_op *op, int rop, int depth, int flags);
+# 338 "./base/gsropt.h"
+void rop_set_s_constant(rop_run_op *op, int s);
+void rop_set_s_bitmap(rop_run_op *op, const byte *s);
+void rop_set_s_bitmap_subbyte(rop_run_op *op, const byte *s, int startbitpos);
+void rop_set_s_colors(rop_run_op *op, const byte *scolors);
+void rop_set_t_constant(rop_run_op *op, int t);
+void rop_set_t_bitmap(rop_run_op *op, const byte *t);
+void rop_set_t_bitmap_subbyte(rop_run_op *op, const byte *s, int startbitpos);
+void rop_set_t_colors(rop_run_op *op, const byte *scolors);
+
+
+
+
+
+
+
+void rop_run(rop_run_op *op, byte *d, int len);
+
+
+
+void rop_run_subbyte(rop_run_op *op, byte *d, int startbitpos, int len);
+
+
+void rop_release_run_op(rop_run_op *op);
+# 30 "./base/gxdevcli.h" 2
+# 1 "./base/gsstruct.h" 1
+# 85 "./base/gsstruct.h"
+typedef struct obj_header_s obj_header_t;
+
+
+
+
+
+
+
+struct gs_ptr_procs_s {
+
+
+
+
+
+    void (*unmark)(enum_ptr_t *, gc_state_t *);
+
+
+
+
+
+
+    bool (*mark)(enum_ptr_t *, gc_state_t *);
+# 116 "./base/gsstruct.h"
+    void *(*reloc)(const void *, gc_state_t *);
+
+};
+
+
+
+extern const gs_ptr_procs_t ptr_struct_procs;
+
+
+
+extern const gs_ptr_procs_t ptr_string_procs;
+
+extern const gs_ptr_procs_t ptr_const_string_procs;
+
+
+
+extern const gs_ptr_procs_t ptr_name_index_procs;
+
+
+
+
+
+
+struct gs_gc_root_s {
+    gs_gc_root_t *next;
+    gs_ptr_type_t ptype;
+    void **p;
+    bool free_on_unregister;
+};
+# 180 "./base/gsstruct.h"
+typedef struct gc_procs_common_s {
+    void *(*reloc_struct_ptr)(const void *, gc_state_t *); void (*reloc_string)(gs_string *, gc_state_t *); void (*reloc_const_string)(gs_const_string *, gc_state_t *); void (*reloc_param_string)(gs_param_string *, gc_state_t *);
+} gc_procs_common_t;
+
+
+
+
+
+
+
+gs_ptr_type_t gs_no_struct_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void gs_no_struct_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+
+
+
+
+
+extern const gs_memory_struct_type_t st_free;
+
+
+
+extern const gs_memory_struct_type_t st_bytes;
+
+
+
+extern const gs_memory_struct_type_t st_gc_root_t;
+# 216 "./base/gsstruct.h"
+extern const gs_memory_struct_type_t st_const_string_element;
+# 237 "./base/gsstruct.h"
+typedef enum {
+    GC_ELT_OBJ,
+    GC_ELT_STRING,
+    GC_ELT_CONST_STRING
+} gc_ptr_type_index_t;
+
+typedef struct gc_ptr_element_s {
+    ushort type;
+    ushort offset;
+} gc_ptr_element_t;
+# 261 "./base/gsstruct.h"
+typedef struct gc_struct_data_s {
+    ushort num_ptrs;
+    ushort super_offset;
+    const gs_memory_struct_type_t *super_type;
+    const gc_ptr_element_t *ptrs;
+} gc_struct_data_t;
+# 284 "./base/gsstruct.h"
+gs_ptr_type_t basic_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void basic_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+# 375 "./base/gsstruct.h"
+extern gs_ptr_type_t
+    enum_bytestring(enum_ptr_t *pep, const gs_bytestring *pbs);
+
+
+extern gs_ptr_type_t
+    enum_const_bytestring(enum_ptr_t *pep, const gs_const_bytestring *pbs);
+# 435 "./base/gsstruct.h"
+extern void reloc_bytestring(gs_bytestring *pbs, gc_state_t *gcst);
+
+
+extern void reloc_const_bytestring(gs_const_bytestring *pbs, gc_state_t *gcst);
+# 31 "./base/gxdevcli.h" 2
+# 1 "./base/gstparam.h" 1
+# 24 "./base/gstparam.h"
+# 1 "./base/gscspace.h" 1
+# 142 "./base/gscspace.h"
+typedef struct gsicc_link_s gsicc_link_t;
+
+
+
+
+
+
+
+typedef struct cmm_profile_s cmm_profile_t;
+# 166 "./base/gscspace.h"
+typedef enum {
+
+
+    gs_color_space_index_DeviceGray = 0,
+    gs_color_space_index_DeviceRGB,
+
+
+    gs_color_space_index_DeviceCMYK,
+
+
+    gs_color_space_index_DevicePixel,
+    gs_color_space_index_DeviceN,
+
+
+
+    gs_color_space_index_CIEDEFG,
+    gs_color_space_index_CIEDEF,
+    gs_color_space_index_CIEABC,
+    gs_color_space_index_CIEA,
+    gs_color_space_index_Separation,
+    gs_color_space_index_Indexed,
+    gs_color_space_index_Pattern,
+
+
+    gs_color_space_index_ICC
+
+} gs_color_space_index;
+# 201 "./base/gscspace.h"
+typedef struct gs_color_space_type_s gs_color_space_type;
+# 212 "./base/gscspace.h"
+typedef struct gs_device_pixel_params_s {
+    int depth;
+} gs_device_pixel_params;
+typedef struct gs_cie_a_s gs_cie_a;
+typedef struct gs_cie_abc_s gs_cie_abc;
+typedef struct gs_cie_def_s gs_cie_def;
+typedef struct gs_cie_defg_s gs_cie_defg;
+
+
+
+typedef struct gs_device_n_map_s gs_device_n_map;
+
+
+
+
+typedef struct gs_device_n_attributes_s gs_device_n_attributes;
+
+
+
+
+
+
+typedef ulong gs_separation_name;
+# 243 "./base/gscspace.h"
+typedef int (gs_callback_func_get_colorname_string)
+     (const gs_memory_t *mem, gs_separation_name colorname, unsigned char **ppstr, unsigned int *plen);
+
+typedef enum { SEP_NONE, SEP_ALL, SEP_OTHER } separation_type;
+
+typedef struct gs_separation_params_s {
+    gs_separation_name sep_name;
+    gs_device_n_map *map;
+    separation_type sep_type;
+    bool use_alt_cspace;
+    gs_callback_func_get_colorname_string *get_colorname_string;
+} gs_separation_params;
+
+typedef struct gs_device_n_params_s {
+    gs_separation_name *names;
+    uint num_components;
+    gs_device_n_map *map;
+    gs_device_n_attributes *colorants;
+    bool use_alt_cspace;
+    gs_callback_func_get_colorname_string *get_colorname_string;
+} gs_device_n_params;
+
+
+typedef struct client_color_space_data_s client_color_space_data_t;
+# 276 "./base/gscspace.h"
+typedef struct gs_indexed_map_s gs_indexed_map;
+
+typedef struct gs_indexed_params_s {
+    int hival;
+    int n_comps;
+    union {
+        gs_const_string table;
+        gs_indexed_map *map;
+    } lookup;
+    bool use_proc;
+} gs_indexed_params;
+
+
+
+
+
+typedef struct gs_pattern_params_s {
+    bool has_base_space;
+} gs_pattern_params;
+# 309 "./base/gscspace.h"
+struct gs_color_space_s {
+    const gs_color_space_type *type;
+    rc_header rc;
+    gs_id id;
+    gs_color_space *base_space;
+    gs_color_space *icc_equivalent;
+    client_color_space_data_t *pclient_color_space_data;
+    cmm_profile_t *cmm_icc_profile_data;
+    union {
+        gs_device_pixel_params pixel;
+        gs_cie_defg * defg;
+        gs_cie_def * def;
+        gs_cie_abc * abc;
+        gs_cie_a * a;
+        gs_separation_params separation;
+        gs_device_n_params device_n;
+        gs_indexed_params indexed;
+        gs_pattern_params pattern;
+
+    } params;
+};
+# 346 "./base/gscspace.h"
+gs_color_space *gs_cspace_new_DeviceGray(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_DeviceRGB(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_DeviceCMYK(gs_memory_t *mem);
+gs_color_space *gs_cspace_new_ICC(gs_memory_t *pmem, gs_state * pgs,
+                                  int components);
+
+
+
+
+gs_color_space_index gs_color_space_get_index(const gs_color_space *);
+
+
+bool gs_color_space_is_CIE(const gs_color_space * pcs);
+bool gs_color_space_is_ICC(const gs_color_space * pcs);
+bool gs_color_space_is_PSCIE(const gs_color_space * pcs);
+int gs_colorspace_set_icc_equivalent(gs_color_space *pcs, bool *islab,
+                                     gs_memory_t *memory);
+
+
+int gs_color_space_num_components(const gs_color_space *);
+
+
+
+
+
+
+bool gs_color_space_equal(const gs_color_space *pcs1,
+                          const gs_color_space *pcs2);
+
+
+
+
+
+
+void gs_color_space_restrict_color(gs_client_color *, const gs_color_space *);
+
+
+
+
+
+
+const gs_color_space *gs_cspace_base_space(const gs_color_space * pcspace);
+
+
+
+
+void rc_increment_cs(gs_color_space *pcs);
+
+void rc_decrement_cs(gs_color_space *pcs, const char *cname);
+
+void rc_decrement_only_cs(gs_color_space *pcs, const char *cname);
+
+void cs_adjust_counts_icc(gs_state *pgs, int delta);
+# 25 "./base/gstparam.h" 2
+
+
+
+typedef enum {
+    BLEND_MODE_Normal,
+    BLEND_MODE_Multiply,
+    BLEND_MODE_Screen,
+    BLEND_MODE_Difference,
+    BLEND_MODE_Darken,
+    BLEND_MODE_Lighten,
+    BLEND_MODE_ColorDodge,
+    BLEND_MODE_ColorBurn,
+    BLEND_MODE_Exclusion,
+    BLEND_MODE_HardLight,
+    BLEND_MODE_Overlay,
+    BLEND_MODE_SoftLight,
+    BLEND_MODE_Luminosity,
+    BLEND_MODE_Hue,
+    BLEND_MODE_Saturation,
+    BLEND_MODE_Color,
+
+
+
+    BLEND_MODE_Compatible
+} gs_blend_mode_t;
+# 62 "./base/gstparam.h"
+typedef struct gs_function_s gs_function_t;
+
+
+
+
+typedef struct gs_transparency_group_params_s {
+    const gs_color_space *ColorSpace;
+    bool Isolated;
+    bool Knockout;
+    bool image_with_SMask;
+    bool idle;
+    uint mask_id;
+    int group_color_numcomps;
+    gs_transparency_color_t group_color;
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gs_transparency_group_params_t;
+
+
+typedef enum {
+    TRANSPARENCY_MASK_Alpha,
+    TRANSPARENCY_MASK_Luminosity
+} gs_transparency_mask_subtype_t;
+
+
+
+
+
+
+typedef struct gs_transparency_mask_params_s {
+    const gs_color_space *ColorSpace;
+    gs_transparency_mask_subtype_t subtype;
+    int Background_components;
+    float Background[(64)];
+    float GrayBackground;
+    int (*TransferFunction)(double in, float *out, void *proc_data);
+    gs_function_t *TransferFunction_data;
+    bool replacing;
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gs_transparency_mask_params_t;
+
+
+
+
+typedef struct gx_transparency_mask_params_s {
+    gs_transparency_mask_subtype_t subtype;
+    int group_color_numcomps;
+    gs_transparency_color_t group_color;
+    int Background_components;
+    float Background[(64)];
+    float GrayBackground;
+    bool function_is_identity;
+    bool idle;
+    bool replacing;
+    uint mask_id;
+    byte transfer_fn[256];
+    int64_t icc_hashcode;
+    cmm_profile_t *iccprofile;
+} gx_transparency_mask_params_t;
+# 145 "./base/gstparam.h"
+typedef enum {
+    TRANSPARENCY_CHANNEL_Opacity = 0,
+    TRANSPARENCY_CHANNEL_Shape = 1
+} gs_transparency_channel_selector_t;
+# 32 "./base/gxdevcli.h" 2
+# 1 "./base/gsxfont.h" 1
+# 24 "./base/gsxfont.h"
+typedef ulong gx_xglyph;
+
+
+
+
+struct gx_xfont_procs_s;
+typedef struct gx_xfont_procs_s gx_xfont_procs;
+
+
+struct gx_xfont_s;
+typedef struct gx_xfont_s gx_xfont;
+# 33 "./base/gxdevcli.h" 2
+
+
+# 1 "./base/gxcvalue.h" 1
+# 23 "./base/gxcvalue.h"
+typedef unsigned short gx_color_value;
+# 36 "./base/gxdevcli.h" 2
+# 1 "./base/gxfixed.h" 1
+# 28 "./base/gxfixed.h"
+typedef int fixed;
+typedef uint ufixed;
+# 162 "./base/gxfixed.h"
+fixed fixed_mult_quo(fixed A, fixed B, fixed C);
+# 182 "./base/gxfixed.h"
+bool
+gx_intersect_small_bars(fixed q0x, fixed q0y, fixed q1x, fixed q1y, fixed q2x, fixed q2y,
+                        fixed q3x, fixed q3y, fixed *ry, fixed *ey);
+# 233 "./base/gxfixed.h"
+typedef struct gs_fixed_point_s {
+    fixed x, y;
+} gs_fixed_point;
+
+
+typedef struct gs_fixed_rect_s {
+    gs_fixed_point p, q;
+} gs_fixed_rect;
+# 37 "./base/gxdevcli.h" 2
+# 1 "./base/gxtext.h" 1
+# 22 "./base/gxtext.h"
+# 1 "./base/gstext.h" 1
+# 22 "./base/gstext.h"
+# 1 "./base/gsccode.h" 1
+# 27 "./base/gsccode.h"
+typedef ulong gs_char;
+# 74 "./base/gsccode.h"
+typedef ulong gs_glyph;
+# 92 "./base/gsccode.h"
+typedef bool (*gs_glyph_mark_proc_t)(const gs_memory_t *mem, gs_glyph glyph, void *proc_data);
+
+
+typedef enum {
+    ENCODING_INDEX_UNKNOWN = -1,
+
+    ENCODING_INDEX_STANDARD = 0,
+    ENCODING_INDEX_ISOLATIN1,
+    ENCODING_INDEX_SYMBOL,
+    ENCODING_INDEX_DINGBATS,
+    ENCODING_INDEX_WINANSI,
+    ENCODING_INDEX_MACROMAN,
+    ENCODING_INDEX_MACEXPERT,
+
+
+    ENCODING_INDEX_MACGLYPH,
+    ENCODING_INDEX_ALOGLYPH,
+    ENCODING_INDEX_ALXGLYPH,
+    ENCODING_INDEX_CFFSTRINGS
+
+} gs_encoding_index_t;
+# 125 "./base/gsccode.h"
+typedef enum gs_glyph_space_s {
+    GLYPH_SPACE_NAME,
+    GLYPH_SPACE_INDEX,
+    GLYPH_SPACE_NOGEN
+} gs_glyph_space_t;
+
+
+
+
+
+
+typedef int (*gs_glyph_name_proc_t)(const gs_memory_t *mem,
+                                    gs_glyph glyph, gs_const_string *pstr,
+                                    void *proc_data);
+# 23 "./base/gstext.h" 2
+# 1 "./base/gscpm.h" 1
+# 22 "./base/gscpm.h"
+typedef enum {
+    cpm_show,
+    cpm_charwidth,
+    cpm_false_charpath,
+    cpm_true_charpath,
+    cpm_false_charboxpath,
+    cpm_true_charboxpath
+} gs_char_path_mode;
+
+typedef enum {
+    CACHE_DEVICE_NONE = 0,
+    CACHE_DEVICE_NOT_CACHING,
+    CACHE_DEVICE_NONE_AND_CLIP,
+    CACHE_DEVICE_CACHING
+} gs_in_cache_device_t;
+# 24 "./base/gstext.h" 2
+# 99 "./base/gstext.h"
+typedef struct gs_text_params_s {
+
+    uint operation;
+    union sd_ {
+        const byte *bytes;
+        const gs_char *chars;
+        const gs_glyph *glyphs;
+        gs_char d_char;
+        gs_glyph d_glyph;
+    } data;
+    uint size;
+
+
+    gs_point delta_all;
+    gs_point delta_space;
+    union s_ {
+        gs_char s_char;
+        gs_glyph s_glyph;
+    } space;
+
+
+
+
+
+    const float *x_widths;
+    const float *y_widths;
+    uint widths_size;
+} gs_text_params_t;
+# 135 "./base/gstext.h"
+int gs_text_replaced_width(const gs_text_params_t *text, uint index,
+                           gs_point *pwidth);
+
+
+
+
+
+
+
+typedef struct gs_text_enum_s gs_text_enum_t;
+
+
+
+
+
+typedef struct gx_device_s gx_device;
+# 162 "./base/gstext.h"
+typedef struct gs_font_s gs_font;
+
+
+
+typedef struct gx_path_s gx_path;
+
+
+
+typedef struct gx_clip_path_s gx_clip_path;
+# 194 "./base/gstext.h"
+int gx_device_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+
+
+
+
+
+
+int gs_text_begin(gs_state * pgs, const gs_text_params_t * text,
+                  gs_memory_t * mem, gs_text_enum_t ** ppenum);
+
+
+
+
+
+int gs_text_update_dev_color(gs_state * pgs, gs_text_enum_t * pte);
+
+
+int
+gs_show_begin(gs_state *, const byte *, uint,
+              gs_memory_t *, gs_text_enum_t **),
+    gs_ashow_begin(gs_state *, double, double, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_widthshow_begin(gs_state *, double, double, gs_char,
+                       const byte *, uint,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_awidthshow_begin(gs_state *, double, double, gs_char,
+                        double, double, const byte *, uint,
+                        gs_memory_t *, gs_text_enum_t **),
+    gs_kshow_begin(gs_state *, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_xyshow_begin(gs_state *, const byte *, uint,
+                    const float *, const float *, uint,
+                    gs_memory_t *, gs_text_enum_t **),
+    gs_glyphshow_begin(gs_state *, gs_glyph,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_cshow_begin(gs_state *, const byte *, uint,
+                   gs_memory_t *, gs_text_enum_t **),
+    gs_stringwidth_begin(gs_state *, const byte *, uint,
+                         gs_memory_t *, gs_text_enum_t **),
+    gs_charpath_begin(gs_state *, const byte *, uint, bool,
+                      gs_memory_t *, gs_text_enum_t **),
+    gs_glyphpath_begin(gs_state *, gs_glyph, bool,
+                       gs_memory_t *, gs_text_enum_t **),
+    gs_glyphwidth_begin(gs_state *, gs_glyph,
+                        gs_memory_t *, gs_text_enum_t **),
+    gs_charboxpath_begin(gs_state *, const byte *, uint, bool,
+                         gs_memory_t *, gs_text_enum_t **);
+
+
+int gs_text_size(gs_state * pgs, gs_text_params_t *text, gs_memory_t * mem);
+
+gs_text_params_t *gs_get_text_params(gs_text_enum_t *pte);
+
+
+
+
+int gs_text_restart(gs_text_enum_t *pte, const gs_text_params_t *text);
+
+
+
+
+int gs_text_resync(gs_text_enum_t *pte, const gs_text_enum_t *pfrom);
+# 287 "./base/gstext.h"
+int gs_text_process(gs_text_enum_t *pte);
+
+
+gs_font *gs_text_current_font(const gs_text_enum_t *pte);
+gs_char gs_text_current_char(const gs_text_enum_t *pte);
+gs_char gs_text_next_char(const gs_text_enum_t *pte);
+gs_glyph gs_text_current_glyph(const gs_text_enum_t *pte);
+int gs_text_total_width(const gs_text_enum_t *pte, gs_point *pwidth);
+
+
+
+
+
+
+bool gs_text_is_width_only(const gs_text_enum_t *pte);
+
+
+
+
+int gs_text_current_width(const gs_text_enum_t *pte, gs_point *pwidth);
+
+
+
+
+
+typedef enum {
+    TEXT_SET_CHAR_WIDTH,
+    TEXT_SET_CACHE_DEVICE,
+    TEXT_SET_CACHE_DEVICE2
+} gs_text_cache_control_t;
+int
+    gs_text_set_cache(gs_text_enum_t *pte, const double *values,
+                      gs_text_cache_control_t control),
+    gs_text_setcharwidth(gs_text_enum_t *pte, const double wxy[2]),
+    gs_text_setcachedevice(gs_text_enum_t *pte, const double wbox[6]),
+    gs_text_setcachedevice2(gs_text_enum_t *pte, const double wbox2[10]);
+
+
+int gs_text_retry(gs_text_enum_t *pte);
+
+
+void gs_text_release(gs_text_enum_t *pte, client_name_t cname);
+
+
+int gs_text_count_chars(gs_state * pgs, gs_text_params_t *text, gs_memory_t * mem);
+# 23 "./base/gxtext.h" 2
+
+
+
+typedef struct gs_text_enum_procs_s gs_text_enum_procs_t;
+
+
+
+typedef struct cached_fm_pair_s cached_fm_pair;
+
+
+
+
+
+typedef struct gs_text_returned_s {
+    gs_char current_char;
+    gs_glyph current_glyph;
+    gs_point total_width;
+} gs_text_returned_t;
+# 56 "./base/gxtext.h"
+typedef struct gx_font_stack_item_s {
+    gs_font *font;
+    uint index;
+
+
+
+} gx_font_stack_item_t;
+typedef struct gx_font_stack_s {
+    int depth;
+    gx_font_stack_item_t items[1 + 5];
+} gx_font_stack_t;
+# 79 "./base/gxtext.h"
+void rc_free_text_enum(gs_memory_t *, void *, client_name_t);
+# 127 "./base/gxtext.h"
+struct gs_text_enum_s {
+    gs_text_params_t text; gx_device *dev; gx_device *imaging_dev; gs_imager_state *pis; gs_font *orig_font; gx_path *path; const gx_device_color *pdcolor; const gx_clip_path *pcpath; gs_memory_t *memory; const gs_text_enum_procs_t *procs; rc_header rc; void *enum_client_data; gs_font *current_font; gs_glyph outer_CID; bool is_pure_color; gs_log2_scale_point log2_scale; cached_fm_pair *pair; uint index; uint xy_index; gx_font_stack_t fstack; int cmap_code; bool single_byte_space; int bytes_decoded; gs_point FontBBox_as_Metrics2; ulong text_enum_id; bool device_disabled_grid_fitting; gs_log2_scale_point fapi_log2_scale; gs_point fapi_glyph_shift; gs_text_returned_t returned;
+};
+# 179 "./base/gxtext.h"
+int gs_text_enum_init(gs_text_enum_t *pte,
+                      const gs_text_enum_procs_t *procs,
+                      gx_device *dev, gs_imager_state *pis,
+                      const gs_text_params_t *text,
+                      gs_font *font, gx_path *path,
+                      const gx_device_color *pdcolor,
+                      const gx_clip_path *pcpath,
+                      gs_memory_t *mem);
+
+
+
+
+
+
+
+void gs_text_enum_copy_dynamic(gs_text_enum_t *pto,
+                               const gs_text_enum_t *pfrom,
+                               bool for_return);
+# 227 "./base/gxtext.h"
+struct gs_text_enum_procs_s {
+# 240 "./base/gxtext.h"
+    int (*resync)(gs_text_enum_t *pte, const gs_text_enum_t *pfrom);
+# 270 "./base/gxtext.h"
+    int (*process)(gs_text_enum_t *pte);
+# 281 "./base/gxtext.h"
+    bool (*is_width_only)(const gs_text_enum_t *pte);
+# 290 "./base/gxtext.h"
+    int (*current_width)(const gs_text_enum_t *pte, gs_point *pwidth);
+# 301 "./base/gxtext.h"
+    int (*set_cache)(gs_text_enum_t *pte, const double *values, gs_text_cache_control_t control);
+# 311 "./base/gxtext.h"
+    int (*retry)(gs_text_enum_t *pte);
+# 322 "./base/gxtext.h"
+    void (*release)(gs_text_enum_t *pte, client_name_t cname);
+
+};
+
+
+void gx_default_text_release(gs_text_enum_t *pte, client_name_t cname);
+# 38 "./base/gxdevcli.h" 2
+# 1 "./base/gxcmap.h" 1
+# 23 "./base/gxcmap.h"
+# 1 "./base/gscsel.h" 1
+# 27 "./base/gscsel.h"
+typedef enum {
+    gs_color_select_all = -1,
+    gs_color_select_texture = 0,
+    gs_color_select_source = 1
+} gs_color_select_t;
+# 24 "./base/gxcmap.h" 2
+# 1 "./base/gxfmap.h" 1
+# 24 "./base/gxfmap.h"
+# 1 "./base/gxfrac.h" 1
+# 27 "./base/gxfrac.h"
+typedef short frac;
+typedef short signed_frac;
+# 25 "./base/gxfmap.h" 2
+# 1 "./base/gxtmap.h" 1
+# 29 "./base/gxtmap.h"
+typedef struct gx_transfer_map_s gx_transfer_map;
+
+
+
+
+
+typedef float (*gs_mapping_proc) (double, const gx_transfer_map *);
+
+
+
+
+
+typedef float (*gs_mapping_closure_proc_t) (double value,
+                                            const gx_transfer_map * pmap,
+                                            const void *proc_data);
+typedef struct gs_mapping_closure_s {
+    gs_mapping_closure_proc_t proc;
+    const void *data;
+} gs_mapping_closure_t;
+# 26 "./base/gxfmap.h" 2
+# 41 "./base/gxfmap.h"
+struct gx_transfer_map_s {
+    rc_header rc;
+    gs_mapping_proc proc;
+    gs_mapping_closure_t closure;
+
+    gs_id id;
+    frac values[(1 << 8)];
+};
+
+extern const gs_memory_struct_type_t st_transfer_map;
+
+
+
+
+
+void gx_set_identity_transfer(gx_transfer_map *);
+# 65 "./base/gxfmap.h"
+frac gx_color_frac_map(frac, const frac *);
+# 99 "./base/gxfmap.h"
+float gs_mapped_transfer(double, const gx_transfer_map *);
+
+
+
+
+float gs_identity_transfer(double, const gx_transfer_map *);
+# 25 "./base/gxcmap.h" 2
+# 89 "./base/gxcmap.h"
+struct gx_cm_color_map_procs_s {
+    void (*map_gray) (gx_device * dev, frac gray, frac * out);
+    void (*map_rgb) (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+    void (*map_cmyk) (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+};
+
+typedef struct gx_cm_color_map_procs_s gx_cm_color_map_procs;
+
+
+
+
+void gray_cs_to_gray_cm (gx_device * dev, frac gray, frac * out);
+void rgb_cs_to_rgb_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+void cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+# 116 "./base/gxcmap.h"
+struct gx_color_map_procs_s {
+    void (*map_gray)(frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_rgb)(frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_cmyk)(frac, frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t, const gs_color_space *);
+    void (*map_rgb_alpha)(frac, frac, frac, frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_separation)(frac, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    void (*map_devicen)(const frac *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+    bool (*is_halftoned)(const gs_imager_state *, gx_device *);
+};
+typedef struct gx_color_map_procs_s gx_color_map_procs;
+
+
+
+
+
+
+const gx_color_map_procs *
+    gx_get_cmap_procs(const gs_imager_state *, const gx_device *);
+const gx_color_map_procs *
+    gx_default_get_cmap_procs(const gs_imager_state *, const gx_device *);
+
+
+
+
+
+
+void gx_set_cmap_procs(gs_imager_state *, const gx_device *);
+# 167 "./base/gxcmap.h"
+extern void gx_default_gray_cs_to_gray_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_gray_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_gray_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_rgb_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_rgb_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_rgb_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_default_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_default_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_default_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+
+extern void gx_error_gray_cs_to_cmyk_cm (gx_device * dev, frac gray, frac * out);
+extern void gx_error_rgb_cs_to_cmyk_cm (gx_device * dev, const gs_imager_state *pis, frac r, frac g, frac b, frac * out);
+extern void gx_error_cmyk_cs_to_cmyk_cm (gx_device * dev, frac c, frac m, frac y, frac k, frac * out);
+# 239 "./base/gxcmap.h"
+int (gx_error_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevGray_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevRGB_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevCMYK_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+int (gx_default_DevRGBK_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+
+
+
+
+
+const gx_cm_color_map_procs * (gx_error_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevGray_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevRGB_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevCMYK_get_color_mapping_procs)(const gx_device * dev);
+const gx_cm_color_map_procs * (gx_default_DevRGBK_get_color_mapping_procs)(const gx_device * dev);
+
+
+
+
+
+gx_color_index (gx_error_encode_color)(gx_device * dev, const gx_color_value colors[]);
+gx_color_index (gx_default_encode_color)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+gx_color_index (gx_default_gray_fast_encode)(gx_device * dev, const gx_color_value colors[]);
+gx_color_index (gx_default_gray_encode)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+
+gx_color_index (gx_backwards_compatible_gray_encode)(gx_device * dev, const gx_color_value colors[]);
+
+
+
+
+
+int (gx_error_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+int (gx_default_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+
+
+
+
+
+frac gx_unit_frac(float fvalue);
+
+
+
+bool gx_device_uses_std_cmap_procs(gx_device * dev,
+                                   const gs_imager_state * pis);
+bool fwd_uses_fwd_cmap_procs(gx_device * dev);
+const gx_cm_color_map_procs* fwd_get_target_cmap_procs(gx_device * dev);
+void cmap_transfer_halftone(gx_color_value *pconc, gx_device_color * pdc,
+     const gs_imager_state * pis, gx_device * dev, bool has_transfer,
+     bool has_halftone, gs_color_select_t select);
+void cmap_transfer(gx_color_value *pconc, const gs_imager_state * pis,
+                   gx_device * dev);
+void cmap_transfer_plane(gx_color_value *pconc, const gs_imager_state *pis,
+                    gx_device *dev, int plane);
+# 39 "./base/gxdevcli.h" 2
+# 1 "./base/gsnamecl.h" 1
+# 24 "./base/gsnamecl.h"
+# 1 "./base/gxcspace.h" 1
+# 48 "./base/gxcspace.h"
+struct gs_color_space_type_s {
+
+    gs_color_space_index index;
+
+
+
+
+
+
+
+    bool can_be_base_space;
+    bool can_be_alt_space;
+
+
+
+
+
+
+    gs_memory_type_ptr_t stype;
+# 82 "./base/gxcspace.h"
+        int (*num_components)(const gs_color_space *);
+# 92 "./base/gxcspace.h"
+        void (*init_color)(gs_client_color *, const gs_color_space *);
+
+
+
+
+
+
+
+        void (*restrict_color)(gs_client_color *, const gs_color_space *);
+# 110 "./base/gxcspace.h"
+        const gs_color_space *(*concrete_space)(const gs_color_space *, const gs_imager_state *);
+# 125 "./base/gxcspace.h"
+        int (*concretize_color)(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+
+
+
+
+
+
+
+        int (*remap_concrete_color)(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+
+
+
+
+
+        int (*remap_color)(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+
+
+
+        int (*install_cspace)(gs_color_space *, gs_state *);
+# 163 "./base/gxcspace.h"
+        int (*set_overprint)(const gs_color_space *, gs_state *);
+
+
+
+
+
+        void (*final)(const gs_color_space *);
+# 184 "./base/gxcspace.h"
+        void (*adjust_color_count)(const gs_client_color *, const gs_color_space *, int);
+# 201 "./base/gxcspace.h"
+        int (*serialize)(const gs_color_space *, stream *);
+# 213 "./base/gxcspace.h"
+        int (*is_linear)(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+# 222 "./base/gxcspace.h"
+        gx_color_polarity_t (*polarity)(const gs_color_space *);
+};
+
+extern const gs_memory_struct_type_t st_base_color_space;
+
+
+
+
+
+int gx_num_components_1(const gs_color_space *);
+int gx_num_components_3(const gs_color_space *);
+int gx_num_components_4(const gs_color_space *);
+gx_color_polarity_t gx_polarity_subtractive(const gs_color_space *);
+gx_color_polarity_t gx_polarity_additive(const gs_color_space *);
+gx_color_polarity_t gx_polarity_unknown(const gs_color_space *);
+void gx_init_paint_1(gs_client_color *, const gs_color_space *);
+void gx_init_paint_3(gs_client_color *, const gs_color_space *);
+void gx_init_paint_4(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_1(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_3(gs_client_color *, const gs_color_space *);
+void gx_restrict01_paint_4(gs_client_color *, const gs_color_space *);
+const gs_color_space *gx_no_concrete_space(const gs_color_space *, const gs_imager_state *);
+const gs_color_space *gx_same_concrete_space(const gs_color_space *, const gs_imager_state *);
+int gx_no_concretize_color(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_default_remap_color(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_no_install_cspace(gs_color_space *, gs_state *);
+int gx_spot_colors_set_overprint(const gs_color_space *, gs_state *);
+int gx_simulated_set_overprint(const gs_color_space *, gs_state *);
+void gx_no_adjust_color_count(const gs_client_color *, const gs_color_space *, int);
+int gx_serialize_cspace_type(const gs_color_space *, stream *);
+int gx_cspace_no_linear(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+int gx_cspace_is_linear_default(const gs_color_space *cs, const gs_imager_state * pis, gx_device *dev, const gs_client_color *c0, const gs_client_color *c1, const gs_client_color *c2, const gs_client_color *c3, float smoothness, gsicc_link_t *icclink);
+
+
+
+
+
+int gx_remap_DeviceGray(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceGray(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DGray(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_remap_DeviceRGB(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceRGB(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DRGB(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_remap_DeviceCMYK(const gs_client_color *, const gs_color_space *, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+int gx_concretize_DeviceCMYK(const gs_client_color *, const gs_color_space *, frac *, const gs_imager_state *, gx_device *);
+int gx_remap_concrete_DCMYK(const frac *, const gs_color_space * pcs, gx_device_color *, const gs_imager_state *, gx_device *, gs_color_select_t);
+
+
+extern const gs_memory_struct_type_t st_color_space;
+
+
+gs_color_space *
+gs_cspace_alloc(gs_memory_t *mem, const gs_color_space_type *pcstype);
+
+
+
+
+gx_color_index check_cmyk_color_model_comps(gx_device * dev);
+gx_color_index check_rgb_color_model_comps(gx_device * dev);
+
+
+int gx_set_overprint_cmyk(const gs_color_space * pcs, gs_state * pgs);
+int gx_set_overprint_rgb(const gs_color_space * pcs, gs_state * pgs);
+# 25 "./base/gsnamecl.h" 2
+# 80 "./base/gsnamecl.h"
+typedef struct gs_context_state_s i_ctx_t;
+
+
+
+
+
+typedef struct gs_param_list_s gs_param_list;
+# 99 "./base/gsnamecl.h"
+int custom_color_callback_put_params(gs_state * pgs, gs_param_list * plist);
+# 108 "./base/gsnamecl.h"
+int custom_color_callback_get_params(gs_state * pgs, gs_param_list * plist);
+
+
+
+
+
+bool custom_color_callback_install_Separation(gs_color_space * pcs,
+                                                        gs_state * pgs);
+
+
+
+
+
+bool custom_color_callback_install_DeviceN(gs_color_space * pcs, gs_state * pgs);
+
+
+
+
+
+int gx_remap_concrete_custom_color_Separation(const frac * pconc,
+        const gs_color_space * pcs, gx_device_color * pdc,
+        const gs_imager_state * pis, gx_device * dev, gs_color_select_t select);
+
+
+
+
+
+int gx_remap_concrete_custom_color_DeviceN(const frac * pconc,
+        const gs_color_space * pcs, gx_device_color * pdc,
+        const gs_imager_state * pis, gx_device * dev, gs_color_select_t select);
+# 155 "./base/gsnamecl.h"
+typedef struct client_custom_color_params_s {
+
+    struct client_custom_color_procs_s * client_procs;
+
+    void * data;
+} client_custom_color_params_t;
+# 169 "./base/gsnamecl.h"
+typedef struct client_color_space_data_s {
+        void (*client_adjust_cspace_count)(const gs_color_space *, int);
+} client_color_space__data_t;
+
+
+
+
+typedef struct client_custom_color_procs_s {
+
+
+
+    bool (* install_DeviceGray)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceGray)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+    bool (* install_DeviceRGB)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceRGB)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+    bool (* install_DeviceCMYK)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceCMYK)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_Separation)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_Separation)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_DeviceN)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_DeviceN)(client_custom_color_params_t * pparams,
+            const frac * pconc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedA)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+# 254 "./base/gsnamecl.h"
+    int (* remap_CIEBasedA)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedABC)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedABC)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedDEF)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedDEF)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_CIEBasedDEFG)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_CIEBasedDEFG)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+
+
+
+    bool (* install_ICCBased)(client_custom_color_params_t * pparams,
+            gs_color_space * pcs, gs_state * pgs);
+
+
+
+    int (* remap_ICCBased)(client_custom_color_params_t * pparams,
+            const gs_client_color * pc, const gs_color_space * pcs,
+            gx_device_color * pdc, const gs_imager_state * pis,
+            gx_device * dev, gs_color_select_t select);
+
+} client_custom_color_procs_t;
+# 40 "./base/gxdevcli.h" 2
+
+# 1 "./base/gscms.h" 1
+# 25 "./base/gscms.h"
+# 1 "./base/gsdevice.h" 1
+# 29 "./base/gsdevice.h"
+typedef struct gx_device_memory_s gx_device_memory;
+# 44 "./base/gsdevice.h"
+const gx_device *gs_getdevice(int);
+const gx_device *gs_getdefaultdevice(void);
+
+int gs_opendevice(gx_device *);
+int gs_copyscanlines(gx_device *, int, byte *, uint, int *, uint *);
+int gs_copydevice(gx_device **, const gx_device *, gs_memory_t *);
+
+
+
+
+
+int gs_copydevice2(gx_device **pnew_dev, const gx_device *dev,
+                   bool keep_open, gs_memory_t *mem);
+
+
+
+int gs_makewordimagedevice(gx_device ** pnew_dev, const gs_matrix * pmat,
+                           uint width, uint height,
+                           const byte * colors, int num_colors,
+                           bool word_oriented, bool page_device,
+                           gs_memory_t * mem);
+
+
+
+int gs_initialize_wordimagedevice(gx_device_memory * new_dev,
+                                  const gs_matrix * pmat,
+                                  uint width, uint height,
+                                  const byte * colors, int colors_size,
+                                  bool word_oriented, bool page_device,
+                                  gs_memory_t * mem);
+const char *gs_devicename(const gx_device *);
+void gs_deviceinitialmatrix(gx_device *, gs_matrix *);
+
+
+int gs_get_device_or_hw_params(gx_device *, gs_param_list *, bool);
+
+
+
+
+
+
+
+int gs_putdeviceparams(gx_device *, gs_param_list *);
+int gs_closedevice(gx_device *);
+# 96 "./base/gsdevice.h"
+int gs_imager_putdeviceparams(gs_imager_state *pis, gx_device *dev,
+                              gs_param_list *plist);
+# 106 "./base/gsdevice.h"
+int gs_flushpage(gs_state *);
+int gs_copypage(gs_state *);
+int gs_output_page(gs_state *, int, int);
+int gs_nulldevice(gs_state *);
+int gs_setdevice(gs_state *, gx_device *);
+int gs_setdevice_no_erase(gs_state *, gx_device *);
+
+int gs_setdevice_no_init(gs_state *, gx_device *);
+gx_device *gs_currentdevice(const gs_state *);
+
+
+
+
+
+
+int gs_state_putdeviceparams(gs_state *pgs, gs_param_list *plist);
+# 26 "./base/gscms.h" 2
+# 1 "./base/gxsync.h" 1
+# 24 "./base/gxsync.h"
+# 1 "./base/gpsync.h" 1
+# 37 "./base/gpsync.h"
+typedef union {
+    void *dummy1;
+    double dummy2;
+    long dummy3;
+    int64_t dummy4;
+} gp_semaphore;
+
+uint gp_semaphore_sizeof(void);
+
+
+
+
+int gp_semaphore_open(gp_semaphore * sema);
+int gp_semaphore_close(gp_semaphore * sema);
+int gp_semaphore_wait(gp_semaphore * sema);
+int gp_semaphore_signal(gp_semaphore * sema);
+
+
+
+
+
+
+typedef union {
+    void *dummy_;
+    double dummy2;
+    long dummy3;
+    int64_t dummy4;
+} gp_monitor;
+
+uint gp_monitor_sizeof(void);
+
+
+
+
+int gp_monitor_open(gp_monitor * mon);
+int gp_monitor_close(gp_monitor * mon);
+int gp_monitor_enter(gp_monitor * mon);
+int gp_monitor_leave(gp_monitor * mon);
+
+
+
+
+
+
+
+typedef void (*gp_thread_creation_callback_t) (void *);
+int gp_create_thread(gp_thread_creation_callback_t, void *);
+# 95 "./base/gpsync.h"
+typedef void *gp_thread_id;
+int gp_thread_start(gp_thread_creation_callback_t fun, void *arg, gp_thread_id *thread);
+
+
+
+
+
+
+void gp_thread_finish(gp_thread_id thread);
+# 25 "./base/gxsync.h" 2
+
+
+
+
+
+
+
+
+typedef struct gx_semaphore_s {
+    gs_memory_t *memory;
+    gp_semaphore native;
+
+} gx_semaphore_t;
+
+gx_semaphore_t *
+    gx_semaphore_alloc(
+                       gs_memory_t * memory
+                       );
+void
+    gx_semaphore_free(
+                      gx_semaphore_t * sema
+                      );
+
+
+
+
+
+
+
+typedef struct gx_monitor_s {
+    gs_memory_t *memory;
+    gp_monitor native;
+} gx_monitor_t;
+
+gx_monitor_t *
+    gx_monitor_alloc(
+                     gs_memory_t * memory
+                     );
+void
+    gx_monitor_free(
+                    gx_monitor_t * mon
+                    );
+# 27 "./base/gscms.h" 2
+# 44 "./base/gscms.h"
+typedef unsigned short icc_output_type;
+# 54 "./base/gscms.h"
+typedef struct gs_range_icc_s {
+    gs_range_t ranges[15];
+} gs_range_icc_t;
+# 66 "./base/gscms.h"
+typedef struct gsicc_device_cm_s {
+    cmm_profile_t *gray_profile;
+    cmm_profile_t *rgb_profile;
+    cmm_profile_t *cmyk_profile;
+    cmm_profile_t *device_link_profile;
+    gs_memory_t *memory;
+} gsicc_device_cm_t;
+
+
+typedef enum {
+    gsUNDEFINED = 0,
+    gsGRAY,
+    gsRGB,
+    gsCMYK,
+    gsNCHANNEL,
+    gsCIEXYZ,
+    gsCIELAB,
+    gsNAMED
+} gsicc_colorbuffer_t;
+
+typedef struct gsicc_bufferdesc_s {
+    unsigned char num_chan;
+    unsigned char bytes_per_chan;
+    bool has_alpha;
+    bool alpha_first;
+    bool little_endian;
+    bool is_planar;
+    int plane_stride;
+    int row_stride;
+    int num_rows;
+    int pixels_per_row;
+} gsicc_bufferdesc_t;
+
+
+
+typedef void (*gscms_trans_color_proc_t) (gx_device * dev, gsicc_link_t *icclink,
+                                          void *inputcolor, void *outputcolor,
+                                          int num_bytes);
+
+typedef void (*gscms_trans_buffer_proc_t) (gx_device * dev, gsicc_link_t *icclink,
+                                           gsicc_bufferdesc_t *input_buff_desc,
+                                           gsicc_bufferdesc_t *output_buff_desc,
+                                           void *inputbuffer, void *outputbuffer);
+
+typedef void (*gscms_link_free_proc_t) (gsicc_link_t *icclink);
+
+typedef bool (*gscms_monitor_proc_t) (void *inputcolor, int num_bytes);
+
+typedef struct gscms_procs_s {
+    gscms_trans_buffer_proc_t map_buffer;
+    gscms_trans_color_proc_t map_color;
+    gscms_link_free_proc_t free_link;
+    gscms_monitor_proc_t is_color;
+} gscms_procs_t;
+# 129 "./base/gscms.h"
+typedef enum {
+    gsPERCEPTUAL = 0,
+    gsRELATIVECOLORIMETRIC,
+    gsSATURATION,
+    gsABSOLUTECOLORIMETRIC,
+    gsPERCEPTUAL_OR,
+    gsRELATIVECOLORIMETRIC_OR,
+    gsSATURATION_OR,
+    gsABSOLUTECOLORIMETRIC_OR,
+    gsRINOTSPECIFIED = 8
+} gsicc_rendering_intents_t;
+
+
+
+
+
+typedef enum {
+    gsBLACKPTCOMP_OFF = 0,
+    gsBLACKPTCOMP_ON,
+    gsBLACKPTCOMP_OFF_OR = 4,
+    gsBLACKPTCOMP_ON_OR,
+    gsBPNOTSPECIFIED = 8
+} gsicc_blackptcomp_t;
+
+
+
+typedef enum {
+    gsCMM_DEFAULT = 0,
+    gsCMM_NONE,
+    gsCMM_REPLACE
+} gsicc_cmm_t;
+
+
+
+typedef enum {
+    gsBLACKPRESERVE_OFF = 0,
+    gsBLACKPRESERVE_KONLY,
+    gsBLACKPRESERVE_KPLANE,
+    gsBKPRESNOTSPECIFIED = 8
+} gsicc_blackpreserve_t;
+# 178 "./base/gscms.h"
+typedef enum {
+    gsDEFAULTPROFILE = 0,
+    gsGRAPHICPROFILE,
+    gsIMAGEPROFILE,
+    gsTEXTPROFILE,
+    gsPROOFPROFILE,
+    gsLINKPROFILE,
+    gsOIPROFILE
+} gsicc_profile_types_t;
+
+typedef enum {
+    gsSRC_GRAPPRO = 0,
+    gsSRC_IMAGPRO,
+    gsSRC_TEXTPRO,
+} gsicc_profile_srctypes_t;
+
+
+
+
+typedef enum {
+    GS_UNKNOWN_TAG = 0x0,
+    GS_TEXT_TAG = 0x1,
+    GS_IMAGE_TAG = 0x2,
+    GS_PATH_TAG = 0x4,
+    GS_UNTOUCHED_TAG = 0x8,
+    GS_DEVICE_ENCODES_TAGS = 0x80
+} gs_graphics_type_tag_t;
+
+
+typedef struct gsicc_rendering_param_s {
+    gsicc_rendering_intents_t rendering_intent;
+    gsicc_blackptcomp_t black_point_comp;
+    gsicc_blackpreserve_t preserve_black;
+    gs_graphics_type_tag_t graphics_type_tag;
+    gsicc_cmm_t cmm;
+    bool override_icc;
+} gsicc_rendering_param_t;
+
+
+typedef struct cmm_srcgtag_profile_s {
+    cmm_profile_t *rgb_profiles[3];
+    gsicc_rendering_param_t rgb_rend_cond[3];
+    cmm_profile_t *cmyk_profiles[3];
+    gsicc_rendering_param_t cmyk_rend_cond[3];
+    cmm_profile_t *color_warp_profile;
+    gs_memory_t *memory;
+    int name_length;
+    char *name;
+    rc_header rc;
+} cmm_srcgtag_profile_t;
+
+typedef struct gsicc_colorname_s gsicc_colorname_t;
+
+struct gsicc_colorname_s {
+    char *name;
+    int length;
+    gsicc_colorname_t *next;
+};
+
+typedef struct gsicc_namelist_s gsicc_namelist_t;
+
+
+
+typedef struct gs_devicen_color_map_s gs_devicen_color_map;
+
+
+struct gsicc_namelist_s {
+    int count;
+    gsicc_colorname_t *head;
+    char *name_str;
+    gs_devicen_color_map *color_map;
+    bool equiv_cmyk_set;
+
+
+
+
+};
+
+
+typedef struct cmm_dev_profile_s {
+        cmm_profile_t *device_profile[4];
+        cmm_profile_t *proof_profile;
+        cmm_profile_t *link_profile;
+        cmm_profile_t *oi_profile;
+        gsicc_rendering_param_t rendercond[4];
+        bool devicegraytok;
+        bool graydetection;
+        bool pageneutralcolor;
+        bool usefastcolor;
+        bool supports_devn;
+        bool sim_overprint;
+        gsicc_namelist_t *spotnames;
+        bool prebandthreshold;
+        gs_memory_t *memory;
+        rc_header rc;
+} cmm_dev_profile_t;
+# 282 "./base/gscms.h"
+typedef enum {
+    DEFAULT_NONE,
+    DEFAULT_GRAY,
+    DEFAULT_RGB,
+    DEFAULT_CMYK,
+    NAMED_TYPE,
+    LAB_TYPE,
+    DEVICEN_TYPE,
+    DEFAULT_GRAY_s,
+    DEFAULT_RGB_s,
+    DEFAULT_CMYK_s,
+    LAB_TYPE_s,
+    CAL_GRAY,
+    CAL_RGB,
+    CIE_A,
+    CIE_ABC,
+    CIE_DEF,
+    CIE_DEFG,
+    CIE_CRD
+} gsicc_profile_t;
+# 324 "./base/gscms.h"
+typedef struct gsicc_serialized_profile_s {
+    unsigned char num_comps; unsigned char num_comps_out; bool islab; bool isdevlink; gsicc_profile_t default_match; gsicc_colorbuffer_t data_cs; gs_range_icc_t Range; int64_t hashcode; bool hash_is_valid; int devicen_permute[15]; bool devicen_permute_needed; int buffer_size; bool rend_is_valid; gsicc_rendering_param_t rend_cond;
+} gsicc_serialized_profile_t;
+
+
+
+
+struct cmm_profile_s {
+    unsigned char num_comps; unsigned char num_comps_out; bool islab; bool isdevlink; gsicc_profile_t default_match; gsicc_colorbuffer_t data_cs; gs_range_icc_t Range; int64_t hashcode; bool hash_is_valid; int devicen_permute[15]; bool devicen_permute_needed; int buffer_size; bool rend_is_valid; gsicc_rendering_param_t rend_cond;
+    byte *buffer;
+    gx_device *dev;
+    gsicc_namelist_t *spotnames;
+    void *profile_handle;
+    rc_header rc;
+    int name_length;
+    char *name;
+
+
+
+
+    gs_memory_t *memory;
+    gx_monitor_t *lock;
+};
+# 371 "./base/gscms.h"
+typedef struct gsicc_profile_entry_s gsicc_profile_entry_t;
+
+struct gsicc_profile_entry_s {
+    gs_color_space *color_space;
+    gsicc_profile_entry_t *next;
+    int64_t key;
+};
+
+
+
+typedef struct gsicc_profile_cache_s {
+    gsicc_profile_entry_t *head;
+    int num_entries;
+    rc_header rc;
+    gs_memory_t *memory;
+} gsicc_profile_cache_t;
+
+
+
+
+typedef enum {
+    DEVICETYPE,
+    ICCTYPE,
+    CRDTYPE,
+    CIEATYPE,
+    CIEABCTYPE,
+    CIEDEFTYPE,
+    CIEDEFGTYPE
+} gs_colortype_t;
+# 408 "./base/gscms.h"
+typedef struct gsicc_hashlink_s {
+    int64_t link_hashcode;
+    int64_t src_hash;
+    int64_t des_hash;
+    int64_t rend_hash;
+} gsicc_hashlink_t;
+
+struct gsicc_link_s {
+    void *link_handle;
+    gscms_procs_t procs;
+    gsicc_hashlink_t hashcode;
+    struct gsicc_link_cache_s *icc_link_cache;
+    int ref_count;
+    gsicc_link_t *next;
+    gx_semaphore_t *wait;
+    int num_waiting;
+    bool includes_softproof;
+    bool includes_devlink;
+    bool is_identity;
+    bool valid;
+    bool is_monitored;
+    gscms_procs_t orig_procs;
+    gsicc_colorbuffer_t data_cs;
+    int num_input;
+    int num_output;
+};
+
+
+
+
+
+
+typedef struct gsicc_link_cache_s {
+    gsicc_link_t *head;
+    int num_links;
+    rc_header rc;
+    gs_memory_t *memory;
+    gx_monitor_t *lock;
+    gx_semaphore_t *wait;
+    int num_waiting;
+} gsicc_link_cache_t;
+# 467 "./base/gscms.h"
+typedef struct gsicc_devicen_entry_s gsicc_devicen_entry_t;
+
+struct gsicc_devicen_entry_s {
+    cmm_profile_t *iccprofile;
+    gsicc_devicen_entry_t *next;
+};
+
+typedef struct gsicc_devicen_s gsicc_devicen_t;
+
+struct gsicc_devicen_s {
+    gsicc_devicen_entry_t *head;
+    gsicc_devicen_entry_t *final;
+    int count;
+};
+
+
+
+
+
+typedef struct gsicc_smask_s {
+    cmm_profile_t *smask_gray;
+    cmm_profile_t *smask_rgb;
+    cmm_profile_t *smask_cmyk;
+    gs_memory_t *memory;
+    bool swapped;
+} gsicc_smask_t;
+
+
+
+typedef struct gsicc_manager_s {
+    cmm_profile_t *device_named;
+    cmm_profile_t *default_gray;
+    cmm_profile_t *default_rgb;
+    cmm_profile_t *default_cmyk;
+    cmm_profile_t *lab_profile;
+    cmm_profile_t *graytok_profile;
+    gsicc_devicen_t *device_n;
+    gsicc_smask_t *smask_profiles;
+    bool override_internal;
+    cmm_srcgtag_profile_t *srcgtag_profile;
+    gs_memory_t *memory;
+    rc_header rc;
+} gsicc_manager_t;
+# 42 "./base/gxdevcli.h" 2
+# 1 "./base/gxrplane.h" 1
+# 32 "./base/gxrplane.h"
+typedef struct gx_render_plane_s {
+    int depth;
+    int shift;
+    int index;
+} gx_render_plane_t;
+# 45 "./base/gxrplane.h"
+int gx_render_plane_init(gx_render_plane_t *render_plane,
+                         const gx_device *dev, int index);
+# 43 "./base/gxdevcli.h" 2
+# 139 "./base/gxdevcli.h"
+typedef struct gx_fill_params_s gx_fill_params;
+
+
+
+typedef struct gx_stroke_params_s gx_stroke_params;
+
+
+
+
+
+
+
+typedef struct patch_fill_state_s patch_fill_state_t;
+
+
+
+
+
+
+typedef struct gx_image_enum_common_s gx_image_enum_common_t;
+
+
+
+
+
+
+typedef struct gs_pattern1_instance_s gs_pattern1_instance_t;
+
+
+
+typedef gx_device_color gx_drawing_color;
+
+
+
+typedef enum {
+    go_text,
+    go_graphics
+} graphics_object_type;
+
+
+typedef struct gs_fixed_edge_s {
+    gs_fixed_point start;
+    gs_fixed_point end;
+} gs_fixed_edge;
+
+
+
+
+typedef struct gs_get_bits_params_s gs_get_bits_params_t;
+
+
+
+typedef struct gx_device_anti_alias_info_s {
+    int text_bits;
+    int graphics_bits;
+} gx_device_anti_alias_info;
+
+typedef int32_t frac31;
+
+
+
+
+typedef struct gs_linear_color_edge_s {
+    gs_fixed_point start;
+    gs_fixed_point end;
+    const frac31 *c0, *c1;
+    fixed clip_x;
+} gs_linear_color_edge;
+# 234 "./base/gxdevcli.h"
+typedef enum {
+    GX_CINFO_UNKNOWN_SEP_LIN = -1,
+    GX_CINFO_SEP_LIN_NONE = 0,
+    GX_CINFO_SEP_LIN
+} gx_color_enc_sep_lin_t;
+# 262 "./base/gxdevcli.h"
+typedef enum {
+    GX_CINFO_OPMODE_UNKNOWN = -1,
+    GX_CINFO_OPMODE_NOT = 0,
+    GX_CINFO_OPMODE = 1,
+    GX_CINFO_OPMODE_RGB,
+    GC_CINFO_OPMODE_RGB_SET
+} gx_cm_opmode_t;
+# 297 "./base/gxdevcli.h"
+typedef struct gx_device_color_info_s {
+
+
+
+
+
+
+    int max_components;
+
+
+
+
+
+
+
+    int num_components;
+
+
+
+
+
+
+
+    gx_color_polarity_t polarity;
+
+
+
+
+
+
+
+    ushort depth;
+# 356 "./base/gxdevcli.h"
+    byte gray_index;
+# 378 "./base/gxdevcli.h"
+    uint max_gray;
+    uint max_color;
+
+    uint dither_grays;
+    uint dither_colors;
+
+
+
+
+
+    gx_device_anti_alias_info anti_alias;
+# 426 "./base/gxdevcli.h"
+    gx_color_enc_sep_lin_t separable_and_linear;
+    byte comp_shift[(8 * 8)];
+    byte comp_bits[(8 * 8)];
+    gx_color_index comp_mask[(8 * 8)];
+
+
+
+
+    const char * cm_name;
+# 452 "./base/gxdevcli.h"
+    gx_cm_opmode_t opmode;
+    gx_color_index process_comps;
+    int black_component;} gx_device_color_info;
+# 616 "./base/gxdevcli.h"
+typedef struct gx_device_procs_s gx_device_procs;
+
+
+
+typedef struct gx_page_device_procs_s {
+
+
+
+    int (*install)(gx_device *dev, gs_state *pgs);
+
+
+
+    int (*begin_page)(gx_device *dev, gs_state *pgs);
+
+
+
+    int (*end_page)(gx_device *dev, int reason, gs_state *pgs);
+
+} gx_page_device_procs;
+
+
+int gx_default_install(gx_device *dev, gs_state *pgs);
+int gx_default_begin_page(gx_device *dev, gs_state *pgs);
+int gx_default_end_page(gx_device *dev, int reason, gs_state *pgs);
+# 651 "./base/gxdevcli.h"
+typedef struct gx_stroked_gradient_recognizer_s {
+    bool stroke_stored;
+    gs_fixed_point orig[4], adjusted[4];
+} gx_stroked_gradient_recognizer_t;
+# 683 "./base/gxdevcli.h"
+typedef struct gx_device_cached_colors_s {
+    gx_color_index black, white;
+} gx_device_cached_colors_t;
+
+
+
+
+
+
+
+typedef struct gx_band_params_s {
+    int BandWidth;
+    int BandHeight;
+    long BandBufferSpace;
+} gx_band_params_t;
+
+
+
+typedef enum {
+    BandingAuto = 0,
+    BandingAlways,
+    BandingNever
+} gdev_banding_type;
+
+
+
+
+typedef struct gdev_space_params_s {
+    long MaxBitmap;
+    long BufferSpace;
+    gx_band_params_t band;
+    bool params_are_read_only;
+    gdev_banding_type banding_type;
+} gdev_space_params;
+# 1290 "./base/gxdevcli.h"
+typedef enum {
+    pattern_manage__can_accum,
+    pattern_manage__start_accum,
+    pattern_manage__finish_accum,
+    pattern_manage__load,
+    pattern_manage__shading_area,
+    pattern_manage__is_cpath_accum,
+    pattern_manage__shfill_doesnt_need_path,
+    pattern_manage__handles_clip_path
+} pattern_manage_t;
+# 1343 "./base/gxdevcli.h"
+typedef struct gs_fill_attributes_s {
+      const gs_fixed_rect *clip;
+      bool swap_axes;
+      const gx_device_halftone *ht;
+      gs_logical_operation_t lop;
+      fixed ystart, yend;
+      patch_fill_state_t *pfs;
+} gs_fill_attributes;
+# 1423 "./base/gxdevcli.h"
+typedef struct gs_devn_params_s gs_devn_params;
+# 1507 "./base/gxdevcli.h"
+typedef struct gx_process_page_options_s gx_process_page_options_t;
+
+struct gx_process_page_options_s
+{
+    int (*init_buffer_fn)(void *arg, gx_device *dev, gs_memory_t *memory, int w, int h, void **buffer);
+    void (*free_buffer_fn)(void *arg, gx_device *dev, gs_memory_t *memory, void *buffer);
+    int (*process_fn)(void *arg, gx_device *dev, gx_device *bdev, const gs_int_rect *rect, void *buffer);
+    int (*output_fn)(void *arg, gx_device *dev, void *buffer);
+    void *arg;
+    int options;
+};
+# 1613 "./base/gxdevcli.h"
+typedef struct gx_image_plane_s {
+    const byte *data;
+    int data_x;
+    uint raster;
+} gx_image_plane_t;
+# 1631 "./base/gxdevcli.h"
+int gx_image_data(gx_image_enum_common_t *info, const byte **planes,
+                  int data_x, uint raster, int height);
+
+
+
+
+int gx_image_plane_data(gx_image_enum_common_t *info,
+                        const gx_image_plane_t *planes, int height);
+int gx_image_plane_data_rows(gx_image_enum_common_t *info,
+                             const gx_image_plane_t *planes, int height,
+                             int *rows_used);
+int gx_image_flush(gx_image_enum_common_t *info);
+bool gx_image_planes_wanted(const gx_image_enum_common_t *info, byte *wanted);
+int gx_image_end(gx_image_enum_common_t *info, bool draw_last);
+# 1661 "./base/gxdevcli.h"
+struct gx_device_procs_s { int (*open_device)(gx_device *dev); void (*get_initial_matrix)(gx_device *dev, gs_matrix *pmat); int (*sync_output)(gx_device *dev); int (*output_page)(gx_device *dev, int num_copies, int flush); int (*close_device)(gx_device *dev); gx_color_index (*map_rgb_color)(gx_device *dev, const gx_color_value cv[]); int (*map_color_rgb)(gx_device *dev, gx_color_index color, gx_color_value rgb[3]); int (*fill_rectangle)(gx_device *dev, int x, int y, int width, int height, gx_color_index color); int (*tile_rectangle)(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y); int (*copy_mono)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1); int (*copy_color)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height); int (*obsolete_draw_line)(gx_device *dev, int x0, int y0, int x1, int y1, gx_color_index color); int (*get_bits)(gx_device *dev, int y, byte *data, byte **actual_data); int (*get_params)(gx_device *dev, gs_param_list *plist); int (*put_params)(gx_device *dev, gs_param_list *plist); gx_color_index (*map_cmyk_color)(gx_device *dev, const gx_color_value cv[]); const gx_xfont_procs *(*get_xfont_procs)(gx_device *dev); gx_device *(*get_xfont_device)(gx_device *dev); gx_color_index (*map_rgb_alpha_color)(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha); gx_device *(*get_page_device)(gx_device *dev); int (*get_alpha_bits)(gx_device *dev, graphics_object_type type); int (*copy_alpha)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth); int (*get_band)(gx_device *dev, int y, int *band_start); int (*copy_rop)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop); int (*fill_path)(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*stroke_path)(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*fill_mask)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath); int (*fill_trapezoid)(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*fill_parallelogram)(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*fill_triangle)(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop); int (*draw_thin_line)(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty); int (*begin_image)(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo); int (*image_data)(gx_device *dev, gx_image_enum_common_t *info, const byte **planes, int data_x, uint raster, int height); int (*end_image)(gx_device *dev, gx_image_enum_common_t *info, bool draw_last); int (*strip_tile_rectangle)(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y); int (*strip_copy_rop)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop); void (*get_clipping_box)(gx_device *dev, gs_fixed_rect *pbox); int (*begin_typed_image)(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo); int (*get_bits_rectangle)(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread); int (*map_color_rgb_alpha)(gx_device *dev, gx_color_index color, gx_color_value rgba[4]); int (*create_compositor)(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev); int (*get_hardware_params)(gx_device *dev, gs_param_list *plist); int (*text_begin)(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte); int (*finish_copydevice)(gx_device *dev, const gx_device *from_dev); int (*begin_transparency_group)(gx_device *dev, const gs_transparency_group_params_t *ptgp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem); int (*end_transparency_group)(gx_device *dev, gs_imager_state *pis); int (*begin_transparency_mask)(gx_device *dev, const gx_transparency_mask_params_t *ptmp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem); int (*end_transparency_mask)(gx_device *dev, gs_imager_state *pis); int (*discard_transparency_layer)(gx_device *dev, gs_imager_state *pis); const gx_cm_color_map_procs * ((*get_color_mapping_procs))(const gx_device * dev); int ((*get_color_comp_index))(gx_device * dev, const char * pname, int name_size, int component_type); gx_color_index ((*encode_color))(gx_device * dev, const gx_color_value colors[]); int ((*decode_color))(gx_device * dev, gx_color_index cindex, gx_color_value colors[]); int (*pattern_manage)(gx_device *pdev, gx_bitmap_id id, gs_pattern1_instance_t *pinst, pattern_manage_t function); int (*fill_rectangle_hl_color)(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath); int (*include_color_space)(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length); int (*fill_linear_color_scanline)(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den ); int (*fill_linear_color_trapezoid)(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3); int (*fill_linear_color_triangle)(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2); int (*update_spot_equivalent_colors)(gx_device *dev, const gs_state * pgs); gs_devn_params * (*ret_devn_params)(gx_device *dev); int (*fillpage)(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc); int (*push_transparency_state)(gx_device *dev, gs_imager_state *pis); int (*pop_transparency_state)(gx_device *dev, gs_imager_state *pis); int (*put_image)(gx_device *dev, const byte *buffer, int num_chan, int x, int y, int width, int height, int row_stride, int plane_stride, int alpha_plane_index, int tag_plane_index); int (*dev_spec_op)(gx_device *dev, int op, void *data, int datasize); int (*copy_planes)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, int plane_height); int (*get_profile)(gx_device *dev, cmm_dev_profile_t **dev_profile); void (*set_graphics_type_tag)(gx_device *dev, gs_graphics_type_tag_t); int (*strip_copy_rop2)(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height); int (*strip_tile_rect_devn)(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y); int (*copy_alpha_hl_color)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth); int (*process_page)(gx_device *dev, gx_process_page_options_t *options);};
+# 1677 "./base/gxdevcli.h"
+int gx_copy_mono_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_copy_color_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_copy_alpha_unaligned(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+
+
+struct gx_device_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs;
+};
+
+extern const gs_memory_struct_type_t st_device;
+void gx_device_finalize(const gs_memory_t *cmem, void *ptr);
+# 1697 "./base/gxdevcli.h"
+gx_device *gx_device_enum_ptr(gx_device *);
+gx_device *gx_device_reloc_ptr(gx_device *, gc_state_t *);
+
+
+
+typedef gx_color_index (*dev_proc_map_rgb_color_t)(gx_device *dev, const gx_color_value cv[]);
+typedef int (*dev_proc_map_color_rgb_t)(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+# 1716 "./base/gxdevcli.h"
+typedef struct gx_device_forward_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+} gx_device_forward;
+
+extern const gs_memory_struct_type_t st_device_forward;
+# 1730 "./base/gxdevcli.h"
+typedef struct gx_device_null_s gx_device_null;
+
+struct gx_device_null_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+};
+extern const gx_device_null gs_null_device;
+
+
+
+extern const gs_memory_struct_type_t st_device_null;
+# 1753 "./base/gxdevcli.h"
+void gx_device_init(gx_device * dev, const gx_device * proto,
+                    gs_memory_t * mem, bool internal);
+
+
+
+
+
+
+void gx_device_init_on_stack(gx_device * dev, const gx_device * proto,
+                             gs_memory_t * mem);
+
+
+
+
+void gs_make_null_device(gx_device_null *dev_null, gx_device *target,
+                         gs_memory_t *mem);
+
+bool gs_is_null_device(gx_device *dev);
+
+
+void gx_device_set_target(gx_device_forward *fdev, gx_device *target);
+
+
+void gx_device_retain(gx_device *dev, bool retained);
+
+
+
+uint gx_device_raster(const gx_device * dev, bool pad_to_word);
+
+
+
+uint gx_device_raster_chunky(const gx_device * dev, bool pad);
+
+
+
+uint gx_device_raster_plane(const gx_device * dev, const gx_render_plane_t *render_plane);
+
+
+
+
+
+int gx_device_adjust_resolution(gx_device * dev, int actual_width, int actual_height, int fit);
+
+
+
+void gx_device_set_margins(gx_device * dev, const float *margins ,
+                           bool move_origin);
+
+
+void gx_device_set_width_height(gx_device * dev, int width, int height);
+
+
+void gx_device_set_resolution(gx_device * dev, double x_dpi, double y_dpi);
+
+
+void gx_device_set_media_size(gx_device * dev, double media_width, double media_height);
+# 1818 "./base/gxdevcli.h"
+void gx_set_device_only(gs_state *, gx_device *);
+
+
+int gs_closedevice(gx_device *);
+
+
+void gx_device_free_local(gx_device *);
+
+
+
+
+
+
+typedef struct gx_device_type_s {
+    gs_memory_type_ptr_t stype;
+    int (*initialize)(gx_device *);
+} gx_device_type;
+# 24 "./base/gxdevice.h" 2
+# 1 "./base/gsfname.h" 1
+# 33 "./base/gsfname.h"
+typedef struct gx_io_device_s gx_io_device;
+
+
+typedef struct gs_parsed_file_name_s {
+    gs_memory_t *memory;
+    gx_io_device *iodev;
+    const char *fname;
+    uint len;
+} gs_parsed_file_name_t;
+
+
+int gs_parse_file_name(gs_parsed_file_name_t *, const char *, uint,
+                       const gs_memory_t *);
+
+
+int gs_parse_real_file_name(gs_parsed_file_name_t *, const char *, uint,
+                            gs_memory_t *, client_name_t);
+
+
+int gs_terminate_file_name(gs_parsed_file_name_t *, gs_memory_t *,
+                           client_name_t);
+
+
+void gs_free_file_name(gs_parsed_file_name_t *, client_name_t);
+# 25 "./base/gxdevice.h" 2
+# 1 "./base/gsparam.h" 1
+# 40 "./base/gsparam.h"
+typedef const char *gs_param_name;
+# 50 "./base/gsparam.h"
+typedef enum {
+
+    gs_param_type_null, gs_param_type_bool, gs_param_type_int,
+    gs_param_type_long, gs_param_type_float,
+
+    gs_param_type_string, gs_param_type_name,
+    gs_param_type_int_array, gs_param_type_float_array,
+    gs_param_type_string_array, gs_param_type_name_array,
+
+    gs_param_type_dict, gs_param_type_dict_int_keys, gs_param_type_array
+} gs_param_type;
+# 75 "./base/gsparam.h"
+typedef struct gs_param_int_array_s { const int *data; uint size; bool persistent; } gs_param_int_array;
+typedef struct gs_param_float_array_s { const float *data; uint size; bool persistent; } gs_param_float_array;
+typedef struct gs_param_string_array_s { const gs_param_string *data; uint size; bool persistent; } gs_param_string_array;
+# 93 "./base/gsparam.h"
+typedef struct gs_param_collection_s {
+    gs_param_list *list;
+    uint size;
+} gs_param_collection;
+typedef gs_param_collection gs_param_dict;
+typedef gs_param_collection gs_param_array;
+# 120 "./base/gsparam.h"
+extern const byte gs_param_type_sizes[];
+extern const byte gs_param_type_base_sizes[];
+# 136 "./base/gsparam.h"
+typedef union gs_param_value_s {
+    bool b; int i; long l; float f; gs_param_string s; gs_param_string n; gs_param_int_array ia; gs_param_float_array fa; gs_param_string_array sa; gs_param_string_array na; gs_param_collection d;
+} gs_param_value;
+
+
+
+
+
+typedef struct gs_param_typed_value_s {
+    gs_param_value value;
+    gs_param_type type;
+} gs_param_typed_value;
+
+
+
+
+
+
+gs_ptr_type_t gs_param_typed_value_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+void gs_param_typed_value_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst);
+
+
+
+
+
+
+typedef enum {
+
+
+
+    gs_param_collection_dict_any = 0,
+
+
+
+
+
+    gs_param_collection_dict_int_keys = 1,
+
+
+
+
+    gs_param_collection_array = 2
+
+} gs_param_collection_type_t;
+# 195 "./base/gsparam.h"
+typedef union gs_param_enumerator_s {
+    int intval;
+    long longval;
+    void *pvoid;
+    char *pchar;
+} gs_param_enumerator_t;
+typedef gs_param_string gs_param_key_t;
+# 256 "./base/gsparam.h"
+typedef struct gs_param_list_procs_s {
+# 268 "./base/gsparam.h"
+         int (*xmit_typed)(gs_param_list *, gs_param_name, gs_param_typed_value *);
+# 278 "./base/gsparam.h"
+         int (*begin_xmit_collection)(gs_param_list *, gs_param_name, gs_param_dict *, gs_param_collection_type_t);
+# 296 "./base/gsparam.h"
+         int (*end_xmit_collection)(gs_param_list *, gs_param_name, gs_param_dict *);
+# 312 "./base/gsparam.h"
+         int (*next_key)(gs_param_list *, gs_param_enumerator_t *, gs_param_key_t *);
+# 326 "./base/gsparam.h"
+         int (*request)(gs_param_list *, gs_param_name);
+# 341 "./base/gsparam.h"
+         int (*requested)(const gs_param_list *, gs_param_name);
+# 350 "./base/gsparam.h"
+         int (*get_policy)(gs_param_list *, gs_param_name);
+# 362 "./base/gsparam.h"
+         int (*signal_error)(gs_param_list *, gs_param_name, int);
+# 375 "./base/gsparam.h"
+         int (*commit)(gs_param_list *);
+
+
+
+} gs_param_list_procs;
+
+
+int param_read_requested_typed(gs_param_list *, gs_param_name,
+                                  gs_param_typed_value *);
+
+
+
+
+
+
+int param_read_null(gs_param_list *, gs_param_name);
+int param_write_null(gs_param_list *, gs_param_name);
+int param_read_bool(gs_param_list *, gs_param_name, bool *);
+int param_write_bool(gs_param_list *, gs_param_name, const bool *);
+int param_read_int(gs_param_list *, gs_param_name, int *);
+int param_write_int(gs_param_list *, gs_param_name, const int *);
+int param_read_long(gs_param_list *, gs_param_name, long *);
+int param_write_long(gs_param_list *, gs_param_name, const long *);
+int param_read_float(gs_param_list *, gs_param_name, float *);
+int param_write_float(gs_param_list *, gs_param_name, const float *);
+int param_read_string(gs_param_list *, gs_param_name, gs_param_string *);
+int param_write_string(gs_param_list *, gs_param_name,
+                       const gs_param_string *);
+int param_read_name(gs_param_list *, gs_param_name, gs_param_string *);
+int param_write_name(gs_param_list *, gs_param_name,
+                     const gs_param_string *);
+int param_read_int_array(gs_param_list *, gs_param_name,
+                         gs_param_int_array *);
+int param_write_int_array(gs_param_list *, gs_param_name,
+                          const gs_param_int_array *);
+int param_write_int_values(gs_param_list *, gs_param_name,
+                           const int *, uint, bool);
+int param_read_float_array(gs_param_list *, gs_param_name,
+                           gs_param_float_array *);
+int param_write_float_array(gs_param_list *, gs_param_name,
+                            const gs_param_float_array *);
+int param_write_float_values(gs_param_list *, gs_param_name,
+                             const float *, uint, bool);
+int param_read_string_array(gs_param_list *, gs_param_name,
+                            gs_param_string_array *);
+int param_write_string_array(gs_param_list *, gs_param_name,
+                             const gs_param_string_array *);
+int param_read_name_array(gs_param_list *, gs_param_name,
+                          gs_param_string_array *);
+int param_write_name_array(gs_param_list *, gs_param_name,
+                           const gs_param_string_array *);
+# 439 "./base/gsparam.h"
+struct gs_param_list_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+};
+
+
+
+
+void gs_param_list_set_persist_keys(gs_param_list *, bool);
+
+
+void param_init_enumerator(gs_param_enumerator_t * penum);
+
+
+
+
+
+
+typedef struct gs_param_item_s {
+    const char *key;
+    byte type;
+    short offset;
+} gs_param_item_t;
+
+
+
+
+
+
+int gs_param_read_items(gs_param_list * plist, void *obj,
+                        const gs_param_item_t * items);
+int gs_param_write_items(gs_param_list * plist, const void *obj,
+                         const void *default_obj,
+                         const gs_param_item_t * items);
+
+
+void gs_param_list_init(gs_param_list *, const gs_param_list_procs *,
+                        gs_memory_t *);
+
+
+
+
+
+
+int param_coerce_typed(gs_param_typed_value * pvalue,
+                       gs_param_type req_type, gs_memory_t * mem);
+
+
+
+
+
+
+
+int gs_param_request_default(gs_param_list *, gs_param_name);
+int gs_param_requested_default(const gs_param_list *, gs_param_name);
+# 520 "./base/gsparam.h"
+typedef struct gs_c_param_s gs_c_param;
+typedef struct gs_c_param_list_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+    gs_c_param *head;
+    gs_param_list *target;
+    uint count;
+    bool any_requested;
+    gs_param_collection_type_t coll_type;
+} gs_c_param_list;
+# 540 "./base/gsparam.h"
+void gs_c_param_list_set_target(gs_c_param_list *, gs_param_list *);
+
+
+
+
+
+gs_c_param_list *gs_c_param_list_alloc(gs_memory_t *, client_name_t);
+void gs_c_param_list_write(gs_c_param_list *, gs_memory_t *);
+void gs_c_param_list_write_more(gs_c_param_list *);
+void gs_c_param_list_read(gs_c_param_list *);
+void gs_c_param_list_release(gs_c_param_list *);
+# 26 "./base/gxdevice.h" 2
+
+
+
+
+# 1 "./base/gsmalloc.h" 1
+# 26 "./base/gsmalloc.h"
+typedef struct gs_malloc_block_s gs_malloc_block_t;
+typedef struct gs_malloc_memory_s {
+    gs_memory_t *stable_memory; gs_memory_procs_t procs; gs_lib_ctx_t *gs_lib_ctx; gs_memory_t *non_gc_memory; gs_memory_t *thread_safe_memory;
+    gs_malloc_block_t *allocated;
+    long limit;
+    long used;
+    long max_used;
+    gx_monitor_t *monitor;
+} gs_malloc_memory_t;
+
+
+gs_malloc_memory_t *gs_malloc_memory_init(void);
+
+
+
+
+
+
+
+gs_memory_t * gs_malloc_init(void);
+void gs_malloc_release(gs_memory_t *mem);
+# 56 "./base/gsmalloc.h"
+int gs_malloc_wrap(gs_memory_t **wrapped, gs_malloc_memory_t *contents);
+
+
+gs_malloc_memory_t *gs_malloc_wrapped_contents(gs_memory_t *wrapped);
+
+
+gs_malloc_memory_t *gs_malloc_unwrap(gs_memory_t *wrapped);
+# 31 "./base/gxdevice.h" 2
+
+
+
+
+# 1 "./base/gxstdio.h" 1
+# 36 "./base/gxdevice.h" 2
+# 239 "./base/gxdevice.h"
+int gx_default_open_device(gx_device *dev);
+void gx_default_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+void gx_upright_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+int gx_default_sync_output(gx_device *dev);
+int gx_default_output_page(gx_device *dev, int num_copies, int flush);
+int gx_default_close_device(gx_device *dev);
+gx_color_index gx_default_w_b_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_w_b_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+int gx_default_tile_rectangle(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_default_copy_mono(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_default_copy_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_default_draw_line(gx_device *dev, int x0, int y0, int x1, int y1, gx_color_index color);
+int gx_no_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_default_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_default_get_params(gx_device *dev, gs_param_list *plist);
+int gx_default_put_params(gx_device *dev, gs_param_list *plist);
+gx_color_index gx_default_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+const gx_xfont_procs *gx_default_get_xfont_procs(gx_device *dev);
+gx_device *gx_default_get_xfont_device(gx_device *dev);
+gx_color_index gx_default_map_rgb_alpha_color(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha);
+gx_device *gx_default_get_page_device(gx_device *dev);
+gx_device *gx_page_device_get_page_device(gx_device *dev);
+int gx_default_get_alpha_bits(gx_device *dev, graphics_object_type type);
+int gx_no_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_default_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_default_get_band(gx_device *dev, int y, int *band_start);
+int gx_no_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_fill_mask(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath);
+int gx_default_fill_trapezoid(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_fill_parallelogram(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_fill_triangle(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_default_draw_thin_line(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty);
+int gx_default_begin_image(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_default_image_data(gx_device *dev, gx_image_enum_common_t *info, const byte **planes, int data_x, uint raster, int height);
+int gx_default_end_image(gx_device *dev, gx_image_enum_common_t *info, bool draw_last);
+int gx_default_strip_tile_rectangle(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_no_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_default_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+void gx_default_get_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+void gx_get_largest_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+int gx_default_begin_typed_image(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_no_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_default_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_default_map_color_rgb_alpha(gx_device *dev, gx_color_index color, gx_color_value rgba[4]);
+int gx_no_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+
+
+int gx_default_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_null_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_default_get_hardware_params(gx_device *dev, gs_param_list *plist);
+int gx_default_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+int gx_default_finish_copydevice(gx_device *dev, const gx_device *from_dev);
+int gx_default_dev_spec_op(gx_device *dev, int op, void *data, int datasize);
+int gx_default_fill_rectangle_hl_color(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_default_include_color_space(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length);
+int gx_default_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_hl_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_default_fill_linear_color_trapezoid(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3);
+int gx_default_fill_linear_color_triangle(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2);
+int gx_default_update_spot_equivalent_colors(gx_device *dev, const gs_state * pgs);
+gs_devn_params * gx_default_ret_devn_params(gx_device *dev);
+int gx_default_fillpage(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc);
+int gx_default_get_profile(gx_device *dev, cmm_dev_profile_t **dev_profile);
+void gx_default_set_graphics_type_tag(gx_device *dev, gs_graphics_type_tag_t);
+int gx_default_strip_copy_rop2(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height);
+int gx_default_strip_tile_rect_devn(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y);
+int gx_default_copy_alpha_hl_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth);
+int gx_default_process_page(gx_device *dev, gx_process_page_options_t *options);
+
+
+
+
+
+gx_color_index gx_default_b_w_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_b_w_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+gx_color_index gx_default_gray_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_default_gray_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int gx_default_rgb_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+
+
+
+
+
+
+gx_color_index gx_default_rgb_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+gx_color_index cmyk_1bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int cmyk_1bit_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int (cmyk_1bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index cmyk_8bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int cmyk_8bit_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int (cmyk_8bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index cmyk_16bit_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+int (cmyk_16bit_map_color_cmyk)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+gx_color_index (gx_default_8bit_map_gray_color)(gx_device * dev, const gx_color_value colors[]);
+int (gx_default_8bit_map_color_gray)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+
+
+int gx_forward_close_device(gx_device *dev);
+void gx_forward_get_initial_matrix(gx_device *dev, gs_matrix *pmat);
+int gx_forward_sync_output(gx_device *dev);
+int gx_forward_output_page(gx_device *dev, int num_copies, int flush);
+gx_color_index gx_forward_map_rgb_color(gx_device *dev, const gx_color_value cv[]);
+int gx_forward_map_color_rgb(gx_device *dev, gx_color_index color, gx_color_value rgb[3]);
+int gx_forward_fill_rectangle(gx_device *dev, int x, int y, int width, int height, gx_color_index color);
+int gx_forward_tile_rectangle(gx_device *dev, const gx_tile_bitmap *tile, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_forward_copy_mono(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gx_forward_copy_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gx_forward_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int gx_forward_get_params(gx_device *dev, gs_param_list *plist);
+int gx_forward_put_params(gx_device *dev, gs_param_list *plist);
+gx_color_index gx_forward_map_cmyk_color(gx_device *dev, const gx_color_value cv[]);
+const gx_xfont_procs *gx_forward_get_xfont_procs(gx_device *dev);
+gx_device *gx_forward_get_xfont_device(gx_device *dev);
+gx_color_index gx_forward_map_rgb_alpha_color(gx_device *dev, gx_color_value red, gx_color_value green, gx_color_value blue, gx_color_value alpha);
+gx_device *gx_forward_get_page_device(gx_device *dev);
+
+int gx_forward_copy_alpha(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color, int depth);
+int gx_forward_get_band(gx_device *dev, int y, int *band_start);
+int gx_forward_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_tile_bitmap *texture, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+int gx_forward_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_fill_mask(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath);
+int gx_forward_fill_trapezoid(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_fill_parallelogram(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_fill_triangle(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gx_forward_draw_thin_line(gx_device *dev, fixed fx0, fixed fy0, fixed fx1, fixed fy1, const gx_drawing_color *pdcolor, gs_logical_operation_t lop, fixed adjustx, fixed adjusty);
+int gx_forward_begin_image(gx_device *dev, const gs_imager_state *pis, const gs_image_t *pim, gs_image_format_t format, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+
+
+int gx_forward_strip_tile_rectangle(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+int gx_forward_strip_copy_rop(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop);
+void gx_forward_get_clipping_box(gx_device *dev, gs_fixed_rect *pbox);
+int gx_forward_begin_typed_image(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_forward_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+int gx_forward_map_color_rgb_alpha(gx_device *dev, gx_color_index color, gx_color_value rgba[4]);
+
+int gx_forward_get_hardware_params(gx_device *dev, gs_param_list *plist);
+int gx_forward_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+const gx_cm_color_map_procs * (gx_forward_get_color_mapping_procs)(const gx_device * dev);
+int (gx_forward_get_color_comp_index)(gx_device * dev, const char * pname, int name_size, int component_type);
+gx_color_index (gx_forward_encode_color)(gx_device * dev, const gx_color_value colors[]);
+int (gx_forward_decode_color)(gx_device * dev, gx_color_index cindex, gx_color_value colors[]);
+int gx_forward_dev_spec_op(gx_device *dev, int op, void *data, int datasize);
+int gx_forward_fill_rectangle_hl_color(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gx_forward_include_color_space(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length);
+int gx_forward_fill_linear_color_scanline(gx_device *dev, const gs_fill_attributes *fa, int i, int j, int w, const frac31 *c0, const int32_t *c0_f, const int32_t *cg_num, int32_t cg_den );
+int gx_forward_fill_linear_color_trapezoid(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const gs_fixed_point *p3, const frac31 *c0, const frac31 *c1, const frac31 *c2, const frac31 *c3);
+int gx_forward_fill_linear_color_triangle(gx_device *dev, const gs_fill_attributes *fa, const gs_fixed_point *p0, const gs_fixed_point *p1, const gs_fixed_point *p2, const frac31 *c0, const frac31 *c1, const frac31 *c2);
+int gx_forward_update_spot_equivalent_colors(gx_device *dev, const gs_state * pgs);
+gs_devn_params * gx_forward_ret_devn_params(gx_device *dev);
+int gx_forward_fillpage(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc);
+int gx_forward_copy_planes(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, int plane_height);
+int gx_forward_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gx_forward_get_profile(gx_device *dev, cmm_dev_profile_t **dev_profile);
+void gx_forward_set_graphics_type_tag(gx_device *dev, gs_graphics_type_tag_t);
+int gx_forward_strip_copy_rop2(gx_device *dev, const byte *sdata, int sourcex, uint sraster, gx_bitmap_id id, const gx_color_index *scolors, const gx_strip_bitmap *textures, const gx_color_index *tcolors, int x, int y, int width, int height, int phase_x, int phase_y, gs_logical_operation_t lop, uint planar_height);
+int gx_forward_strip_tile_rect_devn(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, const gx_drawing_color *pdcolor0, const gx_drawing_color *pdcolor1, int phase_x, int phase_y);
+int gx_forward_copy_alpha_hl_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth);
+
+
+
+
+void gx_device_set_procs(gx_device *);
+
+
+void gx_device_fill_in_procs(gx_device *);
+void gx_device_forward_fill_in_procs(gx_device_forward *);
+
+
+void gx_device_forward_color_procs(gx_device_forward *);
+
+
+
+
+
+void check_device_separable(gx_device * dev);
+
+
+
+
+void set_linear_color_bits_mask_shift(gx_device * dev);
+
+
+
+
+void gx_device_copy_color_procs(gx_device *dev, const gx_device *target);
+
+
+gx_color_index gx_device_black(gx_device *dev);
+
+
+
+gx_color_index gx_device_white(gx_device *dev);
+
+
+
+
+
+void gx_device_decache_colors(gx_device *dev);
+
+
+
+
+
+void gx_device_copy_color_params(gx_device *dev, const gx_device *target);
+
+
+
+
+
+
+void gx_device_copy_params(gx_device *dev, const gx_device *target);
+# 464 "./base/gxdevice.h"
+int gx_parse_output_file_name(gs_parsed_file_name_t *pfn,
+                              const char **pfmt, const char *fname,
+                              uint len, gs_memory_t *memory);
+
+
+
+
+bool gx_outputfile_is_separate_pages(const char *fname, gs_memory_t *memory);
+
+
+
+
+
+int gx_device_open_output_file(const gx_device * dev, char *fname,
+                               bool binary, bool positionable,
+                               FILE ** pfile);
+
+
+int gx_device_close_output_file(const gx_device * dev, const char *fname,
+                                FILE *file);
+
+
+int gx_device_delete_output_file(const gx_device * dev, const char *fname);
+# 505 "./base/gxdevice.h"
+int gx_finish_output_page(gx_device *dev, int num_copies, int flush);
+# 596 "./base/gxdevice.h"
+typedef struct gdev_input_media_s {
+    float PageSize[4];
+    const char *MediaColor;
+    float MediaWeight;
+    const char *MediaType;
+} gdev_input_media_t;
+
+
+extern const gdev_input_media_t gdev_input_media_default;
+
+void gdev_input_media_init(gdev_input_media_t * pim);
+
+int gdev_begin_input_media(gs_param_list * mlist, gs_param_dict * pdict,
+                           int count);
+
+int gdev_write_input_page_size(int index, gs_param_dict * pdict,
+                               double width_points, double height_points);
+
+int gdev_write_input_media(int index, gs_param_dict * pdict,
+                           const gdev_input_media_t * pim);
+
+int gdev_end_input_media(gs_param_list * mlist, gs_param_dict * pdict);
+
+typedef struct gdev_output_media_s {
+    const char *OutputType;
+} gdev_output_media_t;
+
+
+extern const gdev_output_media_t gdev_output_media_default;
+
+int gdev_begin_output_media(gs_param_list * mlist, gs_param_dict * pdict,
+                            int count);
+
+int gdev_write_output_media(int index, gs_param_dict * pdict,
+                            const gdev_output_media_t * pom);
+
+
+void gx_default_put_icc_dir(gs_param_string *icc_pro, gx_device * dev);
+
+int gdev_end_output_media(gs_param_list * mlist, gs_param_dict * pdict);
+
+void gx_device_request_leadingedge(gx_device *dev, int le_req);
+# 26 "./devices/vector/gdevpdf.c" 2
+# 1 "./devices/vector/gdevpdfx.h" 1
+# 23 "./devices/vector/gdevpdfx.h"
+# 1 "./base/gsuid.h" 1
+# 26 "./base/gsuid.h"
+typedef struct gs_uid_s gs_uid;
+
+struct gs_uid_s {
+
+
+    long id;
+    long *xvalues;
+};
+# 62 "./base/gsuid.h"
+bool uid_equal(const gs_uid *, const gs_uid *);
+
+
+int uid_copy(gs_uid *puid, gs_memory_t *mem, client_name_t cname);
+# 24 "./devices/vector/gdevpdfx.h" 2
+
+# 1 "./base/gxfont.h" 1
+# 24 "./base/gxfont.h"
+# 1 "./base/gsfont.h" 1
+# 44 "./base/gsfont.h"
+gs_font_dir *gs_font_dir_alloc2(gs_memory_t * struct_mem,
+                                gs_memory_t * bits_mem);
+gs_font_dir *gs_font_dir_alloc2_limits(gs_memory_t * struct_mem,
+                                       gs_memory_t * bits_mem,
+                                       uint smax, uint bmax, uint mmax,
+                                       uint cmax, uint upper);
+# 58 "./base/gsfont.h"
+int gs_definefont(gs_font_dir *, gs_font *);
+
+
+int gs_font_find_similar(const gs_font_dir * pdir, const gs_font **ppfont,
+                           int (*similar)(const gs_font *, const gs_font *));
+
+
+
+int gs_scalefont(gs_font_dir *, const gs_font *, double, gs_font **);
+int gs_makefont(gs_font_dir *, const gs_font *, const gs_matrix *, gs_font **);
+int gs_setfont(gs_state *, gs_font *);
+gs_font *gs_currentfont(const gs_state *);
+gs_font *gs_rootfont(const gs_state *);
+void gs_set_currentfont(gs_state *, gs_font *);
+int gs_purge_font(gs_font *);
+
+gs_font *gs_find_font_by_id(gs_font_dir *pdir, gs_id id, gs_matrix *FontMatrix);
+
+
+void gs_cachestatus(const gs_font_dir *, uint[7]);
+
+
+uint gs_currentcachesize(const gs_font_dir *);
+int gs_setcachesize(gs_state * pgs, gs_font_dir *, uint);
+uint gs_currentcachelower(const gs_font_dir *);
+int gs_setcachelower(gs_font_dir *, uint);
+uint gs_currentcacheupper(const gs_font_dir *);
+int gs_setcacheupper(gs_font_dir *, uint);
+uint gs_currentaligntopixels(const gs_font_dir *);
+int gs_setaligntopixels(gs_font_dir *, uint);
+uint gs_currentgridfittt(const gs_font_dir *);
+int gs_setgridfittt(gs_font_dir *, uint);
+# 25 "./base/gxfont.h" 2
+# 1 "./base/gsgdata.h" 1
+# 55 "./base/gsgdata.h"
+typedef struct gs_glyph_data_procs_s gs_glyph_data_procs_t;
+
+
+typedef struct gs_glyph_data_s gs_glyph_data_t;
+
+struct gs_glyph_data_s {
+    gs_const_bytestring bits;
+    const gs_glyph_data_procs_t *procs;
+    void *proc_data;
+    gs_memory_t *memory;
+};
+extern const gs_memory_struct_type_t st_glyph_data;
+
+
+
+
+
+
+struct gs_glyph_data_procs_s {
+
+
+    void (*free)(gs_glyph_data_t *pgd, client_name_t cname);
+
+
+    int (*substring)(gs_glyph_data_t *pgd, uint offset, uint size);
+};
+
+
+
+
+
+int gs_glyph_data_substring(gs_glyph_data_t *pgd, uint offset, uint size);
+
+
+
+
+
+
+void gs_glyph_data_free(gs_glyph_data_t *pgd, client_name_t cname);
+# 125 "./base/gsgdata.h"
+void gs_glyph_data_from_string(gs_glyph_data_t *pgd, const byte *data,
+                               uint size, gs_font *font);
+void gs_glyph_data_from_bytes(gs_glyph_data_t *pgd, const byte *bytes,
+                              uint offset, uint size, gs_font *font);
+
+void gs_glyph_data_from_null(gs_glyph_data_t *pgd);
+# 26 "./base/gxfont.h" 2
+
+# 1 "./base/gsnotify.h" 1
+# 36 "./base/gsnotify.h"
+typedef int (*gs_notify_proc_t)(void *proc_data, void *event_data);
+typedef struct gs_notify_registration_s gs_notify_registration_t;
+struct gs_notify_registration_s {
+    gs_notify_proc_t proc;
+    void *proc_data;
+    gs_notify_registration_t *next;
+};
+
+
+
+
+
+
+typedef struct gs_notify_list_s {
+    gs_memory_t *memory;
+    gs_notify_registration_t *first;
+} gs_notify_list_t;
+
+extern const gs_memory_struct_type_t st_gs_notify_list;
+
+
+
+
+
+
+
+void gs_notify_init(gs_notify_list_t *nlist, gs_memory_t *mem);
+
+
+int gs_notify_register(gs_notify_list_t *nlist, gs_notify_proc_t proc,
+                       void *proc_data);
+
+
+
+
+
+
+int gs_notify_unregister(gs_notify_list_t *nlist, gs_notify_proc_t proc,
+                         void *proc_data);
+
+
+int gs_notify_unregister_calling(gs_notify_list_t *nlist,
+                                 gs_notify_proc_t proc, void *proc_data,
+                                 void (*unreg_proc)(void *pdata));
+
+
+
+
+
+int gs_notify_all(gs_notify_list_t *nlist, void *event_data);
+
+
+void gs_notify_release(gs_notify_list_t *nlist);
+# 28 "./base/gxfont.h" 2
+
+
+# 1 "./base/gxftype.h" 1
+# 25 "./base/gxftype.h"
+typedef enum {
+    ft_composite = 0,
+    ft_encrypted = 1,
+    ft_encrypted2 = 2,
+    ft_user_defined = 3,
+    ft_disk_based = 4,
+    ft_CID_encrypted = 9,
+    ft_CID_user_defined = 10,
+    ft_CID_TrueType = 11,
+    ft_Chameleon = 14,
+    ft_CID_bitmap = 32,
+    ft_TrueType = 42,
+    ft_MicroType = 51,
+# 51 "./base/gxftype.h"
+    ft_GL2_stick_user_defined = 52,
+# 60 "./base/gxftype.h"
+    ft_PCL_user_defined = 53,
+
+
+
+
+
+    ft_GL2_531 = 54
+} font_type;
+
+
+
+
+typedef enum {
+    fbit_use_outlines = 0,
+    fbit_use_bitmaps = 1,
+    fbit_transform_bitmaps = 2
+} fbit_type;
+# 31 "./base/gxfont.h" 2
+# 42 "./base/gxfont.h"
+typedef struct gs_show_enum_s gs_show_enum;
+# 65 "./base/gxfont.h"
+typedef struct gs_font_info_s {
+    int members;
+
+
+
+
+    int Ascent;
+
+    int AvgWidth;
+
+    gs_int_rect BBox;
+
+    int CapHeight;
+
+    int Descent;
+
+    uint Flags;
+    uint Flags_requested;
+    uint Flags_returned;
+
+    float ItalicAngle;
+
+    int Leading;
+
+    int MaxWidth;
+
+    int MissingWidth;
+
+    int StemH;
+
+    int StemV;
+
+    int UnderlinePosition;
+
+    int UnderlineThickness;
+
+    int XHeight;
+
+
+
+
+    gs_const_string Copyright;
+
+    gs_const_string Notice;
+
+    gs_const_string FamilyName;
+
+    gs_const_string FullName;
+
+    int EmbeddingRights;
+} gs_font_info_t;
+# 142 "./base/gxfont.h"
+typedef struct gs_glyph_info_s {
+    int members;
+
+
+
+
+    gs_point width[2];
+    gs_point v;
+
+    gs_rect bbox;
+
+    int num_pieces;
+
+    gs_glyph *pieces;
+
+
+
+
+
+} gs_glyph_info_t;
+
+
+
+typedef struct gs_font_procs_s {
+# 176 "./base/gxfont.h"
+    int (*define_font)(gs_font_dir *, gs_font *);
+# 185 "./base/gxfont.h"
+    int (*make_font)(gs_font_dir *, const gs_font *, const gs_matrix *, gs_font **);
+# 199 "./base/gxfont.h"
+    int (*font_info)(gs_font *font, const gs_point *pscale, int members, gs_font_info_t *info);
+# 215 "./base/gxfont.h"
+    int (*same_font)(const gs_font *font, const gs_font *ofont, int mask);
+# 229 "./base/gxfont.h"
+    gs_glyph (*encode_char)(gs_font *, gs_char, gs_glyph_space_t);
+
+
+
+
+
+
+    gs_char (*decode_glyph)(gs_font *, gs_glyph, int);
+# 248 "./base/gxfont.h"
+    int (*enumerate_glyph)(gs_font *font, int *pindex, gs_glyph_space_t glyph_space, gs_glyph *pglyph);
+# 276 "./base/gxfont.h"
+    int (*glyph_info)(gs_font *font, gs_glyph glyph, const gs_matrix *pmat, int members, gs_glyph_info_t *info);
+# 292 "./base/gxfont.h"
+    int (*glyph_outline)(gs_font *font, int WMode, gs_glyph glyph, const gs_matrix *pmat, gx_path *ppath, double sbw[4]);
+
+
+
+
+
+
+
+    int (*glyph_name)(gs_font *font, gs_glyph glyph, gs_const_string *pstr);
+# 312 "./base/gxfont.h"
+    int (*init_fstack)(gs_text_enum_t *, gs_font *);
+# 326 "./base/gxfont.h"
+    int (*next_char_glyph)(gs_text_enum_t *pte, gs_char *pchar, gs_glyph *pglyph);
+# 338 "./base/gxfont.h"
+    int (*build_char)(gs_show_enum *, gs_state *, gs_font *, gs_char, gs_glyph);
+
+} gs_font_procs;
+
+
+int gs_no_define_font(gs_font_dir *, gs_font *);
+int gs_no_make_font(gs_font_dir *, const gs_font *, const gs_matrix *, gs_font **);
+int gs_base_make_font(gs_font_dir *, const gs_font *, const gs_matrix *, gs_font **);
+int gs_default_font_info(gs_font *font, const gs_point *pscale, int members, gs_font_info_t *info);
+int gs_default_same_font(const gs_font *font, const gs_font *ofont, int mask);
+int gs_base_same_font(const gs_font *font, const gs_font *ofont, int mask);
+
+gs_glyph gs_no_encode_char(gs_font *, gs_char, gs_glyph_space_t);
+gs_char gs_no_decode_glyph(gs_font *, gs_glyph, int);
+int gs_no_enumerate_glyph(gs_font *font, int *pindex, gs_glyph_space_t glyph_space, gs_glyph *pglyph);
+int gs_default_glyph_info(gs_font *font, gs_glyph glyph, const gs_matrix *pmat, int members, gs_glyph_info_t *info);
+int gs_no_glyph_outline(gs_font *font, int WMode, gs_glyph glyph, const gs_matrix *pmat, gx_path *ppath, double sbw[4]);
+int gs_no_glyph_name(gs_font *font, gs_glyph glyph, gs_const_string *pstr);
+
+int gs_default_init_fstack(gs_text_enum_t *, gs_font *);
+int gs_default_next_char_glyph(gs_text_enum_t *pte, gs_char *pchar, gs_glyph *pglyph);
+int gs_no_build_char(gs_show_enum *, gs_state *, gs_font *, gs_char, gs_glyph);
+
+extern const gs_font_procs gs_font_procs_default;
+
+
+typedef struct gs_font_name_s {
+
+
+    byte chars[47 + 1];
+    uint size;
+} gs_font_name;
+# 408 "./base/gxfont.h"
+struct gs_font_s {
+    gs_font *next, *prev; gs_memory_t *memory; gs_font_dir *dir; bool is_resource; gs_notify_list_t notify_list; gs_id id; gs_font *base; void *client_data; gs_matrix FontMatrix; gs_matrix orig_FontMatrix; font_type FontType; bool BitmapWidths; fbit_type ExactSize, InBetweenSize, TransformedChar; int WMode; int PaintType; float StrokeWidth; bool is_cached; gs_font_procs procs; gs_font_name key_name, font_name;
+};
+
+extern const gs_memory_struct_type_t st_gs_font;
+void gs_font_finalize(const gs_memory_t *cmem, void *ptr);
+# 424 "./base/gxfont.h"
+extern const gs_memory_struct_type_t st_gs_font_ptr_element;
+
+
+
+
+
+
+gs_font *
+  gs_font_alloc(gs_memory_t *mem, gs_memory_type_ptr_t pstype,
+                const gs_font_procs *procs, gs_font_dir *dir,
+                client_name_t cname);
+
+
+void gs_font_notify_init(gs_font *font);
+
+
+
+
+
+
+int gs_font_notify_register(gs_font *font, gs_notify_proc_t proc,
+                            void *proc_data);
+int gs_font_notify_unregister(gs_font *font, gs_notify_proc_t proc,
+                              void *proc_data);
+# 466 "./base/gxfont.h"
+typedef struct gs_font_base_s gs_font_base;
+
+struct gs_font_base_s {
+    gs_font *next, *prev; gs_memory_t *memory; gs_font_dir *dir; bool is_resource; gs_notify_list_t notify_list; gs_id id; gs_font *base; void *client_data; gs_matrix FontMatrix; gs_matrix orig_FontMatrix; font_type FontType; bool BitmapWidths; fbit_type ExactSize, InBetweenSize, TransformedChar; int WMode; int PaintType; float StrokeWidth; bool is_cached; gs_font_procs procs; gs_font_name key_name, font_name; gs_rect FontBBox; gs_uid UID; gs_fapi_server *FAPI; void *FAPI_font_data; gs_encoding_index_t encoding_index; gs_encoding_index_t nearest_encoding_index;
+};
+
+extern const gs_memory_struct_type_t st_gs_font_base;
+# 481 "./base/gxfont.h"
+gs_font_base *
+  gs_font_base_alloc(gs_memory_t *mem, gs_memory_type_ptr_t pstype,
+                     const gs_font_procs *procs, gs_font_dir *dir,
+                     client_name_t cname);
+
+
+
+
+
+extern const char gx_extendeg_glyph_name_separator[];
+
+
+
+
+
+bool gs_font_glyph_is_notdef(gs_font_base *bfont, gs_glyph glyph);
+
+
+const gs_font_base *gs_font_parent(const gs_font_base *pbfont);
+# 26 "./devices/vector/gdevpdfx.h" 2
+# 1 "./base/gxline.h" 1
+# 22 "./base/gxline.h"
+# 1 "./base/math_.h" 1
+# 29 "./base/math_.h"
+# 1 "/usr/include/math.h" 1 3 4
+# 33 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/huge_val.h" 1 3 4
+# 34 "/usr/include/math.h" 2 3 4
+
+# 1 "/usr/include/bits/huge_valf.h" 1 3 4
+# 36 "/usr/include/math.h" 2 3 4
+# 1 "/usr/include/bits/huge_vall.h" 1 3 4
+# 37 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/inf.h" 1 3 4
+# 40 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/nan.h" 1 3 4
+# 43 "/usr/include/math.h" 2 3 4
+
+
+
+# 1 "/usr/include/bits/mathdef.h" 1 3 4
+# 28 "/usr/include/bits/mathdef.h" 3 4
+typedef float float_t;
+typedef double double_t;
+# 47 "/usr/include/math.h" 2 3 4
+# 70 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern double acos (double __x) __attribute__ ((__nothrow__ )); extern double __acos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asin (double __x) __attribute__ ((__nothrow__ )); extern double __asin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan (double __x) __attribute__ ((__nothrow__ )); extern double __atan (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atan2 (double __y, double __x) __attribute__ ((__nothrow__ )); extern double __atan2 (double __y, double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double cos (double __x) __attribute__ ((__nothrow__ )); extern double __cos (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sin (double __x) __attribute__ ((__nothrow__ )); extern double __sin (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tan (double __x) __attribute__ ((__nothrow__ )); extern double __tan (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double cosh (double __x) __attribute__ ((__nothrow__ )); extern double __cosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double sinh (double __x) __attribute__ ((__nothrow__ )); extern double __sinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double tanh (double __x) __attribute__ ((__nothrow__ )); extern double __tanh (double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern double acosh (double __x) __attribute__ ((__nothrow__ )); extern double __acosh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double asinh (double __x) __attribute__ ((__nothrow__ )); extern double __asinh (double __x) __attribute__ ((__nothrow__ ));
+
+extern double atanh (double __x) __attribute__ ((__nothrow__ )); extern double __atanh (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double exp (double __x) __attribute__ ((__nothrow__ )); extern double __exp (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern double __frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ )); extern double __ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern double log (double __x) __attribute__ ((__nothrow__ )); extern double __log (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log10 (double __x) __attribute__ ((__nothrow__ )); extern double __log10 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double modf (double __x, double *__iptr) __attribute__ ((__nothrow__ )); extern double __modf (double __x, double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern double expm1 (double __x) __attribute__ ((__nothrow__ )); extern double __expm1 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log1p (double __x) __attribute__ ((__nothrow__ )); extern double __log1p (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double logb (double __x) __attribute__ ((__nothrow__ )); extern double __logb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double exp2 (double __x) __attribute__ ((__nothrow__ )); extern double __exp2 (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double log2 (double __x) __attribute__ ((__nothrow__ )); extern double __log2 (double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern double pow (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __pow (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double sqrt (double __x) __attribute__ ((__nothrow__ )); extern double __sqrt (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double hypot (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __hypot (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double cbrt (double __x) __attribute__ ((__nothrow__ )); extern double __cbrt (double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern double ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __ceil (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fabs (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __floor (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmod (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fmod (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinf (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finite (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double drem (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __drem (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double significand (double __x) __attribute__ ((__nothrow__ )); extern double __significand (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __copysign (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern double nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nan (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnan (double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double j0 (double) __attribute__ ((__nothrow__ )); extern double __j0 (double) __attribute__ ((__nothrow__ ));
+extern double j1 (double) __attribute__ ((__nothrow__ )); extern double __j1 (double) __attribute__ ((__nothrow__ ));
+extern double jn (int, double) __attribute__ ((__nothrow__ )); extern double __jn (int, double) __attribute__ ((__nothrow__ ));
+extern double y0 (double) __attribute__ ((__nothrow__ )); extern double __y0 (double) __attribute__ ((__nothrow__ ));
+extern double y1 (double) __attribute__ ((__nothrow__ )); extern double __y1 (double) __attribute__ ((__nothrow__ ));
+extern double yn (int, double) __attribute__ ((__nothrow__ )); extern double __yn (int, double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double erf (double) __attribute__ ((__nothrow__ )); extern double __erf (double) __attribute__ ((__nothrow__ ));
+extern double erfc (double) __attribute__ ((__nothrow__ )); extern double __erfc (double) __attribute__ ((__nothrow__ ));
+extern double lgamma (double) __attribute__ ((__nothrow__ )); extern double __lgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double tgamma (double) __attribute__ ((__nothrow__ )); extern double __tgamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern double gamma (double) __attribute__ ((__nothrow__ )); extern double __gamma (double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern double lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ )); extern double __lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern double rint (double __x) __attribute__ ((__nothrow__ )); extern double __rint (double __x) __attribute__ ((__nothrow__ ));
+
+
+extern double nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nextafter (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern double nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double remainder (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __remainder (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern double scalbn (double __x, int __n) __attribute__ ((__nothrow__ )); extern double __scalbn (double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogb (double __x) __attribute__ ((__nothrow__ )); extern int __ilogb (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern double scalbln (double __x, long int __n) __attribute__ ((__nothrow__ )); extern double __scalbln (double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern double nearbyint (double __x) __attribute__ ((__nothrow__ )); extern double __nearbyint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __round (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern double trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __trunc (double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern double remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ )); extern double __remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrint (double __x) __attribute__ ((__nothrow__ )); extern long int __lrint (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrint (double __x) __attribute__ ((__nothrow__ )); extern long long int __llrint (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lround (double __x) __attribute__ ((__nothrow__ )); extern long int __lround (double __x) __attribute__ ((__nothrow__ ));
+extern long long int llround (double __x) __attribute__ ((__nothrow__ )); extern long long int __llround (double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern double fdim (double __x, double __y) __attribute__ ((__nothrow__ )); extern double __fdim (double __x, double __y) __attribute__ ((__nothrow__ ));
+
+
+extern double fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmax (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern double fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern double __fmin (double __x, double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassify (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbit (double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern double fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ )); extern double __fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern double scalb (double __x, double __n) __attribute__ ((__nothrow__ )); extern double __scalb (double __x, double __n) __attribute__ ((__nothrow__ ));
+# 71 "/usr/include/math.h" 2 3 4
+# 89 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern float acosf (float __x) __attribute__ ((__nothrow__ )); extern float __acosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinf (float __x) __attribute__ ((__nothrow__ )); extern float __asinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanf (float __x) __attribute__ ((__nothrow__ )); extern float __atanf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atan2f (float __y, float __x) __attribute__ ((__nothrow__ )); extern float __atan2f (float __y, float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float cosf (float __x) __attribute__ ((__nothrow__ )); extern float __cosf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinf (float __x) __attribute__ ((__nothrow__ )); extern float __sinf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanf (float __x) __attribute__ ((__nothrow__ )); extern float __tanf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float coshf (float __x) __attribute__ ((__nothrow__ )); extern float __coshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float sinhf (float __x) __attribute__ ((__nothrow__ )); extern float __sinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float tanhf (float __x) __attribute__ ((__nothrow__ )); extern float __tanhf (float __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern float acoshf (float __x) __attribute__ ((__nothrow__ )); extern float __acoshf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float asinhf (float __x) __attribute__ ((__nothrow__ )); extern float __asinhf (float __x) __attribute__ ((__nothrow__ ));
+
+extern float atanhf (float __x) __attribute__ ((__nothrow__ )); extern float __atanhf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float expf (float __x) __attribute__ ((__nothrow__ )); extern float __expf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ )); extern float __frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ )); extern float __ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern float logf (float __x) __attribute__ ((__nothrow__ )); extern float __logf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log10f (float __x) __attribute__ ((__nothrow__ )); extern float __log10f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float modff (float __x, float *__iptr) __attribute__ ((__nothrow__ )); extern float __modff (float __x, float *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern float expm1f (float __x) __attribute__ ((__nothrow__ )); extern float __expm1f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log1pf (float __x) __attribute__ ((__nothrow__ )); extern float __log1pf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float logbf (float __x) __attribute__ ((__nothrow__ )); extern float __logbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float exp2f (float __x) __attribute__ ((__nothrow__ )); extern float __exp2f (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float log2f (float __x) __attribute__ ((__nothrow__ )); extern float __log2f (float __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern float powf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __powf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float sqrtf (float __x) __attribute__ ((__nothrow__ )); extern float __sqrtf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float hypotf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __hypotf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float cbrtf (float __x) __attribute__ ((__nothrow__ )); extern float __cbrtf (float __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern float ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __ceilf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fabsf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __floorf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fmodf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fmodf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinff (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitef (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float dremf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __dremf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float significandf (float __x) __attribute__ ((__nothrow__ )); extern float __significandf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __copysignf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern float nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nanf (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanf (float __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float j0f (float) __attribute__ ((__nothrow__ )); extern float __j0f (float) __attribute__ ((__nothrow__ ));
+extern float j1f (float) __attribute__ ((__nothrow__ )); extern float __j1f (float) __attribute__ ((__nothrow__ ));
+extern float jnf (int, float) __attribute__ ((__nothrow__ )); extern float __jnf (int, float) __attribute__ ((__nothrow__ ));
+extern float y0f (float) __attribute__ ((__nothrow__ )); extern float __y0f (float) __attribute__ ((__nothrow__ ));
+extern float y1f (float) __attribute__ ((__nothrow__ )); extern float __y1f (float) __attribute__ ((__nothrow__ ));
+extern float ynf (int, float) __attribute__ ((__nothrow__ )); extern float __ynf (int, float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float erff (float) __attribute__ ((__nothrow__ )); extern float __erff (float) __attribute__ ((__nothrow__ ));
+extern float erfcf (float) __attribute__ ((__nothrow__ )); extern float __erfcf (float) __attribute__ ((__nothrow__ ));
+extern float lgammaf (float) __attribute__ ((__nothrow__ )); extern float __lgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float tgammaf (float) __attribute__ ((__nothrow__ )); extern float __tgammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern float gammaf (float) __attribute__ ((__nothrow__ )); extern float __gammaf (float) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern float lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ )); extern float __lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern float rintf (float __x) __attribute__ ((__nothrow__ )); extern float __rintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+extern float nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nextafterf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern float nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float remainderf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __remainderf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern float scalbnf (float __x, int __n) __attribute__ ((__nothrow__ )); extern float __scalbnf (float __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbf (float __x) __attribute__ ((__nothrow__ )); extern int __ilogbf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern float scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ )); extern float __scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern float nearbyintf (float __x) __attribute__ ((__nothrow__ )); extern float __nearbyintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __roundf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern float truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __truncf (float __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern float remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ )); extern float __remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintf (float __x) __attribute__ ((__nothrow__ )); extern long int __lrintf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llrintf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundf (float __x) __attribute__ ((__nothrow__ )); extern long int __lroundf (float __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundf (float __x) __attribute__ ((__nothrow__ )); extern long long int __llroundf (float __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern float fdimf (float __x, float __y) __attribute__ ((__nothrow__ )); extern float __fdimf (float __x, float __y) __attribute__ ((__nothrow__ ));
+
+
+extern float fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fmaxf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern float fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern float __fminf (float __x, float __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitf (float __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern float fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ )); extern float __fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern float scalbf (float __x, float __n) __attribute__ ((__nothrow__ )); extern float __scalbf (float __x, float __n) __attribute__ ((__nothrow__ ));
+# 90 "/usr/include/math.h" 2 3 4
+# 133 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 54 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ )); extern long double __atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double cosl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cosl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double coshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __coshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double sinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double tanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __tanhl (long double __x) __attribute__ ((__nothrow__ ));
+# 88 "/usr/include/bits/mathcalls.h" 3 4
+extern long double acoshl (long double __x) __attribute__ ((__nothrow__ )); extern long double __acoshl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double asinhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __asinhl (long double __x) __attribute__ ((__nothrow__ ));
+
+extern long double atanhl (long double __x) __attribute__ ((__nothrow__ )); extern long double __atanhl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double expl (long double __x) __attribute__ ((__nothrow__ )); extern long double __expl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ )); extern long double __frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ )); extern long double __ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ ));
+
+
+extern long double logl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log10l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log10l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ )); extern long double __modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+# 129 "/usr/include/bits/mathcalls.h" 3 4
+extern long double expm1l (long double __x) __attribute__ ((__nothrow__ )); extern long double __expm1l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log1pl (long double __x) __attribute__ ((__nothrow__ )); extern long double __log1pl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double logbl (long double __x) __attribute__ ((__nothrow__ )); extern long double __logbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double exp2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __exp2l (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double log2l (long double __x) __attribute__ ((__nothrow__ )); extern long double __log2l (long double __x) __attribute__ ((__nothrow__ ));
+# 154 "/usr/include/bits/mathcalls.h" 3 4
+extern long double powl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __powl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double sqrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __sqrtl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double cbrtl (long double __x) __attribute__ ((__nothrow__ )); extern long double __cbrtl (long double __x) __attribute__ ((__nothrow__ ));
+# 179 "/usr/include/bits/mathcalls.h" 3 4
+extern long double ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __ceill (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fabsl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __floorl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern int __isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int __finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int isinfl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern int finitel (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double dreml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __dreml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double significandl (long double __x) __attribute__ ((__nothrow__ )); extern long double __significandl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+
+extern long double nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nanl (const char *__tagb) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+
+extern int __isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int isnanl (long double __value) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double j0l (long double) __attribute__ ((__nothrow__ )); extern long double __j0l (long double) __attribute__ ((__nothrow__ ));
+extern long double j1l (long double) __attribute__ ((__nothrow__ )); extern long double __j1l (long double) __attribute__ ((__nothrow__ ));
+extern long double jnl (int, long double) __attribute__ ((__nothrow__ )); extern long double __jnl (int, long double) __attribute__ ((__nothrow__ ));
+extern long double y0l (long double) __attribute__ ((__nothrow__ )); extern long double __y0l (long double) __attribute__ ((__nothrow__ ));
+extern long double y1l (long double) __attribute__ ((__nothrow__ )); extern long double __y1l (long double) __attribute__ ((__nothrow__ ));
+extern long double ynl (int, long double) __attribute__ ((__nothrow__ )); extern long double __ynl (int, long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double erfl (long double) __attribute__ ((__nothrow__ )); extern long double __erfl (long double) __attribute__ ((__nothrow__ ));
+extern long double erfcl (long double) __attribute__ ((__nothrow__ )); extern long double __erfcl (long double) __attribute__ ((__nothrow__ ));
+extern long double lgammal (long double) __attribute__ ((__nothrow__ )); extern long double __lgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double tgammal (long double) __attribute__ ((__nothrow__ )); extern long double __tgammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern long double gammal (long double) __attribute__ ((__nothrow__ )); extern long double __gammal (long double) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long double lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ )); extern long double __lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+
+extern long double rintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __rintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+extern long double nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+extern long double nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ )); extern long double __scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern int ilogbl (long double __x) __attribute__ ((__nothrow__ )); extern int __ilogbl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+
+extern long double scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ )); extern long double __scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double nearbyintl (long double __x) __attribute__ ((__nothrow__ )); extern long double __nearbyintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __roundl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern long double truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __truncl (long double __x) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+
+extern long double remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ )); extern long double __remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+
+extern long int lrintl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lrintl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llrintl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llrintl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long int lroundl (long double __x) __attribute__ ((__nothrow__ )); extern long int __lroundl (long double __x) __attribute__ ((__nothrow__ ));
+extern long long int llroundl (long double __x) __attribute__ ((__nothrow__ )); extern long long int __llroundl (long double __x) __attribute__ ((__nothrow__ ));
+
+
+
+extern long double fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ )); extern long double __fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ ));
+
+
+extern long double fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+extern long double fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__)); extern long double __fminl (long double __x, long double __y) __attribute__ ((__nothrow__ )) __attribute__ ((__const__));
+
+
+
+extern int __fpclassifyl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+extern int __signbitl (long double __value) __attribute__ ((__nothrow__ ))
+     __attribute__ ((__const__));
+
+
+
+extern long double fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ )); extern long double __fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ ));
+# 364 "/usr/include/bits/mathcalls.h" 3 4
+extern long double scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ )); extern long double __scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ ));
+# 134 "/usr/include/math.h" 2 3 4
+# 149 "/usr/include/math.h" 3 4
+extern int signgam;
+# 190 "/usr/include/math.h" 3 4
+enum
+  {
+    FP_NAN =
+
+      0,
+    FP_INFINITE =
+
+      1,
+    FP_ZERO =
+
+      2,
+    FP_SUBNORMAL =
+
+      3,
+    FP_NORMAL =
+
+      4
+  };
+# 288 "/usr/include/math.h" 3 4
+typedef enum
+{
+  _IEEE_ = -1,
+  _SVID_,
+  _XOPEN_,
+  _POSIX_,
+  _ISOC_
+} _LIB_VERSION_TYPE;
+
+
+
+
+extern _LIB_VERSION_TYPE _LIB_VERSION;
+# 313 "/usr/include/math.h" 3 4
+struct exception
+
+  {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+  };
+
+
+
+
+extern int matherr (struct exception *__exc);
+# 413 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathinline.h" 1 3 4
+# 126 "/usr/include/bits/mathinline.h" 3 4
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitf (float __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x8) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbit (double __x)
+{
+
+  int __m;
+  __asm ("pmovmskb %1, %0" : "=r" (__m) : "x" (__x));
+  return (__m & 0x80) != 0;
+
+
+
+
+}
+extern __inline __attribute__ ((__always_inline__)) __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) __signbitl (long double __x)
+{
+  __extension__ union { long double __l; int __i[3]; } __u = { __l: __x };
+  return (__u.__i[2] & 0x8000) != 0;
+}
+# 414 "/usr/include/math.h" 2 3 4
+# 30 "./base/math_.h" 2
+# 76 "./base/math_.h"
+extern double gs_sqrt(double, const char *, int);
+# 23 "./base/gxline.h" 2
+# 1 "./base/gslparam.h" 1
+# 23 "./base/gslparam.h"
+typedef enum {
+    gs_cap_butt = 0,
+    gs_cap_round = 1,
+    gs_cap_square = 2,
+    gs_cap_triangle = 3,
+    gs_cap_unknown = 4
+} gs_line_cap;
+
+
+
+
+typedef enum {
+    gs_join_miter = 0,
+    gs_join_round = 1,
+    gs_join_bevel = 2,
+    gs_join_none = 3,
+    gs_join_triangle = 4,
+    gs_join_unknown = 5
+} gs_line_join;
+# 24 "./base/gxline.h" 2
+
+
+
+
+typedef struct gx_dash_params_s {
+    float *pattern;
+    uint pattern_size;
+    float offset;
+    bool adapt;
+
+    float pattern_length;
+    bool init_ink_on;
+    int init_index;
+    float init_dist_left;
+} gx_dash_params;
+
+
+
+typedef struct gx_line_params_s {
+    float half_width;
+    gs_line_cap start_cap;
+    gs_line_cap end_cap;
+    gs_line_cap dash_cap;
+    gs_line_join join;
+    int curve_join;
+
+    float miter_limit;
+    float miter_check;
+
+    float dot_length;
+    bool dot_length_absolute;
+    gs_matrix dot_orientation;
+
+    gx_dash_params dash;
+} gx_line_params;
+
+
+
+
+
+int gx_set_miter_limit(gx_line_params *, double);
+
+
+
+int gx_set_dash(gx_dash_params *, const float *, uint, double, gs_memory_t *);
+
+
+int gx_set_dot_length(gx_line_params *, double, bool);
+# 27 "./devices/vector/gdevpdfx.h" 2
+# 1 "./base/stream.h" 1
+# 23 "./base/stream.h"
+# 1 "./base/scommon.h" 1
+# 46 "./base/scommon.h"
+typedef int64_t gs_offset_t;
+
+
+
+
+
+
+typedef struct stream_state_s stream_state;
+# 62 "./base/scommon.h"
+typedef struct stream_template_s stream_template;
+# 99 "./base/scommon.h"
+typedef struct stream_cursor_read_s {
+    const byte *ptr;
+    const byte *limit;
+    byte *_skip;
+} stream_cursor_read;
+typedef struct stream_cursor_write_s {
+    const byte *_skip;
+    byte *ptr;
+    byte *limit;
+} stream_cursor_write;
+typedef union stream_cursor_s {
+    stream_cursor_read r;
+    stream_cursor_write w;
+} stream_cursor;
+# 146 "./base/scommon.h"
+int s_no_report_error(stream_state *, const char *);
+# 177 "./base/scommon.h"
+struct stream_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+};
+
+extern const gs_memory_struct_type_t st_stream_state;
+# 24 "./base/stream.h" 2
+# 1 "./base/gxiodev.h" 1
+# 23 "./base/gxiodev.h"
+# 1 "./base/stat_.h" 1
+# 29 "./base/stat_.h"
+# 1 "/usr/include/sys/stat.h" 1 3 4
+# 106 "/usr/include/sys/stat.h" 3 4
+# 1 "/usr/include/bits/stat.h" 1 3 4
+# 107 "/usr/include/sys/stat.h" 2 3 4
+# 218 "/usr/include/sys/stat.h" 3 4
+extern int stat (const char *__restrict __file, struct stat *__restrict __buf) __asm__ ("" "stat64") __attribute__ ((__nothrow__ ))
+
+     __attribute__ ((__nonnull__ (1, 2)));
+extern int fstat (int __fd, struct stat *__buf) __asm__ ("" "fstat64") __attribute__ ((__nothrow__ ))
+     __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+
+extern int stat64 (const char *__restrict __file,
+     struct stat64 *__restrict __buf) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+extern int fstat64 (int __fd, struct stat64 *__buf) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+# 244 "/usr/include/sys/stat.h" 3 4
+extern int fstatat (int __fd, const char *__restrict __file, struct stat *__restrict __buf, int __flag) __asm__ ("" "fstatat64") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 254 "/usr/include/sys/stat.h" 3 4
+extern int fstatat64 (int __fd, const char *__restrict __file,
+        struct stat64 *__restrict __buf, int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+# 268 "/usr/include/sys/stat.h" 3 4
+extern int lstat (const char *__restrict __file, struct stat *__restrict __buf) __asm__ ("" "lstat64") __attribute__ ((__nothrow__ ))
+
+
+     __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern int lstat64 (const char *__restrict __file,
+      struct stat64 *__restrict __buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1, 2)));
+
+
+
+
+
+extern int chmod (const char *__file, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int lchmod (const char *__file, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+extern int fchmod (int __fd, __mode_t __mode) __attribute__ ((__nothrow__ ));
+
+
+
+
+
+extern int fchmodat (int __fd, const char *__file, __mode_t __mode,
+       int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2))) ;
+
+
+
+
+
+
+extern __mode_t umask (__mode_t __mask) __attribute__ ((__nothrow__ ));
+# 322 "/usr/include/sys/stat.h" 3 4
+extern int mkdir (const char *__path, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int mkdirat (int __fd, const char *__path, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+
+extern int mknod (const char *__path, __mode_t __mode, __dev_t __dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int mknodat (int __fd, const char *__path, __mode_t __mode,
+      __dev_t __dev) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+extern int mkfifo (const char *__path, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (1)));
+
+
+
+
+
+extern int mkfifoat (int __fd, const char *__path, __mode_t __mode)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+
+extern int utimensat (int __fd, const char *__path,
+        const struct timespec __times[2],
+        int __flags)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2)));
+
+
+
+
+extern int futimens (int __fd, const struct timespec __times[2]) __attribute__ ((__nothrow__ ));
+# 411 "/usr/include/sys/stat.h" 3 4
+extern int __fxstat (int __ver, int __fildes, struct stat *__stat_buf) __asm__ ("" "__fxstat64") __attribute__ ((__nothrow__ ))
+
+     __attribute__ ((__nonnull__ (3)));
+extern int __xstat (int __ver, const char *__filename, struct stat *__stat_buf) __asm__ ("" "__xstat64") __attribute__ ((__nothrow__ ))
+
+     __attribute__ ((__nonnull__ (2, 3)));
+extern int __lxstat (int __ver, const char *__filename, struct stat *__stat_buf) __asm__ ("" "__lxstat64") __attribute__ ((__nothrow__ ))
+
+     __attribute__ ((__nonnull__ (2, 3)));
+extern int __fxstatat (int __ver, int __fildes, const char *__filename, struct stat *__stat_buf, int __flag) __asm__ ("" "__fxstatat64") __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4)));
+# 433 "/usr/include/sys/stat.h" 3 4
+extern int __fxstat64 (int __ver, int __fildes, struct stat64 *__stat_buf)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3)));
+extern int __xstat64 (int __ver, const char *__filename,
+        struct stat64 *__stat_buf) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+extern int __lxstat64 (int __ver, const char *__filename,
+         struct stat64 *__stat_buf) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 3)));
+extern int __fxstatat64 (int __ver, int __fildes, const char *__filename,
+    struct stat64 *__stat_buf, int __flag)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 4)));
+
+extern int __xmknod (int __ver, const char *__path, __mode_t __mode,
+       __dev_t *__dev) __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (2, 4)));
+
+extern int __xmknodat (int __ver, int __fd, const char *__path,
+         __mode_t __mode, __dev_t *__dev)
+     __attribute__ ((__nothrow__ )) __attribute__ ((__nonnull__ (3, 5)));
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) stat (const char *__path, struct stat *__statbuf)
+{
+  return __xstat (1, __path, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) lstat (const char *__path, struct stat *__statbuf)
+{
+  return __lxstat (1, __path, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) fstat (int __fd, struct stat *__statbuf)
+{
+  return __fxstat (1, __fd, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) fstatat (int __fd, const char *__filename, struct stat *__statbuf, int __flag)
+
+{
+  return __fxstatat (1, __fd, __filename, __statbuf, __flag);
+}
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) mknod (const char *__path, __mode_t __mode, __dev_t __dev)
+{
+  return __xmknod (0, __path, __mode, &__dev);
+}
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) mknodat (int __fd, const char *__path, __mode_t __mode, __dev_t __dev)
+
+{
+  return __xmknodat (0, __fd, __path, __mode, &__dev);
+}
+
+
+
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) stat64 (const char *__path, struct stat64 *__statbuf)
+{
+  return __xstat64 (1, __path, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) lstat64 (const char *__path, struct stat64 *__statbuf)
+{
+  return __lxstat64 (1, __path, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) fstat64 (int __fd, struct stat64 *__statbuf)
+{
+  return __fxstat64 (1, __fd, __statbuf);
+}
+
+
+extern __inline __attribute__ ((__gnu_inline__)) int
+__attribute__ ((__nothrow__ )) fstatat64 (int __fd, const char *__filename, struct stat64 *__statbuf, int __flag)
+
+{
+  return __fxstatat64 (1, __fd, __filename, __statbuf, __flag);
+}
+# 30 "./base/stat_.h" 2
+# 24 "./base/gxiodev.h" 2
+# 35 "./base/gxiodev.h"
+typedef struct gx_io_device_procs_s gx_io_device_procs;
+# 78 "./base/gxiodev.h"
+struct gx_io_device_procs_s {
+
+
+
+    int (*init)(gx_io_device *iodev, gs_memory_t *mem);
+
+
+
+
+    int (*open_device)(gx_io_device *iodev, const char *access, stream **ps, gs_memory_t *mem);
+
+
+
+
+    int (*open_file)(gx_io_device *iodev, const char *fname, uint namelen, const char *access, stream **ps, gs_memory_t *mem);
+
+
+
+
+
+
+
+    int (*gp_fopen)(gx_io_device *iodev, const char *fname, const char *access, FILE **pfile, char *rfname, uint rnamelen);
+
+
+
+    int (*fclose)(gx_io_device *iodev, FILE *file);
+
+
+
+    int (*delete_file)(gx_io_device *iodev, const char *fname);
+
+
+
+    int (*rename_file)(gx_io_device *iodev, const char *from, const char *to);
+
+
+
+    int (*file_status)(gx_io_device *iodev, const char *fname, struct stat *pstat);
+
+
+
+
+    file_enum *(*enumerate_files)(gx_io_device *iodev, const char *pat, uint patlen, gs_memory_t *mem);
+
+
+
+    uint (*enumerate_next)(file_enum *pfen, char *ptr, uint maxlen);
+
+
+
+    void (*enumerate_close)(file_enum *pfen);
+
+
+
+
+
+    int (*get_params)(gx_io_device *iodev, gs_param_list *plist);
+
+
+
+    int (*put_params)(gx_io_device *iodev, gs_param_list *plist);
+
+};
+
+
+
+typedef int (*iodev_proc_fopen_t)(gx_io_device *iodev, const char *fname, const char *access, FILE **pfile, char *rfname, uint rnamelen);
+
+
+int iodev_no_init(gx_io_device *iodev, gs_memory_t *mem);
+int iodev_no_open_device(gx_io_device *iodev, const char *access, stream **ps, gs_memory_t *mem);
+int iodev_no_open_file(gx_io_device *iodev, const char *fname, uint namelen, const char *access, stream **ps, gs_memory_t *mem);
+int iodev_no_fopen(gx_io_device *iodev, const char *fname, const char *access, FILE **pfile, char *rfname, uint rnamelen);
+int iodev_no_fclose(gx_io_device *iodev, FILE *file);
+int iodev_no_delete_file(gx_io_device *iodev, const char *fname);
+int iodev_no_rename_file(gx_io_device *iodev, const char *from, const char *to);
+int iodev_no_file_status(gx_io_device *iodev, const char *fname, struct stat *pstat);
+file_enum *iodev_no_enumerate_files(gx_io_device *iodev, const char *pat, uint patlen, gs_memory_t *mem);
+int iodev_no_get_params(gx_io_device *iodev, gs_param_list *plist);
+int iodev_no_put_params(gx_io_device *iodev, gs_param_list *plist);
+
+
+int iodev_os_gp_fopen(gx_io_device *iodev, const char *fname, const char *access, FILE **pfile, char *rfname, uint rnamelen);
+int iodev_os_fclose(gx_io_device *iodev, FILE *file);
+
+
+gx_io_device *gs_getiodevice(const gs_memory_t *,int);
+
+
+
+
+gx_io_device *gs_findiodevice(const gs_memory_t *,const byte *, uint);
+
+
+int gs_getdevparams(gx_io_device *, gs_param_list *);
+int gs_putdevparams(gx_io_device *, gs_param_list *);
+
+
+
+int gs_fopen_errno_to_code(int);
+
+
+
+file_enum *gs_enumerate_files_init(const char *pat, uint patlen, gs_memory_t * mem);
+uint gs_enumerate_files_next(file_enum * pfen, char *ptr, uint maxlen);
+void gs_enumerate_files_close(file_enum * pfen);
+
+
+
+
+
+
+
+struct gx_io_device_s {
+    const char *dname;
+    const char *dtype;
+    gx_io_device_procs procs;
+    void *state;
+};
+# 25 "./base/stream.h" 2
+# 38 "./base/stream.h"
+typedef struct {
+
+
+
+
+
+    int (*available)(stream *, gs_offset_t *);
+
+
+
+
+
+    int (*seek)(stream *, gs_offset_t);
+
+
+
+
+
+    void (*reset)(stream *);
+
+
+
+
+
+    int (*flush)(stream *);
+
+
+
+
+
+    int (*close)(stream *);
+
+
+
+    int (*process)(stream_state *, stream_cursor_read *, stream_cursor_write *, bool);
+
+
+
+
+
+
+    int (*switch_mode)(stream *, bool);
+
+} stream_procs;
+
+
+
+struct stream_s {
+
+
+
+
+
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+# 113 "./base/stream.h"
+    stream_cursor cursor;
+    byte *cbuf;
+    uint bsize;
+    uint cbsize;
+# 130 "./base/stream.h"
+    short end_status;
+
+    byte foreign;
+    byte modes;
+# 142 "./base/stream.h"
+    gs_string cbuf_string;
+
+    gs_offset_t position;
+
+    stream_procs procs;
+    stream *strm;
+
+    int is_temp;
+
+
+
+
+    int inline_temp;
+
+    stream_state *state;
+
+
+
+
+
+
+    ushort read_id;
+
+
+    ushort write_id;
+    stream *prev, *next;
+    bool close_strm;
+    bool close_at_eod;
+    int (*save_close)(stream *);
+
+
+
+
+
+    FILE *file;
+    gs_const_string file_name;
+
+    uint file_modes;
+
+
+    gs_offset_t file_offset;
+    gs_offset_t file_limit;
+};
+
+
+extern const gs_memory_struct_type_t st_stream;
+# 220 "./base/stream.h"
+int savailable(stream *, gs_offset_t *);
+
+
+
+int sclose(stream *);
+int sswitch(stream *, bool);
+
+
+
+
+int spgetcc(stream *, bool);
+# 243 "./base/stream.h"
+int sgets(stream *, byte *, uint, uint *);
+int sungetc(stream *, byte);
+
+
+
+
+int spskip(stream *, gs_offset_t, gs_offset_t *);
+
+
+
+
+
+
+
+int s_process_read_buf(stream *);
+
+
+
+
+int spputc(stream *, byte);
+# 271 "./base/stream.h"
+int sputs(stream *, const byte *, uint, uint *);
+
+
+
+
+
+int s_process_write_buf(stream *, bool);
+
+
+gs_offset_t stell(stream *);
+int spseek(stream *, gs_offset_t);
+# 330 "./base/stream.h"
+stream *s_alloc(gs_memory_t *, client_name_t);
+stream_state *s_alloc_state(gs_memory_t *, gs_memory_type_ptr_t, client_name_t);
+
+
+
+
+void s_init(stream *, gs_memory_t *);
+void s_init_state(stream_state *, const stream_template *, gs_memory_t *);
+
+
+int file_prepare_stream(const char *, uint, const char *,
+                 uint, stream **, char[4], gs_memory_t *);
+
+
+void file_init_stream(stream *, FILE *, const char *, byte *, uint);
+
+
+int file_open_stream(const char *, uint, const char *,
+                 uint, stream **, gx_io_device *,
+                 iodev_proc_fopen_t, gs_memory_t *);
+
+
+stream * file_alloc_stream(gs_memory_t *, client_name_t);
+# 370 "./base/stream.h"
+int file_close_file(stream *);
+
+int file_close_finish(stream *);
+
+
+int file_close_disable(stream *);
+
+
+void sread_string(stream *, const byte *, uint),
+    sread_string_reusable(stream *, const byte *, uint),
+    swrite_string(stream *, byte *, uint);
+void sread_file(stream *, FILE *, byte *, uint),
+    swrite_file(stream *, FILE *, byte *, uint),
+    sappend_file(stream *, FILE *, byte *, uint);
+
+
+int sread_subfile(stream *s, gs_offset_t start, gs_offset_t length);
+
+
+
+int ssetfilename(stream *, const byte *, uint);
+
+
+
+int sfilename(stream *, gs_const_string *);
+
+
+
+void swrite_position_only(stream *);
+
+
+void s_std_init(stream *, byte *, uint, const stream_procs *, int );
+
+
+void s_disable(stream *);
+
+
+int s_std_null(stream *);
+void s_std_read_reset(stream *), s_std_write_reset(stream *);
+int s_std_read_flush(stream *), s_std_write_flush(stream *), s_std_noavailable(stream *, gs_offset_t *),
+     s_std_noseek(stream *, gs_offset_t), s_std_close(stream *), s_std_switch_mode(stream *, bool);
+
+
+int s_filter_write_flush(stream *), s_filter_close(stream *);
+
+
+extern const stream_procs s_filter_read_procs, s_filter_write_procs;
+# 426 "./base/stream.h"
+int s_init_filter(stream *fs, stream_state *fss, byte *buf, uint bsize,
+                  stream *target);
+stream *s_add_filter(stream **ps, const stream_template *template,
+                     stream_state *ss, gs_memory_t *mem);
+
+
+
+
+
+int s_close_filters(stream **ps, stream *target);
+
+
+
+extern const stream_template s_NullE_template;
+extern const stream_template s_NullD_template;
+
+
+int file_close_finish(stream *);
+int file_close_disable(stream *);
+# 28 "./devices/vector/gdevpdfx.h" 2
+# 1 "./base/spprint.h" 1
+# 32 "./base/spprint.h"
+int stream_write(stream * s, const void *ptr, uint count);
+
+
+int stream_puts(stream * s, const char *str);
+# 44 "./base/spprint.h"
+const char *pprintg1(stream * s, const char *format, double v);
+const char *pprintg2(stream * s, const char *format, double v1, double v2);
+const char *pprintg3(stream * s, const char *format,
+                     double v1, double v2, double v3);
+const char *pprintg4(stream * s, const char *format,
+                     double v1, double v2, double v3, double v4);
+const char *pprintg6(stream * s, const char *format,
+                     double v1, double v2, double v3, double v4,
+                     double v5, double v6);
+
+
+
+
+
+
+
+const char *pprintd1(stream * s, const char *format, int v);
+const char *pprintd2(stream * s, const char *format, int v1, int v2);
+const char *pprintd3(stream * s, const char *format,
+                     int v1, int v2, int v3);
+const char *pprintd4(stream * s, const char *format,
+                     int v1, int v2, int v3, int v4);
+
+
+const char *pprintld1(stream * s, const char *format, long v);
+const char *pprintld2(stream * s, const char *format, long v1, long v2);
+const char *pprintld3(stream * s, const char *format,
+                      long v1, long v2, long v3);
+
+
+const char *pprints1(stream * s, const char *format, const char *str);
+const char *pprints2(stream * s, const char *format,
+                     const char *str1, const char *str2);
+const char *pprints3(stream * s, const char *format,
+                     const char *str1, const char *str2, const char *str3);
+# 29 "./devices/vector/gdevpdfx.h" 2
+# 1 "./devices/vector/gdevpsdf.h" 1
+# 27 "./devices/vector/gdevpsdf.h"
+# 1 "./base/gdevvec.h" 1
+# 25 "./base/gdevvec.h"
+# 1 "./base/gdevbbox.h" 1
+# 74 "./base/gdevbbox.h"
+typedef struct gx_device_bbox_procs_s {
+
+
+
+    bool (*init_box)(void *proc_data);
+
+
+
+    void (*get_box)(const void *proc_data, gs_fixed_rect *pbox);
+
+
+
+    void (*add_rect)(void *proc_data, fixed x0, fixed y0, fixed x1, fixed y1);
+
+
+
+    bool (*in_rect)(const void *proc_data, const gs_fixed_rect *pbox);
+
+} gx_device_bbox_procs_t;
+
+bool bbox_default_init_box(void *proc_data);
+void bbox_default_get_box(const void *proc_data, gs_fixed_rect *pbox);
+void bbox_default_add_rect(void *proc_data, fixed x0, fixed y0, fixed x1, fixed y1);
+bool bbox_default_in_rect(const void *proc_data, const gs_fixed_rect *pbox);
+# 110 "./base/gdevbbox.h"
+typedef struct gx_device_bbox_s gx_device_bbox;
+
+
+
+
+struct gx_device_bbox_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target; bool free_standing; bool forward_open_close; gx_device_bbox_procs_t box_procs; void *box_proc_data; bool white_is_opaque; gs_fixed_rect bbox; gx_color_index black, white; gx_color_index transparent;
+};
+
+extern const gs_memory_struct_type_t st_device_bbox;
+
+
+
+
+
+
+void gx_device_bbox_init(gx_device_bbox * dev, gx_device * target, gs_memory_t *mem);
+
+
+void gx_device_bbox_fwd_open_close(gx_device_bbox * dev,
+                                   bool forward_open_close);
+
+
+void gx_device_bbox_set_white_opaque(gx_device_bbox *dev,
+                                     bool white_is_opaque);
+
+
+void gx_device_bbox_bbox(gx_device_bbox * dev, gs_rect * pbbox);
+
+
+void gx_device_bbox_release(gx_device_bbox *dev);
+# 26 "./base/gdevvec.h" 2
+# 1 "./base/gxiparam.h" 1
+# 39 "./base/gxiparam.h"
+struct gx_image_type_s {
+
+
+
+
+    gs_memory_type_ptr_t stype;
+
+
+
+
+
+    int (*begin_typed_image)(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+# 61 "./base/gxiparam.h"
+    int (*source_size)(const gs_imager_state *pis, const gs_image_common_t *pic, gs_int_point *psize);
+# 72 "./base/gxiparam.h"
+    int (*sput)(const gs_image_common_t *pic, stream *s, const gs_color_space **ppcs);
+# 82 "./base/gxiparam.h"
+    int (*sget)(gs_image_common_t *pic, stream *s, gs_color_space *pcs);
+# 91 "./base/gxiparam.h"
+    void (*release)(gs_image_common_t *pic, gs_memory_t *mem);
+
+
+
+
+
+    int index;
+};
+
+
+
+
+
+int gx_data_image_source_size(const gs_imager_state *pis, const gs_image_common_t *pic, gs_int_point *psize);
+
+
+
+
+int gx_image_no_sput(const gs_image_common_t *pic, stream *s, const gs_color_space **ppcs);
+int gx_image_no_sget(gs_image_common_t *pic, stream *s, gs_color_space *pcs);
+void gx_image_default_release(gs_image_common_t *pic, gs_memory_t *mem);
+
+
+
+
+int gx_pixel_image_sput(const gs_pixel_image_t *pic, stream *s,
+                        const gs_color_space **ppcs, int extra);
+int gx_pixel_image_sget(gs_pixel_image_t *pic, stream *s,
+                        gs_color_space *pcs);
+void gx_pixel_image_release(gs_pixel_image_t *pic, gs_memory_t *mem);
+
+
+bool gx_image_matrix_is_default(const gs_data_image_t *pid);
+void gx_image_matrix_set_default(gs_data_image_t *pid);
+void sput_variable_uint(stream *s, uint w);
+int sget_variable_uint(stream *s, uint *pw);
+# 140 "./base/gxiparam.h"
+typedef struct gx_image_enum_procs_s {
+# 151 "./base/gxiparam.h"
+    int (*plane_data)(gx_image_enum_common_t *info, const gx_image_plane_t *planes, int height, int *rows_used);
+# 162 "./base/gxiparam.h"
+    int (*end_image)(gx_image_enum_common_t *info, bool draw_last);
+# 175 "./base/gxiparam.h"
+    int (*flush)(gx_image_enum_common_t *info);
+# 200 "./base/gxiparam.h"
+    bool (*planes_wanted)(const gx_image_enum_common_t *info, byte *wanted);
+
+} gx_image_enum_procs_t;
+# 224 "./base/gxiparam.h"
+struct gx_image_enum_common_s {
+    const gx_image_type_t *image_type; const gx_image_enum_procs_t *procs; gx_device *dev; gs_memory_t *memory; gs_id id; bool skipping; int num_planes; int plane_depths[((64) + 1)]; int plane_widths[((64) + 1)];
+};
+
+extern const gs_memory_struct_type_t st_gx_image_enum_common;
+# 237 "./base/gxiparam.h"
+int gx_image_enum_common_init(gx_image_enum_common_t * piec,
+                              const gs_data_image_t * pic,
+                              const gx_image_enum_procs_t * piep,
+                              gx_device * dev, int num_components,
+                              gs_image_format_t format);
+
+
+
+
+
+int gx_no_plane_data(gx_image_enum_common_t *info, const gx_image_plane_t *planes, int height, int *rows_used);
+int gx_ignore_end_image(gx_image_enum_common_t *info, bool draw_last);
+
+
+
+
+int gx_begin_image1(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+int gx_image1_plane_data(gx_image_enum_common_t *info, const gx_image_plane_t *planes, int height, int *rows_used);
+int gx_image1_end_image(gx_image_enum_common_t *info, bool draw_last);
+int gx_image1_flush(gx_image_enum_common_t *info);
+
+
+void gx_image_free_enum(gx_image_enum_common_t **ppenum);
+
+
+void image_init_map(byte * map, int map_size, const float *decode);
+# 27 "./base/gdevvec.h" 2
+# 1 "./base/gxistate.h" 1
+# 30 "./base/gxistate.h"
+# 1 "./base/gxmatrix.h" 1
+# 35 "./base/gxmatrix.h"
+struct gs_matrix_fixed_s {
+    float xx, xy, yx, yy, tx, ty;
+    fixed tx_fixed, ty_fixed;
+    bool txy_fixed_valid;
+};
+
+
+
+typedef struct gs_matrix_fixed_s gs_matrix_fixed;
+
+
+
+int gs_matrix_fixed_from_matrix(gs_matrix_fixed *, const gs_matrix *);
+
+
+int gs_point_transform2fixed(const gs_matrix_fixed *, double, double,
+                             gs_fixed_point *);
+int gs_distance_transform2fixed(const gs_matrix_fixed *, double, double,
+                                gs_fixed_point *);
+
+int gs_point_transform2fixed_rounding(const gs_matrix_fixed * pmat,
+                         double x, double y, gs_fixed_point * ppt);
+# 65 "./base/gxmatrix.h"
+typedef struct {
+    long xx, xy, yx, yy;
+    int skewed;
+    int shift;
+    int max_bits;
+    fixed round;
+} fixed_coeff;
+# 83 "./base/gxmatrix.h"
+fixed fixed_coeff_mult(fixed, long, const fixed_coeff *, int);
+# 31 "./base/gxistate.h" 2
+
+
+# 1 "./base/gstrans.h" 1
+# 23 "./base/gstrans.h"
+# 1 "./base/gxcomp.h" 1
+# 24 "./base/gxcomp.h"
+# 1 "./base/gxbitfmt.h" 1
+# 30 "./base/gxbitfmt.h"
+typedef ulong gx_bitmap_format_t;
+# 25 "./base/gxcomp.h" 2
+# 68 "./base/gxcomp.h"
+typedef struct gx_device_clist_writer_s gx_device_clist_writer;
+
+
+typedef struct gs_composite_type_procs_s {
+
+
+
+
+
+
+
+    int (*create_default_compositor)(const gs_composite_t *pcte, gx_device **pcdev, gx_device *dev, gs_imager_state *pis, gs_memory_t *mem);
+
+
+
+
+
+
+    bool (*equal)(const gs_composite_t *pcte, const gs_composite_t *pcte2);
+# 99 "./base/gxcomp.h"
+    int (*write)(const gs_composite_t *pcte, byte *data, uint *psize, gx_device_clist_writer *cdev);
+# 109 "./base/gxcomp.h"
+    int (*read)(gs_composite_t **ppcte, const byte *data, uint size, gs_memory_t *mem);
+
+
+
+
+
+
+    int (*adjust_ctm)(gs_composite_t *pcte, int x0, int y0, gs_imager_state *pis);
+# 127 "./base/gxcomp.h"
+    int (*is_closing)(const gs_composite_t *this, gs_composite_t **pcte, gx_device *dev);
+
+
+
+
+
+
+
+    bool (*is_friendly)(const gs_composite_t *this, byte cmd0, byte cmd1);
+
+
+
+
+
+
+
+    int (*clist_compositor_write_update)(const gs_composite_t * pcte, gx_device * dev, gx_device ** pcdev, gs_imager_state * pis, gs_memory_t * mem);
+
+
+
+
+
+
+
+    int (*clist_compositor_read_update)(gs_composite_t * pcte, gx_device * cdev, gx_device * tdev, gs_imager_state * pis, gs_memory_t * mem);
+
+
+
+
+
+
+    int (*get_cropping)(const gs_composite_t * pcte, int *ry, int *rheight, int cropping_min, int cropping_max);
+
+} gs_composite_type_procs_t;
+
+typedef struct gs_composite_type_s {
+    byte comp_id;
+    gs_composite_type_procs_t procs;
+} gs_composite_type_t;
+
+
+
+
+
+int gx_default_composite_clist_write_update(const gs_composite_t * pcte, gx_device * dev, gx_device ** pcdev, gs_imager_state * pis, gs_memory_t * mem);
+
+
+int gx_default_composite_adjust_ctm(gs_composite_t *pcte, int x0, int y0, gs_imager_state *pis);
+
+
+int gx_default_composite_is_closing(const gs_composite_t *this, gs_composite_t **pcte, gx_device *dev);
+
+
+bool gx_default_composite_is_friendly(const gs_composite_t *this, byte cmd0, byte cmd1);
+
+
+
+
+
+int gx_default_composite_clist_read_update(gs_composite_t * pcte, gx_device * cdev, gx_device * tdev, gs_imager_state * pis, gs_memory_t * mem);
+
+
+
+
+int gx_default_composite_get_cropping(const gs_composite_t * pcte, int *ry, int *rheight, int cropping_min, int cropping_max);
+# 205 "./base/gxcomp.h"
+struct gs_composite_s {
+    const gs_composite_type_t *type; gs_id id; bool idle; struct gs_composite_s *prev, *next;
+};
+# 24 "./base/gstrans.h" 2
+
+# 1 "./base/gxblend.h" 1
+# 41 "./base/gxblend.h"
+typedef bits16 ArtPixMaxDepth;
+
+
+
+
+
+typedef struct pdf14_device_s pdf14_device;
+
+
+
+
+typedef struct pdf14_buf_s pdf14_buf;
+# 62 "./base/gxblend.h"
+    typedef struct gs_separations_s gs_separations;
+# 74 "./base/gxblend.h"
+typedef struct {
+
+
+
+    void (* blend_luminosity)(int n_chan, byte *dst,
+                    const byte *backdrop, const byte *src);
+
+
+
+    void (* blend_saturation)(int n_chan, byte *dst,
+                    const byte *backdrop, const byte *src);
+} pdf14_nonseparable_blending_procs_s;
+
+typedef pdf14_nonseparable_blending_procs_s
+                pdf14_nonseparable_blending_procs_t;
+
+
+
+
+
+typedef struct {
+
+    pdf14_nonseparable_blending_procs_t device_procs;
+    gx_device_procs color_mapping_procs;
+
+} pdf14_parent_cs_params_s;
+
+typedef pdf14_parent_cs_params_s pdf14_parent_cs_params_t;
+
+
+void smask_luminosity_mapping(int num_rows, int num_cols, int n_chan, int row_stride,
+                         int plane_stride, byte *src, const byte *des, bool isadditive,
+                            gs_transparency_mask_subtype_t SMask_SubType);
+void smask_blend(byte *src, int width, int height, int rowstride,
+                 int planestride);
+
+void smask_copy(int num_rows, int num_cols, int row_stride,
+                         byte *src, const byte *des);
+void smask_icc(gx_device *dev, int num_rows, int num_cols, int n_chan,
+               int row_stride, int plane_stride, byte *src, const byte *des,
+               gsicc_link_t *icclink);
+# 140 "./base/gxblend.h"
+void
+art_blend_pixel(ArtPixMaxDepth * dst, const ArtPixMaxDepth * backdrop,
+                const ArtPixMaxDepth * src, int n_chan,
+                gs_blend_mode_t blend_mode);
+# 171 "./base/gxblend.h"
+void
+art_blend_pixel_8(byte *dst, const byte *backdrop,
+                const byte *src, int n_chan, gs_blend_mode_t blend_mode,
+                const pdf14_nonseparable_blending_procs_t * pblend_procs);
+# 183 "./base/gxblend.h"
+byte art_pdf_union_8(byte alpha1, byte alpha2);
+# 193 "./base/gxblend.h"
+byte art_pdf_union_mul_8(byte alpha1, byte alpha2, byte alpha_mask);
+# 216 "./base/gxblend.h"
+void
+art_pdf_composite_pixel_alpha_8(byte *dst, const byte *src, int n_chan,
+        gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs);
+# 229 "./base/gxblend.h"
+void
+art_pdf_composite_pixel_alpha_8_fast(byte *dst, const byte *src, int n_chan,
+        gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs,
+        int stride);
+# 242 "./base/gxblend.h"
+void
+art_pdf_composite_pixel_alpha_8_fast_mono(byte *dst, const byte *src,
+        gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs,
+        int stride);
+# 258 "./base/gxblend.h"
+void
+art_pdf_uncomposite_group_8(byte *dst,
+                            const byte *backdrop,
+
+                            const byte *src, byte src_alpha_g, int n_chan);
+# 281 "./base/gxblend.h"
+void
+art_pdf_recomposite_group_8(byte *dst, byte *dst_alpha_g,
+        const byte *src, byte src_alpha_g, int n_chan,
+        byte alpha, gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs);
+# 301 "./base/gxblend.h"
+void
+art_pdf_composite_group_8(byte *dst, byte *dst_alpha_g,
+        const byte *src, int n_chan, byte alpha, gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs);
+# 320 "./base/gxblend.h"
+void
+art_pdf_composite_knockout_group_8(byte *backdrop, byte tos_shape, byte *dst,
+        byte *dst_alpha_g, const byte *src, int n_chan, byte alpha,
+        gs_blend_mode_t blend_mode,
+        const pdf14_nonseparable_blending_procs_t * pblend_procs);
+# 337 "./base/gxblend.h"
+void
+art_pdf_composite_knockout_simple_8(byte *dst,
+                                    byte *dst_shape,
+                                    byte *dst_tag,
+                                    const byte *src, byte tag,
+                                    int n_chan, byte opacity);
+# 352 "./base/gxblend.h"
+void
+art_pdf_knockoutisolated_group_8(byte *dst, const byte *src, int n_chan);
+# 370 "./base/gxblend.h"
+void
+art_pdf_composite_knockout_isolated_8(byte *dst,
+                                      byte *dst_shape,
+                                      byte *dst_tag,
+                                      const byte *src,
+                                      int n_chan,
+                                      byte shape,
+                                      byte tag,
+                                      byte alpha_mask, byte shape_mask,
+                                      bool has_mask);
+
+
+
+
+
+void art_blend_luminosity_rgb_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+void art_blend_saturation_rgb_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+
+void art_blend_saturation_cmyk_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+void art_blend_luminosity_cmyk_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+
+void art_blend_luminosity_custom_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+void art_blend_saturation_custom_8(int n_chan, byte *dst, const byte *backdrop,
+                           const byte *src);
+
+void pdf14_unpack_additive(int num_comp, gx_color_index color,
+                                pdf14_device * p14dev, byte * out);
+void pdf14_unpack_subtractive(int num_comp, gx_color_index color,
+                                pdf14_device * p14dev, byte * out);
+
+void pdf14_unpack_compressed(int num_comp, gx_color_index color,
+                                pdf14_device * p14dev, byte * out);
+
+void pdf14_unpack_custom(int num_comp, gx_color_index color,
+                                pdf14_device * p14dev, byte * out);
+
+void pdf14_preserve_backdrop(pdf14_buf *buf, pdf14_buf *tos, bool knockout_buff);
+
+int pdf14_preserve_backdrop_cm(pdf14_buf *buf, cmm_profile_t *group_profile,
+                               pdf14_buf *tos, cmm_profile_t *tos_profile,
+                               gs_memory_t *memory, gs_imager_state *pis,
+                               gx_device *dev, bool knockout_buff);
+
+void pdf14_compose_group(pdf14_buf *tos, pdf14_buf *nos, pdf14_buf *maskbuf,
+              int x0, int x1, int y0, int y1, int n_chan, bool additive,
+              const pdf14_nonseparable_blending_procs_t * pblend_procs,
+              bool overprint, gx_color_index drawn_comps, bool blendspot,
+              gs_memory_t *memory);
+
+gx_color_index pdf14_encode_color(gx_device *dev, const gx_color_value colors[]);
+gx_color_index pdf14_encode_color_tag(gx_device *dev, const gx_color_value colors[]);
+
+int pdf14_decode_color(gx_device * dev, gx_color_index color, gx_color_value * out);
+gx_color_index pdf14_compressed_encode_color(gx_device *dev, const gx_color_value colors[]);
+int pdf14_compressed_decode_color(gx_device * dev, gx_color_index color,
+                                                        gx_color_value * out);
+void pdf14_gray_cs_to_cmyk_cm(gx_device * dev, frac gray, frac out[]);
+void pdf14_rgb_cs_to_cmyk_cm(gx_device * dev, const gs_imager_state *pis,
+                           frac r, frac g, frac b, frac out[]);
+void pdf14_cmyk_cs_to_cmyk_cm(gx_device * dev, frac c, frac m, frac y, frac k, frac out[]);
+
+void gx_build_blended_image_row(byte *buf_ptr, int y, int planestride,
+                           int width, int num_comp, byte bg, byte *linebuf);
+void gx_blend_image_buffer(byte *buf_ptr, int width, int height,
+                      int rowstride, int planestride, int num_comp, byte bg);
+int gx_put_blended_image_cmykspot(gx_device *target, byte *buf_ptr,
+                      int planestride, int rowstride,
+                      int x0, int y0, int width, int height, int num_comp, byte bg,
+                      bool has_tags, gs_int_rect rect, gs_separations *pseparations);
+int gx_put_blended_image_custom(gx_device *target, byte *buf_ptr,
+                      int planestride, int rowstride,
+                      int x0, int y0, int width, int height, int num_comp, byte bg);
+# 26 "./base/gstrans.h" 2
+
+
+
+
+typedef enum {
+    PDF14_PUSH_DEVICE,
+    PDF14_POP_DEVICE,
+    PDF14_ABORT_DEVICE,
+    PDF14_BEGIN_TRANS_GROUP,
+    PDF14_END_TRANS_GROUP,
+    PDF14_BEGIN_TRANS_MASK,
+    PDF14_END_TRANS_MASK,
+    PDF14_SET_BLEND_PARAMS,
+    PDF14_PUSH_TRANS_STATE,
+    PDF14_POP_TRANS_STATE,
+    PDF14_PUSH_SMASK_COLOR,
+    PDF14_POP_SMASK_COLOR
+} pdf14_compositor_operations;
+# 75 "./base/gstrans.h"
+typedef struct gs_transparency_source_s {
+    float alpha;
+} gs_transparency_source_t;
+
+struct gs_pdf14trans_params_s {
+
+    pdf14_compositor_operations pdf14_op;
+    int num_spot_colors;
+
+    int changed;
+
+    bool Isolated;
+    bool Knockout;
+    bool image_with_SMask;
+    gs_rect bbox;
+
+    gs_transparency_channel_selector_t csel;
+
+    gs_transparency_mask_subtype_t subtype;
+    int Background_components;
+    bool function_is_identity;
+    float Background[(64)];
+    float GrayBackground;
+
+
+
+
+
+    gs_function_t *transfer_function;
+    byte transfer_fn[256];
+
+    gs_blend_mode_t blend_mode;
+    bool text_knockout;
+    gs_transparency_source_t opacity;
+    gs_transparency_source_t shape;
+    bool mask_is_image;
+    gs_matrix ctm;
+    bool replacing;
+    bool overprint;
+    bool overprint_mode;
+    bool blendspot;
+    bool idle;
+    uint mask_id;
+    int group_color_numcomps;
+    gs_transparency_color_t group_color;
+    int64_t icc_hash;
+    cmm_profile_t *iccprofile;
+    bool crop_blend_params;
+
+    bool is_pattern;
+};
+
+
+
+typedef struct gs_pdf14trans_params_s gs_pdf14trans_params_t;
+
+
+
+
+
+
+
+typedef struct gs_pdf14trans_s {
+    const gs_composite_type_t *type; gs_id id; bool idle; struct gs_composite_s *prev, *next;
+    gs_pdf14trans_params_t params;
+} gs_pdf14trans_t;
+
+
+int gs_setblendmode(gs_state *, gs_blend_mode_t);
+gs_blend_mode_t gs_currentblendmode(const gs_state *);
+int gs_setopacityalpha(gs_state *, double);
+float gs_currentopacityalpha(const gs_state *);
+int gs_setshapealpha(gs_state *, double);
+float gs_currentshapealpha(const gs_state *);
+int gs_settextknockout(gs_state *, bool);
+bool gs_currenttextknockout(const gs_state *);
+
+
+
+
+
+int gs_push_pdf14trans_device(gs_state * pgs, bool is_pattern);
+
+int gs_pop_pdf14trans_device(gs_state * pgs, bool is_pattern);
+
+int gs_abort_pdf14trans_device(gs_state * pgs);
+
+void gs_trans_group_params_init(gs_transparency_group_params_t *ptgp);
+
+int gs_update_trans_marking_params(gs_state * pgs);
+
+int gs_begin_transparency_group(gs_state * pgs,
+                                const gs_transparency_group_params_t *ptgp,
+                                const gs_rect *pbbox);
+
+int gs_end_transparency_group(gs_state *pgs);
+
+void gs_trans_mask_params_init(gs_transparency_mask_params_t *ptmp,
+                               gs_transparency_mask_subtype_t subtype);
+
+int gs_begin_transparency_mask(gs_state *pgs,
+                               const gs_transparency_mask_params_t *ptmp,
+                               const gs_rect *pbbox, bool mask_is_image);
+
+int gs_end_transparency_mask(gs_state *pgs,
+                             gs_transparency_channel_selector_t csel);
+
+
+
+
+int gx_begin_transparency_group(gs_imager_state * pis, gx_device * pdev,
+                                const gs_pdf14trans_params_t * pparams);
+
+int gx_end_transparency_group(gs_imager_state * pis, gx_device * pdev);
+
+int gx_begin_transparency_mask(gs_imager_state * pis, gx_device * pdev,
+                                const gs_pdf14trans_params_t * pparams);
+
+int gx_end_transparency_mask(gs_imager_state * pis, gx_device * pdev,
+                                const gs_pdf14trans_params_t * pparams);
+
+int gx_abort_trans_device(gs_imager_state * pis, gx_device * pdev);
+# 206 "./base/gstrans.h"
+int gs_push_transparency_state(gs_state *pgs);
+
+int gs_pop_transparency_state(gs_state *pgs, bool force);
+
+int gx_push_transparency_state(gs_imager_state * pis, gx_device * pdev);
+
+int gx_pop_transparency_state(gs_imager_state * pis, gx_device * pdev);
+
+
+
+
+int gs_is_pdf14trans_compositor(const gs_composite_t * pct);
+# 34 "./base/gxistate.h" 2
+# 89 "./base/gxistate.h"
+typedef struct gs_halftone_s gs_halftone;
+# 116 "./base/gxistate.h"
+typedef struct gx_transfer_s {
+    int red_component_num;
+    gx_transfer_map *red;
+    int green_component_num;
+    gx_transfer_map *green;
+    int blue_component_num;
+    gx_transfer_map *blue;
+    int gray_component_num;
+    gx_transfer_map *gray;
+} gx_transfer;
+# 213 "./base/gxistate.h"
+struct gs_devicen_color_map_s {
+    bool use_alt_cspace;
+    separation_type sep_type;
+    uint num_components;
+    uint num_colorants;
+    gs_id cspace_id;
+    int color_map[(64)];
+};
+# 229 "./base/gxistate.h"
+typedef struct gs_xstate_trans_flags {
+    bool xstate_pending;
+    bool xstate_change;
+} gs_xstate_trans_flags_t;
+# 300 "./base/gxistate.h"
+struct gs_imager_state_s {
+    bool is_gstate; gs_memory_t *memory; void *client_data; gx_line_params line_params; bool hpgl_path_mode; gs_matrix_fixed ctm; bool current_point_valid; gs_point current_point; gs_point subpath_start; bool clamp_coordinates; gs_logical_operation_t log_op; gx_color_value alpha; gs_blend_mode_t blend_mode; gs_transparency_source_t opacity, shape; gs_xstate_trans_flags_t trans_flags; gs_id soft_mask_id; bool text_knockout; uint text_rendering_mode; bool has_transparency; gx_device *trans_device; bool overprint; int overprint_mode; int effective_overprint_mode; bool overprint_alt; int overprint_mode_alt; int effective_overprint_mode_alt; float flatness; gs_fixed_point fill_adjust; bool stroke_adjust; bool accurate_curves; bool have_pattern_streams; float smoothness; int renderingintent; bool blackptcomp; gsicc_manager_t *icc_manager; gsicc_link_cache_t *icc_link_cache; gsicc_profile_cache_t *icc_profile_cache; const gx_color_map_procs * (*get_cmap_procs)(const gs_imager_state *, const gx_device *); gs_halftone *halftone; gs_int_point screen_phase[2]; gx_device_halftone *dev_ht; struct gs_cie_render_s *cie_render; bool cie_to_xyz; gx_transfer_map *black_generation; gx_transfer_map *undercolor_removal; gx_transfer set_transfer; gx_transfer_map *effective_transfer[(8 * 8)]; struct gx_cie_joint_caches_s *cie_joint_caches; const struct gx_color_map_procs_s *cmap_procs; gs_devicen_color_map color_component_map; struct gx_pattern_cache_s *pattern_cache; gs_color_space *devicergb_cs; gs_color_space *devicecmyk_cs; struct gx_cie_joint_caches_s *cie_joint_caches_alt; gs_devicen_color_map color_component_map_alt;
+};
+# 322 "./base/gxistate.h"
+int gs_imager_state_initialize(gs_imager_state * pis, gs_memory_t * mem);
+
+
+
+gs_imager_state *
+    gs_imager_state_copy(const gs_imager_state * pis, gs_memory_t * mem);
+
+
+void gs_imager_state_copied(gs_imager_state * pis);
+
+
+void gs_imager_state_pre_assign(gs_imager_state *to,
+                                const gs_imager_state *from);
+
+
+void gs_imager_state_release(gs_imager_state * pis);
+int gs_currentscreenphase_pis(const gs_imager_state *, gs_int_point *, gs_color_select_t);
+# 28 "./base/gdevvec.h" 2
+# 1 "./base/gxhldevc.h" 1
+# 67 "./base/gxhldevc.h"
+typedef struct gx_hl_saved_color_s {
+    gs_id color_space_id;
+    gs_id pattern_id;
+    bool ccolor_valid;
+    gs_client_color ccolor;
+    gx_device_color_saved saved_dev_color;
+} gx_hl_saved_color;
+
+
+
+
+void gx_hld_saved_color_init(gx_hl_saved_color * psc);
+
+
+
+
+
+const gs_state * gx_hld_get_gstate_ptr(const gs_imager_state * pis);
+# 99 "./base/gxhldevc.h"
+bool gx_hld_save_color(const gs_imager_state * pis,
+        const gx_device_color * pdevc, gx_hl_saved_color * psc);
+
+
+
+
+
+
+bool gx_hld_saved_color_equal(const gx_hl_saved_color * psc1,
+                           const gx_hl_saved_color * psc2);
+
+
+
+
+bool gx_hld_saved_color_same_cspace(const gx_hl_saved_color * psc1,
+                           const gx_hl_saved_color * psc2);
+
+
+
+
+bool
+gx_hld_is_hl_color_available(const gs_imager_state * pis,
+                const gx_device_color * pdevc);
+# 130 "./base/gxhldevc.h"
+typedef enum {
+        non_pattern_color_space,
+        pattern_color_space,
+        use_process_color
+} gx_hld_get_color_space_and_ccolor_status;
+# 159 "./base/gxhldevc.h"
+gx_hld_get_color_space_and_ccolor_status gx_hld_get_color_space_and_ccolor(
+                const gs_imager_state * pis, const gx_device_color * pdevc,
+                const gs_color_space ** ppcs, const gs_client_color ** ppcc);
+# 170 "./base/gxhldevc.h"
+int gx_hld_get_number_color_components(const gs_imager_state * pis);
+
+
+
+
+typedef enum {
+    valid_result = 1,
+    invalid_color_info = 2,
+    invalid_component_requested = 3
+} gx_hld_get_color_component_status;
+# 189 "./base/gxhldevc.h"
+gx_hld_get_color_component_status gx_hld_get_color_component(
+                const gs_imager_state * pis, const gx_device_color * pdevc,
+                int comp_numi, float * output);
+# 29 "./base/gdevvec.h" 2
+# 64 "./base/gdevvec.h"
+typedef struct gx_device_vector_s gx_device_vector;
+# 76 "./base/gdevvec.h"
+typedef enum {
+    gx_path_type_none = 0,
+
+
+
+
+    gx_path_type_fill = 1,
+    gx_path_type_stroke = 2,
+    gx_path_type_clip = 4,
+    gx_path_type_winding_number = 0,
+    gx_path_type_even_odd = 8,
+    gx_path_type_optimize = 16,
+    gx_path_type_always_close = 32,
+    gx_path_type_rule = gx_path_type_winding_number | gx_path_type_even_odd
+} gx_path_type_t;
+typedef enum {
+    gx_rect_x_first,
+    gx_rect_y_first
+} gx_rect_direction_t;
+typedef struct gx_device_vector_procs_s {
+
+    int (*beginpage) (gx_device_vector * vdev);
+
+
+
+
+
+
+
+    int (*setlinewidth) (gx_device_vector * vdev, double width);
+    int (*setlinecap) (gx_device_vector * vdev, gs_line_cap cap);
+    int (*setlinejoin) (gx_device_vector * vdev, gs_line_join join);
+    int (*setmiterlimit) (gx_device_vector * vdev, double limit);
+    int (*setdash) (gx_device_vector * vdev, const float *pattern,
+                    uint count, double offset);
+    int (*setflat) (gx_device_vector * vdev, double flatness);
+    int (*setlogop) (gx_device_vector * vdev, gs_logical_operation_t lop,
+                     gs_logical_operation_t diff);
+
+    bool (*can_handle_hl_color) (gx_device_vector * vdev, const gs_imager_state * pis,
+                         const gx_drawing_color * pdc);
+    int (*setfillcolor) (gx_device_vector * vdev, const gs_imager_state * pis,
+                         const gx_drawing_color * pdc);
+    int (*setstrokecolor) (gx_device_vector * vdev, const gs_imager_state * pis,
+                           const gx_drawing_color * pdc);
+
+
+    int (*dopath) (gx_device_vector * vdev, const gx_path * ppath,
+                   gx_path_type_t type, const gs_matrix *pmat);
+    int (*dorect) (gx_device_vector * vdev, fixed x0, fixed y0, fixed x1,
+                   fixed y1, gx_path_type_t type);
+    int (*beginpath) (gx_device_vector * vdev, gx_path_type_t type);
+    int (*moveto) (gx_device_vector * vdev, double x0, double y0,
+                   double x, double y, gx_path_type_t type);
+    int (*lineto) (gx_device_vector * vdev, double x0, double y0,
+                   double x, double y, gx_path_type_t type);
+    int (*curveto) (gx_device_vector * vdev, double x0, double y0,
+                    double x1, double y1, double x2, double y2,
+                    double x3, double y3, gx_path_type_t type);
+    int (*closepath) (gx_device_vector * vdev, double x0, double y0,
+                      double x_start, double y_start, gx_path_type_t type);
+    int (*endpath) (gx_device_vector * vdev, gx_path_type_t type);
+} gx_device_vector_procs;
+
+
+
+int gdev_vector_setflat(gx_device_vector * vdev, double flatness);
+
+
+
+int gdev_vector_dopath(gx_device_vector * vdev, const gx_path * ppath,
+                       gx_path_type_t type, const gs_matrix *pmat);
+
+
+int gdev_vector_dorect(gx_device_vector * vdev, fixed x0, fixed y0,
+                       fixed x1, fixed y1, gx_path_type_t type);
+# 210 "./base/gdevvec.h"
+struct gx_device_vector_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gs_memory_t *v_memory; const gx_device_vector_procs *vec_procs; char fname[(4096 - 1) + 1]; FILE *file; stream *strm; byte *strmbuf; uint strmbuf_size; int open_options; gs_imager_state state; float *dash_pattern; uint dash_pattern_size; bool fill_used_process_color; bool stroke_used_process_color; gx_hl_saved_color saved_fill_color; gx_hl_saved_color saved_stroke_color; gs_id no_clip_path_id; gs_id clip_path_id; gx_path_type_t fill_options, stroke_options; gs_point scale; bool in_page; gx_device_bbox *bbox_device; gx_color_index black, white;
+};
+
+
+
+extern const gs_memory_struct_type_t st_device_vector;
+# 227 "./base/gdevvec.h"
+void gdev_vector_init(gx_device_vector * vdev);
+
+
+void gdev_vector_reset(gx_device_vector * vdev);
+# 241 "./base/gdevvec.h"
+int gdev_vector_open_file_options(gx_device_vector * vdev,
+                                  uint strmbuf_size, int open_options);
+
+
+
+
+
+
+
+stream *gdev_vector_stream(gx_device_vector * vdev);
+
+
+
+int gdev_vector_update_log_op(gx_device_vector * vdev,
+                              gs_logical_operation_t lop);
+
+
+
+int gdev_vector_update_fill_color(gx_device_vector * vdev,
+                                  const gs_imager_state * pis,
+                                  const gx_drawing_color * pdcolor);
+
+
+
+int gdev_vector_prepare_fill(gx_device_vector * vdev,
+                             const gs_imager_state * pis,
+                             const gx_fill_params * params,
+                             const gx_drawing_color * pdcolor);
+
+
+
+
+
+
+int gdev_vector_prepare_stroke(gx_device_vector * vdev,
+                               const gs_imager_state * pis,
+                               const gx_stroke_params * params,
+                               const gx_drawing_color * pdcolor,
+                               double scale);
+
+
+
+
+
+
+
+int gdev_vector_stroke_scaling(const gx_device_vector *vdev,
+                               const gs_imager_state *pis,
+                               double *pscale, gs_matrix *pmat);
+
+
+typedef struct gdev_vector_dopath_state_s {
+
+    gx_device_vector *vdev;
+    gx_path_type_t type;
+    bool first;
+    gs_matrix scale_mat;
+
+    gs_point start;
+    gs_point prev;
+} gdev_vector_dopath_state_t;
+void gdev_vector_dopath_init(gdev_vector_dopath_state_t *state,
+                             gx_device_vector *vdev,
+                             gx_path_type_t type, const gs_matrix *pmat);
+
+
+int gdev_vector_dopath_segment(gdev_vector_dopath_state_t *state, int pe_op,
+                               gs_fixed_point vs[3]);
+
+
+
+
+
+int gdev_vector_write_polygon(gx_device_vector * vdev,
+                              const gs_fixed_point * points, uint count,
+                              bool close, gx_path_type_t type);
+
+
+int gdev_vector_write_rectangle(gx_device_vector * vdev,
+                                fixed x0, fixed y0, fixed x1, fixed y1,
+                                bool close, gx_rect_direction_t dir);
+
+
+
+int gdev_vector_write_clip_path(gx_device_vector * vdev,
+                                const gx_clip_path * pcpath);
+
+
+
+int gdev_vector_update_clip_path(gx_device_vector * vdev,
+                                 const gx_clip_path * pcpath);
+
+
+int gdev_vector_close_file(gx_device_vector * vdev);
+# 349 "./base/gdevvec.h"
+typedef struct gdev_vector_image_enum_s {
+    const gx_image_type_t *image_type; const gx_image_enum_procs_t *procs; gx_device *dev; gs_memory_t *memory; gs_id id; bool skipping; int num_planes; int plane_depths[((64) + 1)]; int plane_widths[((64) + 1)]; gx_image_enum_common_t *default_info; gx_image_enum_common_t *bbox_info; int width, height; int bits_per_pixel; uint bits_per_row; int y;
+} gdev_vector_image_enum_t;
+
+extern const gs_memory_struct_type_t st_vector_image_enum;
+# 364 "./base/gdevvec.h"
+int gdev_vector_begin_image(gx_device_vector * vdev,
+                        const gs_imager_state * pis, const gs_image_t * pim,
+                        gs_image_format_t format, const gs_int_rect * prect,
+              const gx_drawing_color * pdcolor, const gx_clip_path * pcpath,
+                    gs_memory_t * mem, const gx_image_enum_procs_t * pprocs,
+                            gdev_vector_image_enum_t * pie);
+
+
+
+int gdev_vector_end_image(gx_device_vector * vdev,
+       gdev_vector_image_enum_t * pie, bool draw_last, gx_color_index pad);
+
+
+
+
+int gdev_vector_put_params(gx_device *dev, gs_param_list *plist);
+int gdev_vector_get_params(gx_device *dev, gs_param_list *plist);
+
+
+
+
+int gdev_vector_fill_rectangle(gx_device *dev, int x, int y, int width, int height, gx_color_index color);
+
+int gdev_vector_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+
+int gdev_vector_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+
+
+int gdev_vector_fill_trapezoid(gx_device *dev, const gs_fixed_edge *left, const gs_fixed_edge *right, fixed ybot, fixed ytop, bool swap_axes, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gdev_vector_fill_parallelogram(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+int gdev_vector_fill_triangle(gx_device *dev, fixed px, fixed py, fixed ax, fixed ay, fixed bx, fixed by, const gx_drawing_color *pdcolor, gs_logical_operation_t lop);
+# 28 "./devices/vector/gdevpsdf.h" 2
+
+# 1 "./base/strimpl.h" 1
+# 126 "./base/strimpl.h"
+struct stream_template_s {
+
+
+    gs_memory_type_ptr_t stype;
+
+
+    int (*init)(stream_state *);
+
+
+
+    int (*process)(stream_state *, stream_cursor_read *, stream_cursor_write *, bool);
+
+
+    uint min_in_size;
+    uint min_out_size;
+
+
+    void (*release)(stream_state *);
+
+
+
+    void (*set_defaults)(stream_state *);
+
+
+    int (*reinit)(stream_state *);
+
+};
+
+
+int stream_move(stream_cursor_read *, stream_cursor_write *);
+
+
+typedef enum {
+    hex_ignore_garbage = 0,
+    hex_ignore_whitespace = 1,
+    hex_ignore_leading_whitespace = 2,
+    hex_break_on_whitespace = 3
+} hex_syntax;
+int s_hex_process(stream_cursor_read *, stream_cursor_write *, int *, hex_syntax);
+# 30 "./devices/vector/gdevpsdf.h" 2
+# 1 "./base/sa85x.h" 1
+# 23 "./base/sa85x.h"
+# 1 "./base/sa85d.h" 1
+# 24 "./base/sa85d.h"
+typedef struct stream_A85D_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+    int odd;
+    ulong word;
+    bool pdf_rules;
+    bool require_eod;
+} stream_A85D_state;
+# 45 "./base/sa85d.h"
+extern const stream_template s_A85D_template;
+# 24 "./base/sa85x.h" 2
+
+
+typedef struct stream_A85E_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+
+    int count;
+    int last_char;
+} stream_A85E_state;
+
+
+
+
+
+
+extern const stream_template s_A85E_template;
+# 31 "./devices/vector/gdevpsdf.h" 2
+# 1 "./base/scfx.h" 1
+# 23 "./base/scfx.h"
+# 1 "./base/shc.h" 1
+# 22 "./base/shc.h"
+# 1 "./base/gsbittab.h" 1
+# 43 "./base/gsbittab.h"
+extern const byte byte_reverse_bits[256];
+
+
+
+
+extern const byte byte_right_mask[9];
+
+
+
+
+extern const byte byte_count_bits[256];
+# 62 "./base/gsbittab.h"
+extern const byte
+    byte_bit_run_length_0[256], byte_bit_run_length_1[256],
+    byte_bit_run_length_2[256], byte_bit_run_length_3[256],
+    byte_bit_run_length_4[256], byte_bit_run_length_5[256],
+    byte_bit_run_length_6[256], byte_bit_run_length_7[256];
+
+
+
+
+
+extern const byte *const byte_bit_run_length[8];
+extern const byte *const byte_bit_run_length_neg[8];
+
+
+
+
+
+extern const byte byte_acegbdfh_to_abcdefgh[256];
+# 23 "./base/shc.h" 2
+# 47 "./base/shc.h"
+typedef struct hc_definition_s {
+    ushort *counts;
+    uint num_counts;
+    ushort *values;
+    uint num_values;
+} hc_definition;
+# 73 "./base/shc.h"
+typedef struct stream_hc_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1]; bool FirstBitLowOrder; uint bits; int bits_left;
+} stream_hc_state;
+# 86 "./base/shc.h"
+typedef struct hce_code_s {
+    ushort code;
+    ushort code_length;
+} hce_code;
+
+
+
+typedef struct hce_table_s {
+    uint count;
+    hce_code *codes;
+} hce_table;
+# 135 "./base/shc.h"
+void hc_put_code_proc(bool, byte *, uint);
+# 152 "./base/shc.h"
+byte *hc_put_last_bits_proc(stream_hc_state *, byte *, uint, int);
+# 171 "./base/shc.h"
+typedef struct hcd_code_s {
+    short value;
+    ushort code_length;
+} hcd_code;
+
+typedef struct hcd_table_s {
+    uint count;
+    uint initial_bits;
+    hcd_code *codes;
+} hcd_table;
+# 24 "./base/scfx.h" 2
+# 48 "./base/scfx.h"
+typedef struct stream_CF_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1]; bool FirstBitLowOrder; uint bits; int bits_left; bool Uncompressed; int K; bool EndOfLine; bool EncodedByteAlign; int Columns; int Rows; bool EndOfBlock; bool BlackIs1; int DamagedRowsBeforeError; int DecodedByteAlign; uint raster; byte *lbuf; byte *lprev; int k_left;
+} stream_CF_state;
+# 73 "./base/scfx.h"
+typedef struct stream_CFE_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1]; bool FirstBitLowOrder; uint bits; int bits_left; bool Uncompressed; int K; bool EndOfLine; bool EncodedByteAlign; int Columns; int Rows; bool EndOfBlock; bool BlackIs1; int DamagedRowsBeforeError; int DecodedByteAlign; uint raster; byte *lbuf; byte *lprev; int k_left;
+
+    int max_code_bytes;
+    byte *lcode;
+
+    int read_count;
+    int write_count;
+    int code_bytes;
+} stream_CFE_state;
+
+
+
+
+
+
+extern const stream_template s_CFE_template;
+
+
+typedef struct stream_CFD_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1]; bool FirstBitLowOrder; uint bits; int bits_left; bool Uncompressed; int K; bool EndOfLine; bool EncodedByteAlign; int Columns; int Rows; bool EndOfBlock; bool BlackIs1; int DamagedRowsBeforeError; int DecodedByteAlign; uint raster; byte *lbuf; byte *lprev; int k_left;
+    int cbit;
+
+    int rows_left;
+    int row;
+    int rpos;
+    int wpos;
+
+    int eol_count;
+    byte invert;
+    int run_color;
+
+
+
+    int damaged_rows;
+
+    bool skipping_damage;
+
+
+    int uncomp_run;
+
+
+    int uncomp_left;
+    int uncomp_exit;
+
+} stream_CFD_state;
+
+
+
+
+
+
+extern const stream_template s_CFD_template;
+# 32 "./devices/vector/gdevpsdf.h" 2
+# 1 "./base/spsdf.h" 1
+# 36 "./base/spsdf.h"
+void s_write_ps_string(stream * s, const byte * str, uint size, int print_ok);
+
+
+
+
+
+
+int s_alloc_position_stream(stream ** ps, gs_memory_t * mem);
+
+
+
+
+
+typedef struct param_printer_params_s {
+    const char *prefix;
+    const char *suffix;
+    const char *item_prefix;
+    const char *item_suffix;
+    int print_ok;
+} param_printer_params_t;
+
+
+
+
+typedef struct printer_param_list_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+    stream *strm;
+    param_printer_params_t params;
+    bool any;
+} printer_param_list_t;
+
+
+
+
+
+
+extern const param_printer_params_t param_printer_params_default;
+int s_alloc_param_printer(gs_param_list ** pplist,
+                          const param_printer_params_t * ppp, stream * s,
+                          gs_memory_t * mem);
+void s_free_param_printer(gs_param_list * plist);
+
+int s_init_param_printer(printer_param_list_t *prlist,
+                         const param_printer_params_t * ppp, stream * s);
+void s_release_param_printer(printer_param_list_t *prlist);
+# 33 "./devices/vector/gdevpsdf.h" 2
+
+extern const stream_template s_DCTE_template;
+# 45 "./devices/vector/gdevpsdf.h"
+typedef struct psdf_image_params_s {
+    gs_c_param_list *ACSDict;
+    bool AntiAlias;
+    bool AutoFilter;
+    int Depth;
+    gs_c_param_list *Dict;
+    bool Downsample;
+    float DownsampleThreshold;
+    enum psdf_downsample_type {
+        ds_Average,
+        ds_Bicubic,
+        ds_Subsample
+    } DownsampleType;
+
+
+    bool Encode;
+    const char *Filter;
+    int Resolution;
+    const char *AutoFilterStrategy;
+    const stream_template *filter_template;
+} psdf_image_params;
+
+
+typedef struct psdf_distiller_params_s {
+
+
+
+    bool ASCII85EncodePages;
+    enum psdf_auto_rotate_pages {
+        arp_None,
+        arp_All,
+        arp_PageByPage
+    } AutoRotatePages;
+
+
+    enum psdf_binding {
+        binding_Left,
+        binding_Right
+    } Binding;
+
+
+    bool CompressPages;
+    enum psdf_default_rendering_intent {
+        ri_Default,
+        ri_Perceptual,
+        ri_Saturation,
+        ri_RelativeColorimetric,
+        ri_AbsoluteColorimetric
+    } DefaultRenderingIntent;
+
+
+
+    bool DetectBlends;
+    bool DoThumbnails;
+    long ImageMemory;
+    bool LockDistillerParams;
+    bool LZWEncodePages;
+    int OPM;
+    bool PreserveOPIComments;
+    bool UseFlateCompression;
+
+
+
+    gs_const_string CalCMYKProfile;
+    gs_const_string CalGrayProfile;
+    gs_const_string CalRGBProfile;
+    gs_const_string sRGBProfile;
+    enum psdf_color_conversion_strategy {
+        ccs_LeaveColorUnchanged,
+        ccs_UseDeviceDependentColor,
+        ccs_UseDeviceIndependentColor,
+        ccs_UseDeviceIndependentColorForImages,
+        ccs_sRGB,
+        ccs_CMYK,
+        ccs_Gray,
+        ccs_RGB,
+        ccs_ByObjectType
+    } ColorConversionStrategy;
+
+
+
+
+
+    bool PreserveHalftoneInfo;
+    bool PreserveOverprintSettings;
+    enum psdf_transfer_function_info {
+        tfi_Preserve,
+        tfi_Apply,
+        tfi_Remove
+    } TransferFunctionInfo;
+
+
+    enum psdf_ucr_and_bg_info {
+        ucrbg_Preserve,
+        ucrbg_Remove
+    } UCRandBGInfo;
+
+
+
+
+
+    psdf_image_params ColorImage;
+    bool ConvertCMYKImagesToRGB;
+    bool ConvertImagesToIndexed;
+
+
+
+    psdf_image_params GrayImage;
+
+
+
+    psdf_image_params MonoImage;
+
+
+
+    gs_param_string_array AlwaysEmbed;
+    gs_param_string_array NeverEmbed;
+    enum psdf_cannot_embed_font_policy {
+        cefp_OK,
+        cefp_Warning,
+        cefp_Error
+    } CannotEmbedFontPolicy;
+
+
+    bool EmbedAllFonts;
+    int MaxSubsetPct;
+    bool SubsetFonts;
+    gs_param_string PSDocOptions;
+    gs_param_string_array PSPageOptions;
+} psdf_distiller_params;
+
+
+extern const stream_template s_CFE_template;
+extern const stream_template s_zlibE_template;
+# 268 "./devices/vector/gdevpsdf.h"
+typedef enum {
+    psdf_version_level1 = 1000,
+    psdf_version_level1_color = 1100,
+    psdf_version_level2 = 2000,
+    psdf_version_level2_with_TT = 2010,
+    psdf_version_level2_plus = 2017,
+    psdf_version_ll3 = 3010
+} psdf_version;
+# 288 "./devices/vector/gdevpsdf.h"
+typedef struct gx_device_psdf_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gs_memory_t *v_memory; const gx_device_vector_procs *vec_procs; char fname[(4096 - 1) + 1]; FILE *file; stream *strm; byte *strmbuf; uint strmbuf_size; int open_options; gs_imager_state state; float *dash_pattern; uint dash_pattern_size; bool fill_used_process_color; bool stroke_used_process_color; gx_hl_saved_color saved_fill_color; gx_hl_saved_color saved_stroke_color; gs_id no_clip_path_id; gs_id clip_path_id; gx_path_type_t fill_options, stroke_options; gs_point scale; bool in_page; gx_device_bbox *bbox_device; gx_color_index black, white; psdf_version version; bool binary_ok; bool HaveCFF; bool HaveTrueTypes; bool HaveCIDSystem; double ParamCompatibilityLevel; psdf_distiller_params params;
+} gx_device_psdf;
+# 309 "./devices/vector/gdevpsdf.h"
+extern const gs_memory_struct_type_t st_device_psdf;
+# 333 "./devices/vector/gdevpsdf.h"
+int gdev_psdf_get_params(gx_device *dev, gs_param_list *plist);
+int gdev_psdf_put_params(gx_device *dev, gs_param_list *plist);
+
+
+
+
+int psdf_setlinewidth(gx_device_vector * vdev, double width);
+int psdf_setlinecap(gx_device_vector * vdev, gs_line_cap cap);
+int psdf_setlinejoin(gx_device_vector * vdev, gs_line_join join);
+int psdf_setmiterlimit(gx_device_vector * vdev, double limit);
+int psdf_setdash(gx_device_vector * vdev, const float *pattern,
+                 uint count, double offset);
+int psdf_setflat(gx_device_vector * vdev, double flatness);
+int psdf_setlogop(gx_device_vector * vdev, gs_logical_operation_t lop,
+                  gs_logical_operation_t diff);
+
+
+
+int psdf_dorect(gx_device_vector * vdev, fixed x0, fixed y0, fixed x1,
+                fixed y1, gx_path_type_t type);
+int psdf_beginpath(gx_device_vector * vdev, gx_path_type_t type);
+int psdf_moveto(gx_device_vector * vdev, double x0, double y0,
+                double x, double y, gx_path_type_t type);
+int psdf_lineto(gx_device_vector * vdev, double x0, double y0,
+                double x, double y, gx_path_type_t type);
+int psdf_curveto(gx_device_vector * vdev, double x0, double y0,
+                 double x1, double y1, double x2,
+                 double y2, double x3, double y3, gx_path_type_t type);
+int psdf_closepath(gx_device_vector * vdev, double x0, double y0,
+                   double x_start, double y_start, gx_path_type_t type);
+
+
+
+
+typedef struct psdf_binary_writer_s {
+    gs_memory_t *memory;
+    stream *target;
+    stream *strm;
+    gx_device_psdf *dev;
+
+
+
+
+
+} psdf_binary_writer;
+extern const gs_memory_struct_type_t st_psdf_binary_writer;
+
+
+
+
+
+
+
+int psdf_begin_binary(gx_device_psdf * pdev, psdf_binary_writer * pbw);
+
+
+
+int psdf_encode_binary(psdf_binary_writer * pbw,
+                       const stream_template * template, stream_state * ss);
+
+
+
+int psdf_CFE_binary(psdf_binary_writer * pbw, int w, int h, bool invert);
+
+
+
+
+
+
+
+int psdf_DCT_filter(gs_param_list *plist ,
+                    stream_state *st,
+                    int Columns, int Rows, int Colors,
+                    psdf_binary_writer *pbw );
+
+
+bool psdf_is_converting_image_to_RGB(const gx_device_psdf * pdev,
+                const gs_imager_state * pis, const gs_pixel_image_t * pim);
+
+
+
+
+
+int psdf_setup_image_filters(gx_device_psdf *pdev, psdf_binary_writer *pbw,
+                             gs_pixel_image_t *pim, const gs_matrix *pctm,
+                             const gs_imager_state * pis, bool lossless,
+                             bool in_line);
+
+int new_setup_image_filters(gx_device_psdf *pdev, psdf_binary_writer *pbw,
+                             gs_pixel_image_t *pim, const gs_matrix *pctm,
+                             const gs_imager_state * pis, bool lossless,
+                             bool in_line, bool colour_conversion);
+
+
+
+
+int psdf_setup_lossless_filters(gx_device_psdf *pdev, psdf_binary_writer *pbw,
+                                gs_pixel_image_t *pim, bool in_line);
+
+int new_setup_lossless_filters(gx_device_psdf *pdev, psdf_binary_writer *pbw,
+                                gs_pixel_image_t *pim, bool in_line, bool colour_conversion);
+
+
+int new_resize_input(psdf_binary_writer *pbw, int width, int num_comps, int bpc_in, int bpc_out);
+
+
+int psdf_end_binary(psdf_binary_writer * pbw);
+
+
+int psdf_setup_compression_chooser(psdf_binary_writer *pbw,
+                                   gx_device_psdf *pdev,
+                                   int width, int height, int depth,
+                                   int bits_per_sample);
+
+
+int psdf_setup_image_to_mask_filter(psdf_binary_writer *pbw, gx_device_psdf *pdev,
+            int width, int height, int depth, int bits_per_sample, uint *MaskColor);
+
+
+int psdf_setup_image_colors_filter(psdf_binary_writer *pbw,
+        gx_device_psdf *pdev, gs_pixel_image_t * pim,
+        const gs_imager_state *pis);
+# 471 "./devices/vector/gdevpsdf.h"
+typedef struct psdf_set_color_commands_s {
+    const char *setgray;
+    const char *setrgbcolor;
+    const char *setcmykcolor;
+    const char *setcolorspace;
+    const char *setcolor;
+    const char *setcolorn;
+} psdf_set_color_commands_t;
+
+extern const psdf_set_color_commands_t
+    psdf_set_fill_color_commands, psdf_set_stroke_color_commands;
+
+
+
+
+
+gx_color_index psdf_adjust_color_index(gx_device_vector *vdev,
+                                       gx_color_index color);
+
+
+int psdf_set_color(gx_device_vector *vdev, const gx_drawing_color *pdc,
+                   const psdf_set_color_commands_t *ppscc, bool UseOldColor);
+
+double psdf_round(double v, int precision, int radix);
+
+
+int psdf_get_bits(gx_device *dev, int y, byte *data, byte **actual_data);
+int psdf_get_bits_rectangle(gx_device *dev, const gs_int_rect *prect, gs_get_bits_params_t *params, gs_int_rect **unread);
+
+
+int psdf_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+# 30 "./devices/vector/gdevpdfx.h" 2
+# 1 "./base/gxdevmem.h" 1
+# 81 "./base/gxdevmem.h"
+struct gx_device_memory_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gx_device *target;
+
+
+
+
+    uint raster;
+    byte *base;
+
+    gs_memory_t *bitmap_memory;
+    bool foreign_bits;
+    gs_memory_t *line_pointer_memory;
+    bool foreign_line_pointers;
+
+
+
+
+
+    gx_render_plane_t planes[(8 * 8)];
+
+
+
+    gs_matrix initial_matrix;
+    byte **line_ptrs;
+
+
+    gs_const_string palette;
+
+    struct _c24 {
+        gx_color_index rgb;
+        bits32 rgbr, gbrg, brgb;
+    } color24;
+
+    struct _c40 {
+        gx_color_index abcde;
+        bits32 abcd, bcde, cdea, deab, eabc;
+    } color40;
+
+    struct _c48 {
+        gx_color_index abcdef;
+        bits32 abcd, cdef, efab;
+    } color48;
+
+    struct _c56 {
+        gx_color_index abcdefg;
+        bits32 abcd, bcde, cdef, defg, efga, fgab, gabc;
+    } color56;
+
+    struct _c64 {
+        gx_color_index abcdefgh;
+        bits32 abcd, efgh;
+    } color64;
+
+
+
+    gs_log2_scale_point log2_scale;
+    int log2_alpha_bits;
+    int mapped_x;
+    int mapped_y;
+    int mapped_height;
+    int mapped_start;
+    gx_color_index save_color;
+    const gx_drawing_color *save_hl_color;
+
+
+    int plane_depth;
+    int band_y;
+};
+
+extern const gs_memory_struct_type_t st_device_memory;
+# 183 "./base/gxdevmem.h"
+int gdev_mem_bits_size(const gx_device_memory *mdev, int width,
+                         int height, ulong *size);
+
+ulong gdev_mem_line_ptrs_size(const gx_device_memory *mdev, int width,
+                              int height);
+
+int gdev_mem_data_size(const gx_device_memory *mdev, int width,
+                         int height, ulong *size);
+# 199 "./base/gxdevmem.h"
+int gdev_mem_max_height(const gx_device_memory * dev, int width, ulong size,
+                bool page_uses_transparency);
+# 210 "./base/gxdevmem.h"
+const gx_device_memory *gdev_mem_device_for_bits(int);
+
+
+const gx_device_memory *gdev_mem_word_device_for_bits(int);
+# 226 "./base/gxdevmem.h"
+void gs_make_mem_mono_device(gx_device_memory * mdev, gs_memory_t * mem,
+                             gx_device * target);
+void gs_make_mem_device(gx_device_memory * mdev,
+                        const gx_device_memory * mdproto,
+                        gs_memory_t * mem, int page_device,
+                        gx_device * target);
+void gs_make_mem_abuf_device(gx_device_memory * adev, gs_memory_t * mem,
+                             gx_device * target,
+                             const gs_log2_scale_point * pscale,
+                             int alpha_bits, int mapped_x, bool devn);
+void gs_make_mem_alpha_device(gx_device_memory * adev, gs_memory_t * mem,
+                              gx_device * target, int alpha_bits);
+
+
+
+
+
+
+int gs_make_mem_mono_device_with_copydevice(gx_device_memory ** mdev,
+                                            gs_memory_t * mem,
+                                            gx_device * target);
+
+int gs_make_mem_device_with_copydevice(gx_device_memory ** mdev,
+                                       const gx_device_memory * mdproto,
+                                       gs_memory_t * mem,
+                                       int page_device,
+                                       gx_device * target);
+# 263 "./base/gxdevmem.h"
+int gdev_mem_open_scan_lines(gx_device_memory *mdev, int setup_height);
+# 278 "./base/gxdevmem.h"
+int gdev_mem_set_line_ptrs(gx_device_memory *mdev,
+                           byte *base, int raster, byte **line_ptrs,
+                           int setup_height);
+
+
+void gdev_mem_mono_set_inverted(gx_device_memory * mdev, bool black_is_1);
+
+
+bool gs_device_is_memory(const gx_device *);
+
+
+bool gs_device_is_abuf(const gx_device *);
+
+
+int alpha_buffer_bits(gs_state * pgs);
+# 31 "./devices/vector/gdevpdfx.h" 2
+# 1 "./base/sarc4.h" 1
+# 30 "./base/sarc4.h"
+struct stream_arcfour_state_s
+{
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+    unsigned int x, y;
+    unsigned char S[256];
+};
+
+
+
+typedef struct stream_arcfour_state_s stream_arcfour_state;
+
+
+int s_arcfour_set_key(stream_arcfour_state * state, const unsigned char *key,
+                      int keylength);
+
+
+
+
+extern const stream_template s_arcfour_template;
+
+
+
+
+int s_arcfour_process_buffer(stream_arcfour_state *ss, byte *buf, int buf_size);
+# 32 "./devices/vector/gdevpdfx.h" 2
+# 58 "./devices/vector/gdevpdfx.h"
+typedef enum {
+    PDF_IN_NONE,
+    PDF_IN_STREAM,
+    PDF_IN_TEXT,
+    PDF_IN_STRING
+} pdf_context_t;
+
+
+
+
+
+
+
+typedef struct cos_object_s cos_object_t;
+typedef struct cos_stream_s cos_stream_t;
+typedef struct cos_dict_s cos_dict_t;
+typedef struct cos_array_s cos_array_t;
+typedef struct cos_value_s cos_value_t;
+typedef struct cos_object_procs_s cos_object_procs_t;
+typedef const cos_object_procs_t *cos_type_t;
+
+
+
+
+typedef struct pdf_text_state_s pdf_text_state_t;
+
+
+
+
+typedef struct pdf_char_glyph_pairs_s pdf_char_glyph_pairs_t;
+
+
+
+
+typedef enum {
+
+
+
+
+    resourceColorSpace,
+    resourceExtGState,
+    resourcePattern,
+    resourceShading,
+    resourceXObject,
+    resourceOther,
+
+
+
+    resourceFont,
+
+
+
+    resourceCharProc,
+    resourceCIDFont,
+    resourceCMap,
+    resourceFontDescriptor,
+    resourceGroup,
+    resourceSoftMaskDict,
+    resourceFunction,
+    resourcePage,
+    NUM_RESOURCE_TYPES,
+
+
+
+
+    resourceEncoding,
+    resourceCIDSystemInfo,
+    resourceHalftone,
+    resourceLength,
+    resourceStream,
+    resourceOutline,
+    resourceArticle,
+    resourceDests,
+    resourceLabels,
+    resourceThread,
+    resourceCatalog,
+    resourceEncrypt,
+    resourcePagesTree,
+    resourceMetadata,
+    resourceICC,
+    resourceAnnotation,
+    resourceEmbeddedFiles,
+    resourceFontFile,
+    resourceNone
+
+
+
+} pdf_resource_type_t;
+# 190 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_resource_s pdf_resource_t;
+struct pdf_resource_s {
+    pdf_resource_t *next; pdf_resource_t *prev; gs_id rid; bool named; bool global; char rname[1 + (sizeof(long) * 8 / 3 + 1) + 1 ]; ulong where_used; cos_object_t *object;
+};
+
+
+extern const gs_memory_struct_type_t st_pdf_resource;
+# 205 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_x_object_s pdf_x_object_t;
+struct pdf_x_object_s {
+    pdf_x_object_t *next; pdf_resource_t *prev; gs_id rid; bool named; bool global; char rname[1 + (sizeof(long) * 8 / 3 + 1) + 1 ]; ulong where_used; cos_object_t *object;
+    int width, height;
+    int data_height;
+};
+
+
+
+
+
+
+typedef enum {
+    NoMarks = 0,
+    ImageB = 1,
+    ImageC = 2,
+    ImageI = 4,
+    Text = 8
+} pdf_procset_t;
+
+
+
+
+typedef struct pdf_char_proc_s pdf_char_proc_t;
+typedef struct pdf_char_proc_ownership_s pdf_char_proc_ownership_t;
+typedef struct pdf_font_s pdf_font_t;
+typedef struct pdf_text_data_s pdf_text_data_t;
+
+
+
+
+typedef struct pdf_outline_node_s {
+    long id, parent_id, prev_id, first_id, last_id;
+    int count;
+    cos_dict_t *action;
+} pdf_outline_node_t;
+typedef struct pdf_outline_level_s {
+    pdf_outline_node_t first;
+    pdf_outline_node_t last;
+    int left;
+} pdf_outline_level_t;
+
+
+
+
+
+
+typedef struct pdf_bead_s {
+    long id, article_id, prev_id, next_id, page_id;
+    gs_rect rect;
+} pdf_bead_t;
+typedef struct pdf_article_s pdf_article_t;
+struct pdf_article_s {
+    pdf_article_t *next;
+    cos_dict_t *contents;
+    pdf_bead_t first;
+    pdf_bead_t last;
+};
+# 277 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_resource_list_s {
+    pdf_resource_t *chains[16];
+} pdf_resource_list_t;
+# 288 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_stream_position_s {
+    long length_id;
+    gs_offset_t start_pos;
+} pdf_stream_position_t;
+
+
+
+
+
+
+typedef struct pdf_text_rotation_s {
+    long counts[5];
+    int Rotate;
+} pdf_text_rotation_t;
+
+
+
+
+
+typedef struct pdf_page_dsc_info_s {
+    int orientation;
+    int viewing_orientation;
+    gs_rect bounding_box;
+} pdf_page_dsc_info_t;
+
+
+
+
+
+
+typedef struct pdf_page_s {
+    cos_dict_t *Page;
+    gs_point MediaBox;
+    pdf_procset_t procsets;
+    long contents_id;
+    long resource_ids[resourceFont + 1];
+    long group_id;
+    cos_array_t *Annots;
+    pdf_text_rotation_t text_rotation;
+    pdf_page_dsc_info_t dsc_info;
+    bool NumCopies_set;
+    int NumCopies;
+} pdf_page_t;
+# 339 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_temp_file_s {
+    char file_name[4096];
+    FILE *file;
+    stream *strm;
+    byte *strm_buf;
+    stream *save_strm;
+} pdf_temp_file_t;
+
+
+
+typedef struct gx_device_pdf_s gx_device_pdf;
+
+
+
+typedef struct linearisation_record_s {
+    int PageUsage;
+    int NumPagesUsing;
+    int *PageList;
+    uint NewObjectNumber;
+    gs_offset_t OriginalOffset;
+    gs_offset_t LinearisedOffset;
+    gs_offset_t Length;
+} pdf_linearisation_record_t;
+
+
+
+
+
+
+typedef struct page_hint_stream_header_s {
+    unsigned int LeastObjectsPerPage;
+
+    unsigned int MostObjectsPerPage;
+    unsigned short ObjectNumBits;
+    unsigned int LeastPageLength;
+    unsigned int MostPageLength;
+    unsigned short PageLengthNumBits;
+    unsigned int LeastPageOffset;
+    unsigned int MostPageOffset;
+    unsigned short PageOffsetNumBits;
+    unsigned int LeastContentLength;
+    unsigned int MostContentLength;
+    unsigned short ContentLengthNumBits;
+    unsigned int MostSharedObjects;
+    unsigned int LargestSharedObject;
+    unsigned short SharedObjectNumBits;
+} page_hint_stream_header_t;
+
+typedef struct page_hint_stream_s {
+    unsigned int NumUniqueObjects;
+    unsigned int PageLength;
+    unsigned int NumSharedObjects;
+    unsigned int *SharedObjectRef;
+
+    gs_offset_t ContentOffset;
+    gs_offset_t ContentLength;
+} page_hint_stream_t;
+
+typedef struct shared_hint_stream_header_s {
+    unsigned int FirstSharedObject;
+    gs_offset_t FirstObjectOffset;
+    unsigned int FirstPageEntries;
+    unsigned int NumSharedObjects;
+
+    unsigned int LeastObjectLength;
+    unsigned int MostObjectLength;
+    unsigned short LengthNumBits;
+} shared_hint_stream_header_t;
+
+typedef struct share_hint_stream_s {
+    unsigned int ObjectNumber;
+    gs_offset_t ObjectOffset;
+    unsigned int ObjectLength;
+
+
+
+} shared_hint_stream_t;
+
+typedef struct pdf_linearisation_s {
+    FILE *sfile;
+    pdf_temp_file_t Lin_File;
+    char HintBuffer[256];
+    unsigned char HintBits;
+    unsigned char HintByte;
+    long Catalog_id;
+    long Info_id;
+    long Pages_id;
+    long NumPage1Resources;
+    long NumPart1StructureResources;
+    long NumSharedResources;
+    long NumUniquePageResources;
+    long NumPart9Resources;
+    long NumNonPageResources;
+    long LastResource;
+    long MainFileEnd;
+    gs_offset_t *Offsets;
+    gs_offset_t xref;
+    gs_offset_t FirstxrefOffset;
+    gs_offset_t FirsttrailerOffset;
+    gs_offset_t LDictOffset;
+    gs_offset_t FileLength;
+    gs_offset_t T;
+    gs_offset_t E;
+    page_hint_stream_header_t PageHintHeader;
+    int NumPageHints;
+    page_hint_stream_t *PageHints;
+    shared_hint_stream_header_t SharedHintHeader;
+    int NumSharedHints;
+    shared_hint_stream_t *SharedHints;
+} pdf_linearisation_t;
+# 461 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_font_cache_elem_s pdf_font_cache_elem_t;
+struct pdf_font_cache_elem_s {
+    pdf_font_cache_elem_t *next;
+    gs_id font_id;
+    int num_chars;
+    int num_widths;
+    struct pdf_font_resource_s *pdfont;
+    byte *glyph_usage;
+    double *real_widths;
+    gx_device_pdf *pdev;
+};
+# 484 "./devices/vector/gdevpdfx.h"
+typedef struct pdf_viewer_state_s {
+    int transfer_not_identity;
+    gs_id transfer_ids[4];
+    float opacity_alpha;
+    float shape_alpha;
+    gs_blend_mode_t blend_mode;
+    gs_id halftone_id;
+    gs_id black_generation_id;
+    gs_id undercolor_removal_id;
+    int overprint_mode;
+    float smoothness;
+    float flatness;
+    bool text_knockout;
+    bool fill_overprint;
+    bool stroke_overprint;
+    bool stroke_adjust;
+    bool fill_used_process_color;
+    bool stroke_used_process_color;
+    gx_hl_saved_color saved_fill_color;
+    gx_hl_saved_color saved_stroke_color;
+    gx_line_params line_params;
+    float *dash_pattern;
+    uint dash_pattern_size;
+    gs_id soft_mask_id;
+} pdf_viewer_state;
+
+
+
+
+
+typedef struct pdf_substream_save_s {
+    pdf_context_t context;
+    pdf_text_state_t *text_state;
+    gx_path *clip_path;
+    gs_id clip_path_id;
+    int vgstack_bottom;
+    stream *strm;
+    cos_dict_t *substream_Resources;
+    pdf_procset_t procsets;
+    bool skip_colors;
+    pdf_resource_t *font3;
+    pdf_resource_t *accumulating_substream_resource;
+    bool charproc_just_accumulated;
+    bool accumulating_a_global_object;
+    pdf_resource_t *pres_soft_mask_dict;
+    gs_const_string objname;
+    int last_charpath_op;
+} pdf_substream_save;
+# 543 "./devices/vector/gdevpdfx.h"
+typedef enum {
+    pdf_compress_none,
+    pdf_compress_LZW,
+    pdf_compress_Flate
+} pdf_compression_type;
+
+
+struct gx_device_pdf_s {
+    int params_size; const gx_device_procs *static_procs; const char *dname; gs_memory_t *memory; gs_memory_type_ptr_t stype; bool stype_is_dynamic; void (*finalize)(gx_device *); rc_header rc; bool retained; bool is_open; int max_fill_band; gx_device_color_info color_info; gx_device_cached_colors_t cached_colors; int width; int height; int pad; int log2_align_mod; int is_planar; int LeadingEdge; float MediaSize[2]; float ImagingBBox[4]; bool ImagingBBox_set; float HWResolution[2]; float MarginsHWResolution[2]; float Margins[2]; float HWMargins[4]; long PageCount; long ShowpageCount; int NumCopies; bool NumCopies_set; bool IgnoreNumCopies; bool UseCIEColor; bool LockSafetyParams; long band_offset_x; long band_offset_y; gx_stroked_gradient_recognizer_t sgr; int MaxPatternBitmap; bool page_uses_transparency; gdev_space_params space_params; cmm_dev_profile_t *icc_struct; gs_graphics_type_tag_t graphics_type_tag; gx_page_device_procs page_procs; gx_device_procs procs; gs_memory_t *v_memory; const gx_device_vector_procs *vec_procs; char fname[(4096 - 1) + 1]; FILE *file; stream *strm; byte *strmbuf; uint strmbuf_size; int open_options; gs_imager_state state; float *dash_pattern; uint dash_pattern_size; bool fill_used_process_color; bool stroke_used_process_color; gx_hl_saved_color saved_fill_color; gx_hl_saved_color saved_stroke_color; gs_id no_clip_path_id; gs_id clip_path_id; gx_path_type_t fill_options, stroke_options; gs_point scale; bool in_page; gx_device_bbox *bbox_device; gx_color_index black, white; psdf_version version; bool binary_ok; bool HaveCFF; bool HaveTrueTypes; bool HaveCIDSystem; double ParamCompatibilityLevel; psdf_distiller_params params;
+    bool is_ps2write;
+
+    double CompatibilityLevel;
+    int EndPage;
+    int StartPage;
+    bool Optimize;
+    bool ParseDSCCommentsForDocInfo;
+    bool ParseDSCComments;
+    bool EmitDSCWarnings;
+    bool CreateJobTicket;
+    bool PreserveEPSInfo;
+    bool AutoPositionEPSFiles;
+    bool PreserveCopyPage;
+    bool UsePrologue;
+    int OffOptimizations;
+
+
+    gs_param_float_array PDFXTrimBoxToMediaBoxOffset;
+    gs_param_float_array PDFXBleedBoxToTrimBoxOffset;
+    bool PDFXSetBleedBoxToMediaBox;
+
+    bool ReAssignCharacters;
+    bool ReEncodeCharacters;
+    long FirstObjectNumber;
+    bool CompressFonts;
+    bool PrintStatistics;
+    gs_param_string DocumentUUID;
+    gs_param_string InstanceUUID;
+    int DocumentTimeSeq;
+    bool ForOPDFRead;
+    bool Eps2Write;
+    bool CompressEntireFile;
+    bool ResourcesBeforeUsage;
+    bool HavePDFWidths;
+    bool HaveStrokeColor;
+    bool ProduceDSC;
+    bool HaveTransparency;
+    bool PatternImagemask;
+
+    bool PDFX;
+    int PDFA;
+    bool AbortPDFAX;
+    long MaxClipPathSize;
+
+    long MaxShadingBitmapSize;
+
+
+    long MaxInlineImageSize;
+    gs_param_int_array DSCEncodingToUnicode;
+
+    gs_param_string OwnerPassword;
+    gs_param_string UserPassword;
+    uint KeyLength;
+    uint Permissions;
+    uint EncryptionR;
+    gs_param_string NoEncrypt;
+    bool EncryptMetadata;
+
+    bool ComputeDocumentDigest;
+
+    byte EncryptionO[32];
+    byte EncryptionU[32];
+    byte EncryptionKey[16];
+    uint EncryptionV;
+
+    bool is_EPS;
+    int AccumulatingBBox;
+    gs_rect BBox;
+    pdf_page_dsc_info_t doc_dsc_info;
+    pdf_page_dsc_info_t page_dsc_info;
+
+    bool fill_overprint, stroke_overprint;
+    bool remap_fill_color, remap_stroke_color;
+    int overprint_mode;
+    gs_id halftone_id;
+    gs_id transfer_ids[4];
+    int transfer_not_identity;
+    gs_id black_generation_id, undercolor_removal_id;
+
+    pdf_compression_type compression;
+    pdf_compression_type compression_at_page_start;
+# 645 "./devices/vector/gdevpdfx.h"
+    pdf_temp_file_t xref;
+
+
+
+
+    pdf_temp_file_t asides;
+
+
+
+
+
+
+
+    pdf_temp_file_t streams;
+
+
+
+
+
+    pdf_temp_file_t pictures;
+
+    long next_id;
+
+
+    cos_dict_t *Catalog;
+    cos_dict_t *Info;
+    cos_dict_t *Pages;
+
+    long outlines_id;
+    int next_page;
+    int max_referred_page;
+    long contents_id;
+    pdf_context_t context;
+    long contents_length_id;
+    gs_offset_t contents_pos;
+    pdf_procset_t procsets;
+    pdf_text_data_t *text;
+    pdf_text_rotation_t text_rotation;
+
+    pdf_page_t *pages;
+    int num_pages;
+    ulong used_mask;
+    pdf_resource_list_t resources[NUM_RESOURCE_TYPES];
+
+    pdf_resource_t *cs_Patterns[5];
+    pdf_resource_t *Identity_ToUnicode_CMaps[2];
+    pdf_resource_t *last_resource;
+    pdf_resource_t *OneByteIdentityH;
+    gs_id IdentityCIDSystemInfo_id;
+    pdf_outline_level_t *outline_levels;
+    int outline_depth;
+    int max_outline_depth;
+    int closed_outline_depth;
+    int outlines_open;
+    pdf_article_t *articles;
+    cos_dict_t *Dests;
+    cos_dict_t *EmbeddedFiles;
+    byte fileID[16];
+
+    long uuid_time[2];
+
+
+
+
+
+    cos_dict_t *global_named_objects;
+
+
+
+    cos_dict_t *local_named_objects;
+
+
+
+
+
+    cos_array_t *NI_stack;
+
+
+
+
+
+
+    cos_array_t *Namespace_stack;
+    pdf_font_cache_elem_t *font_cache;
+
+
+
+
+    gs_point char_width;
+
+
+
+
+    gx_path *clip_path;
+
+
+
+    cos_array_t *PageLabels;
+    int PageLabels_current_page;
+    cos_dict_t *PageLabels_current_label;
+# 753 "./devices/vector/gdevpdfx.h"
+    gs_text_enum_t *pte;
+
+
+
+    pdf_viewer_state *vgstack;
+    int vgstack_size;
+    int vgstack_depth;
+    int vgstack_bottom;
+    pdf_viewer_state vg_initial;
+    bool vg_initial_set;
+
+
+    int sbstack_size;
+    int sbstack_depth;
+    pdf_substream_save *sbstack;
+# 776 "./devices/vector/gdevpdfx.h"
+    int FormDepth;
+
+
+
+
+    int HighLevelForm;
+
+
+
+
+
+
+
+    int PatternDepth;
+    gs_matrix AccumulatedPatternMatrix;
+
+
+    cos_dict_t *substream_Resources;
+    gs_color_space_index pcm_color_info_index;
+    bool skip_colors;
+    bool AR4_save_bug;
+    pdf_resource_t *font3;
+    pdf_resource_t *accumulating_substream_resource;
+    gs_matrix_fixed charproc_ctm;
+    bool accumulating_charproc;
+    gs_rect charproc_BBox;
+    bool charproc_just_accumulated;
+
+
+    bool PS_accumulator;
+
+    bool accumulating_a_global_object;
+
+
+
+
+    const pdf_char_glyph_pairs_t *cgp;
+
+
+
+    int substituted_pattern_count;
+    int substituted_pattern_drop_page;
+
+
+
+
+    gs_id image_mask_id;
+    bool image_mask_is_SMask;
+    bool image_mask_skip;
+    uint image_with_SMask;
+
+
+
+    gs_matrix converting_image_matrix;
+    double image_mask_scale;
+
+    pdf_resource_t *pres_soft_mask_dict;
+
+    gs_const_string objname;
+    int OPDFRead_procset_length;
+    void *find_resource_param;
+    int last_charpath_op;
+    bool type3charpath;
+    bool SetPageSize;
+    bool RotatePages;
+    bool FitPages;
+    bool CenterPages;
+    bool DoNumCopies;
+    bool PreserveSeparation;
+    bool PreserveDeviceN;
+    int PDFACompatibilityPolicy;
+    bool DetectDuplicateImages;
+    bool AllowIncrementalCFF;
+    bool WantsToUnicode;
+    bool AllowPSRepeatFunctions;
+    bool IsDistiller;
+    bool PreserveSMask;
+    bool PreserveTrMode;
+    bool NoT3CCITT;
+
+
+
+
+    bool UseOldColor;
+
+
+    bool Linearise;
+
+
+    int FirstPage;
+    int LastPage;
+    pdf_linearisation_record_t
+        *ResourceUsage;
+
+
+
+
+
+    int ResourceUsageSize;
+    bool InOutputPage;
+
+
+
+
+
+};
+# 924 "./devices/vector/gdevpdfx.h"
+int gdev_pdf_copy_mono(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1);
+int gdev_pdf_copy_color(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+int gdev_pdf_fill_mask(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height, const gx_drawing_color *pdcolor, int depth, gs_logical_operation_t lop, const gx_clip_path *pcpath);
+int gdev_pdf_strip_tile_rectangle(gx_device *dev, const gx_strip_bitmap *tiles, int x, int y, int width, int height, gx_color_index color0, gx_color_index color1, int phase_x, int phase_y);
+
+extern const gx_device_vector_procs pdf_vector_procs;
+int gdev_pdf_fill_rectangle(gx_device *dev, int x, int y, int width, int height, gx_color_index color);
+int gdev_pdf_fill_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_fill_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gdev_pdf_stroke_path(gx_device *dev, const gs_imager_state *pis, gx_path *ppath, const gx_stroke_params *params, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+int gdev_pdf_fillpage(gx_device *dev, gs_imager_state * pis, gx_device_color *pdevc);
+
+int gdev_pdf_begin_typed_image(gx_device *dev, const gs_imager_state *pis, const gs_matrix *pmat, const gs_image_common_t *pim, const gs_int_rect *prect, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gx_image_enum_common_t **pinfo);
+
+int gdev_pdf_get_params(gx_device *dev, gs_param_list *plist);
+int gdev_pdf_put_params(gx_device *dev, gs_param_list *plist);
+
+int gdev_pdf_text_begin(gx_device *dev, gs_imager_state *pis, const gs_text_params_t *text, gs_font *font, gx_path *path, const gx_device_color *pdcolor, const gx_clip_path *pcpath, gs_memory_t *memory, gs_text_enum_t **ppte);
+int gdev_pdf_fill_rectangle_hl_color(gx_device *dev, const gs_fixed_rect *rect, const gs_imager_state *pis, const gx_drawing_color *pdcolor, const gx_clip_path *pcpath);
+
+int gdev_pdf_include_color_space(gx_device *dev, gs_color_space *cspace, const byte *res_name, int name_length);
+
+int gdev_pdf_create_compositor(gx_device *dev, gx_device **pcdev, const gs_composite_t *pcte, gs_imager_state *pis, gs_memory_t *memory, gx_device *cdev);
+int gdev_pdf_begin_transparency_group(gx_device *dev, const gs_transparency_group_params_t *ptgp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem);
+int gdev_pdf_end_transparency_group(gx_device *dev, gs_imager_state *pis);
+int gdev_pdf_begin_transparency_mask(gx_device *dev, const gx_transparency_mask_params_t *ptmp, const gs_rect *pbbox, gs_imager_state *pis, gs_memory_t *mem);
+int gdev_pdf_end_transparency_mask(gx_device *dev, gs_imager_state *pis);
+int gdev_pdf_dev_spec_op(gx_device *dev, int op, void *data, int datasize);
+
+
+
+
+
+
+void pdf_initialize_ids(gx_device_pdf * pdev);
+
+
+void pdf_set_process_color_model(gx_device_pdf * pdev, int index);
+
+
+void pdf_reset_text(gx_device_pdf *pdev);
+
+
+
+
+
+
+int ps2write_dsc_header(gx_device_pdf * pdev, int pages);
+
+
+int pdfwrite_pdf_open_document(gx_device_pdf * pdev);
+
+
+
+
+long pdf_obj_forward_ref(gx_device_pdf * pdev);
+
+
+long pdf_obj_ref(gx_device_pdf * pdev);
+
+
+gs_offset_t pdf_stell(gx_device_pdf * pdev);
+
+
+long pdf_open_obj(gx_device_pdf * pdev, long id, pdf_resource_type_t type);
+long pdf_begin_obj(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+int pdf_end_obj(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+
+
+
+int pdf_open_contents(gx_device_pdf * pdev, pdf_context_t context);
+
+
+int pdf_close_contents(gx_device_pdf * pdev, bool last);
+
+
+
+extern const char *const pdf_resource_type_names[];
+extern const gs_memory_struct_type_t *const pdf_resource_type_structs[];
+
+
+int pdf_record_usage(gx_device_pdf *const pdev, long resource_id, int page_num);
+int pdf_record_usage_by_parent(gx_device_pdf *const pdev, long resource_id, long parent);
+# 1020 "./devices/vector/gdevpdfx.h"
+long pdf_open_separate(gx_device_pdf * pdev, long id, pdf_resource_type_t type);
+long pdf_begin_separate(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+void pdf_reserve_object_id(gx_device_pdf * pdev, pdf_resource_t *ppres, long id);
+
+
+int pdf_alloc_aside(gx_device_pdf * pdev, pdf_resource_t ** plist,
+                const gs_memory_struct_type_t * pst, pdf_resource_t **ppres,
+                long id);
+
+int pdf_begin_aside(gx_device_pdf * pdev, pdf_resource_t **plist,
+                    const gs_memory_struct_type_t * pst,
+                    pdf_resource_t **ppres, pdf_resource_type_t type);
+
+
+int pdf_begin_resource(gx_device_pdf * pdev, pdf_resource_type_t rtype,
+                       gs_id rid, pdf_resource_t **ppres);
+
+
+int pdf_begin_resource_body(gx_device_pdf * pdev, pdf_resource_type_t rtype,
+                            gs_id rid, pdf_resource_t **ppres);
+
+
+int pdf_alloc_resource(gx_device_pdf * pdev, pdf_resource_type_t rtype,
+                       gs_id rid, pdf_resource_t **ppres, long id);
+
+
+int pdf_find_same_resource(gx_device_pdf * pdev,
+        pdf_resource_type_t rtype, pdf_resource_t **ppres,
+        int (*eq)(gx_device_pdf * pdev, pdf_resource_t *pres0, pdf_resource_t *pres1));
+
+
+pdf_resource_t *pdf_find_resource_by_resource_id(gx_device_pdf * pdev,
+                                                pdf_resource_type_t rtype, gs_id id);
+
+
+pdf_resource_t *pdf_find_resource_by_gs_id(gx_device_pdf * pdev,
+                                           pdf_resource_type_t rtype,
+                                           gs_id rid);
+
+void pdf_drop_resources(gx_device_pdf * pdev, pdf_resource_type_t rtype,
+        int (*cond)(gx_device_pdf * pdev, pdf_resource_t *pres));
+
+
+void pdf_print_resource_statistics(gx_device_pdf * pdev);
+
+
+int pdf_cancel_resource(gx_device_pdf * pdev, pdf_resource_t *pres,
+        pdf_resource_type_t rtype);
+
+
+void pdf_forget_resource(gx_device_pdf * pdev, pdf_resource_t *pres1,
+        pdf_resource_type_t rtype);
+
+
+int pdf_substitute_resource(gx_device_pdf *pdev, pdf_resource_t **ppres,
+            pdf_resource_type_t rtype,
+            int (*eq)(gx_device_pdf *pdev, pdf_resource_t *pres0, pdf_resource_t *pres1),
+            bool write);
+
+
+long pdf_resource_id(const pdf_resource_t *pres);
+
+
+int pdf_end_separate(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+int pdf_end_aside(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+int pdf_end_resource(gx_device_pdf * pdev, pdf_resource_type_t type);
+
+
+
+
+int pdf_write_resource_objects(gx_device_pdf *pdev, pdf_resource_type_t rtype);
+
+
+
+
+
+
+void pdf_reverse_resource_chain(gx_device_pdf *pdev, pdf_resource_type_t rtype);
+
+
+
+
+int pdf_free_resource_objects(gx_device_pdf *pdev, pdf_resource_type_t rtype);
+
+
+
+
+
+int pdf_store_page_resources(gx_device_pdf *pdev, pdf_page_t *page, bool clear_usage);
+
+
+void pdf_copy_data(stream *s, FILE *file, gs_offset_t count, stream_arcfour_state *ss);
+void pdf_copy_data_safe(stream *s, FILE *file, gs_offset_t position, long count);
+
+
+int pdf_begin_encrypt(gx_device_pdf * pdev, stream **s, gs_id object_id);
+
+void pdf_end_encrypt(gx_device_pdf * pdev);
+
+int pdf_encrypt_init(const gx_device_pdf * pdev, gs_id object_id, stream_arcfour_state *psarc4);
+
+
+
+
+
+long pdf_page_id(gx_device_pdf * pdev, int page_num);
+
+
+pdf_page_t *pdf_current_page(gx_device_pdf *pdev);
+
+
+cos_dict_t *pdf_current_page_dict(gx_device_pdf *pdev);
+
+
+int pdf_open_page(gx_device_pdf * pdev, pdf_context_t context);
+
+
+int pdf_unclip(gx_device_pdf * pdev);
+
+
+int pdf_write_saved_string(gx_device_pdf * pdev, gs_string * pstr);
+
+
+
+
+int pdf_remember_clip_path(gx_device_pdf * pdev, const gx_clip_path * pcpath);
+
+
+bool pdf_must_put_clip_path(gx_device_pdf * pdev, const gx_clip_path * pcpath);
+
+
+int pdf_put_clip_path(gx_device_pdf * pdev, const gx_clip_path * pcpath);
+
+
+
+typedef struct pdf_lcvd_s {
+    gx_device_memory mdev;
+    gx_device_memory *mask;
+    gx_device_pdf *pdev;
+    int (*std_copy_color)(gx_device *dev, const byte *data, int data_x, int raster, gx_bitmap_id id, int x, int y, int width, int height);
+    int (*std_fill_rectangle)(gx_device *dev, int x, int y, int width, int height, gx_color_index color);
+    int (*std_close_device)(gx_device *dev);
+    void (*std_get_clipping_box)(gx_device *dev, gs_fixed_rect *pbox);
+    bool mask_is_empty;
+    bool path_is_empty;
+    bool mask_is_clean;
+    bool write_matrix;
+    bool has_background;
+    gs_matrix m;
+    gs_point path_offset;
+} pdf_lcvd_t;
+
+
+
+
+
+
+
+int pdf_setup_masked_image_converter(gx_device_pdf *pdev, gs_memory_t *mem, const gs_matrix *m, pdf_lcvd_t **pcvd,
+                                 bool need_mask, int x, int y, int w, int h, bool write_on_close);
+int pdf_dump_converted_image(gx_device_pdf *pdev, pdf_lcvd_t *cvd);
+void pdf_remove_masked_image_converter(gx_device_pdf *pdev, pdf_lcvd_t *cvd, bool need_mask);
+
+
+
+
+
+void pdf_store_default_Producer(char buf[200]);
+
+
+typedef struct pdf_filter_names_s {
+    const char *ASCII85Decode;
+    const char *ASCIIHexDecode;
+    const char *CCITTFaxDecode;
+    const char *DCTDecode;
+    const char *DecodeParms;
+    const char *Filter;
+    const char *FlateDecode;
+    const char *LZWDecode;
+    const char *RunLengthDecode;
+    const char *JBIG2Decode;
+    const char *JPXDecode;
+} pdf_filter_names_t;
+# 1217 "./devices/vector/gdevpdfx.h"
+void pdf_put_matrix(gx_device_pdf *pdev, const char *before,
+                    const gs_matrix *pmat, const char *after);
+
+
+typedef int (*pdf_put_name_chars_proc_t)(stream *, const byte *, uint);
+pdf_put_name_chars_proc_t
+    pdf_put_name_chars_proc(const gx_device_pdf *pdev);
+int pdf_put_name_chars(const gx_device_pdf *pdev, const byte *nstr,
+                        uint size);
+int pdf_put_name(const gx_device_pdf *pdev, const byte *nstr, uint size);
+
+
+int pdf_put_string(const gx_device_pdf *pdev, const byte *str, uint size);
+
+
+int pdf_write_value(const gx_device_pdf *pdev, const byte *vstr, uint size, gs_id object_id);
+
+
+int pdf_put_filters(cos_dict_t *pcd, gx_device_pdf *pdev, stream *s,
+                    const pdf_filter_names_t *pfn);
+
+
+typedef struct pdf_data_writer_s {
+    psdf_binary_writer binary;
+    gs_offset_t start;
+    gs_offset_t length_pos;
+    pdf_resource_t *pres;
+    gx_device_pdf *pdev;
+    long length_id;
+    bool encrypted;
+} pdf_data_writer_t;
+# 1257 "./devices/vector/gdevpdfx.h"
+int pdf_begin_data_stream(gx_device_pdf *pdev, pdf_data_writer_t *pdw,
+                          int options, gs_id object_id);
+int pdf_append_data_stream_filters(gx_device_pdf *pdev, pdf_data_writer_t *pdw,
+                      int orig_options, gs_id object_id);
+
+int pdf_begin_data(gx_device_pdf *pdev, pdf_data_writer_t *pdw);
+
+
+int pdf_end_data(pdf_data_writer_t *pdw);
+# 1283 "./devices/vector/gdevpdfx.h"
+int pdf_function(gx_device_pdf *pdev, const gs_function_t *pfn,
+                 cos_value_t *pvalue);
+int pdf_function_scaled(gx_device_pdf *pdev, const gs_function_t *pfn,
+                        const gs_range_t *pranges, cos_value_t *pvalue);
+
+
+int pdf_write_function(gx_device_pdf *pdev, const gs_function_t *pfn,
+                       long *pid);
+
+
+
+
+int pdf_write_font_bbox(gx_device_pdf *pdev, const gs_int_rect *pbox);
+int pdf_write_font_bbox_float(gx_device_pdf *pdev, const gs_rect *pbox);
+# 1309 "./devices/vector/gdevpdfx.h"
+bool pdf_key_eq(const gs_param_string * pcs, const char *str);
+
+
+int pdfmark_scan_int(const gs_param_string * pstr, int *pvalue);
+
+
+int pdfmark_process(gx_device_pdf * pdev, const gs_param_string_array * pma);
+
+
+int pdfmark_close_outline(gx_device_pdf * pdev);
+
+
+int pdfmark_end_pagelabels(gx_device_pdf * pdev);
+
+
+int pdfmark_write_article(gx_device_pdf * pdev, const pdf_article_t * part);
+
+
+
+
+bool pdf_objname_is_valid(const byte *data, uint size);
+
+
+
+
+
+int pdf_find_named(gx_device_pdf * pdev, const gs_param_string * pname,
+                   cos_object_t **ppco);
+
+
+
+
+
+int pdf_create_named(gx_device_pdf *pdev, const gs_param_string *pname,
+                     cos_type_t cotype, cos_object_t **ppco, long id);
+int pdf_create_named_dict(gx_device_pdf *pdev, const gs_param_string *pname,
+                          cos_dict_t **ppcd, long id);
+
+
+
+
+
+
+
+int pdf_refer_named(gx_device_pdf *pdev, const gs_param_string *pname,
+                    cos_object_t **ppco);
+# 1363 "./devices/vector/gdevpdfx.h"
+int pdf_make_named(gx_device_pdf * pdev, const gs_param_string * pname,
+                   cos_type_t cotype, cos_object_t **ppco, bool assign_id);
+int pdf_make_named_dict(gx_device_pdf * pdev, const gs_param_string * pname,
+                        cos_dict_t **ppcd, bool assign_id);
+
+
+
+
+
+
+int pdf_get_named(gx_device_pdf * pdev, const gs_param_string * pname,
+                  cos_type_t cotype, cos_object_t **ppco);
+
+
+
+
+
+int pdf_push_namespace(gx_device_pdf *pdev);
+
+
+
+
+
+int pdf_pop_namespace(gx_device_pdf *pdev);
+
+
+
+
+
+
+
+int pdf_scan_token(const byte **pscan, const byte * end, const byte **ptoken);
+
+
+
+
+
+int pdf_scan_token_composite(const byte **pscan, const byte * end,
+                             const byte **ptoken);
+
+
+int pdf_replace_names(gx_device_pdf *pdev, const gs_param_string *from,
+                      gs_param_string *to);
+
+
+
+
+
+
+
+int write_font_resources(gx_device_pdf *pdev, pdf_resource_list_t *prlist);
+
+
+
+
+
+pdf_text_data_t *pdf_text_data_alloc(gs_memory_t *mem);
+void pdf_set_text_state_default(pdf_text_state_t *pts);
+void pdf_text_state_copy(pdf_text_state_t *pts_to, pdf_text_state_t *pts_from);
+void pdf_reset_text_page(pdf_text_data_t *ptd);
+void pdf_reset_text_state(pdf_text_data_t *ptd);
+void pdf_close_text_page(gx_device_pdf *pdev);
+int pdf_get_stoted_text_size(pdf_text_state_t *state);
+
+
+
+int pdf_char_image_y_offset(const gx_device_pdf *pdev, int x, int y, int h);
+
+
+int pdf_begin_char_proc(gx_device_pdf * pdev, int w, int h, int x_width,
+                        int y_offset, int x_offset, gs_id id, pdf_char_proc_t **ppcp,
+                        pdf_stream_position_t * ppos);
+
+
+int pdf_end_char_proc(gx_device_pdf * pdev, pdf_stream_position_t * ppos);
+
+
+int pdf_do_char_image(gx_device_pdf * pdev, const pdf_char_proc_t * pcp,
+                      const gs_matrix * pimat);
+
+
+int pdf_start_charproc_accum(gx_device_pdf *pdev);
+
+int pdf_set_charproc_attrs(gx_device_pdf *pdev, gs_font *font, double *pw, int narg,
+                gs_text_cache_control_t control, gs_char ch, bool scale_100);
+
+int pdf_end_charproc_accum(gx_device_pdf *pdev, gs_font *font, const pdf_char_glyph_pairs_t *cgp,
+                       gs_glyph glyph, gs_char output_char_code, const gs_const_string *gnstr);
+
+int pdf_open_aside(gx_device_pdf *pdev, pdf_resource_type_t rtype,
+        gs_id id, pdf_resource_t **ppres, bool reserve_object_id, int options);
+
+
+int pdf_close_aside(gx_device_pdf *pdev);
+
+
+int pdf_enter_substream(gx_device_pdf *pdev, pdf_resource_type_t rtype,
+                gs_id id, pdf_resource_t **ppres, bool reserve_object_id, bool compress);
+
+
+int pdf_exit_substream(gx_device_pdf *pdev);
+
+int pdf_add_procsets(cos_dict_t *pcd, pdf_procset_t procsets);
+
+int pdf_add_resource(gx_device_pdf *pdev, cos_dict_t *pcd, const char *key, pdf_resource_t *pres);
+
+
+
+int pdf_from_stream_to_text(gx_device_pdf *pdev);
+int pdf_from_string_to_text(gx_device_pdf *pdev);
+void pdf_close_text_contents(gx_device_pdf *pdev);
+# 27 "./devices/vector/gdevpdf.c" 2
+# 1 "./devices/vector/gdevpdfg.h" 1
+# 26 "./devices/vector/gdevpdfg.h"
+typedef struct pdf_base_font_s pdf_base_font_t;
+# 37 "./devices/vector/gdevpdfg.h"
+typedef struct pdf_color_space_names_s {
+    const char *DeviceCMYK;
+    const char *DeviceGray;
+    const char *DeviceRGB;
+    const char *Indexed;
+} pdf_color_space_names_t;
+
+
+
+
+extern const pdf_color_space_names_t
+    pdf_color_space_names,
+    pdf_color_space_names_short;
+# 61 "./devices/vector/gdevpdfg.h"
+typedef struct pdf_color_space_s pdf_color_space_t;
+struct pdf_color_space_s {
+    pdf_color_space_t *next; pdf_resource_t *prev; gs_id rid; bool named; bool global; char rname[1 + (sizeof(long) * 8 / 3 + 1) + 1 ]; ulong where_used; cos_object_t *object;
+    const gs_range_t *ranges;
+    uint serialized_size;
+    byte *serialized;
+};
+# 78 "./devices/vector/gdevpdfg.h"
+int pdf_cspace_init_Device(gs_memory_t *mem, gs_color_space **ppcs, int num_components);
+
+
+
+
+int pdf_convert_ICC(gx_device_pdf *pdev,
+                const gs_color_space *pcs, cos_value_t *pvalue,
+                const pdf_color_space_names_t *pcsn);
+# 98 "./devices/vector/gdevpdfg.h"
+int pdf_color_space_named(gx_device_pdf *pdev, cos_value_t *pvalue,
+                    const gs_range_t **ppranges,
+                    const gs_color_space *pcs,
+                    const pdf_color_space_names_t *pcsn,
+                    bool by_name, const byte *res_name, int name_length, bool keepICC);
+
+int free_color_space(gx_device_pdf *pdev, pdf_resource_t *pres);
+int pdf_indexed_color_space(gx_device_pdf *pdev, cos_value_t *pvalue,
+                        const gs_color_space *pcs, cos_array_t *pca, cos_value_t *cos_base);
+
+int convert_separation_alternate(gx_device_pdf * pdev, const gs_imager_state * pis, const gs_color_space *pcs,
+                        const gx_drawing_color *pdc, bool *used_process_color,
+                        const psdf_set_color_commands_t *ppscc, gs_client_color *pcc, cos_value_t *pvalue, bool by_name);
+int convert_DeviceN_alternate(gx_device_pdf * pdev, const gs_imager_state * pis, const gs_color_space *pcs,
+                        const gx_drawing_color *pdc, bool *used_process_color,
+                        const psdf_set_color_commands_t *ppscc, gs_client_color *pcc, cos_value_t *pvalue, bool by_name);
+
+int pdf_cs_Pattern_colored(gx_device_pdf *pdev, cos_value_t *pvalue);
+int pdf_cs_Pattern_uncolored(gx_device_pdf *pdev, cos_value_t *pvalue);
+int pdf_cs_Pattern_uncolored_hl(gx_device_pdf *pdev,
+        const gs_color_space *pcs, cos_value_t *pvalue);
+
+
+void pdf_color_space_procsets(gx_device_pdf *pdev,
+                              const gs_color_space *pcs);
+
+
+
+
+void pdf_viewer_state_from_imager_state(gx_device_pdf * pdev,
+        const gs_imager_state *pis, const gx_device_color *pdevc);
+
+
+void pdf_prepare_initial_viewer_state(gx_device_pdf * pdev, const gs_imager_state *pis);
+
+
+void pdf_reset_graphics(gx_device_pdf *pdev);
+
+
+void pdf_set_initial_color(gx_device_pdf * pdev, gx_hl_saved_color *saved_fill_color,
+                    gx_hl_saved_color *saved_stroke_color,
+                    bool *fill_used_process_color, bool *stroke_used_process_color);
+
+void rescale_cie_color(gs_range_t *ranges, int num_colorants,
+                    const gs_client_color *src, gs_client_color *des);
+
+int pdf_reset_color(gx_device_pdf * pdev, const gs_imager_state * pis,
+                const gx_drawing_color *pdc, gx_hl_saved_color * psc,
+                bool *used_process_color,
+                const psdf_set_color_commands_t *ppscc);
+
+int pdf_set_pure_color(gx_device_pdf * pdev, gx_color_index color,
+                   gx_hl_saved_color * psc,
+                   bool *used_process_color,
+                   const psdf_set_color_commands_t *ppscc);
+int pdf_set_drawing_color(gx_device_pdf * pdev, const gs_imager_state * pis,
+                      const gx_drawing_color *pdc,
+                      gx_hl_saved_color * psc,
+                      bool *used_process_color,
+                      const psdf_set_color_commands_t *ppscc);
+
+
+
+
+int pdf_try_prepare_fill(gx_device_pdf *pdev, const gs_imager_state *pis);
+int pdf_prepare_drawing(gx_device_pdf *pdev, const gs_imager_state *pis, pdf_resource_t **ppres);
+int pdf_prepare_fill(gx_device_pdf *pdev, const gs_imager_state *pis);
+int pdf_prepare_stroke(gx_device_pdf *pdev, const gs_imager_state *pis);
+int pdf_prepare_image(gx_device_pdf *pdev, const gs_imager_state *pis);
+int pdf_prepare_imagemask(gx_device_pdf *pdev, const gs_imager_state *pis,
+                          const gx_drawing_color *pdcolor);
+int pdf_save_viewer_state(gx_device_pdf *pdev, stream *s);
+int pdf_restore_viewer_state(gx_device_pdf *pdev, stream *s);
+int pdf_end_gstate(gx_device_pdf *pdev, pdf_resource_t *pres);
+
+
+
+
+int pdf_string_to_cos_name(gx_device_pdf *pdev, const byte *str, uint len,
+                       cos_value_t *pvalue);
+
+
+
+typedef struct pdf_pattern_s pdf_pattern_t;
+struct pdf_pattern_s {
+    pdf_pattern_t *next; pdf_resource_t *prev; gs_id rid; bool named; bool global; char rname[1 + (sizeof(long) * 8 / 3 + 1) + 1 ]; ulong where_used; cos_object_t *object;
+    pdf_pattern_t *substitute;
+};
+
+
+
+
+
+
+pdf_resource_t *pdf_substitute_pattern(pdf_resource_t *pres);
+
+
+
+
+
+
+
+typedef struct pdf_image_names_s {
+    pdf_color_space_names_t color_spaces;
+    pdf_filter_names_t filter_names;
+    const char *BitsPerComponent;
+    const char *ColorSpace;
+    const char *Decode;
+    const char *Height;
+    const char *ImageMask;
+    const char *Interpolate;
+    const char *Width;
+} pdf_image_names_t;
+
+
+
+
+
+extern const pdf_image_names_t pdf_image_names_full, pdf_image_names_short;
+
+
+
+
+int pdf_put_image_values(cos_dict_t *pcd, gx_device_pdf *pdev,
+                         const gs_pixel_image_t *pic,
+                         const pdf_image_names_t *pin,
+                         const cos_value_t *pcsvalue);
+
+
+
+int pdf_put_image_filters(cos_dict_t *pcd, gx_device_pdf *pdev,
+                          const psdf_binary_writer * pbw,
+                          const pdf_image_names_t *pin);
+# 239 "./devices/vector/gdevpdfg.h"
+void pdf_make_bitmap_matrix(gs_matrix * pmat, int x, int y, int w, int h,
+                            int h_actual);
+
+
+void pdf_put_image_matrix(gx_device_pdf * pdev, const gs_matrix * pmat,
+                          double y_scale);
+
+
+int pdf_do_image_by_id(gx_device_pdf * pdev, double scale,
+             const gs_matrix * pimat, bool in_contents, gs_id id);
+int pdf_do_image(gx_device_pdf * pdev, const pdf_resource_t * pres,
+                 const gs_matrix * pimat, bool in_contents);
+
+
+
+
+typedef struct pdf_image_writer_s {
+    psdf_binary_writer binary[4];
+    int alt_writer_count;
+    const pdf_image_names_t *pin;
+    pdf_resource_t *pres;
+    int height;
+    cos_stream_t *data;
+    const char *end_string;
+    cos_dict_t *named;
+    pdf_resource_t *pres_mask;
+} pdf_image_writer;
+extern const gs_memory_struct_type_t st_pdf_image_writer;
+
+
+
+
+
+
+void pdf_image_writer_init(pdf_image_writer * piw);
+
+
+
+
+
+
+int pdf_begin_write_image(gx_device_pdf * pdev, pdf_image_writer * piw,
+                          gx_bitmap_id id, int w, int h,
+                          cos_dict_t *pnamed, bool in_line);
+
+
+int pdf_begin_image_data(gx_device_pdf * pdev, pdf_image_writer * piw,
+                         const gs_pixel_image_t * pim,
+                         const cos_value_t *pcsvalue,
+                         int alt_writer_index);
+
+
+int pdf_copy_mask_bits(stream *s, const byte *base, int sourcex,
+                       int raster, int w, int h, byte invert);
+
+
+int pdf_copy_color_bits(stream *s, const byte *base, int sourcex,
+                        int raster, int w, int h, int bytes_per_pixel);
+
+
+int
+pdf_complete_image_data(gx_device_pdf *pdev, pdf_image_writer *piw, int data_h,
+                        int width, int bits_per_pixel);
+
+
+int pdf_end_image_binary(gx_device_pdf *pdev, pdf_image_writer *piw,
+                         int data_h);
+
+
+
+
+
+int pdf_end_write_image(gx_device_pdf * pdev, pdf_image_writer * piw);
+
+
+
+
+int pdf_make_alt_stream(gx_device_pdf * pdev, psdf_binary_writer * piw);
+
+
+
+
+int pdf_choose_compression(pdf_image_writer * piw, bool end_binary);
+
+
+int pdf_register_charproc_resource(gx_device_pdf *pdev, gs_id id, pdf_resource_type_t type);
+
+
+
+
+int pdf_store_pattern1_params(gx_device_pdf *pdev, pdf_resource_t *pres,
+                        gs_pattern1_instance_t *pinst);
+
+
+int pdf_put_colored_pattern(gx_device_pdf *pdev, const gx_drawing_color *pdc,
+                        const gs_color_space *pcs,
+                        const psdf_set_color_commands_t *ppscc,
+                        bool have_pattern_streams, pdf_resource_t **ppres);
+
+
+int pdf_put_uncolored_pattern(gx_device_pdf *pdev, const gx_drawing_color *pdc,
+                          const gs_color_space *pcs,
+                          const psdf_set_color_commands_t *ppscc,
+                          bool have_pattern_streams, pdf_resource_t **ppres);
+
+
+int pdf_put_pattern2(gx_device_pdf *pdev, const gx_drawing_color *pdc,
+                 const psdf_set_color_commands_t *ppscc,
+                 pdf_resource_t **ppres);
+
+
+
+
+
+int pdf_copy_color_data(gx_device_pdf * pdev, const byte * base, int sourcex,
+                    int raster, gx_bitmap_id id, int x, int y, int w, int h,
+                    gs_image_t *pim, pdf_image_writer *piw,
+                    int for_pattern);
+
+
+
+
+
+
+int pdf_document_metadata(gx_device_pdf *pdev);
+int pdf_get_docinfo_item(gx_device_pdf *pdev, const char *key, char *buf, int buf_length);
+# 28 "./devices/vector/gdevpdf.c" 2
+# 1 "./devices/vector/gdevpdfo.h" 1
+# 39 "./devices/vector/gdevpdfo.h"
+# 1 "./base/smd5.h" 1
+# 23 "./base/smd5.h"
+# 1 "./base/md5.h" 1
+# 63 "./base/md5.h"
+typedef unsigned char gs_md5_byte_t;
+typedef unsigned int gs_md5_word_t;
+
+
+typedef struct gs_md5_state_s {
+    gs_md5_word_t count[2];
+    gs_md5_word_t abcd[4];
+    gs_md5_byte_t buf[64];
+} gs_md5_state_t;
+
+
+
+
+
+
+
+void gs_md5_init(gs_md5_state_t *pms);
+
+
+void gs_md5_append(gs_md5_state_t *pms, const gs_md5_byte_t *data, int nbytes);
+
+
+void gs_md5_finish(gs_md5_state_t *pms, gs_md5_byte_t digest[16]);
+# 24 "./base/smd5.h" 2
+
+
+
+
+
+typedef struct stream_MD5E_state_s {
+    const stream_template *templat; gs_memory_t *memory; int (*report_error)(stream_state *, const char *); int min_left; char error_string[79 + 1];
+    gs_md5_state_t md5;
+} stream_MD5E_state;
+
+
+
+
+extern const stream_template s_MD5E_template;
+
+stream *s_MD5E_make_stream(gs_memory_t *mem, byte *digest, int digest_size);
+
+
+
+
+
+
+stream *s_MD5C_make_stream(gs_memory_t *mem, stream *strm);
+
+int s_MD5C_get_digest(stream *s, byte *buf, int buf_length);
+# 40 "./devices/vector/gdevpdfo.h" 2
+# 62 "./devices/vector/gdevpdfo.h"
+typedef struct cos_element_s cos_element_t;
+typedef struct cos_stream_piece_s cos_stream_piece_t;
+
+
+
+
+
+            struct cos_object_procs_s {
+
+
+
+        void (*release)(cos_object_t *pco, client_name_t cname);
+
+
+
+        int (*write)(const cos_object_t *pco, gx_device_pdf *pdev, gs_id object_id);
+
+
+
+        int (*equal)(const cos_object_t *pco0, const cos_object_t *pco1, gx_device_pdf *pdev);
+
+
+
+        int (*hash)(const cos_object_t *pco0, gs_md5_state_t *md5, gs_md5_byte_t *hash, gx_device_pdf *pdev);
+
+} ;
+# 132 "./devices/vector/gdevpdfo.h"
+struct cos_object_s { const cos_object_procs_t *cos_procs; long id; cos_element_t *elements; cos_stream_piece_t *pieces; gx_device_pdf *pdev; pdf_resource_t *pres; byte is_open; byte is_graphics; byte written; long length; stream *input_strm; gs_md5_state_t md5; int md5_valid; byte hash[16]; int stream_md5_valid; byte stream_hash[16]; };
+
+
+
+
+extern const cos_object_procs_t cos_generic_procs;
+
+
+extern const cos_object_procs_t cos_reference_procs;
+# 155 "./devices/vector/gdevpdfo.h"
+typedef enum {
+    COS_VALUE_SCALAR = 0,
+    COS_VALUE_CONST,
+    COS_VALUE_OBJECT,
+    COS_VALUE_RESOURCE
+} cos_value_type_t;
+struct cos_value_s {
+    cos_value_type_t value_type;
+    union vc_ {
+        gs_string chars;
+        cos_object_t *object;
+    } contents;
+};
+# 180 "./devices/vector/gdevpdfo.h"
+typedef struct cos_array_element_s cos_array_element_t;
+struct cos_array_s { const cos_object_procs_t *cos_procs; long id; cos_array_element_t *elements; cos_stream_piece_t *pieces; gx_device_pdf *pdev; pdf_resource_t *pres; byte is_open; byte is_graphics; byte written; long length; stream *input_strm; gs_md5_state_t md5; int md5_valid; byte hash[16]; int stream_md5_valid; byte stream_hash[16]; };
+extern const cos_object_procs_t cos_array_procs;
+
+
+typedef struct cos_dict_element_s cos_dict_element_t;
+struct cos_dict_s { const cos_object_procs_t *cos_procs; long id; cos_dict_element_t *elements; cos_stream_piece_t *pieces; gx_device_pdf *pdev; pdf_resource_t *pres; byte is_open; byte is_graphics; byte written; long length; stream *input_strm; gs_md5_state_t md5; int md5_valid; byte hash[16]; int stream_md5_valid; byte stream_hash[16]; };
+extern const cos_object_procs_t cos_dict_procs;
+
+
+struct cos_stream_s { const cos_object_procs_t *cos_procs; long id; cos_dict_element_t *elements; cos_stream_piece_t *pieces; gx_device_pdf *pdev; pdf_resource_t *pres; byte is_open; byte is_graphics; byte written; long length; stream *input_strm; gs_md5_state_t md5; int md5_valid; byte hash[16]; int stream_md5_valid; byte stream_hash[16]; };
+extern const cos_object_procs_t cos_stream_procs;
+# 203 "./devices/vector/gdevpdfo.h"
+cos_object_t *cos_object_alloc(gx_device_pdf *, client_name_t);
+cos_array_t *cos_array_alloc(gx_device_pdf *, client_name_t);
+cos_array_t *cos_array_from_floats(gx_device_pdf *, const float *, uint,
+                                   client_name_t);
+cos_dict_t *cos_dict_alloc(gx_device_pdf *, client_name_t);
+cos_stream_t *cos_stream_alloc(gx_device_pdf *, client_name_t);
+
+
+cos_object_t *cos_reference_alloc(gx_device_pdf *, client_name_t);
+
+
+gs_memory_t *cos_object_memory(const cos_object_t *);
+
+
+
+int cos_become(cos_object_t *, cos_type_t);
+
+
+void cos_release(cos_object_t *pco, client_name_t cname);
+
+int cos_write(const cos_object_t *pco, gx_device_pdf *pdev, gs_id object_id);
+int cos_write_dict_as_ordered_array(cos_object_t *pco, gx_device_pdf *pdev, pdf_resource_type_t type);
+
+
+
+const cos_value_t *cos_string_value(cos_value_t *, const byte *, uint);
+const cos_value_t *cos_c_string_value(cos_value_t *, const char *);
+const cos_value_t *cos_object_value(cos_value_t *, cos_object_t *);
+
+
+const cos_value_t *cos_resource_value(cos_value_t *, cos_object_t *);
+# 246 "./devices/vector/gdevpdfo.h"
+int cos_array_put(cos_array_t *, long, const cos_value_t *);
+int cos_array_put_no_copy(cos_array_t *, long, const cos_value_t *);
+int cos_array_add(cos_array_t *, const cos_value_t *);
+int cos_array_add_no_copy(cos_array_t *, const cos_value_t *);
+int cos_array_add_c_string(cos_array_t *, const char *);
+int cos_array_add_int(cos_array_t *, int);
+int cos_array_add_real(cos_array_t *, double);
+int cos_array_add_object(cos_array_t *, cos_object_t *);
+
+int cos_array_unadd(cos_array_t *, cos_value_t *);
+
+int cos_dict_put(cos_dict_t *, const byte *, uint, const cos_value_t *);
+int cos_dict_put_no_copy(cos_dict_t *, const byte *, uint,
+                         const cos_value_t *);
+int cos_dict_put_c_key(cos_dict_t *, const char *, const cos_value_t *);
+int cos_dict_put_c_key_string(cos_dict_t *, const char *, const byte *, uint);
+int cos_dict_put_c_key_int(cos_dict_t *, const char *, int);
+int cos_dict_put_c_key_bool(cos_dict_t *pcd, const char *key, bool value);
+int cos_dict_put_c_key_real(cos_dict_t *, const char *, double);
+int cos_dict_put_c_key_floats(cos_dict_t *, const char *, const float *, uint);
+int cos_dict_put_c_key_object(cos_dict_t *, const char *, cos_object_t *);
+int cos_dict_put_string(cos_dict_t *, const byte *, uint, const byte *, uint);
+int cos_dict_put_string_copy(cos_dict_t *pcd, const char *key, const char *value);
+int cos_dict_put_c_strings(cos_dict_t *, const char *, const char *);
+
+int cos_dict_move_all(cos_dict_t *, cos_dict_t *);
+
+int cos_stream_add(cos_stream_t *, uint);
+int cos_stream_add_bytes(cos_stream_t *, const byte *, uint);
+int cos_stream_add_stream_contents(cos_stream_t *, stream *);
+int cos_stream_release_pieces(cos_stream_t *pcs);
+cos_dict_t *cos_stream_dict(cos_stream_t *);
+
+
+int cos_dict_delete_c_key(cos_dict_t *pcd, const char *key);
+# 295 "./devices/vector/gdevpdfo.h"
+const cos_array_element_t *
+    cos_array_element_first(const cos_array_t *);
+const cos_array_element_t *
+    cos_array_element_next(const cos_array_element_t *, long *,
+                           const cos_value_t **);
+
+
+const cos_value_t *cos_dict_find(const cos_dict_t *, const byte *, uint);
+const cos_value_t *cos_dict_find_c_key(const cos_dict_t *, const char *);
+
+int cos_dict_forall(const cos_dict_t *pcd, void *client_data,
+        int (*proc)(void *client_data, const byte *key_data, uint key_size, const cos_value_t *v));
+
+
+typedef struct cos_param_list_writer_s {
+    const gs_param_list_procs *procs; gs_memory_t *memory; bool persistent_keys;
+    cos_dict_t *pcd;
+    int print_ok;
+} cos_param_list_writer_t;
+int cos_param_list_writer_init(cos_param_list_writer_t *, cos_dict_t *,
+                               int print_ok);
+
+
+
+stream *cos_write_stream_alloc(cos_stream_t *pcs, gx_device_pdf *pdev,
+                               client_name_t cname);
+
+
+cos_stream_t * cos_stream_from_pipeline(stream *s);
+
+stream * cos_write_stream_from_pipeline(stream *s);
+
+
+int cos_value_write(const cos_value_t *, gx_device_pdf *);
+
+
+int cos_dict_elements_write(const cos_dict_t *, gx_device_pdf *);
+int cos_stream_elements_write(const cos_stream_t *, gx_device_pdf *);
+int cos_stream_contents_write(const cos_stream_t *, gx_device_pdf *);
+
+
+long cos_stream_length(const cos_stream_t *pcs);
+
+
+
+int cos_dict_objects_write(const cos_dict_t *, gx_device_pdf *);
+int cos_dict_objects_delete(cos_dict_t *);
+
+
+int cos_write_object(cos_object_t *pco, gx_device_pdf *pdev, pdf_resource_type_t type);
+
+
+
+void cos_value_free(const cos_value_t *, const cos_object_t *, client_name_t);
+
+
+void cos_free(cos_object_t *pco, client_name_t cname);
+# 29 "./devices/vector/gdevpdf.c" 2
+
+
+
+# 1 "./devices/vector/gdevpdtf.h" 1
+# 22 "./devices/vector/gdevpdtf.h"
+# 1 "./devices/vector/gdevpdtx.h" 1
+# 22 "./devices/vector/gdevpdtx.h"
+# 1 "./devices/vector/gdevpdt.h" 1
+# 40 "./devices/vector/gdevpdt.h"
+pdf_text_state_t *pdf_text_state_alloc(gs_memory_t *mem);
+
+
+
+
+pdf_text_data_t *pdf_text_data_alloc(gs_memory_t *mem);
+
+int text_data_free(gs_memory_t *mem, pdf_text_data_t *ptd);
+
+
+
+
+void pdf_reset_text_page(pdf_text_data_t *ptd);
+
+
+
+
+void pdf_reset_text_state(pdf_text_data_t *ptd);
+
+
+
+
+void pdf_close_text_page(gx_device_pdf *pdev);
+
+
+
+
+
+
+int pdf_from_stream_to_text(gx_device_pdf *pdev);
+
+
+
+
+int pdf_from_string_to_text(gx_device_pdf *pdev);
+
+
+
+
+void pdf_close_text_contents(gx_device_pdf *pdev);
+
+
+
+
+int pdf_char_image_y_offset(const gx_device_pdf *pdev, int x, int y, int h);
+
+
+int pdf_begin_char_proc(gx_device_pdf * pdev, int w, int h, int x_width,
+                        int y_offset, int x_offset, gs_id id, pdf_char_proc_t **ppcp,
+                        pdf_stream_position_t * ppos);
+
+
+int pdf_end_char_proc(gx_device_pdf * pdev,
+                      pdf_stream_position_t * ppos);
+
+
+int pdf_do_char_image(gx_device_pdf * pdev, const pdf_char_proc_t * pcp,
+                      const gs_matrix * pimat);
+# 23 "./devices/vector/gdevpdtx.h" 2
+# 62 "./devices/vector/gdevpdtx.h"
+typedef struct pdf_bitmap_fonts_s pdf_bitmap_fonts_t;
+
+
+
+typedef struct pdf_outline_fonts_s pdf_outline_fonts_t;
+
+
+
+
+
+
+
+struct pdf_text_data_s {
+    pdf_outline_fonts_t *outline_fonts;
+    pdf_bitmap_fonts_t *bitmap_fonts;
+    pdf_text_state_t *text_state;
+};
+# 87 "./devices/vector/gdevpdtx.h"
+typedef struct pdf_font_resource_s pdf_font_resource_t;
+
+
+
+
+long pdf_font_id(const pdf_font_resource_t *pdfont);
+
+int pdf_used_charproc_resources(gx_device_pdf *pdev, pdf_font_resource_t *pdfont);
+# 23 "./devices/vector/gdevpdtf.h" 2
+# 88 "./devices/vector/gdevpdtf.h"
+typedef struct gs_cmap_s gs_cmap_t;
+
+
+
+
+typedef struct gs_font_type0_s gs_font_type0;
+# 103 "./devices/vector/gdevpdtf.h"
+typedef struct pdf_font_descriptor_s pdf_font_descriptor_t;
+
+
+
+
+typedef struct pdf_char_glyph_pair_s pdf_char_glyph_pair_t;
+
+
+struct pdf_char_glyph_pair_s {
+    gs_char chr;
+    gs_glyph glyph;
+};
+# 128 "./devices/vector/gdevpdtf.h"
+typedef int (*pdf_font_write_contents_proc_t)
+     (gx_device_pdf *, pdf_font_resource_t *);
+
+
+
+
+
+typedef struct pdf_encoding_element_s {
+    gs_glyph glyph;
+    gs_const_string str;
+    bool is_difference;
+} pdf_encoding_element_t;
+# 149 "./devices/vector/gdevpdtf.h"
+struct pdf_base_font_s {
+# 161 "./devices/vector/gdevpdtf.h"
+    gs_font_base *copied;
+    gs_font_base *complete;
+    enum {
+        DO_SUBSET_UNKNOWN = 0,
+        DO_SUBSET_NO,
+        DO_SUBSET_YES
+    } do_subset;
+    bool is_standard;
+
+
+
+
+
+
+    int num_glyphs;
+    byte *CIDSet;
+    int CIDSetLength;
+    gs_string font_name;
+    bool written;
+    cos_dict_t *FontFile;
+};
+# 191 "./devices/vector/gdevpdtf.h"
+typedef struct {
+    gs_id id;
+    pdf_resource_type_t type;
+} pdf_resource_ref_t;
+
+
+
+
+
+
+
+struct pdf_font_resource_s {
+    pdf_font_resource_t *next; pdf_resource_t *prev; gs_id rid; bool named; bool global; char rname[1 + (sizeof(long) * 8 / 3 + 1) + 1 ]; ulong where_used; cos_object_t *object;
+    font_type FontType;
+    pdf_font_write_contents_proc_t write_contents;
+    gs_string BaseFont;
+    pdf_font_descriptor_t *FontDescriptor;
+
+
+
+
+
+    pdf_base_font_t *base_font;
+    uint count;
+    double *Widths;
+    byte *used;
+
+    pdf_resource_t *res_ToUnicode;
+    gs_cmap_t *cmap_ToUnicode;
+    gs_glyph_mark_proc_t mark_glyph;
+    void *mark_glyph_data;
+    union {
+
+        struct {
+
+            pdf_font_resource_t *DescendantFont;
+
+
+
+
+
+            char Encoding_name[(((17) > (sizeof(long) * 8 / 3 + 1 + 4)) ? (17) : (sizeof(long) * 8 / 3 + 1 + 4)) + 1
+
+
+
+            ];
+            gs_const_string CMapName;
+
+            uint font_index;
+            bool cmap_is_standard;
+            int WMode;
+
+        } type0;
+
+        struct {
+
+
+            long CIDSystemInfo_id;
+            ushort *CIDToGIDMap;
+            unsigned int CIDToGIDMapLength;
+            gs_id glyphshow_font_id;
+            double *Widths2;
+            double *v;
+            byte *used2;
+            pdf_font_resource_t *parent;
+
+        } cidfont;
+
+        struct {
+
+            int FirstChar, LastChar;
+
+
+
+
+            gs_encoding_index_t BaseEncoding;
+            gs_encoding_index_t preferred_encoding_index;
+            pdf_encoding_element_t *Encoding;
+            gs_point *v;
+            int last_reserved_char;
+
+
+            union {
+
+                struct {
+                    bool is_MM_instance;
+                } type1;
+
+                struct {
+
+
+
+
+                    int _dummy;
+                } truetype;
+
+                struct {
+                    gs_rect FontBBox;
+                    gs_matrix FontMatrix;
+                    pdf_char_proc_ownership_t *char_procs;
+                    int max_y_offset;
+                    bool bitmap_font;
+                    cos_dict_t *Resources;
+                    byte *cached;
+                } type3;
+
+            } s;
+
+        } simple;
+
+    } u;
+};
+# 312 "./devices/vector/gdevpdtf.h"
+typedef enum {
+    FONT_EMBED_STANDARD,
+    FONT_EMBED_NO,
+    FONT_EMBED_YES
+} pdf_font_embed_t;
+# 326 "./devices/vector/gdevpdtf.h"
+typedef struct pdf_standard_font_s {
+    pdf_font_resource_t *pdfont;
+    gs_matrix orig_matrix;
+} pdf_standard_font_t;
+# 347 "./devices/vector/gdevpdtf.h"
+struct pdf_outline_fonts_s {
+    pdf_standard_font_t *standard_fonts;
+};
+# 362 "./devices/vector/gdevpdtf.h"
+pdf_outline_fonts_t *pdf_outline_fonts_alloc(gs_memory_t *mem);
+
+
+
+
+pdf_standard_font_t *pdf_standard_fonts(const gx_device_pdf *pdev);
+
+
+
+
+void pdf_clean_standard_fonts(const gx_device_pdf *pdev);
+
+
+int pdf_free_font_cache(gx_device_pdf *pdev);
+
+
+
+
+int pdf_font_type0_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                         gs_id rid, pdf_font_resource_t *DescendantFont,
+                         const gs_const_string *CMapName);
+int pdf_font_type3_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                         pdf_font_write_contents_proc_t write_contents);
+int pdf_font_std_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                   bool is_original, gs_id rid, gs_font_base *pfont, int index);
+int pdf_font_simple_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                          gs_id rid, pdf_font_descriptor_t *pfd);
+int pdf_font_cidfont_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                           gs_id rid, pdf_font_descriptor_t *pfd);
+int pdf_obtain_cidfont_widths_arrays(gx_device_pdf *pdev, pdf_font_resource_t *pdfont,
+                    int wmode, double **w, double **w0, double **v);
+int font_resource_encoded_alloc(gx_device_pdf *pdev, pdf_font_resource_t **ppfres,
+                            gs_id rid, font_type ftype,
+                            pdf_font_write_contents_proc_t write_contents);
+int pdf_assign_font_object_id(gx_device_pdf *pdev, pdf_font_resource_t *pdfont);
+
+int font_resource_free(gx_device_pdf *pdev, pdf_font_resource_t *pdfont);
+
+
+int pdf_resize_resource_arrays(gx_device_pdf *pdev, pdf_font_resource_t *pfres,
+        int chars_count);
+
+
+
+
+
+
+gs_font_base *pdf_font_resource_font(const pdf_font_resource_t *pdfont, bool complete);
+
+
+
+
+
+
+
+pdf_font_embed_t pdf_font_embed_status(gx_device_pdf *pdev, gs_font *font,
+                                       int *pindex,
+                                       pdf_char_glyph_pair_t *pairs, int num_glyphs);
+
+
+
+
+
+int pdf_compute_BaseFont(gx_device_pdf *pdev, pdf_font_resource_t *pdfont, bool finish);
+
+
+
+
+int pdf_convert_truetype_font(gx_device_pdf *pdev, pdf_resource_t *pres);
+
+
+
+
+int pdf_convert_truetype_font_descriptor(gx_device_pdf *pdev, pdf_font_resource_t *pdfont);
+
+
+
+
+
+
+int pdf_cmap_alloc(gx_device_pdf *pdev, const gs_cmap_t *pcmap,
+                   pdf_resource_t **ppres , int font_index_only);
+
+
+
+
+int pdf_font_add_cid_to_gid(pdf_font_resource_t *pdfont, uint cid, uint gid);
+# 33 "./devices/vector/gdevpdf.c" 2
+
+# 1 "./devices/vector/gdevpdtd.h" 1
+# 23 "./devices/vector/gdevpdtd.h"
+# 1 "./devices/vector/gdevpdtb.h" 1
+# 75 "./devices/vector/gdevpdtb.h"
+int pdf_base_font_alloc(gx_device_pdf *pdev, pdf_base_font_t **ppbfont,
+                    gs_font_base *font, const gs_matrix *orig_matrix,
+                    bool is_standard);
+
+
+
+
+
+
+gs_string *pdf_base_font_name(pdf_base_font_t *pbfont);
+
+
+
+
+
+gs_font_base *pdf_base_font_font(const pdf_base_font_t *pbfont, bool complete);
+
+
+
+
+bool pdf_base_font_is_subset(const pdf_base_font_t *pbfont);
+
+
+
+
+void pdf_base_font_drop_complete(pdf_base_font_t *pbfont);
+
+
+
+
+
+
+
+int pdf_base_font_copy_glyph(pdf_base_font_t *pbfont, gs_glyph glyph,
+                             gs_font_base *font);
+
+
+
+
+bool pdf_has_subset_prefix(const byte *str, uint size);
+
+
+
+
+int pdf_add_subset_prefix(const gx_device_pdf *pdev, gs_string *pstr,
+                        byte *used, int count, char *md5_hash);
+
+
+
+
+bool pdf_do_subset_font(gx_device_pdf *pdev, pdf_base_font_t *pbfont,
+                        gs_id rid);
+
+
+
+
+int pdf_write_FontFile_entry(gx_device_pdf *pdev, pdf_base_font_t *pbfont);
+
+
+
+
+int pdf_write_embedded_font(gx_device_pdf *pdev, pdf_base_font_t *pbfont, font_type FontType,
+                        gs_int_rect *FontBBox, gs_id rid, cos_dict_t **ppcd);
+
+
+
+
+int pdf_write_CharSet(gx_device_pdf *pdev, pdf_base_font_t *pbfont);
+
+
+
+
+int pdf_write_CIDSet(gx_device_pdf *pdev, pdf_base_font_t *pbfont,
+                     long *pcidset_id);
+
+
+
+
+bool pdf_is_standard_font(pdf_base_font_t *bfont);
+
+void pdf_set_FontFile_object(pdf_base_font_t *bfont, cos_dict_t *pcd);
+const cos_dict_t * pdf_get_FontFile_object(pdf_base_font_t *bfont);
+
+const char *pdf_find_base14_name(const byte *str, uint size);
+# 24 "./devices/vector/gdevpdtd.h" 2
+# 69 "./devices/vector/gdevpdtd.h"
+int pdf_font_descriptor_alloc(gx_device_pdf *pdev,
+                              pdf_font_descriptor_t **ppfd,
+                              gs_font_base *font, bool embed);
+
+int pdf_font_descriptor_free(gx_device_pdf *pdev, pdf_resource_t *pres);
+
+
+
+
+long pdf_font_descriptor_id(const pdf_font_descriptor_t *pfd);
+
+
+
+
+
+long pdf_set_font_descriptor_usage(gx_device_pdf *pdev, int parent_id, const pdf_font_descriptor_t *pfd);
+
+
+
+
+font_type pdf_font_descriptor_FontType(const pdf_font_descriptor_t *pfd);
+
+
+
+
+bool pdf_font_descriptor_embedding(const pdf_font_descriptor_t *pfd);
+
+
+
+
+bool pdf_font_descriptor_is_subset(const pdf_font_descriptor_t *pfd);
+
+
+
+
+
+gs_string *pdf_font_descriptor_name(pdf_font_descriptor_t *pfd);
+
+char *pdf_fontfile_hash(void *pfd);
+
+
+
+
+
+gs_font_base *pdf_font_descriptor_font(const pdf_font_descriptor_t *pfd, bool complete);
+
+
+
+
+void pdf_font_descriptor_drop_complete_font(const pdf_font_descriptor_t *pfd);
+
+
+
+
+
+gs_string *pdf_font_descriptor_base_name(const pdf_font_descriptor_t *pfd);
+
+
+
+
+
+int pdf_font_used_glyph(pdf_font_descriptor_t *pfd, gs_glyph glyph,
+                        gs_font_base *font);
+
+
+
+
+int pdf_compute_font_descriptor(gx_device_pdf *pdev, pdf_font_descriptor_t *pfd);
+
+
+
+
+
+int pdf_finish_FontDescriptor(gx_device_pdf *pdev,
+                              pdf_resource_t *pfd);
+
+int pdf_finish_resources(gx_device_pdf *pdev, pdf_resource_type_t type,
+                        int (*finish_proc)(gx_device_pdf *,
+                                           pdf_resource_t *));
+
+
+
+int pdf_write_FontDescriptor(gx_device_pdf *pdev,
+                             pdf_resource_t *pfd);
+
+
+
+
+int pdf_release_FontDescriptor_components(gx_device_pdf *pdev, pdf_resource_t *pfd);
+
+
+
+
+int pdf_mark_font_descriptor_used(gx_device_pdf *pdev, pdf_font_descriptor_t *pfd);
+
+
+
+
+int mark_font_descriptor_symbolic(const pdf_font_resource_t *pdfont);
+# 35 "./devices/vector/gdevpdf.c" 2
+# 1 "./devices/vector/gdevpdti.h" 1
+# 33 "./devices/vector/gdevpdti.h"
+struct pdf_bitmap_fonts_s {
+    pdf_font_resource_t *open_font;
+    bool use_open_font;
+    long bitmap_encoding_id;
+    int max_embedded_code;
+};
+# 52 "./devices/vector/gdevpdti.h"
+void pdf_close_text_page(gx_device_pdf *pdev);
+
+
+
+
+int pdf_char_image_y_offset(const gx_device_pdf *pdev, int x, int y, int h);
+
+
+int pdf_charproc_x_offset(pdf_char_proc_t *pcp);
+int pdf_charproc_y_offset(pdf_char_proc_t *pcp);
+
+
+int pdf_begin_char_proc(gx_device_pdf * pdev, int w, int h, int x_width,
+                        int y_offset, int x_offset, gs_id id, pdf_char_proc_t **ppcp,
+                        pdf_stream_position_t * ppos);
+
+
+int pdf_end_char_proc(gx_device_pdf * pdev, pdf_stream_position_t * ppos);
+
+int pdf_free_charproc_ownership(gx_device_pdf * pdev, pdf_resource_t *pres);
+
+
+int pdf_do_char_image(gx_device_pdf * pdev, const pdf_char_proc_t * pcp,
+                      const gs_matrix * pimat);
+
+
+
+
+
+
+pdf_bitmap_fonts_t *pdf_bitmap_fonts_alloc(gs_memory_t *mem);
+
+
+
+
+int pdf_write_bitmap_fonts_Encoding(gx_device_pdf *pdev);
+
+
+int pdf_write_contents_bitmap(gx_device_pdf *pdev, pdf_font_resource_t *pdfont);
+
+
+void pdf_mark_glyph_names(const pdf_font_resource_t *pdfont, const gs_memory_t *memory);
+# 36 "./devices/vector/gdevpdf.c" 2
+# 1 "./base/gsfcmap.h" 1
+# 35 "./base/gsfcmap.h"
+int gs_cmap_create_identity(gs_cmap_t **ppcmap, int num_bytes, int wmode,
+                            gs_memory_t *mem);
+
+
+
+
+
+
+int gs_cmap_create_char_identity(gs_cmap_t **ppcmap, int num_bytes,
+                                 int wmode, gs_memory_t *mem);
+
+
+
+
+
+
+
+int gs_cmap_decode_next(const gs_cmap_t *pcmap, const gs_const_string *str,
+                        uint *pindex, uint *pfidx,
+                        gs_char *pchr, gs_glyph *pglyph);
+
+
+
+
+int gs_cmap_ToUnicode_alloc(gs_memory_t *mem, int id, int num_codes, int key_size,
+                            gs_cmap_t **ppcmap);
+
+int gs_cmap_ToUnicode_free(gs_memory_t *mem, gs_cmap_t *pcmap);
+
+
+
+
+void gs_cmap_ToUnicode_add_pair(gs_cmap_t *pcmap, int code0, int code2);
+# 37 "./devices/vector/gdevpdf.c" 2
+# 48 "./devices/vector/gdevpdf.c"
+static const gc_ptr_element_t pdf_page_enum_ptrs[] = { { GC_ELT_OBJ, ((int) ( (char *)&((pdf_page_t *)0)->Page - (char *)((pdf_page_t *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_page_t *)0)->Annots - (char *)((pdf_page_t *)0) )) } }; static const gc_struct_data_t pdf_page_reloc_ptrs = { (sizeof(pdf_page_enum_ptrs) / sizeof((pdf_page_enum_ptrs)[0])), 0, 0, pdf_page_enum_ptrs }; static const gs_memory_struct_type_t st_pdf_page = { sizeof(pdf_page_t), "pdf_page_t", 0, 0, basic_enum_ptrs, basic_reloc_ptrs, 0, &pdf_page_reloc_ptrs };
+static gs_ptr_type_t pdf_page_elt_enum_ptrs(const gs_memory_t *mem, const void *vptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { uint count = size / (uint)sizeof(pdf_page_t); if ( count == 0 ) return 0; return (*(st_pdf_page).enum_ptrs)(mem, (const char *)vptr + (index % count) * sizeof(pdf_page_t), sizeof(pdf_page_t), index / count, pep, &(st_pdf_page), gcst); } static void pdf_page_elt_reloc_ptrs(void *vptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { { uint count = size / (uint)sizeof(pdf_page_t); for ( ; count; count--, vptr = (char *)vptr + sizeof(pdf_page_t) ) (*(st_pdf_page).reloc_ptrs)(vptr, sizeof(pdf_page_t), &(st_pdf_page), gcst); } } static const gs_memory_struct_type_t st_pdf_page_element = { sizeof(pdf_page_t), "pdf_page_t[]", 0, 0, pdf_page_elt_enum_ptrs, pdf_page_elt_reloc_ptrs, 0, 0 };
+
+
+static const gc_ptr_element_t pdf_linearisation_record_enum_ptrs[] = { { GC_ELT_OBJ, ((int) ( (char *)&((pdf_linearisation_record_t *)0)->PageList - (char *)((pdf_linearisation_record_t *)0) )) } }; static const gc_struct_data_t pdf_linearisation_record_reloc_ptrs = { (sizeof(pdf_linearisation_record_enum_ptrs) / sizeof((pdf_linearisation_record_enum_ptrs)[0])), 0, 0, pdf_linearisation_record_enum_ptrs }; static const gs_memory_struct_type_t st_pdf_linearisation_record = { sizeof(pdf_linearisation_record_t), "pdf_linearisation_record_t", 0, 0, basic_enum_ptrs, basic_reloc_ptrs, 0, &pdf_linearisation_record_reloc_ptrs };
+static gs_ptr_type_t pdf_linearisation_record_elt_enum_ptrs(const gs_memory_t *mem, const void *vptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { uint count = size / (uint)sizeof(pdf_linearisation_record_t); if ( count == 0 ) return 0; return (*(st_pdf_linearisation_record).enum_ptrs)(mem, (const char *)vptr + (index % count) * sizeof(pdf_linearisation_record_t), sizeof(pdf_linearisation_record_t), index / count, pep, &(st_pdf_linearisation_record), gcst); } static void pdf_linearisation_record_elt_reloc_ptrs(void *vptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { { uint count = size / (uint)sizeof(pdf_linearisation_record_t); for ( ; count; count--, vptr = (char *)vptr + sizeof(pdf_linearisation_record_t) ) (*(st_pdf_linearisation_record).reloc_ptrs)(vptr, sizeof(pdf_linearisation_record_t), &(st_pdf_linearisation_record), gcst); } } static const gs_memory_struct_type_t st_pdf_linearisation_record_element = { sizeof(pdf_linearisation_record_t), "pdf_linearstion_record_t[]", 0, 0, pdf_linearisation_record_elt_enum_ptrs, pdf_linearisation_record_elt_reloc_ptrs, 0, 0 };
+
+
+static void device_pdfwrite_finalize(const gs_memory_t *cmem, void *ptr); static gs_ptr_type_t device_pdfwrite_enum_ptrs(const gs_memory_t *mem, const void *ptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst); static void device_pdfwrite_reloc_ptrs(void *ptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst); static const gs_memory_struct_type_t st_device_pdfwrite = { sizeof(gx_device_pdf), "gx_device_pdf", 0, 0, device_pdfwrite_enum_ptrs, device_pdfwrite_reloc_ptrs, device_pdfwrite_finalize, 0 };
+static const gc_ptr_element_t pdf_substream_save_enum[] = { { GC_ELT_CONST_STRING, ((int) ( (char *)&((pdf_substream_save *)0)->objname - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->text_state - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->clip_path - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->strm - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->substream_Resources - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->font3 - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->accumulating_substream_resource - (char *)((pdf_substream_save *)0) )) }, { GC_ELT_OBJ, ((int) ( (char *)&((pdf_substream_save *)0)->pres_soft_mask_dict - (char *)((pdf_substream_save *)0) )) } }; static const gc_struct_data_t pdf_substream_save_reloc = { (sizeof(pdf_substream_save_enum) / sizeof((pdf_substream_save_enum)[0])), 0, 0, pdf_substream_save_enum }; static const gs_memory_struct_type_t st_pdf_substream_save = { sizeof(pdf_substream_save), "pdf_substream_save", 0, 0, basic_enum_ptrs, basic_reloc_ptrs, 0, &pdf_substream_save_reloc };
+static gs_ptr_type_t pdf_substream_save_elt_enum_ptrs(const gs_memory_t *mem, const void *vptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { uint count = size / (uint)sizeof(pdf_substream_save); if ( count == 0 ) return 0; return (*(st_pdf_substream_save).enum_ptrs)(mem, (const char *)vptr + (index % count) * sizeof(pdf_substream_save), sizeof(pdf_substream_save), index / count, pep, &(st_pdf_substream_save), gcst); } static void pdf_substream_save_elt_reloc_ptrs(void *vptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { { uint count = size / (uint)sizeof(pdf_substream_save); for ( ; count; count--, vptr = (char *)vptr + sizeof(pdf_substream_save) ) (*(st_pdf_substream_save).reloc_ptrs)(vptr, sizeof(pdf_substream_save), &(st_pdf_substream_save), gcst); } } static const gs_memory_struct_type_t st_pdf_substream_save_element = { sizeof(pdf_substream_save), "pdf_substream_save[]", 0, 0, pdf_substream_save_elt_enum_ptrs, pdf_substream_save_elt_reloc_ptrs, 0, 0 };
+
+
+static
+gs_ptr_type_t device_pdfwrite_enum_ptrs(const gs_memory_t *mem, const void *vptr, uint size, int index, enum_ptr_t *pep, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { const gx_device_pdf *pdev = vptr; switch ( index ) { default:
+{
+    index -= 42 + 5;
+    if (index < NUM_RESOURCE_TYPES * 16)
+        return (pep->ptr = (const void *)(pdev->resources[index / 16].chains[index % 16]), (&ptr_struct_procs));
+    index -= NUM_RESOURCE_TYPES * 16;
+    if (index <= pdev->outline_depth && pdev->outline_levels)
+        return (pep->ptr = (const void *)(pdev->outline_levels[index].first.action), (&ptr_struct_procs));
+    index -= pdev->outline_depth + 1;
+    if (index <= pdev->outline_depth && pdev->outline_levels)
+        return (pep->ptr = (const void *)(pdev->outline_levels[index].last.action), (&ptr_struct_procs));
+    index -= pdev->outline_depth + 1;
+    return (*(st_device_psdf).enum_ptrs)(mem, vptr, size, index-(0), pep, &(st_device_psdf), gcst);
+}
+
+case 0: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->asides.strm), (&ptr_struct_procs)); case 1: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->asides.strm_buf), (&ptr_struct_procs)); case 2: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->asides.save_strm), (&ptr_struct_procs)); case 3: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->streams.strm), (&ptr_struct_procs)); case 4: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->streams.strm_buf), (&ptr_struct_procs)); case 5: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->pictures.strm), (&ptr_struct_procs)); case 6: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->pictures.strm_buf), (&ptr_struct_procs)); case 7: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->pictures.save_strm), (&ptr_struct_procs)); case 8: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Catalog), (&ptr_struct_procs)); case 9: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Info), (&ptr_struct_procs)); case 10: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Pages), (&ptr_struct_procs)); case 11: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->text), (&ptr_struct_procs)); case 12: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->pages), (&ptr_struct_procs)); case 13: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->cs_Patterns[0]), (&ptr_struct_procs)); case 14: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->cs_Patterns[1]), (&ptr_struct_procs)); case 15: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->cs_Patterns[3]), (&ptr_struct_procs)); case 16: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->cs_Patterns[4]), (&ptr_struct_procs)); case 17: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->last_resource), (&ptr_struct_procs)); case 18: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->articles), (&ptr_struct_procs)); case 19: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Dests), (&ptr_struct_procs)); case 20: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->global_named_objects), (&ptr_struct_procs)); case 21: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->local_named_objects), (&ptr_struct_procs)); case 22: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->NI_stack), (&ptr_struct_procs)); case 23: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Namespace_stack), (&ptr_struct_procs)); case 24: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->font_cache), (&ptr_struct_procs)); case 25: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->clip_path), (&ptr_struct_procs)); case 26: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->PageLabels), (&ptr_struct_procs)); case 27: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->PageLabels_current_label), (&ptr_struct_procs)); case 28: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->sbstack), (&ptr_struct_procs)); case 29: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->substream_Resources), (&ptr_struct_procs)); case 30: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->font3), (&ptr_struct_procs)); case 31: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->accumulating_substream_resource), (&ptr_struct_procs)); case 32: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->pres_soft_mask_dict), (&ptr_struct_procs)); case 33: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->PDFXTrimBoxToMediaBoxOffset.data), (&ptr_struct_procs)); case 34: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->PDFXBleedBoxToTrimBoxOffset.data), (&ptr_struct_procs)); case 35: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->DSCEncodingToUnicode.data), (&ptr_struct_procs)); case 36: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[0]), (&ptr_struct_procs)); case 37: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[1]), (&ptr_struct_procs)); case 38: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->ResourceUsage), (&ptr_struct_procs)); case 39: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->vgstack), (&ptr_struct_procs)); case 40: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->outline_levels), (&ptr_struct_procs)); case 41: return (pep->ptr = (const void *)(((const gx_device_pdf *)vptr)->EmbeddedFiles), (&ptr_struct_procs));
+
+
+case 0 + 42: return (((const gx_device_pdf *)vptr)->OwnerPassword.persistent ? 0 : (pep->ptr = (&((const gx_device_pdf *)vptr)->OwnerPassword)->data, pep->size = (&((const gx_device_pdf *)vptr)->OwnerPassword)->size, (&ptr_string_procs))); case 1 + 42: return (((const gx_device_pdf *)vptr)->UserPassword.persistent ? 0 : (pep->ptr = (&((const gx_device_pdf *)vptr)->UserPassword)->data, pep->size = (&((const gx_device_pdf *)vptr)->UserPassword)->size, (&ptr_string_procs))); case 2 + 42: return (((const gx_device_pdf *)vptr)->NoEncrypt.persistent ? 0 : (pep->ptr = (&((const gx_device_pdf *)vptr)->NoEncrypt)->data, pep->size = (&((const gx_device_pdf *)vptr)->NoEncrypt)->size, (&ptr_string_procs))); case 3 + 42: return (((const gx_device_pdf *)vptr)->DocumentUUID.persistent ? 0 : (pep->ptr = (&((const gx_device_pdf *)vptr)->DocumentUUID)->data, pep->size = (&((const gx_device_pdf *)vptr)->DocumentUUID)->size, (&ptr_string_procs))); case 4 + 42: return (((const gx_device_pdf *)vptr)->InstanceUUID.persistent ? 0 : (pep->ptr = (&((const gx_device_pdf *)vptr)->InstanceUUID)->data, pep->size = (&((const gx_device_pdf *)vptr)->InstanceUUID)->size, (&ptr_string_procs)));
+
+
+
+case 0 + 42 + 5: return (pep->ptr = (&((const gx_device_pdf *)vptr)->objname)->data, pep->size = (&((const gx_device_pdf *)vptr)->objname)->size, (&ptr_string_procs));
+
+} }
+static void device_pdfwrite_reloc_ptrs(void *vptr, uint size, const gs_memory_struct_type_t *pstype, gc_state_t *gcst) { gx_device_pdf *pdev = vptr;
+{
+    (*(st_device_psdf).reloc_ptrs)(vptr, size, &(st_device_psdf), gcst);
+
+    (((gx_device_pdf *)vptr)->asides.strm = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->asides.strm), gcst))); (((gx_device_pdf *)vptr)->asides.strm_buf = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->asides.strm_buf), gcst))); (((gx_device_pdf *)vptr)->asides.save_strm = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->asides.save_strm), gcst))); (((gx_device_pdf *)vptr)->streams.strm = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->streams.strm), gcst))); (((gx_device_pdf *)vptr)->streams.strm_buf = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->streams.strm_buf), gcst))); (((gx_device_pdf *)vptr)->pictures.strm = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->pictures.strm), gcst))); (((gx_device_pdf *)vptr)->pictures.strm_buf = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->pictures.strm_buf), gcst))); (((gx_device_pdf *)vptr)->pictures.save_strm = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->pictures.save_strm), gcst))); (((gx_device_pdf *)vptr)->Catalog = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Catalog), gcst))); (((gx_device_pdf *)vptr)->Info = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Info), gcst))); (((gx_device_pdf *)vptr)->Pages = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Pages), gcst))); (((gx_device_pdf *)vptr)->text = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->text), gcst))); (((gx_device_pdf *)vptr)->pages = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->pages), gcst))); (((gx_device_pdf *)vptr)->cs_Patterns[0] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->cs_Patterns[0]), gcst))); (((gx_device_pdf *)vptr)->cs_Patterns[1] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->cs_Patterns[1]), gcst))); (((gx_device_pdf *)vptr)->cs_Patterns[3] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->cs_Patterns[3]), gcst))); (((gx_device_pdf *)vptr)->cs_Patterns[4] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->cs_Patterns[4]), gcst))); (((gx_device_pdf *)vptr)->last_resource = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->last_resource), gcst))); (((gx_device_pdf *)vptr)->articles = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->articles), gcst))); (((gx_device_pdf *)vptr)->Dests = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Dests), gcst))); (((gx_device_pdf *)vptr)->global_named_objects = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->global_named_objects), gcst))); (((gx_device_pdf *)vptr)->local_named_objects = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->local_named_objects), gcst))); (((gx_device_pdf *)vptr)->NI_stack = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->NI_stack), gcst))); (((gx_device_pdf *)vptr)->Namespace_stack = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Namespace_stack), gcst))); (((gx_device_pdf *)vptr)->font_cache = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->font_cache), gcst))); (((gx_device_pdf *)vptr)->clip_path = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->clip_path), gcst))); (((gx_device_pdf *)vptr)->PageLabels = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->PageLabels), gcst))); (((gx_device_pdf *)vptr)->PageLabels_current_label = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->PageLabels_current_label), gcst))); (((gx_device_pdf *)vptr)->sbstack = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->sbstack), gcst))); (((gx_device_pdf *)vptr)->substream_Resources = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->substream_Resources), gcst))); (((gx_device_pdf *)vptr)->font3 = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->font3), gcst))); (((gx_device_pdf *)vptr)->accumulating_substream_resource = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->accumulating_substream_resource), gcst))); (((gx_device_pdf *)vptr)->pres_soft_mask_dict = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->pres_soft_mask_dict), gcst))); (((gx_device_pdf *)vptr)->PDFXTrimBoxToMediaBoxOffset.data = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->PDFXTrimBoxToMediaBoxOffset.data), gcst))); (((gx_device_pdf *)vptr)->PDFXBleedBoxToTrimBoxOffset.data = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->PDFXBleedBoxToTrimBoxOffset.data), gcst))); (((gx_device_pdf *)vptr)->DSCEncodingToUnicode.data = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->DSCEncodingToUnicode.data), gcst))); (((gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[0] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[0]), gcst))); (((gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[1] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->Identity_ToUnicode_CMaps[1]), gcst))); (((gx_device_pdf *)vptr)->ResourceUsage = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->ResourceUsage), gcst))); (((gx_device_pdf *)vptr)->vgstack = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->vgstack), gcst))); (((gx_device_pdf *)vptr)->outline_levels = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->outline_levels), gcst))); (((gx_device_pdf *)vptr)->EmbeddedFiles = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->EmbeddedFiles), gcst)));
+
+
+        (((*(const gc_procs_common_t **)(gcst))->reloc_param_string)(&(((gx_device_pdf *)vptr)->OwnerPassword), gcst)); (((*(const gc_procs_common_t **)(gcst))->reloc_param_string)(&(((gx_device_pdf *)vptr)->UserPassword), gcst)); (((*(const gc_procs_common_t **)(gcst))->reloc_param_string)(&(((gx_device_pdf *)vptr)->NoEncrypt), gcst)); (((*(const gc_procs_common_t **)(gcst))->reloc_param_string)(&(((gx_device_pdf *)vptr)->DocumentUUID), gcst)); (((*(const gc_procs_common_t **)(gcst))->reloc_param_string)(&(((gx_device_pdf *)vptr)->InstanceUUID), gcst));
+
+
+        (((*(const gc_procs_common_t **)(gcst))->reloc_const_string)(&(((gx_device_pdf *)vptr)->objname), gcst));
+
+    {
+        int i, j;
+
+        for (i = 0; i < NUM_RESOURCE_TYPES; ++i)
+            for (j = 0; j < 16; ++j)
+                (((gx_device_pdf *)vptr)->resources[i].chains[j] = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->resources[i].chains[j]), gcst)));
+        if (pdev->outline_levels) {
+            for (i = 0; i <= pdev->outline_depth; ++i) {
+                (((gx_device_pdf *)vptr)->outline_levels[i].first.action = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->outline_levels[i].first.action), gcst)));
+                (((gx_device_pdf *)vptr)->outline_levels[i].last.action = (((*(const gc_procs_common_t **)(gcst))->reloc_struct_ptr)((const void *)(((gx_device_pdf *)vptr)->outline_levels[i].last.action), gcst)));
+            }
+        }
+    }
+}
+}
+
+
+
+static void
+device_pdfwrite_finalize(const gs_memory_t *cmem, void *vpdev)
+{
+    gx_device_finalize(cmem, vpdev);
+}
+
+
+static int pdf_open(gx_device *dev);
+static int pdf_output_page(gx_device *dev, int num_copies, int flush);
+static int pdf_close(gx_device *dev);
+# 144 "./devices/vector/gdevpdf.c"
+# 1 "./devices/vector/gdevpdfb.h" 1
+# 27 "./devices/vector/gdevpdfb.h"
+const gx_device_pdf gs_pdfwrite_device =
+{sizeof(gx_device_pdf), 0, "pdfwrite", 0 , &st_device_pdfwrite, 0 , 0 , { 0 } , 0 , 0 , 0, {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 24 , ((3) == 3 ? 0xff : (3) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, 85 * 720 / 10, 110 * 720 / 10, 0 , 0 , 0 , 0 , { (float)((((85 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) , (float)((((110 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) }, { 0, 0, 0, 0 } , 0 , { 720, 720 } , { 720, 720 }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+
+ {pdf_open,
+  gx_upright_get_initial_matrix,
+  ((void*)0),
+  pdf_output_page,
+  pdf_close,
+  gx_default_rgb_map_rgb_color,
+  gx_default_rgb_map_color_rgb,
+  gdev_pdf_fill_rectangle,
+  ((void*)0),
+  gdev_pdf_copy_mono,
+  gdev_pdf_copy_color,
+  ((void*)0),
+  psdf_get_bits,
+  gdev_pdf_get_params,
+  gdev_pdf_put_params,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gx_page_device_get_page_device,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_path,
+  gdev_pdf_stroke_path,
+  gdev_pdf_fill_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_strip_tile_rectangle,
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_begin_typed_image,
+  psdf_get_bits_rectangle,
+  ((void*)0),
+  gdev_pdf_create_compositor,
+  ((void*)0),
+  gdev_pdf_text_begin,
+  ((void*)0),
+  gdev_pdf_begin_transparency_group,
+  gdev_pdf_end_transparency_group,
+  gdev_pdf_begin_transparency_mask,
+  gdev_pdf_end_transparency_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_rectangle_hl_color,
+  gdev_pdf_include_color_space,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fillpage,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_dev_spec_op
+ },
+ 0, 0, { 0 }, 0, 0, 0, 0, 0, { 0 }, 0, 0, ((bool)1), ((bool)1), { 0 }, { 0 }, 0L, 0L, 0, 0, { 720/72.0, 720/72.0 }, 0 , 0, ((gx_color_index)(~0)), ((gx_color_index)(~0)), psdf_version_ll3, !(0), ((bool)1), ((bool)1), ((bool)0), 1.3, { 0, arp_None, binding_Left, 1, ri_Default, 1, 0, 500000, 0, 0, 1, 0, 1, {0}, {0}, {0}, {0}, ccs_LeaveColorUnchanged, 0, 0, tfi_Preserve, ucrbg_Remove, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, 0, 1, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, { ((void*)0), 0, 0, -1, ((void*)0), 0, 2.0, ds_Subsample, 1, "CCITTFaxEncode", 300, "JPEG2000", &s_CFE_template }, {0}, {0}, cefp_Warning, 1, 100, 1, {0}, {0} },
+ 0,
+ 1.4,
+ -1,
+ 1,
+ 1 ,
+ 0 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0,
+ {0,0},
+ {0,0},
+ 1 ,
+ 1 ,
+ 1 ,
+ 1,
+ 1 ,
+ 0 ,
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ 0,
+ 0,
+ ((bool)0),
+ 0 ,
+ 1 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 12000,
+ 256000,
+ 4000,
+ {0, 0},
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ -4,
+ 0,
+ {0, 0, 0},
+ ((bool)1),
+ ((bool)1),
+ {0},
+ {0},
+ {0},
+ 0,
+ 0 ,
+ 0,
+ {{0,0},{0,0}},
+ {-1, -1},
+ {-1, -1},
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0,
+ 0L,
+ {0L, 0L, 0L, 0L},
+ 0,
+ 0L,
+ 0L,
+ pdf_compress_none,
+ pdf_compress_none,
+ {{0}},
+ {{0}},
+ {{0}},
+ {{0}},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ -1,
+ 0,
+ PDF_IN_NONE,
+ 0,
+ 0,
+ NoMarks,
+ 0,
+ {{0}},
+ 0,
+ 0,
+ 1,
+ {
+     {
+         {0}}},
+ {0},
+ {0},
+ 0,
+ 0,
+ 0L,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+         {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0, 0},
+ 0,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ 1,
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ {0,0,0,0,0,0,0,0,0},
+ 0,
+ {{0, 0}, {0, 0}},
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ ((void*)0),
+ {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)1),
+ ((bool)1),
+ 0,
+ ((bool)1),
+ ((bool)0),
+ !0,
+ 0,
+ ((bool)1),
+ !0,
+ !0,
+ ((bool)0),
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)0)
+};
+# 145 "./devices/vector/gdevpdf.c" 2
+# 157 "./devices/vector/gdevpdf.c"
+# 1 "./devices/vector/gdevpdfb.h" 1
+# 27 "./devices/vector/gdevpdfb.h"
+const gx_device_pdf gs_ps2write_device =
+{sizeof(gx_device_pdf), 0, "ps2write", 0 , &st_device_pdfwrite, 0 , 0 , { 0 } , 0 , 0 , 0, {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 24 , ((3) == 3 ? 0xff : (3) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, 85 * 720 / 10, 110 * 720 / 10, 0 , 0 , 0 , 0 , { (float)((((85 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) , (float)((((110 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) }, { 0, 0, 0, 0 } , 0 , { 720, 720 } , { 720, 720 }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+
+ {pdf_open,
+  gx_upright_get_initial_matrix,
+  ((void*)0),
+  pdf_output_page,
+  pdf_close,
+  gx_default_rgb_map_rgb_color,
+  gx_default_rgb_map_color_rgb,
+  gdev_pdf_fill_rectangle,
+  ((void*)0),
+  gdev_pdf_copy_mono,
+  gdev_pdf_copy_color,
+  ((void*)0),
+  psdf_get_bits,
+  gdev_pdf_get_params,
+  gdev_pdf_put_params,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gx_page_device_get_page_device,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_path,
+  gdev_pdf_stroke_path,
+  gdev_pdf_fill_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_strip_tile_rectangle,
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_begin_typed_image,
+  psdf_get_bits_rectangle,
+  ((void*)0),
+  gdev_pdf_create_compositor,
+  ((void*)0),
+  gdev_pdf_text_begin,
+  ((void*)0),
+  gdev_pdf_begin_transparency_group,
+  gdev_pdf_end_transparency_group,
+  gdev_pdf_begin_transparency_mask,
+  gdev_pdf_end_transparency_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_rectangle_hl_color,
+  gdev_pdf_include_color_space,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fillpage,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_dev_spec_op
+ },
+ 0, 0, { 0 }, 0, 0, 0, 0, 0, { 0 }, 0, 0, ((bool)1), ((bool)1), { 0 }, { 0 }, 0L, 0L, 0, 0, { 720/72.0, 720/72.0 }, 0 , 0, ((gx_color_index)(~0)), ((gx_color_index)(~0)), psdf_version_ll3, !(0), ((bool)1), ((bool)1), ((bool)0), 1.3, { 0, arp_None, binding_Left, 1, ri_Default, 1, 0, 500000, 0, 0, 1, 0, 1, {0}, {0}, {0}, {0}, ccs_LeaveColorUnchanged, 0, 0, tfi_Preserve, ucrbg_Remove, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, 0, 1, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, { ((void*)0), 0, 0, -1, ((void*)0), 0, 2.0, ds_Subsample, 1, "CCITTFaxEncode", 300, "JPEG2000", &s_CFE_template }, {0}, {0}, cefp_Warning, 1, 100, 1, {0}, {0} },
+ 1,
+ 1.4,
+ -1,
+ 1,
+ 1 ,
+ 0 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0,
+ {0,0},
+ {0,0},
+ 1 ,
+ 1 ,
+ 1 ,
+ 1,
+ 1 ,
+ 0 ,
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ 1,
+ 0,
+ ((bool)0),
+ 0 ,
+ 1 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 12000,
+ 256000,
+ (~(-1L << ((1 << 3) * 8 - 1))),
+ {0, 0},
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ -4,
+ 0,
+ {0, 0, 0},
+ ((bool)1),
+ ((bool)1),
+ {0},
+ {0},
+ {0},
+ 0,
+ 0 ,
+ 0,
+ {{0,0},{0,0}},
+ {-1, -1},
+ {-1, -1},
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0,
+ 0L,
+ {0L, 0L, 0L, 0L},
+ 0,
+ 0L,
+ 0L,
+ pdf_compress_none,
+ pdf_compress_none,
+ {{0}},
+ {{0}},
+ {{0}},
+ {{0}},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ -1,
+ 0,
+ PDF_IN_NONE,
+ 0,
+ 0,
+ NoMarks,
+ 0,
+ {{0}},
+ 0,
+ 0,
+ 1,
+ {
+     {
+         {0}}},
+ {0},
+ {0},
+ 0,
+ 0,
+ 0L,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+         {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0, 0},
+ 0,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ 1,
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ {0,0,0,0,0,0,0,0,0},
+ 0,
+ {{0, 0}, {0, 0}},
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ ((void*)0),
+ {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)1),
+ ((bool)1),
+ 0,
+ ((bool)1),
+ ((bool)0),
+ !1,
+ 1,
+ ((bool)1),
+ !1,
+ !1,
+ ((bool)0),
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)0)
+};
+# 158 "./devices/vector/gdevpdf.c" 2
+# 171 "./devices/vector/gdevpdf.c"
+# 1 "./devices/vector/gdevpdfb.h" 1
+# 27 "./devices/vector/gdevpdfb.h"
+const gx_device_pdf gs_eps2write_device =
+{sizeof(gx_device_pdf), 0, "eps2write", 0 , &st_device_pdfwrite, 0 , 0 , { 0 } , 0 , 0 , 0, {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 24 , ((3) == 3 ? 0xff : (3) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }, { ((gx_color_index)(~0)), ((gx_color_index)(~0)) }, 85 * 720 / 10, 110 * 720 / 10, 0 , 0 , 0 , 0 , { (float)((((85 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) , (float)((((110 * 720 / 10) * 72.0 + 0.5) - 0.5) / (720)) }, { 0, 0, 0, 0 } , 0 , { 720, 720 } , { 720, 720 }, {0, 0}, {0, 0, 0, 0}, 0 , 0 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , {((bool)0)} , 0 , 0 , { 10000000L, 4000000L, { 0, 0, 0 }, 0 , BandingAuto }, 0 , 0 , { gx_default_install, gx_default_begin_page, gx_default_end_page },
+
+
+
+
+
+ {pdf_open,
+  gx_upright_get_initial_matrix,
+  ((void*)0),
+  pdf_output_page,
+  pdf_close,
+  gx_default_rgb_map_rgb_color,
+  gx_default_rgb_map_color_rgb,
+  gdev_pdf_fill_rectangle,
+  ((void*)0),
+  gdev_pdf_copy_mono,
+  gdev_pdf_copy_color,
+  ((void*)0),
+  psdf_get_bits,
+  gdev_pdf_get_params,
+  gdev_pdf_put_params,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gx_page_device_get_page_device,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_path,
+  gdev_pdf_stroke_path,
+  gdev_pdf_fill_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_strip_tile_rectangle,
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_begin_typed_image,
+  psdf_get_bits_rectangle,
+  ((void*)0),
+  gdev_pdf_create_compositor,
+  ((void*)0),
+  gdev_pdf_text_begin,
+  ((void*)0),
+  gdev_pdf_begin_transparency_group,
+  gdev_pdf_end_transparency_group,
+  gdev_pdf_begin_transparency_mask,
+  gdev_pdf_end_transparency_mask,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fill_rectangle_hl_color,
+  gdev_pdf_include_color_space,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_fillpage,
+  ((void*)0),
+  ((void*)0),
+  ((void*)0),
+  gdev_pdf_dev_spec_op
+ },
+ 0, 0, { 0 }, 0, 0, 0, 0, 0, { 0 }, 0, 0, ((bool)1), ((bool)1), { 0 }, { 0 }, 0L, 0L, 0, 0, { 720/72.0, 720/72.0 }, 0 , 0, ((gx_color_index)(~0)), ((gx_color_index)(~0)), psdf_version_ll3, !(0), ((bool)1), ((bool)1), ((bool)0), 1.3, { 0, arp_None, binding_Left, 1, ri_Default, 1, 0, 500000, 0, 0, 1, 0, 1, {0}, {0}, {0}, {0}, ccs_LeaveColorUnchanged, 0, 0, tfi_Preserve, ucrbg_Remove, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, 0, 1, { ((void*)0), 0, 0, -1, ((void*)0), 0, 1.5, ds_Subsample, 1, 0, 150, "JPEG2000", &s_zlibE_template }, { ((void*)0), 0, 0, -1, ((void*)0), 0, 2.0, ds_Subsample, 1, "CCITTFaxEncode", 300, "JPEG2000", &s_CFE_template }, {0}, {0}, cefp_Warning, 1, 100, 1, {0}, {0} },
+ 1,
+ 1.4,
+ -1,
+ 1,
+ 1 ,
+ 0 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0,
+ {0,0},
+ {0,0},
+ 1 ,
+ 1 ,
+ 1 ,
+ 1,
+ 1 ,
+ 0 ,
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ 1,
+ 1,
+ ((bool)0),
+ 0 ,
+ 1 ,
+ 0 ,
+ 1 ,
+ 1 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 12000,
+ 256000,
+ (~(-1L << ((1 << 3) * 8 - 1))),
+ {0, 0},
+ {0, 0, 0},
+ {0, 0, 0},
+ 0,
+ -4,
+ 0,
+ {0, 0, 0},
+ ((bool)1),
+ ((bool)1),
+ {0},
+ {0},
+ {0},
+ 0,
+ 0 ,
+ 0,
+ {{0,0},{0,0}},
+ {-1, -1},
+ {-1, -1},
+ 0 ,
+ 0 ,
+ 0 ,
+ 0 ,
+ 0,
+ 0L,
+ {0L, 0L, 0L, 0L},
+ 0,
+ 0L,
+ 0L,
+ pdf_compress_none,
+ pdf_compress_none,
+ {{0}},
+ {{0}},
+ {{0}},
+ {{0}},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ -1,
+ 0,
+ PDF_IN_NONE,
+ 0,
+ 0,
+ NoMarks,
+ 0,
+ {{0}},
+ 0,
+ 0,
+ 1,
+ {
+     {
+         {0}}},
+ {0},
+ {0},
+ 0,
+ 0,
+ 0L,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+         {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0, 0},
+ 0,
+ 0,
+ -1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0},
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ 1,
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ {0,0,0,0,0,0,0,0,0},
+ 0,
+ {{0, 0}, {0, 0}},
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ 0,
+ {0,0,0,0,0,0},
+ 0,
+ ((void*)0),
+ {0, 0},
+ 0,
+ 0,
+ 0,
+ 0,
+ 1,
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)1),
+ ((bool)1),
+ 0,
+ ((bool)1),
+ ((bool)0),
+ !1,
+ 1,
+ ((bool)1),
+ !1,
+ !1,
+ ((bool)0),
+ ((bool)0),
+ ((bool)0),
+ 0,
+ 0,
+ 0,
+ 0,
+ ((bool)0)
+};
+# 172 "./devices/vector/gdevpdf.c" 2
+# 181 "./devices/vector/gdevpdf.c"
+static int
+pdf_close_temp_file(gx_device_pdf *pdev, pdf_temp_file_t *ptf, int code)
+{
+    int err = 0;
+    FILE *file = ptf->file;
+
+
+
+
+
+
+    if (ptf->strm) {
+        if (((ptf->strm)->modes != 0)) {
+            (*(ptf->strm)->procs.flush)(ptf->strm);
+
+            ptf->strm->file = 0;
+        } else
+            ptf->file = file = 0;
+        ((pdev->v_memory)->procs.free_object(pdev->v_memory, ptf->strm_buf, "pdf_close_temp_file(strm_buf)"));
+
+        ptf->strm_buf = 0;
+        ((pdev->v_memory)->procs.free_object(pdev->v_memory, ptf->strm, "pdf_close_temp_file(strm)"));
+
+        ptf->strm = 0;
+    }
+    if (file) {
+        err = ferror(file) | fclose(file);
+        unlink(ptf->file_name);
+        ptf->file = 0;
+    }
+    ptf->save_strm = 0;
+    return
+        (code < 0 ? code : err != 0 ? ((-12)) : code);
+}
+static int
+pdf_close_files(gx_device_pdf * pdev, int code)
+{
+    code = pdf_close_temp_file(pdev, &pdev->pictures, code);
+    code = pdf_close_temp_file(pdev, &pdev->streams, code);
+    code = pdf_close_temp_file(pdev, &pdev->asides, code);
+    return pdf_close_temp_file(pdev, &pdev->xref, code);
+}
+
+
+static void
+pdf_reset_page(gx_device_pdf * pdev)
+{
+    pdev->page_dsc_info = gs_pdfwrite_device.page_dsc_info;
+    pdev->contents_id = 0;
+    pdf_reset_graphics(pdev);
+    pdev->procsets = NoMarks;
+    memset(pdev->cs_Patterns, 0, sizeof(pdev->cs_Patterns));
+    pdf_reset_text_page(pdev->text);
+    pdf_remember_clip_path(pdev, 0);
+    pdev->clip_path_id = pdev->no_clip_path_id;
+}
+
+
+static int
+pdf_open_temp_file(gx_device_pdf *pdev, pdf_temp_file_t *ptf)
+{
+    char fmode[4];
+
+    if (strlen(gp_fmode_binary_suffix) > 2)
+        return ((-9));
+
+    strcpy(fmode, "w+");
+    strcat(fmode, gp_fmode_binary_suffix);
+    ptf->file = gp_open_scratch_file_64(pdev->memory,
+                                     gp_scratch_file_name_prefix,
+                                     ptf->file_name,
+                                     fmode);
+    if (ptf->file == 0)
+        return ((-9));
+    return 0;
+}
+static int
+pdf_open_temp_stream(gx_device_pdf *pdev, pdf_temp_file_t *ptf)
+{
+    int code = pdf_open_temp_file(pdev, ptf);
+
+    if (code < 0)
+        return code;
+    ptf->strm = s_alloc(pdev->v_memory, "pdf_open_temp_stream(strm)");
+    if (ptf->strm == 0)
+        return ((-25));
+    ptf->strm_buf = (*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, 512, "pdf_open_temp_stream(strm_buf)");
+
+    if (ptf->strm_buf == 0) {
+        ((pdev->v_memory)->procs.free_object(pdev->v_memory, ptf->strm, "pdf_open_temp_stream(strm)"));
+
+        ptf->strm = 0;
+        return ((-25));
+    }
+    swrite_file(ptf->strm, ptf->file, ptf->strm_buf, 512);
+    return 0;
+}
+
+
+void
+pdf_initialize_ids(gx_device_pdf * pdev)
+{
+    gs_param_string nstr;
+
+    pdev->next_id = pdev->FirstObjectNumber;
+
+
+
+    ((nstr).data = (const byte *)("{Catalog}"), (nstr).size = strlen((const char *)(nstr).data), (nstr).persistent = ((bool)1));
+    pdf_create_named_dict(pdev, &nstr, &pdev->Catalog, 0L);
+
+
+
+    ((nstr).data = (const byte *)("{DocInfo}"), (nstr).size = strlen((const char *)(nstr).data), (nstr).persistent = ((bool)1));
+    pdf_create_named_dict(pdev, &nstr, &pdev->Info, 0L);
+    {
+        char buf[200];
+
+        pdf_store_default_Producer(buf);
+        cos_dict_put_c_key_string(pdev->Info, "/Producer", (byte *)buf,
+                                  strlen(buf));
+    }
+
+
+
+
+
+    {
+        struct tm tms;
+        time_t t;
+        char buf[1+2+4+2+2+2+2+2+1+2+1+2+1+1+1];
+        int timeoffset;
+        char timesign;
+
+        time(&t);
+        tms = *gmtime(&t);
+        tms.tm_isdst = -1;
+        timeoffset = (int)difftime(t, mktime(&tms));
+        timesign = (timeoffset == 0 ? 'Z' : timeoffset < 0 ? '-' : '+');
+        timeoffset = ((timeoffset) < 0 ? -(timeoffset) : (timeoffset)) / 60;
+        tms = *localtime(&t);
+
+        gs_sprintf(buf, "(D:%04d%02d%02d%02d%02d%02d%c%02d\'%02d\')",
+            tms.tm_year + 1900, tms.tm_mon + 1, tms.tm_mday,
+            tms.tm_hour, tms.tm_min, tms.tm_sec,
+            timesign, timeoffset / 60, timeoffset % 60);
+
+        cos_dict_put_c_key_string(pdev->Info, "/CreationDate", (byte *)buf,
+                                  strlen(buf));
+        cos_dict_put_c_key_string(pdev->Info, "/ModDate", (byte *)buf,
+                                  strlen(buf));
+    }
+
+
+
+    pdf_create_named_dict(pdev, ((void*)0), &pdev->Pages, 0L);
+}
+
+static int
+pdf_compute_fileID(gx_device_pdf * pdev)
+{
+
+
+
+
+
+    gs_memory_t *mem = pdev->v_memory;
+    stream *strm = pdev->strm;
+    uint ignore;
+    int code;
+    stream *s = s_MD5E_make_stream(mem, pdev->fileID, sizeof(pdev->fileID));
+    long secs_ns[2];
+    uint KeyLength = pdev->KeyLength;
+
+    if (s == ((void*)0))
+        return ((-25));
+    pdev->KeyLength = 0;
+    gp_get_usertime(secs_ns);
+    sputs(s, (byte *)secs_ns, sizeof(secs_ns), &ignore);
+    sputs(s, (const byte *)pdev->fname, strlen(pdev->fname), &ignore);
+    pdev->strm = s;
+    code = cos_dict_elements_write(pdev->Info, pdev);
+    pdev->strm = strm;
+    pdev->KeyLength = KeyLength;
+    if (code < 0)
+        return code;
+    sclose(s);
+    ((mem)->procs.free_object(mem, s, "pdf_compute_fileID"));
+    return 0;
+}
+
+static const byte pad[32] = { 0x28, 0xBF, 0x4E, 0x5E, 0x4E, 0x75, 0x8A, 0x41,
+                               0x64, 0x00, 0x4E, 0x56, 0xFF, 0xFA, 0x01, 0x08,
+                               0x2E, 0x2E, 0x00, 0xB6, 0xD0, 0x68, 0x3E, 0x80,
+                               0x2F, 0x0C, 0xA9, 0xFE, 0x64, 0x53, 0x69, 0x7A};
+
+static __inline__ void
+copy_padded(byte buf[32], gs_param_string *str)
+{
+    memcpy(buf, str->data, (((str->size) < (32)) ? (str->size) : (32)));
+    if (32 > str->size)
+        memcpy(buf + str->size, pad, 32 - str->size);
+}
+
+static void
+Adobe_magic_loop_50(byte digest[16], int key_length)
+{
+    gs_md5_state_t md5;
+    int i;
+
+    for (i = 0; i < 50; i++) {
+        gs_md5_init(&md5);
+        gs_md5_append(&md5, digest, key_length);
+        gs_md5_finish(&md5, digest);
+    }
+}
+
+static void
+Adobe_magic_loop_19(byte *data, int data_size, const byte *key, int key_size)
+{
+    stream_arcfour_state sarc4;
+    byte key_buf[16];
+    int i, j;
+
+    for (i = 1; i <= 19; i++) {
+        for (j = 0; j < key_size; j++)
+            key_buf[j] = key[j] ^ (byte)i;
+        s_arcfour_set_key(&sarc4, key_buf, key_size);
+        s_arcfour_process_buffer(&sarc4, data, data_size);
+    }
+}
+
+static int
+pdf_compute_encryption_data(gx_device_pdf * pdev)
+{
+    gs_md5_state_t md5;
+    byte digest[16], buf[32], t;
+    stream_arcfour_state sarc4;
+
+    if (pdev->PDFX && pdev->KeyLength != 0) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "Encryption is not allowed in a PDF/X doucment.\n"));
+
+        return ((-15));
+    }
+    if (pdev->KeyLength == 0)
+        pdev->KeyLength = 40;
+    if (pdev->EncryptionV == 0 && pdev->KeyLength == 40)
+        pdev->EncryptionV = 1;
+    if (pdev->EncryptionV == 0 && pdev->KeyLength > 40)
+        pdev->EncryptionV = 2;
+    if (pdev->EncryptionV > 1 && pdev->CompatibilityLevel < 1.4) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "PDF 1.3 only supports 40 bits keys.\n"));
+        return ((-15));
+    }
+    if (pdev->EncryptionR == 0)
+        pdev->EncryptionR = 2;
+    if (pdev->EncryptionR < 2 || pdev->EncryptionR > 3) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "Encryption revisions 2 and 3 are only supported.\n"));
+
+        return ((-15));
+    }
+    if (pdev->EncryptionR > 2 && pdev->CompatibilityLevel < 1.4) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "PDF 1.3 only supports the encryption revision 2.\n"));
+
+        return ((-15));
+    }
+    if (pdev->KeyLength > 128) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "The maximal length of PDF encryption key is 128 bits.\n"));
+
+        return ((-15));
+    }
+    if (pdev->KeyLength % 8) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "PDF encryption key length must be a multiple of 8.\n"));
+
+        return ((-15));
+    }
+    if (pdev->EncryptionR == 2 &&
+        ((pdev->Permissions & (0xFFFFFFC3)) != 0xFFFFFFC0)) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "Some of Permissions are not allowed with R=2.\n"));
+
+        return ((-15));
+    }
+    if (pdev->EncryptionV == 2 && pdev->EncryptionR == 2 && pdev->KeyLength > 40) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "Encryption version 2 revision 2 with " "KeyLength > 40 appears incompatible to some viewers. With " "long keys use revision 3.\n"));
+
+
+        return ((-15));
+    }
+
+    gs_md5_init(&md5);
+    copy_padded(buf, &pdev->OwnerPassword);
+    gs_md5_append(&md5, buf, sizeof(buf));
+    gs_md5_finish(&md5, digest);
+    if (pdev->EncryptionR == 3)
+        Adobe_magic_loop_50(digest, pdev->KeyLength / 8);
+    copy_padded(buf, &pdev->UserPassword);
+    s_arcfour_set_key(&sarc4, digest, pdev->KeyLength / 8);
+    s_arcfour_process_buffer(&sarc4, buf, sizeof(buf));
+    if (pdev->EncryptionR == 3)
+        Adobe_magic_loop_19(buf, sizeof(buf), digest, pdev->KeyLength / 8);
+    memcpy(pdev->EncryptionO, buf, sizeof(pdev->EncryptionO));
+
+    gs_md5_init(&md5);
+    copy_padded(buf, &pdev->UserPassword);
+    gs_md5_append(&md5, buf, sizeof(buf));
+    gs_md5_append(&md5, pdev->EncryptionO, sizeof(pdev->EncryptionO));
+    t = (byte)(pdev->Permissions >> 0); gs_md5_append(&md5, &t, 1);
+    t = (byte)(pdev->Permissions >> 8); gs_md5_append(&md5, &t, 1);
+    t = (byte)(pdev->Permissions >> 16); gs_md5_append(&md5, &t, 1);
+    t = (byte)(pdev->Permissions >> 24); gs_md5_append(&md5, &t, 1);
+    gs_md5_append(&md5, pdev->fileID, sizeof(pdev->fileID));
+    if (pdev->EncryptionR == 3)
+        if (!pdev->EncryptMetadata) {
+            const byte v[4] = {0xFF, 0xFF, 0xFF, 0xFF};
+
+            gs_md5_append(&md5, v, 4);
+        }
+    gs_md5_finish(&md5, digest);
+    if (pdev->EncryptionR == 3)
+        Adobe_magic_loop_50(digest, pdev->KeyLength / 8);
+    memcpy(pdev->EncryptionKey, digest, pdev->KeyLength / 8);
+
+    if (pdev->EncryptionR == 3) {
+        gs_md5_init(&md5);
+        gs_md5_append(&md5, pad, sizeof(pad));
+        gs_md5_append(&md5, pdev->fileID, sizeof(pdev->fileID));
+        gs_md5_finish(&md5, digest);
+        s_arcfour_set_key(&sarc4, pdev->EncryptionKey, pdev->KeyLength / 8);
+        s_arcfour_process_buffer(&sarc4, digest, sizeof(digest));
+        Adobe_magic_loop_19(digest, sizeof(digest), pdev->EncryptionKey, pdev->KeyLength / 8);
+        memcpy(pdev->EncryptionU, digest, sizeof(digest));
+        memcpy(pdev->EncryptionU + sizeof(digest), pad,
+                sizeof(pdev->EncryptionU) - sizeof(digest));
+    } else {
+        memcpy(pdev->EncryptionU, pad, sizeof(pdev->EncryptionU));
+        s_arcfour_set_key(&sarc4, pdev->EncryptionKey, pdev->KeyLength / 8);
+        s_arcfour_process_buffer(&sarc4, pdev->EncryptionU, sizeof(pdev->EncryptionU));
+    }
+    return 0;
+}
+# 538 "./devices/vector/gdevpdf.c"
+void
+pdf_set_process_color_model(gx_device_pdf * pdev, int index)
+{
+    const static gx_device_color_info pcm_color_info[] = {
+        {1 , 1 , ( (1) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 8 , ((1) == 3 ? 0xff : (1) - 1) , 255 , 0 , 256 , 0 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (1) == 1 ? "DeviceGray" : ((1) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 },
+        {3 , 3 , ( (3) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 24 , ((3) == 3 ? 0xff : (3) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (3) == 1 ? "DeviceGray" : ((3) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 },
+        {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 32 , ((4) == 3 ? 0xff : (4) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 },
+        {4 , 4 , ( (4) >= 4 ? GX_CINFO_POLARITY_SUBTRACTIVE : GX_CINFO_POLARITY_ADDITIVE ) , 32 , ((4) == 3 ? 0xff : (4) - 1) , 255 , 255 , 256 , 256 , { 1, 1 } , GX_CINFO_UNKNOWN_SEP_LIN , { 0 } , { 0 } , { 0 } , ( (4) == 1 ? "DeviceGray" : ((4) == 3 ? "DeviceRGB" : "DeviceCMYK") ) , GX_CINFO_OPMODE_UNKNOWN , 0 }
+    };
+
+
+    pdev->pcm_color_info_index = index;
+    pdev->color_info = pcm_color_info[index];
+
+    set_linear_color_bits_mask_shift((gx_device *)pdev);
+    pdev->color_info.separable_and_linear = GX_CINFO_SEP_LIN;
+# 563 "./devices/vector/gdevpdf.c"
+    switch (index) {
+        case 0:
+            ((pdev)->procs.map_rgb_color = (gx_default_gray_map_rgb_color));
+            ((pdev)->procs.map_color_rgb = (gx_default_gray_map_color_rgb));
+            ((pdev)->procs.map_cmyk_color = (((void*)0)));
+            ((pdev)->procs.get_color_mapping_procs = (gx_default_DevGray_get_color_mapping_procs));
+
+            ((pdev)->procs.get_color_comp_index = (gx_default_DevGray_get_color_comp_index));
+
+            ((pdev)->procs.encode_color = (gx_default_gray_encode));
+            ((pdev)->procs.decode_color = (gx_default_decode_color));
+            break;
+        case 1:
+            ((pdev)->procs.map_rgb_color = (gx_default_rgb_map_rgb_color));
+            ((pdev)->procs.map_color_rgb = (gx_default_rgb_map_color_rgb));
+            ((pdev)->procs.map_cmyk_color = (((void*)0)));
+            ((pdev)->procs.get_color_mapping_procs = (gx_default_DevRGB_get_color_mapping_procs));
+
+            ((pdev)->procs.get_color_comp_index = (gx_default_DevRGB_get_color_comp_index));
+
+            ((pdev)->procs.encode_color = (gx_default_rgb_map_rgb_color));
+            ((pdev)->procs.decode_color = (gx_default_rgb_map_color_rgb));
+            break;
+        case 3:
+            pdev->color_info.cm_name = "DeviceN";
+        case 2:
+            ((pdev)->procs.map_rgb_color = (((void*)0)));
+            ((pdev)->procs.map_color_rgb = (cmyk_8bit_map_color_rgb));
+
+            ((pdev)->procs.map_cmyk_color = (cmyk_8bit_map_cmyk_color));
+            ((pdev)->procs.get_color_mapping_procs = (gx_default_DevCMYK_get_color_mapping_procs));
+
+            ((pdev)->procs.get_color_comp_index = (gx_default_DevCMYK_get_color_comp_index));
+
+            ((pdev)->procs.encode_color = (cmyk_8bit_map_cmyk_color));
+            ((pdev)->procs.decode_color = (cmyk_8bit_map_color_rgb));
+            break;
+        default:
+            do { } while (0);
+    }
+}
+
+
+
+
+
+
+
+void
+pdf_reset_text(gx_device_pdf * pdev)
+{
+    pdf_reset_text_state(pdev->text);
+}
+
+
+static int
+pdf_open(gx_device * dev)
+{
+    gx_device_pdf *const pdev = (gx_device_pdf *) dev;
+    gs_memory_t *mem = pdev->v_memory = ((pdev->memory)->procs.stable(pdev->memory));
+    int code;
+
+    pdev->InOutputPage = ((bool)0);
+
+    if ((code = pdf_open_temp_file(pdev, &pdev->xref)) < 0 ||
+        (code = pdf_open_temp_stream(pdev, &pdev->asides)) < 0 ||
+        (code = pdf_open_temp_stream(pdev, &pdev->streams)) < 0 ||
+        (code = pdf_open_temp_stream(pdev, &pdev->pictures)) < 0
+        )
+        goto fail;
+    code = gdev_vector_open_file_options((gx_device_vector *) pdev, 512, (((bool)0) ? 8 : 0));
+    if (code < 0)
+        goto fail;
+    if (pdev->ComputeDocumentDigest) {
+        stream *s = s_MD5C_make_stream(pdev->v_memory, pdev->strm);
+
+        if (s == ((void*)0))
+            return ((-25));
+        pdev->strm = s;
+    }
+    gdev_vector_init((gx_device_vector *) pdev);
+    gp_get_realtime(pdev->uuid_time);
+    pdev->vec_procs = &pdf_vector_procs;
+    pdev->fill_options = pdev->stroke_options = gx_path_type_optimize;
+
+
+    pdev->in_page = ((bool)1);
+
+
+
+
+    pdev->local_named_objects =
+        pdev->global_named_objects =
+        cos_dict_alloc(pdev, "pdf_open(global_named_objects)");
+
+    pdev->NI_stack = cos_array_alloc(pdev, "pdf_open(NI stack)");
+    pdev->vgstack = (pdf_viewer_state *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, 11 * sizeof(pdf_viewer_state), "pdf_open(graphics state stack)");
+    if (pdev->vgstack == 0) {
+        code = (-25);
+        goto fail;
+    }
+    memset(pdev->vgstack, 0x00, 11 * sizeof(pdf_viewer_state));
+    pdev->vgstack_size = 11;
+    pdev->Namespace_stack = cos_array_alloc(pdev, "pdf_open(Namespace stack)");
+    pdf_initialize_ids(pdev);
+    code = pdf_compute_fileID(pdev);
+    if (code < 0)
+        goto fail;
+    if (pdev->OwnerPassword.size > 0) {
+        code = pdf_compute_encryption_data(pdev);
+        if (code < 0)
+            goto fail;
+    } else if(pdev->UserPassword.size > 0) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "User password is specified. Need an Owner password or both.\n"));
+
+        return ((-15));
+    } else if (pdev->KeyLength) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "Can't accept encryption options without a password.\n"));
+
+        return ((-15));
+    }
+
+    pdev->local_named_objects =
+        cos_dict_alloc(pdev, "pdf_open(local_named_objects)");
+    pdev->outlines_id = 0;
+    pdev->next_page = 0;
+    pdev->text = pdf_text_data_alloc(mem);
+    pdev->sbstack_size = pdev->vgstack_size;
+    pdev->sbstack = (pdf_substream_save *)(*(mem)->procs.alloc_struct_array)(mem, pdev->sbstack_size, &st_pdf_substream_save_element, "pdf_open");
+
+    pdev->pages =
+        (pdf_page_t *)(*(mem)->procs.alloc_struct_array)(mem, 50, &st_pdf_page_element, "pdf_open(pages)");
+
+    if (pdev->text == 0 || pdev->pages == 0 || pdev->sbstack == 0) {
+        code = (-25);
+        goto fail;
+    }
+    memset(pdev->sbstack, 0, pdev->sbstack_size * sizeof(pdf_substream_save));
+    memset(pdev->pages, 0, 50 * sizeof(pdf_page_t));
+    pdev->num_pages = 50;
+    {
+        int i, j;
+
+        for (i = 0; i < NUM_RESOURCE_TYPES; ++i)
+            for (j = 0; j < 16; ++j)
+                pdev->resources[i].chains[j] = 0;
+    }
+    pdev->outline_levels = (pdf_outline_level_t *)(*(mem)->procs.alloc_bytes)(mem, 32 * sizeof(pdf_outline_level_t), "outline_levels array");
+    memset(pdev->outline_levels, 0x00, 32 * sizeof(pdf_outline_level_t));
+    pdev->max_outline_depth = 32;
+    pdev->outline_levels[0].first.id = 0;
+    pdev->outline_levels[0].left = (~(-1 << ((1 << 2) * 8 - 1)));
+    pdev->outline_levels[0].first.action = 0;
+    pdev->outline_levels[0].last.action = 0;
+    pdev->outline_depth = 0;
+    pdev->closed_outline_depth = 0;
+    pdev->outlines_open = 0;
+    pdev->articles = 0;
+    pdev->Dests = 0;
+    pdev->EmbeddedFiles = 0;
+
+    pdev->PageLabels = 0;
+    pdev->PageLabels_current_page = 0;
+    pdev->PageLabels_current_label = 0;
+    pdev->pte = ((void*)0);
+    pdf_reset_page(pdev);
+    pdev->BBox.p.x = pdev->width;
+    pdev->BBox.p.y = pdev->height;
+    pdev->BBox.q.x = 0;
+    pdev->BBox.q.y = 0;
+
+    if(pdev->UseCIEColor) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "\n\nUse of -dUseCIEColor detected!\nSince the release of version 9.11 of Ghostscript we recommend you do not set\n-dUseCIEColor with the pdfwrite/ps2write device family.\n\n"));
+    }
+    return 0;
+  fail:
+    gdev_vector_close_file((gx_device_vector *) pdev);
+    return pdf_close_files(pdev, code);
+}
+
+
+static int
+pdf_ferror(gx_device_pdf *pdev)
+{
+    fflush(pdev->file);
+    fflush(pdev->xref.file);
+    (*(pdev->strm)->procs.flush)(pdev->strm);
+    (*(pdev->asides.strm)->procs.flush)(pdev->asides.strm);
+    (*(pdev->streams.strm)->procs.flush)(pdev->streams.strm);
+    (*(pdev->pictures.strm)->procs.flush)(pdev->pictures.strm);
+    return ferror(pdev->file) || ferror(pdev->xref.file) ||
+        ferror(pdev->asides.file) || ferror(pdev->streams.file) ||
+        ferror(pdev->pictures.file);
+}
+
+
+static int
+pdf_dominant_rotation(const pdf_text_rotation_t *ptr)
+{
+    int i, imax = -1;
+    long max_count = 0;
+    static const int angles[] = { 0, 90, 180, 270, -1 };
+
+    for (i = 0; i < (sizeof(ptr->counts) / sizeof((ptr->counts)[0])); ++i) {
+        long count = ptr->counts[i];
+
+        if (count > max_count)
+            imax = i, max_count = count;
+    }
+    return (imax < 0 ? imax : angles[imax]);
+}
+
+
+static void
+pdf_print_orientation(gx_device_pdf * pdev, pdf_page_t *page)
+{
+    stream *s = pdev->strm;
+    int dsc_orientation = -1;
+    const pdf_page_dsc_info_t *ppdi;
+
+    if (pdev->params.AutoRotatePages == arp_None)
+        return;
+
+    ppdi = (page != ((void*)0) ? &page->dsc_info : &pdev->doc_dsc_info);
+
+
+    if (ppdi->viewing_orientation >= 0)
+        dsc_orientation = ppdi->viewing_orientation;
+    else if (ppdi->orientation >= 0)
+        dsc_orientation = ppdi->orientation;
+    if ((page == ((void*)0) && pdev->params.AutoRotatePages == arp_All) ||
+        (page != ((void*)0) && page->text_rotation.Rotate >= 0) ||
+        dsc_orientation >= 0 ) {
+        const pdf_text_rotation_t *ptr =
+            (page != ((void*)0) ? &page->text_rotation : &pdev->text_rotation);
+        int angle = -1;
+
+
+        if (dsc_orientation == 0) {
+            if (ptr->Rotate == 0 || ptr->Rotate == 180)
+                angle = ptr->Rotate;
+        } else if (dsc_orientation == 1) {
+            if (ptr->Rotate == 90 || ptr->Rotate == 270)
+                angle = ptr->Rotate;
+            else
+                angle = 90;
+        }
+
+        if (angle < 0) {
+
+
+
+
+            angle = ptr->Rotate;
+        }
+
+
+        if (angle >= 0)
+            pprintd1(s, "/Rotate %d", angle);
+    }
+}
+
+
+static int
+pdf_close_page(gx_device_pdf * pdev, int num_copies)
+{
+    int page_num;
+    pdf_page_t *page;
+    int code, i;
+
+
+
+
+
+
+    code = pdfwrite_pdf_open_document(pdev);
+    if (code < 0)
+        return code;
+    if (pdev->ForOPDFRead && pdev->context == PDF_IN_NONE) {
+
+        code = pdf_open_contents(pdev, PDF_IN_STREAM);
+        if (code < 0)
+            return code;
+    }
+    pdf_close_contents(pdev, ((bool)1));
+
+    if (!pdev->DoNumCopies)
+        num_copies = 1;
+
+    for(i=0;i<num_copies;i++) {
+        bool clear_resource_use = i < num_copies - 1 ? 0 : 1;
+
+        page_num = ++(pdev->next_page);
+# 864 "./devices/vector/gdevpdf.c"
+        pdf_page_id(pdev, page_num);
+        page = &pdev->pages[page_num - 1];
+        page->MediaBox.x = pdev->MediaSize[0];
+        page->MediaBox.y = pdev->MediaSize[1];
+        page->contents_id = pdev->contents_id;
+        page->NumCopies_set = pdev->NumCopies_set;
+        page->NumCopies = pdev->NumCopies;
+        pdf_record_usage(pdev, pdev->contents_id, pdev->next_page);
+        pdf_record_usage(pdev, pdev->contents_length_id, pdev->next_page);
+        pdf_record_usage(pdev, page->Page->id, pdev->next_page);
+
+
+        code = pdf_store_page_resources(pdev, page, clear_resource_use);
+        if (code < 0)
+            return code;
+
+
+
+        code = pdf_write_resource_objects(pdev, resourceFunction);
+        if (code < 0)
+            return code;
+
+
+
+        pdf_close_text_page(pdev);
+
+
+
+        page->text_rotation.Rotate =
+            (pdev->params.AutoRotatePages == arp_PageByPage ?
+            pdf_dominant_rotation(&page->text_rotation) : -1);
+        {
+            int i;
+
+            for (i = 0; i < (sizeof(page->text_rotation.counts) / sizeof((page->text_rotation.counts)[0])); ++i)
+                pdev->text_rotation.counts[i] += page->text_rotation.counts[i];
+        }
+
+
+
+        page->dsc_info = pdev->page_dsc_info;
+        if (page->dsc_info.orientation < 0)
+            page->dsc_info.orientation = pdev->doc_dsc_info.orientation;
+
+        if (page->dsc_info.viewing_orientation < 0)
+        page->dsc_info.viewing_orientation =
+           pdev->doc_dsc_info.viewing_orientation;
+        if (page->dsc_info.bounding_box.p.x >= page->dsc_info.bounding_box.q.x ||
+            page->dsc_info.bounding_box.p.y >= page->dsc_info.bounding_box.q.y
+            )
+            page->dsc_info.bounding_box = pdev->doc_dsc_info.bounding_box;
+
+
+
+        if(pdf_ferror(pdev))
+            return(((-12)));
+    }
+    pdf_reset_page(pdev);
+    return (pdf_ferror(pdev) ? ((-12)) : 0);
+}
+
+
+static double
+round_box_coord(double xy)
+{
+    return (int)(xy * 100 + 0.5) / 100.0;
+}
+static int
+pdf_write_page(gx_device_pdf *pdev, int page_num)
+{
+    long page_id = pdf_page_id(pdev, page_num);
+    pdf_page_t *page = &pdev->pages[page_num - 1];
+    double mediabox[4] = {0, 0};
+    stream *s;
+
+    mediabox[2] = round_box_coord(page->MediaBox.x);
+    mediabox[3] = round_box_coord(page->MediaBox.y);
+    pdf_open_obj(pdev, page_id, resourcePage);
+    s = pdev->strm;
+    pprintg2(s, "<</Type/Page/MediaBox [0 0 %g %g]\n",
+                mediabox[2], mediabox[3]);
+    if (pdev->PDFX) {
+        const cos_value_t *v_trimbox = cos_dict_find_c_key(page->Page, "/TrimBox");
+        const cos_value_t *v_artbox = cos_dict_find_c_key(page->Page, "/ArtBox");
+        const cos_value_t *v_cropbox = cos_dict_find_c_key(page->Page, "/CropBox");
+        const cos_value_t *v_bleedbox = cos_dict_find_c_key(page->Page, "/BleedBox");
+        double trimbox[4] = {0, 0}, bleedbox[4] = {0, 0};
+        bool print_bleedbox = ((bool)0);
+
+        trimbox[2] = bleedbox[2] = mediabox[2];
+        trimbox[3] = bleedbox[3] = mediabox[3];
+
+
+        if (v_trimbox != ((void*)0) && v_trimbox->value_type == COS_VALUE_SCALAR) {
+            const byte *p = v_trimbox->contents.chars.data;
+            char buf[100];
+            int l = (((v_trimbox->contents.chars.size) < (sizeof(buf) - 1)) ? (v_trimbox->contents.chars.size) : (sizeof(buf) - 1));
+            float temp[4];
+
+            memcpy(buf, p, l);
+            buf[l] = 0;
+            if (sscanf(buf, "[ %g %g %g %g ]",
+                    &temp[0], &temp[1], &temp[2], &temp[3]) == 4) {
+                trimbox[0] = temp[0];
+                trimbox[1] = temp[1];
+                trimbox[2] = temp[2];
+                trimbox[3] = temp[3];
+                cos_dict_delete_c_key(page->Page, "/TrimBox");
+            }
+            if (v_artbox != ((void*)0) && v_artbox->value_type == COS_VALUE_SCALAR)
+                cos_dict_delete_c_key(page->Page, "/ArtBox");
+
+        } else if (v_artbox != ((void*)0) && v_artbox->value_type == COS_VALUE_SCALAR) {
+
+
+
+            const byte *p = v_artbox->contents.chars.data;
+            char buf[100];
+            int l = (((v_artbox->contents.chars.size) < (sizeof(buf) - 1)) ? (v_artbox->contents.chars.size) : (sizeof(buf) - 1));
+            float temp[4];
+
+            memcpy(buf, p, l);
+            buf[l] = 0;
+            if (sscanf(buf, "[ %g %g %g %g ]",
+                    &temp[0], &temp[1], &temp[2], &temp[3]) == 4) {
+                trimbox[0] = temp[0];
+                trimbox[1] = temp[1];
+                trimbox[2] = temp[2];
+                trimbox[3] = temp[3];
+                cos_dict_delete_c_key(page->Page, "/ArtBox");
+            }
+        } else {
+            if (pdev->PDFXTrimBoxToMediaBoxOffset.size >= 4 &&
+                    pdev->PDFXTrimBoxToMediaBoxOffset.data[0] >= 0 &&
+                    pdev->PDFXTrimBoxToMediaBoxOffset.data[1] >= 0 &&
+                    pdev->PDFXTrimBoxToMediaBoxOffset.data[2] >= 0 &&
+                    pdev->PDFXTrimBoxToMediaBoxOffset.data[3] >= 0) {
+                trimbox[0] = mediabox[0] + pdev->PDFXTrimBoxToMediaBoxOffset.data[0];
+                trimbox[1] = mediabox[1] + pdev->PDFXTrimBoxToMediaBoxOffset.data[3];
+                trimbox[2] = mediabox[2] - pdev->PDFXTrimBoxToMediaBoxOffset.data[1];
+                trimbox[3] = mediabox[3] - pdev->PDFXTrimBoxToMediaBoxOffset.data[2];
+            }
+        }
+
+        if (v_bleedbox != ((void*)0) && v_bleedbox->value_type == COS_VALUE_SCALAR) {
+            const byte *p = v_bleedbox->contents.chars.data;
+            char buf[100];
+            int l = (((v_bleedbox->contents.chars.size) < (sizeof(buf) - 1)) ? (v_bleedbox->contents.chars.size) : (sizeof(buf) - 1));
+            float temp[4];
+
+            memcpy(buf, p, l);
+            buf[l] = 0;
+            if (sscanf(buf, "[ %g %g %g %g ]",
+                    &temp[0], &temp[1], &temp[2], &temp[3]) == 4) {
+                if (temp[0] < mediabox[0])
+                    bleedbox[0] = mediabox[0];
+                else
+                    bleedbox[0] = temp[0];
+                if (temp[1] < mediabox[1])
+                    bleedbox[1] = mediabox[1];
+                else
+                    bleedbox[1] = temp[1];
+                if (temp[2] > mediabox[2])
+                    bleedbox[2] = mediabox[2];
+                else
+                    bleedbox[2] = temp[2];
+                if (temp[3] > mediabox[3])
+                    bleedbox[3] = mediabox[3];
+                else
+                    bleedbox[3] = temp[3];
+                print_bleedbox = ((bool)1);
+                cos_dict_delete_c_key(page->Page, "/BleedBox");
+            }
+        } else if (pdev->PDFXSetBleedBoxToMediaBox)
+            print_bleedbox = ((bool)1);
+        else if (pdev->PDFXBleedBoxToTrimBoxOffset.size >= 4 &&
+                pdev->PDFXBleedBoxToTrimBoxOffset.data[0] >= 0 &&
+                pdev->PDFXBleedBoxToTrimBoxOffset.data[1] >= 0 &&
+                pdev->PDFXBleedBoxToTrimBoxOffset.data[2] >= 0 &&
+                pdev->PDFXBleedBoxToTrimBoxOffset.data[3] >= 0) {
+            bleedbox[0] = trimbox[0] - pdev->PDFXBleedBoxToTrimBoxOffset.data[0];
+            bleedbox[1] = trimbox[1] - pdev->PDFXBleedBoxToTrimBoxOffset.data[3];
+            bleedbox[2] = trimbox[2] + pdev->PDFXBleedBoxToTrimBoxOffset.data[1];
+            bleedbox[3] = trimbox[3] + pdev->PDFXBleedBoxToTrimBoxOffset.data[2];
+            print_bleedbox = ((bool)1);
+        }
+
+        if (print_bleedbox == ((bool)1)) {
+            if (trimbox[0] < bleedbox[0] || trimbox[1] < bleedbox[1] ||
+                trimbox[2] > bleedbox[2] || trimbox[3] > bleedbox[3]) {
+                switch (pdev->PDFACompatibilityPolicy) {
+                    case 0:
+                        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside BleedBox, not permitted in PDF/X-3, reverting to normal PDF output\n"));
+
+                        pdev->AbortPDFAX = ((bool)1);
+                        pdev->PDFX = 0;
+                        break;
+                    case 1:
+                        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside BleedBox, not permitted in PDF/X-3, reducing TrimBox\n"));
+
+                        if (trimbox[0] < bleedbox[0])
+                            trimbox[0] = bleedbox[0];
+                        if (trimbox[1] < bleedbox[1])
+                            trimbox[1] = bleedbox[1];
+                        if (trimbox[2] > bleedbox[2])
+                            trimbox[2] = bleedbox[2];
+                        if (trimbox[3] > bleedbox[3])
+                            trimbox[3] = bleedbox[3];
+                        break;
+                    case 2:
+                        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside BleedBox, not permitted in PDF/X-3, aborting conversion\n"));
+
+                         return (-1);
+                        break;
+                    default:
+                        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside BleedBox, not permitted in PDF/X-3\nunrecognised PDFACompatibilityLevel,\nreverting to normal PDF output\n"));
+
+                        pdev->AbortPDFAX = ((bool)1);
+                        pdev->PDFX = 0;
+                        break;
+                }
+            }
+        }
+
+        if (v_cropbox != ((void*)0) && v_cropbox->value_type == COS_VALUE_SCALAR) {
+            const byte *p = v_cropbox->contents.chars.data;
+            char buf[100];
+            int l = (((v_cropbox->contents.chars.size) < (sizeof(buf) - 1)) ? (v_cropbox->contents.chars.size) : (sizeof(buf) - 1));
+            float temp[4];
+
+            memcpy(buf, p, l);
+            buf[l] = 0;
+            if (sscanf(buf, "[ %g %g %g %g ]",
+                    &temp[0], &temp[1], &temp[2], &temp[3]) == 4) {
+                cos_dict_delete_c_key(page->Page, "/CropBox");
+                pprintg4(s, "/CropBox [%g %g %g %g]\n",
+                    temp[0], temp[1], temp[2], temp[3]);
+
+
+
+
+                if (trimbox[0] < temp[0] || trimbox[1] < temp[1] ||
+                    trimbox[2] > temp[2] || trimbox[3] > temp[3]) {
+                    switch (pdev->PDFACompatibilityPolicy) {
+                        case 0:
+                            (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside CropBox, not permitted in PDF/X-3, reverting to normal PDF output\n"));
+
+                            pdev->AbortPDFAX = ((bool)1);
+                            pdev->PDFX = 0;
+                            break;
+                        case 1:
+                            (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside CropBox, not permitted in PDF/X-3, reducing TrimBox\n"));
+
+                            if (trimbox[0] < temp[0])
+                                trimbox[0] = temp[0];
+                            if (trimbox[1] < temp[1])
+                                trimbox[1] = temp[1];
+                            if (trimbox[2] > temp[2])
+                                trimbox[2] = temp[2];
+                            if (trimbox[3] > temp[3])
+                                trimbox[3] = temp[3];
+                            break;
+                        case 2:
+                            (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside CropBox, not permitted in PDF/X-3, aborting conversion\n"));
+
+                             return (-1);
+                            break;
+                        default:
+                            (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "TrimBox does not fit inside CropBox, not permitted in PDF/X-3\nunrecognised PDFACompatibilityLevel,\nreverting to normal PDF output\n"));
+
+                            pdev->AbortPDFAX = ((bool)1);
+                            pdev->PDFX = 0;
+                            break;
+                    }
+                }
+            }
+        }
+
+        if (cos_dict_find_c_key(page->Page, "/TrimBox") == ((void*)0) &&
+            cos_dict_find_c_key(page->Page, "/ArtBox") == ((void*)0))
+            pprintg4(s, "/TrimBox [%g %g %g %g]\n",
+                trimbox[0], trimbox[1], trimbox[2], trimbox[3]);
+        if (print_bleedbox &&
+            cos_dict_find_c_key(page->Page, "/BleedBox") == ((void*)0))
+            pprintg4(s, "/BleedBox [%g %g %g %g]\n",
+                bleedbox[0], bleedbox[1], bleedbox[2], bleedbox[3]);
+    }
+    pdf_print_orientation(pdev, page);
+    pprintld1(s, "/Parent %ld 0 R\n", pdev->Pages->id);
+    if (pdev->ForOPDFRead && pdev->DoNumCopies && !pdev->ProduceDSC) {
+        if (page->NumCopies_set)
+            pprintld1(s, "/NumCopies %ld\n", page->NumCopies);
+    }
+    if (page->group_id > 0) {
+        pprintld1(s, "/Group %ld 0 R\n", page->group_id);
+    }
+    stream_puts(s, "/Resources<</ProcSet[/PDF");
+    if (page->procsets & ImageB)
+        stream_puts(s, " /ImageB");
+    if (page->procsets & ImageC)
+        stream_puts(s, " /ImageC");
+    if (page->procsets & ImageI)
+        stream_puts(s, " /ImageI");
+    if (page->procsets & Text)
+        stream_puts(s, " /Text");
+    stream_puts(s, "]\n");
+    {
+        int i;
+
+        for (i = 0; i < (sizeof(page->resource_ids) / sizeof((page->resource_ids)[0])); ++i)
+            if (page->resource_ids[i] && pdf_resource_type_names[i]) {
+                stream_puts(s, pdf_resource_type_names[i]);
+                pprintld1(s, " %ld 0 R\n", page->resource_ids[i]);
+            }
+    }
+    stream_puts(s, ">>\n");
+
+
+
+    if (page->Annots) {
+        stream_puts(s, "/Annots");
+        cos_write(((const cos_object_t *)&((page->Annots)->cos_procs)), pdev, (page->Annots)->id);
+        cos_free(((cos_object_t *)&((page->Annots)->cos_procs)), "pdf_write_page(Annots)");
+        page->Annots = 0;
+    }
+
+
+
+
+
+
+    if (page->contents_id != 0)
+        pprintld1(s, "/Contents %ld 0 R\n", page->contents_id);
+
+
+
+    cos_dict_elements_write(page->Page, pdev);
+
+    stream_puts(s, ">>\n");
+    pdf_end_obj(pdev, resourcePage);
+    return 0;
+}
+
+
+
+
+
+static int
+pdf_output_page(gx_device * dev, int num_copies, int flush)
+{
+    gx_device_pdf *const pdev = (gx_device_pdf *) dev;
+    int code = pdf_close_page(pdev, num_copies);
+
+    if (code < 0)
+        return code;
+    if(pdev->UseCIEColor) {
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "\n\nUse of -dUseCIEColor detected!\nSince the release of version 9.11 of Ghostscript we recommend you do not set\n-dUseCIEColor with the pdfwrite/ps2write device family.\n\n"));
+    }
+    if (pdf_ferror(pdev))
+        ((-12));
+
+    if ((code = gx_finish_output_page(dev, num_copies, flush)) < 0)
+        return code;
+
+    if (gx_outputfile_is_separate_pages(((gx_device_vector *)dev)->fname, dev->memory)) {
+        pdev->InOutputPage = ((bool)1);
+        if ((code = pdf_close(dev)) < 0)
+            return code;
+        code = pdf_open(dev);
+    }
+    return code;
+}
+
+static int find_end_xref_section (gx_device_pdf *pdev, FILE *tfile, int64_t start, gs_offset_t resource_pos)
+{
+    int64_t start_offset = (start - pdev->FirstObjectNumber) * sizeof(gs_offset_t);
+
+    gp_fseek_64(tfile, start_offset, 0);
+    {
+        long i, r;
+
+        for (i = start; i < pdev->next_id; ++i) {
+            gs_offset_t pos;
+
+            r = fread(&pos, sizeof(pos), 1, tfile);
+            if (r != 1)
+                return(((-12)));
+            if (pos & (-((int64_t)1) << (sizeof(int64_t) * 8 - 1)))
+                pos += resource_pos - (-((int64_t)1) << (sizeof(int64_t) * 8 - 1));
+            pos -= pdev->OPDFRead_procset_length;
+            if (pos == 0) {
+                return i;
+            }
+        }
+    }
+    return pdev->next_id;
+}
+
+static int write_xref_section(gx_device_pdf *pdev, FILE *tfile, int64_t start, int end, gs_offset_t resource_pos, gs_offset_t *Offsets)
+{
+    int64_t start_offset = (start - pdev->FirstObjectNumber) * sizeof(gs_offset_t);
+
+    gp_fseek_64(tfile, start_offset, 0);
+    {
+        long i, r;
+
+        for (i = start; i < end; ++i) {
+            gs_offset_t pos;
+            char str[21];
+
+            r = fread(&pos, sizeof(pos), 1, tfile);
+            if (r != 1)
+                return(((-12)));
+            if (pos & (-((int64_t)1) << (sizeof(int64_t) * 8 - 1)))
+                pos += resource_pos - (-((int64_t)1) << (sizeof(int64_t) * 8 - 1));
+            pos -= pdev->OPDFRead_procset_length;
+
+
+
+
+            if (!pdev->Linearise) {
+                gs_sprintf(str, "%010""l" "d"" 00000 n \n", pos);
+                stream_puts(pdev->strm, str);
+            }
+            if (Offsets)
+                Offsets[i] = pos;
+        }
+    }
+    return 0;
+}
+
+static int
+rewrite_object(gx_device_pdf *const pdev, pdf_linearisation_t *linear_params, int object)
+{
+    ulong read, Size;
+    char c, *Scratch, *source, *target, Buf[280], *next;
+    int code, ID, ScratchSize=16384;
+
+    Size = pdev->ResourceUsage[object].Length;
+
+    Scratch = (char *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, ScratchSize, "Working memory for object rewriting");
+    if (Scratch == 0L)
+        return (((-25)));
+
+    pdev->ResourceUsage[object].LinearisedOffset = gp_ftell_64(linear_params->Lin_File.file);
+    code = gp_fseek_64(linear_params->sfile, pdev->ResourceUsage[object].OriginalOffset, 0);
+    if (code < 0)
+        return code;
+
+    read = 0;
+    do {
+        code = fread(&c, 1, 1, linear_params->sfile);
+        read++;
+    } while (c != '\n' && code > 0);
+    gs_sprintf(Scratch, "%d 0 obj\n", pdev->ResourceUsage[object].NewObjectNumber);
+    fwrite(Scratch, strlen(Scratch), 1, linear_params->Lin_File.file);
+
+    code = fread(&c, 1, 1, linear_params->sfile);
+    read++;
+    if (c == '<' || c == '[') {
+        int index = 0;
+        Scratch[index++] = c;
+        do {
+            do {
+                code = fread(&c, 1, 1, linear_params->sfile);
+                Scratch[index++] = c;
+                read++;
+                if (index == ScratchSize - 2) {
+                    char *Temp;
+
+                    Temp = (char *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, ScratchSize * 2, "Working memory for object rewriting");
+                    if (Temp == 0L) {
+                        ((pdev->v_memory)->procs.free_object(pdev->v_memory, Scratch, "Free working memory for object rewriting"));
+                        return (((-25)));
+                    }
+                    memcpy(Temp, Scratch, ScratchSize);
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, Scratch, "Increase working memory for object rewriting"));
+                    Scratch = Temp;
+                    ScratchSize *= 2;
+                }
+            }while (c != '\r' && c != '\n');
+            Scratch[index] = 0;
+            if ((__extension__ (__builtin_constant_p (6) && ((__builtin_constant_p (&Scratch[index - 7]) && strlen (&Scratch[index - 7]) < ((size_t) (6))) || (__builtin_constant_p ("endobj") && strlen ("endobj") < ((size_t) (6)))) ? __extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (&Scratch[index - 7]) && __builtin_constant_p ("endobj") && (__s1_len = strlen (&Scratch[index - 7]), __s2_len = strlen ("endobj"), (!((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) || __s1_len >= 4) && (!((size_t)(const void *)(("endobj") + 1) - (size_t)(const void *)("endobj") == 1) || __s2_len >= 4)) ? __builtin_strcmp (&Scratch[index - 7], "endobj") : (__builtin_constant_p (&Scratch[index - 7]) && ((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) && (__s1_len = strlen (&Scratch[index - 7]), __s1_len < 4) ? (__builtin_constant_p ("endobj") && ((size_t)(const void *)(("endobj") + 1) - (size_t)(const void *)("endobj") == 1) ? __builtin_strcmp (&Scratch[index - 7], "endobj") : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ("endobj"); register int __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[0] - __s2[0]); if (__s1_len > 0 && __result == 0) { __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[1] - __s2[1]); if (__s1_len > 1 && __result == 0) { __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[2] - __s2[2]); if (__s1_len > 2 && __result == 0) __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ("endobj") && ((size_t)(const void *)(("endobj") + 1) - (size_t)(const void *)("endobj") == 1) && (__s2_len = strlen ("endobj"), __s2_len < 4) ? (__builtin_constant_p (&Scratch[index - 7]) && ((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) ? __builtin_strcmp (&Scratch[index - 7], "endobj") : (__extension__ ({ const unsigned char *__s1 = (const unsigned char *) (const char *) (&Scratch[index - 7]); register int __result = __s1[0] - ((const unsigned char *) (const char *) ("endobj"))[0]; if (__s2_len > 0 && __result == 0) { __result = (__s1[1] - ((const unsigned char *) (const char *) ("endobj"))[1]); if (__s2_len > 1 && __result == 0) { __result = (__s1[2] - ((const unsigned char *) (const char *) ("endobj"))[2]); if (__s2_len > 2 && __result == 0) __result = (__s1[3] - ((const unsigned char *) (const char *) ("endobj"))[3]); } } __result; }))) : __builtin_strcmp (&Scratch[index - 7], "endobj")))); }) : strncmp (&Scratch[index - 7], "endobj", 6))) == 0 || (__extension__ (__builtin_constant_p (6) && ((__builtin_constant_p (&Scratch[index - 7]) && strlen (&Scratch[index - 7]) < ((size_t) (6))) || (__builtin_constant_p ("stream") && strlen ("stream") < ((size_t) (6)))) ? __extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p (&Scratch[index - 7]) && __builtin_constant_p ("stream") && (__s1_len = strlen (&Scratch[index - 7]), __s2_len = strlen ("stream"), (!((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) || __s1_len >= 4) && (!((size_t)(const void *)(("stream") + 1) - (size_t)(const void *)("stream") == 1) || __s2_len >= 4)) ? __builtin_strcmp (&Scratch[index - 7], "stream") : (__builtin_constant_p (&Scratch[index - 7]) && ((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) && (__s1_len = strlen (&Scratch[index - 7]), __s1_len < 4) ? (__builtin_constant_p ("stream") && ((size_t)(const void *)(("stream") + 1) - (size_t)(const void *)("stream") == 1) ? __builtin_strcmp (&Scratch[index - 7], "stream") : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ("stream"); register int __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[0] - __s2[0]); if (__s1_len > 0 && __result == 0) { __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[1] - __s2[1]); if (__s1_len > 1 && __result == 0) { __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[2] - __s2[2]); if (__s1_len > 2 && __result == 0) __result = (((const unsigned char *) (const char *) (&Scratch[index - 7]))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ("stream") && ((size_t)(const void *)(("stream") + 1) - (size_t)(const void *)("stream") == 1) && (__s2_len = strlen ("stream"), __s2_len < 4) ? (__builtin_constant_p (&Scratch[index - 7]) && ((size_t)(const void *)((&Scratch[index - 7]) + 1) - (size_t)(const void *)(&Scratch[index - 7]) == 1) ? __builtin_strcmp (&Scratch[index - 7], "stream") : (__extension__ ({ const unsigned char *__s1 = (const unsigned char *) (const char *) (&Scratch[index - 7]); register int __result = __s1[0] - ((const unsigned char *) (const char *) ("stream"))[0]; if (__s2_len > 0 && __result == 0) { __result = (__s1[1] - ((const unsigned char *) (const char *) ("stream"))[1]); if (__s2_len > 1 && __result == 0) { __result = (__s1[2] - ((const unsigned char *) (const char *) ("stream"))[2]); if (__s2_len > 2 && __result == 0) __result = (__s1[3] - ((const unsigned char *) (const char *) ("stream"))[3]); } } __result; }))) : __builtin_strcmp (&Scratch[index - 7], "stream")))); }) : strncmp (&Scratch[index - 7], "stream", 6))) == 0)
+                break;
+        } while (code);
+    } else {
+        Scratch[0] = 0;
+        fwrite(&c, 1, 1, linear_params->Lin_File.file);
+    }
+
+    Size -= read;
+
+    source = Scratch;
+    do {
+        target = strstr(source, " 0 R");
+        if (target) {
+            next = target + 4;
+            do {
+                target--;
+            }while (*target >= '0' && *target <= '9');
+            target++;
+            sscanf(target, "%d 0 R", &ID);
+            fwrite(source, target - source, 1, linear_params->Lin_File.file);
+            gs_sprintf(Buf, "%d 0 R", pdev->ResourceUsage[ID].NewObjectNumber);
+            fwrite(Buf, strlen(Buf), 1, linear_params->Lin_File.file);
+            source = next;
+        } else {
+            fwrite(source, strlen(source), 1, linear_params->Lin_File.file);
+        }
+    } while (target);
+
+    do {
+        if (Size > ScratchSize) {
+            code = fread(Scratch, ScratchSize, 1, linear_params->sfile);
+            fwrite(Scratch, ScratchSize, 1, linear_params->Lin_File.file);
+            Size -= 16384;
+        } else {
+            code = fread(Scratch, Size, 1, linear_params->sfile);
+            fwrite(Scratch, Size, 1, linear_params->Lin_File.file);
+            Size = 0;
+        }
+    } while (Size);
+
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, Scratch, "Free working memory for object rewriting"));
+    return 0;
+}
+
+static int flush_hint_stream(pdf_linearisation_t *linear_params)
+{
+    int code;
+
+    code = fwrite(linear_params->HintBuffer, linear_params->HintByte, 1, linear_params->sfile);
+    linear_params->HintBits = 0;
+    linear_params->HintByte = 0;
+    return code;
+}
+
+static int write_hint_stream(pdf_linearisation_t *linear_params, gs_offset_t val, char size_bits)
+{
+    unsigned int input_mask, output_mask;
+
+    if (size_bits == 0)
+        return 0;
+
+    while(size_bits) {
+        input_mask = 1 << (size_bits - 1);
+        output_mask = 0x80 >> linear_params->HintBits;
+        if (input_mask & val)
+            linear_params->HintBuffer[linear_params->HintByte] |= output_mask;
+        else
+            linear_params->HintBuffer[linear_params->HintByte] &= ~output_mask;
+        size_bits--;
+        linear_params->HintBits++;
+        if (linear_params->HintBits == 8) {
+            linear_params->HintByte++;
+            if (linear_params->HintByte > 254) {
+                flush_hint_stream(linear_params);
+                memset(linear_params->HintBuffer, 0x00, 256);
+            }
+            linear_params->HintBits = 0;
+        }
+    }
+    return 0;
+}
+
+static int pdf_linearise(gx_device_pdf *pdev, pdf_linearisation_t *linear_params)
+{
+    char Buffer[1024];
+    char Header[32], Binary[9] = "%\307\354\217\242\n", LDict[1024], fileID[35], Pad;
+    int level = (int)(pdev->CompatibilityLevel * 10 + 0.5), i, j;
+    int code=0, Part1To6 = 2;
+    int Part7To8 = 1;
+    int PartNone = 1;
+    int Part9 = 1;
+    int LDictObj, HintStreamObj, k;
+    char T;
+    int64_t mainxref, Length, HintStreamLen, HintStreamStart, HintLength, SharedHintOffset;
+
+    fileID[0] = '<';
+    fileID[33] = '>';
+    fileID[34] = 0x00;
+    for (i = 0;i< sizeof(pdev->fileID);i++) {
+        T = pdev->fileID[i] >> 4;
+        if (T > 9) {
+            fileID[(i*2) + 1] = T - 10 + 'A';
+        } else {
+            fileID[(i*2) + 1] = T + '0';
+        }
+        T = pdev->fileID[i] & 0x0f;
+        if (T > 9) {
+            fileID[(i*2) + 2] = T - 10 + 'A';
+        } else {
+            fileID[(i*2) + 2] = T + '0';
+        }
+    }
+
+
+    (*(pdev->strm)->procs.flush)(pdev->strm);
+    linear_params->sfile = pdev->file;
+    linear_params->MainFileEnd = gp_ftell_64(pdev->file);
+
+
+
+
+    code = pdf_open_temp_file(pdev, &linear_params->Lin_File);
+
+    if (code < 0)
+        return code;
+
+    linear_params->Lin_File.strm = 0x0;
+
+
+    linear_params->NumPage1Resources=0;
+    for (i = 0;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage == 1)
+            linear_params->NumPage1Resources++;
+        if (pdev->ResourceUsage[i].PageUsage == -2)
+            linear_params->NumPart1StructureResources++;
+    }
+
+
+    linear_params->NumUniquePageResources=0;
+    linear_params->NumSharedResources=0;
+    for (i = 0;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage > 1)
+            linear_params->NumUniquePageResources++;
+        if (pdev->ResourceUsage[i].PageUsage == -1)
+            linear_params->NumSharedResources++;
+    }
+
+
+    linear_params->NumNonPageResources=0;
+    for (i = 1;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage == 0)
+            linear_params->NumNonPageResources++;
+    }
+
+
+    linear_params->NumPart9Resources=0;
+    for (i = 0;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage == -3)
+            linear_params->NumPart9Resources++;
+    }
+
+    Part1To6 += linear_params->NumUniquePageResources + linear_params->NumSharedResources + linear_params->NumNonPageResources + linear_params->NumPart9Resources;
+    PartNone += linear_params->NumUniquePageResources + linear_params->NumSharedResources;
+    Part9 += linear_params->NumUniquePageResources + linear_params->NumSharedResources + linear_params->NumNonPageResources;
+    LDictObj = linear_params->NumUniquePageResources + linear_params->NumSharedResources + linear_params->NumNonPageResources + linear_params->NumPart9Resources + 1;
+
+
+    for (i = 1;i < pdev->ResourceUsageSize; i++) {
+        int j;
+        gs_offset_t end;
+
+        pdev->ResourceUsage[i].OriginalOffset = linear_params->Offsets[i];
+
+        end = linear_params->xref;
+        for (j=0;j<=linear_params->LastResource;j++) {
+            if (linear_params->Offsets[j] > linear_params->Offsets[i] && linear_params->Offsets[j] < end)
+                end = linear_params->Offsets[j];
+        }
+        pdev->ResourceUsage[i].Length = end - linear_params->Offsets[i];
+
+        if (pdev->ResourceUsage[i].PageUsage == 1 || pdev->ResourceUsage[i].PageUsage == -2)
+            pdev->ResourceUsage[i].NewObjectNumber = Part1To6++;
+        else {
+            if (pdev->ResourceUsage[i].PageUsage == 0)
+                pdev->ResourceUsage[i].NewObjectNumber = PartNone++;
+            else {
+                if (pdev->ResourceUsage[i].PageUsage == -3)
+                    pdev->ResourceUsage[i].NewObjectNumber = Part9++;
+                else
+                    pdev->ResourceUsage[i].NewObjectNumber = Part7To8++;
+            }
+        }
+    }
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, linear_params->Offsets, "free temp xref storage"));
+# 1552 "./devices/vector/gdevpdf.c"
+    gs_sprintf(Header, "%%PDF-%d.%d\n", level / 10, level % 10);
+    fwrite(Header, strlen(Header), 1, linear_params->Lin_File.file);
+    if (pdev->binary_ok)
+        fwrite(Binary, strlen(Binary), 1, linear_params->Lin_File.file);
+
+    pdf_record_usage(pdev, linear_params->LastResource + 1, -2);
+    pdev->ResourceUsage[linear_params->LastResource + 1].OriginalOffset = 0;
+    pdev->ResourceUsage[linear_params->LastResource + 1].NewObjectNumber = LDictObj;
+    pdev->ResourceUsage[linear_params->LastResource + 1].LinearisedOffset = gp_ftell_64(linear_params->Lin_File.file);
+
+
+    linear_params->LDictOffset = gp_ftell_64(linear_params->Lin_File.file);
+    gs_sprintf(LDict, "%d 0 obj\n<<                                                                                                                        \n",
+        LDictObj);
+    fwrite(LDict, strlen(LDict), 1, linear_params->Lin_File.file);
+
+
+    linear_params->FirstxrefOffset = gp_ftell_64(linear_params->Lin_File.file);
+    gs_sprintf(Header, "xref\n%d %d\n", LDictObj, Part1To6 - LDictObj + 1);
+    fwrite(Header, strlen(Header), 1, linear_params->Lin_File.file);
+
+    gs_sprintf(Header, "0000000000 00000 n \n");
+
+    for (i = LDictObj;i <= linear_params->LastResource + 2; i++) {
+        fwrite(Header, 20, 1, linear_params->Lin_File.file);
+    }
+
+
+
+
+    linear_params->FirsttrailerOffset = gp_ftell_64(linear_params->Lin_File.file);
+    gs_sprintf(LDict, "\ntrailer\n<</Size %ld/Info %d 0 R/Root %d 0 R/ID[%s%s]/Prev %d>>\nstartxref\r\n0\n%%%%EOF\n        \n",
+        linear_params->LastResource + 3, pdev->ResourceUsage[linear_params->Info_id].NewObjectNumber, pdev->ResourceUsage[linear_params->Catalog_id].NewObjectNumber, fileID, fileID, 0);
+    fwrite(LDict, strlen(LDict), 1, linear_params->Lin_File.file);
+
+
+    code = rewrite_object(pdev, linear_params, linear_params->Catalog_id);
+    if (code < 0)
+        goto error;
+# 1605 "./devices/vector/gdevpdf.c"
+    code = rewrite_object(pdev, linear_params, pdev->pages[0].Page->id);
+    if (code < 0)
+        goto error;
+    for (i = 0;i < pdev->ResourceUsageSize; i++) {
+
+
+
+        if (pdev->ResourceUsage[i].PageUsage == 1 && i != pdev->pages[0].Page->id) {
+            code = rewrite_object(pdev, linear_params, i);
+            if (code < 0)
+                goto error;
+        }
+    }
+    linear_params->E = gp_ftell_64(linear_params->Lin_File.file);
+
+
+
+
+    HintStreamObj = linear_params->LastResource + 2;
+    pdf_record_usage(pdev, HintStreamObj, -2);
+    pdev->ResourceUsage[HintStreamObj].OriginalOffset = 0;
+    pdev->ResourceUsage[HintStreamObj].NewObjectNumber = HintStreamObj;
+    pdev->ResourceUsage[HintStreamObj].LinearisedOffset = gp_ftell_64(linear_params->Lin_File.file);
+# 1637 "./devices/vector/gdevpdf.c"
+    for (i = 1;i < pdev->next_page;i++) {
+        code = rewrite_object(pdev, linear_params, pdev->pages[i].Page->id);
+        if (code < 0)
+            goto error;
+        for (j = 0;j < pdev->ResourceUsageSize; j++) {
+
+
+
+            if (pdev->ResourceUsage[j].PageUsage - 1 == i && j != pdev->pages[i].Page->id) {
+                code = rewrite_object(pdev, linear_params, j);
+            }
+        }
+    }
+
+
+    for (i = 0;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage == -1) {
+            code = rewrite_object(pdev, linear_params, i);
+            if (code < 0)
+                goto error;
+        }
+    }
+
+
+    for (i = 1;i < pdev->ResourceUsageSize; i++) {
+        if (pdev->ResourceUsage[i].PageUsage == 0 ||
+            pdev->ResourceUsage[i].PageUsage == -3) {
+            code = rewrite_object(pdev, linear_params, i);
+            if (code < 0)
+                goto error;
+        }
+    }
+# 1678 "./devices/vector/gdevpdf.c"
+    gp_fseek_64(linear_params->Lin_File.file, 0, 0);
+    code = gp_fseek_64(linear_params->sfile, 0, 0);
+    Length = pdev->ResourceUsage[HintStreamObj].LinearisedOffset;
+    while (Length && code >= 0) {
+        if (Length > 1024) {
+            code = fread(Buffer, 1024, 1, linear_params->Lin_File.file);
+            fwrite(Buffer, 1024, 1, linear_params->sfile);
+            Length -= 1024;
+        } else {
+            code = fread(Buffer, Length, 1, linear_params->Lin_File.file);
+            fwrite(Buffer, Length, 1, linear_params->sfile);
+            Length = 0;
+        }
+    }
+
+    gs_sprintf(LDict, "%d 0 obj\n<</Length           \n/S           >>\nstream\n", HintStreamObj);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+    HintStreamStart = gp_ftell_64(linear_params->sfile);
+    memset(linear_params->HintBuffer, 0x00, 256);
+    linear_params->HintBits = linear_params->HintByte = 0;
+
+    linear_params->PageHints = (page_hint_stream_t *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, pdev->next_page * sizeof(page_hint_stream_t), "Hints for the pages");
+    memset(linear_params->PageHints, 0x00, pdev->next_page * sizeof(page_hint_stream_t));
+    linear_params->NumPageHints = pdev->next_page;
+
+    linear_params->SharedHints = (shared_hint_stream_t *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, (linear_params->NumPage1Resources + linear_params->NumSharedResources) * sizeof(shared_hint_stream_t), "Hints for the shared objects");
+    memset(linear_params->SharedHints, 0x00, (linear_params->NumPage1Resources + linear_params->NumSharedResources) * sizeof(shared_hint_stream_t));
+    linear_params->NumSharedHints = linear_params->NumPage1Resources + linear_params->NumSharedResources;
+
+    memset(&linear_params->PageHintHeader,0x00, sizeof(page_hint_stream_header_t));
+    memset(&linear_params->SharedHintHeader,0x00, sizeof(shared_hint_stream_header_t));
+
+    linear_params->PageHintHeader.LeastObjectsPerPage = 0x7fffffff;
+    linear_params->PageHintHeader.LeastPageLength = 0x7fffffff;
+    linear_params->PageHintHeader.LeastPageOffset = 0x7fffffff;
+    linear_params->PageHintHeader.LeastContentLength = 0x7fffffff;
+
+
+    for (i=0;i<pdev->next_page;i++) {
+        int PageContentID = pdev->pages[i].contents_id;
+        pdf_linearisation_record_t *record = &pdev->ResourceUsage[PageContentID];
+        page_hint_stream_t *pagehint = &linear_params->PageHints[i];
+
+        pagehint->ContentOffset = record->LinearisedOffset;
+        pagehint->ContentLength = record->Length;
+    }
+
+
+
+
+    k = 0;
+    for (i = 1;i < pdev->ResourceUsageSize; i++) {
+        pdf_linearisation_record_t *record = &pdev->ResourceUsage[i];
+
+        if (record->PageUsage < -1 || record->PageUsage == 0)
+            continue;
+        if (record->PageUsage == -1) {
+
+            for (j=0;j<record->NumPagesUsing;j++) {
+                int page = record->PageList[j];
+                page_hint_stream_t *pagehint;
+
+                if (page >= pdev->next_page)
+
+                    continue;
+
+                pagehint = &linear_params->PageHints[page - 1];
+                if (pagehint->SharedObjectRef){
+                    int *Temp = (int *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, (pagehint->NumSharedObjects + 1) * sizeof(int), "realloc shared object hints");
+                    memcpy(Temp, pagehint->SharedObjectRef, (pagehint->NumSharedObjects) * sizeof(int));
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pagehint->SharedObjectRef, "realloc shared object hints"));
+                    pagehint->SharedObjectRef = (unsigned int *)Temp;
+                } else {
+                    pagehint->SharedObjectRef = (unsigned int *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, (pagehint->NumSharedObjects + 1) * sizeof(int), "shared object hints");
+                }
+                pagehint->SharedObjectRef[pagehint->NumSharedObjects] = i;
+                pagehint->NumSharedObjects++;
+            }
+            linear_params->SharedHints[k].ObjectNumber = record->NewObjectNumber;
+            linear_params->SharedHints[k].ObjectOffset = record->LinearisedOffset;
+            linear_params->SharedHints[k++].ObjectLength = record->Length;
+        } else {
+
+
+
+            int page = record->PageUsage, pageID = pdev->pages[page - 1].Page->id;
+            int64_t LinearisedPageOffset = pdev->ResourceUsage[pageID].LinearisedOffset;
+            page_hint_stream_t *pagehint;
+
+
+
+
+            if (page < pdev->next_page) {
+                pagehint = &linear_params->PageHints[page - 1];
+                pagehint->NumUniqueObjects++;
+                if (record->LinearisedOffset - LinearisedPageOffset > pagehint->PageLength)
+                    pagehint->PageLength = (record->LinearisedOffset + record->Length) - LinearisedPageOffset;
+                if (page == 1) {
+                    linear_params->SharedHintHeader.FirstPageEntries++;
+                }
+            }
+        }
+    }
+
+    linear_params->PageHintHeader.LargestSharedObject = k;
+
+    for (i = 0;i < linear_params->NumPageHints;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+
+        if (hint->NumUniqueObjects + hint->NumSharedObjects < linear_params->PageHintHeader.LeastObjectsPerPage)
+            linear_params->PageHintHeader.LeastObjectsPerPage = hint->NumUniqueObjects + hint->NumSharedObjects;
+        if (hint->NumUniqueObjects + hint->NumSharedObjects > linear_params->PageHintHeader.MostObjectsPerPage)
+            linear_params->PageHintHeader.MostObjectsPerPage = hint->NumUniqueObjects + hint->NumSharedObjects;
+        if (hint->PageLength < linear_params->PageHintHeader.LeastPageLength)
+            linear_params->PageHintHeader.LeastPageLength = hint->PageLength;
+        if (hint->PageLength > linear_params->PageHintHeader.MostPageLength)
+            linear_params->PageHintHeader.MostPageLength = hint->PageLength;
+        if (hint->ContentOffset < linear_params->PageHintHeader.LeastPageOffset)
+            linear_params->PageHintHeader.LeastPageOffset = hint->ContentOffset;
+        if (hint->ContentOffset > linear_params->PageHintHeader.MostPageOffset)
+            linear_params->PageHintHeader.MostPageOffset = hint->ContentOffset;
+        if (hint->ContentLength < linear_params->PageHintHeader.LeastContentLength)
+            linear_params->PageHintHeader.LeastContentLength = hint->ContentLength;
+        if (hint->ContentLength > linear_params->PageHintHeader.MostContentLength)
+            linear_params->PageHintHeader.MostContentLength = hint->ContentLength;
+        if (hint->NumSharedObjects > linear_params->PageHintHeader.MostSharedObjects)
+            linear_params->PageHintHeader.MostSharedObjects = hint->NumSharedObjects;
+    }
+
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.LeastObjectsPerPage, 32);
+    write_hint_stream(linear_params, (gs_offset_t)pdev->ResourceUsage[pdev->pages[0].Page->id].LinearisedOffset, 32);
+    i = (linear_params->PageHintHeader.MostObjectsPerPage - linear_params->PageHintHeader.MostObjectsPerPage + 1);
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->PageHintHeader.ObjectNumBits = j;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.ObjectNumBits, 16);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.LeastPageLength, 32);
+    i = (linear_params->PageHintHeader.MostPageLength - linear_params->PageHintHeader.LeastPageLength + 1);
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->PageHintHeader.PageLengthNumBits = j;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.PageLengthNumBits, 16);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.LeastPageOffset, 32);
+    i = (linear_params->PageHintHeader.MostPageOffset - linear_params->PageHintHeader.LeastPageOffset + 1);
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->PageHintHeader.PageOffsetNumBits = j;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.PageOffsetNumBits, 16);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.LeastContentLength, 32);
+    i = (linear_params->PageHintHeader.MostContentLength - linear_params->PageHintHeader.LeastContentLength + 1);
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->PageHintHeader.ContentLengthNumBits = j;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.ContentLengthNumBits, 16);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.MostSharedObjects, 16);
+    i = (linear_params->PageHintHeader.LargestSharedObject + 1);
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->PageHintHeader.SharedObjectNumBits = j;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->PageHintHeader.SharedObjectNumBits, 16);
+    j = 1;
+    write_hint_stream(linear_params, (gs_offset_t)j, 16);
+    write_hint_stream(linear_params, (gs_offset_t)j, 16);
+# 1878 "./devices/vector/gdevpdf.c"
+    for (i=0;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+        int Num;
+
+        Num = hint->NumUniqueObjects - linear_params->PageHintHeader.LeastObjectsPerPage;
+        write_hint_stream(linear_params, (gs_offset_t)Num, linear_params->PageHintHeader.ObjectNumBits);
+        errprintf(pdev->v_memory,"Page %d NumUniqueObjects %d\n", i, Num);
+    }
+    for (i=0;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+        int Num;
+
+        Num = hint->PageLength - linear_params->PageHintHeader.LeastPageLength;
+        write_hint_stream(linear_params, (gs_offset_t)Num, linear_params->PageHintHeader.PageLengthNumBits);
+        errprintf(pdev->v_memory,"Page %d PageLength %d\n", i, Num);
+    }
+    for (i=0;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+
+        if (i == 0) {
+            write_hint_stream(linear_params, (gs_offset_t)i, linear_params->PageHintHeader.SharedObjectNumBits);
+            errprintf(pdev->v_memory,"Page %d NumSharedObjects %d\n", i, 1);
+        }
+        else {
+            write_hint_stream(linear_params, (gs_offset_t)hint->NumSharedObjects, linear_params->PageHintHeader.SharedObjectNumBits);
+            errprintf(pdev->v_memory,"Page %d NumSharedObjects %d\n", i, hint->NumSharedObjects);
+        }
+    }
+    for (i=1;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+
+        for (j=0;j < hint->NumSharedObjects;j++) {
+            write_hint_stream(linear_params, (gs_offset_t)hint->SharedObjectRef[j], linear_params->PageHintHeader.SharedObjectNumBits);
+            errprintf(pdev->v_memory,"Page %d SharedObject %d ObjectRef %d\n", i, j, hint->SharedObjectRef[j]);
+        }
+    }
+
+    for (i=0;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+
+        for (j=0;j < hint->NumSharedObjects;j++) {
+            write_hint_stream(linear_params, (gs_offset_t)j, 1);
+            errprintf(pdev->v_memory,"Page %d SharedObject %d Position Numerator 1\n", i, j);
+        }
+    }
+    for (i=1;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+        int Num;
+
+        Num = hint->ContentOffset - linear_params->PageHintHeader.LeastPageOffset;
+        write_hint_stream(linear_params, (gs_offset_t)Num, linear_params->PageHintHeader.PageOffsetNumBits);
+        errprintf(pdev->v_memory,"Page %d ContentStreamOffset %d\n", i, Num);
+    }
+    for (i=1;i < pdev->next_page;i++) {
+        page_hint_stream_t *hint = &linear_params->PageHints[i];
+        int Num;
+
+        Num = hint->ContentLength - linear_params->PageHintHeader.LeastContentLength;
+        write_hint_stream(linear_params, (gs_offset_t)Num, linear_params->PageHintHeader.ContentLengthNumBits);
+        errprintf(pdev->v_memory,"Page %d ContentStreamLength %d\n", i, Num);
+    }
+    flush_hint_stream(linear_params);
+
+    SharedHintOffset = gp_ftell_64(linear_params->sfile) - HintStreamStart;
+    linear_params->SharedHintHeader.FirstSharedObject = linear_params->SharedHints[0].ObjectNumber;
+    linear_params->SharedHintHeader.LeastObjectLength = linear_params->SharedHints[0].ObjectLength;
+    linear_params->SharedHintHeader.MostObjectLength = linear_params->SharedHints[0].ObjectLength;
+
+    for (i = 1; i< linear_params->NumSharedHints; i++) {
+        if (linear_params->SharedHints[i].ObjectNumber < linear_params->SharedHintHeader.FirstSharedObject) {
+            linear_params->SharedHintHeader.FirstSharedObject = linear_params->SharedHints[1].ObjectNumber;
+            linear_params->SharedHintHeader.FirstObjectOffset = linear_params->SharedHints[1].ObjectOffset;
+        }
+        if (linear_params->SharedHints[i].ObjectLength < linear_params->SharedHintHeader.LeastObjectLength) {
+            linear_params->SharedHintHeader.LeastObjectLength = linear_params->SharedHints[i].ObjectLength;
+        }
+        if (linear_params->SharedHints[i].ObjectLength > linear_params->SharedHintHeader.MostObjectLength) {
+            linear_params->SharedHintHeader.MostObjectLength = linear_params->SharedHints[i].ObjectLength;
+        }
+    }
+
+    linear_params->SharedHintHeader.FirstPageEntries = linear_params->NumPage1Resources;
+    linear_params->SharedHintHeader.NumSharedObjects = linear_params->NumSharedResources + linear_params->SharedHintHeader.FirstPageEntries;
+
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.FirstSharedObject, 32);
+    errprintf(pdev->v_memory,"\nFirstSharedObject %d\n", linear_params->SharedHintHeader.FirstSharedObject);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.FirstObjectOffset, 32);
+    errprintf(pdev->v_memory,"FirstObjectOffset %""l" "d""\n", linear_params->SharedHintHeader.FirstObjectOffset);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.FirstPageEntries, 32);
+    errprintf(pdev->v_memory,"FirstPageEntries %d\n", linear_params->SharedHintHeader.FirstPageEntries);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.NumSharedObjects, 32);
+    errprintf(pdev->v_memory,"NumSharedObjects %d\n", linear_params->SharedHintHeader.NumSharedObjects);
+    j = 1;
+    write_hint_stream(linear_params, (gs_offset_t)j, 32);
+    errprintf(pdev->v_memory,"GreatestObjectsNumBits 1\n");
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.FirstObjectOffset, 16);
+    errprintf(pdev->v_memory,"FirstObjectOffset %""l" "d""\n", linear_params->SharedHintHeader.FirstObjectOffset);
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.LeastObjectLength, 32);
+    errprintf(pdev->v_memory,"LeastObjectLength %d\n", linear_params->SharedHintHeader.LeastObjectLength);
+
+    i = (linear_params->SharedHintHeader.MostObjectLength - linear_params->SharedHintHeader.LeastObjectLength + 1) / 2;
+    j = 0;
+    while (i) {
+        i = i / 2;
+        j++;
+    }
+    linear_params->SharedHintHeader.LengthNumBits = j + 1;
+    write_hint_stream(linear_params, (gs_offset_t)linear_params->SharedHintHeader.LengthNumBits, 16);
+
+    for (i = 0; i< linear_params->NumSharedHints; i++) {
+        unsigned int Length = linear_params->SharedHints[i].ObjectLength - linear_params->SharedHintHeader.LeastObjectLength;
+
+        write_hint_stream(linear_params, (gs_offset_t)Length, linear_params->SharedHintHeader.LengthNumBits);
+        errprintf(pdev->v_memory,"Shared Object group %d, Length %d\n", i, Length);
+    }
+
+    j = 0;
+    for (i = 0; i< linear_params->NumSharedHints; i++) {
+        write_hint_stream(linear_params, (gs_offset_t)j, 1);
+        errprintf(pdev->v_memory,"Shared Object group %d, SignatureFlag false\n", i);
+    }
+    for (i = 0; i< linear_params->NumSharedHints; i++) {
+        write_hint_stream(linear_params, (gs_offset_t)j, 1);
+        errprintf(pdev->v_memory,"Shared Object group %d, NumObjects 1\n", i);
+    }
+
+    flush_hint_stream(linear_params);
+    HintLength = gp_ftell_64(linear_params->sfile) - HintStreamStart;
+
+    gs_sprintf(LDict, "\nendstream\nendobj\n");
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+    HintStreamLen = gp_ftell_64(linear_params->sfile) - pdev->ResourceUsage[HintStreamObj].LinearisedOffset;
+
+    do {
+        code = fread(Buffer, 1, 1024, linear_params->Lin_File.file);
+        if (code > 0)
+            fwrite(Buffer, 1, code, linear_params->sfile);
+    } while (code > 0);
+
+
+    mainxref = gp_ftell_64(linear_params->sfile);
+
+
+
+
+
+
+
+    if (linear_params->MainFileEnd < 4096)
+        Length = 4096 - (mainxref + strlen(LDict) + strlen(Header) + LDictObj * 20);
+    else
+        Length = linear_params->MainFileEnd - (mainxref + strlen(LDict) + strlen(Header) + LDictObj * 20);
+    Pad = ' ';
+
+    while(Length > 0) {
+        fwrite(&Pad, 1, 1, linear_params->sfile);
+        Length--;
+    }
+
+
+    mainxref = gp_ftell_64(linear_params->sfile);
+    gs_sprintf(Header, "xref\n0 %d\n", LDictObj);
+    fwrite(Header, strlen(Header), 1, linear_params->sfile);
+
+    linear_params->T = gp_ftell_64(linear_params->sfile) - 1;
+    gs_sprintf(Header, "0000000000 65535 f \n");
+    fwrite(Header, strlen(Header), 1, linear_params->sfile);
+
+    for (i = 1;i < LDictObj; i++) {
+        for (j = 0; j < pdev->ResourceUsageSize;j++) {
+            if (pdev->ResourceUsage[j].NewObjectNumber == i) {
+                gs_sprintf(Header, "%010""l" "d"" 00000 n \n", pdev->ResourceUsage[j].LinearisedOffset + HintStreamLen);
+                fwrite(Header, 20, 1, linear_params->sfile);
+            }
+        }
+    }
+
+    gs_sprintf(LDict, "trailer\n<</Size %d>>\nstartxref\n%""l" "d""\n%%%%EOF\n",
+        LDictObj, linear_params->FirstxrefOffset);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+    linear_params->FileLength = gp_ftell_64(linear_params->sfile);
+# 2069 "./devices/vector/gdevpdf.c"
+    gp_fseek_64(linear_params->sfile, linear_params->LDictOffset, 0);
+    gs_sprintf(LDict, "%d 0 obj\n<</Linearized 1/L %""l" "d""/H[ ", LDictObj, linear_params->FileLength);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+    gs_sprintf(LDict, "%""l" "d""", pdev->ResourceUsage[HintStreamObj].LinearisedOffset);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+    gs_sprintf(LDict, " %""l" "d""]", HintStreamLen);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+
+
+    gs_sprintf(LDict, "/O %d/E %""l" "d""",pdev->ResourceUsage[pdev->pages[0].Page->id].NewObjectNumber, linear_params->E);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+    gs_sprintf(LDict, "/N %d/T %""l" "d"">>\nendobj\n", pdev->next_page, linear_params->T);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+
+
+
+    gp_fseek_64(linear_params->sfile, linear_params->FirstxrefOffset, 0);
+    gs_sprintf(Header, "xref\n%d %d\n", LDictObj, Part1To6 - LDictObj + 1);
+    fwrite(Header, strlen(Header), 1, linear_params->sfile);
+
+    for (i = LDictObj;i <= linear_params->LastResource + 2; i++) {
+        for (j = 0; j < pdev->ResourceUsageSize;j++) {
+            if (pdev->ResourceUsage[j].NewObjectNumber == i) {
+                gs_sprintf(Header, "%010""l" "d"" 00000 n \n", pdev->ResourceUsage[j].LinearisedOffset);
+                fwrite(Header, 20, 1, linear_params->sfile);
+            }
+        }
+    }
+
+
+
+
+    code = gp_fseek_64(linear_params->sfile, linear_params->FirsttrailerOffset, 0);
+    gs_sprintf(LDict, "\ntrailer\n<</Size %ld/Info %d 0 R/Root %d 0 R/ID[%s%s]/Prev %""l" "d"">>\nstartxref\r\n0\n%%%%EOF\n",
+        linear_params->LastResource + 3, pdev->ResourceUsage[linear_params->Info_id].NewObjectNumber, pdev->ResourceUsage[linear_params->Catalog_id].NewObjectNumber, fileID, fileID, mainxref);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+    code = gp_fseek_64(linear_params->sfile, pdev->ResourceUsage[HintStreamObj].LinearisedOffset, 0);
+    gs_sprintf(LDict, "%d 0 obj\n<</Length %10""l" "d""", HintStreamObj, HintLength);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+    gs_sprintf(LDict, "\n/S %10""l" "d"">>\nstream\n", SharedHintOffset);
+    fwrite(LDict, strlen(LDict), 1, linear_params->sfile);
+
+error:
+
+
+
+    pdf_close_temp_file(pdev, &linear_params->Lin_File, code);
+
+
+
+    for (i=0;i<pdev->next_page;i++) {
+        page_hint_stream_t *pagehint = &linear_params->PageHints[i];
+
+        if (pagehint->SharedObjectRef)
+            ((pdev->v_memory)->procs.free_object(pdev->v_memory, pagehint->SharedObjectRef, "Free Shared object references"));
+    }
+
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, linear_params->PageHints, "Free Page Hint data"));
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, linear_params->SharedHints, "Free Shared hint data"));
+
+    return code;
+}
+
+int pdf_record_usage(gx_device_pdf *const pdev, long resource_id, int page_num)
+{
+    int i;
+    void *Temp;
+    pdf_linearisation_record_t *resize;
+
+    if (!pdev->Linearise)
+        return 0;
+
+    if (resource_id < 0)
+        return 0;
+
+    if (resource_id >= pdev->ResourceUsageSize) {
+        if (pdev->ResourceUsageSize == 0) {
+            pdev->ResourceUsageSize = resource_id + 1;
+            pdev->ResourceUsage = (pdf_linearisation_record_t *)(*(pdev->v_memory)->procs.alloc_struct_array)(pdev->v_memory, resource_id + 1, &st_pdf_linearisation_record_element, "start resource usage array");
+
+            memset((char *)pdev->ResourceUsage, 0x00, (resource_id + 1) * sizeof(pdf_linearisation_record_t));
+        } else {
+            resize = ((pdev->v_memory)->procs.resize_object(pdev->v_memory, pdev->ResourceUsage, resource_id + 1, "resize resource usage array"));
+            memset(&resize[pdev->ResourceUsageSize], 0x00, sizeof(pdf_linearisation_record_t) * (resource_id - pdev->ResourceUsageSize + 1));
+            pdev->ResourceUsageSize = resource_id + 1;
+            pdev->ResourceUsage = resize;
+        }
+    }
+    if (page_num > 0) {
+        if (pdev->ResourceUsage[resource_id].PageUsage == 0)
+            pdev->ResourceUsage[resource_id].PageUsage = page_num;
+        else {
+            if (pdev->ResourceUsage[resource_id].PageUsage > 1)
+                pdev->ResourceUsage[resource_id].PageUsage = -1;
+            else {
+
+            }
+        }
+    } else {
+        if (pdev->ResourceUsage[resource_id].PageUsage != 0)
+
+            ;
+        pdev->ResourceUsage[resource_id].PageUsage = page_num;
+    }
+
+
+    if (pdev->ResourceUsage[resource_id].NumPagesUsing != 0) {
+        for (i=0;i < pdev->ResourceUsage[resource_id].NumPagesUsing; i++) {
+            if (pdev->ResourceUsage[resource_id].PageList[i] == page_num)
+                return 0;
+        }
+    }
+    Temp = (*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, (pdev->ResourceUsage[resource_id].NumPagesUsing + 1) * sizeof (int), "Page usage records");
+    memset((char *)Temp, 0x00, (pdev->ResourceUsage[resource_id].NumPagesUsing + 1) * sizeof (int));
+    memcpy((char *)Temp, pdev->ResourceUsage[resource_id].PageList, pdev->ResourceUsage[resource_id].NumPagesUsing * sizeof (int));
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, (byte *)pdev->ResourceUsage[resource_id].PageList, "Free old page usage records"));
+    pdev->ResourceUsage[resource_id].PageList = (int *)Temp;
+    pdev->ResourceUsage[resource_id].PageList[pdev->ResourceUsage[resource_id].NumPagesUsing] = page_num;
+    pdev->ResourceUsage[resource_id].NumPagesUsing++;
+
+    return 0;
+}
+
+int pdf_record_usage_by_parent(gx_device_pdf *const pdev, long resource_id, long parent_id)
+{
+    int i;
+    if (!pdev->Linearise)
+        return 0;
+
+    if (pdev->ResourceUsage[parent_id].PageUsage >= 0)
+        pdf_record_usage(pdev, resource_id, pdev->ResourceUsage[parent_id].PageUsage);
+    else {
+        for (i = 0; i < pdev->ResourceUsage[parent_id].NumPagesUsing; i++) {
+            pdf_record_usage(pdev, resource_id, pdev->ResourceUsage[parent_id].PageList[i]);
+        }
+    }
+    return 0;
+}
+
+
+static int
+pdf_close(gx_device * dev)
+{
+    gx_device_pdf *const pdev = (gx_device_pdf *) dev;
+    gs_memory_t *mem = pdev->v_memory;
+    stream *s;
+    FILE *tfile = pdev->xref.file;
+    gs_offset_t xref = 0;
+    gs_offset_t resource_pos;
+    long Catalog_id = pdev->Catalog->id, Info_id = pdev->Info->id,
+        Pages_id = pdev->Pages->id, Encrypt_id = 0;
+    long Threads_id = 0;
+    bool partial_page = (pdev->contents_id != 0 && pdev->next_page != 0);
+    int code = 0, code1, pagecount=0;
+    int64_t start_section, end_section;
+    char str[256];
+
+
+    pdf_linearisation_t linear_params;
+    memset(&linear_params, 0x00, sizeof(linear_params));
+    linear_params.Info_id = Info_id;
+    linear_params.Pages_id = Pages_id;
+    linear_params.Catalog_id = Catalog_id;
+# 2244 "./devices/vector/gdevpdf.c"
+    if (pdev->next_page == 0) {
+
+
+
+
+        if (!pdev->InOutputPage && gx_outputfile_is_separate_pages(pdev->fname, pdev->memory)) {
+            code = gdev_vector_close_file((gx_device_vector *) pdev);
+            if (code != 0)
+                return code;
+            code = gx_device_delete_output_file((const gx_device *)pdev, pdev->fname);
+            if (code != 0)
+                return ((-12));
+            return code;
+        }
+        code = pdf_open_page(pdev, PDF_IN_STREAM);
+
+        if (code < 0)
+            return code;
+    }
+    if (pdev->contents_id != 0)
+        pdf_close_page(pdev, 1);
+
+
+    if (!(pdev->ForOPDFRead && pdev->ProduceDSC)) {
+        for (pagecount = 1; pagecount <= pdev->next_page; ++pagecount)
+            pdf_write_page(pdev, pagecount);
+    }
+
+    if (pdev->PrintStatistics)
+        pdf_print_resource_statistics(pdev);
+
+
+    code1 = pdf_write_resource_objects(pdev, resourceXObject);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_free_resource_objects(pdev, resourceXObject);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_write_resource_objects(pdev, resourceGroup);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_free_resource_objects(pdev, resourceGroup);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_write_resource_objects(pdev, resourceSoftMaskDict);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_free_resource_objects(pdev, resourceSoftMaskDict);
+    if (code >= 0)
+        code = code1;
+
+
+
+
+    pdf_clean_standard_fonts(pdev);
+    code1 = pdf_free_font_cache(pdev);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_write_resource_objects(pdev, resourceCharProc);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_finish_resources(pdev, resourceFont, pdf_convert_truetype_font);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_finish_resources(pdev, resourceFontDescriptor, pdf_finish_FontDescriptor);
+    if (code >= 0)
+        code = code1;
+    code1 = write_font_resources(pdev, &pdev->resources[resourceCIDFont]);
+    if (code >= 0)
+        code = code1;
+    code1 = write_font_resources(pdev, &pdev->resources[resourceFont]);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_finish_resources(pdev, resourceFontDescriptor, pdf_write_FontDescriptor);
+    if (code >= 0)
+        code = code1;
+
+    code1 = pdf_write_bitmap_fonts_Encoding(pdev);
+    if (code >= 0)
+        code = code1;
+
+    code1 = pdf_write_resource_objects(pdev, resourceCMap);
+    if (code >= 0)
+        code = code1;
+    code1 = pdf_free_resource_objects(pdev, resourceCMap);
+    if (code >= 0)
+        code = code1;
+    if (!(pdev->ForOPDFRead && pdev->ProduceDSC)) {
+        if (pdev->ResourcesBeforeUsage)
+            pdf_reverse_resource_chain(pdev, resourcePage);
+        code1 = pdf_write_resource_objects(pdev, resourcePage);
+        if (code >= 0)
+            code = code1;
+        code1 = pdf_free_resource_objects(pdev, resourcePage);
+        if (code >= 0)
+            code = code1;
+    }
+
+    code1 = pdf_free_resource_objects(pdev, resourceOther);
+    if (code >= 0)
+        code = code1;
+
+
+    if (!(pdev->ForOPDFRead && pdev->ProduceDSC)) {
+        pdf_open_obj(pdev, Pages_id, resourcePagesTree);
+        pdf_record_usage(pdev, Pages_id, -3);
+
+        s = pdev->strm;
+        stream_puts(s, "<< /Type /Pages /Kids [\n");
+
+        if (partial_page)
+            --(pdev->next_page);
+        {
+            int i;
+
+            for (i = 0; i < pdev->next_page; ++i)
+                pprintld1(s, "%ld 0 R\n", pdev->pages[i].Page->id);
+        }
+        pprintd1(s, "] /Count %d\n", pdev->next_page);
+
+
+
+
+
+        pdev->doc_dsc_info.viewing_orientation = pdev->doc_dsc_info.orientation = -1;
+        pdev->text_rotation.Rotate = pdf_dominant_rotation(&pdev->text_rotation);
+        pdf_print_orientation(pdev, ((void*)0));
+
+        cos_dict_elements_write(pdev->Pages, pdev);
+        stream_puts(s, ">>\n");
+        pdf_end_obj(pdev, resourcePagesTree);
+
+
+
+        if (pdev->outlines_id != 0) {
+            pdf_record_usage(pdev, pdev->outlines_id, -3);
+
+            while (pdev->outline_depth > 0) {
+                code1 = pdfmark_close_outline(pdev);
+                if (code >= 0)
+                    code = code1;
+            }
+            code = pdfmark_close_outline(pdev);
+            if (code >= 0)
+                code = code1;
+            pdf_open_obj(pdev, pdev->outlines_id, resourceOutline);
+            pprintd1(s, "<< /Count %d", pdev->outlines_open);
+            pprintld2(s, " /First %ld 0 R /Last %ld 0 R >>\n",
+                  pdev->outline_levels[0].first.id,
+                  pdev->outline_levels[0].last.id);
+            pdf_end_obj(pdev, resourceOutline);
+        }
+        if (pdev->articles != 0) {
+            pdf_article_t *part;
+
+
+            for (part = pdev->articles; part != 0; part = part->next)
+                pdfmark_write_article(pdev, part);
+        }
+
+
+
+        if (pdev->CompatibilityLevel < 1.2) {
+            if (pdev->Dests) {
+                pdf_record_usage(pdev, pdev->Dests->id, -3);
+                cos_write_object(((cos_object_t *)&((pdev->Dests)->cos_procs)), pdev, resourceDests);
+            }
+        } else {
+            if (pdev->Dests) {
+                pdf_record_usage(pdev, pdev->Dests->id, -3);
+                cos_write_dict_as_ordered_array((cos_object_t *)pdev->Dests, pdev, resourceDests);
+            }
+
+
+            if (pdev->EmbeddedFiles) {
+                pdf_record_usage(pdev, pdev->EmbeddedFiles->id, -3);
+                cos_write_dict_as_ordered_array((cos_object_t *)pdev->EmbeddedFiles, pdev, resourceEmbeddedFiles);
+            }
+        }
+
+
+        pdfmark_end_pagelabels(pdev);
+        if (pdev->PageLabels) {
+            pdf_record_usage(pdev, pdev->PageLabels->id, -3);
+            cos_write_object(((cos_object_t *)&((pdev->PageLabels)->cos_procs)), pdev, resourceLabels);
+        }
+
+
+        code1 = pdf_document_metadata(pdev);
+        if (code >= 0)
+            code = code1;
+
+
+
+
+
+
+
+        if (pdev->articles != 0) {
+            pdf_article_t *part;
+
+            Threads_id = pdf_begin_obj(pdev, resourceThread);
+            pdf_record_usage(pdev, Threads_id, -3);
+            s = pdev->strm;
+            stream_puts(s, "[ ");
+            while ((part = pdev->articles) != 0) {
+                pdev->articles = part->next;
+                pprintld1(s, "%ld 0 R\n", part->contents->id);
+                cos_free(((cos_object_t *)&((part->contents)->cos_procs)), "pdf_close(article contents)");
+                ((mem)->procs.free_object(mem, part, "pdf_close(article)"));
+            }
+            stream_puts(s, "]\n");
+            pdf_end_obj(pdev, resourceThread);
+        }
+        pdf_open_obj(pdev, Catalog_id, resourceCatalog);
+        pdf_record_usage(pdev, Catalog_id, -2);
+
+        s = pdev->strm;
+        stream_puts(s, "<<");
+        pprintld1(s, "/Type /Catalog /Pages %ld 0 R\n", Pages_id);
+        if (pdev->outlines_id != 0)
+            pprintld1(s, "/Outlines %ld 0 R\n", pdev->outlines_id);
+        if (Threads_id) {
+            pprintld1(s, "/Threads %ld 0 R\n", Threads_id);
+            pdf_record_usage(pdev, Threads_id, -2);
+        }
+        if (pdev->CompatibilityLevel < 1.2) {
+            if (pdev->Dests)
+                pprintld1(s, "/Dests %ld 0 R\n", pdev->Dests->id);
+        } else {
+            if (pdev->Dests || pdev->EmbeddedFiles) {
+                stream_puts(s, "/Names <<\n");
+                if (pdev->Dests)
+                    pprintld1(s, "/Dests <</Kids [%ld 0 R]>>\n", pdev->Dests->id);
+                if (pdev->EmbeddedFiles)
+                    pprintld1(s, "/EmbeddedFiles << /Kids [%ld 0 R]>>\n", pdev->EmbeddedFiles->id);
+                stream_puts(s, ">>\n");
+            }
+        }
+        if (pdev->PageLabels)
+            pprintld1(s, "/PageLabels << /Nums  %ld 0 R >>\n",
+                  pdev->PageLabels->id);
+        cos_dict_elements_write(pdev->Catalog, pdev);
+        stream_puts(s, ">>\n");
+        pdf_end_obj(pdev, resourceCatalog);
+        if (pdev->Dests) {
+            cos_free(((cos_object_t *)&((pdev->Dests)->cos_procs)), "pdf_close(Dests)");
+            pdev->Dests = 0;
+        }
+        if (pdev->EmbeddedFiles) {
+            cos_free(((cos_object_t *)&((pdev->EmbeddedFiles)->cos_procs)), "pdf_close(EmbeddFiles)");
+            pdev->EmbeddedFiles = 0;
+        }
+        if (pdev->PageLabels) {
+            cos_free(((cos_object_t *)&((pdev->PageLabels)->cos_procs)), "pdf_close(PageLabels)");
+            pdev->PageLabels = 0;
+            pdev->PageLabels_current_label = 0;
+        }
+
+
+
+        pdev->Catalog->id = 0;
+
+        pdf_record_usage(pdev, pdev->Info->id, -3);
+
+    } else {
+        pdev->Info->id = 0;
+    }
+
+
+
+
+
+
+    do {
+        cos_dict_objects_write(pdev->local_named_objects, pdev);
+    } while (pdf_pop_namespace(pdev) >= 0);
+    cos_dict_objects_write(pdev->global_named_objects, pdev);
+
+    if (pdev->ForOPDFRead && pdev->ProduceDSC) {
+        int pages;
+
+        for (pages = 0; pages <= pdev->next_page; ++pages)
+            ;
+
+        code = ps2write_dsc_header(pdev, pages - 1);
+    }
+
+
+
+    s = pdev->strm;
+    resource_pos = stell(s);
+    (*(pdev->asides.strm)->procs.flush)(pdev->asides.strm);
+    {
+        FILE *rfile = pdev->asides.file;
+        int64_t res_end = gp_ftell_64(rfile);
+
+        gp_fseek_64(rfile, 0L, 0);
+        pdf_copy_data(s, rfile, res_end, ((void*)0));
+    }
+
+    if (pdev->ForOPDFRead && pdev->ProduceDSC) {
+        int j;
+
+        code = 0;
+        pagecount = 1;
+
+
+        stream_puts(pdev->strm, "%%EndProlog\n");
+
+        if (pdev->params.PSDocOptions.data) {
+            int i;
+            char *p = (char *)pdev->params.PSDocOptions.data;
+
+            stream_puts(pdev->strm, "%%BeginSetup\n");
+            for (i=0;i<pdev->params.PSDocOptions.size;i++)
+                spputc(s, *p++);
+            stream_puts(pdev->strm, "\n");
+            stream_puts(pdev->strm, "\n%%EndSetup\n");
+        }
+
+        if (pdev->ResourcesBeforeUsage)
+            pdf_reverse_resource_chain(pdev, resourcePage);
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourcePage].chains[j];
+
+            for (; pres != 0; pres = pres->next)
+                if ((!pres->named || pdev->ForOPDFRead)
+                    && !pres->object->written) {
+                    pdf_page_t *page = &pdev->pages[pagecount - 1];
+
+                    pprintd2(pdev->strm, "%%%%Page: %d %d\n",
+                        pagecount, pagecount);
+                    if (!pdev->Eps2Write)
+                        pprintd2(pdev->strm, "%%%%PageBoundingBox: 0 0 %d %d\n", (int)page->MediaBox.x, (int)page->MediaBox.y);
+                    stream_puts(pdev->strm, "%%BeginPageSetup\n");
+                    stream_puts(pdev->strm, "/pagesave save def\n");
+
+                    if (pdev->params.PSPageOptions.size) {
+                        int i, index = (pagecount - 1) % pdev->params.PSPageOptions.size;
+                        char *p = (char *)pdev->params.PSPageOptions.data[index].data;
+
+                        for (i=0;i<pdev->params.PSPageOptions.data[index].size;i++)
+                            spputc(s, *p++);
+                        stream_puts(pdev->strm, "\n");
+                    }
+
+                    pdf_write_page(pdev, pagecount++);
+
+                    stream_puts(pdev->strm, "%%EndPageSetup\n");
+                    pprintld1(pdev->strm, "%ld 0 obj\n", pres->object->id);
+                    code = cos_write(pres->object, pdev, pres->object->id);
+                    stream_puts(pdev->strm, "endobj\n");
+                    pres->object->written = ((bool)1);
+                    stream_puts(pdev->strm, "pagesave restore\n%%PageTrailer\n");
+                }
+        }
+        code1 = pdf_free_resource_objects(pdev, resourcePage);
+        if (code >= 0)
+            code = code1;
+        stream_puts(pdev->strm, "%%Trailer\n");
+        stream_puts(pdev->strm, "end\n");
+        stream_puts(pdev->strm, "%%EOF\n");
+    }
+
+    if (pdev->Linearise) {
+        linear_params.LastResource = pdev->next_id - 1;
+        linear_params.Offsets = (gs_offset_t *)(*(pdev->v_memory)->procs.alloc_bytes)(pdev->v_memory, pdev->next_id * sizeof(gs_offset_t), "temp xref storage");
+        memset(linear_params.Offsets, 0x00, linear_params.LastResource * sizeof(gs_offset_t));
+    }
+
+    if (!(pdev->ForOPDFRead && pdev->ProduceDSC)) {
+
+        if (pdev->OwnerPassword.size > 0) {
+            Encrypt_id = pdf_obj_ref(pdev);
+
+            pdf_open_obj(pdev, Encrypt_id, resourceEncrypt);
+            s = pdev->strm;
+            stream_puts(s, "<<");
+            stream_puts(s, "/Filter /Standard ");
+            pprintld1(s, "/V %ld ", pdev->EncryptionV);
+            pprintld1(s, "/Length %ld ", pdev->KeyLength);
+            pprintld1(s, "/R %ld ", pdev->EncryptionR);
+            pprintld1(s, "/P %ld ", pdev->Permissions);
+            stream_puts(s, "/O ");
+            pdf_put_string(pdev, pdev->EncryptionO, sizeof(pdev->EncryptionO));
+            stream_puts(s, "\n/U ");
+            pdf_put_string(pdev, pdev->EncryptionU, sizeof(pdev->EncryptionU));
+            stream_puts(s, ">>\n");
+            pdf_end_obj(pdev, resourceEncrypt);
+            s = pdev->strm;
+        }
+
+
+
+        start_section = pdev->FirstObjectNumber;
+        end_section = find_end_xref_section(pdev, tfile, start_section, resource_pos);
+
+        xref = pdf_stell(pdev) - pdev->OPDFRead_procset_length;
+        if (pdev->Linearise)
+            linear_params.xref = xref;
+
+        if (pdev->FirstObjectNumber == 1) {
+            gs_sprintf(str, "xref\n0 %""l" "d""\n0000000000 65535 f \n",
+                  end_section);
+            stream_puts(s, str);
+        }
+        else {
+            gs_sprintf(str, "xref\n0 1\n0000000000 65535 f \n%""l" "d"" %""l" "d""\n",
+                  start_section,
+                  end_section - start_section);
+            stream_puts(s, str);
+        }
+
+        do {
+            write_xref_section(pdev, tfile, start_section, end_section, resource_pos, linear_params.Offsets);
+            if (end_section >= pdev->next_id)
+                break;
+            start_section = end_section + 1;
+            end_section = find_end_xref_section(pdev, tfile, start_section, resource_pos);
+            if (end_section < 0)
+                return end_section;
+            gs_sprintf(str, "%""l" "d"" %""l" "d""\n", start_section, end_section - start_section);
+            stream_puts(s, str);
+        } while (1);
+
+
+
+        if (!pdev->Linearise) {
+            char xref_str[32];
+            stream_puts(s, "trailer\n");
+            pprintld3(s, "<< /Size %ld /Root %ld 0 R /Info %ld 0 R\n",
+                  pdev->next_id, Catalog_id, Info_id);
+            stream_puts(s, "/ID [");
+            s_write_ps_string(pdev->strm, pdev->fileID, sizeof(pdev->fileID), 0);
+            s_write_ps_string(pdev->strm, pdev->fileID, sizeof(pdev->fileID), 0);
+            stream_puts(s, "]\n");
+            if (pdev->OwnerPassword.size > 0) {
+                pprintld1(s, "/Encrypt %ld 0 R ", Encrypt_id);
+            }
+            stream_puts(s, ">>\n");
+            gs_sprintf(xref_str, "startxref\n%""l" "d""\n%%%%EOF\n", xref);
+            stream_puts(s, xref_str);
+        }
+    }
+
+    if (pdev->Linearise) {
+        int i;
+
+        code = pdf_linearise(pdev, &linear_params);
+        for (i=0; i<pdev->ResourceUsageSize; i++) {
+            if (pdev->ResourceUsage[i].PageList)
+                ((pdev->v_memory)->procs.free_object(pdev->v_memory, pdev->ResourceUsage[i].PageList, "Free linearisation Page Usage list records"));
+        }
+        ((pdev->v_memory)->procs.free_object(pdev->v_memory, pdev->ResourceUsage, "Free linearisation resource usage records"));
+    }
+
+
+
+
+
+
+    {
+
+
+
+
+
+
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceFont].chains[j];
+
+            for (; pres != 0;) {
+                pdf_font_resource_t *pdfont = (pdf_font_resource_t *)pres;
+
+                font_resource_free(pdev, pdfont);
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceCIDFont].chains[j];
+
+            for (; pres != 0;) {
+                pdf_font_resource_t *pdfont = (pdf_font_resource_t *)pres;
+
+                font_resource_free(pdev, pdfont);
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceFontDescriptor].chains[j];
+            for (; pres != 0;) {
+                pdf_font_descriptor_free(pdev, pres);
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceCharProc].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, (byte *)pres->object, "Free CharProc"));
+                    pres->object = 0;
+                }
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceColorSpace].chains[j];
+            for (; pres != 0;) {
+                free_color_space(pdev, pres);
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceExtGState].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    cos_release(pres->object, "release ExtGState object");
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pres->object, "free ExtGState"));
+                    pres->object = 0;
+                }
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourcePattern].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    cos_release(pres->object, "free pattern dict");
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pres->object, "free pattern resources"));
+                    pres->object = 0;
+                }
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceShading].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    cos_release(pres->object, "free Shading dict");
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pres->object, "free Shading resources"));
+                    pres->object = 0;
+                }
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pres = pdev->resources[resourceGroup].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    cos_release(pres->object, "free Group dict");
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pres->object, "free Group resources"));
+                    pres->object = 0;
+                }
+                pres = pres->next;
+            }
+        }
+    }
+
+    {
+        int j, code = 0;
+
+        for (j = 0; j < 16 && code >= 0; ++j) {
+            pdf_resource_t *pnext = 0, *pres = pdev->resources[resourceFunction].chains[j];
+
+            for (; pres != 0;) {
+                if (pres->object) {
+                    cos_release(pres->object, "free function dict");
+                    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pres->object, "free function resources"));
+                    pres->object = 0;
+                }
+                pnext = pres->next;
+                pres = pnext;
+            }
+        }
+    }
+
+    {
+        int i, j;
+
+        for (i = 0; i < NUM_RESOURCE_TYPES; i++) {
+            for (j = 0; j < 16 && code >= 0; ++j) {
+                pdev->resources[i].chains[j] = 0;
+            }
+        }
+    }
+# 2901 "./devices/vector/gdevpdf.c"
+    {
+        pdf_resource_t *pres;
+        pdf_resource_t *prev;
+
+        for (prev = pdev->last_resource; (pres = prev) != 0;) {
+            prev = pres->prev;
+            ((mem)->procs.free_object(mem, pres, "pdf_resource_t"));
+        }
+        pdev->last_resource = 0;
+    }
+
+
+
+    cos_release((cos_object_t *)pdev->NI_stack, "Release Name Index stack");
+    ((mem)->procs.free_object(mem, pdev->NI_stack, "Free Name Index stack"));
+    pdev->NI_stack = 0;
+
+    cos_dict_objects_delete(pdev->local_named_objects);
+    cos_free(((cos_object_t *)&((pdev->local_named_objects)->cos_procs)), "pdf_close(local_named_objects)");
+    pdev->local_named_objects = 0;
+
+
+    cos_dict_objects_delete(pdev->global_named_objects);
+    cos_free(((cos_object_t *)&((pdev->global_named_objects)->cos_procs)), "pdf_close(global_named_objects)");
+    pdev->global_named_objects = 0;
+
+
+
+    pdev->font_cache = 0;
+
+    {
+        int i;
+        for (i=0;i < pdev->next_page;i++) {
+            cos_release((cos_object_t *)pdev->pages[i].Page, "Free page dict");
+            if (pdev->pages[i].Annots) {
+                cos_release((cos_object_t *)pdev->pages[i].Annots, "Release Annots dict");
+                ((mem)->procs.free_object(mem, pdev->pages[i].Annots, "Free Annots dict"));
+            }
+            ((mem)->procs.free_object(mem, pdev->pages[i].Page, "Free Page object"));
+        }
+    }
+    ((mem)->procs.free_object(mem, pdev->pages, "pages"));
+    pdev->pages = 0;
+
+    pdev->num_pages = 0;
+
+    ((mem)->procs.free_object(mem, pdev->sbstack, "Free sbstack"));
+    pdev->sbstack = 0;
+
+    text_data_free(mem, pdev->text);
+    pdev->text = 0;
+
+    cos_release((cos_object_t *)pdev->Pages, "release Pages dict");
+    ((mem)->procs.free_object(mem, pdev->Pages, "Free Pages dict"));
+    pdev->Pages = 0;
+
+    {
+        int i;
+        for (i=0;i < pdev->vgstack_depth;i++)
+            ((pdev->memory->non_gc_memory)->procs.free_object(pdev->memory->non_gc_memory, pdev->vgstack[i].dash_pattern, "pdfwrite final free stored dash in gstate"));
+    }
+    ((pdev->v_memory)->procs.free_object(pdev->v_memory, pdev->vgstack, "pdf_close(graphics state stack)"));
+
+    cos_release((cos_object_t *)pdev->Namespace_stack, "release Name space stack");
+    ((mem)->procs.free_object(mem, pdev->Namespace_stack, "Free Name space stack"));
+    pdev->Namespace_stack = 0;
+
+    pdev->Catalog = 0;
+    pdev->Info = 0;
+
+    ((mem)->procs.free_object(mem, pdev->outline_levels, "outline_levels array"));
+    pdev->outline_levels = 0;
+    pdev->outline_depth = -1;
+    pdev->max_outline_depth = 0;
+
+    {
+
+
+        int status;
+
+        if (!pdev->ProduceDSC)
+            spputc(s, 0x04);
+        while (s->strm) {
+            s = s->strm;
+        }
+        status = s_close_filters(&pdev->strm, s);
+        if (status < 0 && code == 0)
+            code = (-12);
+    }
+
+    code1 = gdev_vector_close_file((gx_device_vector *) pdev);
+    if (code >= 0)
+        code = code1;
+    if (pdev->max_referred_page >= pdev->next_page + 1) {
+
+
+        (emprintf_program_ident(pdev->memory, gs_program_name(), gs_revision_number()), errprintf(pdev->memory, "ERROR: A pdfmark destination page %d " "points beyond the last page %d.\n", pdev->max_referred_page, pdev->next_page));
+
+
+    }
+    code = pdf_close_files(pdev, code);
+    if (code < 0)
+        return code;
+
+    return code;
+}
