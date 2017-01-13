@@ -35,6 +35,32 @@ for i in `find . -name "*.bc" | grep -v "tmp\.bc$"` ; do
 done                                                                                                  
 ```
 
+
+## How to generate SPEC2006 .ll files ##
+
+Selected benchmarks (written in C) : 
+perlbench bzip2 gcc mcf gobmk hmmer sjeng libquantum 
+h264ref milc lbm sphinx3 specrand
+
+How to compile : Add `-S -emit-llvm` into COPTIMIZE variable in your `.cfg` file &
+run `runspec --config=mine.cfg --action=build <benchmark name>` & gather generated .o files
+
+
+## How to generate LLVM Nightly Test .ll files ##
+
+```
+(Clone llvmberry-tests repo into ~/llvmberry-tests)
+cp -r ~/llvmberry-tests/llvm-test-suite .
+mkdir llvm-test-suite-build
+cd llvm-test-suite-build
+export CC=<clang 3.7 path>
+cmake ../llvm-test-suite -DCMAKE_C_FLAGS=-save-temps
+cmake --build . -- -j4
+cp ~/llvmberry-tests/get-lnt-bcfiles.sh .
+./get-lnt-bcfiles.sh <.bc file save dir>
+```
+
+
 ## LLVM regression tests ##
 
 Copied from "llvm/test/Transforms"
