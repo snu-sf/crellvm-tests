@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+  <div>
+    <h3>New submission</h3>
+    <ul>
+      <li>
+        <form enctype="multipart/form-data" action="{% url 'submissions' %}" method="post">
+          {% csrf_token %}
+          <div>
+            {{ submission_form }}
+          </div>
+          <div><input type="submit" value="Submit" /></div>
+        </form>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3>Submissions</h3>
+    {% render_table table %}
+  </div>
+{% endblock %}

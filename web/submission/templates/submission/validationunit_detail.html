@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load filename %}
+
+{% block content %}
+  <h2>Validation Unit {{ validation_unit.id }}</h2>
+  <ul>
+    <li>Submission: <a href="{% url 'submission' validation_unit.translation_unit.submission.id %}">{{ validation_unit.translation_unit.submission.id }}</a></li>
+    <li>Translation Unit: {{ validation_unit.translation_unit }}</li>
+    <li>Status: {{ validation_unit.status }}</li>
+    <li>Category: {{ validation_unit.category }}</li>
+    <li>Basename: {{ validation_unit.basename }}</li>
+    <li>Retcode: {{ validation_unit.retcode }}</li>
+    <li>Stdout: {{ validation_unit.stdout }}</li>
+    <li>Stderr: {{ validation_unit.stderr }}</li>
+  </ul>
+
+  {% if hint_file %}
+  <div id="hint">
+    <script>
+      var formatter = new JSONFormatter({{ hint_file | safe }}, 100, {hoverPreviewEnabled: true});
+      var hint = document.getElementById('hint');
+      hint.appendChild(formatter.render());
+    </script>
+  </div>
+  {% endif %}
+
+  {% if diff_string %}
+  <div id="diff">
+    <script>
+      var diff2htmlUi = new Diff2HtmlUI({diff: "{{ diff_string | escapejs }}"});
+      diff2htmlUi.draw('#diff', {inputFormat: 'json', outputFormat: 'side-by-side', showFiles: true, matching: 'lines'});
+    </script>
+  </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load intformat %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+  <h2>Submission {{ submission.id }}: {{ submission.status }}</h2>
+  <ul>
+    <li>by {{ submission.user }} @ {{ submission.date }}</li>
+    <li>{{ submission.opt_filename}} {{ submission.opt_options }}</li>
+    <li>{{ submission.test_dir }}</li>
+    <li>/opt/llvmberry-tests/{{ submission.id | intformat }}</li>
+  </ul>
+
+  <div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th><a href="{% url 'submission' submission.id %}">all</a></td></th>
+          {% for status in status_list %}
+            <th><a href="{% url 'submission' submission.id %}?status={{ status }}">{{ status }}</a></th>
+          {% endfor %}
+        </tr>
+      </thead>
+      {% for category in category_list %}
+        <tr>
+        <td><a href="{% url 'submission' submission.id %}?status={{ category }}">{{ category }}</a></td>
+        {% for status in status_list %}
+          <td><a href="{% url 'submission' submission.id %}?status={{ status }}&category={{ category }}">link</a></td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div>
+    <h3>Validation Units</h3>
+    {% render_table validation_units_table %}
+  </div>
+
+  <div>
+    <h3>Translation Units</h3>
+    {% render_table translation_units_table %}
+  </div>
+</div>
+{% endblock %}

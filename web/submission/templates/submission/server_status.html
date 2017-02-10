@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h2>Server Status</h2>
+  <div>
+    <ul>
+      {% for status, tasks1 in tasks.items %}
+      <li>
+        <h3>{{ status }}</h3>
+        <ul>
+          {% for worker, tasks2 in tasks1.items %}
+          <li>
+            <h4>{{ worker }}</h4>
+            <ul>
+              {% for task in tasks2 %}
+              <li>Submission id {{ task.args }}</li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
