@@ -1,9 +1,7 @@
 ## How to run benchmarks ##
 
-Old tool :
-`python test.py -e ./opt -v ./main.native -r "-instcombine" -o -f -i "programs"`
-
-New tool : you can use simplberry-test-parallel (https://github.com/alxest/simplberry-tests-parallel)
+Use crellvm-test-parallel (https://github.com/snu-sf/crellvm-tests-parallel)
+Read the test script for more information.
 
 
 ## How to generate Python 3.4.1 .ll files ##
@@ -49,23 +47,16 @@ run `runspec --config=mine.cfg --action=build <benchmark name>` & gather generat
 ## How to generate LLVM Nightly Test .ll files ##
 
 ```
-(Clone llvmberry-tests repo into ~/llvmberry-tests)
-cp -r ~/llvmberry-tests/llvm-test-suite .
+(Clone crellvm-tests repo into ~/crellvm-tests)
+cp -r ~/crellvm-tests/llvm-test-suite .
 mkdir llvm-test-suite-build
 cd llvm-test-suite-build
 export CC=<clang 3.7 path>
 cmake ../llvm-test-suite -DCMAKE_C_FLAGS=-save-temps
 cmake --build . -- -j4
-cp ~/llvmberry-tests/get-lnt-bcfiles.sh .
+cp ~/crellvm-tests/get-lnt-bcfiles.sh .
 ./get-lnt-bcfiles.sh <.bc file save dir>
 ```
-
-
-## LLVM regression tests ##
-
-Copied from "llvm/test/Transforms"
-
-For more information -> [here](http://llvm.org/docs/TestingGuide.html#regression-tests)
 
 
 ## how to generate gimp-2.8 .ll files ##
@@ -125,65 +116,6 @@ for i in `find . -name "*.bc" | grep -v "tmp\.bc$"` ; do
   j=$((j + 1))
 done
 ```
-
-## How to generate screen-4.4.0 .ll files ##
-
-1. Download screen-4.4.0 from https://ftp.gnu.org/gnu/screen/screen-4.4.0.tar.gz
-
-2. run : tar -xvzf screen-4.4.0.tar.gz
-
-3. Download llvm-3.7.0, clang from http://llvm.org/pre-releases/3.7.0, and compile.
-
-Lets assume that you have installed llvm and clang into /home/juneyoung.lee/llvm-install-3.7.0/
-
-4. run : ./configure CC=/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/clang CFLAGS="-save-temps"
-
-5. make
-
-6. run : 
-```
-cd screen-4.4.0
-mkdir ../screen-bc
-mkdir ../screen-ll
-j=0
-for i in `find . -name "*.bc" | grep -v "tmp\.bc$"` ; do                                              
-  echo $i ;                                                                                           
-  cp -i ${i} ../screen-bc/${j}.`basename ${i}`                                                  
-  /home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/llvm-dis ${i} -o ../screen-ll/${j}.`basename ${i}`.ll
-  j=$((j + 1))
-done
-```
-
-## How to generate a2ps-4.14 .ll files ##
-
-1. Download a2ps-4.14 from https://ftp.gnu.org/gnu/a2ps/a2ps-4.14.tar.gz
-
-2. run : tar -xvzf a2ps-4.14.tar.gz
-
-3. Download llvm-3.7.0, clang from http://llvm.org/pre-releases/3.7.0, and compile.
-
-Lets assume that you have installed llvm and clang into /home/juneyoung.lee/llvm-install-3.7.0/
-
-4. run : ./configure CC=/home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/clang CFLAGS="-save-temps"
-
-5. make
-
-6. run : 
-```
-cd a2ps-4.14
-mkdir ../a2ps-bc
-mkdir ../a2ps-ll
-j=0
-for i in `find . -name "*.bc" | grep -v "tmp\.bc$"` ; do                                              
-  echo $i ;                                                                                           
-  cp -i ${i} ../a2ps-bc/${j}.`basename ${i}`                                                  
-  /home/juneyoung.lee/llvm-prototypes/llvm-install-3.7.0/bin/llvm-dis ${i} -o ../a2ps-ll/${j}.`basename ${i}`.ll
-  j=$((j + 1))
-done
-```
-
-
-
 
 
 
