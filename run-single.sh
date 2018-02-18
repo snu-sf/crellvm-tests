@@ -4,4 +4,5 @@
 
 CRELLVM_HOME=..
 
-scala crellvm-tests-parallel/src/main/scala/main.scala -j 24 --opt-path $CRELLVM_HOME/.build/llvm-obj/bin/opt --vali-path $CRELLVM_HOME/ocaml/main.native -a "-O2 -llvmberry-compactjson" -i $1
+scala crellvm-tests-parallel/src/main/scala/main.scala -j 24 --opt-path $CRELLVM_HOME/.build/llvm-obj/bin/opt --vali-path $CRELLVM_HOME/ocaml/main.native -a "-O2 -crellvm-compactjson" -i $1
+
